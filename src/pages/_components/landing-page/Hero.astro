@@ -1,32 +1,51 @@
-<section id="hero-content" class="flex flex-col gap-2 z-10 max-w-xl container mx-auto mt-8">
-    <h1>Budibase is the simplest way to add AI to your workflows.</h1>
-    <p class="text-stone-700">
-        Saves hundreds of hours transforming manual workflows with AI. <br> Best of all, <a href="https://github.com/Budibase/budibase" target="_blank"> Budibase is open source</a>.
+---
+import HeadCircuit from 'phosphor-astro/HeadCircuit.astro';
+import { Image } from 'astro:assets';
+import HeroImage from "../../../components/HeroImage.astro"
+import Cloud from 'phosphor-astro/Cloud.astro';
+import Server from 'phosphor-astro/HardDrive.astro';
+
+
+---
+<section id="hero-content" class="flex flex-col gap-2 z-10 container max-w-3xl mx-auto my-20 text-center">
+    <h1 class="title">Automate workflows securely with the open-source AI toolkit</h1>
+    <p class="!text-lg max-w-xl mx-auto">
+        Budibase saves you hundreds of hours transforming manual workflows with AI. Best of all, <a href="https://github.com/Budibase/budibase" target="_blank"> Budibase is open source</a>.
     </p>
-    <div class="flex flex-wrap gap-6 items-center mt-[-8px]">
+    <div class="flex p-1 hover:cursor-pointer transition-all mb-4 justify-between mx-auto gap-2">
+        <a target="_self" href="/talk-to-our-team">
+            <button class="inline-flex items-center gap-1 primary large">
+                <div class="w-8 h-8 rounded-xl p-1">
+                    <Cloud class="fill-white" />
+                </div>
+                Try Cloud for free
+            </button>
+        </a>
+        <a target="_self" href="/talk-to-our-team">
+            <button class="inline-flex items-center gap-1 secondary large">
+                <div class="w-8 h-8 rounded-xl p-1">
+                    <Server class="fill-black" />
+                </div>
+                Self-host Budibase
+            </button>
+        </a>
+    </div>
+    <div class="flex flex-wrap gap-6 items-center mt-[-6px] justify-center">
         <div class="flex items-center">
-            <div class="bg-purple-600 rounded-full inline-block mr-2 h-2 w-2">
+            <div class="bg-lavendar-medium rounded-full inline-block mr-2 h-2 w-2">
             </div>
-            <div class="text-sm text-stone-700">Powering 1M workflows</div>
+            <div class=" text-slate-light">Powering 1M workflows</div>
         </div>
         <div class="flex items-center">
-            <div class="bg-sky-600 rounded-full inline-block mr-2 h-2 w-2">
+            <div class="bg-sky-medium rounded-full inline-block mr-2 h-2 w-2">
             </div>
-            <div class="text-sm text-stone-700">25K Github stars</div>
+            <div class="text-slate-light">25K Github stars</div>
         </div>
         <div class="flex items-center">
-            <div class="bg-orange-600 rounded-full inline-block mr-2 h-2 w-2">
+            <div class="bg-grass-medium rounded-full inline-block mr-2 h-2 w-2">
             </div>
-            <div class="text-sm text-stone-700">Trusted by 200K teams</div>
+            <div class= "text-slate-light">Trusted by 200K teams</div>
         </div>
     </div>
-    <a target="_self" href="/talk-to-our-team" class="mt-2">
-        <div class="inline py-1 px-2.5 rounded-xl transition-all bg-sky-600 text-white font-medium hover:bg-sky-800 ">
-            Try for free
-        </div>
-    </a>
-</section>
-
-<section>
 
 </section>

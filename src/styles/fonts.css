@@ -1,68 +1,64 @@
+/* hanken-grotesk-regular - latin */
 @font-face {
-  font-family: "Lora";
-  src: url("/src/assets/fonts/Lora/Lora-Bold.woff2") format("woff2");
-  font-weight: 700;
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Hanken Grotesk";
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Lora";
-  src: url("/src/assets/fonts/Lora/Lora-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Lora";
-  src: url("/src/assets/fonts/Lora/Lora-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Lora";
-  src: url("/src/assets/fonts/Lora/Lora-Medium-Italic.woff2") format("woff2");
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Lora";
-  src: url("/src/assets/fonts/Lora/Lora-Regular.woff2") format("woff2");
   font-weight: 400;
+  src: url("/src/assets/fonts/HKGrotesk-Regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* hanken-grotesk-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Hanken Grotesk";
   font-style: normal;
-  font-display: swap;
+  font-weight: 500;
+  src: url("/src/assets/fonts/HKGrotesk-Medium.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* hanken-grotesk-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Hanken Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/src/assets/fonts/HKGrotesk-SemiBold.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* hanken-grotesk-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Hanken Grotesk Wide";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/src/assets/fonts/HKGroteskWide-Bold.otf") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 @font-face {
-  font-family: "Inter";
-  src: url("/src/assets/fonts/Inter/Inter-Bold.woff2") format("woff2");
-  font-weight: 700;
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Hanken Grotesk Wide";
   font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("/src/assets/fonts/Inter/Inter-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("/src/assets/fonts/Inter/Inter-Medium.woff2") format("woff2");
   font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+  src: url("/src/assets/fonts/HKGroteskWide-Medium.otf") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
+
 @font-face {
-  font-family: "Inter";
-  src: url("/src/assets/fonts/Inter/Inter-Regular.woff2") format("woff2");
-  font-weight: 400;
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Hanken Grotesk Wide";
   font-style: normal;
-  font-display: swap;
+  font-weight: 600;
+  src: url("/src/assets/fonts/HKGroteskWide-SemiBold.otf") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* hanken-grotesk-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Hanken Grotesk Wide";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/src/assets/fonts/HKGroteskWide-Bold.otf") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* hanken-grotesk-800 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Hanken Grotesk Wide";
+  font-style: normal;
+  font-weight: 800;
+  src: url("/src/assets/fonts/HKGroteskWide-ExtraBold.otf") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }

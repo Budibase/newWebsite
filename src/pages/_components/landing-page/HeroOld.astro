@@ -1,0 +1,40 @@
+---
+import Layout from 'phosphor-astro/Layout.astro';
+import HeadCircuit from 'phosphor-astro/HeadCircuit.astro';
+import { Image } from 'astro:assets';
+import HeroImage from "../../../components/HeroImage.astro"
+
+---
+
+<section id="hero-content" class="flex flex-col gap-2 z-10 container max-w-xl mx-auto mt-8">
+    <h1>Budibase is an AI toolkit for automating workflows</h1>
+    <p class="text-md">
+        Budibase saves engineers hundreds of hours transforming manual workflows with AI. Best of all, <a href="https://github.com/Budibase/budibase" target="_blank"> Budibase is open source</a>.
+    </p>
+    <div class="flex flex-wrap gap-6 items-center mt-[-6px]">
+        <div class="flex items-center">
+            <div class="bg-lavendar-medium rounded-full inline-block mr-2 h-2 w-2">
+            </div>
+            <div class="text-sm text-stone-700">Powering 1M workflows</div>
+        </div>
+        <div class="flex items-center">
+            <div class="bg-sky-medium rounded-full inline-block mr-2 h-2 w-2">
+            </div>
+            <div class="text-sm text-stone-700">25K Github stars</div>
+        </div>
+        <div class="flex items-center">
+            <div class="bg-grass-medium rounded-full inline-block mr-2 h-2 w-2">
+            </div>
+            <div class="text-sm text-stone-700">Trusted by 200K teams</div>
+        </div>
+    </div>
+    <div class="flex p-1 hover:cursor-pointer transition-all gap-2">
+        <a target="_self" href="/talk-to-our-team">
+            <button class="cta">
+                Try for free
+            </button>
+        </a>
+    </div>
+</section>
+
+<HeroImage />
