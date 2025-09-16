@@ -1,55 +1,49 @@
 ---
-import HeadCircuit from 'phosphor-astro/HeadCircuit.astro';
-import { Image } from 'astro:assets';
-import HeroImage from "../../../components/HeroImage.astro"
-import Cloud from 'phosphor-astro/Cloud.astro';
-import Server from 'phosphor-astro/HardDrive.astro';
-
-
+import { Image } from "astro:assets";
+import HeroWorkflowImage from "./HeroWorkflowImage.astro";
 ---
-<section id="hero-content" class="flex flex-col gap-2 z-10 container max-w-3xl mx-auto mt-20 text-center">
-    <h1 class="title">Automate entire workflows with the open-source AI toolkit</h1>
-    <p class="!text-lg max-w-xl mx-auto">
-        Save weeks creating forms, building apps, and automating workflows with AI. Best of all, <a href="https://github.com/Budibase/budibase" target="_blank"> Budibase is open source</a>.
-    </p>
-    <div class="flex p-1 hover:cursor-pointer transition-all mb-4 justify-between mx-auto gap-2">
-        <a target="_self" href="/talk-to-our-team">
-            <button class="inline-flex items-center gap-1 primary large">
-                <div class="w-8 h-8 rounded-xl p-1">
-                    <Cloud class="fill-white" />
-                </div>
-                Try Cloud for free
-            </button>
-        </a>
-        <a target="_self" href="/talk-to-our-team">
-            <button class="inline-flex items-center gap-1 secondary large">
-                <div class="w-8 h-8 rounded-xl p-1">
-                    <Server class="fill-black" />
-                </div>
-                Self-host Budibase
-            </button>
-        </a>
+
+<section
+  id="hero-content"
+  class="flex flex-col gap-2 z-10 container max-w-xl mx-auto mt-20"
+>
+  <!--<h1 class="title">Automate entire workflows with the open-source AI toolkit</h1>-->
+  <!--<h1 class="title">Automate entire workflows with the world's first system of action for AI</h1>-->
+  <!---Make work flow securely with Budibase and AI.--->
+  <!---Build AI workflows with agents, automations and dynamic forms--->
+  <!---Where privacy-first teams build AI workflows in minutes--->
+  <h1 class="title text-black max-w-lg">
+    Build AI workflows for privacy-first organizations.
+  </h1>
+  <p class="max-w-2xl">
+    Budibase saves teams 100s of hours automating entire workflows using AI
+    agents, forms, apps and action tables. <a
+      href="https://github.com/Budibase/budibase"
+      target="_blank">Budibase is also open source</a
+    >.
+  </p>
+  <div class="flex hover:cursor-pointer transition-all mb-4 gap-2">
+    <a target="_self" href="/talk-to-our-team">
+      <button class="inline-flex items-center primary large gap-1">
+        Try for free
+      </button>
+    </a>
+  </div>
+
+  <div class="flex flex-wrap gap-6 mt-[-6px]">
+    <div class="flex items-center">
+      <div class="bg-sky-medium rounded-full inline-block mr-2 h-2 w-2"></div>
+      <div class="text-sm text-slate-light">Powering 1M workflows</div>
     </div>
-
-    <!-- <div class="flex flex-wrap gap-6 items-center mt-[-6px] justify-center">
-        <div class="flex items-center">
-            <div class="bg-lavendar-medium rounded-full inline-block mr-2 h-2 w-2">
-            </div>
-            <div class=" text-slate-light">Powering 1M workflows</div>
-        </div>
-        <div class="flex items-center">
-            <div class="bg-sky-medium rounded-full inline-block mr-2 h-2 w-2">
-            </div>
-            <div class="text-slate-light">25K Github stars</div>
-        </div>
-        <div class="flex items-center">
-            <div class="bg-grass-medium rounded-full inline-block mr-2 h-2 w-2">
-            </div>
-            <div class= "text-slate-light">Trusted by 200K teams</div>
-        </div>
-    </div> -->
+    <div class="flex items-center">
+      <div class="bg-clay-medium rounded-full inline-block mr-2 h-2 w-2"></div>
+      <div class="text-sm text-slate-light">26K Github stars</div>
+    </div>
+    <div class="flex items-center">
+      <div class="bg-grass-medium rounded-full inline-block mr-2 h-2 w-2"></div>
+      <div class="text-sm text-slate-light mr-2">Trusted by 200K teams</div>
+    </div>
+  </div>
 </section>
-<section class="grid grid-cols-3">
 
-
-</section>
+<HeroWorkflowImage />

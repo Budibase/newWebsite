@@ -1,94 +1,110 @@
 ---
-import Layout from 'phosphor-astro/Layout.astro';
-import HeadCircuit from 'phosphor-astro/HeadCircuit.astro';
-import { Image } from 'astro:assets';
+import Layout from "phosphor-astro/Layout.astro";
+import HeadCircuit from "phosphor-astro/HeadCircuit.astro";
+import { Image } from "astro:assets";
 import robotlunchsketch3 from "../../../assets/robotlunchsketch3.png";
 import robotlunchsketch4 from "../../../assets/robotlunchsketch4.png";
 ---
 
-    <section class="mt-8 container mx-auto max-w-6xl">
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-2">
-            <div id="pricing-card">
-                <div class="p-1 border border-stone-200 bg-stone-50 rounded-3xl">
-                    <div class="bg-white border-stone-300 rounded-3xl border !border-dashed px-6 py-4">
-                        <div class="flex justify-between">
-                            <div class="flex items-center gap-2">
-                                <div class="bg-orange-600 w-8 h-8 rounded-xl p-1">
-                                    <HeadCircuit class="fill-orange-100" />
-                                </div>
-                                <div>
-                                    <h2 class="!text-2xl m-0">Agents</h2>
-                                </div>
-                            </div>
-                            <div>
-                                <a href="/agents" data-astro-prefetch>
-                                    <button class="bg-stone-100 hover:bg-stone-300 !text-black">
-                                        Learn more
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="mt-4">
-                            <Image src={robotlunchsketch4} alt="Budibase symbol" class="hover:cursor-pointer rounded-xl">
-                        </div>
-                    </div>
-                </div>
+<section class="mt-8 container mx-auto max-w-6xl">
+  <div class="grid grid-cols-1 xl:grid-cols-3 gap-2">
+    <div id="pricing-card">
+      <div class="p-1 border border-stone-200 bg-stone-50 rounded-3xl">
+        <div
+          class="bg-white border-stone-300 rounded-3xl border !border-dashed px-6 py-4"
+        >
+          <div class="flex justify-between">
+            <div class="flex items-center gap-2">
+              <div class="bg-orange-600 w-8 h-8 rounded-xl p-1">
+                <HeadCircuit class="fill-orange-100" />
+              </div>
+              <div>
+                <h2 class="!text-2xl m-0">Agents</h2>
+              </div>
             </div>
-            <div id="pricing-card">
-                <div class="p-1 border border-stone-200 bg-stone-50 rounded-3xl">
-                    <div class="bg-white border-stone-300 rounded-3xl border !border-dashed px-6 py-4">
-                        <div class="flex justify-between">
-                            <div class="flex items-center gap-2">
-                                <div class="bg-orange-600 w-8 h-8 rounded-xl p-1">
-                                    <HeadCircuit class="fill-orange-100" />
-                                </div>
-                                <div>
-                                    <h2 class="!text-2xl m-0">Automations</h2>
-                                </div>
-                            </div>
-                            <div>
-                                <a href="/agents" data-astro-prefetch>
-                                    <button class="bg-stone-100 hover:bg-stone-300 !text-black">
-                                        Learn more
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="mt-4">
-                            <Image src={robotlunchsketch4} alt="Budibase symbol" class="hover:cursor-pointer rounded-xl">
-                        </div>
-                    </div>
-                </div>
+            <div>
+              <a href="/agents" data-astro-prefetch>
+                <button class="bg-stone-100 hover:bg-stone-300 !text-black">
+                  Learn more
+                </button>
+              </a>
             </div>
-            <div id="pricing-card">
-                <div class="p-1 border border-stone-200 bg-stone-50 rounded-2xl">
-                    <div class="bg-white border-stone-300 rounded-xl border !border-dashed px-6 py-4">
-                        <div class="flex justify-between">
-                            <div class="flex items-center gap-2">
-                                <div class="bg-green-600 w-8 h-8 rounded-xl p-1">
-                                    <Layout class="fill-green-100" />
-                                </div>
-                                <div>
-                                    <h2 class="!text-2xl m-0">Apps</h2>
-                                </div>
-                            </div>
-                            <div>
-                                <a href="/apps">
-                                    <button class="bg-stone-100  !text-black">
-                                        Learn more
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="mt-4">
-                            <Image src={robotlunchsketch3} alt="Budibase symbol" class="hover:cursor-pointer rounded-xl">
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <div class="mt-4">
+            <Image
+              src={robotlunchsketch4}
+              alt="Budibase symbol"
+              class="hover:cursor-pointer rounded-xl"
+            />
+          </div>
         </div>
-    </section>
+      </div>
+      <div id="pricing-card">
+        <div class="p-1 border border-stone-200 bg-stone-50 rounded-3xl">
+          <div
+            class="bg-white border-stone-300 rounded-3xl border !border-dashed px-6 py-4"
+          >
+            <div class="flex justify-between">
+              <div class="flex items-center gap-2">
+                <div class="bg-orange-600 w-8 h-8 rounded-xl p-1">
+                  <HeadCircuit class="fill-orange-100" />
+                </div>
+                <div>
+                  <h2 class="!text-2xl m-0">Automations</h2>
+                </div>
+              </div>
+              <div>
+                <a href="/agents" data-astro-prefetch>
+                  <button class="bg-stone-100 hover:bg-stone-300 !text-black">
+                    Learn more
+                  </button>
+                </a>
+              </div>
+            </div>
+            <div class="mt-4">
+              <Image
+                src={robotlunchsketch4}
+                alt="Budibase symbol"
+                class="hover:cursor-pointer rounded-xl"
+              />
+            </div>
+          </div>
+        </div>
+        <div id="pricing-card">
+          <div class="p-1 border border-stone-200 bg-stone-50 rounded-2xl">
+            <div
+              class="bg-white border-stone-300 rounded-xl border !border-dashed px-6 py-4"
+            >
+              <div class="flex justify-between">
+                <div class="flex items-center gap-2">
+                  <div class="bg-green-600 w-8 h-8 rounded-xl p-1">
+                    <Layout class="fill-green-100" />
+                  </div>
+                  <div>
+                    <h2 class="!text-2xl m-0">Apps</h2>
+                  </div>
+                </div>
+                <div>
+                  <a href="/apps">
+                    <button class="bg-stone-100 !text-black">
+                      Learn more
+                    </button>
+                  </a>
+                </div>
+              </div>
+              <div class="mt-4">
+                <Image
+                  src={robotlunchsketch3}
+                  alt="Budibase symbol"
+                  class="hover:cursor-pointer rounded-xl"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<style>
-
-</style>
+      <style></style>
+    </div>
+  </div>
+</section>

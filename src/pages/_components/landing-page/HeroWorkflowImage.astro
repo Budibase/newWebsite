@@ -1,0 +1,881 @@
+---
+import TextBox from "phosphor-astro/TextBox.astro";
+import Path from "phosphor-astro/PathBold.astro";
+import Grid from "phosphor-astro/GridNine.astro";
+import Layout from "phosphor-astro/Layout.astro";
+import Sparkle from "phosphor-astro/Sparkle.astro";
+import PaperPlaneTilt from "phosphor-astro/PaperPlaneTilt.astro";
+import { Image } from "astro:assets";
+import Google from "@assets/logos/Google.svg";
+import BBSymbol from "@assets/logos/BBSymbol.svg";
+import Okta from "@assets/logos/Okta.svg";
+import Slack from "@assets/logos/Slack.svg";
+import Jira from "@assets/logos/Jira.svg";
+import Gmail from "@assets/logos/Gmail.svg";
+---
+
+<div class="container max-w-xl mx-auto mt-6">
+  <div
+    class="border rounded-xl p-1 inline-flex flex-row gap-2 mx-auto"
+    role="tablist"
+    aria-label="Workflow views"
+  >
+    <button
+      class="active text-sm px-3 py-1 rounded-md flex flex-row gap-1.5 items-center"
+      role="tab"
+      aria-selected="true"
+      data-target="workflows"
+      ><span class="">
+        <Path class="w-4 h-4 text-sky-medium" />
+      </span>Workflows</button
+    >
+    <button
+      class="inactive text-sm px-3 py-1 rounded-md flex flex-row gap-1.5 items-center"
+      role="tab"
+      aria-selected="false"
+      data-target="agents"
+      ><span class="">
+        <Sparkle class="w-4 h-4 text-lavendar-medium" />
+      </span>Agents</button
+    >
+
+    <button
+      class="inactive text-sm px-3 py-1 rounded-md flex flex-row gap-1.5 items-center"
+      role="tab"
+      aria-selected="false"
+      data-target="forms"
+      ><span class="">
+        <TextBox class="w-4 h-4 text-clay-medium" />
+      </span>Forms</button
+    >
+    <button
+      class="inactive text-sm px-3 py-1 rounded-md flex flex-row gap-1.5 items-center"
+      role="tab"
+      aria-selected="false"
+      data-target="apps"
+      ><span class="">
+        <Layout class="w-4 h-4 text-clay-medium" />
+      </span>Apps</button
+    >
+    <button
+      class="inactive text-sm px-3 py-1 rounded-md flex flex-row gap-1.5 items-center"
+      role="tab"
+      aria-selected="false"
+      data-target="tables"
+      ><span class="">
+        <Grid class="w-4 h-4 text-grass-medium" />
+      </span>Tables</button
+    >
+  </div>
+</div>
+
+<section
+  class="p-2 rounded-[18px] border-1 border-dashed border-stone-200 shadow-[0px_2px_3px_-2px_rgba(28,40,64,0.10),0px_4px_6px_-2px_rgba(28,40,64,0.04)] max-w-8xl mt-1 mx-auto"
+>
+  <div
+    id="canvas"
+    class="z-0 relative flex flex-row gap-20 bg-ivory-medium px-10 py-14 rounded-2xl overflow-hidden min-h-[360px]"
+  >
+    <!-- Workflows view (default) -->
+    <div id="workflows" class="tab-section contents">
+      <div
+        data-card="form"
+        class="relative w-[141px] lg:w-[300px] max-h-fit rounded-[10px] p-[7px] border lg:rounded-xl lg:p-[11px] border-stone-300 bg-white shadow-[0px_2px_3px_-2px_rgba(28,40,64,0.10),0px_4px_6px_-2px_rgba(28,40,64,0.04)]"
+      >
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-x-1.5">
+            <div class="bg-clay-dark w-5 h-5 rounded-md p-0.5">
+              <TextBox class="fill-white" />
+            </div>
+            <div
+              class="font-semibold text-[10px] leading-[14px] tracking-[-0.28px] lg:text-[15px] lg:leading-5 text-slate-medium"
+            >
+              Offboarding form
+            </div>
+          </div>
+          <div
+            class="border font-medium rounded-md px-[3px] py-[0.5px] text-[8px] leading-[11px] lg:rounded-lg lg:px-[5px] lg:py-px lg:text-[12px] lg:leading-4 border-[#EEEFF1] bg-ivory-medium text-slate-light"
+          >
+            Form
+          </div>
+        </div>
+        <div class="bg-ivory-light mt-4 rounded-md p-2">
+          <div class="bg-white border rounded-md">
+            <p
+              class="font-bold bg-slate-dark text-white py-2 px-4 rounded-t-md"
+            >
+              Offboarding Form
+            </p>
+            <form class="py-2 px-4">
+              <label
+                class="block text-slate-dark text-xs font-medium mb-1"
+                for="employeeName"
+              >
+                Employee name
+              </label>
+              <input
+                class="bg-ivory-light border rounded w-full py-2 px-3 text-xs slate-light leading-tight focus:outline-none focus:shadow-outline"
+                id="employeeName"
+                type="text"
+              />
+              <label
+                class="mt-4 block text-slate-dark text-xs font-medium mb-1"
+                for="managerName"
+              >
+                Manager name
+              </label>
+              <input
+                class="bg-ivory-light border rounded w-full py-2 px-3 text-xs slate-light leading-tight focus:outline-none focus:shadow-outline"
+                id="managerName"
+                type="text"
+                placeholder="{Prefilled}"
+              />
+            </form>
+          </div>
+        </div>
+        <!-- Connector: Form -> Agent (straight SVG with clay→lavendar gradient) -->
+        <div
+          class="pointer-events-none z-30 absolute left-full top-5 -translate-y-1/2 hidden lg:block"
+        >
+          <svg
+            class="overflow-visible"
+            width="220"
+            height="80"
+            viewBox="0 0 220 80"
+            fill="none"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient
+                id="clayLavendar"
+                x1="0"
+                y1="40"
+                x2="80"
+                y2="40"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0%" stop-color="var(--clay-medium)"></stop>
+                <stop offset="100%" stop-color="var(--lavendar-medium)"></stop>
+              </linearGradient>
+            </defs>
+            <line
+              x1="0"
+              y1="40"
+              x2="80"
+              y2="40"
+              stroke="url(#clayLavendar)"
+              stroke-width="0.5"
+              stroke-dasharray="6 6"></line>
+            <circle
+              cx="0"
+              cy="40"
+              r="3"
+              fill="var(--clay-medium)"
+              stroke="var(--clay-medium)"
+              stroke-width="0.5"></circle>
+            <circle
+              cx="80"
+              cy="40"
+              r="3"
+              fill="var(--lavendar-medium)"
+              stroke="var(--lavendar-medium)"
+              stroke-width="0.5"></circle>
+          </svg>
+        </div>
+      </div>
+      <div
+        data-card="agent"
+        class="z-20 relative w-[141px] lg:w-[500px] max-h-fit rounded-[10px] p-[7px] border lg:rounded-xl lg:p-[11px] border-weak-stroke bg-white shadow-[0px_2px_3px_-2px_rgba(28,40,64,0.10),0px_4px_6px_-2px_rgba(28,40,64,0.04)]"
+      >
+        <div class="pointer-events-none select-none">
+          <div class="flex items-center justify-between">
+            <div class="grid overflow-hidden *:col-start-1 *:row-start-1">
+              <div class="flex gap-x-1.5">
+                <div class="bg-lavendar-dark w-5 h-5 rounded-md p-0.5">
+                  <Sparkle class="fill-white" />
+                </div>
+                <div
+                  class="font-semibold text-[10px] leading-[14px] tracking-[-0.28px] lg:text-[15px] lg:leading-5 text-slate-medium"
+                >
+                  Offboard Agent
+                </div>
+              </div>
+            </div>
+            <div
+              class="border font-medium rounded-md px-[3px] py-[0.5px] text-[8px] leading-[11px] lg:rounded-lg lg:px-[5px] lg:py-px lg:text-[12px] lg:leading-4 bg-ivory-medium text-slate-light"
+            >
+              Agent
+            </div>
+          </div>
+          <p class="mt-2 text-cloud-dark !text-sm">
+            You are in charge of employee offboarding. Do your best to resolve
+            the managers request to offboard the employee mentioned within ...
+          </p>
+          <div class="bg-ivory-light mt-2 p-2 rounded-md">
+            <div class="text-cloud-dark !text-xs uppercase font-semibold mb-1">
+              Tools
+            </div>
+            <div class="flex gap-1 flex-wrap">
+              <div
+                class="px-2 py-1 gap-1.5 bg-ivory-medium rounded-3xl flex flex-row items-center justify-center"
+              >
+                <Image src={Google} alt="Google sumbol" class="h-4 w-4" />
+                <div class="text-sm">Google Workspace: User search</div>
+              </div>
+              <div
+                class="px-2 py-1 gap-1.5 bg-ivory-medium rounded-3xl flex flex-row items-center justify-center"
+              >
+                <Image src={Gmail} alt="Google sumbol" class="h-4 w-4" />
+                <div class="text-sm">Gmail: Send email</div>
+              </div>
+              <div
+                class="px-2 py-1 gap-1.5 bg-ivory-medium rounded-3xl flex flex-row items-center justify-center"
+              >
+                <Image src={BBSymbol} alt="Google sumbol" class="h-4 w-4" />
+                <div class="text-sm">Tables: Update record</div>
+              </div>
+              <div
+                class="px-2 py-1 gap-1.5 bg-ivory-medium rounded-3xl flex flex-row items-center justify-center"
+              >
+                <Image src={Okta} alt="Google sumbol" class="h-4 w-4" />
+                <div class="text-sm">Okta: User search</div>
+              </div>
+              <div
+                class="px-2 py-1 gap-1.5 bg-ivory-medium rounded-3xl flex flex-row items-center justify-center"
+              >
+                <Image src={Okta} alt="Google sumbol" class="h-4 w-4" />
+                <div class="text-sm">Okta: Suspend user</div>
+              </div>
+              <div
+                class="px-2 py-1 gap-1.5 bg-ivory-medium rounded-3xl flex flex-row items-center justify-center"
+              >
+                <Image src={Jira} alt="Google sumbol" class="h-4 w-4" />
+                <div class="text-sm">Jira: User search</div>
+              </div>
+              <div
+                class="px-2 py-1 gap-1.5 bg-ivory-medium rounded-3xl flex flex-row items-center justify-center"
+              >
+                <Image src={Jira} alt="Google sumbol" class="h-4 w-4" />
+                <div class="text-sm">Jira: Remove user</div>
+              </div>
+              <div
+                class="px-2 py-1 gap-1.5 bg-ivory-medium rounded-3xl flex flex-row items-center justify-center"
+              >
+                <Image src={Slack} alt="Google sumbol" class="h-4 w-4" />
+                <div class="text-sm">Slack: User search</div>
+              </div>
+              <div
+                class="px-2 py-1 gap-1.5 bg-ivory-medium rounded-3xl flex flex-row items-center justify-center"
+              >
+                <Image src={Slack} alt="Google sumbol" class="h-4 w-4" />
+                <div class="text-sm">Slack: Remove user</div>
+              </div>
+              <div
+                class="px-2 py-1 gap-1.5 bg-ivory-medium rounded-3xl flex flex-row items-center justify-center"
+              >
+                <Image src={Gmail} alt="Google sumbol" class="h-4 w-4" />
+                <div class="text-sm">Gmail: Create forwarding address</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Connector: Agent -> Automation (straight SVG with lavendar→sky gradient) -->
+        <div
+          class="max-xl:hidden pointer-events-none absolute left-full top-5 -translate-y-1/2 hidden lg:block z-20"
+        >
+          <svg
+            class="overflow-visible"
+            width="220"
+            height="80"
+            viewBox="0 0 220 80"
+            fill="none"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient
+                id="lavendarSky"
+                x1="0"
+                y1="40"
+                x2="80"
+                y2="40"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0%" stop-color="var(--lavendar-medium)"></stop>
+                <stop offset="100%" stop-color="var(--sky-medium)"></stop>
+              </linearGradient>
+            </defs>
+            <line
+              x1="0"
+              y1="40"
+              x2="80"
+              y2="40"
+              stroke="url(#lavendarSky)"
+              stroke-width="0.5"
+              stroke-dasharray="6 6"></line>
+            <circle
+              cx="0"
+              cy="40"
+              r="3"
+              fill="var(--lavendar-medium)"
+              stroke="var(--lavendar-medium)"
+              stroke-width="1"></circle>
+            <circle
+              cx="80"
+              cy="40"
+              r="3"
+              fill="var(--sky-medium)"
+              stroke="var(--sky-medium)"
+              stroke-width="1"></circle>
+          </svg>
+        </div>
+      </div>
+      <div class="absolute z-10 left-82 top-50 -rotate-20">
+        <img
+          src="https://res.cloudinary.com/daog6scxm/image/upload/v1757688084/NewWebsite/images/social-u4798496651-cute-robot--unscreen_droyxq.gif"
+          alt="friendly robot"
+          class="w-40"
+        />
+      </div>
+
+      <div
+        data-card="automation"
+        class="z-100 max-xl:hidden relative w-[141px] lg:w-[300px] max-h-fit rounded-[10px] p-[7px] border lg:rounded-xl lg:p-[11px] border-weak-stroke bg-white shadow-[0px_2px_3px_-2px_rgba(28,40,64,0.10),0px_4px_6px_-2px_rgba(28,40,64,0.04)]"
+      >
+        <div class="pointer-events-none select-none">
+          <div class="flex items-center justify-between">
+            <div class="grid overflow-hidden *:col-start-1 *:row-start-1">
+              <div class="flex gap-x-1.5">
+                <div class="bg-sky-dark w-5 h-5 rounded-md p-0.5">
+                  <PaperPlaneTilt class="fill-white" />
+                </div>
+                <div
+                  class="font-semibold text-[10px] leading-[14px] tracking-[-0.28px] lg:text-[15px] lg:leading-5"
+                >
+                  Notify manager
+                </div>
+              </div>
+            </div>
+            <div
+              class="border font-medium rounded-md px-[3px] py-[0.5px] text-[8px] leading-[11px] lg:rounded-lg lg:px-[5px] lg:py-px lg:text-[12px] lg:leading-4 bg-ivory-medium text-slate-light"
+            >
+              Send email
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agents view -->
+    <div id="agents" class="tab-section hidden w-full flex justify-center">
+      <div
+        class="z-20 relative w-full max-w-[920px] max-h-fit rounded-[10px] p-[7px] border lg:rounded-xl lg:p-[11px] border-weak-stroke bg-white shadow-[0px_2px_3px_-2px_rgba(28,40,64,0.10),0px_4px_6px_-2px_rgba(28,40,64,0.04)]"
+        aria-label="Agent card"
+      >
+        <div class="grid lg:grid-cols-2 gap-6 items-start">
+          <div class="pointer-events-none select-none">
+            <div class="flex items-center justify-between">
+              <div class="grid overflow-hidden *:col-start-1 *:row-start-1">
+                <div class="flex gap-x-1.5">
+                  <div class="bg-lavendar-dark w-5 h-5 rounded-md p-0.5">
+                    <Sparkle class="fill-white" />
+                  </div>
+                  <div
+                    class="font-semibold text-[10px] leading-[14px] tracking-[-0.28px] lg:text-[15px] lg:leading-5 text-slate-medium"
+                  >
+                    Offboard Agent
+                  </div>
+                </div>
+              </div>
+              <div
+                class="border font-medium rounded-md px-[3px] py-[0.5px] text-[8px] leading-[11px] lg:rounded-lg lg:px-[5px] lg:py-px lg:text-[12px] lg:leading-4 bg-ivory-medium text-slate-light"
+              >
+                Agent
+              </div>
+            </div>
+            <p class="mt-2 text-cloud-dark !text-sm">
+              You are in charge of employee offboarding. Do your best to resolve
+              the managers request to offboard the employee mentioned within ...
+            </p>
+            <div class="bg-ivory-light mt-2 p-2 rounded-md">
+              <div
+                class="text-cloud-dark !text-xs uppercase font-semibold mb-1"
+              >
+                Tools
+              </div>
+              <div class="flex gap-1 flex-wrap">
+                <div
+                  class="px-2 py-1 gap-1.5 bg-ivory-medium rounded-3xl flex flex-row items-center justify-center"
+                >
+                  <Image src={Google} alt="Google sumbol" class="h-4 w-4" />
+                  <div class="text-sm">Google Workspace: User search</div>
+                </div>
+                <div
+                  class="px-2 py-1 gap-1.5 bg-ivory-medium rounded-3xl flex flex-row items-center justify-center"
+                >
+                  <Image src={Gmail} alt="Google sumbol" class="h-4 w-4" />
+                  <div class="text-sm">Gmail: Send email</div>
+                </div>
+                <div
+                  class="px-2 py-1 gap-1.5 bg-ivory-medium rounded-3xl flex flex-row items-center justify-center"
+                >
+                  <Image src={BBSymbol} alt="Google sumbol" class="h-4 w-4" />
+                  <div class="text-sm">Tables: Update record</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Right: Minimal Chat UI -->
+          <div id="agent-chat" class="h-full">
+            <div class="bg-white border rounded-md flex flex-col h-[360px]">
+              <div
+                class="px-3 py-2 border-b border-stone-200 text-sm font-semibold text-slate-dark"
+              >
+                Agent Evaluation
+              </div>
+              <div
+                id="agent-chat-messages"
+                class="flex-1 overflow-auto px-3 py-2 space-y-3"
+              >
+                <!-- Initial assistant message -->
+                <div class="flex items-start gap-2">
+                  <div
+                    class="shrink-0 bg-lavendar-dark text-white h-6 w-6 rounded-md grid place-items-center text-[10px]"
+                  >
+                    A
+                  </div>
+                  <div
+                    class="bg-ivory-medium text-slate-dark rounded-lg px-3 py-2 text-sm max-w-[80%]"
+                  >
+                    Hi! I can help with employee offboarding. Share the employee
+                    name and I’ll draft the steps.
+                  </div>
+                </div>
+              </div>
+              <form id="agent-chat-form" class="border-t p-2 flex gap-2">
+                <input
+                  id="agent-chat-input"
+                  type="text"
+                  placeholder="Send a message"
+                  class="flex-1 text-sm bg-ivory-light border rounded px-3 py-2 focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  class="px-3 py-2 text-xs rounded-md bg-sky-medium text-white"
+                  >Send</button
+                >
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Forms view -->
+    <div id="forms" class="tab-section hidden w-2xl flex justify-center">
+      <div
+        class="relative w-full max-w-[920px] max-h-fit rounded-[10px] p-[7px] border lg:rounded-xl lg:p-[11px] border-stone-303"
+        aria-label="Form card"
+      >
+        <div class="bg-ivory-light mt-4 rounded-2xl p-2 max-w-sm mx-auto">
+          <div class="bg-white border rounded-[15.5px] py-2 px-4">
+            <div
+              class="inline-block w-10 h-10 content-center justify-center align-middle text-center bg-ivory-medium rounded-lg text-2xl mb-2"
+            >
+              👋
+            </div>
+            <p class="!font-semibold">Offboarding Form</p>
+            <form>
+              <label
+                class="block text-slate-dark text-sm font-medium mb-1"
+                for="employeeName-forms">Employee name</label
+              >
+              <input
+                class="bg-ivory-light border !border-stone-300 rounded w-full py-2 px-3 text-xs slate-light leading-tight"
+                id="employeeName-forms"
+                type="text"
+              />
+              <label
+                class="mt-4 block text-slate-dark text-sm font-medium mb-1"
+                for="managerName-forms">Manager name</label
+              >
+              <input
+                class="bg-ivory-light border rounded w-full py-2 px-3 text-xs slate-light leading-tight focus:outline-none focus:shadow-outline"
+                id="managerName-forms"
+                type="text"
+                placeholder="{Prefilled}"
+              />
+              <label
+                class="mt-4 block text-slate-dark text-sm font-medium mb-1"
+                for="apps-role">Role</label
+              >
+              <select
+                id="apps-role"
+                class="bg-ivory-light border rounded w-full py-2 px-3 text-xs slate-dark focus:outline-none"
+              >
+                <option>Member</option>
+                <option>Admin</option>
+              </select>
+              <button
+                type="button"
+                class="px-2 my-4 py-1 rounded-lg bg-sky-darkest text-white text-sn font-semibold"
+                >Request</button
+              >
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tables view -->
+    <div id="tables" class="tab-section hidden xl:w-2xl flex justify-center">
+      <div
+        class="relative w-full max-w-[920px] max-h-fit rounded-[10px] p-[7px] border lg:rounded-xl lg:p-[11px] border-stone-300 bg-white shadow-[0px_2px_3px_-2px_rgba(28,40,64,0.10),0px_4px_6px_-2px_rgba(28,40,64,0.04)]"
+        aria-label="Tables card"
+      >
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-x-1.5">
+            <div class="bg-grass-dark w-5 h-5 rounded-md p-0.5">
+              <Grid class="fill-white" />
+            </div>
+            <div
+              class="font-semibold text-[10px] leading-[14px] tracking-[-0.28px] lg:text-[15px] lg:leading-5 text-slate-medium"
+            >
+              Offboarding table
+            </div>
+          </div>
+          <div
+            class="border font-medium rounded-md px-[3px] py-[0.5px] text-[8px] leading-[11px] lg:rounded-lg lg:px-[5px] lg:py-px lg:text-[12px] lg:leading-4 border-[#EEEFF1] bg-ivory-medium text-slate-light"
+          >
+            Table
+          </div>
+        </div>
+        <div class="bg-ivory-light mt-3 rounded-md p-2">
+          <div class="bg-white border rounded-md overflow-hidden">
+            <div
+              class="grid grid-cols-3 text-[10px] lg:text-xs font-semibold bg-ivory-medium text-slate-dark"
+            >
+              <div class="py-2 px-3">Name</div>
+              <div class="py-2 px-3">Team</div>
+              <div class="py-2 px-3">Approval action</div>
+            </div>
+            <div
+              class="grid grid-cols-3 text-[10px] lg:text-xs text-slate-dark border-t border-stone-100"
+            >
+              <div class="py-2 px-3">Joe Johnston</div>
+              <div class="py-2 px-3">joe@government.com</div>
+              <button class="cta m-2">Approve</button>
+            </div>
+            <div
+              class="grid grid-cols-3 text-[10px] lg:text-xs text-slate-dark border-t border-stone-100"
+            >
+              <div class="py-2 px-3">Kate Smith</div>
+              <div class="py-2 px-3">kate@government.com</div>
+              <button class="cta m-2">Approve</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Apps view -->
+    <div id="apps" class="tab-section hidden flex justify-center xl:w-2xl">
+      <div
+        class="relative w-full max-w-[920px] max-h-fit rounded-[10px] p-[7px] border lg:rounded-xl lg:p-[11px] border-stone-300 bg-white shadow-[0px_2px_3px_-2px_rgba(28,40,64,0.10),0px_4px_6px_-2px_rgba(28,40,64,0.04)]"
+        aria-label="Apps offboarding"
+      >
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-x-1.5">
+            <div class="bg-clay-dark w-5 h-5 rounded-md p-0.5">
+              <Layout class="fill-white" />
+            </div>
+            <div
+              class="font-semibold text-[10px] leading-[14px] tracking-[-0.28px] text-md lg:leading-5 text-slate-medium"
+            >
+              Offboarding request app
+            </div>
+          </div>
+        </div>
+        <div
+          class="grid lg:grid-cols-2 gap-6 items-start bg-ivory-light mt-3 rounded-md p-2"
+        >
+          <!-- Left: Apps table with a selected row -->
+          <div class="bg-white border rounded-md overflow-hidden">
+            <div
+              class="grid grid-cols-3 text-[10px] lg:text-xs font-semibold bg-clay-dark text-ivory-light"
+            >
+              <div class="py-2 px-3">App</div>
+              <div class="py-2 px-3">Account</div>
+              <div class="py-2 px-3">Status</div>
+            </div>
+            <div
+              class="grid grid-cols-3 text-[10px] lg:text-xs text-slate-dark border-t border-stone-100 items-center"
+            >
+              <div class="py-2 px-3 flex items-center gap-2">
+                <Image src={Gmail} alt="Gmail" class="h-4 w-4" /> Gmail
+              </div>
+              <div class="py-2 px-3">jane@acme.com</div>
+              <div class="py-2 px-3">Active</div>
+            </div>
+            <div
+              class="grid grid-cols-3 text-[10px] lg:text-xs text-slate-dark border-t border-stone-100 items-center bg-ivory-medium"
+            >
+              <div class="py-2 px-3 flex items-center gap-2">
+                <Image src={Slack} alt="Slack" class="h-4 w-4" /> Slack
+              </div>
+              <div class="py-2 px-3">jane@acme.com</div>
+              <div class="py-2 px-3">Active</div>
+            </div>
+            <div
+              class="grid grid-cols-3 text-[10px] lg:text-xs text-slate-dark border-t border-stone-100 items-center"
+            >
+              <div class="py-2 px-3 flex items-center gap-2">
+                <Image src={Okta} alt="Okta" class="h-4 w-4" /> Okta
+              </div>
+              <div class="py-2 px-3">jane@acme.com</div>
+              <div class="py-2 px-3">Active</div>
+            </div>
+          </div>
+
+          <!-- Right: Selected row details form -->
+          <div class="bg-white border rounded-md p-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-x-1.5">
+                <div class="bg-ivory-medium w-5 h-5 rounded-md p-1">
+                  <Image src={Slack} alt="Slack" class="h-4 w-4 invert-0" />
+                </div>
+                <div
+                  class="font-semibold text-[10px] leading-[14px] tracking-[-0.28px] lg:text-[15px] lg:leading-5 text-slate-medium"
+                >
+                  Slack access
+                </div>
+              </div>
+            </div>
+            <form class="space-y-3 mt-3">
+              <div>
+                <label
+                  class="block text-slate-dark text-xs font-medium mb-1"
+                  for="apps-app">App</label
+                >
+                <input
+                  id="apps-app"
+                  type="text"
+                  class="bg-ivory-light border rounded w-full py-2 px-3 text-xs !cloud-dark leading-tight focus:outline-none"
+                  value="Slack"
+                  readonly
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-slate-dark text-xs font-medium mb-1"
+                  for="apps-user">User</label
+                >
+                <input
+                  id="apps-user"
+                  type="email"
+                  class="bg-ivory-light border rounded w-full py-2 px-3 text-xs !cloud-dark leading-tight focus:outline-none"
+                  value="jane@acme.com"
+                />
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label
+                    class="block text-slate-dark text-xs font-medium mb-1"
+                    for="apps-status">Status</label
+                  >
+                  <select
+                    id="apps-status"
+                    class="bg-ivory-light border rounded w-full py-2 px-3 text-xs slate-dark focus:outline-none"
+                  >
+                    <option>Active</option>
+                    <option>Suspended</option>
+                    <option>Removed</option>
+                  </select>
+                </div>
+                <div>
+                  <label
+                    class="block text-slate-dark text-xs font-medium mb-1"
+                    for="apps-role">Role</label
+                  >
+                  <select
+                    id="apps-role"
+                    class="bg-ivory-light border rounded w-full py-2 px-3 text-xs slate-dark focus:outline-none"
+                  >
+                    <option>Member</option>
+                    <option>Admin</option>
+                  </select>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <label
+                  class="inline-flex items-center gap-2 text-xs text-slate-dark"
+                >
+                  <input type="checkbox" class="accent-sky-medium" checked /> Suspend
+                  user
+                </label>
+                <label
+                  class="inline-flex items-center gap-2 text-xs text-slate-dark"
+                >
+                  <input type="checkbox" class="accent-sky-medium" /> Remove from
+                  channels
+                </label>
+              </div>
+              <div class="flex gap-2 pt-2">
+                <button
+                  type="button"
+                  class="px-3 py-1.5 rounded-md bg-sky-darkest text-white text-xs font-semibold"
+                  >Request</button
+                >
+                <button
+                  type="button"
+                  class="px-3 py-1.5 rounded-md border text-slate-dark text-xs"
+                  >Cancel</button
+                >
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="absolute left-0 bottom-0 max-md:hidden">
+  <img
+    src="https://res.cloudinary.com/daog6scxm/image/upload/v1757683141/NewWebsite/images/robot_bird_wjgz7b.webp"
+    alt="sunset tree illustration"
+    class="w-40"
+  />
+</div>
+<div class="absolute right-0 bottom-0 max-xl:hidden">
+  <img
+    src="https://res.cloudinary.com/daog6scxm/image/upload/v1757664193/NewWebsite/images/robot_sunset_mountain_akaeex.webp"
+    alt="sunset tree illustration"
+    class="w-125 z-10"
+  />
+</div>
+
+<hr class="w-1/3 my-12 mx-auto text-ivory-dark border-dashed" />
+
+<style>
+  #canvas {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(148, 163, 184, 0.25) 1px,
+      transparent 0
+    );
+    background-size: 16px 16px; /* dot spacing */
+  }
+</style>
+
+<script>
+  // Simple tab switcher: shows the selected section and hides others
+  // @ts-check
+  /** @type {HTMLButtonElement[]} */
+  const tabButtons = Array.from(
+    /** @type {NodeListOf<HTMLButtonElement>} */ (
+      document.querySelectorAll("[data-target]")
+    ),
+  );
+  /** @type {HTMLElement[]} */
+  const sections = Array.from(
+    /** @type {NodeListOf<HTMLElement>} */ (
+      document.querySelectorAll("#canvas .tab-section")
+    ),
+  );
+
+  /**
+   * @param {string} targetId
+   */
+  function activate(targetId) {
+    // Toggle section visibility
+    sections.forEach((el) => {
+      el.id === targetId
+        ? el.classList.remove("hidden")
+        : el.classList.add("hidden");
+    });
+    // Toggle button active state
+    tabButtons.forEach((btn) => {
+      const isActive = btn.getAttribute("data-target") === targetId;
+      btn.classList.toggle("active", isActive);
+      btn.classList.toggle("inactive", !isActive);
+      btn.setAttribute("aria-selected", String(isActive));
+    });
+  }
+
+  // Attach listeners
+  tabButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-target");
+      if (id) activate(id);
+    });
+  });
+
+  // Initialize to current active (default "workflows")
+  const initiallyActive =
+    tabButtons
+      .find((b) => b.classList.contains("active"))
+      ?.getAttribute("data-target") || "workflows";
+  activate(initiallyActive);
+
+  // Note: auto-rotation removed per request. Tabs switch only on click.
+
+  // Minimal chat behavior for Agents tab
+  /** @type {HTMLFormElement | null} */
+  const chatForm = /** @type {HTMLFormElement | null} */ (
+    document.getElementById("agent-chat-form")
+  );
+  /** @type {HTMLInputElement | null} */
+  const chatInput = /** @type {HTMLInputElement | null} */ (
+    document.getElementById("agent-chat-input")
+  );
+  /** @type {HTMLElement | null} */
+  const chatMessages = /** @type {HTMLElement | null} */ (
+    document.getElementById("agent-chat-messages")
+  );
+
+  /**
+   * @param {'user'|'assistant'} role
+   * @param {string} text
+   */
+  function appendMessage(role, text) {
+    if (!chatMessages) return;
+    const wrapper = document.createElement("div");
+    wrapper.className = "flex items-start gap-2";
+    if (role === "user") wrapper.classList.add("justify-end");
+
+    if (role === "assistant") {
+      const avatar = document.createElement("div");
+      avatar.className =
+        "shrink-0 bg-lavendar-dark text-white h-6 w-6 rounded-md grid place-items-center text-[10px]";
+      avatar.textContent = "A";
+      wrapper.appendChild(avatar);
+    }
+
+    const bubble = document.createElement("div");
+    bubble.className =
+      role === "user"
+        ? "bg-sky-medium text-white rounded-lg px-3 py-2 text-sm max-w-[80%]"
+        : "bg-ivory-medium text-slate-dark rounded-lg px-3 py-2 text-sm max-w-[80%]";
+    bubble.textContent = text;
+    wrapper.appendChild(bubble);
+    chatMessages.appendChild(wrapper);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  if (chatForm && chatInput) {
+    chatForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const text = chatInput.value.trim();
+      if (!text) return;
+      appendMessage("user", text);
+      chatInput.value = "";
+      // Simulated assistant reply
+      setTimeout(() => {
+        appendMessage(
+          "assistant",
+          `Got it — drafting offboarding steps for "${text}" (suspend accounts, revoke access, notify manager).`,
+        );
+      }, 500);
+    });
+  }
+</script>

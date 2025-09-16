@@ -53,7 +53,7 @@ html {
   font-variation-settings: normal;
   -webkit-font-smoothing: antialiased;
   font-family: var(--font-sans);
-  color: var(--slate-medium);
+  color: var(--slate-light);
   font-feature-settings:
     "ss01" 1,
     "ss02" 1;
@@ -131,23 +131,42 @@ p a:hover::after {
 }
 
 .title {
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   line-height: 1;
   margin-bottom: 0.5rem;
-  color: var(--slate-medium);
+  color: var(--slate-dark);
+  letter-spacing: -1.5px;
 }
 
 h1,
-h2,
-h3 {
+h2 {
   font-family: var(--font-display);
   font-weight: 400;
   color: var(--slate-medium);
   font-feature-settings:
     "ss01" 1,
     "ss02" 1;
+  line-height: 1;
 }
 
+h1 {
+  font-size: 2rem;
+  letter-spacing: -1px;
+}
+h2 {
+  font-size: 1.6rem;
+  letter-spacing: -1px;
+}
+h3 {
+  font-size: 1.2rem;
+  letter-spacing: -0.5px;
+}
+h4 {
+  font-size: 1rem;
+  letter-spacing: -0.5px;
+}
+
+h3,
 h4,
 h5,
 h6,
@@ -156,6 +175,7 @@ p {
   font-feature-settings:
     "ss01" 1,
     "ss02" 1;
+  font-weight: 500;
 }
 
 .bg-transparent {
@@ -271,7 +291,6 @@ select {
 [type="reset"],
 [type="submit"],
 button {
-  -webkit-appearance: button;
   transition: 150ms;
 }
 
@@ -323,6 +342,26 @@ button.large {
   padding: 4px 12px;
   border-radius: 12px;
   font-size: 18px;
+}
+
+button.active {
+  background-color: var(--ivory-medium);
+  color: var(--slate-medium);
+  font-weight: 500;
+  border-radius: 10px;
+  border: 0.5px solid var(--ivory-dark);
+  padding: 4px 8px;
+  transition: 150ms background-color ease-out;
+}
+
+button.inactive {
+  background-color: transparent;
+  color: var(--cloud-dark);
+  font-weight: 500;
+  border-radius: 10px;
+  border: 0.5px solid var(--ivory-dark);
+  padding: 4px 8px;
+  transition: 150ms background-color ease-out;
 }
 
 /* brand colors */
@@ -420,7 +459,61 @@ button.large {
 .bg-lavendar-darkest {
   background-color: var(--lavendar-darkest);
 }
+.bg-ivory-clay-gradient {
+  background:
+    radial-gradient(ellipse at top, var(--ivory-medium), transparent),
+    radial-gradient(ellipse at top, var(--clay-medium), transparent);
+}
+.bg-ivory-grass-gradient {
+  background:
+    radial-gradient(ellipse at top, var(--ivory-medium), transparent),
+    radial-gradient(ellipse at top, var(--grass-medium), transparent),
+    radial-gradient(ellipse at bottom, var(--sky-dark), transparent);
+}
+.bg-ivory-lavendar-gradient {
+  background:
+    radial-gradient(ellipse at top, var(--ivory-medium), transparent),
+    radial-gradient(ellipse at top, var(--lavendar-medium), transparent),
+    radial-gradient(ellipse at bottom, var(--sky-dark), transparent);
+}
+.bg-ivory-sky-gradient {
+  background:
+    radial-gradient(ellipse at top, var(--ivory-medium), transparent),
+    radial-gradient(ellipse at top, var(--sky-medium), transparent),
+    radial-gradient(ellipse at bottom, var(--sky-dark), transparent);
+}
 
+.bg-sky-gradient {
+  background-image: linear-gradient(
+    var(--sky-medium),
+    var(--sky-lightest) 100%
+  );
+}
+.bg-sky-clay-gradient {
+  background:
+    radial-gradient(ellipse at top, var(--sky-medium), transparent),
+    radial-gradient(ellipse at bottom, var(--clay-light), transparent);
+}
 .border {
   border: 0.5px solid var(--ivory-dark);
+}
+
+.fill-clay {
+  fill: var(--clay-medium);
+}
+
+.fill-grass {
+  fill: var(--grass-medium);
+}
+
+.fill-sky {
+  fill: var(--sky-medium);
+}
+
+.fill-lavendar {
+  fill: var(--lavendar-medium);
+}
+
+.gradient-clay-lavendar {
+  color: linear-gradient(var(--clay-medium, var(--lavendar-medium)));
 }
