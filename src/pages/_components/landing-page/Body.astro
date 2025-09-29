@@ -7,7 +7,7 @@ import Chat from "phosphor-astro/ChatCircleFill.astro";
 import { Image } from "astro:assets";
 import Customers from "@components/Customers.astro";
 import Lightning from "phosphor-astro/LightningFill.astro";
-import Cloud from "phosphor-astro/Cloud.astro";
+import Cloud from "phosphor-astro/CloudFill.astro";
 import Github from "phosphor-astro/GithubLogo.astro";
 ---
 
@@ -16,7 +16,7 @@ import Github from "phosphor-astro/GithubLogo.astro";
     class="lg:grid lg:grid-cols-24 gap-6 body-grid"
     style="padding-block: var(--lp-y); min-height: calc(100vh - (var(--lp-y) * 2));"
   >
-    <div class="md:col-span-8 w-full h-full flex flex-col justify-between">
+    <div class="md:col-span-7 w-full h-full flex flex-col justify-between">
       <h1 class="mt-8 text-3xl 2xl:text-[2.6rem]">
         Create AI chat interfaces, forms and apps - with your models, data, and
         tools.
@@ -52,7 +52,7 @@ import Github from "phosphor-astro/GithubLogo.astro";
             class="border-b border-stone-500 flex flex-row justify-between py-2 max-h-auto lg:max-h-11 flex-wrap"
           >
             <div class="inline-flex gap-0.5">
-              <Chat class="fill-lavendar w-4" />
+              <Chat class="fill-slate w-4" />
               <p>AI Chat</p>
             </div>
             <p class="text-right">We built AI chat so you don't have to</p>
@@ -61,7 +61,7 @@ import Github from "phosphor-astro/GithubLogo.astro";
             class="border-b border-stone-500 flex flex-row justify-between py-2 max-h-auto lg:max-h-11 flex-wrap"
           >
             <div class="inline-flex gap-0.5">
-              <Lightning class="fill-sky w-4" />
+              <Lightning class="fill-slate w-4" />
               <p>Dynamic forms</p>
             </div>
             <p class="text-right">Collect data securely with dynamic forms</p>
@@ -70,7 +70,7 @@ import Github from "phosphor-astro/GithubLogo.astro";
             class="border-b border-stone-500 flex flex-row justify-between py-2 max-h-auto lg:max-h-11 flex-wrap"
           >
             <div class="inline-flex gap-0.5">
-              <Lightning class="fill-cloud w-4" />
+              <Lightning class="fill-slate w-4" />
               <p>Internal apps</p>
             </div>
             <p class="text-right">
@@ -82,7 +82,7 @@ import Github from "phosphor-astro/GithubLogo.astro";
             class="border-b border-stone-500 flex flex-row justify-between py-2 max-h-11 flex-wrap"
           >
             <div class="inline-flex gap-0.5">
-              <Cloud class="fill-cloud w-4" />
+              <Cloud class="fill-slate w-4" />
               <p>Hosting</p>
             </div>
             <p>Budibase Cloud or self-host</p>
@@ -100,18 +100,12 @@ import Github from "phosphor-astro/GithubLogo.astro";
             <p>Enterprise ready</p>
             <p>Auth, User mgmt, SSO, & more</p>
           </div>
-          <div
-            class="border-b border-stone-500 flex flex-row justify-between py-2 max-h-11"
-          >
-            <p>Battle tested</p>
-            <p>2,000,000 interfaces deployed</p>
-          </div>
         </div>
       </div>
     </div>
 
     <!--Images--->
-    <div class="lg:col-span-16 flex flex-col h-full aspect-auto">
+    <div class="lg:col-span-17 flex flex-col h-full aspect-auto">
       <ul
         class="flex flex-row justify-end mb-1"
         id="hero-tabs"

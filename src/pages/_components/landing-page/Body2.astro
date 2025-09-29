@@ -1,0 +1,496 @@
+---
+import heroChat from "@assets/images/herobg.webp";
+import heroForms from "@assets/images/hero3.png";
+import heroApps from "@assets/images/Hero4.png";
+import bbSymbol from "@assets/logos/bbSymbol.svg";
+import Chat from "phosphor-astro/ChatCircleFill.astro";
+import { Image } from "astro:assets";
+import Customers from "@components/Customers.astro";
+import x from "@components/x.astro";
+import Lightning from "phosphor-astro/LightningFill.astro";
+import Cloud from "phosphor-astro/Cloud.astro";
+import Github from "phosphor-astro/GithubLogo.astro";
+---
+
+<div class="mx-auto w-full">
+  <div class="lg:grid lg:grid-cols-24 !h-full">
+    <aside
+      class="relative md:col-span-7 w-full !h-full min-h-lvh flex flex-col sticky-aside bg-white justify-between"
+    >
+      <div>
+        <div
+          class="bg-ivory-light flex flex-row justify-between items-center h-8 pl-11 pr-2 border-b-1 border-r-1 border-stone-200"
+        >
+          <div class="flex-row flex gap-3">
+            <p class="!text-sm !font-mono text-sky-darkest font-medium">
+              About
+            </p>
+            <p class="!text-sm !font-mono text-cloud-dark font-medium">Why</p>
+          </div>
+          <div class="fill-slate">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              fill="#000000"
+              viewBox="0 0 256 256"
+              ><path
+                d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        <div class="px-11 pt-10 border-r-1 border-stone-200">
+          <h1 class="text-3xl 2xl:text-[2.2rem]">
+            Save weeks building AI chat interfaces, dynamic forms and internal
+            apps - with your models, data, and tools.
+            <!--Budibase is used by top governments and companies to build beautiful AI interfaces
+        and dynamic workflows on top of internal models, data and agents.-->
+          </h1>
+          <h2 class="mt-6 text-xl 2xl:text-lg mb-3">
+            Budibase is <a href="https://github.com/Budibase/budibase"
+              >open source</a
+            > with over 26,000 Github stars. It's used by 200,000 teams, including
+            top governments & companies:
+          </h2>
+          <Customers />
+          <div class="flex flex-row mb-8 sm:mb-0 gap-2">
+            <a
+              href="/"
+              type="button"
+              role="link"
+              target="_blank"
+              data-primary-button="true"
+              class="cta"
+            >
+              <span class="mx-auto text-lg text-center">Try for free</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!--
+        <div class="mt-auto">
+          <div class="flex flex-col">
+            <div class="border-b border-stone-500 py-2">
+              <h2 class="text-lg xl:text-xl 2xl:text-3xl">
+                Why choose Budibase
+              </h2>
+            </div>
+            <div
+              class="border-b border-stone-500 flex flex-row justify-between py-2 max-h-auto lg:max-h-11 flex-wrap"
+            >
+              <div class="inline-flex gap-0.5">
+                <Chat class="fill-lavendar w-4" />
+                <p>AI Chat</p>
+              </div>
+              <p class="text-right">We built AI chat so you don't have to</p>
+            </div>
+            <div
+              class="border-b border-stone-500 flex flex-row justify-between py-2 max-h-auto lg:max-h-11 flex-wrap"
+            >
+              <div class="inline-flex gap-0.5">
+                <Lightning class="fill-sky w-4" />
+                <p>Dynamic forms</p>
+              </div>
+              <p class="text-right">Collect data securely with dynamic forms</p>
+            </div>
+            <div
+              class="border-b border-stone-500 flex flex-row justify-between py-2 max-h-auto lg:max-h-11 flex-wrap"
+            >
+              <div class="inline-flex gap-0.5">
+                <Lightning class="fill-cloud w-4" />
+                <p>Internal apps</p>
+              </div>
+              <p class="text-right">
+                Save days building internal apps/approval flows
+              </p>
+            </div>
+
+            <div
+              class="border-b border-stone-500 flex flex-row justify-between py-2 max-h-11 flex-wrap"
+            >
+              <div class="inline-flex gap-0.5">
+                <Cloud class="fill-cloud w-4" />
+                <p>Hosting</p>
+              </div>
+              <p>Budibase Cloud or self-host</p>
+            </div>
+            <div
+              class="border-b border-stone-500 flex flex-row justify-between py-2 max-h-11 flex-wrap"
+            >
+              <p>Integrations</p>
+              <p>LLama, GPT, SQL, and more</p>
+            </div>
+
+            <div
+              class="border-b border-stone-500 flex flex-row justify-between py-2 max-h-11 flex-wrap"
+            >
+              <p>Enterprise ready</p>
+              <p>Auth, User mgmt, SSO, & more</p>
+            </div>
+            <div
+              class="border-b border-stone-500 flex flex-row justify-between py-2 max-h-11"
+            >
+              <p>Battle tested</p>
+              <p>2,000,000 interfaces deployed</p>
+            </div>
+      </div>
+    --->
+      <div class="bg-lavendar-medium pt-auto">joe</div>
+    </aside>
+
+    <!--Images--->
+    <div class="lg:col-span-17 flex flex-col h-full aspect-auto">
+      <ul
+        class="bg-ivory-light flex flex-row items-center !min-h-8 pl-6 pr-2 border-b-1 border-r-1 border-stone-200 gap-3"
+        id="hero-tabs"
+        role="tablist"
+        aria-label="Hero examples"
+      >
+        <li
+          id="tab-chat"
+          class="text-sm"
+          role="tab"
+          aria-selected="true"
+          tabindex="0"
+          aria-controls="panel-chat"
+          data-key="chat"
+        >
+          Chat
+        </li>
+        <li
+          id="tab-forms"
+          class="text-sm p-1"
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="panel-forms"
+          data-key="forms"
+        >
+          Forms
+        </li>
+        <li
+          id="tab-apps"
+          class="text-sm"
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="panel-apps"
+          data-key="apps"
+        >
+          Apps
+        </li>
+        <li
+          id="tab-apps"
+          class="text-sm"
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="panel-apps"
+          data-key="apps"
+        >
+          Enterprise
+        </li>
+        <li
+          id="tab-apps"
+          class="text-sm"
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="panel-apps"
+          data-key="apps"
+        >
+          Integrations
+        </li>
+        <div class="ml-auto pr-4 fill-slate">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="12"
+            height="12"
+            fill="#000000"
+            viewBox="0 0 256 256"
+            ><path
+              d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+            ></path>
+          </svg>
+        </div>
+      </ul>
+      <div
+        class="bg-white hero-panel-wrapper w-full mx-auto my-auto p-6 flex flex-col h-full relative"
+      >
+        <div
+          id="panel-chat"
+          role="tabpanel"
+          aria-labelledby="tab-chat"
+          class="panel is-visible"
+          tabindex="0"
+        >
+          <div class="hero-image-wrapper">
+            <Image id="hero-image-chat" src={heroChat} alt="Chat hero image" />
+          </div>
+        </div>
+        <div
+          id="panel-forms"
+          role="tabpanel"
+          aria-labelledby="tab-forms"
+          class="panel is-hidden"
+          tabindex="0"
+        >
+          <div class="hero-image-wrapper">
+            <Image
+              id="hero-image-forms"
+              src={heroForms}
+              alt="Forms hero image"
+            />
+          </div>
+        </div>
+        <div
+          id="panel-apps"
+          role="tabpanel"
+          aria-labelledby="tab-apps"
+          class="panel is-hidden"
+          tabindex="0"
+        >
+          <div class="hero-image-wrapper">
+            <Image id="hero-image-apps" src={heroApps} alt="Apps hero image" />
+          </div>
+        </div>
+        <div
+          aria-live="polite"
+          aria-atomic="true"
+          class="sr-only"
+          id="hero-announcer"
+        >
+        </div>
+      </div>
+    </div>
+
+    <style>
+      #hero-tabs li {
+        color: var(--slate-light);
+        font-weight: 500;
+        border: transparent;
+        cursor: default;
+      }
+      #hero-tabs li.active {
+        color: var(--sky-dark);
+        font-weight: 500;
+        border: transparent;
+      }
+      #hero-tabs li:hover {
+        color: var(--sky-medium);
+        font-weight: 500;
+        border: transparent;
+      }
+      /* Crossfade panels */
+      .panel {
+        position: absolute;
+        padding: 24px;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 200ms ease;
+      }
+      .panel.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .panel.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+      /* Simple hidden utility to avoid Tailwind purge issues in inline switching */
+      .hidden {
+        display: none;
+      }
+      .block {
+        display: block;
+      }
+      h1 {
+        line-height: 1;
+      }
+      h2 {
+        line-height: 1.4;
+        font-family: sans-serif;
+      }
+      p {
+        font-size: 14px;
+        margin-bottom: 0;
+      }
+      li {
+        font-family: monospace;
+        color: var(--cloud-dark);
+      }
+      .cta {
+        display: inline-flex;
+        justify-content: center;
+        align-content: center;
+        background-color: var(--slate-dark);
+        border-radius: 50px;
+        padding: 4px 14px;
+        color: white;
+        font-weight: 500 !important;
+        line-height: 0;
+        transition: 150ms background-color;
+        cursor: default;
+      }
+      .cta:hover {
+        background-color: var(--slate-light);
+      }
+      .hero-panel-wrapper {
+        min-height: 280px;
+      }
+      @media (min-width: 768px) {
+        .hero-panel-wrapper {
+          min-height: 360px;
+        }
+      }
+      @media (min-width: 1024px) {
+        .hero-panel-wrapper {
+          min-height: 420px;
+        }
+      }
+
+      .sticky-aside {
+        position: static;
+      }
+      @media (min-width: 1024px) {
+        .sticky-aside {
+          position: sticky;
+          top: var(--lp-y, 2rem);
+          align-self: flex-start;
+        }
+      }
+    </style>
+
+    <script>
+      const tabs = Array.from(
+        document.querySelectorAll('#hero-tabs [role="tab"]'),
+      );
+      const panels = {
+        chat: document.getElementById("panel-chat"),
+        forms: document.getElementById("panel-forms"),
+        apps: document.getElementById("panel-apps"),
+      };
+      const announcer = document.getElementById("hero-announcer");
+      const tablist = document.getElementById("hero-tabs");
+      const order = ["chat", "forms", "apps"];
+      let rotateTimer = null;
+      let isPaused = false;
+      let loopsRemaining = 2; // loop twice
+
+      function currentKey() {
+        const active = tabs.find(
+          (t) => t.getAttribute("aria-selected") === "true",
+        );
+        return active ? active.dataset.key : "chat";
+      }
+
+      function scheduleRotate() {
+        clearInterval(rotateTimer);
+        if (isPaused) return;
+        rotateTimer = setInterval(() => {
+          const key = currentKey();
+          const idx = order.indexOf(key);
+          const nextKey = order[(idx + 1) % order.length];
+          // Detect wrap-around to count loops
+          const wrapped = idx === order.length - 1;
+          setActive(nextKey);
+          if (wrapped) {
+            loopsRemaining -= 1;
+            if (loopsRemaining <= 0) {
+              clearInterval(rotateTimer);
+            }
+          }
+        }, 7000);
+      }
+
+      function pauseRotate() {
+        isPaused = true;
+        clearInterval(rotateTimer);
+      }
+
+      function resumeRotate() {
+        isPaused = false;
+        scheduleRotate();
+      }
+
+      function setActive(key) {
+        tabs.forEach((t) => {
+          const isActive = t.dataset.key === key;
+          t.classList.toggle("active", isActive);
+          t.setAttribute("aria-selected", String(isActive));
+          t.setAttribute("tabindex", isActive ? "0" : "-1");
+        });
+        Object.entries(panels).forEach(([k, el]) => {
+          const show = k === key;
+          el.classList.toggle("is-visible", show);
+          el.classList.toggle("is-hidden", !show);
+        });
+        if (announcer) announcer.textContent = `${key} selected`;
+      }
+
+      function moveFocus(delta) {
+        const idx = tabs.findIndex(
+          (t) => t.getAttribute("aria-selected") === "true",
+        );
+        const next = (idx + delta + tabs.length) % tabs.length;
+        tabs[next].focus();
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          setActive(tab.dataset.key);
+          scheduleRotate();
+        });
+        tab.addEventListener("keydown", (e) => {
+          switch (e.key) {
+            case "ArrowRight":
+              e.preventDefault();
+              moveFocus(1);
+              break;
+            case "ArrowLeft":
+              e.preventDefault();
+              moveFocus(-1);
+              break;
+            case "Home":
+              e.preventDefault();
+              tabs[0].focus();
+              break;
+            case "End":
+              e.preventDefault();
+              tabs[tabs.length - 1].focus();
+              break;
+            case "Enter":
+            case " ":
+              e.preventDefault();
+              setActive(tab.dataset.key);
+              break;
+          }
+        });
+        tab.addEventListener("focus", pauseRotate);
+        tab.addEventListener("blur", resumeRotate);
+      });
+
+      if (tablist) {
+        tablist.addEventListener("mouseenter", pauseRotate);
+        tablist.addEventListener("mouseleave", resumeRotate);
+      }
+
+      setActive("chat");
+
+      // kick off auto-rotation after initial render
+      scheduleRotate();
+    </script>
+  </div>
+</div>
