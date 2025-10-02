@@ -1,0 +1,843 @@
+---
+import heroChat from "@assets/images/herobg.webp";
+import heroForms from "@assets/images/hero3.png";
+import heroApps from "@assets/images/intercom.webp";
+import bbSymbol from "@assets/logos/bbSymbol.svg";
+import Chat from "phosphor-astro/ChatCircleFill.astro";
+import { Image } from "astro:assets";
+import Customers from "@components/Customers.astro";
+import x from "@components/x.astro";
+import Lightning from "phosphor-astro/LightningFill.astro";
+import SidebarSimple from "phosphor-astro/SidebarSimple.astro";
+import Cloud from "phosphor-astro/Cloud.astro";
+import Github from "phosphor-astro/GithubLogo.astro";
+---
+
+<div class="mx-auto w-full">
+  <div class="hero-grid !h-lvh">
+    <aside
+      class="intro relative w-full border-r-1 border-stone-200 bg-white h-full pb-8"
+    >
+      <div
+        class="bg-ivory-light flex flex-row justify-between items-center h-8 pl-11 pr-2 border-b-1 border-stone-200"
+      >
+        <ul
+          class="flex-row flex gap-3"
+          id="intro-tabs"
+          role="tablist"
+          aria-label="Intro sections"
+        >
+          <li
+            id="tab-intro-index"
+            class="intro-tab !text-sm !font-mono font-medium"
+            role="tab"
+            aria-selected="true"
+            tabindex="0"
+            aria-controls="panel-intro-index"
+            data-key="index"
+          >
+            Index
+          </li>
+          <li
+            id="tab-intro-why"
+            class="intro-tab !text-sm !font-mono font-medium"
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="panel-intro-why"
+            data-key="why"
+          >
+            Why
+          </li>
+        </ul>
+        <div class="fill-slate" aria-hidden="true"></div>
+      </div>
+      <div class="px-11 pt-10 intro-panels">
+        <div
+          id="panel-intro-index"
+          class="intro-panel is-visible"
+          role="tabpanel"
+          aria-labelledby="tab-intro-index"
+        >
+          <h1 class="text-3xl 2xl:text-3xl">
+            Build AI chat interfaces, dynamic forms and internal apps - with
+            your models, data, and agents.
+            <!--Budibase is used by top governments and companies to build beautiful AI interfaces
+          and dynamic workflows on top of internal models, data and agents.-->
+          </h1>
+          <h2 class="mt-6 xl:text-lg">
+            Budibase is <a href="https://github.com/Budibase/budibase"
+              >open source</a
+            > with over 26,000 Github stars. It's used by 200,000 tech teams from
+            the world's top governments & companies:
+          </h2>
+          <Customers />
+          <div class="flex flex-row mb-8 sm:mb-0 gap-2">
+            <a
+              href="/"
+              type="button"
+              role="link"
+              target="_blank"
+              data-primary-button="true"
+              class="cta"
+            >
+              <span class="mx-auto text-lg text-center">Try for free</span>
+            </a>
+          </div>
+        </div>
+        <div
+          id="panel-intro-why"
+          class="intro-panel is-hidden"
+          role="tabpanel"
+          aria-labelledby="tab-intro-why"
+        >
+          <h2 class="text-xl font-semibold mb-4">Why Budibase</h2>
+          <ul class="space-y-3 text-sm">
+            <li>
+              <strong>Speed:</strong> Ship AI interfaces in days not months.
+            </li>
+            <li>
+              <strong>Open source:</strong> 26,000 GitHub stars and thriving community.
+            </li>
+            <li>
+              <strong>Hosting:</strong> Deploy on Budibase Cloud or self-host anywhere.
+            </li>
+            <li>
+              <strong>Integrations:</strong> LLaMA, GPT, SQL, REST, and more.
+            </li>
+            <li>
+              <strong>Security:</strong> Built-in auth, user management, and SSO.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <div id="news" class="news border-stone-200 border-r-1">
+      <div
+        class="flex flex-row justify-between items-center h-8 pl-11 pr-2 border-y-1 border-stone-200 !bg-ivory-light"
+      >
+        <ul
+          class="flex-row flex gap-3"
+          id="news-tabs"
+          role="tablist"
+          aria-label="Budibase updates"
+        >
+          <li
+            id="tab-news-new"
+            class="news-tab !text-sm !font-mono text-sky-darkest font-medium"
+            role="tab"
+            aria-selected="true"
+            tabindex="0"
+            aria-controls="panel-news"
+            data-key="new"
+          >
+            New
+          </li>
+          <li
+            id="tab-news-docs"
+            class="news-tab !text-sm !font-mono text-cloud-dark font-medium"
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="panel-docs"
+            data-key="docs"
+          >
+            Docs
+          </li>
+          <li
+            id="tab-news-roadmap"
+            class="news-tab !text-sm !font-mono text-cloud-dark font-medium"
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="panel-roadmap"
+            data-key="roadmap"
+          >
+            Roadmap
+          </li>
+        </ul>
+        <div class="fill-slate">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="12"
+            height="12"
+            fill="#000000"
+            viewBox="0 0 256 256"
+            ><path
+              d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+      <div class="!bg-white h-full py-5 px-11 news-panels">
+        <div
+          id="panel-news"
+          class="news-panel is-visible"
+          role="tabpanel"
+          aria-labelledby="tab-news-new"
+        >
+        </div>
+        <div
+          id="panel-docs"
+          class="news-panel is-hidden flex items-center justify-center"
+          role="tabpanel"
+          aria-labelledby="tab-news-docs"
+          style="background-image: url('https://cdn.midjourney.com/1312c171-621a-4089-99f7-5071f1031d89/0_3.png'); background-size: cover; background-position: center;"
+        >
+          <a
+            href="https://github.com/orgs/Budibase/projects/15"
+            target="_blank"
+            class=""
+          >
+            <button class="secondary">Visit docs</button></a
+          >
+        </div>
+        <div
+          id="panel-roadmap"
+          class="news-panel is-hidden flex items-center justify-center"
+          role="tabpanel"
+          aria-labelledby="tab-news-roadmap"
+          style="background-image: url('https://cdn.midjourney.com/15dc2042-3b2c-4379-b735-3f4d81306fdb/0_0.png'); background-size: cover; background-position: center;"
+        >
+          <a
+            href="https://github.com/orgs/Budibase/projects/15"
+            target="_blank"
+            class=""
+          >
+            <button class="secondary">View roadmap</button></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!--Images--->
+    <div id="products" class="products flex flex-col !h-full">
+      <ul
+        class="bg-ivory-light flex flex-row items-center !min-h-8 px-6 border-b-1 border-stone-200 gap-3"
+        id="hero-tabs"
+        role="tablist"
+        aria-label="Hero examples"
+      >
+        <li
+          id="tab-chat"
+          class="text-sm"
+          role="tab"
+          aria-selected="true"
+          tabindex="0"
+          aria-controls="panel-chat"
+          data-key="chat"
+        >
+          Products
+        </li>
+        <li
+          id="tab-forms"
+          class="text-sm"
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="panel-forms"
+          data-key="forms"
+        >
+          Pricing
+        </li>
+
+        <button
+          id="layout-toggle"
+          type="button"
+          class="ml-auto flex items-center justify-center rounded-full border border-stone-200 p-1 transition hover:bg-stone-100"
+          aria-pressed="false"
+          aria-label="Toggle layout"
+        >
+          <SidebarSimple class="w-4 fill-slate" />
+        </button>
+      </ul>
+      <div
+        class="bg-white hero-panel-wrapper w-full mx-auto my-auto p-6 flex flex-col !h-full relative"
+      >
+        <div
+          id="panel-chat"
+          role="tabpanel"
+          aria-labelledby="tab-chat"
+          class="panel is-visible"
+          tabindex="0"
+        >
+          <div class="grid grid-cols-2 grid-rows-2 h-full pt-4 gap-5 pb-12">
+            <div>
+              <Image
+                id="hero-image-apps"
+                src={heroApps}
+                alt="Apps hero image"
+              />
+            </div>
+            <div>
+              <Image
+                id="hero-image-apps"
+                src={heroApps}
+                alt="Apps hero image"
+              />
+            </div>
+            <div>
+              <Image
+                id="hero-image-apps"
+                src={heroApps}
+                alt="Apps hero image"
+              />
+            </div>
+            <div>
+              <Image
+                id="hero-image-apps"
+                src={heroApps}
+                alt="Apps hero image"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          id="panel-forms"
+          role="tabpanel"
+          aria-labelledby="tab-forms"
+          class="panel is-hidden"
+          tabindex="0"
+        >
+          <div class="hero-image-wrapper">
+            <img
+              id="hero-image-forms"
+              src="https://liveblocks.io/_next/image?url=%2Fimages%2Fhomepage%2Fbackground-optimized.jpg&w=3840&q=90"
+              alt="Forms hero image"
+            />
+          </div>
+        </div>
+        <div
+          id="panel-apps"
+          role="tabpanel"
+          aria-labelledby="tab-apps"
+          class="panel is-hidden"
+          tabindex="0"
+        >
+          <div class="hero-image-wrapper">
+            <Image id="hero-image-apps" src={heroApps} alt="Apps hero image" />
+            <div class="grid grid-cols-3">
+              <div><h2>Apps</h2></div>
+              <div>Risk management app</div>
+              <div>Change control app</div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          aria-live="polite"
+          aria-atomic="true"
+          class="sr-only"
+          id="hero-announcer"
+        >
+        </div>
+      </div>
+    </div>
+
+    <style>
+      #hero-tabs li {
+        color: var(--slate-light);
+        font-weight: 500;
+        border: transparent;
+        cursor: default;
+      }
+      #hero-tabs li.active {
+        color: var(--sky-dark);
+        font-weight: 500;
+        border: transparent;
+      }
+      #hero-tabs li:hover {
+        color: var(--sky-medium);
+        font-weight: 500;
+        border: transparent;
+      }
+      /* Crossfade panels */
+      .panel {
+        position: absolute;
+        padding: 24px;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 200ms ease;
+      }
+      .panel.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .panel.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .news-tab {
+        cursor: pointer;
+      }
+      .news-tab[aria-selected="true"] {
+        color: var(--sky-darkest);
+      }
+      .news-tab[aria-selected="false"] {
+        color: var(--cloud-dark);
+      }
+      .news-panels {
+        position: relative;
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .news-panel {
+        position: relative;
+        flex: 1;
+        background: var(--sky-darkest);
+        min-height: 0;
+      }
+      .news-panel.is-hidden {
+        display: none;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+      /* Simple hidden utility to avoid Tailwind purge issues in inline switching */
+      .hidden {
+        display: none;
+      }
+      .block {
+        display: block;
+      }
+      h1 {
+        line-height: 1;
+      }
+      h2 {
+        line-height: 1.4;
+        font-family: sans-serif;
+      }
+      p {
+        font-size: 14px;
+        margin-bottom: 0;
+      }
+      li {
+        font-family: monospace;
+        color: var(--cloud-dark);
+      }
+      .cta {
+        display: inline-flex;
+        justify-content: center;
+        align-content: center;
+        background-color: var(--slate-dark);
+        border-radius: 50px;
+        padding: 4px 14px;
+        color: white;
+        font-weight: 500 !important;
+        line-height: 0;
+        transition: 150ms background-color;
+        cursor: default;
+      }
+      .cta:hover {
+        background-color: var(--slate-light);
+      }
+      .hero-panel-wrapper {
+        min-height: 280px;
+        height: 100%;
+      }
+      @media (min-width: 768px) {
+        .hero-panel-wrapper {
+          min-height: 360px;
+          height: 100%;
+        }
+      }
+      @media (min-width: 1024px) {
+        .hero-panel-wrapper {
+          min-height: 420px;
+          height: 100%;
+        }
+      }
+      .patterned-panel {
+        background-color: white, white;
+        background-image: radial-gradient(
+          var(--sky-lightest) 7%,
+          transparent 8%
+        );
+        background-size: 18px 18px;
+      }
+      .sticky-aside {
+        position: static;
+      }
+      @media (min-width: 1024px) {
+        .sticky-aside {
+          position: sticky;
+          top: var(--lp-y, 2rem);
+          align-self: flex-start;
+        }
+      }
+      .intro-tab {
+        cursor: pointer;
+        color: var(--cloud-dark);
+      }
+      .intro-tab[aria-selected="true"] {
+        color: var(--sky-darkest);
+      }
+      .intro-panel.is-hidden {
+        display: none;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        height: 100%;
+        grid-template-rows: auto auto auto auto auto;
+        grid-template-areas:
+          "intro"
+          "products"
+          "news";
+      }
+      .hero-grid.layout-expanded {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "products";
+      }
+      .hero-grid.layout-expanded .intro,
+      .hero-grid.layout-expanded #news {
+        display: none;
+      }
+      .hero-grid.layout-expanded .products {
+        grid-area: products;
+        width: 100%;
+      }
+      @media (width >= 800px) {
+        .hero-grid {
+          height: 100%;
+          grid-template-columns: repeat(24, 1fr);
+          grid-template-rows: repeat(12, 1fr);
+          grid-template-areas:
+            "intro products"
+            "intro products"
+            "news news";
+        }
+      }
+      @media (width >= 1208px) {
+        .hero-grid {
+          height: 100%;
+          grid-template-columns: repeat(24, 1fr);
+          grid-template-rows: repeat(12, 1fr);
+          grid-template-areas:
+            "intro products"
+            "intro products"
+            "news products";
+        }
+      }
+
+      .intro {
+        grid-area: intro;
+        min-height: 0;
+      }
+      .news {
+        grid-area: news;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+      .products {
+        grid-area: products;
+        min-height: 0;
+      }
+
+      @media (width >= 800px) {
+        .intro {
+          grid-area: 1 / 1 / 9 / 8;
+        }
+        .news {
+          grid-area: 9 / 1 / 13 / 25;
+        }
+        .products {
+          grid-area: 1 / 8 / 9 / 25;
+        }
+      }
+
+      @media (width >= 1208px) {
+        .intro {
+          grid-area: 1 / 1 / 9 / 8;
+        }
+        .news {
+          grid-area: 9 / 1 / 13 / 8;
+        }
+        .products {
+          grid-area: 1 / 8 / 13 / 25;
+        }
+        .hero-grid.layout-expanded .products {
+          grid-area: 1 / 1 / 13 / 25;
+          width: 100%;
+        }
+      }
+    </style>
+
+    <script>
+      const tabs = Array.from(
+        document.querySelectorAll('#hero-tabs [role="tab"]'),
+      );
+      const panels = {
+        chat: document.getElementById("panel-chat"),
+        forms: document.getElementById("panel-forms"),
+        apps: document.getElementById("panel-apps"),
+        enterprise: document.getElementById("panel-enterprise"),
+        integrations: document.getElementById("panel-integrations"),
+      };
+      const announcer = document.getElementById("hero-announcer");
+      const tablist = document.getElementById("hero-tabs");
+      const order = ["chat", "forms", "apps", "enterprise", "integrations"];
+      let rotateTimer = null;
+      let isPaused = false;
+      let loopsRemaining = 2; // loop twice
+
+      function currentKey() {
+        const active = tabs.find(
+          (t) => t.getAttribute("aria-selected") === "true",
+        );
+        return active ? active.dataset.key : "chat";
+      }
+
+      function scheduleRotate() {
+        clearInterval(rotateTimer);
+        if (isPaused) return;
+        rotateTimer = setInterval(() => {
+          const key = currentKey();
+          const idx = order.indexOf(key);
+          const nextKey = order[(idx + 1) % order.length];
+          // Detect wrap-around to count loops
+          const wrapped = idx === order.length - 1;
+          setActive(nextKey);
+          if (wrapped) {
+            loopsRemaining -= 1;
+            if (loopsRemaining <= 0) {
+              clearInterval(rotateTimer);
+            }
+          }
+        }, 7000);
+      }
+
+      function pauseRotate() {
+        isPaused = true;
+        clearInterval(rotateTimer);
+      }
+
+      function resumeRotate() {
+        isPaused = false;
+        scheduleRotate();
+      }
+
+      function setActive(key) {
+        tabs.forEach((t) => {
+          const isActive = t.dataset.key === key;
+          t.classList.toggle("active", isActive);
+          t.setAttribute("aria-selected", String(isActive));
+          t.setAttribute("tabindex", isActive ? "0" : "-1");
+        });
+        Object.entries(panels).forEach(([k, el]) => {
+          const show = k === key;
+          el.classList.toggle("is-visible", show);
+          el.classList.toggle("is-hidden", !show);
+        });
+        if (announcer) announcer.textContent = `${key} selected`;
+      }
+
+      function moveFocus(delta) {
+        const idx = tabs.findIndex(
+          (t) => t.getAttribute("aria-selected") === "true",
+        );
+        const next = (idx + delta + tabs.length) % tabs.length;
+        tabs[next].focus();
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          setActive(tab.dataset.key);
+          scheduleRotate();
+        });
+        tab.addEventListener("keydown", (e) => {
+          switch (e.key) {
+            case "ArrowRight":
+              e.preventDefault();
+              moveFocus(1);
+              break;
+            case "ArrowLeft":
+              e.preventDefault();
+              moveFocus(-1);
+              break;
+            case "Home":
+              e.preventDefault();
+              tabs[0].focus();
+              break;
+            case "End":
+              e.preventDefault();
+              tabs[tabs.length - 1].focus();
+              break;
+            case "Enter":
+            case " ":
+              e.preventDefault();
+              setActive(tab.dataset.key);
+              break;
+          }
+        });
+        tab.addEventListener("focus", pauseRotate);
+        tab.addEventListener("blur", resumeRotate);
+      });
+
+      if (tablist) {
+        tablist.addEventListener("mouseenter", pauseRotate);
+        tablist.addEventListener("mouseleave", resumeRotate);
+      }
+
+      setActive("chat");
+
+      // kick off auto-rotation after initial render
+      scheduleRotate();
+
+      const newsTabs = Array.from(
+        document.querySelectorAll('#news-tabs [role="tab"]'),
+      );
+      const newsPanels = {
+        new: document.getElementById("panel-news"),
+        docs: document.getElementById("panel-docs"),
+        roadmap: document.getElementById("panel-roadmap"),
+      };
+
+      function setNewsActive(key) {
+        newsTabs.forEach((tab) => {
+          const isActive = tab.dataset.key === key;
+          tab.setAttribute("aria-selected", String(isActive));
+          tab.setAttribute("tabindex", isActive ? "0" : "-1");
+        });
+        Object.entries(newsPanels).forEach(([panelKey, panelEl]) => {
+          if (!panelEl) return;
+          panelEl.classList.toggle("is-hidden", panelKey !== key);
+          panelEl.classList.toggle("is-visible", panelKey === key);
+        });
+      }
+
+      newsTabs.forEach((tab) => {
+        tab.addEventListener("click", () => setNewsActive(tab.dataset.key));
+        tab.addEventListener("keydown", (event) => {
+          switch (event.key) {
+            case "ArrowRight":
+            case "ArrowDown":
+              event.preventDefault();
+              moveNewsFocus(1);
+              break;
+            case "ArrowLeft":
+            case "ArrowUp":
+              event.preventDefault();
+              moveNewsFocus(-1);
+              break;
+            case "Home":
+              event.preventDefault();
+              newsTabs[0]?.focus();
+              break;
+            case "End":
+              event.preventDefault();
+              newsTabs[newsTabs.length - 1]?.focus();
+              break;
+            case "Enter":
+            case " ":
+              event.preventDefault();
+              setNewsActive(tab.dataset.key);
+              break;
+          }
+        });
+      });
+
+      function moveNewsFocus(delta) {
+        const currentIndex = newsTabs.findIndex(
+          (tab) => tab.getAttribute("aria-selected") === "true",
+        );
+        const nextIndex =
+          (currentIndex + delta + newsTabs.length) % newsTabs.length;
+        newsTabs[nextIndex]?.focus();
+      }
+
+      setNewsActive("new");
+
+      const introTabs = Array.from(
+        document.querySelectorAll('#intro-tabs [role="tab"]'),
+      );
+      const introPanels = {
+        index: document.getElementById("panel-intro-index"),
+        why: document.getElementById("panel-intro-why"),
+      };
+
+      function setIntroActive(key) {
+        introTabs.forEach((tab) => {
+          const isActive = tab.dataset.key === key;
+          tab.setAttribute("aria-selected", String(isActive));
+          tab.setAttribute("tabindex", isActive ? "0" : "-1");
+        });
+        Object.entries(introPanels).forEach(([panelKey, panelEl]) => {
+          if (!panelEl) return;
+          panelEl.classList.toggle("is-hidden", panelKey !== key);
+          panelEl.classList.toggle("is-visible", panelKey === key);
+        });
+      }
+
+      function moveIntroFocus(delta) {
+        const currentIndex = introTabs.findIndex(
+          (tab) => tab.getAttribute("aria-selected") === "true",
+        );
+        const nextIndex =
+          (currentIndex + delta + introTabs.length) % introTabs.length;
+        introTabs[nextIndex]?.focus();
+      }
+
+      introTabs.forEach((tab) => {
+        tab.addEventListener("click", () => setIntroActive(tab.dataset.key));
+        tab.addEventListener("keydown", (event) => {
+          switch (event.key) {
+            case "ArrowRight":
+            case "ArrowDown":
+              event.preventDefault();
+              moveIntroFocus(1);
+              break;
+            case "ArrowLeft":
+            case "ArrowUp":
+              event.preventDefault();
+              moveIntroFocus(-1);
+              break;
+            case "Home":
+              event.preventDefault();
+              introTabs[0]?.focus();
+              break;
+            case "End":
+              event.preventDefault();
+              introTabs[introTabs.length - 1]?.focus();
+              break;
+            case "Enter":
+            case " ":
+              event.preventDefault();
+              setIntroActive(tab.dataset.key);
+              break;
+          }
+        });
+      });
+
+      setIntroActive("index");
+
+      const heroGrid = document.querySelector(".hero-grid");
+      const toggleButton = document.getElementById("layout-toggle");
+      const news = document.getElementById("news");
+      const introSection = document.querySelector(".intro");
+
+      if (toggleButton && heroGrid) {
+        toggleButton.addEventListener("click", () => {
+          const isExpanded = heroGrid.classList.toggle("layout-expanded");
+          toggleButton.setAttribute("aria-pressed", String(isExpanded));
+
+          if (introSection) introSection.classList.toggle("hidden", isExpanded);
+          if (news) news.classList.toggle("hidden", isExpanded);
+        });
+      }
+    </script>
+  </div>
+</div>

@@ -1,0 +1,947 @@
+---
+import Customers from "@components/Customers.astro";
+import heroChat from "@assets/images/herobg.webp";
+import heroForms from "@assets/images/hero3.png";
+import heroApps from "@assets/images/intercom.webp";
+import bbSymbol from "@assets/logos/bbSymbol.svg";
+import Ollama from "@assets/logos/Ollama.png";
+import Gmail from "@assets/logos/Gmail.svg";
+import Slack from "@assets/logos/Slack.svg";
+import Postgres from "@assets/logos/Postgres.svg";
+import Okta from "@assets/logos/Okta.svg";
+import OpenAI from "@assets/logos/OpenAI.svg";
+import Mistral from "@assets/logos/Mistral.svg";
+import Teams from "@assets/logos/Teams.png";
+import Jira from "@assets/logos/Jira.svg";
+import { Image } from "astro:assets";
+import Grid from "phosphor-astro/GridNine.astro";
+import Chat from "phosphor-astro/ChatCircle.astro";
+import Form from "phosphor-astro/Textbox.astro";
+import Layout from "phosphor-astro/Layout.astro";
+import Add from "phosphor-astro/Plus.astro";
+import Plugs from "phosphor-astro/Plugs.astro";
+import CaretDown from "phosphor-astro/CaretDown.astro";
+import App from "phosphor-astro/Layout.astro";
+import Table from "phosphor-astro/GridNine.astro";
+import Sparkle from "phosphor-astro/Sparkle.astro";
+import Lightning from "phosphor-astro/LightningFill.astro";
+import SidebarSimple from "phosphor-astro/SidebarSimple.astro";
+import Cloud from "phosphor-astro/Cloud.astro";
+import Github from "phosphor-astro/GithubLogoDuotone.astro";
+---
+
+<section class="container mx-auto px-4 flex flex-col items-center p-8">
+  <!--Title section -->
+  <div
+    class="px-3 py-2 mb-4 inline-flex gap-2 rounded-lg border !border-stone-300 text-sky-dark font-mono text-md items-center justify-center"
+  >
+    <Github class="w-4" />
+    26k Github stars
+  </div>
+  <h1 class="text-4xl xl:text-6xl max-w-2xl text-center font-semibold">
+    AI interfaces and workflows for privacy-first teams
+    <!--Budibase is used by top governments and companies to build beautiful AI interfaces
+          and dynamic workflows on top of internal models, data and agents.-->
+  </h1>
+  <p class="pt-6 mb-2 max-w-2xl text-center !text-lg">
+    Save weeks building AI chat interfaces, dynamic forms and apps - with your
+    models, data, & agents. Budibase is <a
+      href="https://github.com/Budibase/budibase">open source</a
+    >.
+  </p>
+  <div class="flex flex-row mt-6 sm:mb-0 gap-2">
+    <a
+      href="/"
+      type="button"
+      role="link"
+      target="_blank"
+      data-primary-button="true"
+      class=""
+    >
+      <button class="primary large mx-auto text-lg text-center"
+        >Try for free</button
+      >
+    </a>
+  </div>
+  <div class="my-6">
+    <Customers />
+  </div>
+  <!--Graphics section -->
+  <div class="h-full w-full flex flex-col gap-2">
+    <div class="inline-flex flex-row justify-between w-full">
+      <ul
+        id="product-tabs"
+        class="inline-flex flex-row gap-3 bg-ivory-medium rounded-[13px] p-1"
+        role="tablist"
+        aria-label="Budibase capabilities"
+      >
+        <li role="presentation">
+          <button
+            id="tab-chat"
+            class="product-tab is-active rounded-xl !text-sm"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            tabindex="0"
+            data-target="chatMedia"
+          >
+            <Chat class="w-5" />
+            <span>Chat</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button
+            id="tab-forms"
+            class="product-tab rounded-xl !text-sm"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            data-target="formsMedia"
+          >
+            <Form class="w-5" />
+            <span>Forms</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button
+            id="tab-apps"
+            class="product-tab rounded-xl !text-sm"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            data-target="appsMedia"
+          >
+            <App class="w-5" />
+            <span>Apps</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button
+            id="tab-tables"
+            class="product-tab rounded-xl !text-sm"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            data-target="tablesMedia"
+          >
+            <Table class="w-5" />
+            <span>Tables</span>
+          </button>
+        </li>
+      </ul>
+      <div class="flex flex-row items-center">
+        <div class="flex flex-wrap border border-stone-400 rounded-sm px-1">
+          <div class="text-nowrap flex flex-row items-center justify-center">
+            <span class="flex items-center justify-center m-1 mr-2">
+              <p class="!font-mono !font-sm">
+                Connect your Models, Data and Tools
+              </p></span
+            >
+          </div>
+          <span
+            class="m-1 w-7 h-7 p-1.5 flex items-center justify-center bg-ivory-medium border-r border-stone-200 rounded-sm"
+            aria-label="ollama integration"
+            title="ollama integration"
+            ><div class="w-5 h-5 place-items-center flex">
+              <Image src={Ollama} alt="ollama logo" />
+            </div></span
+          >
+          <span
+            class="m-1 w-7 h-7 flex items-center justify-center bg-ivory-medium border-r border-stone-200 rounded-sm"
+            aria-label="OpenAI integration"
+            title="Mistral integration"
+            ><div class="w-5 h-5 flex items-center justify-center">
+              <Image src={Mistral} alt="ollama logo" />
+            </div></span
+          >
+          <span
+            class="m-1 w-7 h-7 flex items-center justify-center bg-ivory-medium border-r border-stone-200 rounded-sm"
+            aria-label="OpenAI integration"
+            title="OpenAI integration"
+            ><div class="w-6 h-6 flex items-center justify-center">
+              <Image src={OpenAI} alt="OpenAI logo" />
+            </div></span
+          >
+          <span
+            class="m-1 w-7 h-7 flex items-center justify-center bg-ivory-medium border-r border-stone-200 rounded-sm"
+            aria-label="Postgres integration"
+            title="Postgres integration"
+            ><div class="w-5 h-5">
+              <Image src={Postgres} alt="Postgres logo" />
+            </div></span
+          >
+          <span
+            class="flex items-center justify-center bg-ivory-medium border-r border-stone-200 rounded-sm m-1 w-7 h-7 p-1"
+            aria-label="Teams integration"
+            title="Teams integration"
+            ><div class="w-5 h-5">
+              <Image src={Teams} alt="Teams logo" />
+            </div></span
+          >
+          <span
+            class="text-caption m-1 w-7 h-7 p-8px flex items-center justify-center bg-ivory-medium border-r border-stone-200 rounded-sm select-none"
+            aria-label="Jira integration"
+            title="Jira integration"
+            ><div class="w-5 h-5">
+              <Image src={Jira} alt="Jira logo" />
+            </div></span
+          >
+        </div>
+      </div>
+    </div>
+    <div id="product-panels" class="mt-2">
+      <div
+        id="chatMedia"
+        class="product-panel is-visible"
+        role="tabpanel"
+        aria-labelledby="tab-chat"
+      >
+        <div
+          class="bg-sky-medium p-6 rounded-2xl h-full flex justify-center items-center chat-media-wrapper min-h-[700px]"
+        >
+          <div id="chat" class="flex justify-center min-w-md">
+            <div
+              class="relative w-full max-h-fit rounded-[10px] p-[7px] lg:rounded-xl lg:p-[11px]"
+              aria-label="chat card"
+            >
+              <div class="bg-white mt-4 rounded-2xl p-2 w-xl mx-auto">
+                <div class="bg-ivory-light border rounded-[15.5px] py-2 px-4">
+                  <div
+                    class="flex-row items-center gap-2 bg-white border border-stone-400 inline-flex p-2 rounded-xl mb-8"
+                  >
+                    <div
+                      class="inline-flex w-7 h-7 content-center justify-center items-center text-center bg-lavendar-lightest rounded-lg"
+                    >
+                      <Image src={Ollama} alt="ollama logo" class="w-4 h-4" />
+                    </div>
+                    <p
+                      class="font-semibold text-cloud-dark !text-sm !font-mono"
+                    >
+                      Llama-3 8B
+                    </p>
+                    <CaretDown class="w-4" />
+                  </div>
+                  <div class="flex justify-end flex-row mb-8">
+                    <p
+                      class="!font-medium px-2 py-3 ml-auto rounded-xl bg-ivory-medium inline-flex max-w-9/12 !text-sm gap-2 items-center"
+                    >
+                      <span
+                        class="bg-clay-darkest h-6 w-6 rounded-full P-1 flex justify-center items-center text-ivory-light text-xs !font-medium !m-0"
+                        >J</span
+                      >
+                      List the employees that require offboarding today
+                    </p>
+                  </div>
+                  <div class="my-4 !text-sm mb-8">
+                    <p class="!text-sm font-bold">
+                      Employees requiring offboarding today:
+                    </p>
+                    <ul
+                      class="border bg-white px-4 py-2 my-2 rounded-xl flex flex-col"
+                    >
+                      <li
+                        class="flex flex-row justify-between border-b border-stone-100 py-2"
+                      >
+                        Joe Johnston
+                        <button class="table small">Offboard</button>
+                      </li>
+                      <li
+                        class="flex flex-row justify-between border-b border-stone-100 py-2"
+                      >
+                        Rachel Shields
+                        <button class="table small">Offboard</button>
+                      </li>
+                      <li class="flex flex-row justify-between pt-2">
+                        Amy Harvey
+                        <button class="table small">Offboard</button>
+                      </li>
+                    </ul>
+                  </div>
+                  <p class="!text-sm !font-medium leading-6 pb-6">
+                    Would you like me to enter all of these employees into the<br
+                    />
+                    <code
+                      class="bg-ivory-medium p-1 px-1.5 text-sm border !border-stone-300 rounded-lg mx-1 text-lavendar-dark font-medium"
+                      >Offboarding workflow</code
+                    >?
+                  </p>
+                  <form class="relative mt-4">
+                    <textarea
+                      class="bg-white h-24 rounded-xl text-black border !border-stone-300 w-full pt-3 pr-20 pl-3 text-sm leading-tight resize-none"
+                      id="employeeName-forms"
+                      placeholder="How can I help you today?"></textarea>
+                    <button
+                      type="button"
+                      class="absolute bottom-3 left-2 p-1 rounded-lg border text-xs font-semibold"
+                    >
+                      <Add class="w-4" />
+                    </button>
+                    <button
+                      type="button"
+                      class="absolute bottom-3 left-10 p-1 rounded-lg border text-xs font-semibold"
+                    >
+                      <Plugs class="w-4" />
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div
+              class="font-serif text-lg text-white font-medium absolute bottom-3 left-3"
+            >
+              We built AI chat so you don't have to
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        id="formsMedia"
+        class="product-panel is-hidden"
+        role="tabpanel"
+        aria-labelledby="tab-forms"
+        hidden
+      >
+        <div
+          class="bg-grass-medium p-6 rounded-2xl h-full flex justify-center items-center min-h-[700px] forms-media-wrapper"
+        >
+          <div class="absolute right-4 top-4 flex flex-row items-center">
+            <div class="flex flex-wrap border border-stone-400 rounded-sm px-1">
+              <div
+                class="text-nowrap flex flex-row items-center justify-center"
+              >
+                <span class="flex items-center justify-center m-1 mr-2">
+                  <p class="!font-mono !font-sm text-white">
+                    Connect your Data
+                  </p></span
+                >
+              </div>
+              <span
+                class="text-caption m-1 w-7 h-7 p-8px flex items-center justify-center bg-ivory-medium border-r border-stone-200 rounded-sm select-none"
+                aria-label="ollama integration"
+                data-dd-action-name="action-homepage-('OpenAI integration')"
+                title="OpenAI integration"
+                ><div class="relative w-4 h-4">
+                  <Image src={Ollama} alt="ollama logo" class="w-5" />
+                </div></span
+              >
+              <span
+                class="text-caption m-1 w-7 h-7 p-8px flex items-center justify-center bg-ivory-medium border-r border-stone-200 rounded-sm select-none"
+                aria-label="OpenAI integration"
+                data-dd-action-name="action-homepage-('OpenAI integration')"
+                title="OpenAI integration"
+                ><div class="relative w-4 h-4">
+                  <Image src={Ollama} alt="ollama logo" class="w-5" />
+                </div></span
+              >
+              <span
+                class="text-caption m-1 w-7 h-7 p-8px flex items-center justify-center bg-ivory-medium border-r border-stone-200 rounded-sm select-none"
+                aria-label="OpenAI integration"
+                data-dd-action-name="action-homepage-('OpenAI integration')"
+                title="OpenAI integration"
+                ><div class="relative w-4 h-4">
+                  <Image src={Ollama} alt="ollama logo" class="w-5" />
+                </div></span
+              >
+              <span
+                class="text-caption m-1 w-7 h-7 p-8px flex items-center justify-center bg-ivory-medium border-r border-stone-200 rounded-sm select-none"
+                aria-label="OpenAI integration"
+                data-dd-action-name="action-homepage-('OpenAI integration')"
+                title="OpenAI integration"
+                ><div class="relative w-4 h-4">
+                  <Image src={Ollama} alt="ollama logo" class="w-5" />
+                </div></span
+              >
+            </div>
+          </div>
+          <div id="forms" class="flex justify-center min-w-md">
+            <div
+              class="relative w-full max-h-fit rounded-[10px] p-[7px] lg:rounded-xl lg:p-[11px]"
+              aria-label="Form card"
+            >
+              <div class="bg-ivory-light mt-4 rounded-2xl p-2 max-w-sm mx-auto">
+                <div class="bg-white border rounded-[15.5px] py-4 px-4">
+                  <div
+                    class="inline-block w-10 h-10 content-center justify-center align-middle text-center bg-ivory-medium rounded-lg text-2xl mb-2"
+                  >
+                    👋
+                  </div>
+                  <p class="!font-semibold !text-lg pb-4">Offboarding Form</p>
+                  <form>
+                    <label
+                      class="block text-slate-dark text-sm font-medium mb-1"
+                      for="employeeName-forms">Employee name</label
+                    >
+                    <input
+                      class="bg-ivory-light border !border-stone-300 rounded w-full py-2 px-3 text-xs slate-light leading-tight"
+                      id="employeeName-forms"
+                      type="text"
+                    />
+                    <label
+                      class="mt-4 block text-slate-dark text-sm font-medium mb-1"
+                      for="managerName-forms">Manager name</label
+                    >
+                    <input
+                      class="bg-ivory-light border rounded w-full py-2 px-3 text-xs slate-light leading-tight focus:outline-none focus:shadow-outline"
+                      id="managerName-forms"
+                      type="text"
+                      placeholder="{Prefilled}"
+                    />
+                    <label
+                      class="mt-4 block text-slate-dark text-sm font-medium mb-1"
+                      for="apps-role">Role</label
+                    >
+                    <select
+                      id="apps-role"
+                      class="bg-ivory-light border rounded w-full py-2 px-3 text-xs slate-dark focus:outline-none"
+                    >
+                      <option>Member</option>
+                      <option>Admin</option>
+                    </select>
+                    <button
+                      type="button"
+                      class="px-2 my-4 py-1 rounded-lg bg-sky-darkest text-white text-sn font-semibold"
+                      >Request</button
+                    >
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        id="appsMedia"
+        class="product-panel is-hidden"
+        role="tabpanel"
+        aria-labelledby="tab-apps"
+        hidden
+      >
+        <div
+          class="bg-clay-medium p-6 rounded-2xl h-full flex justify-center items-center min-h-[700px]"
+        >
+          <!-- Apps view -->
+          <div id="apps" class="tab-section flex justify-center w-full">
+            <div
+              class="relative w-full max-w-[920px] max-h-fit rounded-[10px] p-[7px] border lg:rounded-xl lg:p-[11px] border-stone-300 bg-white shadow-[0px_2px_3px_-2px_rgba(28,40,64,0.10),0px_4px_6px_-2px_rgba(28,40,64,0.04)]"
+              aria-label="Apps offboarding"
+            >
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-x-1.5">
+                  <div class="bg-clay-dark w-5 h-5 rounded-md p-0.5">
+                    <Layout class="fill-white" />
+                  </div>
+                  <div
+                    class="font-semibold text-[10px] leading-[14px] tracking-[-0.28px] text-md lg:leading-5 text-slate-medium"
+                  >
+                    Offboarding app
+                  </div>
+                </div>
+              </div>
+              <div>
+                <ul class="flex flex-row gap-2 px-2 pt-6">
+                  <li
+                    class="!text-xs text-clay-darkest font-medium underline-offset-3 underline"
+                  >
+                    Offboarding
+                  </li><li class="!text-xs">Report</li>
+                </ul>
+              </div>
+              <div
+                class="grid lg:grid-cols-2 gap-6 items-start bg-ivory-light mt-3 rounded-md p-2"
+              >
+                <!-- Left: Apps table with a selected row -->
+                <div class="bg-white border rounded-md overflow-hidden">
+                  <div
+                    class="grid grid-cols-3 text-[10px] lg:text-xs font-semibold bg-clay-dark text-ivory-light"
+                  >
+                    <div class="py-2 px-3">App</div>
+                    <div class="py-2 px-3">Account</div>
+                    <div class="py-2 px-3">Status</div>
+                  </div>
+                  <div
+                    class="grid grid-cols-3 text-[10px] lg:text-xs text-slate-dark border-t border-stone-100 items-center"
+                  >
+                    <div class="py-2 px-3 flex items-center gap-2">
+                      <Image src={Gmail} alt="Gmail" class="h-4 w-4" /> Gmail
+                    </div>
+                    <div class="py-2 px-3">jane@acme.com</div>
+                    <div class="py-2 px-3">Active</div>
+                  </div>
+                  <div
+                    class="grid grid-cols-3 text-[10px] lg:text-xs text-slate-dark border-t border-stone-100 items-center bg-ivory-medium"
+                  >
+                    <div class="py-2 px-3 flex items-center gap-2">
+                      <Image src={Slack} alt="Slack" class="h-4 w-4" /> Slack
+                    </div>
+                    <div class="py-2 px-3">jane@acme.com</div>
+                    <div class="py-2 px-3">Active</div>
+                  </div>
+                  <div
+                    class="grid grid-cols-3 text-[10px] lg:text-xs text-slate-dark border-t border-stone-100 items-center"
+                  >
+                    <div class="py-2 px-3 flex items-center gap-2">
+                      <Image src={Okta} alt="Okta" class="h-4 w-4" /> Okta
+                    </div>
+                    <div class="py-2 px-3">jane@acme.com</div>
+                    <div class="py-2 px-3">Active</div>
+                  </div>
+                </div>
+
+                <!-- Right: Selected row details form -->
+                <div class="bg-white border rounded-md p-3">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-x-1.5">
+                      <div class="bg-ivory-medium w-5 h-5 rounded-md p-1">
+                        <Image
+                          src={Slack}
+                          alt="Slack"
+                          class="h-4 w-4 invert-0"
+                        />
+                      </div>
+                      <div
+                        class="font-semibold text-[10px] leading-[14px] tracking-[-0.28px] lg:text-[15px] lg:leading-5 text-slate-medium"
+                      >
+                        Slack access
+                      </div>
+                    </div>
+                  </div>
+                  <form class="space-y-3 mt-3">
+                    <div>
+                      <label
+                        class="block text-slate-dark text-xs font-medium mb-1"
+                        for="apps-app">App</label
+                      >
+                      <input
+                        id="apps-app"
+                        type="text"
+                        class="bg-ivory-light border rounded w-full py-2 px-3 text-xs !cloud-dark leading-tight focus:outline-none"
+                        value="Slack"
+                        readonly
+                      />
+                    </div>
+                    <div>
+                      <label
+                        class="block text-slate-dark text-xs font-medium mb-1"
+                        for="apps-user">User</label
+                      >
+                      <input
+                        id="apps-user"
+                        type="email"
+                        class="bg-ivory-light border rounded w-full py-2 px-3 text-xs !cloud-dark leading-tight focus:outline-none"
+                        value="jane@acme.com"
+                      />
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                      <div>
+                        <label
+                          class="block text-slate-dark text-xs font-medium mb-1"
+                          for="apps-status">Status</label
+                        >
+                        <select
+                          id="apps-status"
+                          class="bg-ivory-light border rounded w-full py-2 px-3 text-xs slate-dark focus:outline-none"
+                        >
+                          <option>Active</option>
+                          <option>Suspended</option>
+                          <option>Removed</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          class="block text-slate-dark text-xs font-medium mb-1"
+                          for="apps-role">Role</label
+                        >
+                        <select
+                          id="apps-role"
+                          class="bg-ivory-light border rounded w-full py-2 px-3 text-xs slate-dark focus:outline-none"
+                        >
+                          <option>Member</option>
+                          <option>Admin</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <label
+                        class="inline-flex items-center gap-2 text-xs text-slate-dark"
+                      >
+                        <input
+                          type="checkbox"
+                          class="accent-sky-medium"
+                          checked
+                        /> Suspend user
+                      </label>
+                      <label
+                        class="inline-flex items-center gap-2 text-xs text-slate-dark"
+                      >
+                        <input type="checkbox" class="accent-sky-medium" /> Remove
+                        from channels
+                      </label>
+                    </div>
+                    <div class="flex gap-2 pt-2">
+                      <button
+                        type="button"
+                        class="px-3 py-1.5 rounded-md bg-sky-darkest text-white text-xs font-semibold"
+                        >Request</button
+                      >
+                      <button
+                        type="button"
+                        class="px-3 py-1.5 rounded-md border text-slate-dark text-xs"
+                        >Cancel</button
+                      >
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="tablesMedia"
+        class="product-panel is-hidden"
+        role="tabpanel"
+        aria-labelledby="tab-tables"
+        hidden
+      >
+        <div
+          class="bg-lavendar-medium p-6 rounded-2xl h-full flex justify-center items-center min-h-[700px]"
+        >
+          <div class="absolute right-4 top-4 flex flex-row items-center">
+            <div class="flex flex-wrap border border-stone-400 rounded-sm px-1">
+              <div
+                class="text-nowrap flex flex-row items-center justify-center"
+              >
+                <span class="flex items-center justify-center m-1 mr-2">
+                  <p class="!font-mono !font-sm text-white">
+                    Connect your Data
+                  </p></span
+                >
+              </div>
+              <span
+                class="text-caption m-1 w-7 h-7 p-8px flex items-center justify-center bg-ivory-medium border-r border-stone-200 rounded-sm select-none"
+                aria-label="ollama integration"
+                data-dd-action-name="action-homepage-('OpenAI integration')"
+                title="OpenAI integration"
+                ><div class="relative w-4 h-4">
+                  <Image src={Ollama} alt="ollama logo" class="w-5" />
+                </div></span
+              >
+              <span
+                class="text-caption m-1 w-7 h-7 p-8px flex items-center justify-center bg-ivory-medium border-r border-stone-200 rounded-sm select-none"
+                aria-label="OpenAI integration"
+                data-dd-action-name="action-homepage-('OpenAI integration')"
+                title="OpenAI integration"
+                ><div class="relative w-4 h-4">
+                  <Image src={Ollama} alt="ollama logo" class="w-5" />
+                </div></span
+              >
+              <span
+                class="text-caption m-1 w-7 h-7 p-8px flex items-center justify-center bg-ivory-medium border-r border-stone-200 rounded-sm select-none"
+                aria-label="OpenAI integration"
+                data-dd-action-name="action-homepage-('OpenAI integration')"
+                title="OpenAI integration"
+                ><div class="relative w-4 h-4">
+                  <Image src={Ollama} alt="ollama logo" class="w-5" />
+                </div></span
+              >
+              <span
+                class="text-caption m-1 w-7 h-7 p-8px flex items-center justify-center bg-ivory-medium border-r border-stone-200 rounded-sm select-none"
+                aria-label="OpenAI integration"
+                data-dd-action-name="action-homepage-('OpenAI integration')"
+                title="OpenAI integration"
+                ><div class="relative w-4 h-4">
+                  <Image src={Ollama} alt="ollama logo" class="w-5" />
+                </div></span
+              >
+            </div>
+          </div>
+          <div id="tables" class="tab-section xl:w-2xl flex justify-center">
+            <div
+              class="relative w-full max-w-[920px] max-h-fit rounded-[10px] p-[7px] border lg:rounded-xl lg:p-[11px] border-stone-300 bg-white shadow-[0px_2px_3px_-2px_rgba(28,40,64,0.10),0px_4px_6px_-2px_rgba(28,40,64,0.04)]"
+              aria-label="Tables card"
+            >
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-x-1.5">
+                  <div class="bg-grass-dark w-5 h-5 rounded-md p-0.5">
+                    <Grid class="fill-white" />
+                  </div>
+                  <div
+                    class="font-semibold text-[10px] leading-[14px] tracking-[-0.28px] lg:text-[15px] lg:leading-5 text-slate-medium"
+                  >
+                    Incident table
+                  </div>
+                </div>
+              </div>
+              <div class="bg-ivory-light mt-3 rounded-md p-2">
+                <div class="bg-white border rounded-md overflow-hidden">
+                  <div
+                    class="grid grid-cols-6 text-[10px] lg:text-xs font-semibold bg-ivory-medium text-slate-dark"
+                  >
+                    <div class="py-2 px-3 flex flex-row">
+                      <Sparkle class="h-4 fill-lavendar mr-1" />type
+                    </div>
+                    <div class="py-2 px-3 flex flex-row">
+                      <Sparkle class="h-4 fill-lavendar mr-1" />sev_score
+                    </div>
+                    <div class="py-2 px-3 flex flex-row">
+                      <Sparkle class="h-4 fill-lavendar mr-1" />confidence
+                    </div>
+                    <div class="py-2 px-3 flex flex-row col-span-2">
+                      <Sparkle class="h-4 fill-lavendar mr-1" />recommendation
+                    </div>
+                    <div class="py-2 px-3 flex flex-row">
+                      <Sparkle class="h-4 fill-lavendar mr-1" />status
+                    </div>
+                  </div>
+                  <div
+                    class="grid grid-cols-6 text-[10px] lg:text-xs text-slate-dark border-t border-stone-100"
+                  >
+                    <div class="py-2 px-3">malware</div>
+                    <div class="py-2 px-3">7</div>
+                    <div class="py-2 px-3">0.89</div>
+                    <div class="py-2 px-3 col-span-2">
+                      Isolate endpoint GOV-LAP-443, reset user credentials.
+                    </div>
+                    <div
+                      class="py-1 max-h-6 my-2 px-3 bg-sky-lightest rounded-lg text-center items-center"
+                    >
+                      Investigation
+                    </div>
+                  </div>
+                  <div
+                    class="grid grid-cols-6 text-[10px] lg:text-xs text-slate-dark border-t border-stone-100"
+                  >
+                    <div class="py-2 px-3">access_violation</div>
+                    <div class="py-2 px-3">8</div>
+                    <div class="py-2 px-3">0.94</div>
+                    <div class="py-2 px-3 col-span-2">
+                      Lock account ADMIN-SVC1, review privileged access logs.
+                    </div>
+                    <div
+                      class="py-1 max-h-6 my-2 px-3 bg-grass-lightest rounded-lg text-center items-center"
+                    >
+                      Resolved
+                    </div>
+                  </div>
+                  <div
+                    class="grid grid-cols-6 text-[10px] lg:text-xs text-slate-dark border-t border-stone-100"
+                  >
+                    <div class="py-2 px-3">misconfig</div>
+                    <div class="py-2 px-3">6</div>
+                    <div class="py-2 px-3">0.77</div>
+                    <div class="py-2 px-3 col-span-2">
+                      lose port 3389 exposure; enforce firewall config baseline.
+                    </div>
+                    <div
+                      class="py-1 max-h-6 my-2 px-3 bg-clay-lightest rounded-lg text-center items-center"
+                    >
+                      Escalated
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  h1 {
+    line-height: 1;
+  }
+  h2 {
+    line-height: 1.4;
+    font-family: sans-serif;
+  }
+  p {
+    margin-bottom: 0;
+  }
+
+  #product-tabs {
+    align-items: center;
+  }
+  .product-tab {
+    border: none;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.95rem;
+    color: var(--slate-light);
+    cursor: pointer;
+    transition:
+      background-color 150ms ease,
+      box-shadow 150ms ease;
+  }
+  .product-tab.is-active,
+  .product-tab[aria-selected="true"] {
+    background: white;
+    color: var(--slate-dark);
+  }
+  .product-tab:focus-visible {
+    outline: 2px solid var(--sky-medium);
+    outline-offset: 2px;
+  }
+
+  #product-panels {
+    position: relative;
+  }
+  .product-panel {
+    display: none;
+  }
+  .product-panel.is-visible {
+    display: block;
+  }
+  .chat-media-wrapper,
+  .forms-media-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  .chat-media-wrapper::before,
+  .forms-media-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+    z-index: 0;
+  }
+  .chat-media-wrapper::before {
+    background: url("/src/assets/images/SkyDark-pattern.png") center/contain
+      no-repeat;
+  }
+  .forms-media-wrapper::before {
+    background: url("/src/assets/images/SkyGrassPattern.png") center/contain
+      no-repeat;
+  }
+  .chat-media-wrapper #forms,
+  .forms-media-wrapper #forms {
+    position: relative;
+    z-index: 1;
+  }
+  .placeholder {
+    background: var(--ivory-light);
+    border-radius: 1rem;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    color: var(--slate-dark);
+    box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.08);
+  }
+  .example-card {
+    background: rgba(17, 24, 39, 0.92);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 1.25rem;
+    display: grid;
+    gap: 1rem;
+    max-width: 360px;
+    box-shadow: 0 24px 45px rgba(15, 23, 42, 0.2);
+  }
+  .example-card__header {
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .example-card__attachments {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .example-card__attachments div {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
+    padding: 0.6rem;
+    display: grid;
+    gap: 0.25rem;
+  }
+  .example-card__attachments span {
+    font-weight: 600;
+  }
+  .example-card__attachments small {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.75rem;
+  }
+
+  button.table {
+    background-color: var(--lavendar-dark);
+    color: white;
+    font-weight: 500;
+  }
+</style>
+
+<script>
+  const productTabs = Array.from(
+    document.querySelectorAll('#product-tabs [role="tab"]'),
+  );
+  const productPanels = {
+    chatMedia: document.getElementById("chatMedia"),
+    formsMedia: document.getElementById("formsMedia"),
+    appsMedia: document.getElementById("appsMedia"),
+    tablesMedia: document.getElementById("tablesMedia"),
+  };
+
+  function activateProductTab(targetId) {
+    productTabs.forEach((tab) => {
+      const isActive = tab.dataset.target === targetId;
+      tab.classList.toggle("is-active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+      tab.setAttribute("tabindex", isActive ? "0" : "-1");
+    });
+
+    Object.entries(productPanels).forEach(([id, panel]) => {
+      if (!panel) return;
+      const shouldShow = id === targetId;
+      panel.classList.toggle("is-visible", shouldShow);
+      panel.hidden = !shouldShow;
+    });
+  }
+
+  function moveProductFocus(delta) {
+    const currentIndex = productTabs.findIndex(
+      (tab) => tab.getAttribute("aria-selected") === "true",
+    );
+    const nextIndex =
+      (currentIndex + delta + productTabs.length) % productTabs.length;
+    productTabs[nextIndex]?.focus();
+  }
+
+  productTabs.forEach((tab) => {
+    tab.addEventListener("click", () => activateProductTab(tab.dataset.target));
+    tab.addEventListener("keydown", (event) => {
+      switch (event.key) {
+        case "ArrowRight":
+        case "ArrowDown":
+          event.preventDefault();
+          moveProductFocus(1);
+          break;
+        case "ArrowLeft":
+        case "ArrowUp":
+          event.preventDefault();
+          moveProductFocus(-1);
+          break;
+        case "Home":
+          event.preventDefault();
+          productTabs[0]?.focus();
+          break;
+        case "End":
+          event.preventDefault();
+          productTabs[productTabs.length - 1]?.focus();
+          break;
+        case "Enter":
+        case " ":
+          event.preventDefault();
+          activateProductTab(tab.dataset.target);
+          break;
+      }
+    });
+  });
+
+  activateProductTab("chatMedia");
+</script>

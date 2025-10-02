@@ -152,6 +152,11 @@ h2 {
   font-family: var(--font-display);
   color: var(--slate-medium);
   line-height: 1;
+  font-variation-settings:
+    "opsz" 144,
+    "wght" 500,
+    "SOFT" 100,
+    "WONK" 1;
   font-feature-settings:
     "clig",
     "dlig" 0,
@@ -313,7 +318,7 @@ button.cta {
   color: var(--ivory-light);
   font-weight: 500;
   border-radius: 50px;
-  padding: 4px 8px;
+  padding: 5px 10px;
   transition: 150ms background-color ease-out;
 }
 
@@ -327,7 +332,7 @@ button.primary {
   color: var(--ivory-light);
   font-weight: 500;
   border-radius: 50px;
-  padding: 4px 8px;
+  padding: 5px 10px;
   transition: 150ms background-color ease-out;
 }
 
@@ -339,21 +344,25 @@ button.secondary {
   background-color: var(--ivory-dark);
   color: var(--slate-dark);
   font-weight: 500;
-  border-radius: 10px;
-  padding: 4px 8px;
+  border-radius: 50px;
+  padding: 5px 10px;
   transition: 150ms background-color ease-out;
 }
 
 button.secondary:hover {
-  background-color: var(--ivory-darkest);
+  background-color: var(--ivory-light);
 }
 
 button.large {
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 20px;
 }
-
+button.small {
+  padding: 3px 6px;
+  border-radius: 50px;
+  font-size: 12px;
+}
 button.active {
   background-color: var(--ivory-medium);
   color: var(--slate-medium);
