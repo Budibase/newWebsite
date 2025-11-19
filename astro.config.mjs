@@ -6,6 +6,8 @@ import { URL } from "node:url";
 import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
 
+import expressiveCode from "astro-expressive-code";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.budibase.com",
@@ -25,6 +27,7 @@ export default defineConfig({
       },
     },
   },
+
   experimental: {
     clientPrerender: true,
     contentIntellisense: true,
@@ -55,5 +58,5 @@ export default defineConfig({
   },
 
   adapter: netlify(),
-  integrations: [sitemap()],
+  integrations: [sitemap(), expressiveCode()],
 });
