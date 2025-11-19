@@ -1,8 +1,17 @@
 ---
 import Customers from "@components/Customers.astro";
 import Button from "@components/Button.astro";
-import HeroBackground from "@assets/images/homepage/HeroBackground.png";
-import { Image } from "astro:assets";
+import ImageSwitcher from "@components/ImageSwitcher.astro";
+import HeroBg from "@assets/images/homepage/cottage.png";
+import ChatImg from "@assets/images/homepage/chat.png";
+import AgentsImg from "@assets/images/homepage/hero.png";
+import AppsImg from "@assets/images/homepage/form.png";
+import AutomationsImg from "@assets/images/homepage/form2.png";
+import GraphicsCard from "phosphor-astro/LegoSmileyfiLL.astro";
+import ChatCircleDots from "phosphor-astro/ChatCircleFill.astro";
+import Path from "phosphor-astro/PathFill.astro";
+import Browsers from "phosphor-astro/BrowsersFill.astro";
+import Table from "phosphor-astro/GridNineFill.astro";
 ---
 
 <section class="container max-w-7xl mx-auto px-2 lg:px-0 flex flex-col mt-24">
@@ -17,23 +26,62 @@ import { Image } from "astro:assets";
   <span class="text-sky-700">automate workflows with AI</span>
   Open-source and built for privacy-first teams, Budibase is the faster way to
   <span class="text-sky-700">automate workflows with AI</span>
+  Open-source and built for privacy-first workflows, Budibase is the proven way to
+    build AI agents, chat, apps, & automations.
   -->
-  <h1 class="max-w-2xl h2">
-    Open-source and built for privacy-first teams, Budibase is the better way to
-
-    <span class="text-sky-700">transform workflows with AI.</span>
+  <h1 class="max-w-2xl h2 text-stone-500! mb-4">
+    Open-source and designed for IT & Security workflows,
+    <span class="text-stone-950"
+      >Budibase is the privacy-first way to build AI agents, chat, apps, &
+      automations.</span
+    >
   </h1>
-  <div class="flex flex-row mt-5 sm:mb-0 gap-2">
-    <Button label="Get Budibase free" url="/" variant="primary" size="large" />
+  <div class="flex flex-row gap-2 mt-2">
+    <Button label="Get Budibase free" url="/" variant="cta" />
   </div>
-  <div class="my-5">
-    <Customers />
-  </div>
-  <div>
-    <Image
-      class="rounded-md"
-      src={HeroBackground}
-      alt="Newcastle, Northern Ireland"
+
+  <div class="mt-10">
+    <ImageSwitcher
+      background={HeroBg}
+      items={[
+        {
+          label: "Chat",
+          product: ChatImg,
+          userProduct: AutomationsImg,
+          alt: "Budibase chat",
+          icon: ChatCircleDots,
+          tagLabel: "New",
+          tagVariant: "secondary",
+        },
+        {
+          label: "Agents",
+          product: AgentsImg,
+          alt: "Budibase agents",
+          icon: GraphicsCard,
+          tagLabel: "New",
+          tagVariant: "secondary",
+        },
+
+        {
+          label: "Automations",
+          product: AutomationsImg,
+          alt: "Budibase automations",
+          icon: Path,
+        },
+        {
+          label: "Apps",
+          product: AppsImg,
+          userProduct: ChatImg,
+          alt: "Budibase apps",
+          icon: Browsers,
+        },
+        {
+          label: "Tables",
+          product: AppsImg,
+          alt: "Budibase tables",
+          icon: Table,
+        },
+      ]}
     />
   </div>
 </section>

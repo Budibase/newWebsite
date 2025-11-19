@@ -1,0 +1,88 @@
+---
+import Tag from "@components/Tag.astro";
+import Link from "@components/Link.astro";
+import { Image } from "astro:assets";
+import Check from "phosphor-astro/CheckCircleFill.astro";
+// Renamed from AgentsSection to ProductSection for reuse
+
+interface Props {
+  tagLabel: string;
+  title: string;
+  description?: string;
+  backgroundImage?: ImageMetadata; // optional section background
+  productImage?: ImageMetadata; // main illustrative image
+  linkLabel?: string;
+  linkUrl?: string;
+  features?: string[];
+}
+
+const {
+  tagLabel,
+  title,
+  description,
+  backgroundImage,
+  productImage,
+  linkLabel,
+  linkUrl,
+  features = [],
+} = Astro.props as Props;
+---
+
+<div class="mt-24 container max-w-7xl mx-auto">
+  <Tag label={tagLabel} variant="cta" size="small" class="mb-6" />
+  {backgroundImage && <Image src={backgroundImage} alt="" class="sr-only" />}
+</div>
+
+<div class="relative">
+  {
+    backgroundImage && (
+      <Image
+        src={backgroundImage}
+        alt=""
+        class="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-10"
+      />
+    )
+  }
+
+  <div
+    class="container max-w-7xl mx-auto gap-5 grid grid-cols-12 p2 lg:p-8 bg-secondary rounded-lg"
+  >
+    <div class="col-span-5 flex flex-col justify-between">
+      <div>
+        <h3 class="mb-4">{title}</h3>
+        {description && <p class="mb-4 text-stone-500!">{description}</p>}
+      </div>
+      <div>
+        {
+          features?.length ? (
+            <ul class="space-y-2">
+              {features.map((feat) => (
+                <li class="flex items-center gap-2">
+                  <Check class="w-4 fill-sky-700" />
+                  <span class="text-stone-500!">{feat}</span>
+                </li>
+              ))}
+            </ul>
+          ) : null
+        }
+      </div>
+
+      {
+        linkLabel && linkUrl && (
+          <div class="mt-6">
+            <Link
+              label={linkLabel}
+              url={linkUrl}
+              variant="cta"
+              class="text-sky-700"
+            />
+          </div>
+        )
+      }
+    </div>
+
+    <div class="col-span-7">
+      {productImage && <Image class="rounded-md" src={productImage} alt="" />}
+    </div>
+  </div>
+</div>

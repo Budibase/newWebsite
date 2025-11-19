@@ -2,16 +2,16 @@
 // Reusable Tag component
 // Props:
 // - label: string (required)
-// - variant?: 'primary' | 'secondary' | 'cta' (defaults to 'primary')
+// - variant?: 'primary' | 'secondary' | 'cta' | 'orange' (defaults to 'primary')
 // - size?: 'small' | 'medium' | 'large' (defaults to 'medium')
 // - class?: string (additional classes)
 
-type Variant = "primary" | "secondary" | "cta";
+type Variant = "primary" | "secondary" | "cta" | "orange";
 
 interface Props {
   label: string;
   variant?: Variant;
-  size?: "small" | "medium" | "large";
+  size?: "extra-small" | "small" | "medium" | "large";
   class?: string;
   ariaLabel?: string;
 }
@@ -34,7 +34,6 @@ const classes = ["tag", variant, sizeClass, className]
   <span class="label">{label}</span>
   <slot />
   <!-- Slot allows optional inline icon/content -->
-  
 </span>
 
 <style>
@@ -47,8 +46,10 @@ const classes = ["tag", variant, sizeClass, className]
     text-decoration: none;
     cursor: default;
     font-family: var(--font-mono);
-    font-weight: 400;
-    transition: 150ms background-color ease-out, 150ms color ease-out;
+    font-weight: 500;
+    transition:
+      150ms background-color ease-out,
+      150ms color ease-out;
     border-radius: 4px; /* Fixed radius per requirements */
     line-height: 1.2;
   }
@@ -61,18 +62,29 @@ const classes = ["tag", variant, sizeClass, className]
   .tag.cta {
     background-color: var(--color-sky-700);
     color: white;
-    font-size: 16px;
-    padding: 3px 12px; /* same as Button cta */
+    font-size: 14px;
+    padding: 4px 8px; /* same as Button secondary */
   }
   .tag.cta:hover {
     background-color: var(--color-sky-900);
   }
 
+  /* New orange variant */
+  .tag.orange {
+    background-color: #ea580c; /* orange-600 */
+    color: #ffffff;
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+  .tag.orange:hover {
+    background-color: #c2410c; /* orange-700 */
+  }
+
   .tag.primary {
     background-color: var(--color-theme-fg);
     color: var(--color-theme-bg);
-    font-size: 16px;
-    padding: 6px 12px; /* same as Button primary */
+    font-size: 14px;
+    padding: 4px 8px; /* same as Button secondary */
   }
   .tag.primary:hover {
     background-color: var(--gray-600);
@@ -82,8 +94,8 @@ const classes = ["tag", variant, sizeClass, className]
     background-color: var(--gray-50);
     color: var(--color-theme-fg);
     border: 1px solid var(--gray-300);
-    font-size: 16px;
-    padding: 6px 12px; /* same as Button secondary */
+    font-size: 164x;
+    padding: 4px 8px; /* same as Button secondary */
   }
   .tag.secondary:hover {
     background-color: var(--gray-100);
@@ -91,13 +103,17 @@ const classes = ["tag", variant, sizeClass, className]
 
   /* Sizes (match Button paddings) */
   .tag.small {
-    padding: 4.5px 10px;
-    font-size: 14px;
+    padding: 3px 6px;
+    font-size: 12px;
+  }
+
+  .tag.extra-small {
+    padding: 2px 4px;
+    font-size: 10px;
   }
 
   .tag.large {
-    padding: 8px 16px;
+    padding: 5px 10px;
     font-size: 18px;
   }
 </style>
-

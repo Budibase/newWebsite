@@ -1,0 +1,20 @@
+---
+import ProductSection from "@components/cards/ProductSection.astro";
+import HeroBackground from "@assets/images/homepage/HeroBackground.png";
+---
+
+<ProductSection
+  tagLabel="/Chat"
+  title="We built AI chat so you don't have to"
+  description="Unlock your team’s potential with custom AI chat"
+  productImage={HeroBackground}
+  linkLabel="Build an agent"
+  linkUrl="/blog"
+  features={[
+    "Build multiple chat experiences for every team",
+    "Give employees access to agents",
+    "Build safely with your data, tools and models",
+    "Self-host on your own infrastructure",
+    "Control your agent with human-in-the-loop",
+  ]}
+/>

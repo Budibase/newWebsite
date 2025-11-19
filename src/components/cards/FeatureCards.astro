@@ -1,0 +1,51 @@
+---
+import Tag from "@components/Tag.astro";
+import Link from "@components/Link.astro";
+import { Image } from "astro:assets";
+import Check from "phosphor-astro/CheckCircleFill.astro";
+// Renamed from AgentsSection to ProductSection for reuse
+
+interface Props {
+  tagLabel: string;
+  title: string;
+  description?: string;
+  backgroundImage?: ImageMetadata; // optional section background
+  productImage?: ImageMetadata; // main illustrative image
+  linkLabel?: string;
+  linkUrl?: string;
+}
+
+const {
+  tagLabel,
+  title,
+  description,
+  backgroundImage,
+  productImage,
+  linkLabel,
+  linkUrl,
+} = Astro.props as Props;
+---
+
+<div class="container max-w-7xl mx-auto gap-2 flex flex-col rounded-lg">
+  <div class="p-4 bg-secondary rounded-lg">
+    <div class="flex flex-col justify-between gap-4">
+      <Tag label={tagLabel} variant="secondary" size="small" class="w-fit" />
+
+      <div>
+        <p class="text-black">{title}</p>
+        <p class="mb-6! text-stone-500!">{description}</p>
+        {
+          linkLabel && linkUrl && (
+            <div>
+              <Link label={linkLabel} url={linkUrl} variant="cta" />
+            </div>
+          )
+        }
+      </div>
+
+      <div>
+        {productImage && <Image class="rounded-md" src={productImage} alt="" />}
+      </div>
+    </div>
+  </div>
+</div>

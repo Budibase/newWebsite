@@ -1,0 +1,17 @@
+{
+    "servers": {
+        "filesystem": {
+            "command": "mcp-server-fs",
+            "args": [
+                "--root",
+                "/Users/joe/Documents/websites/newWebsite"
+            ]
+        },
+        "astro": {
+            "command": "node",
+            "args": [
+                "./node_modules/@astrojs/mcp-server/dist/index.js"
+            ]
+        }
+    }
+}

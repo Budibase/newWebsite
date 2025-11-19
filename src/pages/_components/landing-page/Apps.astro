@@ -1,0 +1,20 @@
+---
+import ProductSection from "@components/cards/ProductSection.astro";
+import HeroBackground from "@assets/images/homepage/HeroBackground.png";
+---
+
+<ProductSection
+  tagLabel="/Apps"
+  title="Save weeks bulding apps people enjoy using"
+  description="Save time and energy building apps that integrate with any data source and speed-up any process."
+  productImage={HeroBackground}
+  linkLabel="Build an automation"
+  linkUrl="/blog"
+  features={[
+    "Turn your data into an app or form with 1 click",
+    "Over 40 pre-built components and templates",
+    "Build e2e workflows with apps, agents, automations",
+    "Self-host on your own infrastructure",
+    "Enterprise-grade RBAC, embeds and SSO.",
+  ]}
+/>

@@ -11,8 +11,13 @@
     "format:fix": "prettier . --write"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.5",
+    "@astrojs/language-server": "^2.16.0",
+    "@modelcontextprotocol/server-filesystem": "^2025.8.21",
+    "docs-mcp": "github:withastro/docs-mcp",
     "prettier": "^3.3.3",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.8.2"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.10",
