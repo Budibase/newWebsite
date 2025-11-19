@@ -1,0 +1,402 @@
+---
+import { Image } from "astro:assets";
+import Tag from "@components/Tag.astro";
+import Wrench from "phosphor-astro/WrenchFill.astro";
+import User from "phosphor-astro/UserFill.astro";
+
+type TagVariant = "primary" | "secondary" | "cta" | "orange";
+
+export interface SwitchItem {
+  label: string;
+  product: ImageMetadata;
+  userProduct?: ImageMetadata; // optional alternative image when Users mode is active
+  alt?: string;
+  tagLabel?: string;
+  tagVariant?: TagVariant;
+  icon?: any;
+}
+
+interface Props {
+  id?: string;
+  background: ImageMetadata;
+  items: SwitchItem[];
+  class?: string;
+}
+
+const {
+  id = `hero-switcher-${Math.random().toString(36).slice(2, 8)}`,
+  background,
+  items,
+  class: className,
+} = Astro.props as Props;
+---
+
+<div id={id} class={`hero-switcher ${className ?? ""}`.trim()}>
+  <div class="tabs">
+    <div class="tabs-left" role="tablist" aria-label="Product switcher">
+      {
+        items.map((item, idx) => {
+          const tabId = `${id}-tab-${idx}`;
+          return (
+            <button
+              id={tabId}
+              role="tab"
+              aria-selected={idx === 0 ? "true" : "false"}
+              aria-controls={`${id}-panel-${idx}`}
+              class={`tab ${idx === 0 ? "is-active" : ""}`.trim()}
+              data-index={idx}
+              data-label={item.label}
+              type="button"
+              tabindex={idx === 0 ? 0 : -1}
+              onclick={`window.__bbHeroSwitcherSetActive && window.__bbHeroSwitcherSetActive('${id}', ${idx})`}
+            >
+              {/* {item.icon ? <item.icon class="tab-icon" /> : null} */}
+              <span class="tab-label">{item.label}</span>
+              {/* {item.tagLabel && (
+                <Tag
+                  label={item.tagLabel}
+                  variant={item.tagVariant ?? "orange"}
+                  size="small"
+                />
+              )} */}
+            </button>
+          );
+        })
+      }
+    </div>
+    <div class="tabs-right flex flex-row gap-2 items-center">
+      <button class="mode  is-active" data-mode-toggle="builders" aria-pressed="true" type="button">
+        <span>Builder</span>
+      </button>
+      <button class="mode " data-mode-toggle="users" aria-pressed="false" type="button">
+        <span>User</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="media" role="region" aria-label="Product preview">
+    <Image class="bg" src={background} alt="Background" loading="lazy" />
+    {
+      items.map((item, idx) => (
+        <div
+          id={`${id}-panel-${idx}`}
+          role="tabpanel"
+          aria-labelledby={`${id}-tab-${idx}`}
+          aria-hidden={idx === 0 ? "false" : "true"}
+          class={`product ${idx === 0 ? "is-active" : ""}`.trim()}
+          data-index={idx}
+          data-label={item.label}
+        >
+          <div class="variant img-builder is-active">
+            <Image
+              class="product-img"
+              src={item.product}
+              alt={item.alt ?? `${item.label} screenshot`}
+              loading="lazy"
+            />
+          </div>
+          {item.userProduct && (
+            <div class="variant img-user">
+              <Image
+                class="product-img"
+                src={item.userProduct}
+                alt={item.alt ?? `${item.label} screenshot`}
+                loading="lazy"
+              />
+            </div>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .hero-switcher {
+    width: 100%;
+  }
+
+  .tabs {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 8px;
+    position: relative;
+    z-index: 3;
+    height: inherit;
+  }
+  .tabs-left,
+  .tabs-right {
+    display: flex;
+    gap: 8px;
+  }
+
+  .tab {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    padding: 4px 8px;
+    font-size: 14px;
+    color: var(--color-stone-500); /* stone-900 */
+    border-bottom: 1px solid transparent;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tab-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-stone-400); /* stone-500 */
+  }
+  .tab.is-active .tab-icon {
+    color: var(--color-sky-700); /* sky-600 */
+  }
+  .tab:hover:not(.is-active) .tab-icon {
+    color: #1c1917; /* stone-900 */
+  }
+
+  .tab:hover {
+    color: var(--color-stone-950);
+  }
+  .tab:hover .tab-icon {
+    color: var(--color-sky-700);
+  }
+
+  .tab.is-active {
+    background-color: var(--color-stone-200);
+    color: var(--color-stone-950); /* sky-600 */
+    border-radius: 8px;
+  }
+  .tab.secondary {
+    color: #57534e;
+    border-bottom-color: transparent;
+    cursor: default;
+  }
+  .tab.secondary:hover {
+    color: #0c0a09;
+  }
+
+  .mode {
+    appearance: none;
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #78716c; /* stone-500 */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .mode:hover {
+    color: #0c0a09; /* stone-950 */
+  }
+  .mode.is-active {
+    background-color: #e7e5e4; /* stone-200 */
+    color: #0c0a09; /* stone-950 */
+  }
+
+  .mode-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .media {
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+
+  .bg {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 0;
+  }
+
+  .product {
+    position: absolute;
+    /* equal space on all sides; centered both axes */
+    --pad: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - (var(--pad) * 2));
+    max-height: calc(100% - (var(--pad) * 2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+    transition: opacity 150ms ease-out;
+    pointer-events: none;
+    z-index: 1;
+    box-sizing: border-box;
+  }
+
+  .product.is-active {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .variant { display: none; }
+  .variant.is-active { display: block; }
+
+  .product-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .product { --pad: 8px; }
+  }
+
+  @media (min-width: 1024px) {
+    .product { --pad: 16px; }
+  }
+</style>
+
+<script define:vars={{ id }}>
+  (() => {
+    function init(rootId) {
+      const root = document.getElementById(rootId);
+      if (!root) return;
+      const tabs = Array.from(root.querySelectorAll('.tabs-left [role="tab"]'));
+      const products = Array.from(root.querySelectorAll('.product'));
+      const modeButtons = Array.from(root.querySelectorAll('[data-mode-toggle]'));
+      let mode = 'builders';
+
+      function setActive(index) {
+        tabs.forEach((t, i) => {
+          const active = i === index;
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+          t.setAttribute('tabindex', active ? '0' : '-1');
+          t.classList.toggle('is-active', active);
+        });
+        products.forEach((p, i) => {
+          const active = i === index;
+          p.classList.toggle('is-active', active);
+          p.setAttribute('aria-hidden', active ? 'false' : 'true');
+        });
+        if (tabs[index]) tabs[index].focus();
+      }
+
+      // Save on root for manual triggering
+      root.__bbSetActive = setActive;
+
+      function allowed(label) {
+        if (mode === 'users') {
+          return label && ['chat','apps','agents'].includes(label.toLowerCase());
+        }
+        return true; // builders see all
+      }
+
+      function applyMode(newMode) {
+        mode = newMode;
+        // toggle mode buttons state
+        modeButtons.forEach((b) => {
+          const isActive = b.getAttribute('data-mode-toggle') === mode;
+          b.classList.toggle('is-active', isActive);
+          b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+
+        // show/hide tabs and panels
+        tabs.forEach((t, i) => {
+          const label = t.getAttribute('data-label') || '';
+          const show = allowed(label);
+          t.style.display = show ? '' : 'none';
+          if (!show) {
+            t.setAttribute('tabindex', '-1');
+            t.classList.remove('is-active');
+          }
+          const p = products[i];
+          if (p) {
+            p.style.display = show ? '' : 'none';
+            p.setAttribute('aria-hidden', show ? (p.classList.contains('is-active') ? 'false' : 'true') : 'true');
+            // switch variant image if both are present
+            const builder = p.querySelector('.variant.img-builder');
+            const user = p.querySelector('.variant.img-user');
+            if (builder && user) {
+              // Both variants exist, switch between them
+              builder.classList.toggle('is-active', mode !== 'users');
+              user.classList.toggle('is-active', mode === 'users');
+            } else if (builder) {
+              // Only builder variant exists, keep it active
+              builder.classList.add('is-active');
+            }
+          }
+        });
+
+        // ensure an active visible tab
+        let activeIdx = tabs.findIndex((t) => t.classList.contains('is-active') && t.style.display !== 'none');
+        if (activeIdx < 0) {
+          const firstVisible = tabs.findIndex((t) => t.style.display !== 'none');
+          if (firstVisible >= 0) setActive(firstVisible);
+        }
+      }
+
+      root.addEventListener('click', (e) => {
+        const btn = e.target && e.target.closest ? e.target.closest('button[role="tab"]') : null;
+        if (btn && root.contains(btn)) {
+          const idx = tabs.indexOf(btn);
+          if (idx >= 0 && btn.style.display !== 'none') setActive(idx);
+          return;
+        }
+        const modeBtn = e.target && e.target.closest ? e.target.closest('[data-mode-toggle]') : null;
+        if (modeBtn && root.contains(modeBtn)) {
+          applyMode(modeBtn.getAttribute('data-mode-toggle'));
+        }
+      });
+
+      root.addEventListener('keydown', (e) => {
+        const visible = tabs
+          .map((t, i) => ({ t, i }))
+          .filter(({ t }) => t.style.display !== 'none');
+        const activeIdx = visible.findIndex(({ t }) => t.classList.contains('is-active'));
+        if (visible.length === 0) return;
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          const next = visible[(activeIdx + 1) % visible.length].i;
+          setActive(next);
+        }
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const prev = visible[(activeIdx - 1 + visible.length) % visible.length].i;
+          setActive(prev);
+        }
+      });
+
+      setActive(0);
+      applyMode('builders');
+    }
+
+    window.__bbHeroSwitcherSetActive = function (rootId, index) {
+      const root = document.getElementById(rootId);
+      const setActive = root && root.__bbSetActive;
+      if (typeof setActive === 'function') setActive(index);
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => init(id));
+    } else {
+      init(id);
+    }
+  })();
+</script>
+
