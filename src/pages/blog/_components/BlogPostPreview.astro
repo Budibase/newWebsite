@@ -9,15 +9,12 @@ interface Props {
 
 const { post } = Astro.props as Props;
 
-// Get authors array - support both single author and multiple authors
-const authors = post.data.authors || (post.data.author ? [{ name: post.data.author, profilePic: post.data.profilePic }] : []);
-
 // Determine tag to show
 const tagLabel = post.data.featured ? 'Featured' : post.data.category;
 ---
 
-<article class="blog-post-preview">
-	<a href={`/blog/${post.id}/`} data-astro-prefetch class="py-2 flex justify-between px-2 text-stone-500! hover:text-stone-950! transition-opacity duration-150">
+<div class="blog-post-preview">
+	<a href={`/blog/${post.id}/`} data-astro-prefetch class="flex justify-between px-2 text-stone-500! hover:text-stone-950! dark:text-stone-300! dark:hover:text-stone-100! transition-opacity duration-150">
 				<div class="flex gap-1.5 items-center">
 					<p class="leading-none mb-0! text-inherit!">{post.data.title}</p>
 					{
@@ -25,30 +22,12 @@ const tagLabel = post.data.featured ? 'Featured' : post.data.category;
 							<Tag label={tagLabel} variant="secondary" size="small" />
 						)
 					}
-					{
-						authors.length > 0 && (
-							<div class="blog-post-authors">
-								{
-									authors.map((author) => (
-										<div>
-											{
-												author.profilePic ? (
-													<img src={author.profilePic} alt={author.name} class="w-6 h-6 rounded-full" />
-												) : (
-													<div class="avatar-placeholder">{author.name.charAt(0).toUpperCase()}</div>
-												)
-											}
-										</div>
-									))
-								}
-							</div>
-						)
-					}
 					</div>
-					<div>
-						<time class="text-inherit! text-sm" datetime={post.data.publishDate.toISOString()}>
+					<div class="flex items-center gap-6">
+						<time class="text-inherit! text-sm text-right" datetime={post.data.publishDate.toISOString()}>
 							{format(post.data.publishDate, 'MMM d, yyyy')}
 						</time>
+						
 					</div>
 				</div>
 			</div>
@@ -60,20 +39,6 @@ const tagLabel = post.data.featured ? 'Featured' : post.data.category;
 	.blog-post-preview {
 		margin-bottom: 0;
 	}
-
-	.avatar-placeholder {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 14px;
-		font-weight: 500;
-		color: var(--stone-600);
-		background-color: var(--bg-stone-200);
-	}
-
-
 
 	@media (min-width: 768px) {
 		.blog-post-title-section {

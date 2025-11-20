@@ -90,7 +90,7 @@ import Icon from "@components/Icon.astro";
         const theme = button.getAttribute("data-theme");
         if (theme === stored) {
           // Active state: darker in light mode, lighter in dark mode
-          button.classList.add("bg-stone-700", "dark:bg-stone-600", "text-stone-50", "dark:text-stone-50");
+          button.classList.add("bg-stone-200", "dark:bg-stone-800", "text-stone-950", "dark:text-stone-50");
           button.classList.remove("text-stone-600", "dark:text-stone-400", "bg-transparent");
         } else {
           button.classList.remove("bg-stone-700", "dark:bg-stone-600", "text-stone-50", "dark:text-stone-50");

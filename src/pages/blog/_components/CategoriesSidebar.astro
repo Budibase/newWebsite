@@ -23,8 +23,8 @@ const categories = [
 						<a
 							href={category.id === 'all' ? '/blog' : `/blog/category/${category.id}`}
 							class:list={[
-								'category-link text-stone-500 hover:text-stone-950',
-								currentCategory === category.id && 'text-stone-950',
+								'category-link text-stone-500 hover:text-stone-950 dark:text-stone-400 dark:hover:text-stone-100',
+								currentCategory === category.id && 'text-stone-950! dark:text-stone-100!',
 							]}
 							data-astro-prefetch
 						>

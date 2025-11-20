@@ -3,6 +3,13 @@
 /* Override dark variant to use class selector instead of prefers-color-scheme */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+@theme {
+  --color-stone-950: oklch(0.1821 0.0139 94.03);
+  --color-stone-900: oklch(0.2135 0.0118 91.77);
+}
+*/
+
 :root {
   /* Landing page vertical padding (each side). Adjust once here. */
   --font-sans: "Inter", sans-serif;
@@ -38,11 +45,7 @@ html {
   color: var(--color-stone-900);
   text-rendering: optimizeLegibility;
   font-variant-numeric: normal;
-  font-feature-settings:
-    "ss03" 1,
-    "cv01" 1,
-    "liga" 1,
-    "calt" 1;
+
   transition: background-color 150ms ease-out, color 150ms ease-out;
 }
 
@@ -96,20 +99,6 @@ p a {
   color: var(--color-sky-400);
 }
 
-p a::after {
-  transition: 150ms ease-out;
-  pointer-events: none;
-  content: "";
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  height: 2px;
-  border-radius: 2px;
-  background: currentcolor;
-  opacity: 0.1;
-}
-
 p a:hover::after {
   opacity: 0.5;
 }
@@ -131,7 +120,7 @@ ul, li, ol {
 h1, .h1 {
   font-family: var(--font-display);
   color: var(--text-primary);
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.25px !important;
@@ -215,7 +204,7 @@ article h3, article h4, article h5, article h6 {
 
 article p {
   font-family: var(--font-sans);
-  color: var(--color-stone-800) !important;
+  color: var(--text-primary) !important;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: -0.15px !important;
@@ -223,33 +212,34 @@ article p {
 }
 
 .dark article p {
-  color: var(--color-stone-200) !important;
+  color: var(--color-stone-300) !important;
 }
 
 article ul, article li, article ol {
   font-family: var(--font-sans);
-  color: var(--color-stone-600) !important;
+  color: var(--text-primary) !important;
   letter-spacing: -0.15px !important;
   margin: .7rem .5rem !important;
   list-style: disc !important;
 }
 
 .dark article ul, .dark article li, .dark article ol {
-  color: var(--color-stone-400) !important;
+  color: var(--color-stone-300) !important;
 }
 
 article strong {
-  font-weight: 400;
+  font-weight: 500;
   color: var(--color-stone-950) !important;
 }
 
 .dark article strong {
   color: var(--color-stone-50) !important;
+  font-weight: 500;
 }
 
 article a {
   font-weight: 400;
-  color: var(--color-sky-900) !important;
+  color: var(--color-sky-800) !important;
   text-decoration: underline;
   text-underline-offset: 4px !important;
   text-decoration-thickness: 0.5px !important;
@@ -261,18 +251,29 @@ article a:hover {
 }
 
 .dark article a {
-  color: var(--color-sky-400) !important;
-  text-decoration-color: var(--color-stone-600) !important;
+  color: var(--color-stone-50) !important;
+  text-decoration-color: var(--text-secondary) !important;
+  text-decoration: underline;
+  text-underline-offset: 4px !important;
+  text-decoration-thickness: 0.5px !important;
 }
 
 .dark article a:hover {
   color: var(--color-sky-300) !important;
+  text-decoration: underline;
+  text-underline-offset: 4px !important;
+  text-decoration-thickness: 0.5px !important;
+  text-decoration-color: var(--color-sky-100) !important;
+
 }
 
 .bg-transparent {
   background-color: transparent;
 }
 
+.bg-primary {
+  background-color: var(--color-theme-bg);
+}
 .bg-secondary {
   background-color: var(--color-theme-bg-secondary);
 }

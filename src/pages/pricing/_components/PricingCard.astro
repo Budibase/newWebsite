@@ -63,7 +63,7 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
 
 <div class={cardClasses}>
   <header class="header">
-    <h3>{title}</h3>
+    <h3 class="text-stone-900 dark:text-stone-100">{title}</h3>
     {
       recommended && (
         <span
@@ -85,8 +85,8 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
           }</span
         >
         <span class="inline-flex gap-0.5">
-          <span class="text-md text-stone-600">{creatorLabel}</span>
-          <span class="text-md text-stone-600">{creatorUnit}</span>
+          <span class="text-md text-stone-600 dark:text-stone-400">{creatorLabel}</span>
+          <span class="text-md text-stone-600 dark:text-stone-400">{creatorUnit}</span>
         </span>
       </p>
       {
@@ -96,15 +96,15 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
               {typeof userPrice === "number" ? `$${userPrice}` : userPrice}
             </span>
             <span class="inline-flex gap-0.5">
-              <span class="text-md text-stone-600">{userLabel}</span>
-              <span class="text-md text-stone-600">{userUnit}</span>
+              <span class="text-md text-stone-600 dark:text-stone-400">{userLabel}</span>
+              <span class="text-md text-stone-600 dark:text-stone-400">{userUnit}</span>
             </span>
           </p>
         )
       }
     </div>
     <div class="mt-4">
-      {description && <p class=" !text-stone-600">{description}</p>}
+      {description && <p class=" !text-stone-600 dark:!text-stone-400">{description}</p>}
     </div>
     {
       features?.length ? (
@@ -112,9 +112,9 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
           {features.map((feat) => (
             <li class="feature">
               <span class="check">
-                <Check class="fill-black w-3" />
+                <Check class="fill-black dark:fill-stone-100 w-3" />
               </span>
-              <span class="feature-text">{feat}</span>
+              <span class="feature-text text-stone-900 dark:text-stone-100">{feat}</span>
             </li>
           ))}
         </ul>
@@ -134,9 +134,13 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
 <style>
   .pricing-card {
     background: var(--color-theme-bg-secondary);
-    border: 1px solid var(--gray-200);
+    border: 1px solid var(--color-stone-200);
     border-radius: 8px;
     padding: 24px;
+  }
+
+  :global(.dark) .pricing-card {
+    border-color: var(--color-stone-800);
   }
 
   .header {
@@ -157,7 +161,11 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
   .price-line {
     margin: 0;
     font-size: 22px;
-    color: var(--gray-900);
+    color: var(--color-stone-900);
+  }
+
+  :global(.dark) .price-line {
+    color: var(--color-stone-100);
   }
 
   .cta {

@@ -1,6 +1,9 @@
 ---
 import Link from "@components/Link.astro";
 import Check from "phosphor-astro/CheckCircle.astro";
+import GlobeHemisphereWest from "phosphor-astro/GlobeHemisphereWest.astro";
+import Certificate from "phosphor-astro/Certificate.astro";
+
 import ThemeToggle from "@components/ThemeToggle.astro";
 
 interface FooterLink {
@@ -95,19 +98,15 @@ const footerColumns: FooterColumn[] = [
       <div class="footer-copyright">
         <span>© 2025 Budibase, Inc.</span>
         <span class="footer-certification">
-          <Check class="footer-check-icon" />
-          <span>SOC 2 Certified</span>
-        </span>
-        <span class="footer-certification">
-          <Check class="footer-check-icon" />
-          <span>ISO27001 Certified</span>
+          <Certificate class="footer-check-icon" />
+          <span>ISO 27001 Certified</span>
         </span>
         <span class="footer-certification">
           <Check class="footer-check-icon" />
           <span>GDPR Compliant</span>
         </span>
         <span class="footer-certification">
-          <Check class="footer-check-icon" />
+          <GlobeHemisphereWest class="footer-check-icon" />
           <span>Made in Europe</span>
         </span>
       </div>
@@ -144,7 +143,6 @@ const footerColumns: FooterColumn[] = [
     flex-wrap: wrap;
     gap: 1.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid var(--gray-200);
   }
 
   .footer-copyright {
@@ -152,7 +150,7 @@ const footerColumns: FooterColumn[] = [
     align-items: center;
     gap: 1rem;
     font-size: 14px;
-    color: var(--text-secondary);
+    color: var(--text-primary);
   }
 
   .footer-certification {

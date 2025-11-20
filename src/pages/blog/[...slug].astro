@@ -24,10 +24,9 @@ const { Content } = await render(post);
 
 ---
 <MarkdownPostLayout frontmatter={post.data}>
-	<article class="article my-8">
+	<article class="article my-8 max-w-prose mx-auto">
 		<Content />
 	</article>
-	<hr class="border-stone-300">
 	<CTA />
 </MarkdownPostLayout>
 

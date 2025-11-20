@@ -38,14 +38,14 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
 	image={{ src: '/og/blog.jpg', alt: "What's new in the Budibase ecosystem" }}
 >
 	<div class="mt-24 container max-w-7xl mx-auto">
-		<h1 class="text-2xl font-bold mb-8">Blog</h1>
+		<h1 class="text-2xl font-bold mb-8 text-stone-900 dark:text-stone-100">Blog</h1>
 		<div class="blog-layout">
 			<aside class="blog-sidebar">
 				<CategoriesSidebar currentCategory="all" />
 			</aside>
 
 			<main class="blog-main">
-				<ul class="blog-posts-list">
+				<ul class="blog-posts-list flex flex-col gap-3">
 					{
 						page.data.map((post) => (
 							<li>
@@ -55,7 +55,7 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
 					}
 				</ul>
 
-				<div class="blog-pagination">
+				<div class="my-8">
 					<Pagination restRoute allPages={allPages} page={page} />
 				</div>
 			</main>
@@ -65,7 +65,6 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
 
 <style>
 	.blog-container {
-		background-color: var(--color-theme-bg);
 		min-height: calc(100vh - 200px);
 		padding: 2rem 1rem;
 	}
@@ -100,11 +99,6 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
 		border-bottom: none;
 	}
 
-	.blog-pagination {
-		margin-top: 3rem;
-		display: flex;
-		justify-content: center;
-	}
 
 	@media (max-width: 768px) {
 		.blog-layout {
