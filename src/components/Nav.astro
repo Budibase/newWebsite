@@ -7,12 +7,28 @@ import HeaderDropDown from "@components/HeaderDropDown.astro";
 
 const resourcesItems = [
   {
-    href: "/products/agents",
-    label: "Agents",
+    href: "/blog",
+    label: "Blog",
   },
   {
-    href: "/products/agents",
-    label: "Agents",
+    href: "/changelog",
+    label: "Changelog",
+  },
+  {
+    href: "/roadmap",
+    label: "Roadmap",
+  },
+  {
+    href: "/docs",
+    label: "Docs",
+  },
+  {
+    href: "/community",
+    label: "Community",
+  },
+  {
+    href: "/company",
+    label: "Company",
   },
 ];
 ---
@@ -22,7 +38,7 @@ const resourcesItems = [
 >
   <div class="flex items-center gap-3 md:gap-5">
     <a href="/">
-      <div class="w-7 mr-2 relative">
+      <div class="w-6 mr-2 relative">
         <Image
           src={bbSymbol}
           alt="Budibase symbol"
