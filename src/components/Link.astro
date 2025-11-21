@@ -7,6 +7,7 @@
 // - variant?: 'primary' | 'secondary' | 'cta' (default 'primary')
 // - size?: 'small' | 'medium' | 'large' (default 'medium')
 // - class?: string (extra classes)
+// - underline?: boolean (adds underline decoration when true)
 
 type Variant = "primary" | "secondary" | "cta";
 type Size = "small" | "medium" | "large";
@@ -20,6 +21,7 @@ interface Props {
   class?: string;
   ariaLabel?: string;
   rel?: string;
+  underline?: boolean;
 }
 
 const {
@@ -31,12 +33,35 @@ const {
   class: className = "",
   ariaLabel,
   rel,
+  underline = false,
 } = Astro.props as Props;
 
 const sizeClass = size !== "medium" ? size : "";
 const variantClass = variant;
-const ctaColorClass = variant === "cta" ? "text-sky-700" : "";
-const classes = ["alink", sizeClass, variantClass, ctaColorClass, className]
+const underlineClass = underline ? "underline" : "";
+
+// Build Tailwind classes for variants with dark mode support
+const variantColorClasses = {
+  primary: "text-stone-900 dark:text-stone-50",
+  secondary: "text-stone-500 dark:text-stone-400",
+  cta: "text-sky-700 dark:text-sky-200",
+};
+
+const hoverColorClasses = {
+  primary: "hover:text-stone-700 dark:hover:text-stone-100",
+  secondary: "hover:text-stone-700 dark:hover:text-stone-300",
+  cta: "hover:text-sky-600 dark:hover:text-sky-100",
+};
+
+const classes = [
+  "alink",
+  sizeClass,
+  variantClass,
+  underlineClass,
+  variantColorClasses[variant],
+  hoverColorClasses[variant],
+  className,
+]
   .filter(Boolean)
   .join(" ");
 
@@ -76,22 +101,16 @@ const computedRel =
     font-size: 18px;
   }
 
-  /* Variants */
-  .alink.primary {
-    color: var(--color-stone-50);
-  }
-  .alink.primary:hover {
-    color: var(--color-stone-50);
-  }
-  .alink.secondary {
-    color: var(--text-secondary);
-  }
-  .alink.secondary:hover {
-    color: var(--color-stone-50);
-  }
-  /* CTA color is applied via Tailwind class 'text-blue-700' */
-
+  /* Hover opacity - colors are handled via Tailwind dark mode classes */
   .alink:hover {
     opacity: 0.9;
+  }
+
+  /* Underline styling */
+  .alink.underline {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 0.5px;
+    text-decoration-color: currentColor;
   }
 </style>

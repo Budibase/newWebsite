@@ -1,4 +1,6 @@
 ---
+import Icon from "@components/Icon.astro";
+
 // Reusable Button component
 // Props:
 // - label: string (required)
@@ -7,6 +9,8 @@
 // - type?: 'button' | 'submit' | 'reset' (button only)
 // - class?: string (additional classes)
 // - size?: 'small' | 'medium' | 'large' (defaults to 'medium')
+// - icon?: string (optional icon name to display before the label)
+// - iconSize?: string (optional icon size in pixels, overrides default size-based calculation)
 
 type Variant = "primary" | "secondary" | "cta";
 
@@ -18,6 +22,8 @@ interface Props {
   class?: string;
   ariaLabel?: string;
   size?: "small" | "medium" | "large";
+  icon?: string;
+  iconSize?: string;
 }
 
 const {
@@ -28,7 +34,19 @@ const {
   class: className = "",
   ariaLabel,
   size = "medium",
+  icon,
+  iconSize: providedIconSize,
 } = Astro.props as Props;
+
+// Map button size to icon size (in pixels)
+const iconSizes: Record<"small" | "medium" | "large", string> = {
+  small: "16",
+  medium: "18",
+  large: "20",
+};
+
+// Use provided iconSize if available, otherwise calculate based on button size
+const iconSize = icon ? (providedIconSize ?? iconSizes[size]) : undefined;
 
 // Build Tailwind classes based on variant and size
 const variantClasses = {
@@ -50,15 +68,24 @@ const ctaSizeClasses = {
   large: "px-3 py-[3px] text-lg",
 };
 
-const baseClasses = "inline-flex items-center justify-center gap-2 rounded-full font-normal transition-all duration-150 active:scale-[0.98] no-underline border-none cursor-pointer font-sans";
+// Gap classes based on size (4px small, 6px medium, 8px large)
+const gapClasses = {
+  small: "gap-1", // 4px
+  medium: "gap-1.5", // 6px
+  large: "gap-2", // 8px
+};
+
+const baseClasses = "inline-flex items-center justify-center rounded-full font-normal transition-all duration-150 active:scale-[0.98] no-underline border-none cursor-pointer font-sans";
 
 // Use special padding for CTA variant
 const paddingClasses = sizeClasses[size];
+const gapClass = gapClasses[size];
 
 const classes = [
   baseClasses,
   variantClasses[variant],
   paddingClasses,
+  gapClass,
   className,
 ]
   .filter(Boolean)
@@ -68,10 +95,12 @@ const classes = [
 {
   url ? (
     <a href={url} class={classes} aria-label={ariaLabel} role="button">
+      {icon && iconSize && <Icon name={icon} size={iconSize} />}
       {label}
     </a>
   ) : (
     <button type={type} class={classes} aria-label={ariaLabel}>
+      {icon && iconSize && <Icon name={icon} size={iconSize} />}
       {label}
     </button>
   )

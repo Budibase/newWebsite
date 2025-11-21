@@ -15,8 +15,8 @@ const { label, price } = Astro.props as Props;
 ---
 
 <div class="addon-row">
-  <div class="label">{label}</div>
-  <div class="price">{price}</div>
+  <div class="text-base md:text-lg text-stone-900 dark:text-stone-100">{label}</div>
+  <div class="text-base md:text-lg text-stone-900 dark:text-stone-100 whitespace-nowrap">{price}</div>
 </div>
 
 <style>

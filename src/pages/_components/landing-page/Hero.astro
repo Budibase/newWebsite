@@ -14,7 +14,7 @@ import Browsers from "phosphor-astro/BrowsersFill.astro";
 import Table from "phosphor-astro/GridNineFill.astro";
 ---
 
-<section class="container max-w-7xl mx-auto px-2 lg:px-0 flex flex-col mt-24">
+<section class="container max-w-7xl mx-auto px-2 lg:px-0 flex flex-col mt-8 md:mt-20">
   <!--
     Build AI agents, chat, automations and apps - with your models, data, and
     tools.
@@ -29,18 +29,18 @@ import Table from "phosphor-astro/GridNineFill.astro";
   Open-source and built for privacy-first workflows, Budibase is the proven way to
     build AI agents, chat, apps, & automations.
   -->
-  <h1 class="max-w-2xl h2 text-stone-500! dark:text-stone-400! mb-4">
+  <h1 class="max-w-2xl text-xl md:text-2xl lg:h2 text-stone-500! dark:text-stone-400! mb-4">
     Open-source and designed for IT & Security workflows,
     <span class="text-stone-950 dark:text-stone-50"
       >Budibase is the privacy-first way to build AI agents, chat, apps, &
       automations.</span
     >
   </h1>
-  <div class="flex flex-row gap-2 mt-2">
-    <Button label="Get Budibase free" url="/" variant="cta" />
+  <div class="flex flex-row mt-2">
+    <Button label="Get Budibase free" url="/" variant="cta" icon="PlayFill" iconSize="20" />
   </div>
 
-  <div class="mt-10">
+  <div class="mt-6 md:mt-10">
     <HeroSwitcher
       background={HeroBg}
       items={[

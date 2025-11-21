@@ -73,12 +73,22 @@ function smartypants(text: string, _mode?: number): string {
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
     
-    function applyTheme() {
+    function applyTheme(skipTransitions = false) {
+      if (skipTransitions) {
+        document.documentElement.classList.add('no-transitions');
+      }
+      
       const effectiveTheme = getEffectiveTheme();
       if (effectiveTheme === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
+      }
+      
+      if (skipTransitions) {
+        // Force reflow to ensure the class is applied
+        void document.documentElement.offsetHeight;
+        document.documentElement.classList.remove('no-transitions');
       }
     }
     
@@ -86,17 +96,29 @@ function smartypants(text: string, _mode?: number): string {
     applyTheme();
     
     // Re-apply theme on Astro view transitions (client-side navigation)
-    // Use astro:after-swap instead of astro:page-load to prevent flicker
-    document.addEventListener('astro:after-swap', applyTheme);
+    // Use astro:after-swap and skip transitions to prevent flicker
+    document.addEventListener('astro:after-swap', () => {
+      applyTheme(true);
+    });
     
     // Also listen for storage changes (for syncing across tabs)
     window.addEventListener('storage', (e) => {
       if (e.key === 'theme') {
-        applyTheme();
+        applyTheme(true);
       }
     });
   })();
 </script>
+<style is:inline>
+  /* Disable transitions during theme switch to prevent flicker */
+  .no-transitions,
+  .no-transitions *,
+  .no-transitions *::before,
+  .no-transitions *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+</style>
 
 
 <!-- Font preloads, omit MDIO to improve initial load -->

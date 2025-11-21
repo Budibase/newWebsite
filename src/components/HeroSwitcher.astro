@@ -43,7 +43,7 @@ const {
               role="tab"
               aria-selected={idx === 0 ? "true" : "false"}
               aria-controls={`${id}-panel-${idx}`}
-              class={`appearance-none bg-transparent border-0 px-2 py-1 text-sm text-stone-500 dark:text-stone-400 border-b border-transparent whitespace-nowrap cursor-pointer inline-flex items-center gap-1.5 transition-colors duration-150 hover:text-stone-950 dark:hover:text-stone-100 ${
+              class={`appearance-none bg-transparent border-0 px-2 py-1 text-xs md:text-sm text-stone-500 dark:text-stone-400 border-b border-transparent whitespace-nowrap cursor-pointer inline-flex items-center gap-1.5 transition-colors duration-150 hover:text-stone-950 dark:hover:text-stone-100 flex-shrink-0 ${
                 idx === 0
                   ? "is-active bg-stone-200 dark:bg-stone-800 text-stone-950 dark:text-stone-50 rounded-lg"
                   : ""
@@ -70,7 +70,7 @@ const {
     </div>
     <div class="tabs-right flex flex-row gap-2 items-center">
       <button
-        class="mode appearance-none bg-transparent border border-transparent px-2 py-1 rounded-lg text-sm cursor-pointer inline-flex items-center gap-1.5 transition-colors duration-150 hover:text-stone-950 dark:hover:text-stone-100"
+        class="mode appearance-none bg-transparent border border-transparent px-2 py-1 rounded-lg text-xs md:text-sm cursor-pointer inline-flex items-center gap-1.5 transition-colors duration-150 hover:text-stone-950 dark:hover:text-stone-100 whitespace-nowrap"
         data-mode-toggle="builders"
         aria-pressed="true"
         type="button"
@@ -78,7 +78,7 @@ const {
         <span>Builder</span>
       </button>
       <button
-        class="mode appearance-none bg-transparent border border-transparent px-2 py-1 rounded-lg text-sm cursor-pointer inline-flex items-center gap-1.5 transition-colors duration-150 hover:text-stone-950 dark:hover:text-stone-100"
+        class="mode appearance-none bg-transparent border border-transparent px-2 py-1 rounded-lg text-xs md:text-sm cursor-pointer inline-flex items-center gap-1.5 transition-colors duration-150 hover:text-stone-950 dark:hover:text-stone-100 whitespace-nowrap"
         data-mode-toggle="users"
         aria-pressed="false"
         type="button"
@@ -138,11 +138,25 @@ const {
     position: relative;
     z-index: 3;
     height: inherit;
+    flex-wrap: wrap;
   }
-  .tabs-left,
+  .tabs-left {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    flex: 1;
+    min-width: 0;
+  }
+  .tabs-left::-webkit-scrollbar {
+    display: none;
+  }
   .tabs-right {
     display: flex;
     gap: 8px;
+    flex-shrink: 0;
   }
 
 
@@ -170,10 +184,10 @@ const {
   .product {
     position: absolute;
     /* 2rem space from all edges of background image */
-    top: 2rem;
-    right: 2rem;
-    bottom: 2rem;
-    left: 2rem;
+    top: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
     display: none;
     align-items: center;
     justify-content: center;
@@ -188,6 +202,24 @@ const {
     pointer-events: none;
     z-index: 1;
     box-sizing: border-box;
+  }
+
+  @media (min-width: 768px) {
+    .product {
+      top: 2rem;
+      right: 2rem;
+      bottom: 2rem;
+      left: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .product {
+      top: 4rem;
+      right: 4rem;
+      bottom: 4rem;
+      left: 4rem;
+    }
   }
 
   .product.is-active {

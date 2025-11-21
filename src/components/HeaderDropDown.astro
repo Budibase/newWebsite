@@ -16,7 +16,7 @@ interface Props {
 
 <header-drop-down>
 	<details class="group relative">
-		<summary class="accordion cursor-pointer link flex items-center gap-2 text-sm px-1 text-stone-900 dark:text-stone-100 hover:text-stone-600 dark:hover:text-stone-400 transition-colors">
+		<summary class="accordion cursor-pointer link flex items-center gap-2 text-sm px-1 text-stone-900 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors">
 			{Astro.props.label}
 		</summary>
 		<ul
@@ -44,7 +44,7 @@ interface Props {
 						<a
 							{href}
 							data-astro-prefetch={prefetch ? '' : undefined}
-							class="flex items-center gap-2 rounded-md p-3 leading-none transition-colors text-stone-900 dark:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-900 dark:hover:text-stone-50"
+							class="flex items-center gap-2 rounded-md p-3 leading-none transition-colors text-stone-900 dark:text-stone-100 hover:bg-stone-200 dark:hover:bg-stone-800 hover:text-stone-900 dark:hover:text-stone-50"
 						>
 							{label}
 							{badge && (

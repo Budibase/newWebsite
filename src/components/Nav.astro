@@ -7,9 +7,9 @@ import HeaderDropDown from "@components/HeaderDropDown.astro";
 ---
 
 <nav
-  class="sticky top-0 z-50 bg-primary backdrop-blur-md flex justify-between items-center container max-w-7xl px-2 lg:px-0 py-3 flex-wrap mx-auto transition-colors duration-150"
+  class="sticky top-0 z-50 bg-primary backdrop-blur-md flex flex-col md:flex-row justify-between items-start md:items-center container max-w-7xl px-2 lg:px-0 py-3 gap-3 md:gap-0 mx-auto transition-colors duration-150"
 >
-  <div class="flex flex-wrap items-center gap-5">
+  <div class="flex flex-wrap items-center gap-3 md:gap-5 w-full md:w-auto">
     <a href="/">
       <div class="w-7 mr-2 relative">
         <Image
@@ -24,58 +24,62 @@ import HeaderDropDown from "@components/HeaderDropDown.astro";
         />
       </div>
     </a>
-    <HeaderDropDown 
-    label="Products" items={[
-      {
-        href: "/products/agents",
-        label: "Agents",
-      },
-      {
-        href: "/products/agents",
-        label: "Agents",
-      },
-      ]} />
-          <a
-          target="_self"
-          href="/features"
-          class="text-sm px-1 text-stone-800 dark:text-stone-200 hover:text-stone-600 dark:hover:text-stone-400 transition-colors"
-          data-astro-prefetch
-        >
-          Enterprise
-        </a>
-        <a
-        target="_self"
-        href="/features"
-        class="text-sm px-1 text-stone-800 dark:text-stone-200 hover:text-stone-600 dark:hover:text-stone-400 transition-colors"
-        data-astro-prefetch
-      >
-        Community
-      </a>
+    <a
+      target="_self"
+      href="/features"
+      class="hidden md:inline-block text-sm px-1 text-stone-800 dark:text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 transition-colors"
+      data-astro-prefetch
+    >
+      Platform
+    </a>
+    <a
+      target="_self"
+      href="/features"
+      class="hidden md:inline-block text-sm px-1 text-stone-800 dark:text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 transition-colors"
+      data-astro-prefetch
+    >
+      Community
+    </a>
+    <a
+      target="_self"
+      href="/features"
+      class="hidden md:inline-block text-sm px-1 text-stone-800 dark:text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 transition-colors"
+      data-astro-prefetch
+    >
+      Enterprise
+    </a>
     <a
       target="_self"
       href="/pricing"
-      class="text-sm px-1 text-stone-800 dark:text-stone-200 hover:text-stone-600 dark:hover:text-stone-400 transition-colors"
+      class="hidden md:inline-block text-sm px-1 text-stone-800 dark:text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 transition-colors"
       data-astro-prefetch
     >
       Pricing
     </a>
-
-    <a
-      target="_self"
-      href="/blog"
-      class="text-sm px-1 text-stone-800 dark:text-stone-200 hover:text-stone-600 dark:hover:text-stone-400 transition-colors"
-      data-astro-prefetch
-    >
-      Resources
-    </a>
+    <div class="hidden md:block">
+      <HeaderDropDown
+        label="Resources"
+        items={[
+          {
+            href: "/products/agents",
+            label: "Agents",
+          },
+          {
+            href: "/products/agents",
+            label: "Agents",
+          },
+        ]}
+      />
+    </div>
   </div>
-  <div class="flex flex-row gap-3 items-center">
+  <div class="flex flex-row gap-2 md:gap-3 items-center w-full md:w-auto justify-end">
     <a
       href="https://github.com/budibase/budibase"
       target="_blank"
       class="relative justify-center items-center px-1.5 text-center ease-out duration-150 rounded-sm outline-none transition-all hover:bg-stone-200 dark:hover:bg-stone-800 border-transparent text-xs hidden lg:flex"
       ><span class="truncate"
-        ><span class="flex text-sm items-center gap-0.5 text-stone-700 dark:text-stone-200"
+        ><span
+          class="flex text-sm items-center gap-0.5 text-stone-700 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-200"
           ><svg
             class="w-5 h-5"
             viewBox="0 0 17 16"
@@ -90,7 +94,6 @@ import HeaderDropDown from "@components/HeaderDropDown.astro";
         ></span
       ></a
     >
-
     <Button label="Sign in" url="/" variant="secondary" size="small" />
     <Button label="Get Budibase free" url="/" variant="primary" size="small" />
   </div>
