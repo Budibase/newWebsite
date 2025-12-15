@@ -10,25 +10,46 @@ interface Props {
 		label: string;
 		prefetch?: boolean;
 		badge?: string;
+		description?: string;
 	}>;
 }
+
+type Item = Props["items"][number];
+
+const pinnedBottomLabels =
+	Astro.props.label === "Platform"
+		? ["Resources", "Roadmap"]
+		: [];
+
+const pinnedBottomItems: Item[] = pinnedBottomLabels
+	.map((label) => Astro.props.items.find((item) => item.label === label))
+	.filter((item): item is Item => Boolean(item));
+
+const mainItems = Astro.props.items.filter(
+	(item) => !pinnedBottomLabels.includes(item.label),
+);
+
+const defaultDescriptionsByLabel: Record<string, string> = {
+	Resources: "Connect your models, data, and tools",
+	Roadmap: "Get a glimpse of what's coming up next.",
+};
 ---
 
 <header-drop-down>
 	<details class="group relative">
-		<summary class="accordion cursor-pointer link flex items-center gap-2 text-sm px-1 text-stone-900 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors">
+		<summary class="accordion cursor-pointer link flex items-center gap-2 text-sm px-1 text-stone-900 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 group-open:text-stone-700 dark:group-open:text-stone-200 transition-colors">
 			{Astro.props.label}
 		</summary>
 		<ul
 			class:list={[
 				// grid
-				'grid grid-cols-2 gap-x-3',
+				'grid grid-cols-2 gap-x-2 gap-y-1',
 
 				// positioning
 				'absolute left-0 top-full translate-y-2',
 
 				// panel styling
-				'min-w-80 rounded-lg bg-secondary p-1 text-stone-900 dark:text-stone-100 text-sm',
+				'w-120 max-w-[calc(100vw-2rem)] rounded-xl bg-secondary p-2 text-stone-900 dark:text-stone-100 text-sm shadow-xl ring-1 ring-stone-200/60 dark:ring-stone-800/60',
 
 				// transitioning
 				'invisible group-open:visible group-hover:visible',
@@ -39,22 +60,53 @@ interface Props {
 		>
 			<slot />
 			{
-				Astro.props.items.map(({ href, label, prefetch, badge }) => (
+				mainItems.map(({ href, label, prefetch, badge, description }) => (
 					<li>
 						<a
 							{href}
 							data-astro-prefetch={prefetch ? '' : undefined}
-							class="flex items-center gap-2 rounded-md p-3 leading-none transition-colors text-stone-900 dark:text-stone-100 hover:bg-stone-200 dark:hover:bg-stone-800 hover:text-stone-900 dark:hover:text-stone-50"
+							class="flex flex-col gap-1 rounded-lg p-3 leading-snug transition-colors text-stone-900 dark:text-stone-100 hover:bg-stone-200 dark:hover:bg-stone-800 hover:text-stone-900 dark:hover:text-stone-50"
 						>
-							{label}
-							{badge && (
-								<span class="text-xs leading-none font-mono py-1 px-1.5 rounded text-stone-600 dark:text-stone-400">
-									{badge}
+							<span class="flex items-center gap-2">
+								<span class="font-medium">{label}</span>
+								{badge && (
+									<span class="text-xs leading-none font-mono py-1 px-1.5 rounded text-stone-600 dark:text-stone-400">
+										{badge}
+									</span>
+								)}
+							</span>
+							{description && (
+								<span class="text-xs text-stone-600 dark:text-stone-400">
+									{description}
 								</span>
 							)}
 						</a>
 					</li>
 				))
+			}
+			{
+				pinnedBottomItems.length > 0 && (
+					<li class="col-span-2 mt-1 border-t border-stone-200 dark:border-stone-800 pt-1">
+						<ul class="flex flex-col">
+							{pinnedBottomItems.map((item) => (
+								<li>
+									<a
+										href={item.href}
+										data-astro-prefetch={item.prefetch ? '' : undefined}
+										class="flex flex-col gap-1 rounded-lg p-3 leading-snug transition-colors text-stone-900 dark:text-stone-100 hover:bg-stone-200 dark:hover:bg-stone-800 hover:text-stone-900 dark:hover:text-stone-50"
+									>
+										<span class="font-medium">{item.label}</span>
+										<span class="text-xs text-stone-600 dark:text-stone-400">
+											{item.description ??
+												defaultDescriptionsByLabel[item.label] ??
+												""}
+										</span>
+									</a>
+								</li>
+							))}
+						</ul>
+					</li>
+				)
 			}
 		</ul>
 	</details>
