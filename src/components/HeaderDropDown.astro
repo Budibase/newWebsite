@@ -18,7 +18,7 @@ type Item = Props["items"][number];
 
 const pinnedBottomLabels =
 	Astro.props.label === "Platform"
-		? ["Resources", "Roadmap"]
+		? ["Resources", "Enterprise", "Roadmap"]
 		: [];
 
 const pinnedBottomItems: Item[] = pinnedBottomLabels
@@ -86,26 +86,25 @@ const defaultDescriptionsByLabel: Record<string, string> = {
 			}
 			{
 				pinnedBottomItems.length > 0 && (
-					<li class="col-span-2 mt-1 border-t border-stone-200 dark:border-stone-800 pt-1">
-						<ul class="flex flex-col">
-							{pinnedBottomItems.map((item) => (
-								<li>
-									<a
-										href={item.href}
-										data-astro-prefetch={item.prefetch ? '' : undefined}
-										class="flex flex-col gap-1 rounded-lg p-3 leading-snug transition-colors text-stone-900 dark:text-stone-100 hover:bg-stone-200 dark:hover:bg-stone-800 hover:text-stone-900 dark:hover:text-stone-50"
-									>
-										<span class="font-medium">{item.label}</span>
-										<span class="text-xs text-stone-600 dark:text-stone-400">
-											{item.description ??
-												defaultDescriptionsByLabel[item.label] ??
-												""}
-										</span>
-									</a>
-								</li>
-							))}
-						</ul>
-					</li>
+					<>
+						<li class="col-span-2 mt-1 border-t border-stone-200 dark:border-stone-800 pt-1"></li>
+						{pinnedBottomItems.map((item, index) => (
+							<li>
+								<a
+									href={item.href}
+									data-astro-prefetch={item.prefetch ? '' : undefined}
+									class="flex flex-col gap-1 rounded-lg p-3 leading-snug transition-colors text-stone-900 dark:text-stone-100 hover:bg-stone-200 dark:hover:bg-stone-800 hover:text-stone-900 dark:hover:text-stone-50"
+								>
+									<span class="font-medium">{item.label}</span>
+									<span class="text-xs text-stone-600 dark:text-stone-400">
+										{item.description ??
+											defaultDescriptionsByLabel[item.label] ??
+											""}
+									</span>
+								</a>
+							</li>
+						))}
+					</>
 				)
 			}
 		</ul>
