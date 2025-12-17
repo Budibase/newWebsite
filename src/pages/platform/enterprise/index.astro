@@ -1,0 +1,145 @@
+---
+import Layout from "../../../layouts/MainLayout.astro";
+import PlatformLayout from "@components/PlatformLayout.astro";
+import Gear from "phosphor-astro/Gear.astro";
+import ChatCircle from "phosphor-astro/ChatCircle.astro";
+import Shield from "phosphor-astro/Shield.astro";
+import HeroBg from "@assets/images/homepage/valley.png";
+import { Image } from "astro:assets";
+import Card from "@components/cards/Card.astro";
+
+const navItems = [
+  { text: "Control", link: "#control", sectionId: "control", icon: Gear },
+  { text: "Support", link: "#support", sectionId: "support", icon: ChatCircle },
+  { text: "Security", link: "#security", sectionId: "security", icon: Shield },
+];
+---
+
+<Layout>
+  <PlatformLayout
+    title="Enterprise"
+    description="Enterprise-grade features for organizations that need control, support, and security."
+    {navItems}
+  >
+    <div id="control-section" data-section="control" class="content-section mb-8">
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">
+          Control
+        </h2>
+        <p
+          class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+        >
+          Take full control of your organization's infrastructure with advanced management features, custom limits, and flexible billing options.
+        </p>
+
+        <Image
+          src={HeroBg}
+          alt="Control background"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="SCIM"
+          description="Automate user provisioning and deprovisioning with SCIM 2.0 support for seamless identity management."
+        />
+        <Card
+          label="Custom limits"
+          description="Set custom resource limits, quotas, and usage caps tailored to your organization's needs."
+        />
+        <Card
+          label="User groups"
+          description="Organize users into groups with granular permissions and role-based access controls."
+        />
+        <Card
+          label="Flexible billing"
+          description="Choose from flexible billing options including annual contracts, custom pricing, and usage-based plans."
+        />
+      </div>
+    </div>
+
+    <div id="support-section" data-section="support" class="content-section mb-8">
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">
+          Support
+        </h2>
+        <p
+          class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+        >
+          Get the support you need with dedicated account management, professional services, and guaranteed service level agreements.
+        </p>
+
+        <Image
+          src={HeroBg}
+          alt="Support background"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="Email support"
+          description="Access priority email support with guaranteed response times and dedicated support channels."
+        />
+        <Card
+          label="SLAs"
+          description="Service level agreements with guaranteed uptime, response times, and resolution commitments."
+        />
+        <Card
+          label="Account manager"
+          description="Work with a dedicated account manager who understands your business and helps optimize your usage."
+        />
+        <Card
+          label="Professional services"
+          description="Get expert help with implementation, migration, customization, and training from our professional services team."
+        />
+      </div>
+    </div>
+
+    <div id="security-section" data-section="security" class="content-section mb-8">
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">
+          Security
+        </h2>
+        <p
+          class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+        >
+          Enterprise-grade security features including single sign-on, comprehensive audit logs, secure configuration management, and self-hosting options.
+        </p>
+
+        <Image
+          src={HeroBg}
+          alt="Security background"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="SSO"
+          description="Single sign-on integration with SAML 2.0 and OIDC support for seamless authentication with your identity provider."
+        />
+        <Card
+          label="Audit logs"
+          description="Comprehensive audit logs tracking all user actions, system changes, and access events for compliance and security."
+        />
+        <Card
+          label="Environment variables"
+          description="Secure management of secrets, API keys, and configuration with encrypted environment variables."
+        />
+        <Card
+          label="Self-hosting"
+          description="Deploy and run the platform in your own infrastructure with full control over data and compliance requirements."
+        />
+      </div>
+    </div>
+  </PlatformLayout>
+</Layout>
+

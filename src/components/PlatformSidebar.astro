@@ -23,7 +23,7 @@ const { title, description, navItems } = Astro.props;
 			{navItems.map((item, index) => (
 				<li>
 					<a href={item.link} class:list={[
-						"nav-link flex flex-row gap-3 items-center h-8 px-2 rounded text-stone-600 dark:text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 [&.active]:text-stone-900 [&.active]:dark:text-stone-100 [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800 text-sm",
+						"nav-link flex flex-row gap-3 items-center h-8 px-3 rounded-md text-stone-600 dark:text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 [&.active]:text-stone-900 [&.active]:dark:text-stone-100 [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800 text-sm",
 						index === 0 && "active"
 					]} data-section={item.sectionId}>
 						<span>{item.text}</span>
