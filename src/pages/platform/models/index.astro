@@ -1,7 +1,7 @@
 ---
-import Layout from "../../layouts/MainLayout.astro";
+import Layout from "../../../layouts/MainLayout.astro";
 import PlatformLayout from "@components/PlatformLayout.astro";
-import { platformNavItemsData } from "./_navItems";
+import { platformNavItemsData } from "../_navItems";
 import Circles from "phosphor-astro/Nut.astro";
 import Memory from "phosphor-astro/Memory.astro";
 import ChatCircle from "phosphor-astro/ChatCircle.astro";
@@ -12,7 +12,7 @@ import Webhooks from "phosphor-astro/WebhooksLogo.astro";
 import Database from "phosphor-astro/GridNine.astro";
 import Sparkle from "phosphor-astro/Sparkle.astro";
 import Cloud from "phosphor-astro/Cloud.astro";
-import ProductImage from "@assets/images/platform/AgentInstructions2.png";
+import HeroBg from "@assets/images/homepage/valley.png";
 import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
 
@@ -40,50 +40,54 @@ const navItems = platformNavItemsData.map(group => ({
 
 <Layout>
 	<PlatformLayout
-		title="Platform"
-		description="The privacy-first platform to build agents, chat, automations, and apps."
+		title="AI Models"
+		description="Connect to AI models from leading providers to power your agents with cutting-edge language understanding and generation."
 		{navItems}
 	>
-		<!-- Overview Section -->
 		<div class="mb-8">
 			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
 				<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-					Overview
+					AI Models
 				</h2>
 				<p
 					class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
 				>
-					Explore the Budibase platform and discover how to build powerful applications, automate workflows, deploy AI agents, and create engaging chat experiences.
+					Connect to AI models from leading providers to power your agents with cutting-edge language understanding and generation.
 				</p>
 
-			<Image
-				src={ProductImage}
-				alt="Platform overview"
-				class="w-full h-96 object-cover rounded-md"
-			/>
+				<Image
+					src={HeroBg}
+					alt="AI models"
+					class="w-full h-96 object-cover rounded-md"
+				/>
 			</div>
 
 			<div
 				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
 			>
 				<Card
-					label="300K users"
-					description="Join hundreds of thousands of developers and teams automating workflows with Budibase."
+					label="OpenAI"
+					description="Access GPT-4, GPT-3.5, and other OpenAI models with full API compatibility."
 				/>
 				<Card
-					label="27.5K GitHub stars"
-					description="Loved by the open-source community, star us on GitHub and contribute to the project."
-					linkUrl="https://github.com/Budibase/budibase"
+					label="Mistral AI"
+					description="Use Mistral's open models including Mistral 7B and Mixtral for powerful reasoning."
 				/>
 				<Card
-					label="Roadmap"
-					description="Get a glimpse of what's coming up and track the latest features and improvements in development."
-					linkUrl="https://github.com/orgs/Budibase/projects/15"
+					label="Anthropic"
+					description="Connect to Claude models for advanced conversational AI and long-context understanding."
 				/>
 				<Card
-					label="Source code"
-					description="View and contribute to the open-source repository and join our community of developers on GitHub."
-					linkUrl="https://github.com/Budibase/budibase"
+					label="Local models"
+					description="Run models locally with Ollama, vLLM, and other local inference engines for privacy."
+				/>
+				<Card
+					label="Custom endpoints"
+					description="Connect to any model provider through custom API endpoints and configurations."
+				/>
+				<Card
+					label="Model switching"
+					description="Switch between different models for different use cases and cost optimization."
 				/>
 			</div>
 		</div>

@@ -44,14 +44,6 @@ const { title, description, navItems } = Astro.props;
 		min-width: 0;
 	}
 
-	.content-section {
-		display: none !important;
-	}
-
-	.content-section.active {
-		display: block !important;
-	}
-
 	@media (max-width: 768px) {
 		.platform-layout {
 			grid-template-columns: 1fr;
@@ -59,93 +51,4 @@ const { title, description, navItems } = Astro.props;
 		}
 	}
 </style>
-
-<script>
-	document.addEventListener('DOMContentLoaded', function() {
-		function initNavigation() {
-			// Query from document to ensure we find elements
-			const navLinks = document.querySelectorAll('.platform-layout .nav-link');
-			const sections = document.querySelectorAll('.platform-layout .content-section');
-
-			if (navLinks.length === 0 || sections.length === 0) {
-				setTimeout(initNavigation, 100);
-				return;
-			}
-
-			function activateSection(sectionId: string) {
-				// Remove active class from all nav links
-				navLinks.forEach(function(link) {
-					link.classList.remove('active');
-				});
-
-				// Remove active class from all sections and hide them
-				sections.forEach(function(section) {
-					section.classList.remove('active');
-					(section as HTMLElement).style.display = 'none';
-				});
-
-				// Add active class to the selected nav link
-				navLinks.forEach(function(link) {
-					if (link.getAttribute('data-section') === sectionId) {
-						link.classList.add('active');
-					}
-				});
-
-				// Find and activate the matching section by data-section attribute
-				sections.forEach(function(section) {
-					if (section.getAttribute('data-section') === sectionId) {
-						section.classList.add('active');
-						(section as HTMLElement).style.display = 'block';
-					}
-				});
-			}
-
-			// Set up click handlers using event delegation
-			document.addEventListener('click', function(e) {
-				const link = (e.target as HTMLElement)?.closest('.nav-link');
-				if (link) {
-					e.preventDefault();
-					const sectionId = link.getAttribute('data-section');
-					if (sectionId) {
-						activateSection(sectionId);
-						window.history.pushState(null, '', '#' + sectionId);
-					}
-				}
-			});
-
-			// Initialize: remove all active classes first
-			sections.forEach(function(section) {
-				section.classList.remove('active');
-				(section as HTMLElement).style.display = 'none';
-			});
-			navLinks.forEach(function(link) {
-				link.classList.remove('active');
-			});
-
-			// Initialize based on hash or default to first item
-			const hash = window.location.hash.slice(1);
-			if (hash) {
-				activateSection(hash);
-			} else {
-				const firstLink = navLinks[0];
-				if (firstLink) {
-					const firstSectionId = firstLink.getAttribute('data-section');
-					if (firstSectionId) {
-						activateSection(firstSectionId);
-					}
-				}
-			}
-
-			// Handle hash changes (back/forward navigation)
-			window.addEventListener('hashchange', function() {
-				const newHash = window.location.hash.slice(1);
-				if (newHash) {
-					activateSection(newHash);
-				}
-			});
-		}
-
-		initNavigation();
-	});
-</script>
 

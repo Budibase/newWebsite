@@ -1,18 +1,41 @@
 ---
 import Layout from "../../../layouts/MainLayout.astro";
 import PlatformLayout from "@components/PlatformLayout.astro";
-import Info from "phosphor-astro/Info.astro";
+import { platformNavItemsData } from "../_navItems";
+import Circles from "phosphor-astro/Nut.astro";
+import Memory from "phosphor-astro/Memory.astro";
+import ChatCircle from "phosphor-astro/ChatCircle.astro";
+import Path from "phosphor-astro/PathFill.astro";
+import Browsers from "phosphor-astro/Browsers.astro";
+import Link from "phosphor-astro/Cube.astro";
+import Webhooks from "phosphor-astro/WebhooksLogo.astro";
+import Database from "phosphor-astro/GridNine.astro";
 import Sparkle from "phosphor-astro/Sparkle.astro";
-import Briefcase from "phosphor-astro/Briefcase.astro";
+import Cloud from "phosphor-astro/Cloud.astro";
 import HeroBg from "@assets/images/homepage/valley.png";
 import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
 
-const navItems = [
-	{ text: "Overview", link: "#overview", sectionId: "overview", icon: Info },
-	{ text: "Features", link: "#features", sectionId: "features", icon: Sparkle },
-	{ text: "Use cases", link: "#use-cases", sectionId: "use-cases", icon: Briefcase },
-];
+const iconMap: Record<string, any> = {
+	Circles,
+	Memory,
+	ChatCircle,
+	Path,
+	Browsers,
+	Link,
+	Webhooks,
+	Database,
+	Sparkle,
+	Cloud,
+};
+
+const navItems = platformNavItemsData.map(group => ({
+	...group,
+	items: group.items.map(item => ({
+		...item,
+		icon: iconMap[item.iconName],
+	})),
+}));
 ---
 
 <Layout>
@@ -21,20 +44,20 @@ const navItems = [
 		description="Ship internal tools fast with a builder."
 		{navItems}
 	>
-		<div id="overview-section" data-section="overview" class="content-section mb-8">
+		<div class="mb-8">
 			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
 				<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-					Overview
+					Apps
 				</h2>
 				<p
 					class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
 				>
-					Build and deploy internal tools quickly with our powerful app builder platform.
+					Ship internal tools fast with a builder. Build and deploy internal tools quickly with our powerful app builder platform.
 				</p>
 
 				<Image
 					src={HeroBg}
-					alt="Apps overview"
+					alt="Apps builder"
 					class="w-full h-96 object-cover rounded-md"
 				/>
 			</div>
@@ -51,40 +74,8 @@ const navItems = [
 					description="Start with visual builders and extend with custom code when needed."
 				/>
 				<Card
-					label="Enterprise ready"
-					description="Built for teams with collaboration, version control, and deployment features."
-				/>
-			</div>
-		</div>
-
-		<div id="features-section" data-section="features" class="content-section mb-8">
-			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-				<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-					Features
-				</h2>
-				<p
-					class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
-				>
-					Everything you need to build powerful internal tools and applications.
-				</p>
-
-				<Image
-					src={HeroBg}
-					alt="Apps features"
-					class="w-full h-96 object-cover rounded-md"
-				/>
-			</div>
-
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-			>
-				<Card
 					label="Visual builder"
 					description="Drag-and-drop interface builder with a rich component library."
-				/>
-				<Card
-					label="Code editor"
-					description="Full-featured code editor with syntax highlighting and autocomplete."
 				/>
 				<Card
 					label="Data integration"
@@ -95,60 +86,8 @@ const navItems = [
 					description="See changes instantly with live preview and hot-reload."
 				/>
 				<Card
-					label="Responsive design"
-					description="Build apps that work perfectly on desktop, tablet, and mobile."
-				/>
-				<Card
 					label="One-click deploy"
 					description="Deploy to production with a single click, no configuration needed."
-				/>
-			</div>
-		</div>
-
-		<div id="use-cases-section" data-section="use-cases" class="content-section mb-8">
-			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-				<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-					Use cases
-				</h2>
-				<p
-					class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
-				>
-					Build a wide variety of internal tools and applications for your organization.
-				</p>
-
-				<Image
-					src={HeroBg}
-					alt="Use cases"
-					class="w-full h-96 object-cover rounded-md"
-				/>
-			</div>
-
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-			>
-				<Card
-					label="Admin dashboards"
-					description="Create powerful admin panels and management interfaces."
-				/>
-				<Card
-					label="Data entry forms"
-					description="Build custom forms for data collection and management."
-				/>
-				<Card
-					label="Reporting tools"
-					description="Generate reports and analytics dashboards for your team."
-				/>
-				<Card
-					label="Workflow automation"
-					description="Automate business processes with custom workflow apps."
-				/>
-				<Card
-					label="Customer portals"
-					description="Build customer-facing portals and self-service applications."
-				/>
-				<Card
-					label="Internal tools"
-					description="Create custom tools for your team's specific needs."
 				/>
 			</div>
 		</div>

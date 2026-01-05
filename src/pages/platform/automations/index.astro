@@ -1,22 +1,42 @@
 ---
 import Layout from "../../../layouts/MainLayout.astro";
 import PlatformLayout from "@components/PlatformLayout.astro";
+import { platformNavItemsData } from "../_navItems";
+import Circles from "phosphor-astro/Nut.astro";
+import Memory from "phosphor-astro/Memory.astro";
+import ChatCircle from "phosphor-astro/ChatCircle.astro";
 import Path from "phosphor-astro/PathFill.astro";
-import Settings from "phosphor-astro/Gear.astro";
-import Eye from "phosphor-astro/Eye.astro";
-import List from "phosphor-astro/List.astro";
-import Rocket from "phosphor-astro/Rocket.astro";
+import Browsers from "phosphor-astro/Browsers.astro";
+import Link from "phosphor-astro/Cube.astro";
+import Webhooks from "phosphor-astro/WebhooksLogo.astro";
+import Database from "phosphor-astro/GridNine.astro";
+import Sparkle from "phosphor-astro/Sparkle.astro";
+import Cloud from "phosphor-astro/Cloud.astro";
+import AutomationImage from "@assets/images/platform/AgentInAutomations.png";
 import HeroBg from "@assets/images/homepage/valley.png";
 import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
 
-const navItems = [
-	{ text: "Workflows", link: "#workflows", sectionId: "workflows", icon: Path },
-	{ text: "Settings", link: "#settings", sectionId: "settings", icon: Settings },
-	{ text: "Preview", link: "#preview", sectionId: "preview", icon: Eye },
-	{ text: "Logs", link: "#logs", sectionId: "logs", icon: List },
-	{ text: "Deploy", link: "#deploy", sectionId: "deploy", icon: Rocket },
-];
+const iconMap: Record<string, any> = {
+	Circles,
+	Memory,
+	ChatCircle,
+	Path,
+	Browsers,
+	Link,
+	Webhooks,
+	Database,
+	Sparkle,
+	Cloud,
+};
+
+const navItems = platformNavItemsData.map(group => ({
+	...group,
+	items: group.items.map(item => ({
+		...item,
+		icon: iconMap[item.iconName],
+	})),
+}));
 ---
 
 <Layout>
@@ -25,20 +45,20 @@ const navItems = [
 		description="Automate and orchestrate workflows."
 		{navItems}
 	>
-		<div id="workflows-section" data-section="workflows" class="content-section mb-8">
+		<div class="mb-8">
 			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
 				<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-					Workflows
+					Automations
 				</h2>
 				<p
 					class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
 				>
-					Build powerful automation workflows with a visual editor that connects triggers, actions, and conditions.
+					Automate and orchestrate workflows. Build powerful automation workflows with a visual editor that connects triggers, actions, and conditions.
 				</p>
 
 				<Image
-					src={HeroBg}
-					alt="Workflows background"
+					src={AutomationImage}
+					alt="Automations workflows"
 					class="w-full h-96 object-cover rounded-md"
 				/>
 			</div>
@@ -63,152 +83,12 @@ const navItems = [
 					description="Add branching logic, loops, and conditional execution to your workflows."
 				/>
 				<Card
+					label="Agent integration"
+					description="Trigger agents from within automations and allow them to take actions."
+				/>
+				<Card
 					label="Error handling"
 					description="Configure retry logic, error notifications, and fallback actions."
-				/>
-			</div>
-		</div>
-
-		<div id="settings-section" data-section="settings" class="content-section mb-8">
-			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-				<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-					Settings
-				</h2>
-				<p
-					class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
-				>
-					Configure automation settings, environment variables, and global workflow preferences.
-				</p>
-
-				<Image
-					src={HeroBg}
-					alt="Settings background"
-					class="w-full h-96 object-cover rounded-md"
-				/>
-			</div>
-
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-			>
-				<Card
-					label="Environment variables"
-					description="Manage secrets and configuration values across all your automations."
-				/>
-				<Card
-					label="Execution limits"
-					description="Set rate limits, timeout values, and resource constraints for workflows."
-				/>
-				<Card
-					label="Notifications"
-					description="Configure email, Slack, and custom notification channels for workflow events."
-				/>
-			</div>
-		</div>
-
-		<div id="preview-section" data-section="preview" class="content-section mb-8">
-			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-				<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-					Preview
-				</h2>
-				<p
-					class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
-				>
-					Test your workflows before deployment with a preview mode that simulates execution without side effects.
-				</p>
-
-				<Image
-					src={HeroBg}
-					alt="Preview background"
-					class="w-full h-96 object-cover rounded-md"
-				/>
-			</div>
-
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-			>
-				<Card
-					label="Dry run mode"
-					description="Execute workflows in preview mode without performing actual actions."
-				/>
-				<Card
-					label="Step-by-step execution"
-					description="Watch your workflow execute step by step with detailed execution logs."
-				/>
-				<Card
-					label="Test data"
-					description="Use sample data to test workflows without affecting production systems."
-				/>
-			</div>
-		</div>
-
-		<div id="logs-section" data-section="logs" class="content-section mb-8">
-			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-				<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-					Logs
-				</h2>
-				<p
-					class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
-				>
-					Monitor workflow execution with detailed logs, execution history, and performance metrics.
-				</p>
-
-				<Image
-					src={HeroBg}
-					alt="Logs background"
-					class="w-full h-96 object-cover rounded-md"
-				/>
-			</div>
-
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-			>
-				<Card
-					label="Execution history"
-					description="View all workflow runs with status, duration, and trigger information."
-				/>
-				<Card
-					label="Detailed logs"
-					description="Access step-by-step logs with inputs, outputs, and error messages."
-				/>
-				<Card
-					label="Performance metrics"
-					description="Track execution times, success rates, and resource usage over time."
-				/>
-			</div>
-		</div>
-
-		<div id="deploy-section" data-section="deploy" class="content-section mb-8">
-			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-				<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-					Deploy
-				</h2>
-				<p
-					class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
-				>
-					Deploy your workflows to production with version control, rollback capabilities, and environment management.
-				</p>
-
-				<Image
-					src={HeroBg}
-					alt="Deploy background"
-					class="w-full h-96 object-cover rounded-md"
-				/>
-			</div>
-
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-			>
-				<Card
-					label="Version control"
-					description="Track workflow versions and deploy specific versions to different environments."
-				/>
-				<Card
-					label="Environment management"
-					description="Deploy workflows to development, staging, and production environments."
-				/>
-				<Card
-					label="Rollback"
-					description="Quickly rollback to previous workflow versions if issues are detected."
 				/>
 			</div>
 		</div>

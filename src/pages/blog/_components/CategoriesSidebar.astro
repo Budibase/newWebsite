@@ -1,4 +1,10 @@
 ---
+import Stack from "phosphor-astro/Stack.astro";
+import ClockCounterClockwise from "phosphor-astro/ClockCounterClockwise.astro";
+import Book from "phosphor-astro/Book.astro";
+import Robot from "phosphor-astro/Robot.astro";
+import Users from "phosphor-astro/Users.astro";
+
 interface Props {
 	currentCategory?: string;
 	title?: string;
@@ -8,11 +14,11 @@ interface Props {
 const { currentCategory = 'all', title = 'Blog', description = '' } = Astro.props;
 
 const categories = [
-	{ id: 'all', label: 'All posts' },
-	{ id: 'Changelog', label: 'Changelog' },
-	{ id: 'tutorials', label: 'Tutorials' },
-	{ id: 'ai-agents', label: 'AI Agents' },
-	{ id: 'guests', label: 'Guests' },
+	{ id: 'all', label: 'All posts', icon: Stack },
+	{ id: 'Changelog', label: 'Changelog', icon: ClockCounterClockwise },
+	{ id: 'tutorials', label: 'Tutorials', icon: Book },
+	{ id: 'ai-agents', label: 'AI Agents', icon: Robot },
+	{ id: 'guests', label: 'Guests', icon: Users },
 ];
 ---
 
@@ -32,6 +38,7 @@ const categories = [
 							]}
 							data-astro-prefetch
 						>
+							<category.icon class="w-4 h-4 flex-shrink-0" />
 							<span>{category.label}</span>
 						</a>
 					</li>

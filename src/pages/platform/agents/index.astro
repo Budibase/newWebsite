@@ -1,30 +1,46 @@
 ---
 import Layout from "../../../layouts/MainLayout.astro";
 import PlatformLayout from "@components/PlatformLayout.astro";
-import Code from "phosphor-astro/Code.astro";
-import Wrench from "phosphor-astro/Wrench.astro";
-import Eye from "phosphor-astro/Eye.astro";
-import List from "phosphor-astro/List.astro";
-import Rocket from "phosphor-astro/Rocket.astro";
+import { platformNavItemsData } from "../_navItems";
+import Circles from "phosphor-astro/Nut.astro";
+import Memory from "phosphor-astro/Memory.astro";
+import ChatCircle from "phosphor-astro/ChatCircle.astro";
+import Path from "phosphor-astro/PathFill.astro";
+import Browsers from "phosphor-astro/Browsers.astro";
+import Link from "phosphor-astro/Cube.astro";
+import Webhooks from "phosphor-astro/WebhooksLogo.astro";
+import Database from "phosphor-astro/GridNine.astro";
+import Sparkle from "phosphor-astro/Sparkle.astro";
+import Cloud from "phosphor-astro/Cloud.astro";
 import ProductImage from "@assets/images/platform/AgentInstructions2.png";
 import PreviewImage from "@assets/images/platform/AgentPreview.png";
 import ToolsImage from "@assets/images/platform/AgentTools.png";
 import LogsImage from "@assets/images/platform/AgentLogs.png";
 import ChatImage from "@assets/images/platform/AgentInChat.png";
 import AutomationImage from "@assets/images/platform/AgentInAutomations.png";
-import HeroBg from "@assets/images/homepage/valley.png";
 import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
 
-const navItems = [
-  { text: "Editor", link: "#editor", sectionId: "editor", icon: Code },
-  { text: "Tools", link: "#tools", sectionId: "tools", icon: Wrench },
-  { text: "Preview", link: "#preview", sectionId: "preview", icon: Eye },
-  { text: "Logs", link: "#logs", sectionId: "logs", icon: List },
-  { text: "Agents in Chat", link: "#chat", sectionId: "chat", icon: Rocket },
-  { text: "Agents in automations", link: "#automation", sectionId: "automation", icon: Rocket },
+const iconMap: Record<string, any> = {
+	Circles,
+	Memory,
+	ChatCircle,
+	Path,
+	Browsers,
+	Link,
+	Webhooks,
+	Database,
+	Sparkle,
+	Cloud,
+};
 
-];
+const navItems = platformNavItemsData.map(group => ({
+	...group,
+	items: group.items.map(item => ({
+		...item,
+		icon: iconMap[item.iconName],
+	})),
+}));
 ---
 
 <Layout>
@@ -33,20 +49,20 @@ const navItems = [
     description="The privacy-first way to build agents; with your models, data, and tools."
     {navItems}
   >
-    <div id="editor-section" data-section="editor" class="content-section mb-8">
+    <div class="mb-8">
       <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
         <h2 class="text-lg! text-stone-900 dark:text-stone-100">
-           Editor
+          Agents
         </h2>
         <p
           class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
         >
-		Build agents by giving them simple, ordered instructions in a clean, easy-to-use editor.
+          The privacy-first way to build agents; with your models, data, and tools. Build agents by giving them simple, ordered instructions in a clean, easy-to-use editor.
         </p>
 
         <Image
           src={ProductImage}
-          alt="Hero background"
+          alt="Agents editor"
           class="w-full h-96 object-cover rounded-md"
         />
       </div>
@@ -66,191 +82,19 @@ const navItems = [
           label="Bindings"
           description="Bind data from your database, API, or other sources to your agents."
         />
+        <Card
+          label="Preview & test"
+          description="Chat with your agent to validate its behavior, tools, and responses before going live."
+        />
+        <Card
+          label="Execution logs"
+          description="View detailed logs including inputs, outputs, thoughts, and runtime information."
+        />
+        <Card
+          label="Integration ready"
+          description="Make agents available in Chat and trigger them from Automations workflows."
+        />
       </div>
-    </div>
-    <div id="tools-section" data-section="tools" class="content-section mb-8">
-		<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-			<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-			Tools
-			</h2>
-			<p
-			  class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
-			>
-			Tools let agents take action by calling workflows, APIs, and internal systems. View the <a href="/platform/resources" class="text-stone-300! hover:text-stone-400! underline! underline-offset-3">resources</a> page for a list of available tools.
-			</p>
-			<Image
-			  src={ToolsImage}
-			  alt="Hero background"
-			  class="w-full h-96 object-cover rounded-md"
-			/>
-		  </div>
-	
-		  <div
-			class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-		  >
-		  <Card
-		  label="APIs"
-		  description="Allow agents to call external and internal APIs to fetch data or perform actions."
-		/>
-		<Card
-		  label="Data"
-		  description="Provide agents with structured data from databases and services to ground their responses."
-		/>
-		<Card
-		  label="Budibase automations"
-		  description="Enable agents to securely trigger Budibase workflows as part of their execution."
-		/>
-		<Card
-		  label="File search"
-		  description="Let agents search and retrieve information from approved files and documents."
-		/>
-		<Card
-		  label="Web search"
-		  description="Allow agents to query the web for up-to-date information when permitted."
-		/>
-		  </div>
-    </div>
-    <div id="preview-section" data-section="preview" class="content-section mb-8">
-		<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-			<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-			Preview
-			</h2>
-			<p
-			  class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
-			>
-			Chat with your agent to validate its behavior, tools, and responses before going live.
-			</p>
-			<Image
-			  src={PreviewImage}
-			  alt="Hero background"
-			  class="w-full h-96 object-cover rounded-md"
-			/>
-		  </div>
-	
-		  <div
-			class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-		  >
-		  <Card
-		  label="Chat preview"
-		  description="Interact with your agent in a focused chat to test responses and behavior."
-		/>
-		
-		<Card
-		  label="Payload preview"
-		  description="View the request / response payloads generated during agent execution."
-		/>
-		
-		<Card
-		  label="Refresh preview action"
-		  description="Restart the preview to test your latest changes from a clean state."
-		/>
-		  </div>
-    </div>
-    <div id="logs-section" data-section="logs" class="content-section mb-8">
-		<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-			<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-			Logs
-			</h2>
-			<p
-			  class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
-			>
-			Logs provide run details including inputs, outputs, thoughts, and runtime information helpful for debugging.
-			</p>
-			<Image
-			  src={LogsImage}
-			  alt="Agent logs background"
-			  class="w-full h-96 object-cover rounded-md"
-			/>
-		  </div>
-	
-		  <div
-			class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-		  >
-		  <Card
-		  label="Execution history"
-		  description="See every agent run with status, trigger, and latency."
-		/>
-		
-		<Card
-		  label="Step-by-step actions"
-		  description="View each action the agent executed, in order."
-		/>
-		
-		<Card
-		  label="Inputs and outputs"
-		  description="Inspect inputs, outputs, and payloads for each step."
-		/>
-		  </div>
-    </div>
-    <div id="chat-section" data-section="chat" class="content-section mb-8">
-		<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-			<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-			Agents in Chat
-			</h2>
-			<p
-			  class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
-			>
-			We built <a href="/platform/chat" class="text-stone-300! hover:text-stone-400! underline! underline-offset-3">AI Chat</a> so you don't have to. Make your agent available in Chat so users can interact with it in real workflows.
-			</p>
-			<Image
-				src={ChatImage}
-				alt="Hero background"
-				class="w-full h-96 object-cover rounded-md"
-			/>
-		  </div>
-	
-		  <div
-			class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-		  >
-		  <Card
-		  label="Shortcuts"
-		  description="Let users trigger your agent quickly using predefined prompts."
-		/>
-		
-		<Card
-		  label="Forms"
-		  description="Start conversations with structured input from forms."
-		/>
-		
-		<Card
-		  label="RBAC"
-		  description="Agents inherit the same role-based access controls as the chat."
-		/>
-		  </div>
-    </div>
-	<div id="automation-section" data-section="automation" class="content-section mb-8">
-		<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-			<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-			Agents in Automations
-			</h2>
-			<p
-			  class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
-			>
-			  Put your agents to work around the clock within Budibase's deterministic automations.
-			</p>
-			<Image
-			  src={AutomationImage}
-			  alt="Hero background"
-			  class="w-full h-96 object-cover rounded-md"
-			/>
-		  </div>
-	
-		  <div
-			class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-		  >
-			<Card
-			  label="Triggers"
-			  description="Trigger your agents from within Budibase automations."
-			/>
-			<Card
-			  label="Actions"
-			  description="Allow your agents to take actions within Budibase's automations."
-			/>
-			<Card
-			  label="RBAC"
-			  description="Agents inherit the same RBAC as the automations they are triggered from."
-			/>
-		  </div>
     </div>
   </PlatformLayout>
 </Layout>

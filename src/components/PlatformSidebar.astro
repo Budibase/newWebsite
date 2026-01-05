@@ -12,17 +12,22 @@ interface NavGroup {
 }
 
 interface Props {
-	title: string;
-	description: string;
 	navItems: NavItem[] | NavGroup[];
 }
 
-const { title, description, navItems } = Astro.props;
+const { navItems } = Astro.props;
+const title = "Platform";
+const description = "The privacy-first platform to build agents, chat, automations, and apps.";
+const currentPath = Astro.url.pathname;
 
 // Check if navItems is grouped or flat
 const isGrouped = navItems.length > 0 && 'items' in navItems[0];
 const groupedNavItems = isGrouped ? (navItems as NavGroup[]) : null;
 const flatNavItems = isGrouped ? null : (navItems as NavItem[]);
+
+function isActive(link: string): boolean {
+	return currentPath === link || (link === '/platform' && currentPath === '/platform/');
+}
 ---
 
 <aside class="platform-sidebar">
@@ -41,13 +46,12 @@ const flatNavItems = isGrouped ? null : (navItems as NavItem[]);
 							</li>
 						)}
 						{group.items.map((item, itemIndex) => {
-							const isFirstItem = groupIndex === 0 && itemIndex === 0;
 							const IconComponent = item.icon;
 							return (
 								<li>
 									<a href={item.link} class:list={[
 										"nav-link flex flex-row gap-2 items-center h-8 px-3 rounded-md text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 [&.active]:text-stone-900 [&.active]:dark:text-stone-100 [&.active]:bg-stone-200 dark:[&.active]:bg-stone-800 text-sm",
-										isFirstItem && "active"
+										isActive(item.link) && "active"
 									]} data-section={item.sectionId}>
 										{IconComponent && (
 											<IconComponent class="nav-icon w-[18px] h-[18px] shrink-0" />
@@ -71,7 +75,7 @@ const flatNavItems = isGrouped ? null : (navItems as NavItem[]);
 						<li>
 							<a href={item.link} class:list={[
 								"nav-link flex flex-row gap-3 items-center h-8 px-3 rounded-md text-stone-600 dark:text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 [&.active]:text-stone-900 [&.active]:dark:text-stone-100 [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800 text-sm",
-								index === 0 && "active"
+								isActive(item.link) && "active"
 							]} data-section={item.sectionId}>
 								{IconComponent && (
 									<IconComponent class="nav-icon w-4 h-4 shrink-0" />
