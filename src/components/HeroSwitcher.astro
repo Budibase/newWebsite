@@ -1,16 +1,10 @@
 ---
 import { Image } from "astro:assets";
 
-type TagVariant = "primary" | "secondary" | "cta" | "orange";
-
 export interface SwitchItem {
   label: string;
   product: ImageMetadata;
-  userProduct?: ImageMetadata; // optional alternative image when Users mode is active
   alt?: string;
-  tagLabel?: string;
-  tagVariant?: TagVariant;
-  icon?: any;
 }
 
 interface Props {
@@ -44,42 +38,15 @@ const {
                   : ""
               }`.trim()}
               data-index={idx}
-              data-label={item.label}
               type="button"
               tabindex={idx === 0 ? 0 : -1}
               onclick={`window.__bbHeroSwitcherSetActive && window.__bbHeroSwitcherSetActive('${id}', ${idx})`}
             >
-              {/* {item.icon ? <item.icon class="tab-icon w-5 h-5 text-stone-400 dark:text-stone-500 transition-colors duration-150 [.is-active_&]:text-sky-700 dark:[.is-active_&]:text-sky-500 [.tab:hover:not(.is-active)_&]:text-stone-950 dark:[.tab:hover:not(.is-active)_&]:text-stone-100 [.tab:hover_&]:text-sky-700 dark:[.tab:hover_&]:text-sky-500" /> : null} */}
               <span class="tab-label">{item.label}</span>
-              {/* {item.tagLabel && (
-                <Tag
-                  label={item.tagLabel}
-                  variant={item.tagVariant ?? "orange"}
-                  size="small"
-                />
-              )} */}
             </button>
           );
         })
       }
-    </div>
-    <div class="tabs-right flex flex-row gap-2 items-center">
-      <button
-        class="mode appearance-none bg-transparent border border-transparent px-2 py-1 rounded-lg text-xs md:text-sm cursor-pointer inline-flex items-center gap-1.5 transition-colors duration-150 hover:text-stone-950 dark:hover:text-stone-100 whitespace-nowrap"
-        data-mode-toggle="builders"
-        aria-pressed="true"
-        type="button"
-      >
-        <span>Builder</span>
-      </button>
-      <button
-        class="mode appearance-none bg-transparent border border-transparent px-2 py-1 rounded-lg text-xs md:text-sm cursor-pointer inline-flex items-center gap-1.5 transition-colors duration-150 hover:text-stone-950 dark:hover:text-stone-100 whitespace-nowrap"
-        data-mode-toggle="users"
-        aria-pressed="false"
-        type="button"
-      >
-        <span>User</span>
-      </button>
     </div>
   </div>
 
@@ -93,26 +60,13 @@ const {
           aria-hidden={idx === 0 ? "false" : "true"}
           class={`product ${idx === 0 ? "is-active" : ""}`.trim()}
           data-index={idx}
-          data-label={item.label}
         >
-          <div class="variant img-builder is-active">
-            <Image
-              class="product-img"
-              src={item.product}
-              alt={item.alt ?? `${item.label} screenshot`}
-              loading="lazy"
-            />
-          </div>
-          {item.userProduct && (
-            <div class="variant img-user">
-              <Image
-                class="product-img"
-                src={item.userProduct}
-                alt={item.alt ?? `${item.label} screenshot`}
-                loading="lazy"
-              />
-            </div>
-          )}
+          <Image
+            class="product-img"
+            src={item.product}
+            alt={item.alt ?? `${item.label} screenshot`}
+            loading="lazy"
+          />
         </div>
       ))
     }
@@ -127,12 +81,10 @@ const {
   .tabs {
     display: flex;
     align-items: flex-end;
-    justify-content: space-between;
     gap: 8px;
     position: relative;
     z-index: 3;
     height: inherit;
-    flex-wrap: wrap;
   }
   .tabs-left {
     display: flex;
@@ -141,22 +93,9 @@ const {
     overflow-y: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    flex: 1;
-    min-width: 0;
   }
   .tabs-left::-webkit-scrollbar {
     display: none;
-  }
-  .tabs-right {
-    display: flex;
-    gap: 8px;
-    flex-shrink: 0;
-  }
-
-
-  .mode-icon {
-    width: 20px;
-    height: 20px;
   }
 
   .media {
@@ -192,9 +131,6 @@ const {
     pointer-events: auto;
   }
 
-  .variant { display: none; }
-  .variant.is-active { display: block; }
-
   .product-img {
     width: 100%;
     height: auto;
@@ -202,7 +138,6 @@ const {
     border-radius: 8px;
     object-fit: contain;
   }
-
 </style>
 
 <script define:vars={{ id }}>
@@ -212,8 +147,6 @@ const {
       if (!root) return;
       const tabs = Array.from(root.querySelectorAll('.tabs-left [role="tab"]'));
       const products = Array.from(root.querySelectorAll('.product'));
-      const modeButtons = Array.from(root.querySelectorAll('[data-mode-toggle]'));
-      let mode = 'builders';
 
       function updateTabClasses(tab, isActive) {
         if (isActive) {
@@ -243,102 +176,28 @@ const {
       // Save on root for manual triggering
       root.__bbSetActive = setActive;
 
-      function allowed(label) {
-        if (mode === 'users') {
-          return label && ['chat','apps','agents'].includes(label.toLowerCase());
-        }
-        return true; // builders see all
-      }
-
-      function updateModeButtonClasses(button, isActive) {
-        if (isActive) {
-          button.classList.add('is-active', 'bg-stone-200', 'dark:bg-stone-800', 'text-stone-950', 'dark:text-stone-50');
-          button.classList.remove('bg-transparent', 'text-stone-500', 'dark:text-stone-400');
-        } else {
-          button.classList.remove('is-active', 'bg-stone-200', 'dark:bg-stone-800', 'text-stone-950', 'dark:text-stone-50');
-          button.classList.add('bg-transparent', 'text-stone-500', 'dark:text-stone-400');
-        }
-      }
-
-      function applyMode(newMode) {
-        mode = newMode;
-        // toggle mode buttons state
-        modeButtons.forEach((b) => {
-          const isActive = b.getAttribute('data-mode-toggle') === mode;
-          b.classList.toggle('is-active', isActive);
-          b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-          updateModeButtonClasses(b, isActive);
-        });
-
-        // show/hide tabs and panels
-        tabs.forEach((t, i) => {
-          const label = t.getAttribute('data-label') || '';
-          const show = allowed(label);
-          t.style.display = show ? '' : 'none';
-          if (!show) {
-            t.setAttribute('tabindex', '-1');
-            t.classList.remove('is-active');
-            updateTabClasses(t, false);
-          }
-          const p = products[i];
-          if (p) {
-            p.style.display = show ? '' : 'none';
-            p.setAttribute('aria-hidden', show ? (p.classList.contains('is-active') ? 'false' : 'true') : 'true');
-            // switch variant image if both are present
-            const builder = p.querySelector('.variant.img-builder');
-            const user = p.querySelector('.variant.img-user');
-            if (builder && user) {
-              // Both variants exist, switch between them
-              builder.classList.toggle('is-active', mode !== 'users');
-              user.classList.toggle('is-active', mode === 'users');
-            } else if (builder) {
-              // Only builder variant exists, keep it active
-              builder.classList.add('is-active');
-            }
-          }
-        });
-
-        // ensure an active visible tab
-        let activeIdx = tabs.findIndex((t) => t.classList.contains('is-active') && t.style.display !== 'none');
-        if (activeIdx < 0) {
-          const firstVisible = tabs.findIndex((t) => t.style.display !== 'none');
-          if (firstVisible >= 0) setActive(firstVisible);
-        }
-      }
-
       root.addEventListener('click', (e) => {
         const btn = e.target && e.target.closest ? e.target.closest('button[role="tab"]') : null;
         if (btn && root.contains(btn)) {
           const idx = tabs.indexOf(btn);
-          if (idx >= 0 && btn.style.display !== 'none') setActive(idx);
-          return;
-        }
-        const modeBtn = e.target && e.target.closest ? e.target.closest('[data-mode-toggle]') : null;
-        if (modeBtn && root.contains(modeBtn)) {
-          applyMode(modeBtn.getAttribute('data-mode-toggle'));
+          if (idx >= 0) setActive(idx);
         }
       });
 
       root.addEventListener('keydown', (e) => {
-        const visible = tabs
-          .map((t, i) => ({ t, i }))
-          .filter(({ t }) => t.style.display !== 'none');
-        const activeIdx = visible.findIndex(({ t }) => t.classList.contains('is-active'));
-        if (visible.length === 0) return;
+        const activeIdx = tabs.findIndex((t) => t.classList.contains('is-active'));
+        if (tabs.length === 0) return;
         if (e.key === 'ArrowRight') {
           e.preventDefault();
-          const next = visible[(activeIdx + 1) % visible.length].i;
-          setActive(next);
+          setActive((activeIdx + 1) % tabs.length);
         }
         if (e.key === 'ArrowLeft') {
           e.preventDefault();
-          const prev = visible[(activeIdx - 1 + visible.length) % visible.length].i;
-          setActive(prev);
+          setActive((activeIdx - 1 + tabs.length) % tabs.length);
         }
       });
 
       setActive(0);
-      applyMode('builders');
     }
 
     window.__bbHeroSwitcherSetActive = function (rootId, index) {
