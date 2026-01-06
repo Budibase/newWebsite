@@ -23,25 +23,6 @@ import GlobeHemisphereWest from "phosphor-astro/GlobeHemisphereWest.astro";
   <div class="flex flex-row">
     <Button label="Get Budibase free" url="/" variant="cta" />
   </div>
-  <div class="flex flex-wrap items-center gap-3 md:gap-4 text-xs text-stone-500 dark:text-stone-400 mt-5">
-    <span class="flex items-center gap-1">
-      <Users class="w-4 h-4" />
-      <span>Self-host</span>
-    </span>
-    <span class="flex items-center gap-1">
-      <Certificate class="w-4 h-4" />
-      <span>ISO 27001 Certified</span>
-    </span>
-    <span class="flex items-center gap-1">
-      <Check class="w-4 h-4" />
-      <span>GDPR Compliant</span>
-    </span>
-    <span class="flex items-center gap-1">
-      <GlobeHemisphereWest class="w-4 h-4" />
-      <span>Made in Europe</span>
-    </span>
-  </div>
-
   <div class="mt-6 md:mt-10">
     <HeroSwitcher
       items={[
@@ -71,6 +52,25 @@ import GlobeHemisphereWest from "phosphor-astro/GlobeHemisphereWest.astro";
           alt: "Budibase tables",
         },
       ]}
-    />
+    >
+      <div class="hidden md:flex flex-wrap items-center gap-3 md:gap-4 text-xs text-stone-500 dark:text-stone-400">
+        <span class="flex items-center gap-1">
+          <Users class="w-4 h-4" />
+          <span>Self-host</span>
+        </span>
+        <span class="flex items-center gap-1">
+          <Certificate class="w-4 h-4" />
+          <span>ISO 27001 Certified</span>
+        </span>
+        <span class="flex items-center gap-1">
+          <Check class="w-4 h-4" />
+          <span>GDPR Compliant</span>
+        </span>
+        <span class="flex items-center gap-1">
+          <GlobeHemisphereWest class="w-4 h-4" />
+          <span>Made in Europe</span>
+        </span>
+      </div>
+    </HeroSwitcher>
   </div>
 </section>
