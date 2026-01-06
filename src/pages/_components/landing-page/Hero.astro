@@ -3,15 +3,9 @@ import Customers from "@components/Customers.astro";
 import Button from "@components/Button.astro";
 import HeroSwitcher from "@components/HeroSwitcher.astro";
 import AgentPreview from "@assets/images/platform/AgentPreview.png";
-import AgentInChat from "@assets/images/platform/AgentInChat.png";
 import agents from "@assets/images/platform/agents.png";
 import AgentInAutomations from "@assets/images/platform/AgentInAutomations.png";
 import AgentTools from "@assets/images/platform/AgentTools.png";
-import GraphicsCard from "phosphor-astro/LegoSmileyfiLL.astro";
-import ChatCircleDots from "phosphor-astro/ChatCircleFill.astro";
-import Path from "phosphor-astro/PathFill.astro";
-import Browsers from "phosphor-astro/BrowsersFill.astro";
-import Table from "phosphor-astro/GridNineFill.astro";
 import Users from "phosphor-astro/HardDrives.astro";
 import Certificate from "phosphor-astro/Certificate.astro";
 import Check from "phosphor-astro/CheckCircle.astro";
@@ -54,39 +48,27 @@ import GlobeHemisphereWest from "phosphor-astro/GlobeHemisphereWest.astro";
         {
           label: "Chat",
           product: AgentPreview,
-          userProduct: AgentInChat,
           alt: "Budibase chat",
-          icon: ChatCircleDots,
-          tagLabel: "New",
-          tagVariant: "secondary",
         },
         {
           label: "Agents",
           product: agents,
           alt: "Budibase agents",
-          icon: GraphicsCard,
-          tagLabel: "New",
-          tagVariant: "secondary",
         },
-
         {
           label: "Automations",
           product: AgentInAutomations,
           alt: "Budibase automations",
-          icon: Path,
         },
         {
           label: "Apps",
           product: AgentTools,
-          userProduct: AgentPreview,
           alt: "Budibase apps",
-          icon: Browsers,
         },
         {
           label: "Tables",
           product: AgentTools,
           alt: "Budibase tables",
-          icon: Table,
         },
       ]}
     />
