@@ -1,0 +1,98 @@
+---
+import Layout from "../../layouts/MainLayout.astro";
+import PlatformLayout from "@components/PlatformLayout.astro";
+import { platformNavItemsData } from "../_navItems";
+import Circles from "phosphor-astro/Nut.astro";
+import Memory from "phosphor-astro/Memory.astro";
+import ChatCircle from "phosphor-astro/ChatCircle.astro";
+import Path from "phosphor-astro/PathFill.astro";
+import Browsers from "phosphor-astro/Browsers.astro";
+import Link from "phosphor-astro/Cube.astro";
+import Webhooks from "phosphor-astro/WebhooksLogo.astro";
+import Database from "phosphor-astro/GridNine.astro";
+import Sparkle from "phosphor-astro/Sparkle.astro";
+import Cloud from "phosphor-astro/Cloud.astro";
+import TrendUp from "phosphor-astro/TrendUp.astro";
+import ChatImage from "@assets/images/platform/AgentInChat.png";
+import HeroBg from "@assets/images/homepage/valley.png";
+import { Image } from "astro:assets";
+import Card from "@components/cards/Card.astro";
+
+const iconMap: Record<string, any> = {
+  Circles,
+  Memory,
+  ChatCircle,
+  Path,
+  Browsers,
+  Link,
+  Webhooks,
+  Database,
+  Sparkle,
+  Cloud,
+  TrendUp,
+};
+
+const navItems = platformNavItemsData.map((group) => ({
+  ...group,
+  items: group.items.map((item) => ({
+    ...item,
+    icon: iconMap[item.iconName],
+  })),
+}));
+---
+
+<Layout>
+  <PlatformLayout
+			title="Budibase"
+			description="The open and free AI platform for building agents, chat, automations and apps."
+    {navItems}
+  >
+    <div class="mb-8">
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">Chat</h2>
+        <p
+          class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+        >
+          We built secure AI chat so you don't have to. Engage with AI agents in
+          a secure, real-time chat interface designed for seamless conversations
+          and workflow integration.
+        </p>
+
+        <Image
+          src={ChatImage}
+          alt="Chat interface"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="Real-time messaging"
+          description="Experience instant responses with WebSocket-based real-time communication."
+        />
+        <Card
+          label="Message history"
+          description="Access and manage conversation history with persistent storage and search."
+        />
+        <Card
+          label="Multi-agent support"
+          description="Switch between different agents within the same chat interface seamlessly."
+        />
+        <Card
+          label="Shortcuts"
+          description="Let users trigger agents quickly using predefined prompts."
+        />
+        <Card
+          label="Forms integration"
+          description="Start conversations with structured input from forms."
+        />
+        <Card
+          label="RBAC"
+          description="Role-based access controls ensure secure access to chat features."
+        />
+      </div>
+    </div>
+  </PlatformLayout>
+</Layout>

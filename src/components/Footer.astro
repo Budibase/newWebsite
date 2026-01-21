@@ -25,7 +25,6 @@ const footerColumns: FooterColumn[] = [
       { label: "Agents", url: "/agents" },
       { label: "Automations", url: "/automations" },
       { label: "Apps", url: "/apps" },
-      { label: "Enterprise", url: "/enterprise" },
       { label: "Pricing", url: "/pricing" },
     ],
   },
@@ -61,36 +60,46 @@ const footerColumns: FooterColumn[] = [
     title: "Connect",
     links: [
       { label: "X", url: "https://twitter.com/budibase", target: "_blank" },
-      { label: "LinkedIn", url: "https://linkedin.com/company/budibase", target: "_blank" },
-      { label: "YouTube", url: "https://youtube.com/@budibase", target: "_blank" },
+      {
+        label: "LinkedIn",
+        url: "https://linkedin.com/company/budibase",
+        target: "_blank",
+      },
+      {
+        label: "YouTube",
+        url: "https://youtube.com/@budibase",
+        target: "_blank",
+      },
     ],
   },
 ];
 ---
 
-<footer class="footer  bg-secondary">
+<footer class="footer bg-secondary">
   <div class="footer-container max-w-7xl container mx-auto">
     <!-- Upper section: Navigation columns -->
     <div class="footer-nav">
-      {footerColumns.map((column) => (
-        <div class="footer-column">
-          <p>{column.title}</p>
-          <ul class="text-stone-500! gap-0.5! flex flex-col">
-            {column.links.map((link) => (
-              <li>
-                <Link
-                  label={link.label}
-                  url={link.url}
-                  target={link.target}
-                  variant="secondary"
-                  size="small"
-                  class="footer-link"
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      {
+        footerColumns.map((column) => (
+          <div class="footer-column">
+            <p>{column.title}</p>
+            <ul class="text-stone-500! gap-0.5! flex flex-col">
+              {column.links.map((link) => (
+                <li>
+                  <Link
+                    label={link.label}
+                    url={link.url}
+                    target={link.target}
+                    variant="secondary"
+                    size="small"
+                    class="footer-link"
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
     </div>
 
     <!-- Lower section: Copyright and controls -->
@@ -206,4 +215,3 @@ const footerColumns: FooterColumn[] = [
     }
   }
 </style>
-

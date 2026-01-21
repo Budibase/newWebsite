@@ -26,10 +26,13 @@ const {
 
 // Build Tailwind classes based on variant and size
 const variantClasses = {
-  primary: "bg-stone-800 dark:bg-stone-100 text-stone-50 dark:text-stone-900 hover:bg-stone-200 dark:hover:bg-stone-200",
-  secondary: "bg-stone-200 dark:bg-stone-800 text-stone-900 dark:text-stone-100 hover:bg-stone-300 dark:hover:bg-stone-700",
+  primary:
+    "bg-stone-800 dark:bg-stone-100 text-stone-50 dark:text-stone-900 hover:bg-stone-200 dark:hover:bg-stone-200",
+  secondary:
+    "bg-stone-200 dark:bg-stone-800 text-stone-900 dark:text-stone-100 hover:bg-stone-300 dark:hover:bg-stone-700",
   cta: "bg-sky-700 dark:bg-sky-800 text-white dark:text-stone-50 hover:bg-sky-900 dark:hover:bg-sky-500",
-  orange: "bg-orange-600 dark:bg-orange-500 text-white hover:bg-orange-700 dark:hover:bg-orange-400",
+  orange:
+    "bg-orange-600 dark:bg-orange-500 text-white hover:bg-orange-700 dark:hover:bg-orange-400",
 };
 
 const sizeClasses = {
@@ -39,7 +42,8 @@ const sizeClasses = {
   large: "px-2.5 py-1.5 text-lg",
 };
 
-const baseClasses = "inline-flex items-center justify-center gap-2 rounded font-mono font-medium transition-all duration-150 cursor-default whitespace-nowrap";
+const baseClasses =
+  "inline-flex items-center justify-center gap-2 rounded font-mono font-medium transition-all duration-150 cursor-default whitespace-nowrap";
 
 // Secondary variant has different border-radius
 const radiusClass = variant === "secondary" ? "rounded-md" : "rounded";

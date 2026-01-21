@@ -3,54 +3,32 @@ import PlatformSidebar from "./PlatformSidebar.astro";
 import CTA from "@components/CTA.astro";
 
 interface NavItem {
-	text: string;
-	link: string;
-	sectionId: string;
-	icon?: any;
+  text: string;
+  link: string;
+  sectionId: string;
+  icon?: any;
 }
 
 interface NavGroup {
-	header?: string;
-	items: NavItem[];
+  header?: string;
+  items: NavItem[];
 }
 
 interface Props {
-	title: string;
-	description: string;
-	navItems: NavItem[] | NavGroup[];
+  title: string;
+  description: string;
+  navItems: NavItem[] | NavGroup[];
 }
 
 const { title, description, navItems } = Astro.props;
 ---
 
 <div class="container max-w-7xl mx-auto mt-24 px-2 lg:px-0">
-	<div class="platform-layout">
+	<div class="platform-layout grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8 lg:gap-16 items-start">
 		<PlatformSidebar {title} {description} {navItems} />
-		<main class="platform-main">
+		<main class="platform-main min-w-0">
 				<slot />
 		</main>
 	</div>
 	<CTA />
 </div>
-
-<style>
-	.platform-layout {
-		display: grid;
-		grid-template-columns: 260px 1fr;
-		gap: 4rem;
-		align-items: start;
-	}
-
-	.platform-main {
-		flex: 1;
-		min-width: 0;
-	}
-
-	@media (max-width: 768px) {
-		.platform-layout {
-			grid-template-columns: 1fr;
-			gap: 2rem;
-		}
-	}
-</style>
-

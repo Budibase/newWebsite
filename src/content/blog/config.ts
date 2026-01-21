@@ -35,12 +35,20 @@ export const collections = {
         ),
       author: z.string().optional().describe("Author name"),
       profilePic: z.string().optional().describe("Author profile picture URL"),
-      authors: z.array(z.object({
-        name: z.string(),
-        profilePic: z.string().optional(),
-      })).optional().describe("Multiple authors"),
+      authors: z
+        .array(
+          z.object({
+            name: z.string(),
+            profilePic: z.string().optional(),
+          }),
+        )
+        .optional()
+        .describe("Multiple authors"),
       category: z.string().optional().describe("Blog post category"),
-      featured: z.boolean().default(false).describe("Whether this is a featured post"),
+      featured: z
+        .boolean()
+        .default(false)
+        .describe("Whether this is a featured post"),
       socialImage: z
         .string()
         .optional()

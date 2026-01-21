@@ -84,7 +84,9 @@ const operationsLogos = [
 ---
 
 <section class="container max-w-7xl mx-auto mt-12 md:mt-24 px-2 lg:px-0">
-  <div class="connections-shell rounded-3xl border border-[var(--border)] p-5 md:p-7">
+  <div
+    class="connections-shell rounded-3xl border border-[var(--border)] p-5 md:p-7"
+  >
     <div
       class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_minmax(0,1fr)] lg:grid-rows-2 lg:items-center"
     >
@@ -92,37 +94,49 @@ const operationsLogos = [
         <div
           class="relative flex min-h-[220px] items-center justify-center rounded-2xl border border-stone-200/60 bg-white/70 p-4 dark:border-stone-700/40 dark:bg-stone-900/40 lg:min-h-[260px]"
         >
-          <div class="grid w-full grid-cols-3 gap-2 justify-items-center sm:grid-cols-4">
-            {modelLogos.map(logo => (
-              <div
-                class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px] dark:border-stone-600/60 dark:bg-stone-900"
-              >
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  class="h-full w-full object-contain"
-                  width={26}
-                  height={26}
-                />
-              </div>
-            ))}
+          <div
+            class="grid w-full grid-cols-3 gap-2 justify-items-center sm:grid-cols-4"
+          >
+            {
+              modelLogos.map((logo) => (
+                <div class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px] dark:border-stone-600/60 dark:bg-stone-900">
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    class="h-full w-full object-contain"
+                    width={26}
+                    height={26}
+                  />
+                </div>
+              ))
+            }
           </div>
           <div
             class="mt-4 flex w-full max-w-[220px] flex-col items-center rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-center shadow-lg dark:bg-stone-900 lg:absolute lg:left-1/2 lg:top-1/2 lg:mt-0 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2"
           >
-            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">
+            <p
+              class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400"
+            >
               AI models
             </p>
-            <p class="text-2xl font-semibold text-stone-800 dark:text-stone-100">182</p>
+            <p
+              class="text-2xl font-semibold text-stone-800 dark:text-stone-100"
+            >
+              182
+            </p>
           </div>
         </div>
       </div>
 
-      <div class="flex items-center justify-center lg:col-start-2 lg:row-start-1 lg:row-span-2">
+      <div
+        class="flex items-center justify-center lg:col-start-2 lg:row-start-1 lg:row-span-2"
+      >
         <div
           class="max-w-sm rounded-2xl border border-[var(--border)] bg-white px-6 py-8 text-center shadow-xl dark:bg-stone-900"
         >
-          <p class="text-lg font-semibold leading-snug text-stone-800 dark:text-stone-100">
+          <p
+            class="text-lg font-semibold leading-snug text-stone-800 dark:text-stone-100"
+          >
             Your models, your tools, your data, your privacy.
           </p>
         </div>
@@ -132,47 +146,55 @@ const operationsLogos = [
         <div
           class="relative flex min-h-[220px] items-center justify-center rounded-2xl border border-stone-200/60 bg-white/70 p-4 dark:border-stone-700/40 dark:bg-stone-900/40 lg:min-h-[260px]"
         >
-          <div class="grid w-full grid-cols-3 gap-2 justify-items-center sm:grid-cols-4">
-            {apiLogos.map(logo => (
-              <div
-                class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px] dark:border-stone-600/60 dark:bg-stone-900"
-              >
-                {logo.alt === "GitHub" ? (
-                  <>
+          <div
+            class="grid w-full grid-cols-3 gap-2 justify-items-center sm:grid-cols-4"
+          >
+            {
+              apiLogos.map((logo) => (
+                <div class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px] dark:border-stone-600/60 dark:bg-stone-900">
+                  {logo.alt === "GitHub" ? (
+                    <>
+                      <Image
+                        src={GithubLogoSvg}
+                        alt="GitHub"
+                        class="h-full w-full object-contain dark:hidden"
+                        width={26}
+                        height={26}
+                      />
+                      <Image
+                        src={GithubLogoWhite}
+                        alt="GitHub"
+                        class="hidden h-full w-full object-contain dark:block"
+                        width={26}
+                        height={26}
+                      />
+                    </>
+                  ) : (
                     <Image
-                      src={GithubLogoSvg}
-                      alt="GitHub"
-                      class="h-full w-full object-contain dark:hidden"
+                      src={logo.src}
+                      alt={logo.alt}
+                      class="h-full w-full object-contain"
                       width={26}
                       height={26}
                     />
-                    <Image
-                      src={GithubLogoWhite}
-                      alt="GitHub"
-                      class="hidden h-full w-full object-contain dark:block"
-                      width={26}
-                      height={26}
-                    />
-                  </>
-                ) : (
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    class="h-full w-full object-contain"
-                    width={26}
-                    height={26}
-                  />
-                )}
-              </div>
-            ))}
+                  )}
+                </div>
+              ))
+            }
           </div>
           <div
             class="mt-4 flex w-full max-w-[220px] flex-col items-center rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-center shadow-lg dark:bg-stone-900 lg:absolute lg:left-1/2 lg:top-1/2 lg:mt-0 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2"
           >
-            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">
+            <p
+              class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400"
+            >
               APIs
             </p>
-            <p class="text-2xl font-semibold text-stone-800 dark:text-stone-100">92</p>
+            <p
+              class="text-2xl font-semibold text-stone-800 dark:text-stone-100"
+            >
+              92
+            </p>
           </div>
         </div>
       </div>
@@ -181,28 +203,36 @@ const operationsLogos = [
         <div
           class="relative flex min-h-[220px] items-center justify-center rounded-2xl border border-stone-200/60 bg-white/70 p-4 dark:border-stone-700/40 dark:bg-stone-900/40 lg:min-h-[260px]"
         >
-          <div class="grid w-full grid-cols-3 gap-2 justify-items-center sm:grid-cols-4">
-            {dataLogos.map(logo => (
-              <div
-                class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px] dark:border-stone-600/60 dark:bg-stone-900"
-              >
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  class="h-full w-full object-contain"
-                  width={26}
-                  height={26}
-                />
-              </div>
-            ))}
+          <div
+            class="grid w-full grid-cols-3 gap-2 justify-items-center sm:grid-cols-4"
+          >
+            {
+              dataLogos.map((logo) => (
+                <div class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px] dark:border-stone-600/60 dark:bg-stone-900">
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    class="h-full w-full object-contain"
+                    width={26}
+                    height={26}
+                  />
+                </div>
+              ))
+            }
           </div>
           <div
             class="mt-4 flex w-full max-w-[220px] flex-col items-center rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-center shadow-lg dark:bg-stone-900 lg:absolute lg:left-1/2 lg:top-1/2 lg:mt-0 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2"
           >
-            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">
+            <p
+              class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400"
+            >
               Data sources
             </p>
-            <p class="text-2xl font-semibold text-stone-800 dark:text-stone-100">17</p>
+            <p
+              class="text-2xl font-semibold text-stone-800 dark:text-stone-100"
+            >
+              17
+            </p>
           </div>
         </div>
       </div>
@@ -211,28 +241,36 @@ const operationsLogos = [
         <div
           class="relative flex min-h-[220px] items-center justify-center rounded-2xl border border-stone-200/60 bg-white/70 p-4 dark:border-stone-700/40 dark:bg-stone-900/40 lg:min-h-[260px]"
         >
-          <div class="grid w-full grid-cols-3 gap-2 justify-items-center sm:grid-cols-4">
-            {operationsLogos.map(logo => (
-              <div
-                class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px] dark:border-stone-600/60 dark:bg-stone-900"
-              >
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  class="h-full w-full object-contain"
-                  width={26}
-                  height={26}
-                />
-              </div>
-            ))}
+          <div
+            class="grid w-full grid-cols-3 gap-2 justify-items-center sm:grid-cols-4"
+          >
+            {
+              operationsLogos.map((logo) => (
+                <div class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px] dark:border-stone-600/60 dark:bg-stone-900">
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    class="h-full w-full object-contain"
+                    width={26}
+                    height={26}
+                  />
+                </div>
+              ))
+            }
           </div>
           <div
             class="mt-4 flex w-full max-w-[220px] flex-col items-center rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-center shadow-lg dark:bg-stone-900 lg:absolute lg:left-1/2 lg:top-1/2 lg:mt-0 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2"
           >
-            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">
+            <p
+              class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400"
+            >
               Operations
             </p>
-            <p class="text-2xl font-semibold text-stone-800 dark:text-stone-100">15,642</p>
+            <p
+              class="text-2xl font-semibold text-stone-800 dark:text-stone-100"
+            >
+              15,642
+            </p>
           </div>
         </div>
       </div>
@@ -242,13 +280,15 @@ const operationsLogos = [
 
 <style>
   .connections-shell {
-    background: linear-gradient(90deg, rgba(39, 39, 42, 0.05) 1px, transparent 1px),
+    background:
+      linear-gradient(90deg, rgba(39, 39, 42, 0.05) 1px, transparent 1px),
       linear-gradient(rgba(39, 39, 42, 0.05) 1px, transparent 1px);
     background-size: 28px 28px;
   }
 
   :global(.dark) .connections-shell {
-    background: linear-gradient(90deg, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+    background:
+      linear-gradient(90deg, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
       linear-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px);
   }
 </style>

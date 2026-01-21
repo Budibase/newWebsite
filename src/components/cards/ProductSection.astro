@@ -82,7 +82,11 @@ const {
     </div>
 
     <div class="md:col-span-7 order-first md:order-last">
-      {productImage && <Image class="rounded-md w-full" src={productImage} alt="" />}
+      {
+        productImage && (
+          <Image class="rounded-md w-full" src={productImage} alt="" />
+        )
+      }
     </div>
   </div>
 </div>

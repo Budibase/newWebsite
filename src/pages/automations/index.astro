@@ -1,0 +1,98 @@
+---
+import Layout from "../../layouts/MainLayout.astro";
+import PlatformLayout from "@components/PlatformLayout.astro";
+import { platformNavItemsData } from "../_navItems";
+import Circles from "phosphor-astro/Nut.astro";
+import Memory from "phosphor-astro/Memory.astro";
+import ChatCircle from "phosphor-astro/ChatCircle.astro";
+import Path from "phosphor-astro/PathFill.astro";
+import Browsers from "phosphor-astro/Browsers.astro";
+import Link from "phosphor-astro/Cube.astro";
+import Webhooks from "phosphor-astro/WebhooksLogo.astro";
+import Database from "phosphor-astro/GridNine.astro";
+import Sparkle from "phosphor-astro/Sparkle.astro";
+import Cloud from "phosphor-astro/Cloud.astro";
+import TrendUp from "phosphor-astro/TrendUp.astro";
+import AutomationImage from "@assets/images/platform/AgentInAutomations.png";
+import HeroBg from "@assets/images/homepage/valley.png";
+import { Image } from "astro:assets";
+import Card from "@components/cards/Card.astro";
+
+const iconMap: Record<string, any> = {
+  Circles,
+  Memory,
+  ChatCircle,
+  Path,
+  Browsers,
+  Link,
+  Webhooks,
+  Database,
+  Sparkle,
+  Cloud,
+  TrendUp,
+};
+
+const navItems = platformNavItemsData.map((group) => ({
+  ...group,
+  items: group.items.map((item) => ({
+    ...item,
+    icon: iconMap[item.iconName],
+  })),
+}));
+---
+
+<Layout>
+  <PlatformLayout
+			title="Budibase"
+			description="The open and free AI platform for building agents, chat, automations and apps."
+    {navItems}
+  >
+    <div class="mb-8">
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">Automations</h2>
+        <p
+          class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+        >
+          Automate and orchestrate workflows. Build powerful automation
+          workflows with a visual editor that connects triggers, actions, and
+          conditions.
+        </p>
+
+        <Image
+          src={AutomationImage}
+          alt="Automations workflows"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="Visual builder"
+          description="Design workflows visually with drag-and-drop nodes and connections."
+        />
+        <Card
+          label="Triggers"
+          description="Start workflows with webhooks, schedules, database changes, or manual triggers."
+        />
+        <Card
+          label="Actions"
+          description="Execute actions like API calls, database operations, email sending, and more."
+        />
+        <Card
+          label="Conditional logic"
+          description="Add branching logic, loops, and conditional execution to your workflows."
+        />
+        <Card
+          label="Agent integration"
+          description="Trigger agents from within automations and allow them to take actions."
+        />
+        <Card
+          label="Error handling"
+          description="Configure retry logic, error notifications, and fallback actions."
+        />
+      </div>
+    </div>
+  </PlatformLayout>
+</Layout>

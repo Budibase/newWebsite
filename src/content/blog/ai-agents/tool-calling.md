@@ -1,11 +1,9 @@
 ---
-
 author: "Ronan McQuillan"
 publishDate: 2025-05-19
 description: "Take a look at our in-depth guide to tool calling with agentic AI."
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 title: "What is Tool Calling?"
-
 ---
 
 Currently, interest in agentic AI is exploding. IT teams in all industries are rushing to implement solutions that utilize autonomous agents to power workflows. This not only requires AI models that can perform reasoning, but ones that can also take action based on this.
@@ -84,7 +82,7 @@ This is what enables the system to determine which actions are required.
 
 Similarly, NLP is a critical part of how AI systems construct arguments to populate requests, inferring the correct values from user prompts.
 
-We also need to think about providing our agents with appropriate context and supporting information around the task at hand. 
+We also need to think about providing our agents with appropriate context and supporting information around the task at hand.
 
 For instance, tool-calling agents are often deployed within internal services workflows, so it’s vital for these to have exposure to detailed, up-to-date documentation and procedures within our service portfolio for performing RAG tasks.
 
@@ -142,7 +140,7 @@ We can also consider how agentic systems with tool-calling capabilities offer be
 
 That is, we may well be able to achieve similar outcomes in terms of applying business logic to carry out tasks using flow-based workflow automation tools or hard-coded solutions.
 
-However, modern AI agents can enable us to build more complex logic that would be considerably more challenging with traditional automation techniques. This works by leveraging reusability, especially when we utilize existing MCP servers. 
+However, modern AI agents can enable us to build more complex logic that would be considerably more challenging with traditional automation techniques. This works by leveraging reusability, especially when we utilize existing MCP servers.
 
 ### Challenges
 
@@ -172,7 +170,7 @@ So, we can consider two broad scenarios.
 
 ### Tool calling in discrete processes
 
-Firstly, there are agentic systems that relate to a discrete process or function. However, even within this, the scope of what’s required can vary quite widely. 
+Firstly, there are agentic systems that relate to a discrete process or function. However, even within this, the scope of what’s required can vary quite widely.
 
 For instance, we might deploy a solution that spans the entirety of our IT service portfolio, or we might target a more granular task, such as booking an asset.
 
@@ -200,11 +198,11 @@ Notably, end users don’t even need to know which team or department their requ
 
 On top of this, these types of solutions offer a high degree of centralization and modularity, enhancing our visibility into service delivery efforts, as well as the maintainability and interconnectivity of systems.
 
-Take a look at our guide to [enterprise chatbots](https://budibase.com/blog/ai-agents/enterprise-chatbots/) to learn more. 
+Take a look at our guide to [enterprise chatbots](https://budibase.com/blog/ai-agents/enterprise-chatbots/) to learn more.
 
 ## How to build a tech stack for tool calling
 
-Lastly, in order to put everything we’ve learned so far into practice, it’s important to understand the specific tools and resources we’ll need to build effective solutions. 
+Lastly, in order to put everything we’ve learned so far into practice, it’s important to understand the specific tools and resources we’ll need to build effective solutions.
 
 In the past few years, countless vendors have come to market with tools aimed at making it easy for developers to output conversational AI tools capable of taking autonomous action. The key, however, is understanding the underlying architecture that makes these systems possible.
 

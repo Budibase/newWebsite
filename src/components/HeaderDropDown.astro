@@ -2,160 +2,170 @@
 import CaretDown from "phosphor-astro/CaretDown.astro";
 import Icon from "@components/Icon.astro";
 
-
 interface Props {
-	label: string;
-	labelHref?: string;
-	items: Array<{
-		href: string;
-		label: string;
-		prefetch?: boolean;
-		badge?: string;
-		description?: string;
-		target?: string;
-	}>;
+  label: string;
+  labelHref?: string;
+  items: Array<{
+    href: string;
+    label: string;
+    prefetch?: boolean;
+    badge?: string;
+    description?: string;
+    target?: string;
+  }>;
 }
 
 type Item = Props["items"][number];
 
 const pinnedBottomLabels =
-	Astro.props.label === "Platform"
-		? ["Resources", "Enterprise", "Roadmap"]
-		: [];
+  Astro.props.label === "Platform"
+    ? ["Resources", "Enterprise", "Roadmap"]
+    : [];
 
 const pinnedBottomItems: Item[] = pinnedBottomLabels
-	.map((label) => Astro.props.items.find((item) => item.label === label))
-	.filter((item): item is Item => Boolean(item));
+  .map((label) => Astro.props.items.find((item) => item.label === label))
+  .filter((item): item is Item => Boolean(item));
 
 const mainItems = Astro.props.items.filter(
-	(item) => !pinnedBottomLabels.includes(item.label),
+  (item) => !pinnedBottomLabels.includes(item.label),
 );
 
 const defaultDescriptionsByLabel: Record<string, string> = {
-	Resources: "Connect your models, data, and tools",
-	Roadmap: "Get a glimpse of what's coming up next.",
+  Resources: "Connect your models, data, and tools",
+  Roadmap: "Get a glimpse of what's coming up next.",
 };
 ---
 
 <header-drop-down>
-	<details class="group relative">
-		<summary class="accordion cursor-pointer link flex items-center gap-2 text-sm px-1 text-stone-900 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 group-open:text-stone-700 dark:group-open:text-stone-200 transition-colors">
-			{Astro.props.labelHref ? (
-				<a href={Astro.props.labelHref} class="flex items-center gap-2" data-astro-prefetch onclick="event.stopPropagation()">
-					{Astro.props.label}
-				</a>
-			) : (
-				Astro.props.label
-			)}
-		</summary>
-		<ul
-			class:list={[
-				// grid
-				'grid grid-cols-2 gap-x-2 gap-y-1',
+  <details class="group relative">
+    <summary
+      class="accordion cursor-pointer link flex items-center gap-2 text-sm px-1 text-stone-900 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 group-open:text-stone-700 dark:group-open:text-stone-200 transition-colors"
+    >
+      {
+        Astro.props.labelHref ? (
+          <a
+            href={Astro.props.labelHref}
+            class="flex items-center gap-2"
+            data-astro-prefetch
+            onclick="event.stopPropagation()"
+          >
+            {Astro.props.label}
+          </a>
+        ) : (
+          Astro.props.label
+        )
+      }
+    </summary>
+    <ul
+      class:list={[
+        // grid
+        "grid grid-cols-2 gap-x-2 gap-y-1",
 
-				// positioning
-				'absolute left-0 top-full translate-y-2',
+        // positioning
+        "absolute left-0 top-full translate-y-2",
 
-				// panel styling
-				'w-120 max-w-[calc(100vw-2rem)] rounded-xl bg-secondary p-2 text-stone-900 dark:text-stone-100 text-sm shadow-xl ring-1 ring-stone-200/60 dark:ring-stone-800/60',
+        // panel styling
+        "w-120 max-w-[calc(100vw-2rem)] rounded-xl bg-secondary p-2 text-stone-900 dark:text-stone-100 text-sm shadow-xl ring-1 ring-stone-200/60 dark:ring-stone-800/60",
 
-				// transitioning
-				'invisible group-open:visible group-hover:visible',
-				'origin-top scale-95 group-open:scale-100 group-hover:scale-100',
-				'opacity-0 group-open:opacity-100 group-hover:opacity-100',
-				'transition-all duration-300',
-			]}
-		>
-			<slot />
-			{
-				mainItems.map(({ href, label, prefetch, badge, description, target }) => (
-					<li>
-						<a
-							{href}
-							target={target}
-							data-astro-prefetch={prefetch ? '' : undefined}
-							class="flex flex-col gap-1 rounded-lg p-3 leading-snug transition-colors text-stone-900 dark:text-stone-100 hover:bg-stone-200 dark:hover:bg-stone-800 hover:text-stone-900 dark:hover:text-stone-50"
-						>
-							<span class="flex items-center gap-2">
-								<span class="font-medium">{label}</span>
-								{badge && (
-									<span class="text-xs leading-none font-mono py-1 px-1.5 rounded text-stone-600 dark:text-stone-400">
-										{badge}
-									</span>
-								)}
-							</span>
-							{description && (
-								<span class="text-xs text-stone-600 dark:text-stone-400">
-									{description}
-								</span>
-							)}
-						</a>
-					</li>
-				))
-			}
-			{
-				pinnedBottomItems.length > 0 && (
-					<li class="col-span-2 mt-1 border-t border-stone-200 dark:border-stone-800 pt-1">
-						<ul class="flex flex-col">
-							{pinnedBottomItems.map((item) => (
-								<li>
-									<a
-										href={item.href}
-										target={item.target}
-										data-astro-prefetch={item.prefetch ? '' : undefined}
-										class="flex flex-col gap-1 rounded-lg p-3 leading-snug transition-colors text-stone-900 dark:text-stone-100 hover:bg-stone-200 dark:hover:bg-stone-800 hover:text-stone-900 dark:hover:text-stone-50"
-									>
-										<span class="font-medium">{item.label}</span>
-										<span class="text-xs text-stone-600 dark:text-stone-400">
-											{item.description ??
-												defaultDescriptionsByLabel[item.label] ??
-												""}
-										</span>
-									</a>
-								</li>
-							))}
-						</ul>
-					</li>
-				)
-			}
-		</ul>
-	</details>
+        // transitioning
+        "invisible group-open:visible group-hover:visible",
+        "origin-top scale-95 group-open:scale-100 group-hover:scale-100",
+        "opacity-0 group-open:opacity-100 group-hover:opacity-100",
+        "transition-all duration-300",
+      ]}
+    >
+      <slot />
+      {
+        mainItems.map(
+          ({ href, label, prefetch, badge, description, target }) => (
+            <li>
+              <a
+                {href}
+                target={target}
+                data-astro-prefetch={prefetch ? "" : undefined}
+                class="flex flex-col gap-1 rounded-lg p-3 leading-snug transition-colors text-stone-900 dark:text-stone-100 hover:bg-stone-200 dark:hover:bg-stone-800 hover:text-stone-900 dark:hover:text-stone-50"
+              >
+                <span class="flex items-center gap-2">
+                  <span class="font-medium">{label}</span>
+                  {badge && (
+                    <span class="text-xs leading-none font-mono py-1 px-1.5 rounded text-stone-600 dark:text-stone-400">
+                      {badge}
+                    </span>
+                  )}
+                </span>
+                {description && (
+                  <span class="text-xs text-stone-600 dark:text-stone-400">
+                    {description}
+                  </span>
+                )}
+              </a>
+            </li>
+          ),
+        )
+      }
+      {
+        pinnedBottomItems.length > 0 && (
+          <li class="col-span-2 mt-1 border-t border-stone-200 dark:border-stone-800 pt-1">
+            <ul class="flex flex-col">
+              {pinnedBottomItems.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    target={item.target}
+                    data-astro-prefetch={item.prefetch ? "" : undefined}
+                    class="flex flex-col gap-1 rounded-lg p-3 leading-snug transition-colors text-stone-900 dark:text-stone-100 hover:bg-stone-200 dark:hover:bg-stone-800 hover:text-stone-900 dark:hover:text-stone-50"
+                  >
+                    <span class="font-medium">{item.label}</span>
+                    <span class="text-xs text-stone-600 dark:text-stone-400">
+                      {item.description ??
+                        defaultDescriptionsByLabel[item.label] ??
+                        ""}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        )
+      }
+    </ul>
+  </details>
 </header-drop-down>
 
 <script>
-	customElements.define(
-		'header-drop-down',
-		class HeaderDropDown extends HTMLElement {
-			connectedCallback() {
-				const menu = this.querySelector('details');
-				if (menu) {
-					// Handle hover to open/close dropdown
-					let hoverTimeout: NodeJS.Timeout;
-					
-					this.addEventListener('mouseenter', () => {
-						clearTimeout(hoverTimeout);
-						menu.open = true;
-					});
-					
-					this.addEventListener('mouseleave', () => {
-						hoverTimeout = setTimeout(() => {
-							if (!menu.matches(':focus-within')) {
-								menu.open = false;
-							}
-						}, 200);
-					});
-					
-					// Handle focusout for keyboard navigation
-					menu.addEventListener('focusout', () => {
-						if (!menu.matches(':focus-within')) {
-							// delay the transition on focusout so the menu doesn't immediately disappear
-							setTimeout(() => {
-								menu.open = false;
-							}, 200);
-						}
-					});
-				}
-			}
-		},
-	);
+  customElements.define(
+    "header-drop-down",
+    class HeaderDropDown extends HTMLElement {
+      connectedCallback() {
+        const menu = this.querySelector("details");
+        if (menu) {
+          // Handle hover to open/close dropdown
+          let hoverTimeout: NodeJS.Timeout;
+
+          this.addEventListener("mouseenter", () => {
+            clearTimeout(hoverTimeout);
+            menu.open = true;
+          });
+
+          this.addEventListener("mouseleave", () => {
+            hoverTimeout = setTimeout(() => {
+              if (!menu.matches(":focus-within")) {
+                menu.open = false;
+              }
+            }, 200);
+          });
+
+          // Handle focusout for keyboard navigation
+          menu.addEventListener("focusout", () => {
+            if (!menu.matches(":focus-within")) {
+              // delay the transition on focusout so the menu doesn't immediately disappear
+              setTimeout(() => {
+                menu.open = false;
+              }, 200);
+            }
+          });
+        }
+      }
+    },
+  );
 </script>

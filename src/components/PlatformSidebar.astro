@@ -2,28 +2,32 @@
 import Tag from "@components/Tag.astro";
 
 interface NavItem {
-	text: string;
-	link: string;
-	sectionId: string;
-	icon?: any;
-	tag?: {
-		label: string;
-		variant: "primary" | "secondary" | "cta" | "orange";
-	};
+  text: string;
+  link: string;
+  sectionId: string;
+  icon?: any;
+  tag?: {
+    label: string;
+    variant: "primary" | "secondary" | "cta" | "orange";
+  };
 }
 
 interface NavGroup {
-	header?: string;
-	items: NavItem[];
+  header?: string;
+  items: NavItem[];
 }
 
 interface Props {
-	navItems: NavItem[] | NavGroup[];
-	title?: string;
-	description?: string;
+  navItems: NavItem[] | NavGroup[];
+  title?: string;
+  description?: string;
 }
 
-const { navItems, title = "Platform", description = "The privacy-first platform for building agents, chat, automations, and apps." } = Astro.props;
+const {
+  navItems,
+  title = "Budibase",
+  description = "The privacy-first platform for building agents, chat, automations, and apps.",
+} = Astro.props;
 const currentPath = Astro.url.pathname;
 
 // Check if navItems is grouped or flat
@@ -31,138 +35,143 @@ const isGrouped = navItems.length > 0 && "items" in navItems[0];
 const groupedNavItems = isGrouped ? (navItems as NavGroup[]) : null;
 const flatNavItems = isGrouped ? null : (navItems as NavItem[]);
 
+function normalizePath(path: string): string {
+	if (path.length > 1 && path.endsWith("/")) {
+		return path.slice(0, -1);
+	}
+	return path;
+}
+
 function isActive(link: string): boolean {
-	return currentPath === link || (link === "/platform" && currentPath === "/platform/");
+	return normalizePath(currentPath) === normalizePath(link);
 }
 ---
 
-<aside class="platform-sidebar">
-	<h1 class="mb-2 text-xl!">{title}</h1>
-	<p class="text-stone-500! dark:text-stone-400! mb-4!">{description}</p>
-	<nav>
-		<ul>
-			{isGrouped ? (
-				groupedNavItems!.map((group, groupIndex) => (
-					<>
-						{group.header && (
-							<li class:list={["nav-group-header", groupIndex > 0 && "nav-group-header-spaced"]}>
-								<span class="text-xs text-stone-600 dark:text-stone-500 uppercase tracking-wider px-3 py-2">
-									{group.header}
-								</span>
-							</li>
-						)}
-						{group.items.map((item, itemIndex) => {
-							const IconComponent = item.icon;
-							return (
-								<li>
-									<a href={item.link} class:list={[
-										"nav-link flex flex-row gap-2 items-center h-8 px-3 rounded-md text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 [&.active]:text-stone-900 [&.active]:dark:text-stone-100 [&.active]:bg-stone-200 dark:[&.active]:bg-stone-800 text-sm",
-										isActive(item.link) && "active"
-									]} data-section={item.sectionId}>
-										{IconComponent && (
-											<IconComponent class="nav-icon w-[18px] h-[18px] shrink-0" />
-										)}
-										<span>{item.text}</span>
-										{item.tag && (
-											<Tag
-												label={item.tag.label}
-												variant={item.tag.variant}
-												size="extra-small"
-												class="ml-auto"
-											/>
-										)}
-									</a>
-								</li>
-							);
-						})}
-						{groupIndex < groupedNavItems!.length - 1 && (
-							<li class="nav-group-divider">
-								<hr class="nav-hr border-stone-200 dark:border-stone-900 border-t my-2" />
-							</li>
-						)}
-					</>
-				))
-			) : (
-				flatNavItems!.map((item, index) => {
-					const IconComponent = item.icon;
-					return (
-						<li>
-							<a href={item.link} class:list={[
-								"nav-link flex flex-row gap-3 items-center h-8 px-3 rounded-md text-stone-600 dark:text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 [&.active]:text-stone-900 [&.active]:dark:text-stone-100 [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800 text-sm",
-								isActive(item.link) && "active"
-							]} data-section={item.sectionId}>
-									{IconComponent && (
-										<IconComponent class="nav-icon w-4 h-4 shrink-0" />
-									)}
-									<span>{item.text}</span>
-									{item.tag && (
-										<Tag
-											label={item.tag.label}
-											variant={item.tag.variant}
-											size="extra-small"
-											class="ml-auto"
-										/>
-									)}
-								</a>
-
+<aside class="platform-sidebar relative z-10">
+  <h1 class="mb-2 text-xl!">{title}</h1>
+  <p class="text-stone-500! dark:text-stone-400! mb-4!">{description}</p>
+  <nav>
+    <ul>
+      {
+        isGrouped
+			? groupedNavItems!.map((group, groupIndex) => (
+				<>
+					{group.items.map((item, itemIndex) => {
+						const IconComponent = item.icon;
+						return (
+							<li>
+							<a
+								href={item.link}
+								target="_self"
+								data-astro-prefetch
+                        class:list={[
+                          "nav-link flex flex-row gap-2 items-center h-8 px-3 rounded-md text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 [&.active]:text-stone-900 [&.active]:dark:text-stone-100 [&.active]:bg-stone-200 dark:[&.active]:bg-stone-800 text-sm",
+                          isActive(item.link) && "active",
+                        ]}
+                        data-section={item.sectionId}
+                      >
+                        {IconComponent && (
+                          <IconComponent class="nav-icon w-[18px] h-[18px] shrink-0" />
+                        )}
+                        <span>{item.text}</span>
+                        {item.tag && (
+                          <Tag
+                            label={item.tag.label}
+                            variant={item.tag.variant}
+                            size="extra-small"
+                            class="ml-auto"
+                          />
+                        )}
+                      </a>
+                    </li>
+                  );
+					})}
+					{groupIndex < groupedNavItems!.length - 1 && (
+						<li class="nav-group-divider">
+							<hr class="nav-hr border-stone-200 dark:border-stone-900 border-t my-2" />
 						</li>
-					);
-				})
-			)}
-		</ul>
-	</nav>
+					)}
+				</>
+			))
+          : flatNavItems!.map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <li>
+					<a
+						href={item.link}
+						target="_self"
+						data-astro-prefetch
+                    class:list={[
+                      "nav-link flex flex-row gap-3 items-center h-8 px-3 rounded-md text-stone-600 dark:text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 [&.active]:text-stone-900 [&.active]:dark:text-stone-100 [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800 text-sm",
+                      isActive(item.link) && "active",
+                    ]}
+                    data-section={item.sectionId}
+                  >
+                    {IconComponent && (
+                      <IconComponent class="nav-icon w-4 h-4 shrink-0" />
+                    )}
+                    <span>{item.text}</span>
+                    {item.tag && (
+                      <Tag
+                        label={item.tag.label}
+                        variant={item.tag.variant}
+                        size="extra-small"
+                        class="ml-auto"
+                      />
+                    )}
+                  </a>
+                </li>
+              );
+            })
+      }
+    </ul>
+  </nav>
 </aside>
 
 <style>
 	.platform-sidebar {
 		position: sticky;
 		top: 2rem;
-		width: 280px;
+		width: 100%;
+		max-width: 280px;
 	}
 
-	.nav-list {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		flex-direction: column;
-	}
+  .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
 
-	.nav-group-header {
-		margin-bottom: 0.5rem !important;
-	}
 
-	.nav-group-header-spaced {
-		margin-top: 0.5rem !important;
-	}
+  .nav-icon {
+    width: 18px;
+    height: 18px;
+    color: inherit;
+  }
 
-	.nav-icon {
-		width: 18px;
-		height: 18px;
-		color: inherit;
-	}
+  .nav-link:hover .nav-icon {
+    color: inherit;
+  }
 
-	.nav-link:hover .nav-icon {
-		color: inherit;
-	}
+  .nav-link.active .nav-icon {
+    color: inherit;
+  }
 
-	.nav-link.active .nav-icon {
-		color: inherit;
-	}
-
-	@media (max-width: 768px) {
+  @media (max-width: 768px) {
 		.platform-sidebar {
 			position: static;
+			max-width: none;
 		}
 
-		.nav-list {
-			flex-direction: row;
-			overflow-x: auto;
-		}
+    .nav-list {
+      flex-direction: row;
+      overflow-x: auto;
+    }
 
-		.nav-link {
-			white-space: nowrap;
-		}
-	}
+    .nav-link {
+      white-space: nowrap;
+    }
+  }
 </style>
-

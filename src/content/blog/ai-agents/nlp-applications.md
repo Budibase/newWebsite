@@ -1,17 +1,14 @@
 ---
-
 author: "Ronan McQuillan"
 publishDate: 2025-05-09
 description: "Check out our guide, covering everything you need to know about NLP applications."
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 title: "What are NLP Applications? + 5 Real-World Examples"
 
-
 mentions:
   - name: "Natural Language Processing"
     sameAs: "https://www.wikidata.org/wiki/Q30642"
     type: "Thing"
-
 ---
 
 Natural language processing is revolutionizing the way humans interact with software tools. Not only that, the increasing prevalence of AI is opening up the door to a huge range of transformative use cases that would be almost impossible with traditional automation tools.
@@ -35,7 +32,7 @@ Let’s start with the basics.
 
 Natural language processing is a subfield of AI that enables machines to understand, interpret, and generate human language. NLP applications comprise any use case that leverages this technology to handle natural language inputs, outputs, or tasks.
 
-This works by transforming unstructured text into a structured format that machines can reason about. 
+This works by transforming unstructured text into a structured format that machines can reason about.
 
 To achieve this, NLP relies on the following techniques:
 
@@ -215,46 +212,43 @@ We’ll hit the lightning bolt beside the `Prompt` to open the bindings modal.
 
 Here, we’ll enter the following text to tell our LLM to use the content of the `Description` field to generate a JSON object in our desired format.
 
-
-
 {{< highlight plaintext "linenos=inline" >}}
 
-Take the information provided in {{ Description}} 
+Take the information provided in {{ Description}}
 
-and use it to create a JSON object with the following format. 
+and use it to create a JSON object with the following format.
 
 Return only the requested JSON object, no additional text or rationale.
 
 {
 
- "bug_report": {
+"bug_report": {
 
-  "description": "App crashes when logging in with Google account.",
+"description": "App crashes when logging in with Google account.",
 
-  "affected_feature": "Login screen",
+"affected_feature": "Login screen",
 
-  "platforms_affected": ["Android"
+"platforms_affected": ["Android"
+
 - "iOS"],
 
   "severity": "Critical",
 
   "reproduction_steps": [
 
-   "Try to log in with a Google account.",
+  "Try to log in with a Google account.",
 
-   "Observe app crash on Android and iOS."
+  "Observe app crash on Android and iOS."
 
   ],
 
   "reported_at": "2025-05-08"
 
- }
+}
 
 }
 
 {{< /highlight >}}
-
-
 
 In the preview panel on the right-hand side, we can see the instruction that the LLM receives, followed by the formatted response that it returns.
 

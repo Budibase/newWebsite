@@ -1,0 +1,102 @@
+---
+import Layout from "../../layouts/MainLayout.astro";
+import PlatformLayout from "@components/PlatformLayout.astro";
+import { platformNavItemsData } from "../_navItems";
+import Circles from "phosphor-astro/Nut.astro";
+import Memory from "phosphor-astro/Memory.astro";
+import ChatCircle from "phosphor-astro/ChatCircle.astro";
+import Path from "phosphor-astro/PathFill.astro";
+import Browsers from "phosphor-astro/Browsers.astro";
+import Link from "phosphor-astro/Cube.astro";
+import Webhooks from "phosphor-astro/WebhooksLogo.astro";
+import Database from "phosphor-astro/GridNine.astro";
+import Sparkle from "phosphor-astro/Sparkle.astro";
+import Cloud from "phosphor-astro/Cloud.astro";
+import TrendUp from "phosphor-astro/TrendUp.astro";
+import ProductImage from "@assets/images/platform/AgentInstructions2.png";
+import PreviewImage from "@assets/images/platform/AgentPreview.png";
+import ToolsImage from "@assets/images/platform/AgentTools.png";
+import LogsImage from "@assets/images/platform/AgentLogs.png";
+import ChatImage from "@assets/images/platform/AgentInChat.png";
+import AutomationImage from "@assets/images/platform/AgentInAutomations.png";
+import { Image } from "astro:assets";
+import Card from "@components/cards/Card.astro";
+
+const iconMap: Record<string, any> = {
+  Circles,
+  Memory,
+  ChatCircle,
+  Path,
+  Browsers,
+  Link,
+  Webhooks,
+  Database,
+  Sparkle,
+  Cloud,
+  TrendUp,
+};
+
+const navItems = platformNavItemsData.map((group) => ({
+  ...group,
+  items: group.items.map((item) => ({
+    ...item,
+    icon: iconMap[item.iconName],
+  })),
+}));
+---
+
+<Layout>
+  <PlatformLayout
+			title="Budibase"
+			description="The open and free AI platform for building agents, chat, automations and apps."
+    {navItems}
+  >
+    <div class="mb-8">
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">Agents</h2>
+        <p
+          class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+        >
+          The privacy-first way to build agents; with your models, data, and
+          tools. Build agents by giving them simple, ordered instructions in a
+          clean, easy-to-use editor.
+        </p>
+
+        <Image
+          src={ProductImage}
+          alt="Agents editor"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="Top model access"
+          description="Choose between open models from Mistral, Qwen, Open AI, and more."
+        />
+        <Card
+          label="Inline tools"
+          description="Improve your agents output by inlining tools within your instructions."
+        />
+        <Card
+          label="Bindings"
+          description="Bind data from your database, API, or other sources to your agents."
+        />
+        <Card
+          label="Preview & test"
+          description="Chat with your agent to validate its behavior, tools, and responses before going live."
+        />
+        <Card
+          label="Execution logs"
+          description="View detailed logs including inputs, outputs, thoughts, and runtime information."
+        />
+        <Card
+          label="Integration ready"
+          description="Make agents available in Chat and trigger them from Automations workflows."
+        />
+      </div>
+    </div>
+  </PlatformLayout>
+</Layout>

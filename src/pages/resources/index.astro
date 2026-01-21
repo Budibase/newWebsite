@@ -1,0 +1,152 @@
+---
+import Layout from "../../layouts/MainLayout.astro";
+import PlatformLayout from "@components/PlatformLayout.astro";
+import Plugs from "phosphor-astro/Plugs.astro";
+import Database from "phosphor-astro/Database.astro";
+import Sparkle from "phosphor-astro/Sparkle.astro";
+import HeroBg from "@assets/images/homepage/valley.png";
+import { Image } from "astro:assets";
+import Card from "@components/cards/Card.astro";
+
+const navItems = [
+  { text: "APIs", link: "#apis", sectionId: "apis", icon: Plugs },
+  {
+    text: "Databases",
+    link: "#databases",
+    sectionId: "databases",
+    icon: Database,
+  },
+  { text: "Models", link: "#models", sectionId: "models", icon: Sparkle },
+];
+---
+
+<Layout>
+  <PlatformLayout
+			title="Budibase"
+			description="The open and free AI platform for building agents, chat, automations and apps."
+    {navItems}
+  >
+    <div id="apis-section" data-section="apis" class="content-section mb-8">
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">APIs</h2>
+        <p
+          class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+        >
+          Connect to external and internal APIs to fetch data, perform actions,
+          and integrate with third-party services.
+        </p>
+
+        <Image
+          src={HeroBg}
+          alt="APIs background"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="REST APIs"
+          description="Connect to RESTful APIs with support for GET, POST, PUT, DELETE, and custom methods."
+        />
+        <Card
+          label="Authentication"
+          description="Secure your API connections with OAuth, API keys, bearer tokens, and custom auth methods."
+        />
+        <Card
+          label="Request/Response handling"
+          description="Transform request payloads and parse response data with built-in JSON, XML, and form data support."
+        />
+      </div>
+    </div>
+
+    <div
+      id="databases-section"
+      data-section="databases"
+      class="content-section mb-8"
+    >
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">Databases</h2>
+        <p
+          class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+        >
+          Connect to your databases to query, insert, update, and manage data
+          across your applications and agents.
+        </p>
+        <Image
+          src={HeroBg}
+          alt="Databases background"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="SQL databases"
+          description="Connect to PostgreSQL, MySQL, SQL Server, and other SQL databases with native query support."
+        />
+        <Card
+          label="NoSQL databases"
+          description="Integrate with MongoDB, DynamoDB, and other NoSQL databases for flexible data storage."
+        />
+        <Card
+          label="Query builder"
+          description="Build complex queries visually or write custom SQL with syntax highlighting and validation."
+        />
+        <Card
+          label="Connection pooling"
+          description="Efficiently manage database connections with built-in connection pooling and caching."
+        />
+        <Card
+          label="Data binding"
+          description="Bind database results to your agents and workflows for dynamic, data-driven operations."
+        />
+      </div>
+    </div>
+
+    <div id="models-section" data-section="models" class="content-section mb-8">
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">Models</h2>
+        <p
+          class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+        >
+          Connect to AI models from leading providers to power your agents with
+          cutting-edge language understanding and generation.
+        </p>
+        <Image
+          src={HeroBg}
+          alt="Models background"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="OpenAI"
+          description="Access GPT-4, GPT-3.5, and other OpenAI models with full API compatibility."
+        />
+        <Card
+          label="Mistral AI"
+          description="Use Mistral's open models including Mistral 7B and Mixtral for powerful reasoning."
+        />
+        <Card
+          label="Anthropic"
+          description="Connect to Claude models for advanced conversational AI and long-context understanding."
+        />
+        <Card
+          label="Local models"
+          description="Run models locally with Ollama, vLLM, and other local inference engines for privacy."
+        />
+        <Card
+          label="Custom endpoints"
+          description="Connect to any model provider through custom API endpoints and configurations."
+        />
+      </div>
+    </div>
+  </PlatformLayout>
+</Layout>

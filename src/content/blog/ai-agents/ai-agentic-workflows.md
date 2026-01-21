@@ -124,7 +124,7 @@ This serves a few key roles, including establishing accountability, improving pe
 
 In many cases, human users remain deeply involved in workflows, providing oversight and intervention across agents’ decisions. For example, giving approval to take certain actions, reviewing draft outputs, or selecting from an agent-generated set of options for actions.
 
-Alternatively, human users may give post-execution feedback to help agents improve over time. This might take the form of a simple *helpful/unhelpful* designation, or we could give more specific feedback, like flagging incorrect, harmful, or otherwise problematic responses.
+Alternatively, human users may give post-execution feedback to help agents improve over time. This might take the form of a simple _helpful/unhelpful_ designation, or we could give more specific feedback, like flagging incorrect, harmful, or otherwise problematic responses.
 
 Some agents may also be configured for self-reflection. For instance, checking if their solution worked, reassessing the steps taken, or attempting to correct failed actions. This helps agents to remain safe, accurate, and aligned with underlying business workflows.
 
@@ -367,7 +367,7 @@ First of all, we know already that AI agents are modular systems, with distinct,
 
 To understand how to account for this in the real world and select specific tools for each of these components, it’s important to consider the broader architecture of agentic AI solutions.
 
-Like other types of software solutions, it’s helpful to think of this in terms of the *layers* - the logical groupings of functions and responsibilities within a system that define how it operates.
+Like other types of software solutions, it’s helpful to think of this in terms of the _layers_ - the logical groupings of functions and responsibilities within a system that define how it operates.
 
 Just as a more traditional software tool, like a web app, has data, interface, and process layers, we can describe agent systems in a similar fashion.
 
@@ -430,19 +430,19 @@ With a good grasp of the underlying architecture of agentic systems, we can now 
 
 For this, we’ll need to understand the core technical capabilities we’ll need and how each of these fits into the wider agentic AI system.
 
-*LLMs and reasoning engines* form the core of agentic systems, including interpreting inputs, making decisions, and generating outputs. These also enable agents to understand language, formulate plans, and interact naturally with users.
+_LLMs and reasoning engines_ form the core of agentic systems, including interpreting inputs, making decisions, and generating outputs. These also enable agents to understand language, formulate plans, and interact naturally with users.
 
 LLMs include the likes of ChatGPT, Claude, and Mistral and provide the reasoning behind AI solutions. We can also use routing tools within our solutions to determine which model is most appropriate in a given context.
 
-*Agent frameworks* are used to coordinate agent behavior, including task decomposition, memory access, tool routing, and multi-agent collaboration. So, tools like LangChain, CrewAI, and AutoGen help to organize complex workflows by connecting distinct modules.
+_Agent frameworks_ are used to coordinate agent behavior, including task decomposition, memory access, tool routing, and multi-agent collaboration. So, tools like LangChain, CrewAI, and AutoGen help to organize complex workflows by connecting distinct modules.
 
-*Task and workflow runners* ensure that planned steps are carried out reliably and in the right order. This bridges logic and action, ensuring that agent behavior remains traceable, with tools like Temporal, Prefect, and Airflow handling orchestration, timeouts, retries, and dependencies.
+_Task and workflow runners_ ensure that planned steps are carried out reliably and in the right order. This bridges logic and action, ensuring that agent behavior remains traceable, with tools like Temporal, Prefect, and Airflow handling orchestration, timeouts, retries, and dependencies.
 
-*Knowledge and memory stores* power long and short-term memory for AI agentic workflows. Vector databases like PineCore and Weaviate power retrieval-augmented generation, while SQL and NoSQL tools can be used to store task states and histories.
+_Knowledge and memory stores_ power long and short-term memory for AI agentic workflows. Vector databases like PineCore and Weaviate power retrieval-augmented generation, while SQL and NoSQL tools can be used to store task states and histories.
 
-*Tool interfaces and system integrations* allow agents to interact with third-party platforms using APIs, webhooks, or SDKs. We might also connect to *identity management, auth,* or *secrets* management tools to enforce access controls for agents and users alike.
+_Tool interfaces and system integrations_ allow agents to interact with third-party platforms using APIs, webhooks, or SDKs. We might also connect to _identity management, auth,_ or _secrets_ management tools to enforce access controls for agents and users alike.
 
-*Monitoring and observability* provide visibility into agent performance, behavior, and success/failure. Specialized tools like LangFuse and OpenTelemetry assist with this, offering real-time insights into what agents are doing, how, and why.
+_Monitoring and observability_ provide visibility into agent performance, behavior, and success/failure. Specialized tools like LangFuse and OpenTelemetry assist with this, offering real-time insights into what agents are doing, how, and why.
 
 ### Real-world agentic AI solutions
 

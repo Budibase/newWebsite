@@ -18,81 +18,81 @@ import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
 
 const iconMap: Record<string, any> = {
-	Circles,
-	Memory,
-	ChatCircle,
-	Path,
-	Browsers,
-	Link,
-	Webhooks,
-	Database,
-	Sparkle,
-	Cloud,
-	TrendUp,
+  Circles,
+  Memory,
+  ChatCircle,
+  Path,
+  Browsers,
+  Link,
+  Webhooks,
+  Database,
+  Sparkle,
+  Cloud,
+  TrendUp,
 };
 
-const navItems = platformNavItemsData.map(group => ({
-	...group,
-	items: group.items.map(item => ({
-		...item,
-		icon: iconMap[item.iconName],
-	})),
+const navItems = platformNavItemsData.map((group) => ({
+  ...group,
+  items: group.items.map((item) => ({
+    ...item,
+    icon: iconMap[item.iconName],
+  })),
 }));
 ---
 
 <Layout>
-	<PlatformLayout
-		title="Platform"
-		description="The privacy-first platform for building agents, chat, automations & apps."
-		{navItems}
-	>
-		<div class="mb-8">
-			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-				<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-					API explorer
-				</h2>
-				<p
-					class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
-				>
-					Connect to external and internal APIs to fetch data, perform actions, and integrate with third-party services.
-				</p>
+  <PlatformLayout
+			title="Budibase"
+			description="The open and free AI platform for building agents, chat, automations and apps."
+    {navItems}
+  >
+    <div class="mb-8">
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">
+          API explorer
+        </h2>
+        <p
+          class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+        >
+          Connect to external and internal APIs to fetch data, perform actions,
+          and integrate with third-party services.
+        </p>
 
-				<Image
-					src={HeroBg}
-					alt="APIs integration"
-					class="w-full h-96 object-cover rounded-md"
-				/>
-			</div>
+        <Image
+          src={HeroBg}
+          alt="APIs integration"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
 
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-			>
-				<Card
-					label="REST APIs"
-					description="Connect to RESTful APIs with support for GET, POST, PUT, DELETE, and custom methods."
-				/>
-				<Card
-					label="Authentication"
-					description="Secure your API connections with OAuth, API keys, bearer tokens, and custom auth methods."
-				/>
-				<Card
-					label="Request/Response handling"
-					description="Transform request payloads and parse response data with built-in JSON, XML, and form data support."
-				/>
-				<Card
-					label="Agent integration"
-					description="Allow agents to call external and internal APIs to fetch data or perform actions."
-				/>
-				<Card
-					label="Automation triggers"
-					description="Trigger automations from webhooks and API endpoints."
-				/>
-				<Card
-					label="Error handling"
-					description="Configure retry logic and error handling for API calls."
-				/>
-			</div>
-		</div>
-	</PlatformLayout>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="REST APIs"
+          description="Connect to RESTful APIs with support for GET, POST, PUT, DELETE, and custom methods."
+        />
+        <Card
+          label="Authentication"
+          description="Secure your API connections with OAuth, API keys, bearer tokens, and custom auth methods."
+        />
+        <Card
+          label="Request/Response handling"
+          description="Transform request payloads and parse response data with built-in JSON, XML, and form data support."
+        />
+        <Card
+          label="Agent integration"
+          description="Allow agents to call external and internal APIs to fetch data or perform actions."
+        />
+        <Card
+          label="Automation triggers"
+          description="Trigger automations from webhooks and API endpoints."
+        />
+        <Card
+          label="Error handling"
+          description="Configure retry logic and error handling for API calls."
+        />
+      </div>
+    </div>
+  </PlatformLayout>
 </Layout>
-

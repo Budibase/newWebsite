@@ -23,43 +23,43 @@ import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
 
 const iconMap: Record<string, any> = {
-	Circles,
-	Memory,
-	ChatCircle,
-	Path,
-	Browsers,
-	Link,
-	Webhooks,
-	Database,
-	Sparkle,
-	Cloud,
-	TrendUp,
+  Circles,
+  Memory,
+  ChatCircle,
+  Path,
+  Browsers,
+  Link,
+  Webhooks,
+  Database,
+  Sparkle,
+  Cloud,
+  TrendUp,
 };
 
-const navItems = platformNavItemsData.map(group => ({
-	...group,
-	items: group.items.map(item => ({
-		...item,
-		icon: iconMap[item.iconName],
-	})),
+const navItems = platformNavItemsData.map((group) => ({
+  ...group,
+  items: group.items.map((item) => ({
+    ...item,
+    icon: iconMap[item.iconName],
+  })),
 }));
 ---
 
 <Layout>
   <PlatformLayout
-    title="Platform"
-    description="The privacy-first platform for building agents, chat, automations & apps."
+			title="Budibase"
+			description="The open and free AI platform for building agents, chat, automations and apps."
     {navItems}
   >
     <div class="mb-8">
       <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-        <h2 class="text-lg! text-stone-900 dark:text-stone-100">
-          Agents
-        </h2>
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">Agents</h2>
         <p
           class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
         >
-          The privacy-first way to build agents; with your models, data, and tools. Build agents by giving them simple, ordered instructions in a clean, easy-to-use editor.
+          The privacy-first way to build agents; with your models, data, and
+          tools. Build agents by giving them simple, ordered instructions in a
+          clean, easy-to-use editor.
         </p>
 
         <Image

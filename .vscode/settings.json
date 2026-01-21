@@ -1,7 +1,5 @@
 {
-    "astro.content-intellisense": true,
-    "typescript.tsdk": "node_modules/typescript/lib",
-    "cSpell.words": [
-        "Budibase"
-    ]
+  "astro.content-intellisense": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.words": ["Budibase"]
 }

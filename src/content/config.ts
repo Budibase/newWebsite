@@ -42,12 +42,15 @@ export const collections = {
           z.object({
             name: z.string(),
             profilePic: z.string().optional(),
-          })
+          }),
         )
         .optional()
         .describe("Multiple authors"),
       category: z.string().optional().describe("Blog post category"),
-      featured: z.boolean().default(false).describe("Whether this is a featured post"),
+      featured: z
+        .boolean()
+        .default(false)
+        .describe("Whether this is a featured post"),
       socialImage: z
         .string()
         .optional()

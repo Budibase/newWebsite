@@ -1,11 +1,9 @@
 ---
-
 author: "Ronan McQuillan"
 publishDate: 2025-05-30
 description: "Take a look at our comprehensive guide to comparing agentic ai vs generative ai."
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 title: "Generative AI vs Agentic AI | Use Cases, Tool Stacks & Benefits"
-
 ---
 
 Agentic AI is one of the hottest topics in the world of enterprise technology. This is leading businesses in all industries to rush to adopt AI agents, in pursuit of efficiency gains and enhanced accuracy within workflows.
@@ -48,7 +46,7 @@ This opens up a range of additional uses, as we can essentially communicate with
 
 ## What is agentic AI?
 
-Agentic AI is a somewhat newer concept. This refers to AI-powered software solutions that are able to assess context, perform reasoning, and act autonomously in pursuit of a goal. 
+Agentic AI is a somewhat newer concept. This refers to AI-powered software solutions that are able to assess context, perform reasoning, and act autonomously in pursuit of a goal.
 
 ![Agentic AI](https://res.cloudinary.com/daog6scxm/image/upload/v1744896875/cms/ai-agents/ai-agentic-workflows/AI_Agentic_Workflows_Featured_1_yblhxa.webp "Agentic AI")
 
@@ -65,7 +63,7 @@ In more granular terms, this requires the following capabilities:
 
 Crucially, several important aspects of this rely on generative AI. In particular, NLP, reasoning, and tool selection, as well as aspects of other capabilities.
 
-As such, we can think of agentic systems as consisting of one or more LLMs supported by additional componentry that enables them to behave autonomously. 
+As such, we can think of agentic systems as consisting of one or more LLMs supported by additional componentry that enables them to behave autonomously.
 
 As we’ll see later when we discuss tool stacks, this often relies on purpose-built agentic AI frameworks to simplify the development, management, and deployment of agents, using existing generative AI models.
 
@@ -121,7 +119,7 @@ As such, the core use cases are centered on replicating human-centric functions 
 
 Many of the best examples of this surround internal services workflows, such as ITSM, HR, finance, or others.
 
-In these cases, end users can make requests to an AI agent using natural language, in much the same way they would to a help desk. 
+In these cases, end users can make requests to an AI agent using natural language, in much the same way they would to a help desk.
 
 Depending on the nature of the request, the agent could then signpost process documentation, take resolution actions, or escalate to a human colleague.
 
@@ -135,7 +133,7 @@ For further details, check out our guide to [agentic AI use cases](https://budib
 
 ## Benefits & challenges
 
-Now that we have a better understanding of the key usages for both generative and agentic AI, it’s also important to consider some of the practical implications of utilizing each. 
+Now that we have a better understanding of the key usages for both generative and agentic AI, it’s also important to consider some of the practical implications of utilizing each.
 
 More specifically, in order to achieve ROI from any kind of solution, we must have a realistic picture of the benefits we expect to see, along with the challenges, limitations, and issues we’re likely to encounter along the way.
 
@@ -197,7 +195,7 @@ On top of this, in order to create the kinds of solutions we described earlier, 
 - **Data stores** - any relevant information or data sources that will be used within our workflow.
 - **Vectorization tools** - enabling us to vectorize data so that it can be used by the model.
 - **End user interfaces** - app screens that enable users to interact with our model by submitting data or triggering workflows.
-- **Evaluation, observability, and monitoring** **tools** - to make it possible to audit and assess the system’s behavior. 
+- **Evaluation, observability, and monitoring** **tools** - to make it possible to audit and assess the system’s behavior.
 
 Depending on our more granular needs, which of these we need to prioritize might differ. For instance, if we’re primarily using a COTS model to action specific processes or logic within existing workflows, we might largely rely on native functionality within automation platforms.
 
@@ -220,7 +218,7 @@ In addition to this, real-world AI agents typically involve the following compon
 
 Another consideration here is how much abstraction is suitable for our needs, or how much we want to custom-build. So, many teams rely on all-encompassing, low or no-code platforms that offer capabilities within each of these themes.
 
-What’s critical, though, is understanding the respective roles of each of these components of an agentic system and how they interact. 
+What’s critical, though, is understanding the respective roles of each of these components of an agentic system and how they interact.
 
 ![Agentic AI Architecture](https://res.cloudinary.com/daog6scxm/image/upload/v1744893944/cms/ai-agents/ai-agentic-workflows/Agentic_Architecture_Diagram_dwwguq.webp)
 
@@ -228,7 +226,7 @@ To learn more, check out this resource on [AI agent architecture](https://budiba
 
 ## Turn data into action with Budibase
 
-Budibase is the open-source, low-code platform that empowers teams to turn data into action. 
+Budibase is the open-source, low-code platform that empowers teams to turn data into action.
 
 We offer connectivity for a range of LLMs, RDBMSs, NoSQL tools, APIs, spreadsheets, and more, alongside autogenerated UIs, powerful visual automation tools, free SSO, custom RBAC, and optional self-hosting.
 

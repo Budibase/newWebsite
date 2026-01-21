@@ -10,8 +10,11 @@ import Icon from "@components/Icon.astro";
   aria-label="Theme selection"
 >
   <!-- Hidden element to ensure Tailwind includes dynamically added classes -->
-  <div class="hidden bg-stone-700 dark:bg-stone-600 text-stone-50 dark:text-stone-50"></div>
-  
+  <div
+    class="hidden bg-stone-700 dark:bg-stone-600 text-stone-50 dark:text-stone-50"
+  >
+  </div>
+
   <button
     type="button"
     class="theme-button flex items-center justify-center w-8 h-8 p-0 border-none bg-transparent rounded-md cursor-pointer transition-all duration-150 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-800 hover:text-stone-800 dark:hover:text-stone-200"
@@ -61,40 +64,60 @@ import Icon from "@components/Icon.astro";
       if (skipTransitions) {
         document.documentElement.classList.add("no-transitions");
       }
-      
+
       const effectiveTheme = getEffectiveTheme();
       if (effectiveTheme === "dark") {
         document.documentElement.classList.add("dark");
       } else {
         document.documentElement.classList.remove("dark");
       }
-      
+
       if (skipTransitions) {
         // Force reflow to ensure the class is applied
         void document.documentElement.offsetHeight;
         document.documentElement.classList.remove("no-transitions");
       }
-      
+
       updateActiveButton();
     }
 
     // Update which button is active
     function updateActiveButton() {
-      const themeSwitcher = document.querySelector('[role="group"][aria-label="Theme selection"]');
+      const themeSwitcher = document.querySelector(
+        '[role="group"][aria-label="Theme selection"]',
+      );
       if (!themeSwitcher) return;
-      
+
       const buttons = themeSwitcher.querySelectorAll(".theme-button");
       const stored = localStorage.getItem("theme") || "system";
-      
+
       buttons.forEach((button) => {
         const theme = button.getAttribute("data-theme");
         if (theme === stored) {
           // Active state: darker in light mode, lighter in dark mode
-          button.classList.add("bg-stone-200", "dark:bg-stone-800", "text-stone-950", "dark:text-stone-50");
-          button.classList.remove("text-stone-600", "dark:text-stone-400", "bg-transparent");
+          button.classList.add(
+            "bg-stone-200",
+            "dark:bg-stone-800",
+            "text-stone-950",
+            "dark:text-stone-50",
+          );
+          button.classList.remove(
+            "text-stone-600",
+            "dark:text-stone-400",
+            "bg-transparent",
+          );
         } else {
-          button.classList.remove("bg-stone-700", "dark:bg-stone-600", "text-stone-50", "dark:text-stone-50");
-          button.classList.add("text-stone-600", "dark:text-stone-400", "bg-transparent");
+          button.classList.remove(
+            "bg-stone-700",
+            "dark:bg-stone-600",
+            "text-stone-50",
+            "dark:text-stone-50",
+          );
+          button.classList.add(
+            "text-stone-600",
+            "dark:text-stone-400",
+            "bg-transparent",
+          );
         }
       });
     }
@@ -115,11 +138,13 @@ import Icon from "@components/Icon.astro";
 
     // Initialize theme and button state
     function init() {
-      const themeSwitcher = document.querySelector('[role="group"][aria-label="Theme selection"]');
+      const themeSwitcher = document.querySelector(
+        '[role="group"][aria-label="Theme selection"]',
+      );
       if (!themeSwitcher) return;
 
       const buttons = themeSwitcher.querySelectorAll(".theme-button");
-      
+
       // Apply theme
       applyTheme();
 
@@ -173,4 +198,3 @@ import Icon from "@components/Icon.astro";
     animation: none !important;
   }
 </style>
-

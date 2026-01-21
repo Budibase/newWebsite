@@ -5,7 +5,6 @@ description: "Take a look at our comprehsive guide to enterprise chatbots and co
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 title: "What are Enterprise Chatbots? In-Depth Guide"
 type: "ai-agents"
-
 ---
 
 Enterprise chatbots are fast becoming a critical part of successful digital transformation strategies in large organizations.
@@ -79,7 +78,7 @@ So, once the NLP has determined what the user requires, the LLM is able to use i
 
 We can see this play out in two concrete ways. Firstly, whereas more basic chatbots might follow strictly linear, scripted interactions, enterprise chatbots are capable of providing unique, contextually aware responses in real-time.
 
-Secondly, enterprise chatbots are able to take autonomous action. This relies on what’s known as *tool calling* - sometimes also referred to as *function calling*.
+Secondly, enterprise chatbots are able to take autonomous action. This relies on what’s known as _tool calling_ - sometimes also referred to as _function calling_.
 
 Essentially, this means that we provide the chatbot with API endpoints that can be triggered to take certain actions. For example, within our ERP, CRM, or ITSM platform. This means that we’re still enforcing guardrails on what actions the system can take.
 
@@ -91,7 +90,7 @@ In the course of real-world interactions, it can then execute whichever of these
 
 Lastly, enterprise chatbots can be distinguished by their ability to reflect on interactions, learn from previous outcomes, and use this knowledge to improve experiences going forward.
 
-This relies on a combination of *short-term* and *long-term memory*.
+This relies on a combination of _short-term_ and _long-term memory_.
 
 Short-term memory refers to information that’s relevant to the current session. This is what enables the chatbot to recall information the user has previously given them within a conversation, and make better, more contextually aware decisions.
 
@@ -194,7 +193,7 @@ On top of this, relying on existing tools for our chatbot can be of more limited
 
 That is, it could be more difficult to provide customers or suppliers with access to a Slack or Teams channel than it would be for them to use a dedicated web UI.
 
-However, it’s worth noting that there’s no singularly *better* option here. Rather, the key thing is that each approach offers distinct advantages and disadvantages, which must be understood when planning a situation in the real world.
+However, it’s worth noting that there’s no singularly _better_ option here. Rather, the key thing is that each approach offers distinct advantages and disadvantages, which must be understood when planning a situation in the real world.
 
 ## Top use cases for enterprise chatbots
 
@@ -328,7 +327,7 @@ Thankfully, we’ve already alluded to most of the components of this already.
 
 ||||||||||
 
- Here’s a fuller account of what we’ll need.
+Here’s a fuller account of what we’ll need.
 
 #### LLMs
 

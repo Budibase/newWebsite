@@ -1,5 +1,4 @@
 ---
-
 author: "Ronan McQuillan"
 publishDate: 2025-04-25
 description: "Take a look at our round-up of the top olow & no-code AI agent builders."
@@ -259,7 +258,6 @@ As we’ll see in a second, it has the potential to be an expensive option for p
 #### Pricing
 
 BotPress offers several, transparent pricing tiers, including a pay-as-you-go version that comes with $5 of free AI credits. However, this is restricted to one bot and 500 incoming messages/events per month.
-
 
 Paid tiers start from $89 per month, with increased usage limits. However, to access the full range of functionality or increase limits further, the next tier up is $495 per month.
 

@@ -20,20 +20,24 @@ import DogImage from "@assets/images/homepage/dog.png";
 import { Image } from "astro:assets";
 ---
 
-<section class="container max-w-7xl mx-auto px-2 lg:px-0 flex flex-col mt-8 md:mt-20">
+<section
+  class="container max-w-7xl mx-auto px-2 lg:px-0 flex flex-col mt-8 md:mt-20"
+>
   <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
     <div class="flex-1">
       <h1 class="max-w-xl h2 text-stone-500! dark:text-stone-400! mb-5">
-        Budibase is a free and open AI workflow platform. 
+        Budibase is a free and open AI workflow platform.
         <span class="text-stone-950 dark:text-stone-50"
-          >Build AI Agents, Chat, Automations, and
-           Apps, and join 300K users transforming workflows with AI.</span
+          >Build AI Agents, Chat, Automations, and Apps, and join 300K users
+          transforming workflows with AI.</span
         >
       </h1>
       <div class="flex flex-row">
         <Button label="Get Budibase free" url="/" variant="cta" />
       </div>
-      <div class="flex flex-wrap items-center gap-3 md:gap-4 text-xs text-stone-500 dark:text-stone-400 mt-5">
+      <div
+        class="flex flex-wrap items-center gap-3 md:gap-4 text-xs text-stone-500 dark:text-stone-400 mt-5"
+      >
         <span class="flex items-center gap-1">
           <Users class="w-4 h-4" />
           <span>Self-host</span>
@@ -53,7 +57,11 @@ import { Image } from "astro:assets";
       </div>
     </div>
     <div class="shrink-0 w-full md:w-auto md:max-w-md">
-      <Image src={DogImage} alt="Friendly dog illustration" class="w-full h-auto" />
+      <Image
+        src={DogImage}
+        alt="Friendly dog illustration"
+        class="w-full h-auto"
+      />
     </div>
   </div>
 

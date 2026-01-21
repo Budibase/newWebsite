@@ -13,30 +13,54 @@ interface Props {
 const { label, description, linkUrl, tag } = Astro.props as Props;
 ---
 
-{linkUrl ? (
-  <Link url={linkUrl} label="" ariaLabel={label} class="card-link" target="_blank">
-    <div class="card bg-secondary ease-in-out duration-50 hover:bg-stone-200! dark:hover:bg-stone-800! p-4 rounded-md">
-      <div class="card-content">
-        {tag && <Tag label={tag} variant="secondary" size="small" class="w-fit mb-2" />}
-        <h3 class="text-lg! card-title">
-          {label}
-          {linkUrl && (
-            <ArrowUpRight class="card-icon text-stone-600 dark:text-stone-400" />
+{
+  linkUrl ? (
+    <Link
+      url={linkUrl}
+      label=""
+      ariaLabel={label}
+      class="card-link"
+      target="_blank"
+    >
+      <div class="card bg-secondary ease-in-out duration-50 hover:bg-stone-200! dark:hover:bg-stone-800! p-4 rounded-md">
+        <div class="card-content">
+          {tag && (
+            <Tag
+              label={tag}
+              variant="secondary"
+              size="small"
+              class="w-fit mb-2"
+            />
           )}
-        </h3>
-        <p class="text-stone-500! dark:text-stone-400!">{description}</p>
+          <h3 class="text-lg! card-title">
+            {label}
+            {linkUrl && (
+              <ArrowUpRight class="card-icon text-stone-600 dark:text-stone-400" />
+            )}
+          </h3>
+          <p class="text-stone-500! dark:text-stone-400!">{description}</p>
+        </div>
+      </div>
+    </Link>
+  ) : (
+    <div class="card bg-secondary ease-in-out duration-50 p-4 rounded-md">
+      <div class="card-content">
+        {tag && (
+          <Tag
+            label={tag}
+            variant="secondary"
+            size="small"
+            class="w-fit mb-2"
+          />
+        )}
+        <h3 class="text-lg!">{label}</h3>
+        <p class="text-stone-500! dark:text-stone-400! text-sm!">
+          {description}
+        </p>
       </div>
     </div>
-  </Link>
-) : (
-  <div class="card bg-secondary ease-in-out duration-50 p-4 rounded-md">
-    <div class="card-content">
-      {tag && <Tag label={tag} variant="secondary" size="small" class="w-fit mb-2" />}
-      <h3 class="text-lg!">{label}</h3>
-      <p class="text-stone-500! dark:text-stone-400! text-sm!">{description}</p>
-    </div>
-  </div>
-)}
+  )
+}
 
 <style>
   .card {
@@ -54,7 +78,6 @@ const { label, description, linkUrl, tag } = Astro.props as Props;
     width: 100%;
     font-size: 0;
   }
-
 
   .card-content {
     display: flex;
@@ -77,6 +100,4 @@ const { label, description, linkUrl, tag } = Astro.props as Props;
   .card-icon :global(*) {
     color: inherit;
   }
-
 </style>
-

@@ -53,25 +53,11 @@ const resourcesItems = [
       </div>
     </a>
     <a
-      href="/platform"
-      class="hidden md:inline-block text-sm px-1 text-stone-800 dark:text-stone-400 hover:text-stone-600 dark:hover:text-stone-100 transition-colors"
-      data-astro-prefetch
-    >
-      Platform
-    </a>
-    <a
       target="_blank"
       href="https://discord.com/invite/budibase-733030666647765003"
       class="hidden md:inline-block text-sm px-1 text-stone-800 dark:text-stone-400 hover:text-stone-600 dark:hover:text-stone-100 transition-colors"
     >
       Community
-    </a>
-    <a
-      href="/enterprise"
-      class="hidden md:inline-block text-sm px-1 text-stone-800 dark:text-stone-400 hover:text-stone-600 dark:hover:text-stone-100 transition-colors"
-      data-astro-prefetch
-    >
-      Enterprise
     </a>
     <a
       target="_self"
@@ -82,13 +68,12 @@ const resourcesItems = [
       Pricing
     </a>
     <div class="hidden md:block">
-      <HeaderDropDown
-        label="Resources"
-        items={resourcesItems}
-      />
+      <HeaderDropDown label="Resources" items={resourcesItems} />
     </div>
   </div>
-  <div class="flex flex-row gap-2 md:gap-3 items-center w-full md:w-auto justify-end">
+  <div
+    class="flex flex-row gap-2 md:gap-3 items-center w-full md:w-auto justify-end"
+  >
     <a
       href="https://github.com/budibase/budibase"
       target="_blank"
@@ -130,8 +115,7 @@ const resourcesItems = [
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16"
-        ></path>
+          d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
       <svg
         id="close-icon"
@@ -145,8 +129,7 @@ const resourcesItems = [
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M6 18L18 6M6 6l12 12"
-        ></path>
+          d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </button>
   </div>
@@ -178,8 +161,7 @@ const resourcesItems = [
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          ></path>
+            d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
@@ -189,29 +171,11 @@ const resourcesItems = [
       <ul class="space-y-6 flex flex-col gap-4">
         <li>
           <a
-            href="/platform"
-            class="block text-stone-900 dark:text-stone-300 text-3xl hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
-            data-astro-prefetch
-          >
-            Platform
-          </a>
-        </li>
-        <li>
-          <a
             href="https://discord.com/invite/budibase-733030666647765003"
             target="_blank"
             class="block text-stone-900 dark:text-stone-300 text-3xl hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
           >
             Community
-          </a>
-        </li>
-        <li>
-          <a
-            href="/enterprise"
-            class="block text-stone-900 dark:text-stone-300 text-3xl hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
-            data-astro-prefetch
-          >
-            Enterprise
           </a>
         </li>
         <li>
@@ -233,7 +197,6 @@ const resourcesItems = [
         </li>
       </ul>
     </nav>
-
   </div>
 
   <!-- Resources Submenu View -->
@@ -256,8 +219,7 @@ const resourcesItems = [
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M15 19l-7-7 7-7"
-          ></path>
+            d="M15 19l-7-7 7-7"></path>
         </svg>
       </button>
       <button
@@ -276,40 +238,44 @@ const resourcesItems = [
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          ></path>
+            d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
 
     <!-- Resources Section Title -->
     <div class="px-4 pt-2">
-      <p class="text-stone-500 dark:text-stone-500! text-base tracking-wide">Resources</p>
+      <p class="text-stone-500 dark:text-stone-500! text-base tracking-wide">
+        Resources
+      </p>
     </div>
 
     <!-- Resources Items -->
     <nav class="flex-1 px-4 pt-2">
       <ul class="space-y-4 flex flex-col gap-4">
-        {resourcesItems.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class="block text-stone-900 dark:text-stone-300 text-3xl hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
-              data-astro-prefetch
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
+        {
+          resourcesItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="block text-stone-900 dark:text-stone-300 text-3xl hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
+                data-astro-prefetch
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
   </div>
 </div>
 
 <style>
-
   #mobile-menu {
-    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    transition:
+      opacity 0.2s ease-in-out,
+      visibility 0.2s ease-in-out;
   }
 
   #mobile-menu.hidden {
@@ -347,62 +313,64 @@ const resourcesItems = [
 
 <script>
   (function () {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeMenuButton = document.getElementById('close-menu-button');
-    const closeResourcesButton = document.getElementById('close-resources-button');
-    const resourcesButton = document.getElementById('resources-button');
-    const backButton = document.getElementById('back-button');
-    const mainMenuView = document.getElementById('main-menu-view');
-    const resourcesMenuView = document.getElementById('resources-menu-view');
-    const menuIcon = document.getElementById('menu-icon');
-    const closeIcon = document.getElementById('close-icon');
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const closeMenuButton = document.getElementById("close-menu-button");
+    const closeResourcesButton = document.getElementById(
+      "close-resources-button",
+    );
+    const resourcesButton = document.getElementById("resources-button");
+    const backButton = document.getElementById("back-button");
+    const mainMenuView = document.getElementById("main-menu-view");
+    const resourcesMenuView = document.getElementById("resources-menu-view");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
 
     function openMenu() {
-      mobileMenu?.classList.remove('hidden');
-      mobileMenuButton?.setAttribute('aria-expanded', 'true');
-      menuIcon?.classList.add('hidden');
-      closeIcon?.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
+      mobileMenu?.classList.remove("hidden");
+      mobileMenuButton?.setAttribute("aria-expanded", "true");
+      menuIcon?.classList.add("hidden");
+      closeIcon?.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
     }
 
     function closeMenu() {
-      mobileMenu?.classList.add('hidden');
-      mobileMenuButton?.setAttribute('aria-expanded', 'false');
-      menuIcon?.classList.remove('hidden');
-      closeIcon?.classList.add('hidden');
-      document.body.style.overflow = '';
+      mobileMenu?.classList.add("hidden");
+      mobileMenuButton?.setAttribute("aria-expanded", "false");
+      menuIcon?.classList.remove("hidden");
+      closeIcon?.classList.add("hidden");
+      document.body.style.overflow = "";
       // Reset to main menu view
-      mainMenuView?.classList.remove('hidden');
-      resourcesMenuView?.classList.add('hidden');
+      mainMenuView?.classList.remove("hidden");
+      resourcesMenuView?.classList.add("hidden");
     }
 
     function showResourcesMenu() {
-      mainMenuView?.classList.add('hidden');
-      resourcesMenuView?.classList.remove('hidden');
+      mainMenuView?.classList.add("hidden");
+      resourcesMenuView?.classList.remove("hidden");
     }
 
     function showMainMenu() {
-      mainMenuView?.classList.remove('hidden');
-      resourcesMenuView?.classList.add('hidden');
+      mainMenuView?.classList.remove("hidden");
+      resourcesMenuView?.classList.add("hidden");
     }
 
-    mobileMenuButton?.addEventListener('click', openMenu);
-    closeMenuButton?.addEventListener('click', closeMenu);
-    closeResourcesButton?.addEventListener('click', closeMenu);
-    resourcesButton?.addEventListener('click', showResourcesMenu);
-    backButton?.addEventListener('click', showMainMenu);
+    mobileMenuButton?.addEventListener("click", openMenu);
+    closeMenuButton?.addEventListener("click", closeMenu);
+    closeResourcesButton?.addEventListener("click", closeMenu);
+    resourcesButton?.addEventListener("click", showResourcesMenu);
+    backButton?.addEventListener("click", showMainMenu);
 
     // Close menu when clicking outside (on the overlay background)
-    mobileMenu?.addEventListener('click', (e) => {
+    mobileMenu?.addEventListener("click", (e) => {
       if (e.target === mobileMenu) {
         closeMenu();
       }
     });
 
     // Close menu on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !mobileMenu?.classList.contains('hidden')) {
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !mobileMenu?.classList.contains("hidden")) {
         closeMenu();
       }
     });

@@ -1,5 +1,4 @@
 ---
-
 import Button from "@components/Button.astro";
 import Check from "phosphor-astro/check.astro";
 
@@ -70,8 +69,12 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
           }</span
         >
         <span class="inline-flex gap-0.5">
-          <span class="text-base text-stone-600 dark:text-stone-400">{creatorLabel}</span>
-          <span class="text-base text-stone-600 dark:text-stone-400">{creatorUnit}</span>
+          <span class="text-base text-stone-600 dark:text-stone-400"
+            >{creatorLabel}</span
+          >
+          <span class="text-base text-stone-600 dark:text-stone-400"
+            >{creatorUnit}</span
+          >
         </span>
       </p>
       {
@@ -81,15 +84,23 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
               {typeof userPrice === "number" ? `$${userPrice}` : userPrice}
             </span>
             <span class="inline-flex gap-0.5">
-              <span class="text-base text-stone-600 dark:text-stone-400">{userLabel}</span>
-              <span class="text-base text-stone-600 dark:text-stone-400">{userUnit}</span>
+              <span class="text-base text-stone-600 dark:text-stone-400">
+                {userLabel}
+              </span>
+              <span class="text-base text-stone-600 dark:text-stone-400">
+                {userUnit}
+              </span>
             </span>
           </p>
         )
       }
     </div>
     <div class="mt-4">
-      {description && <p class=" text-stone-600! dark:text-stone-400!">{description}</p>}
+      {
+        description && (
+          <p class=" text-stone-600! dark:text-stone-400!">{description}</p>
+        )
+      }
     </div>
     {
       features?.length ? (
@@ -99,7 +110,9 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
               <span class="check">
                 <Check class="fill-stone-700 dark:fill-stone-300 w-3" />
               </span>
-              <span class="feature-text text-stone-900 dark:text-stone-100">{feat}</span>
+              <span class="feature-text text-stone-900 dark:text-stone-100">
+                {feat}
+              </span>
             </li>
           ))}
         </ul>
@@ -169,5 +182,4 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
   .check {
     display: inline-flex;
   }
-
 </style>

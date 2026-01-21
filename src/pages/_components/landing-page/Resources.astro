@@ -5,36 +5,36 @@ import Tag from "@components/Tag.astro";
 ---
 
 <div class="container max-w-7xl mx-auto mt-12 md:mt-24 px-2 lg:px-0">
-    <Tag label="/Resources" variant="primary" size="small" class="mb-4" />
-    <h2 class="mb-6 text-xl md:text-2xl lg:text-3xl text-secondary">
-        Your models, your tools, your data, <span class="text-primary"
-            >your privacy.</span
-        >
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-2">
-        <FeatureCards
-            tagLabel="/Models"
-            title="Connect AI models"
-            description="Choose between the best private and public models including Qwen, Mistral, Llama, and ChatGPT."
-            productImage={HeroBackground}
-            linkLabel="Connect AI model"
-            linkUrl="/blog"
-        />
-        <FeatureCards
-            tagLabel="/Tools"
-            title="Automate processes via API connectors"
-            description="Budibase automates 1000s of actions across tools such as Github, Servicenow, Microsoft, and more."
-            productImage={HeroBackground}
-            linkLabel="Build an agent"
-            linkUrl="/blog"
-        />
-        <FeatureCards
-            tagLabel="/Data"
-            title="Turn your data into workflows with 1 click"
-            description="Build workflows on top of your private data sources including PostgreSQL, MySQL, Oracle, and more."
-            productImage={HeroBackground}
-            linkLabel="Build an agent"
-            linkUrl="/blog"
-        />
-    </div>
+  <Tag label="/Resources" variant="primary" size="small" class="mb-4" />
+  <h2 class="mb-6 text-xl md:text-2xl lg:text-3xl text-secondary">
+    Your models, your tools, your data, <span class="text-primary"
+      >your privacy.</span
+    >
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-2">
+    <FeatureCards
+      tagLabel="/Models"
+      title="Connect AI models"
+      description="Choose between the best private and public models including Qwen, Mistral, Llama, and ChatGPT."
+      productImage={HeroBackground}
+      linkLabel="Connect AI model"
+      linkUrl="/blog"
+    />
+    <FeatureCards
+      tagLabel="/Tools"
+      title="Automate processes via API connectors"
+      description="Budibase automates 1000s of actions across tools such as Github, Servicenow, Microsoft, and more."
+      productImage={HeroBackground}
+      linkLabel="Build an agent"
+      linkUrl="/blog"
+    />
+    <FeatureCards
+      tagLabel="/Data"
+      title="Turn your data into workflows with 1 click"
+      description="Build workflows on top of your private data sources including PostgreSQL, MySQL, Oracle, and more."
+      productImage={HeroBackground}
+      linkLabel="Build an agent"
+      linkUrl="/blog"
+    />
+  </div>
 </div>

@@ -1,12 +1,10 @@
 ---
-
 author: "Ronan McQuillan"
 publishDate: 2025-04-29
 description: "Take a look at our in-depth guide to digital workers."
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 title: "What are Digital Workers? + Examples"
 type: "ai-agents"
-
 ---
 
 Digital workers are a concept that’s been around for quite some time now. But, in recent years they’ve sprung back to the fore, taking on a whole new meaning in the context of the AI revolution.
@@ -27,16 +25,11 @@ Specifically, we’re diving into:
 
 Let’s start with the basics.
 
-
-
-
 ## What are digital workers?
-
 
 As we said earlier, this is a term that has evolved somewhat in recent years.
 
 At the highest level, a digital worker is any software system that replicates, either entirely or in large part, a role within a business process that would otherwise be carried out by a human colleague.
-
 
 ![Digital Workers](https://res.cloudinary.com/daog6scxm/image/upload/v1745935947/cms/ai-agents/digital-workers/Digital_Workers_2_otrum0.webp "Digital Workers")
 
@@ -44,13 +37,11 @@ Naturally, this is highly tied to task automation more generally.
 
 Previously, digital workers were largely limited to more repetitious job functions, where the same actions are applied on the same inputs, to create the same outputs. For example, data entry or basic processing.
 
-More recently, though, most definitions of digital workers have come to include some degree of *autonomy*.
+More recently, though, most definitions of digital workers have come to include some degree of _autonomy_.
 
 This means that systems can interact with their environment, including assessing contextual information and connected data in order to independently decide which available actions to take in a given scenario.
 
 In other words, choosing from a set of available actions in order to meet a defined goal. As we’ll see shortly, this is closely tied to the idea of [AI agentic workflows](https://budibase.com/blog/ai-agents/ai-agentic-workflows/).
-
-
 
 ### Why are digital workers gaining popularity?
 
@@ -70,9 +61,9 @@ In turn, this means that a larger number of job functions can more easily be rep
 
 Before we go any further, it’s useful to outline the relationship between digital workers and automation solutions more clearly. Essentially, the issue here is that there is a decent amount of room for interpretation in our high-level definition of a digital worker.
 
-Terms like *automations, scripts,* or *bots* often overlap, but there are a few key characteristics that separate digital workers from these.
+Terms like _automations, scripts,_ or _bots_ often overlap, but there are a few key characteristics that separate digital workers from these.
 
-One way of looking at this is that traditional automation tools typically focus on *discrete tasks*. They operate within defined scopes, executing predefined actions, without adapting to context or interacting intelligently across multiple systems.
+One way of looking at this is that traditional automation tools typically focus on _discrete tasks_. They operate within defined scopes, executing predefined actions, without adapting to context or interacting intelligently across multiple systems.
 
 By contrast, digital workers execute entire workflows or functions that would otherwise be performed by human colleagues.
 
@@ -187,8 +178,6 @@ Another element of this is that human colleagues can interact with AI agents in 
 On the flip side, this also introduces challenges, as agentic solutions are somewhat more complex and rely on high-quality training data, as well as appropriate governance measures.
 
 Take a look at our guide to [low/no-code AI agent builders](https://budibase.com/blog/ai-agents/no-code-ai-agent-builders/) to learn more.
-
-
 
 ## Top internal functions for digital workers
 

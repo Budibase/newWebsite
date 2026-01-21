@@ -1,11 +1,53 @@
 ---
 import Body from "./_components/Pricing.astro";
 import Layout from "../../layouts/MainLayout.astro";
+import PlatformLayout from "@components/PlatformLayout.astro";
+import { pricingNavItemsData } from "./_navItems";
+import Buildings from "phosphor-astro/Buildings.astro";
+import ShieldCheck from "phosphor-astro/ShieldCheck.astro";
+import Sliders from "phosphor-astro/Sliders.astro";
+import Headset from "phosphor-astro/Headset.astro";
+import MapPin from "phosphor-astro/MapPin.astro";
+import HardHat from "phosphor-astro/HardHat.astro";
+import Broadcast from "phosphor-astro/Broadcast.astro";
+import Recycle from "phosphor-astro/Recycle.astro";
+import Truck from "phosphor-astro/Truck.astro";
+import Bank from "phosphor-astro/Bank.astro";
+import Gear from "phosphor-astro/Gear.astro";
+import Package from "phosphor-astro/Package.astro";
+import ChartBar from "phosphor-astro/ChartBar.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const iconMap: Record<string, any> = {
+  Buildings,
+  ShieldCheck,
+  Sliders,
+  Headset,
+  MapPin,
+  HardHat,
+  Broadcast,
+  Recycle,
+  Truck,
+  Bank,
+  Gear,
+  Package,
+  ChartBar,
+};
+
+const navItems = pricingNavItemsData.map((group) => ({
+  ...group,
+  items: group.items.map((item) => ({
+    ...item,
+    icon: iconMap[item.iconName],
+  })),
+}));
 ---
 
 <Layout>
-  <Body />
+  <PlatformLayout
+    title="Commerical"
+    description="Choose the plan that fits your team and scale with confidence."
+    {navItems}
+  >
+    <Body />
+  </PlatformLayout>
 </Layout>

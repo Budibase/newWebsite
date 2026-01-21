@@ -1,0 +1,96 @@
+---
+import Layout from "../../layouts/MainLayout.astro";
+import PlatformLayout from "@components/PlatformLayout.astro";
+import { platformNavItemsData } from "../_navItems";
+import Circles from "phosphor-astro/Nut.astro";
+import Memory from "phosphor-astro/Memory.astro";
+import ChatCircle from "phosphor-astro/ChatCircle.astro";
+import Path from "phosphor-astro/PathFill.astro";
+import Browsers from "phosphor-astro/Browsers.astro";
+import Link from "phosphor-astro/Cube.astro";
+import Webhooks from "phosphor-astro/WebhooksLogo.astro";
+import Database from "phosphor-astro/GridNine.astro";
+import Sparkle from "phosphor-astro/Sparkle.astro";
+import Cloud from "phosphor-astro/Cloud.astro";
+import TrendUp from "phosphor-astro/TrendUp.astro";
+import HeroBg from "@assets/images/homepage/valley.png";
+import { Image } from "astro:assets";
+import Card from "@components/cards/Card.astro";
+
+const iconMap: Record<string, any> = {
+  Circles,
+  Memory,
+  ChatCircle,
+  Path,
+  Browsers,
+  Link,
+  Webhooks,
+  Database,
+  Sparkle,
+  Cloud,
+  TrendUp,
+};
+
+const navItems = platformNavItemsData.map((group) => ({
+  ...group,
+  items: group.items.map((item) => ({
+    ...item,
+    icon: iconMap[item.iconName],
+  })),
+}));
+---
+
+<Layout>
+  <PlatformLayout
+			title="Budibase"
+			description="The open and free AI platform for building agents, chat, automations and apps."
+    {navItems}
+  >
+    <div class="mb-8">
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">Data GUIs</h2>
+        <p
+          class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+        >
+          Connect to your databases to query, insert, update, and manage data
+          across your applications and agents.
+        </p>
+
+        <Image
+          src={HeroBg}
+          alt="Database connections"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="SQL databases"
+          description="Connect to PostgreSQL, MySQL, SQL Server, and other SQL databases with native query support."
+        />
+        <Card
+          label="NoSQL databases"
+          description="Integrate with MongoDB, DynamoDB, and other NoSQL databases for flexible data storage."
+        />
+        <Card
+          label="Query builder"
+          description="Build complex queries visually or write custom SQL with syntax highlighting and validation."
+        />
+        <Card
+          label="Connection pooling"
+          description="Efficiently manage database connections with built-in connection pooling and caching."
+        />
+        <Card
+          label="Data binding"
+          description="Bind database results to your agents and workflows for dynamic, data-driven operations."
+        />
+        <Card
+          label="Structured data"
+          description="Provide agents with structured data from databases and services to ground their responses."
+        />
+      </div>
+    </div>
+  </PlatformLayout>
+</Layout>

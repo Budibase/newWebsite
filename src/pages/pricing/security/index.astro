@@ -1,0 +1,101 @@
+---
+import Layout from "../../../layouts/MainLayout.astro";
+import PlatformLayout from "@components/PlatformLayout.astro";
+import { pricingNavItemsData } from "../_navItems";
+import Buildings from "phosphor-astro/Buildings.astro";
+import ShieldCheck from "phosphor-astro/ShieldCheck.astro";
+import Sliders from "phosphor-astro/Sliders.astro";
+import Headset from "phosphor-astro/Headset.astro";
+import MapPin from "phosphor-astro/MapPin.astro";
+import HardHat from "phosphor-astro/HardHat.astro";
+import Broadcast from "phosphor-astro/Broadcast.astro";
+import Recycle from "phosphor-astro/Recycle.astro";
+import Truck from "phosphor-astro/Truck.astro";
+import Bank from "phosphor-astro/Bank.astro";
+import Gear from "phosphor-astro/Gear.astro";
+import Package from "phosphor-astro/Package.astro";
+import ChartBar from "phosphor-astro/ChartBar.astro";
+import HeroBg from "@assets/images/homepage/valley.png";
+import { Image } from "astro:assets";
+import Card from "@components/cards/Card.astro";
+
+const iconMap: Record<string, any> = {
+  Buildings,
+  ShieldCheck,
+  Sliders,
+  Headset,
+  MapPin,
+  HardHat,
+  Broadcast,
+  Recycle,
+  Truck,
+  Bank,
+  Gear,
+  Package,
+  ChartBar,
+};
+
+const navItems = pricingNavItemsData.map((group) => ({
+  ...group,
+  items: group.items.map((item) => ({
+    ...item,
+    icon: iconMap[item.iconName],
+  })),
+}));
+---
+
+<Layout>
+  <PlatformLayout
+    title="Commerical"
+    description="Choose the plan that fits your team and scale with confidence."
+    {navItems}
+  >
+    <div class="mb-8">
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">Security</h2>
+        <p
+          class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+        >
+          Enterprise-grade security features to protect your data, meet
+          compliance requirements, and maintain full control over your
+          infrastructure.
+        </p>
+
+        <Image
+          src={HeroBg}
+          alt="Security features"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="SOC 2 Type II"
+          description="Independently audited security controls demonstrating our commitment to data protection."
+        />
+        <Card
+          label="Encryption at rest"
+          description="All data encrypted using AES-256 encryption standards."
+        />
+        <Card
+          label="Encryption in transit"
+          description="TLS 1.3 for all data transmission between clients and servers."
+        />
+        <Card
+          label="SSO integration"
+          description="SAML 2.0 and OpenID Connect support for enterprise identity providers."
+        />
+        <Card
+          label="Audit logging"
+          description="Comprehensive audit trails for all user actions and system events."
+        />
+        <Card
+          label="Role-based access"
+          description="Fine-grained permissions with custom roles and group management."
+        />
+      </div>
+    </div>
+  </PlatformLayout>
+</Layout>

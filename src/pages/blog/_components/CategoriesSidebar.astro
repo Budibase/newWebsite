@@ -6,77 +6,87 @@ import Robot from "phosphor-astro/Robot.astro";
 import Users from "phosphor-astro/Users.astro";
 
 interface Props {
-	currentCategory?: string;
-	title?: string;
-	description?: string;
+  currentCategory?: string;
+  title?: string;
+  description?: string;
 }
 
-const { currentCategory = 'all', title = 'Blog', description = '' } = Astro.props;
+const {
+  currentCategory = "all",
+  title = "Blog",
+  description = "",
+} = Astro.props;
 
 const categories = [
-	{ id: 'all', label: 'All posts', icon: Stack },
-	{ id: 'Changelog', label: 'Changelog', icon: ClockCounterClockwise },
-	{ id: 'tutorials', label: 'Tutorials', icon: Book },
-	{ id: 'ai-agents', label: 'AI Agents', icon: Robot },
-	{ id: 'guests', label: 'Guests', icon: Users },
+  { id: "all", label: "All posts", icon: Stack },
+  { id: "Changelog", label: "Changelog", icon: ClockCounterClockwise },
+  { id: "tutorials", label: "Tutorials", icon: Book },
+  { id: "ai-agents", label: "AI Agents", icon: Robot },
+  { id: "guests", label: "Guests", icon: Users },
 ];
 ---
 
 <aside class="categories-sidebar">
-	<h1 class="mb-4 h2">{title}</h1>
-	{description && <p class="text-stone-500! dark:text-stone-400! mb-4!">{description}</p>}
-	<nav>
-		<ul>
-			{
-				categories.map((category) => (
-					<li>
-						<a
-							href={category.id === 'all' ? '/blog' : `/blog/category/${category.id}`}
-							class:list={[
-								"nav-link flex flex-row gap-3 items-center h-8 px-2 rounded text-stone-600 dark:text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 [&.active]:text-stone-900 [&.active]:dark:text-stone-100 [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800 text-sm",
-								currentCategory === category.id && "active"
-							]}
-							data-astro-prefetch
-						>
-							<category.icon class="w-4 h-4 flex-shrink-0" />
-							<span>{category.label}</span>
-						</a>
-					</li>
-				))
-			}
-		</ul>
-	</nav>
+  <h1 class="mb-4 h2">{title}</h1>
+  {
+    description && (
+      <p class="text-stone-500! dark:text-stone-400! mb-4!">{description}</p>
+    )
+  }
+  <nav>
+    <ul>
+      {
+        categories.map((category) => (
+          <li>
+            <a
+              href={
+                category.id === "all"
+                  ? "/blog"
+                  : `/blog/category/${category.id}`
+              }
+              class:list={[
+                "nav-link flex flex-row gap-3 items-center h-8 px-2 rounded text-stone-600 dark:text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 [&.active]:text-stone-900 [&.active]:dark:text-stone-100 [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800 text-sm",
+                currentCategory === category.id && "active",
+              ]}
+              data-astro-prefetch
+            >
+              <category.icon class="w-4 h-4 flex-shrink-0" />
+              <span>{category.label}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
 </aside>
 
 <style>
-	.categories-sidebar {
-		position: sticky;
-		top: 2rem;
-		width: 280px;
-	}
+  .categories-sidebar {
+    position: sticky;
+    top: 2rem;
+    width: 280px;
+  }
 
-	.nav-list {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		flex-direction: column;
-	}
+  .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
 
+  @media (max-width: 768px) {
+    .categories-sidebar {
+      position: static;
+    }
 
-	@media (max-width: 768px) {
-		.categories-sidebar {
-			position: static;
-		}
+    .nav-list {
+      flex-direction: row;
+      overflow-x: auto;
+    }
 
-		.nav-list {
-			flex-direction: row;
-			overflow-x: auto;
-		}
-
-		.nav-link {
-			white-space: nowrap;
-		}
-	}
+    .nav-link {
+      white-space: nowrap;
+    }
+  }
 </style>
-

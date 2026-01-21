@@ -18,81 +18,81 @@ import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
 
 const iconMap: Record<string, any> = {
-	Circles,
-	Memory,
-	ChatCircle,
-	Path,
-	Browsers,
-	Link,
-	Webhooks,
-	Database,
-	Sparkle,
-	Cloud,
-	TrendUp,
+  Circles,
+  Memory,
+  ChatCircle,
+  Path,
+  Browsers,
+  Link,
+  Webhooks,
+  Database,
+  Sparkle,
+  Cloud,
+  TrendUp,
 };
 
-const navItems = platformNavItemsData.map(group => ({
-	...group,
-	items: group.items.map(item => ({
-		...item,
-		icon: iconMap[item.iconName],
-	})),
+const navItems = platformNavItemsData.map((group) => ({
+  ...group,
+  items: group.items.map((item) => ({
+    ...item,
+    icon: iconMap[item.iconName],
+  })),
 }));
 ---
 
 <Layout>
-	<PlatformLayout
-		title="Platform"
-		description="The privacy-first platform for building agents, chat, automations & apps."
-		{navItems}
-	>
-		<div class="mb-8">
-			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-				<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-					Hosting
-				</h2>
-				<p
-					class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
-				>
-					Choose the hosting option that fits your needs. Deploy Budibase on your own infrastructure for maximum control, or get started instantly with Budibase Cloud.
-				</p>
+  <PlatformLayout
+			title="Budibase"
+			description="The open and free AI platform for building agents, chat, automations and apps."
+    {navItems}
+  >
+    <div class="mb-8">
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">Hosting</h2>
+        <p
+          class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+        >
+          Choose the hosting option that fits your needs. Deploy Budibase on
+          your own infrastructure for maximum control, or get started instantly
+          with Budibase Cloud.
+        </p>
 
-				<Image
-					src={HeroBg}
-					alt="Hosting options"
-					class="w-full h-96 object-cover rounded-md"
-				/>
-			</div>
+        <Image
+          src={HeroBg}
+          alt="Hosting options"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
 
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-			>
-				<Card
-					label="Self-hosting"
-					description="Deploy on your own infrastructure for maximum control and compliance."
-				/>
-				<Card
-					label="Budibase Cloud"
-					description="Get started instantly with managed hosting."
-				/>
-				<Card
-					label="Docker deployment"
-					description="Deploy easily with Docker containers on any infrastructure you choose."
-				/>
-				<Card
-					label="Kubernetes ready"
-					description="Scale with Kubernetes for production-grade deployments."
-				/>
-				<Card
-					label="Budibase CLI"
-					description="Manage your self-hosted installation with our command-line toolkit."
-					linkUrl="https://docs.budibase.com/docs/budibase-cli-reference"
-				/>
-				<Card
-					label="Backup & recovery"
-					description="Automatic backups and point-in-time recovery for your peace of mind."
-				/>
-			</div>
-		</div>
-	</PlatformLayout>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="Self-hosting"
+          description="Deploy on your own infrastructure for maximum control and compliance."
+        />
+        <Card
+          label="Budibase Cloud"
+          description="Get started instantly with managed hosting."
+        />
+        <Card
+          label="Docker deployment"
+          description="Deploy easily with Docker containers on any infrastructure you choose."
+        />
+        <Card
+          label="Kubernetes ready"
+          description="Scale with Kubernetes for production-grade deployments."
+        />
+        <Card
+          label="Budibase CLI"
+          description="Manage your self-hosted installation with our command-line toolkit."
+          linkUrl="https://docs.budibase.com/docs/budibase-cli-reference"
+        />
+        <Card
+          label="Backup & recovery"
+          description="Automatic backups and point-in-time recovery for your peace of mind."
+        />
+      </div>
+    </div>
+  </PlatformLayout>
 </Layout>

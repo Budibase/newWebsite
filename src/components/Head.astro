@@ -2,52 +2,54 @@
 import Favicon from "./Favicon.astro";
 import { ClientRouter } from "astro:transitions";
 import { Font } from "astro:assets";
-import '../styles/fonts.css';
-import SEO from './SEO.astro';
+import "../styles/fonts.css";
+import SEO from "./SEO.astro";
 
 export type Props = {
-	title?: string;
-	rawTitle?: string;
-	description?: string;
-	image?: { src: string; alt: string };
-	canonicalURL?: URL | null;
-	pageType?: 'website' | 'article';
+  title?: string;
+  rawTitle?: string;
+  description?: string;
+  image?: { src: string; alt: string };
+  canonicalURL?: URL | null;
+  pageType?: "website" | "article";
 };
 
-const twitterHandle = 'budibase';
+const twitterHandle = "budibase";
 
 const siteInfo = {
-	name: 'Budibase',
-	description: 'Build AI agents, chat and automate internal workflows instantly. The fastest way to automate internal business processes.',
-	image: {
-		src: '/og.png',
-		alt: 'Budibase - Make work flow',
-	},
+  name: "Budibase",
+  description:
+    "Build AI agents, chat and automate internal workflows instantly. The fastest way to automate internal business processes.",
+  image: {
+    src: "/og.png",
+    alt: "Budibase - Make work flow",
+  },
 };
 
 const {
-	rawTitle,
-	description = siteInfo.description,
-	image = siteInfo.image,
-	canonicalURL = new URL(Astro.request.url, Astro.site),
-	pageType = 'website',
+  rawTitle,
+  description = siteInfo.description,
+  image = siteInfo.image,
+  canonicalURL = new URL(Astro.request.url, Astro.site),
+  pageType = "website",
 } = Astro.props;
 
-const title = rawTitle ?? [Astro.props.title, siteInfo.name].filter(Boolean).join(' | ');
+const title =
+  rawTitle ?? [Astro.props.title, siteInfo.name].filter(Boolean).join(" | ");
 const resolvedImage = {
-	src: new URL(image.src, Astro.site).toString(),
-	alt: image.alt,
+  src: new URL(image.src, Astro.site).toString(),
+  alt: image.alt,
 };
 
 // Simple smartypants-like function for typographic quotes and dashes
 function smartypants(text: string, _mode?: number): string {
-	return text
-		.replace(/'/g, '&#8217;') // apostrophe
-		.replace(/'/g, '&#8216;') // opening single quote
-		.replace(/"/g, '&#8221;') // closing double quote
-		.replace(/"/g, '&#8220;') // opening double quote
-		.replace(/--/g, '&#8212;') // em dash
-		.replace(/-/g, '&#8211;'); // en dash
+  return text
+    .replace(/'/g, "&#8217;") // apostrophe
+    .replace(/'/g, "&#8216;") // opening single quote
+    .replace(/"/g, "&#8221;") // closing double quote
+    .replace(/"/g, "&#8220;") // opening double quote
+    .replace(/--/g, "&#8212;") // em dash
+    .replace(/-/g, "&#8211;"); // en dash
 }
 ---
 
@@ -59,51 +61,53 @@ function smartypants(text: string, _mode?: number): string {
 <script is:inline>
   // Prevent flash of unstyled content by applying theme immediately
   // Solution based on: https://medium.com/@maiowebdesign/astro-dark-mode-flickering-62da94d08ce6
-  (function() {
+  (function () {
     function getEffectiveTheme() {
       try {
-        const stored = localStorage.getItem('theme');
-        if (stored === 'dark' || stored === 'light') {
+        const stored = localStorage.getItem("theme");
+        if (stored === "dark" || stored === "light") {
           return stored;
         }
       } catch (e) {
         // localStorage might not be available
       }
       // System preference
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
     }
-    
+
     function applyTheme(skipTransitions = false) {
       if (skipTransitions) {
-        document.documentElement.classList.add('no-transitions');
+        document.documentElement.classList.add("no-transitions");
       }
-      
+
       const effectiveTheme = getEffectiveTheme();
-      if (effectiveTheme === 'dark') {
-        document.documentElement.classList.add('dark');
+      if (effectiveTheme === "dark") {
+        document.documentElement.classList.add("dark");
       } else {
-        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.remove("dark");
       }
-      
+
       if (skipTransitions) {
         // Force reflow to ensure the class is applied
         void document.documentElement.offsetHeight;
-        document.documentElement.classList.remove('no-transitions');
+        document.documentElement.classList.remove("no-transitions");
       }
     }
-    
+
     // Apply theme immediately before any rendering
     applyTheme();
-    
+
     // Re-apply theme on Astro view transitions (client-side navigation)
     // Use astro:after-swap and skip transitions to prevent flicker
-    document.addEventListener('astro:after-swap', () => {
+    document.addEventListener("astro:after-swap", () => {
       applyTheme(true);
     });
-    
+
     // Also listen for storage changes (for syncing across tabs)
-    window.addEventListener('storage', (e) => {
-      if (e.key === 'theme') {
+    window.addEventListener("storage", (e) => {
+      if (e.key === "theme") {
         applyTheme(true);
       }
     });
@@ -120,12 +124,28 @@ function smartypants(text: string, _mode?: number): string {
   }
 </style>
 
-
 <!-- Font preloads, omit MDIO to improve initial load -->
-<link rel="preload" href="/fonts/InterDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/Inter-Medium.woff2" as="font" type="font/woff2" crossorigin />
-
+<link
+  rel="preload"
+  href="/fonts/InterDisplay-Regular.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/Inter-Regular.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/Inter-Medium.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
 
 <!-- Low Priority Global Metadata -->
 <Favicon />
@@ -135,13 +155,13 @@ function smartypants(text: string, _mode?: number): string {
 
 <!-- SEO construct -->
 <SEO
-	name={siteInfo.name}
-	title={title}
-	description={description}
-	image={resolvedImage}
-	twitter={{ handle: twitterHandle }}
-	og={{ type: pageType }}
-	canonicalURL={canonicalURL}
+  name={siteInfo.name}
+  title={title}
+  description={description}
+  image={resolvedImage}
+  twitter={{ handle: twitterHandle }}
+  og={{ type: pageType }}
+  canonicalURL={canonicalURL}
 />
 <ClientRouter />
 <style>

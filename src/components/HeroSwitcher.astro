@@ -153,51 +153,78 @@ const {
       const root = document.getElementById(rootId);
       if (!root) return;
       const tabs = Array.from(root.querySelectorAll('[role="tab"]'));
-      const products = Array.from(root.querySelectorAll('.product'));
+      const products = Array.from(root.querySelectorAll(".product"));
 
       function updateTabClasses(tab, isActive) {
         if (isActive) {
-          tab.classList.add('is-active', 'bg-stone-200', 'dark:bg-stone-800', 'text-stone-950', 'dark:text-stone-50', 'rounded-lg');
-          tab.classList.remove('bg-transparent', 'text-stone-500', 'dark:text-stone-400');
+          tab.classList.add(
+            "is-active",
+            "bg-stone-200",
+            "dark:bg-stone-800",
+            "text-stone-950",
+            "dark:text-stone-50",
+            "rounded-lg",
+          );
+          tab.classList.remove(
+            "bg-transparent",
+            "text-stone-500",
+            "dark:text-stone-400",
+          );
         } else {
-          tab.classList.remove('is-active', 'bg-stone-200', 'dark:bg-stone-800', 'text-stone-950', 'dark:text-stone-50', 'rounded-lg');
-          tab.classList.add('bg-transparent', 'text-stone-500', 'dark:text-stone-400');
+          tab.classList.remove(
+            "is-active",
+            "bg-stone-200",
+            "dark:bg-stone-800",
+            "text-stone-950",
+            "dark:text-stone-50",
+            "rounded-lg",
+          );
+          tab.classList.add(
+            "bg-transparent",
+            "text-stone-500",
+            "dark:text-stone-400",
+          );
         }
       }
 
       function setActive(index) {
         tabs.forEach((t, i) => {
           const active = i === index;
-          t.setAttribute('aria-selected', active ? 'true' : 'false');
-          t.setAttribute('tabindex', active ? '0' : '-1');
-          t.classList.toggle('is-active', active);
+          t.setAttribute("aria-selected", active ? "true" : "false");
+          t.setAttribute("tabindex", active ? "0" : "-1");
+          t.classList.toggle("is-active", active);
           updateTabClasses(t, active);
         });
         products.forEach((p, i) => {
           const active = i === index;
-          p.classList.toggle('is-active', active);
-          p.setAttribute('aria-hidden', active ? 'false' : 'true');
+          p.classList.toggle("is-active", active);
+          p.setAttribute("aria-hidden", active ? "false" : "true");
         });
       }
 
       root.__bbSetActive = setActive;
 
-      root.addEventListener('click', (e) => {
-        const btn = e.target && e.target.closest ? e.target.closest('button[role="tab"]') : null;
+      root.addEventListener("click", (e) => {
+        const btn =
+          e.target && e.target.closest
+            ? e.target.closest('button[role="tab"]')
+            : null;
         if (btn && root.contains(btn)) {
           const idx = tabs.indexOf(btn);
           if (idx >= 0) setActive(idx);
         }
       });
 
-      root.addEventListener('keydown', (e) => {
-        const activeIdx = tabs.findIndex((t) => t.classList.contains('is-active'));
+      root.addEventListener("keydown", (e) => {
+        const activeIdx = tabs.findIndex((t) =>
+          t.classList.contains("is-active"),
+        );
         if (tabs.length === 0) return;
-        if (e.key === 'ArrowRight') {
+        if (e.key === "ArrowRight") {
           e.preventDefault();
           setActive((activeIdx + 1) % tabs.length);
         }
-        if (e.key === 'ArrowLeft') {
+        if (e.key === "ArrowLeft") {
           e.preventDefault();
           setActive((activeIdx - 1 + tabs.length) % tabs.length);
         }
@@ -209,14 +236,13 @@ const {
     window.__bbHeroSwitcherSetActive = function (rootId, index) {
       const root = document.getElementById(rootId);
       const setActive = root && root.__bbSetActive;
-      if (typeof setActive === 'function') setActive(index);
+      if (typeof setActive === "function") setActive(index);
     };
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => init(id));
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => init(id));
     } else {
       init(id);
     }
   })();
 </script>
-

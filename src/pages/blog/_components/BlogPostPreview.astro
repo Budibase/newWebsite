@@ -1,48 +1,47 @@
 ---
-import { format } from 'date-fns';
-import type { CollectionEntry } from 'astro:content';
-import Tag from '../../../components/Tag.astro';
+import { format } from "date-fns";
+import type { CollectionEntry } from "astro:content";
+import Tag from "../../../components/Tag.astro";
 
 interface Props {
-	post: CollectionEntry<'blog'>;
+  post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props as Props;
 
 // Determine tag to show
-const tagLabel = post.data.featured ? 'Featured' : post.data.category;
+const tagLabel = post.data.featured ? "Featured" : post.data.category;
 ---
 
 <div class="blog-post-preview">
-	<a href={`/blog/${post.id}/`} data-astro-prefetch class="flex justify-between px-2 text-stone-500! hover:text-stone-950! dark:text-stone-300! dark:hover:text-stone-100! transition-opacity duration-150">
-				<div class="flex gap-1.5 items-center">
-					<p class="leading-none mb-0! text-inherit!">{post.data.title}</p>
-					{
-						tagLabel && (
-							<Tag label={tagLabel} variant="secondary" size="small" />
-						)
-					}
-					</div>
-					<div class="flex items-center gap-6">
-						<time class="text-inherit! text-sm text-right text-stone-500! dark:text-stone-400!" datetime={post.data.publishDate.toISOString()}>
-							{format(post.data.publishDate, 'MMM d, yyyy')}
-						</time>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</a>
-</article>
+  <a
+    href={`/blog/${post.id}/`}
+    data-astro-prefetch
+    class="flex justify-between px-2 text-stone-500! hover:text-stone-950! dark:text-stone-300! dark:hover:text-stone-100! transition-opacity duration-150"
+  >
+    <div class="flex gap-1.5 items-center">
+      <p class="leading-none mb-0! text-inherit!">{post.data.title}</p>
+      {tagLabel && <Tag label={tagLabel} variant="secondary" size="small" />}
+    </div>
+    <div class="flex items-center gap-6">
+      <time
+        class="text-inherit! text-sm text-right text-stone-500! dark:text-stone-400!"
+        datetime={post.data.publishDate.toISOString()}
+      >
+        {format(post.data.publishDate, "MMM d, yyyy")}
+      </time>
+    </div>
+  </a>
+</div>
 
 <style>
-	.blog-post-preview {
-		margin-bottom: 0;
-	}
+  .blog-post-preview {
+    margin-bottom: 0;
+  }
 
-	@media (min-width: 768px) {
-		.blog-post-title-section {
-			flex-wrap: nowrap;
-		}
-	}
+  @media (min-width: 768px) {
+    .blog-post-title-section {
+      flex-wrap: nowrap;
+    }
+  }
 </style>

@@ -1,11 +1,9 @@
 ---
-
 author: "Ronan McQuillan"
 publishDate: 2025-05-07
 description: "Take a look at our round-up of the top open-source LLMs."
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 title: "10 Open-Source LLMs"
-
 ---
 
 AI is becoming an integral part of more and more software projects. However, building effective, production-ready solutions relies on having the right model to power our application.
@@ -39,15 +37,15 @@ To better understand what this means in practical terms, it’s helpful to take 
 
 ### What are LLMs?
 
-A large language model is an AI model that has been trained on large amounts of data in order to learn patterns within textual information. 
+A large language model is an AI model that has been trained on large amounts of data in order to learn patterns within textual information.
 
 This enables the model to understand the relationships between words, spot patterns, parse intent, and generate human-like text.
 
 This can be used for a wide range of applications, such as creating virtual assistants, implementing logic and reasoning, translating text, working with documents, and much more.
 
-The majority of LLMs rely on what’s known as a *transformer architecture*. This essentially means that the model can deal with individual parts of a document or piece of text in parallel, in order to represent the nuance and structure of natural language.
+The majority of LLMs rely on what’s known as a _transformer architecture_. This essentially means that the model can deal with individual parts of a document or piece of text in parallel, in order to represent the nuance and structure of natural language.
 
-This relies on enormous sets of data, ranging to hundreds of billions of parameters, meaning LLMs require huge computational resources to train. 
+This relies on enormous sets of data, ranging to hundreds of billions of parameters, meaning LLMs require huge computational resources to train.
 
 Once trained, though, they can often be fine-tuned or optimized for particular domains, allowing developers to deploy them for highly specific use cases.
 
@@ -57,7 +55,7 @@ This is one area where a decent amount of confusion can arise. For traditional s
 
 Unfortunately, with an LLM, the situation is somewhat different.
 
-The key difference here is that LLMs largely comprise *model weights*. These are vast matrices of floating-point numbers that represent the statistical relationships the model learned during training.
+The key difference here is that LLMs largely comprise _model weights_. These are vast matrices of floating-point numbers that represent the statistical relationships the model learned during training.
 
 In and of itself, this may not be particularly helpful, as model weights aren’t human-readable. That is, we can’t inspect a sequence of billions of numbers and expect to understand why a model responds to our prompt in a certain way.
 
@@ -65,7 +63,7 @@ As such, a truly open-source LLM typically offers visibility into a wider set of
 
 - **Model weights** - The learned parameters that inform the model’s output.
 - **Architecture code** - The neural network’s configuration, including layers and attention mechanisms.
-- **Training code** - The scripts and architecture that are used to train the model. 
+- **Training code** - The scripts and architecture that are used to train the model.
 - **Training data** - Insight into the information that is used to train the model, which is crucial to understand biases and limitations.
 
 In practice, the extent of visibility into each of these elements will vary from one model to the next.
@@ -126,7 +124,7 @@ Therefore, the challenge is ascertaining which model is most appropriate for eac
 
 These are:
 
-1. [Phi-3 (Mini / Small)](#1-phi-3-mini--small) 
+1. [Phi-3 (Mini / Small)](#1-phi-3-mini--small)
 2. [Mistral 7B](#2-mistral-7b)
 3. [Command R+](#3-command-r)
 4. [Gemma](#4-gemma)
@@ -205,7 +203,7 @@ Again, though, as an open-weight model rather than a fully open-source one, this
 
 ### 8. OpenChat 3.6
 
-Next up, we have OpenChat 3.6, part of the wider OpenChat series of releases. It utilizes a tuning technique called *Contrastive Preference Optimization* (CPO) to enhance helpfulness, harmlessness, and honesty, without sacrificing performance.
+Next up, we have OpenChat 3.6, part of the wider OpenChat series of releases. It utilizes a tuning technique called _Contrastive Preference Optimization_ (CPO) to enhance helpfulness, harmlessness, and honesty, without sacrificing performance.
 
 This enables it to align outputs closely with user intent, while still maintaining safety and performance. As such, OpenChat is highly suited to use cases of human-AI dialog, such as customer-facing chatbots.
 

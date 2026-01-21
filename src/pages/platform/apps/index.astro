@@ -18,80 +18,79 @@ import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
 
 const iconMap: Record<string, any> = {
-	Circles,
-	Memory,
-	ChatCircle,
-	Path,
-	Browsers,
-	Link,
-	Webhooks,
-	Database,
-	Sparkle,
-	Cloud,
-	TrendUp,
+  Circles,
+  Memory,
+  ChatCircle,
+  Path,
+  Browsers,
+  Link,
+  Webhooks,
+  Database,
+  Sparkle,
+  Cloud,
+  TrendUp,
 };
 
-const navItems = platformNavItemsData.map(group => ({
-	...group,
-	items: group.items.map(item => ({
-		...item,
-		icon: iconMap[item.iconName],
-	})),
+const navItems = platformNavItemsData.map((group) => ({
+  ...group,
+  items: group.items.map((item) => ({
+    ...item,
+    icon: iconMap[item.iconName],
+  })),
 }));
 ---
 
 <Layout>
-	<PlatformLayout
-		title="Platform"
-		description="The privacy-first platform for building agents, chat, automations & apps."
-		{navItems}
-	>
-		<div class="mb-8">
-			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-				<h2 class="text-lg! text-stone-900 dark:text-stone-100">
-					Apps
-				</h2>
-				<p
-					class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
-				>
-					Ship beautiful internal apps in minutes with our powerful no-code app builder. Self-host on your own infrastructure.
-				</p>
+  <PlatformLayout
+			title="Budibase"
+			description="The open and free AI platform for building agents, chat, automations and apps."
+    {navItems}
+  >
+    <div class="mb-8">
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <h2 class="text-lg! text-stone-900 dark:text-stone-100">Apps</h2>
+        <p
+          class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+        >
+          Ship beautiful internal apps in minutes with our powerful no-code app
+          builder. Self-host on your own infrastructure.
+        </p>
 
-				<Image
-					src={HeroBg}
-					alt="Apps builder"
-					class="w-full h-96 object-cover rounded-md"
-				/>
-			</div>
+        <Image
+          src={HeroBg}
+          alt="Apps builder"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
 
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-			>
-				<Card
-					label="Rapid development"
-					description="Ship internal tools faster than ever with visual builders and pre-built components."
-				/>
-				<Card
-					label="No-code to code"
-					description="Start with visual builders and extend with custom code when needed."
-				/>
-				<Card
-					label="Visual builder"
-					description="Drag-and-drop interface builder with a rich component library."
-				/>
-				<Card
-					label="Data integration"
-					description="Connect to databases, APIs, and external services seamlessly."
-				/>
-				<Card
-					label="Real-time preview"
-					description="See changes instantly with live preview and hot-reload."
-				/>
-				<Card
-					label="One-click deploy"
-					description="Deploy to production with a single click, no configuration needed."
-				/>
-			</div>
-		</div>
-	</PlatformLayout>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="Rapid development"
+          description="Ship internal tools faster than ever with visual builders and pre-built components."
+        />
+        <Card
+          label="No-code to code"
+          description="Start with visual builders and extend with custom code when needed."
+        />
+        <Card
+          label="Visual builder"
+          description="Drag-and-drop interface builder with a rich component library."
+        />
+        <Card
+          label="Data integration"
+          description="Connect to databases, APIs, and external services seamlessly."
+        />
+        <Card
+          label="Real-time preview"
+          description="See changes instantly with live preview and hot-reload."
+        />
+        <Card
+          label="One-click deploy"
+          description="Deploy to production with a single click, no configuration needed."
+        />
+      </div>
+    </div>
+  </PlatformLayout>
 </Layout>

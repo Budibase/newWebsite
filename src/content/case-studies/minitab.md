@@ -45,4 +45,3 @@ Implementing Budibase brought significant improvements to Minitab's daily workfl
 ## Future Outlook: Expanding on Success
 
 Minitab views Budibase as a long-term solution for their needs. Krystian Evans has had a very positive experience with Budibase and envisions it becoming the central hub for all marketing campaigns at Minitab.
-

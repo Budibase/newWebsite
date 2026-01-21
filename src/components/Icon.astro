@@ -10,29 +10,34 @@ import PlayFill from "phosphor-astro/PlayFill.astro";
 // Add more icon imports as needed
 
 const iconMap: Record<string, any> = {
-	Wrench: Wrench,
-	Monitor: Monitor,
-	Sun: Sun,
-	Moon: Moon,
-	ArrowRight: ArrowRight,
-	PlayCircle: PlayCircle,
-	PlayFill: PlayFill,
-	// Add more icon mappings here as needed
+  Wrench: Wrench,
+  Monitor: Monitor,
+  Sun: Sun,
+  Moon: Moon,
+  ArrowRight: ArrowRight,
+  PlayCircle: PlayCircle,
+  PlayFill: PlayFill,
+  // Add more icon mappings here as needed
 };
 
 interface Props {
-	name: string;
-	size?: string;
-	class?: string;
+  name: string;
+  size?: string;
+  class?: string;
 }
 
 const IconComponent = iconMap[Astro.props.name];
 ---
 
-{IconComponent && (
-	<IconComponent
-		class={Astro.props.class}
-		style={Astro.props.size ? `width: ${Astro.props.size}px; height: ${Astro.props.size}px;` : undefined}
-	/>
-)}
-
+{
+  IconComponent && (
+    <IconComponent
+      class={Astro.props.class}
+      style={
+        Astro.props.size
+          ? `width: ${Astro.props.size}px; height: ${Astro.props.size}px;`
+          : undefined
+      }
+    />
+  )
+}

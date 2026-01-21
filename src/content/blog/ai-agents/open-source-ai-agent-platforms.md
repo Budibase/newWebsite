@@ -234,7 +234,7 @@ As with all tools we’ve seen, we’ll need to factor in costs associated with 
 
 ### 6. CAMEL
 
-Lastly, we have CAMEL. This stands for *Communicative Agents for Mind Exploration of Large Language Models*.
+Lastly, we have CAMEL. This stands for _Communicative Agents for Mind Exploration of Large Language Models_.
 
 Essentially, it’s an open-source framework and community focused on building and studying data-driven multi-agent systems.
 

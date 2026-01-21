@@ -3,7 +3,6 @@
 /* Override dark variant to use class selector instead of prefers-color-scheme */
 @custom-variant dark (&:where(.dark, .dark *));
 
-
 :root {
   /* Landing page vertical padding (each side). Adjust once here. */
   --font-sans: "Inter", sans-serif;
@@ -41,7 +40,9 @@ html {
   text-rendering: optimizeLegibility;
   font-variant-numeric: normal;
 
-  transition: background-color 150ms ease-out, color 150ms ease-out;
+  transition:
+    background-color 150ms ease-out,
+    color 150ms ease-out;
 }
 
 html.dark {
@@ -98,7 +99,9 @@ p a:hover::after {
   opacity: 0.5;
 }
 
-ul, li, ol {
+ul,
+li,
+ol {
   font-family: var(--font-sans);
   color: var(--color-stone-600) !important;
   font-weight: 400;
@@ -108,11 +111,14 @@ ul, li, ol {
   list-style: none !important;
 }
 
-.dark ul, .dark li, .dark ol {
+.dark ul,
+.dark li,
+.dark ol {
   color: var(--color-stone-400) !important;
 }
 
-h1, .h1 {
+h1,
+.h1 {
   font-family: var(--font-display);
   color: var(--text-primary);
   font-size: 36px;
@@ -171,7 +177,12 @@ p {
   color: var(--color-stone-100) !important;
 }
 
-article h1, article h2, article h3, article h4, article h5, article h6 {
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
   font-family: var(--font-display);
   color: var(--color-stone-950) !important;
   font-weight: 400;
@@ -180,11 +191,19 @@ article h1, article h2, article h3, article h4, article h5, article h6 {
   margin: 2.2rem 0 1rem 0;
 }
 
-.dark article h1, .dark article h2, .dark article h3, .dark article h4, .dark article h5, .dark article h6 {
+.dark article h1,
+.dark article h2,
+.dark article h3,
+.dark article h4,
+.dark article h5,
+.dark article h6 {
   color: var(--color-stone-50) !important;
 }
 
-article h3, article h4, article h5, article h6 {
+article h3,
+article h4,
+article h5,
+article h6 {
   font-family: var(--font-display);
   color: var(--color-stone-950) !important;
   font-weight: 400;
@@ -193,7 +212,10 @@ article h3, article h4, article h5, article h6 {
   margin: 1.6rem 0 0.8rem 0;
 }
 
-.dark article h3, .dark article h4, .dark article h5, .dark article h6 {
+.dark article h3,
+.dark article h4,
+.dark article h5,
+.dark article h6 {
   color: var(--color-stone-50) !important;
 }
 
@@ -203,22 +225,26 @@ article p {
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: -0.15px !important;
-  margin: .7rem 0;
+  margin: 0.7rem 0;
 }
 
 .dark article p {
   color: var(--color-stone-300) !important;
 }
 
-article ul, article li, article ol {
+article ul,
+article li,
+article ol {
   font-family: var(--font-sans);
   color: var(--text-primary) !important;
   letter-spacing: -0.15px !important;
-  margin: .7rem .5rem !important;
+  margin: 0.7rem 0.5rem !important;
   list-style: disc !important;
 }
 
-.dark article ul, .dark article li, .dark article ol {
+.dark article ul,
+.dark article li,
+.dark article ol {
   color: var(--color-stone-300) !important;
 }
 
@@ -276,7 +302,6 @@ article blockquote p {
   text-underline-offset: 4px !important;
   text-decoration-thickness: 0.5px !important;
   text-decoration-color: var(--color-sky-100) !important;
-
 }
 
 .bg-transparent {

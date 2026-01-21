@@ -1,11 +1,9 @@
 ---
-
 author: "Ronan McQuillan"
 publishDate: 2025-05-14
 description: "Take a look at our round-up of some of the most prominent self-hosted & local LLMs."
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 title: "6 Self-Hosted & Local LLMs"
-
 ---
 
 With fast-advancing technology, running AI models locally is no longer the preserve of massive enterprises or researchers. Today, smaller businesses and even hobbyists are also leveraging self-hosted LLMs within development projects.
@@ -72,7 +70,7 @@ That is, we can think about this first in terms of the overarching benefits and 
 
 Local LLMs offer a few key advantages over models that are offered as a service. One that we alluded to already is cost. By self-hosting, we can avoid usage-based license fees, meaning local solutions can be scaled more cost-effectively.
 
-Security is also an important driver for teams choosing to self-host models. One major aspect of this is limiting the flow of data to external services. 
+Security is also an important driver for teams choosing to self-host models. One major aspect of this is limiting the flow of data to external services.
 
 Across IT teams in all industries, a huge challenge of the emergence of generative AI has been determining how to take advantage of innovative new technologies without undermining existing data governance requirements.
 
@@ -102,7 +100,7 @@ As such, we’ll also want to pay attention to benchmarking. This refers to how 
 
 For instance, highly domain-specific models can outperform alternatives with higher parameter counts on relevant benchmarks, even if they’re less effective on more general tasks.
 
-License terms are also critical decision factors. 
+License terms are also critical decision factors.
 
 As we said earlier, most self-hostable models are either open-weight or open-source. The distinction here is that the former only offers the availability of the numerical parameters needed to run the model, while the latter includes all underlying training data, code, and methodology.
 
@@ -181,7 +179,7 @@ With support for INT8 and 4-bit quantization, Gemma models can be run on consume
 
 Dolphin 2.9 is an open-weight model, based on Mistral 7B’s architecture and fine-tuned using Direct Preference Optimization (DPO). It’s a particularly effective offering for aligning with user instructions, including in conversational tasks.
 
- It’s also available with a range of quantization options, with a corresponding variety in file sizes, performance, and computational requirements. This provides a useful degree of flexibility for hosting.
+It’s also available with a range of quantization options, with a corresponding variety in file sizes, performance, and computational requirements. This provides a useful degree of flexibility for hosting.
 
 Like the underlying Mistral model, Dolphin 2.9 is offered under the Apache license, offering permissive usage, modification, and redistribution.
 
