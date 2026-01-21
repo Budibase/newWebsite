@@ -6,6 +6,7 @@ import Moon from "phosphor-astro/Moon.astro";
 import ArrowRight from "phosphor-astro/ArrowRight.astro";
 import PlayCircle from "phosphor-astro/PlayCircle.astro";
 import PlayFill from "phosphor-astro/PlayFill.astro";
+import CheckCircle from "phosphor-astro/CheckCircle.astro";
 
 // Add more icon imports as needed
 
@@ -17,6 +18,7 @@ const iconMap: Record<string, any> = {
 	ArrowRight: ArrowRight,
 	PlayCircle: PlayCircle,
 	PlayFill: PlayFill,
+	CheckCircle: CheckCircle,
 	// Add more icon mappings here as needed
 };
 
@@ -35,4 +37,3 @@ const IconComponent = iconMap[Astro.props.name];
 		style={Astro.props.size ? `width: ${Astro.props.size}px; height: ${Astro.props.size}px;` : undefined}
 	/>
 )}
-

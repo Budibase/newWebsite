@@ -53,6 +53,7 @@ import Link from "@components/Link.astro";
           description="Includes:"
           creatorPrice={10}
           userPrice={2}
+          billingPlan="pro"
           creatorUnit="/ month"
           userUnit="/ month"
           creatorLabel="per creator"
@@ -66,7 +67,7 @@ import Link from "@components/Link.astro";
             "10k Automation runs",
             "Custom RBAC",
             "Custom branding",
-            "Embeds",
+            "SSO",
           ]}
         />
         <PricingCard
@@ -74,6 +75,7 @@ import Link from "@components/Link.astro";
           description="Everything in Pro, plus:"
           creatorPrice={50}
           userPrice={5}
+          billingPlan="premium"
           creatorUnit="/ month"
           userUnit="/ month"
           creatorLabel="per creator"
@@ -86,39 +88,83 @@ import Link from "@components/Link.astro";
             "Multiple workspaces",
             "100k Automation runs",
             "User groups",
-            "Audit Logs",
             "Synchronous automations",
+            "Backups",
           ]}
         />
         <PricingCard
           title="Enterprise"
           description="Everything in Premium, plus:"
-          creatorPrice={200}
-          userPrice={10}
-          creatorUnit="/ month"
-          userUnit="/ month"
-          creatorLabel="per creator"
-          userLabel="per end user"
+          creatorPrice="From $7,500"
+          creatorUnit="/ year"
+          creatorLabel=""
           recommended={false}
           buttonLabel="Contact sales"
           buttonVariant="primary"
           buttonUrl="/signup-plus"
           features={[
             "Bulk discounts",
-            "SSO",
+            "Enforced SSO",
             "On-premise / Cloud",
             "Active directory / SCIM",
             "Env variables",
             "Dedicated Support",
+            "Audit Logs",
           ]}
         />
       </div>
     </section>
     <section class="my-8">
       <p class="text-xl md:text-2xl! pb-6 text-stone-900 dark:text-stone-100">Add-ons</p>
-      <AddOnsCard label="Airgapped deployment" price="$10,000 per annum" />
-      <AddOnsCard label="1 business day SLA" price="$20,000 per annum" />
+      <AddOnsCard label="Airgapped deployment" price="$10,000 per year" />
+      <AddOnsCard label="1 business day SLA" price="$20,000 per year" />
       <AddOnsCard label="Professional services" price="$500 per day" />
     </section>
   </div>
 </section>
+
+<script>
+  const toggleButtons = document.querySelectorAll("[data-billing]");
+  const cards = document.querySelectorAll("[data-billing-plan]");
+
+  const activeClasses = [
+    "bg-white",
+    "dark:bg-stone-800",
+    "text-stone-900",
+    "dark:text-stone-100",
+  ];
+  const inactiveClasses = [
+    "bg-transparent",
+    "text-stone-600",
+    "dark:text-stone-400",
+  ];
+
+  const formatPrice = (value) =>
+    Number.isInteger(value) ? value.toString() : value.toFixed(2);
+
+  const applyBilling = (billing) => {
+    toggleButtons.forEach((button) => {
+      const isActive = button.dataset.billing === billing;
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      activeClasses.forEach((className) => button.classList.toggle(className, isActive));
+      inactiveClasses.forEach((className) => button.classList.toggle(className, !isActive));
+    });
+
+    cards.forEach((card) => {
+      card.querySelectorAll(".amount[data-base-price]").forEach((amountEl) => {
+        const basePrice = Number(amountEl.dataset.basePrice);
+        const multiplier = billing === "monthly" ? 1.2 : 1;
+        const updatedPrice = basePrice * multiplier;
+        amountEl.textContent = `$${formatPrice(updatedPrice)}`;
+      });
+    });
+  };
+
+  toggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      applyBilling(button.dataset.billing || "annual");
+    });
+  });
+
+  applyBilling("annual");
+</script>

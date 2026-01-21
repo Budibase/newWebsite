@@ -1,0 +1,242 @@
+---
+import Layout from "../../../layouts/MainLayout.astro";
+import PlatformLayout from "@components/PlatformLayout.astro";
+import Button from "@components/Button.astro";
+import Link from "@components/Link.astro";
+import Icon from "@components/Icon.astro";
+import { enterpriseNavItemsData } from "../_navItems";
+import Buildings from "phosphor-astro/Buildings.astro";
+import ShieldCheck from "phosphor-astro/ShieldCheck.astro";
+import Sliders from "phosphor-astro/Sliders.astro";
+import Headset from "phosphor-astro/Headset.astro";
+import MapPin from "phosphor-astro/MapPin.astro";
+import HardHat from "phosphor-astro/HardHat.astro";
+import Broadcast from "phosphor-astro/Broadcast.astro";
+import Recycle from "phosphor-astro/Recycle.astro";
+import Truck from "phosphor-astro/Truck.astro";
+import Bank from "phosphor-astro/Bank.astro";
+import Gear from "phosphor-astro/Gear.astro";
+import Package from "phosphor-astro/Package.astro";
+import ChartBar from "phosphor-astro/ChartBar.astro";
+import EnvelopeSimple from "phosphor-astro/EnvelopeSimple.astro";
+
+const iconMap: Record<string, any> = {
+	Buildings,
+	ShieldCheck,
+	Sliders,
+	Headset,
+	MapPin,
+	HardHat,
+	Broadcast,
+	Recycle,
+	Truck,
+	Bank,
+	Gear,
+	Package,
+	ChartBar,
+	EnvelopeSimple,
+};
+
+const navItems = enterpriseNavItemsData.map(group => ({
+	...group,
+	items: group.items.map(item => ({
+		...item,
+		icon: iconMap[item.iconName],
+	})),
+}));
+---
+
+<Layout>
+	<PlatformLayout
+		title="Enterprise"
+		description="Enterprise-grade security, control, & support for mission-critical workflows."
+		{navItems}
+	>
+		<div class="mb-8">
+			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+				<h1 class="text-lg! text-stone-900 dark:text-stone-100">
+					Contact our sales team
+				</h1>
+				<p
+					class="text-base! text-stone-600! dark:text-stone-400! mb-4! lg:max-w-lg"
+				>
+					Complete the form below, or
+					<Link
+						label="book a slot in our sales team calendar"
+						url="https://cal.com/team/budibase/contact-sales"
+						variant="primary"
+						underline
+						class="ml-1"
+						dataCalLink="team/budibase/contact-sales"
+						dataCalNamespace="contact-sales"
+						dataCalConfig='{"layout":"month_view"}'
+					/>
+					.
+				</p>
+				<div>
+					<form
+						method="post"
+						name="contact sales"
+						data-netlify="true"
+						class="space-y-4"
+						data-contact-sales-form
+					>
+						<input type="hidden" name="form-name" value="contact sales" />
+						<div>
+							<label
+								for="first_name"
+								class="block text-sm font-medium text-stone-700 dark:text-stone-200 mb-1"
+							>
+								First Name*
+							</label>
+							<input
+								id="first_name"
+								type="text"
+								name="first_name"
+								required
+								autocomplete="given-name"
+								class="w-full rounded-md border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-950 px-3 py-2 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus:ring-2 focus:ring-stone-500/60 focus:border-stone-400"
+							/>
+						</div>
+						<div>
+							<label
+								for="last_name"
+								class="block text-sm font-medium text-stone-700 dark:text-stone-200 mb-1"
+							>
+								Last Name*
+							</label>
+							<input
+								id="last_name"
+								type="text"
+								name="last_name"
+								required
+								autocomplete="family-name"
+								class="w-full rounded-md border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-950 px-3 py-2 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus:ring-2 focus:ring-stone-500/60 focus:border-stone-400"
+							/>
+						</div>
+						<div>
+							<label
+								for="email"
+								class="block text-sm font-medium text-stone-700 dark:text-stone-200 mb-1"
+							>
+								Email Address*
+							</label>
+							<input
+								id="email"
+								type="email"
+								name="email"
+								required
+								placeholder="name@company.com"
+								autocomplete="email"
+								class="w-full rounded-md border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-950 px-3 py-2 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus:ring-2 focus:ring-stone-500/60 focus:border-stone-400"
+							/>
+						</div>
+						<div>
+							<label
+								for="company"
+								class="block text-sm font-medium text-stone-700 dark:text-stone-200 mb-1"
+							>
+								Company Name*
+							</label>
+							<input
+								id="company"
+								type="text"
+								name="company"
+								required
+								autocomplete="organization"
+								class="w-full rounded-md border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-950 px-3 py-2 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus:ring-2 focus:ring-stone-500/60 focus:border-stone-400"
+							/>
+						</div>
+						<div>
+							<label
+								for="message"
+								class="block text-sm font-medium text-stone-700 dark:text-stone-200 mb-1"
+							>
+								Message*
+							</label>
+							<textarea
+								id="message"
+								name="message"
+								rows="4"
+								required
+								class="w-full rounded-md border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-950 px-3 py-2 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus:ring-2 focus:ring-stone-500/60 focus:border-stone-400"
+							></textarea>
+						</div>
+						<div class="flex items-center gap-5">
+							<Button label="Contact sales" type="submit" variant="primary" size="medium" />
+							<div class="hidden items-center gap-1 text-sm" data-contact-sales-success aria-live="polite">
+								<Icon name="CheckCircle" size="18" class="text-[#8CA171]" />
+								<span class="font-medium text-stone-100">Success</span>
+								<span class="text-stone-400">- Our team will review your inquiry and get back shortly</span>
+							</div>
+						</div>
+					</form>
+				</div>
+				<script type="text/javascript">
+					(function (C, A, L) {
+						let p = function (a, ar) {
+							a.q.push(ar);
+						};
+						let d = C.document;
+						C.Cal =
+							C.Cal ||
+							function () {
+								let cal = C.Cal;
+								let ar = arguments;
+								if (!cal.loaded) {
+									cal.ns = {};
+									cal.q = cal.q || [];
+									d.head.appendChild(d.createElement("script")).src = A;
+									cal.loaded = true;
+								}
+								if (ar[0] === L) {
+									const api = function () {
+										p(api, arguments);
+									};
+									const namespace = ar[1];
+									api.q = api.q || [];
+									if (typeof namespace === "string") {
+										cal.ns[namespace] = cal.ns[namespace] || api;
+										p(cal.ns[namespace], ar);
+										p(cal, ["initNamespace", namespace]);
+									} else p(cal, ar);
+									return;
+								}
+								p(cal, ar);
+							};
+					})(window, "https://app.cal.com/embed/embed.js", "init");
+					Cal("init", "contact-sales", { origin: "https://cal.com" });
+					Cal.ns["contact-sales"]("ui", {
+						hideEventTypeDetails: false,
+						layout: "month_view",
+					});
+
+					const form = document.querySelector("[data-contact-sales-form]");
+					const success = document.querySelector("[data-contact-sales-success]");
+					if (form && success) {
+						form.addEventListener("submit", async event => {
+							event.preventDefault();
+							const formData = new FormData(form);
+							try {
+								const response = await fetch("/", {
+									method: "POST",
+									body: new URLSearchParams(formData).toString(),
+									headers: {
+										"Content-Type": "application/x-www-form-urlencoded",
+									},
+								});
+								if (response.ok) {
+									form.reset();
+									success.classList.remove("hidden");
+									success.classList.add("flex");
+								}
+							} catch (error) {
+								return;
+							}
+						});
+					}
+				</script>
+			</div>
+		</div>
+	</PlatformLayout>
+</Layout>

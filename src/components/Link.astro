@@ -22,6 +22,9 @@ interface Props {
   ariaLabel?: string;
   rel?: string;
   underline?: boolean;
+  dataCalLink?: string;
+  dataCalNamespace?: string;
+  dataCalConfig?: string;
 }
 
 const {
@@ -34,6 +37,9 @@ const {
   ariaLabel,
   rel,
   underline = false,
+  dataCalLink,
+  dataCalNamespace,
+  dataCalConfig,
 } = Astro.props as Props;
 
 const sizeClass = size !== "medium" ? size : "";
@@ -75,6 +81,9 @@ const computedRel =
   rel={computedRel}
   class={classes}
   aria-label={ariaLabel}
+  data-cal-link={dataCalLink}
+  data-cal-namespace={dataCalNamespace}
+  data-cal-config={dataCalConfig}
 >
   {label}
   <slot />

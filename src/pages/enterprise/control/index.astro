@@ -15,6 +15,7 @@ import Bank from "phosphor-astro/Bank.astro";
 import Gear from "phosphor-astro/Gear.astro";
 import Package from "phosphor-astro/Package.astro";
 import ChartBar from "phosphor-astro/ChartBar.astro";
+import EnvelopeSimple from "phosphor-astro/EnvelopeSimple.astro";
 import HeroBg from "@assets/images/homepage/valley.png";
 import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
@@ -33,6 +34,7 @@ const iconMap: Record<string, any> = {
 	Gear,
 	Package,
 	ChartBar,
+	EnvelopeSimple,
 };
 
 const navItems = enterpriseNavItemsData.map(group => ({
@@ -99,4 +101,3 @@ const navItems = enterpriseNavItemsData.map(group => ({
 		</div>
 	</PlatformLayout>
 </Layout>
-

@@ -14,6 +14,12 @@ export const enterpriseNavItemsData: NavGroup[] = [
 	{
 		items: [
 			{ text: "Overview", link: "/enterprise", sectionId: "overview", iconName: "Buildings" },
+			{
+				text: "Contact sales",
+				link: "/enterprise/contact-sales",
+				sectionId: "contact-sales",
+				iconName: "EnvelopeSimple",
+			},
 		],
 	},
 	{
@@ -39,4 +45,3 @@ export const enterpriseNavItemsData: NavGroup[] = [
 		],
 	},
 ];
-

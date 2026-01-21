@@ -12,6 +12,7 @@ interface Props {
   description?: string;
   creatorPrice: string | number;
   userPrice?: string | number;
+  billingPlan?: string;
   creatorUnit?: string;
   userUnit?: string;
   creatorLabel?: string;
@@ -29,6 +30,7 @@ const {
   description,
   creatorPrice,
   userPrice,
+  billingPlan,
   creatorUnit = "/mo.",
   userUnit = "/mo.",
   creatorLabel = "per creator",
@@ -46,7 +48,7 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
   .join(" ");
 ---
 
-<div class={cardClasses}>
+<div class={cardClasses} data-billing-plan={billingPlan}>
   <header class="header">
     <h3 class="text-stone-900 dark:text-stone-100">{title}</h3>
     {
@@ -64,29 +66,38 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
   <div class="body">
     <div class="prices">
       <p class="price-line">
-        <span class="amount"
+        <span
+          class="amount"
+          data-base-price={typeof creatorPrice === "number" ? creatorPrice : undefined}
           >{
             typeof creatorPrice === "number" ? `$${creatorPrice}` : creatorPrice
           }</span
         >
         <span class="inline-flex gap-0.5">
-          <span class="text-base text-stone-600 dark:text-stone-400">{creatorLabel}</span>
+          {creatorLabel && (
+            <span class="text-base text-stone-600 dark:text-stone-400">{creatorLabel}</span>
+          )}
           <span class="text-base text-stone-600 dark:text-stone-400">{creatorUnit}</span>
         </span>
       </p>
-      {
-        userPrice !== undefined && (
-          <p class="price-line">
-            <span class="amount">
-              {typeof userPrice === "number" ? `$${userPrice}` : userPrice}
-            </span>
-            <span class="inline-flex gap-0.5">
-              <span class="text-base text-stone-600 dark:text-stone-400">{userLabel}</span>
-              <span class="text-base text-stone-600 dark:text-stone-400">{userUnit}</span>
-            </span>
-          </p>
-        )
-      }
+      {userPrice !== undefined ? (
+        <p class="price-line">
+          <span
+            class="amount"
+            data-base-price={typeof userPrice === "number" ? userPrice : undefined}
+          >
+            {typeof userPrice === "number" ? `$${userPrice}` : userPrice}
+          </span>
+          <span class="inline-flex gap-0.5">
+            <span class="text-base text-stone-600 dark:text-stone-400">{userLabel}</span>
+            <span class="text-base text-stone-600 dark:text-stone-400">{userUnit}</span>
+          </span>
+        </p>
+      ) : (
+        <p class="price-line" aria-hidden="true">
+          <span class="amount">&nbsp;</span>
+        </p>
+      )}
     </div>
     <div class="mt-4">
       {description && <p class=" text-stone-600! dark:text-stone-400!">{description}</p>}

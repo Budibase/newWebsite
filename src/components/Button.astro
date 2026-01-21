@@ -24,6 +24,8 @@ interface Props {
   size?: "small" | "medium" | "large";
   icon?: string;
   iconSize?: string;
+  target?: string;
+  rel?: string;
 }
 
 const {
@@ -36,6 +38,8 @@ const {
   size = "medium",
   icon,
   iconSize: providedIconSize,
+  target,
+  rel,
 } = Astro.props as Props;
 
 // Map button size to icon size (in pixels)
@@ -90,11 +94,21 @@ const classes = [
 ]
   .filter(Boolean)
   .join(" ");
+
+const computedRel =
+  rel ?? (target === "_blank" ? "noopener noreferrer" : undefined);
 ---
 
 {
   url ? (
-    <a href={url} class={classes} aria-label={ariaLabel} role="button">
+    <a
+      href={url}
+      class={classes}
+      aria-label={ariaLabel}
+      role="button"
+      target={target}
+      rel={computedRel}
+    >
       {icon && iconSize && <Icon name={icon} size={iconSize} />}
       {label}
     </a>

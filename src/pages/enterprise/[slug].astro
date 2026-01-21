@@ -16,6 +16,7 @@ import Bank from "phosphor-astro/Bank.astro";
 import Gear from "phosphor-astro/Gear.astro";
 import Package from "phosphor-astro/Package.astro";
 import ChartBar from "phosphor-astro/ChartBar.astro";
+import EnvelopeSimple from "phosphor-astro/EnvelopeSimple.astro";
 import DefaultCover from "@assets/images/homepage/valley.png";
 import { Image } from "astro:assets";
 
@@ -33,6 +34,7 @@ const iconMap: Record<string, any> = {
 	Gear,
 	Package,
 	ChartBar,
+	EnvelopeSimple,
 };
 
 const navItems = enterpriseNavItemsData.map(group => ({
@@ -104,4 +106,3 @@ if (coverImage && images[coverImage]) {
 		</div>
 	</PlatformLayout>
 </Layout>
-
