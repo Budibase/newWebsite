@@ -16,44 +16,24 @@ import Users from "phosphor-astro/HardDrives.astro";
 import Certificate from "phosphor-astro/Certificate.astro";
 import Check from "phosphor-astro/CheckCircle.astro";
 import GlobeSimple from "phosphor-astro/GlobeSimple.astro";
-import DogImage from "@assets/images/homepage/dog.png";
 import { Image } from "astro:assets";
 ---
 
 <section class="container max-w-7xl mx-auto px-2 lg:px-0 flex flex-col mt-8 md:mt-20">
   <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-    <div class="flex-1">
-      <h1 class="max-w-xl h2 text-stone-500! dark:text-stone-400! mb-5">
-        Budibase is a free and open AI workflow platform. 
-        <span class="text-stone-950 dark:text-stone-50"
-          >Build AI Agents, Chat, Automations, and
-           Apps, and join 300K users transforming workflows with AI.</span
-        >
+    <div class="flex-1 flex flex-col items-center text-center">
+      <h1 class="max-w-lg h2  text-stone-950 dark:text-stone-50 mb-5">
+          The open-source platform for building<br> AI Agents, Workflows, Chat & Apps.<br>
+          <span class="text-stone-500 dark:text-stone-400">Join 300K privacy-first teams.</span>
       </h1>
       <div class="flex flex-row">
-        <Button label="Get Budibase free" url="/" variant="cta" />
+        <Button
+          label="Get Budibase free"
+          url="https://account.budibase.app/register"
+          variant="cta"
+          target="_blank"
+        />
       </div>
-      <div class="flex flex-wrap items-center gap-3 md:gap-4 text-xs text-stone-500 dark:text-stone-400 mt-5">
-        <span class="flex items-center gap-1">
-          <Users class="w-4 h-4" />
-          <span>Self-host</span>
-        </span>
-        <span class="flex items-center gap-1">
-          <Certificate class="w-4 h-4" />
-          <span>ISO 27001 Certified</span>
-        </span>
-        <span class="flex items-center gap-1">
-          <Check class="w-4 h-4" />
-          <span>Free SSO</span>
-        </span>
-        <span class="flex items-center gap-1">
-          <GlobeSimple class="w-4 h-4" />
-          <span>Made in Europe</span>
-        </span>
-      </div>
-    </div>
-    <div class="shrink-0 w-full md:w-auto md:max-w-md">
-      <Image src={DogImage} alt="Friendly dog illustration" class="w-full h-auto" />
     </div>
   </div>
 

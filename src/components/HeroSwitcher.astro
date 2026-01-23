@@ -25,41 +25,46 @@ const {
 ---
 
 <div id={id} class={`hero-switcher ${className ?? ""}`.trim()}>
-  <div class="tabs" role="tablist" aria-label="Product switcher">
-    {
-      items.map((item, idx) => {
-        const tabId = `${id}-tab-${idx}`;
-        return (
-          <button
-            id={tabId}
-            role="tab"
-            aria-selected={idx === 0 ? "true" : "false"}
-            aria-controls={`${id}-panel-${idx}`}
-            class={`appearance-none bg-transparent border-0 px-2 py-1 text-xs md:text-sm text-stone-500 dark:text-stone-400 border-b border-transparent whitespace-nowrap cursor-pointer inline-flex items-center gap-1.5 transition-colors duration-150 hover:text-stone-950 dark:hover:text-stone-100 shrink-0 ${
-              idx === 0
-                ? "is-active bg-stone-200 dark:bg-stone-800 text-stone-950 dark:text-stone-50 rounded-lg"
-                : ""
-            }`.trim()}
-            data-index={idx}
-            data-label={item.label}
-            type="button"
-            tabindex={idx === 0 ? 0 : -1}
-            onclick={`window.__bbHeroSwitcherSetActive && window.__bbHeroSwitcherSetActive('${id}', ${idx})`}
-          >
-            {item.icon && <item.icon class="w-4 h-4" />}
-            <span class="tab-label">{item.label}</span>
-            {item.tagLabel && (
-              <Tag
-                label={item.tagLabel}
-                variant={item.tagVariant ?? "primary"}
-                size="extra-small"
-                class="ml-1"
-              />
-            )}
-          </button>
-        );
-      })
-    }
+  <div class="tabs-row">
+    <div class="tabs" role="tablist" aria-label="Product switcher">
+      {
+        items.map((item, idx) => {
+          const tabId = `${id}-tab-${idx}`;
+          return (
+            <button
+              id={tabId}
+              role="tab"
+              aria-selected={idx === 0 ? "true" : "false"}
+              aria-controls={`${id}-panel-${idx}`}
+              class={`appearance-none bg-transparent border-0 px-2 py-1 text-xs md:text-sm text-stone-500 dark:text-stone-400 border-b border-transparent whitespace-nowrap cursor-pointer inline-flex items-center gap-1.5 transition-colors duration-150 hover:text-stone-950 dark:hover:text-stone-100 shrink-0 ${
+                idx === 0
+                  ? "is-active bg-stone-200 dark:bg-stone-800 text-stone-950 dark:text-stone-50 rounded-lg"
+                  : ""
+              }`.trim()}
+              data-index={idx}
+              data-label={item.label}
+              type="button"
+              tabindex={idx === 0 ? 0 : -1}
+              onclick={`window.__bbHeroSwitcherSetActive && window.__bbHeroSwitcherSetActive('${id}', ${idx})`}
+            >
+              {item.icon && <item.icon class="w-4 h-4" />}
+              <span class="tab-label">{item.label}</span>
+              {item.tagLabel && (
+                <Tag
+                  label={item.tagLabel}
+                  variant={item.tagVariant ?? "primary"}
+                  size="extra-small"
+                  class="ml-1"
+                />
+              )}
+            </button>
+          );
+        })
+      }
+    </div>
+    <div class="tabs-addon">
+      <slot name="addon" />
+    </div>
   </div>
 
   <div class="media" role="region" aria-label="Product preview">
@@ -100,6 +105,19 @@ const {
     -ms-overflow-style: none;
     position: relative;
     z-index: 3;
+  }
+
+  .tabs-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .tabs-addon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
   }
   .tabs::-webkit-scrollbar {
     display: none;
@@ -144,6 +162,18 @@ const {
     display: block;
     border-radius: 8px;
     object-fit: contain;
+  }
+
+  @media (max-width: 720px) {
+    .tabs-row {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tabs {
+      width: 100%;
+      justify-content: center;
+    }
   }
 </style>
 
@@ -219,4 +249,3 @@ const {
     }
   })();
 </script>
-
