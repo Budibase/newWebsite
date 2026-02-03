@@ -71,19 +71,23 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
 	.blog-layout {
 		margin: 0 auto;
 		display: grid;
-		grid-template-columns: 280px 1fr;
+		grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+		grid-template-areas: "sidebar main";
 		gap: 4rem;
 		align-items: start;
 	}
 
 	.blog-sidebar {
+		grid-area: sidebar;
 		position: sticky;
 		top: 2rem;
 	}
 
 	.blog-main {
+		grid-area: main;
 		flex: 1;
 		min-width: 0;
+		min-height: 60vh;
 	}
 
 	.blog-posts-list {
@@ -92,17 +96,26 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
 		margin: 0;
 		display: flex;
 		flex-direction: column;
+		contain: paint;
 	}
 
 	.blog-posts-list li:last-child .blog-post-link {
 		border-bottom: none;
 	}
 
+	@media (max-width: 1024px) {
+		.blog-layout {
+			gap: 4rem;
+		}
+	}
 
 	@media (max-width: 768px) {
 		.blog-layout {
 			grid-template-columns: 1fr;
 			gap: 2rem;
+			grid-template-areas:
+				"sidebar"
+				"main";
 		}
 
 		.blog-sidebar {

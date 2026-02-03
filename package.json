@@ -11,7 +11,7 @@
     "format:fix": "prettier . --write"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.6-beta.1",
+    "@astrojs/check": "^0.9.7-beta.1",
     "@astrojs/language-server": "^2.16.1-beta.1",
     "@modelcontextprotocol/server-filesystem": "^2025.8.21",
     "docs-mcp": "github:withastro/docs-mcp",
@@ -20,15 +20,16 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.0-beta.1",
-    "@astrojs/netlify": "^7.0.0-beta.5",
-    "@astrojs/sitemap": "^3.6.1-beta.2",
+    "@astrojs/mdx": "^4.3.4",
+    "@astrojs/netlify": "^6.5.9",
+    "@astrojs/sitemap": "^3.5.1",
     "@tailwindcss/vite": "^4.1.11",
-    "astro": "^6.0.0-beta.1",
+    "astro": "5.17.0",
     "astro-expressive-code": "^0.41.3",
     "astro-og-canvas": "^0.7.2",
     "date-fns": "^4.1.0",
     "phosphor-astro": "^2.1.0",
+    "remark-gemoji": "^8.0.0",
     "tailwindcss": "^4.1.11"
   }
 }

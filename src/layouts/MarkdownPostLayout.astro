@@ -9,8 +9,7 @@ import Layout from './MainLayout.astro';
     <h1 class="mb-4 mt-24">{frontmatter.title}</h1>
     <p class="text-stone-500! dark:text-stone-400!">Written by {frontmatter.author}</p>
   </div>
-        <slot />
+  <div class="max-w-prose mx-auto w-full">
+    <slot />
   </div>
 </Layout>
-
-

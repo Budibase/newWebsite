@@ -1,7 +1,5 @@
 ---
 import Favicon from "./Favicon.astro";
-import { ClientRouter } from "astro:transitions";
-import { Font } from "astro:assets";
 import '../styles/fonts.css';
 import SEO from './SEO.astro';
 
@@ -69,55 +67,32 @@ function smartypants(text: string, _mode?: number): string {
       } catch (e) {
         // localStorage might not be available
       }
-      // System preference
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
-    
-    function applyTheme(skipTransitions = false) {
-      if (skipTransitions) {
-        document.documentElement.classList.add('no-transitions');
-      }
-      
+
+    function applyTheme() {
       const effectiveTheme = getEffectiveTheme();
-      if (effectiveTheme === 'dark') {
+      const isDark = document.documentElement.classList.contains('dark');
+      if (effectiveTheme === 'dark' && !isDark) {
         document.documentElement.classList.add('dark');
-      } else {
+      } else if (effectiveTheme === 'light' && isDark) {
         document.documentElement.classList.remove('dark');
       }
-      
-      if (skipTransitions) {
-        // Force reflow to ensure the class is applied
-        void document.documentElement.offsetHeight;
-        document.documentElement.classList.remove('no-transitions');
-      }
     }
-    
+
     // Apply theme immediately before any rendering
     applyTheme();
-    
-    // Re-apply theme on Astro view transitions (client-side navigation)
-    // Use astro:after-swap and skip transitions to prevent flicker
-    document.addEventListener('astro:after-swap', () => {
-      applyTheme(true);
-    });
-    
-    // Also listen for storage changes (for syncing across tabs)
+
+    // Only react to explicit theme changes (avoids flicker on navigation)
     window.addEventListener('storage', (e) => {
       if (e.key === 'theme') {
-        applyTheme(true);
+        applyTheme();
       }
     });
   })();
 </script>
 <style is:inline>
-  /* Disable transitions during theme switch to prevent flicker */
-  .no-transitions,
-  .no-transitions *,
-  .no-transitions *::before,
-  .no-transitions *::after {
-    transition: none !important;
-    animation: none !important;
-  }
+  /* Intentionally left blank */
 </style>
 
 
@@ -143,7 +118,6 @@ function smartypants(text: string, _mode?: number): string {
 	og={{ type: pageType }}
 	canonicalURL={canonicalURL}
 />
-<ClientRouter />
 <style>
   body {
     font-family: var(--font-sans);

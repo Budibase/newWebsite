@@ -92,8 +92,10 @@
 
 @layer base {
   :root {
-    --font-sans: "Inter", sans-serif;
-    --font-display: "Inter Display", sans-serif;
+    --font-sans: "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji", sans-serif;
+    --font-display: "Inter Display", "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
 
     /* Core semantic RGB tokens (Tailwind-friendly) */
     --bg: 250 249 245;
@@ -143,6 +145,10 @@
     --border-color: rgb(var(--border) / 0.9);
 
     color-scheme: light;
+  }
+
+  html {
+    scrollbar-gutter: stable;
   }
 
   /* Dark mode variables */
@@ -212,9 +218,6 @@ html {
   background-color: var(--color-theme-bg);
   text-rendering: optimizeLegibility;
   font-variant-numeric: normal;
-  transition:
-    background-color 150ms ease-out,
-    color 150ms ease-out;
 }
 
 
@@ -222,7 +225,6 @@ body {
   margin: 0;
   line-height: inherit;
   background-color: var(--color-theme-bg);
-  transition: background-color 150ms ease-out;
 }
 
 /* Code blocks should use the same surface as selected tabs */
@@ -446,14 +448,11 @@ article strong {
 article a {
   font-weight: 400;
   color: rgb(var(--primary)) !important;
-  text-decoration: underline;
-  text-underline-offset: 4px !important;
-  text-decoration-thickness: 0.5px !important;
-  text-decoration-color: rgb(var(--border) / 0.9) !important;
+  text-decoration: none;
 }
 
 article a:hover {
-  color: rgb(var(--primary-hover)) !important;
+  color: var(--color-blue-700) !important;
 }
 
 article blockquote {
@@ -475,18 +474,11 @@ article blockquote p {
 
 .dark article a {
   color: rgb(var(--primary-hover)) !important;
-  text-decoration-color: var(--text-secondary) !important;
-  text-decoration: underline;
-  text-underline-offset: 4px !important;
-  text-decoration-thickness: 0.5px !important;
+  text-decoration: none;
 }
 
 .dark article a:hover {
-  color: rgb(var(--primary-hover)) !important;
-  text-decoration: underline;
-  text-underline-offset: 4px !important;
-  text-decoration-thickness: 0.5px !important;
-  text-decoration-color: rgb(var(--border) / 1) !important;
+  color: var(--color-blue-700) !important;
 }
 
 .bg-transparent {

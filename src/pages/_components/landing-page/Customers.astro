@@ -1,17 +1,26 @@
 ---
 import Tag from "@components/Tag.astro";
+import PresidentClarenceImage from "@assets/images/homepage/PresidentClarence.png";
+import { Image } from "astro:assets";
 ---
 
-<div class="max-w-7xl container mx-auto mt-12 md:mt-24 px-2 lg:px-0">
+<div class="max-w-7xl container mx-auto mt-12 md:mt-24 px-2 lg:px-0 relative">
 
   <h2 class="mb-6 text-lg text-secondary text-center">
     Trusted by from over <span class="text-primary"
       >300K teams from top Governments and enterprises.
     </span>
   </h2>
-  <div class="inline-flex flex-row flex-wrap gap-3 md:gap-4">
+  <div class="relative inline-flex flex-row flex-wrap gap-3 md:gap-4">
+    <Image
+      src={PresidentClarenceImage}
+      alt="President Clarence"
+      width={200}
+      height={200}
+      class="absolute left-0 -top-[60px] w-[200px] h-[200px] object-contain -translate-x-[75%] -rotate-[15deg] z-20 pointer-events-none"
+    />
     <div
-      class="w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
+      class="relative z-10 w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
     >
       <img
         alt="france"
@@ -24,7 +33,7 @@ import Tag from "@components/Tag.astro";
       />
     </div>
     <div
-      class="w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
+      class="relative z-10 w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
     >
       <img
         alt="america"
@@ -37,7 +46,7 @@ import Tag from "@components/Tag.astro";
       />
     </div>
     <div
-      class="w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
+      class="relative z-10 w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
     >
       <img
         alt="italy"
@@ -50,7 +59,7 @@ import Tag from "@components/Tag.astro";
       />
     </div>
     <div
-      class="w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
+      class="relative z-10 w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
     >
       <img
         alt="Australia"
@@ -63,7 +72,7 @@ import Tag from "@components/Tag.astro";
       />
     </div>
     <div
-      class="w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
+      class="relative z-10 w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
     >
       <img
         alt="Bulgaria"
@@ -76,7 +85,7 @@ import Tag from "@components/Tag.astro";
       />
     </div>
     <div
-      class="w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
+      class="relative z-10 w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
     >
       <img
         alt="switzerland flag"
@@ -90,7 +99,7 @@ import Tag from "@components/Tag.astro";
     </div>
 
     <div
-      class="w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
+      class="relative z-10 w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
     >
       <img
         alt="arm logo"
@@ -103,7 +112,7 @@ import Tag from "@components/Tag.astro";
       />
     </div>
     <div
-      class="w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
+      class="relative z-10 w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
     >
       <img
         alt="saab logo"
@@ -116,7 +125,7 @@ import Tag from "@components/Tag.astro";
       />
     </div>
     <div
-      class="w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
+      class="relative z-10 w-24 md:w-32 h-12 md:h-14 place-content-center justify-center flex bg-secondary"
     >
       <img
         alt="AMEX"

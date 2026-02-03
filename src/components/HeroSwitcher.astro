@@ -50,7 +50,11 @@ const {
             "duration-150",
             "hover:text",
             "shrink-0",
-            "focus-visible:outline-none",
+    "focus-visible:outline-none",
+    "focus-visible:ring-2",
+    "focus-visible:ring-stone-500",
+    "focus-visible:ring-offset-2",
+    "focus-visible:ring-offset-white",
             "focus-visible:ring-2",
             "focus-visible:ring-ring",
             "focus-visible:ring-offset-2",
@@ -216,10 +220,10 @@ const {
 
       function updateTabClasses(tab, isActive) {
         if (isActive) {
-          tab.classList.add('is-active', 'bg-secondary', 'text-text', 'rounded-lg');
+          tab.classList.add('is-active', 'bg-2', 'text-text', 'rounded-lg');
           tab.classList.remove('bg-transparent', 'text-text-muted');
         } else {
-          tab.classList.remove('is-active', 'bg-secondary', 'text-text', 'rounded-lg');
+          tab.classList.remove('is-active', 'bg-2', 'bg-secondary', 'text-text', 'rounded-lg');
           tab.classList.add('bg-transparent', 'text-text-muted');
         }
       }
