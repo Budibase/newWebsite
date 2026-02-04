@@ -247,7 +247,9 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
           <div class="hero-demo-right min-w-0 w-[45%] px-5 py-4 flex flex-col min-h-0">
             <div class="flex items-center justify-between">
               <div class="text-[12px] font-medium text-text">Chat preview</div>
-              <button class="text-[12px] text-[var(--text-secondary)]" type="button">Refresh chat</button>
+              <button class="text-[12px] text-[var(--text-secondary)]" type="button" data-hero-demo-refresh>
+                Refresh chat
+              </button>
             </div>
 
             <div class="mt-4 flex flex-1 min-h-0 flex-col">
@@ -257,7 +259,7 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
                     I’m unable to connect to the office wifi
                   </div>
                 </div>
-                <div class="flex flex-col gap-3">
+                <div class="flex flex-col gap-3" data-hero-demo-assistant>
                   <div class="token-chip token-chip-compact">
                     <FileText class="token-chip-icon" />
                     docs.it_guides
@@ -356,6 +358,7 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
     color: var(--text-primary);
     padding: 0 12px;
     font-size: 12px;
+    font-weight: 500;
   }
 
   .hero-demo-select-menu {
@@ -392,6 +395,7 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
     border: 0;
     text-align: left;
     cursor: pointer;
+    font-weight: 500;
   }
 
   .hero-demo-select-option-label {
@@ -421,7 +425,7 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
 
   .hero-demo-select-option.is-selected {
     color: var(--accent-blue);
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .hero-demo-select-meta {
@@ -484,6 +488,50 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
     line-height: 1.5;
   }
 
+  .hero-demo-thinking {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .hero-demo-thinking-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .hero-demo-thinking-dot {
+    height: 4px;
+    width: 4px;
+    border-radius: 999px;
+    background: var(--text-secondary);
+    opacity: 0.4;
+    animation: hero-demo-thinking 1s infinite ease-in-out;
+  }
+
+  .hero-demo-thinking-dot:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .hero-demo-thinking-dot:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes hero-demo-thinking {
+    0%,
+    100% {
+      opacity: 0.3;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+  }
+
   .hero-demo-right {
     background: var(--bg-1);
   }
@@ -524,6 +572,14 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
   .hero-demo-input:focus-visible {
     outline: none;
     box-shadow: 0 0 0 2px rgb(var(--brand) / 0.6);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-demo-thinking-dot {
+      animation: none;
+      opacity: 0.6;
+      transform: none;
+    }
   }
 
   
@@ -680,33 +736,46 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
     const messages = root.querySelector("[data-hero-demo-messages]");
     const select = root.querySelector("[data-hero-demo-select]");
     const selectMenu = root.querySelector("[data-hero-demo-select-menu]");
+    const refresh = root.querySelector("[data-hero-demo-refresh]");
+    const assistant = root.querySelector("[data-hero-demo-assistant]");
     const scopeAttr = root
       .getAttributeNames()
       .find((name) => name.startsWith("data-astro-cid-"));
 
-    if (!form || !input || !messages) return;
+    if (!form || !input || !messages || !assistant) return;
 
     const ctaHref = "https://account.budibase.app/register";
     const command = "curl -fsSL https://install.budibase.com | bash";
+    const thinkingLabel = "Thinking";
+    const thinkingDuration = 3200;
+    const typingDelay = 22;
+    const paragraphDelay = 180;
+    let animationId = 0;
 
     function applyScopeAttr(element) {
       if (scopeAttr) element.setAttribute(scopeAttr, "");
     }
 
+    function applyScopeDeep(element) {
+      if (!scopeAttr || !element) return;
+      element.setAttribute(scopeAttr, "");
+      element.querySelectorAll("*").forEach((node) => node.setAttribute(scopeAttr, ""));
+    }
+
     function appendUserMessage(text) {
       const wrapper = document.createElement("div");
       wrapper.className = "flex flex-col items-end gap-1";
-      applyScopeAttr(wrapper);
+      applyScopeDeep(wrapper);
 
       const bubble = document.createElement("div");
       bubble.className = "hero-demo-user-bubble";
       bubble.textContent = text;
-      applyScopeAttr(bubble);
+      applyScopeDeep(bubble);
       bubble.style.margin = "4px 0";
 
       const cta = document.createElement("div");
       cta.className = "hero-demo-cta";
-      applyScopeAttr(cta);
+      applyScopeDeep(cta);
 
       const link = document.createElement("a");
       link.href = ctaHref;
@@ -714,12 +783,12 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
       link.rel = "noopener noreferrer";
       link.className = "hero-demo-cta-link";
       link.textContent = "Try Budibase Cloud";
-      applyScopeAttr(link);
+      applyScopeDeep(link);
 
       const code = document.createElement("code");
       code.className = "hero-demo-cta-code";
       code.textContent = command;
-      applyScopeAttr(code);
+      applyScopeDeep(code);
 
       cta.append(link);
       cta.append(document.createTextNode(", or run it locally "));
@@ -728,6 +797,123 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
       wrapper.append(bubble);
       wrapper.append(cta);
       messages.append(wrapper);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    const tokenChipTemplate = assistant.querySelector(".token-chip")?.cloneNode(true);
+    const paragraphTexts = Array.from(
+      assistant.querySelectorAll(".hero-demo-assistant-block p")
+    )
+      .map((paragraph) => paragraph.textContent?.trim() || "")
+      .filter(Boolean);
+
+    function renderStaticResponse() {
+      assistant.innerHTML = "";
+      if (tokenChipTemplate) {
+        const chip = tokenChipTemplate.cloneNode(true);
+        applyScopeDeep(chip);
+        assistant.append(chip);
+      }
+
+      const block = document.createElement("div");
+      block.className = "hero-demo-assistant-block";
+      applyScopeDeep(block);
+
+      paragraphTexts.forEach((text, index) => {
+        const p = document.createElement("p");
+        p.className = "mb-2 text-[12px]";
+        if (index === paragraphTexts.length - 1) {
+          p.classList.remove("mb-2");
+        }
+        p.textContent = text;
+        applyScopeDeep(p);
+        block.append(p);
+      });
+
+      assistant.append(block);
+    }
+
+    function createThinkingElement() {
+      const wrapper = document.createElement("div");
+      wrapper.className = "hero-demo-thinking";
+      wrapper.textContent = thinkingLabel;
+      applyScopeDeep(wrapper);
+
+      const dots = document.createElement("span");
+      dots.className = "hero-demo-thinking-dots";
+      applyScopeDeep(dots);
+
+      for (let i = 0; i < 3; i += 1) {
+        const dot = document.createElement("span");
+        dot.className = "hero-demo-thinking-dot";
+        applyScopeDeep(dot);
+        dots.append(dot);
+      }
+
+      wrapper.append(" ");
+      wrapper.append(dots);
+      return wrapper;
+    }
+
+    function sleep(duration) {
+      return new Promise((resolve) => {
+        window.setTimeout(resolve, duration);
+      });
+    }
+
+    async function typeParagraphs(block, currentId) {
+      for (let i = 0; i < paragraphTexts.length; i += 1) {
+        if (currentId !== animationId) return;
+        const text = paragraphTexts[i];
+        const p = document.createElement("p");
+        p.className = "mb-2 text-[12px]";
+        applyScopeDeep(p);
+        block.append(p);
+
+        for (let j = 0; j <= text.length; j += 1) {
+          if (currentId !== animationId) return;
+          p.textContent = text.slice(0, j);
+          await sleep(typingDelay);
+        }
+
+        if (i === paragraphTexts.length - 1) {
+          p.classList.remove("mb-2");
+        } else {
+          await sleep(paragraphDelay);
+        }
+      }
+    }
+
+    async function runAgentSequence() {
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (prefersReducedMotion.matches) {
+        renderStaticResponse();
+        return;
+      }
+
+      animationId += 1;
+      const currentId = animationId;
+      assistant.innerHTML = "";
+      const thinking = createThinkingElement();
+      assistant.append(thinking);
+      messages.scrollTop = messages.scrollHeight;
+
+      await sleep(thinkingDuration);
+      if (currentId !== animationId) return;
+
+      assistant.innerHTML = "";
+      if (tokenChipTemplate) {
+        const chip = tokenChipTemplate.cloneNode(true);
+        applyScopeDeep(chip);
+        assistant.append(chip);
+      }
+
+      const block = document.createElement("div");
+      block.className = "hero-demo-assistant-block";
+      applyScopeDeep(block);
+      assistant.append(block);
+
+      await typeParagraphs(block, currentId);
       messages.scrollTop = messages.scrollHeight;
     }
 
@@ -775,5 +961,13 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
       input.value = "";
       input.focus();
     });
+
+    runAgentSequence();
+
+    if (refresh) {
+      refresh.addEventListener("click", () => {
+        runAgentSequence();
+      });
+    }
   })();
 </script>

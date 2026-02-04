@@ -199,7 +199,7 @@ const logos = [
 ];
 ---
 
-<div class="mx-auto grid grid-cols-[repeat(15,40px)] grid-rows-[repeat(7,40px)] md:grid-cols-[repeat(15,56px)] md:grid-rows-[repeat(7,56px)] lg:grid-cols-[repeat(15,66px)] lg:grid-rows-[repeat(7,66px)] gap-3 bg-3 p-8 rounded-lg justify-center">
+<div class="mx-auto grid grid-cols-[repeat(15,40px)] grid-rows-[repeat(7,40px)] md:grid-cols-[repeat(15,56px)] md:grid-rows-[repeat(7,56px)] lg:grid-cols-[repeat(15,66px)] lg:grid-rows-[repeat(7,66px)] gap-3 bg-2 p-8 rounded-lg justify-center">
   {logos.map((logo, index) => {
     // Insert text/button block at position 23 (one position to the left of 24)
     const shouldInsertTextBlock = index === 23;
@@ -208,7 +208,7 @@ const logos = [
       <>
         {shouldInsertTextBlock && (
           <div 
-            class="col-span-5 row-span-5 flex flex-col items-start justify-center text-left p-6 rounded-lg bg-2"
+            class="col-span-5 row-span-5 flex flex-col items-start justify-center text-left p-6 rounded-lg bg-3"
           >
             <Image
               src={CockapooJigsaw}
@@ -228,7 +228,7 @@ const logos = [
           </div>
         )}
         <div
-          class="shadow-2 h-[40px] w-[40px] md:h-[56px] md:w-[56px] lg:h-[66px] lg:w-[66px] shrink-0 overflow-hidden rounded-lg bg-secondary p-4 flex items-center justify-center"
+          class="shadow-2 h-[40px] w-[40px] md:h-[56px] md:w-[56px] lg:h-[66px] lg:w-[66px] shrink-0 overflow-hidden rounded-lg bg-3 p-4 flex items-center justify-center"
           style="opacity: 1; transition: opacity 300ms;"
         >
           <Image
