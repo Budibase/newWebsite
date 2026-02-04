@@ -8,20 +8,22 @@ interface Props {
 
 const { post } = Astro.props as Props;
 const metaLabel = post.data.category ?? (post.data.featured ? 'Featured' : 'Blog');
+const transitionKey = post.id.replaceAll('/', '-');
 ---
 
 <article class="blog-post-preview">
 	<a
 		href={`/blog/${post.id}/`}
 		data-astro-prefetch
-		data-astro-transition="none"
 		class="blog-post-card"
 	>
-		<h3 class="blog-post-title">{post.data.title}</h3>
+		<h3 class="blog-post-title" transition:name={`${transitionKey}-title`}>
+			{post.data.title}
+		</h3>
 		{post.data.description && (
 			<p class="blog-post-summary">{post.data.description}</p>
 		)}
-		<div class="blog-post-meta">
+		<div class="blog-post-meta" transition:name={`${transitionKey}-meta`}>
 			<span class="blog-post-category">{metaLabel}</span>
 			<span class="blog-post-dot">·</span>
 			<time datetime={post.data.publishDate.toISOString()}>

@@ -20,11 +20,16 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { data } = post;
 const { Content } = await render(post);
+const transitionKey = post.id.replaceAll('/', '-');
 
 
 ---
-<MarkdownPostLayout frontmatter={post.data}>
-	<article class="article my-8 max-w-prose mx-auto">
+<MarkdownPostLayout
+	frontmatter={post.data}
+	enableTransitions={true}
+	transitionKey={transitionKey}
+>
+	<article class="article my-8 max-w-xl mx-auto">
 		<Content />
 	</article>
 	<CTA />

@@ -1,0 +1,779 @@
+---
+import { Image } from "astro:assets";
+import Button from "@components/Button.astro";
+import ChatCircle from "phosphor-astro/ChatCircle.astro";
+import Plus from "phosphor-astro/Plus.astro";
+import Cube from "phosphor-astro/Cube.astro";
+import GlobeSimple from "phosphor-astro/GlobeSimple.astro";
+import GridNine from "phosphor-astro/GridNine.astro";
+import CaretDown from "phosphor-astro/CaretDown.astro";
+import PaperPlaneTilt from "phosphor-astro/PaperPlaneTilt.astro";
+import FileText from "phosphor-astro/FileText.astro";
+import Sparkle from "phosphor-astro/Sparkle.astro";
+import BBSymbol from "@assets/logos/BBSymbol.svg";
+import MistralLogo from "@assets/logos/Mistral.svg";
+import BudibaseLogo from "@assets/logos/BBSymbol.svg";
+import AnthropicLogo from "@assets/logos/anthropic.svg";
+import GoogleLogo from "@assets/logos/Google.svg";
+import OpenAILogo from "@assets/logos/OpenAI.svg";
+import Slack from "@assets/logos/Slack.svg";
+import Jira from "@assets/logos/Jira.svg";
+
+const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div id={id} class="hero-demo w-full">
+  <div
+    class="hero-demo-backdrop px-24 py-12 w-[120%] -ml-[10%]"
+    style="background-image: url('https://cdn.midjourney.com/9909b3e7-76ba-41ac-a421-83443d0a3199/0_2.png');"
+  >
+    <div class="hero-demo-shell overflow-hidden rounded-[6px] border-[0.5px] border-[var(--border-color)] bg-[var(--bg-1)] shadow-[0px_10px_30px_rgb(var(--text)/0.25)]">
+    <div class="flex">
+      <div class="flex min-w-0 flex-1 flex-col">
+        <div class="group relative flex h-7 items-center justify-between border-b-[0.5px] border-[var(--border-color)] px-2 bg-[var(--bg-2)]">
+          <div class="flex items-center gap-1.5">
+            <span class="inline-block h-2.5 w-2.5 rounded-full" style="background-color: rgb(var(--text-muted) / 0.6);"></span>
+            <span class="inline-block h-2.5 w-2.5 rounded-full" style="background-color: rgb(var(--text-muted) / 0.6);"></span>
+            <span class="inline-block h-2.5 w-2.5 rounded-full" style="background-color: rgb(var(--text-muted) / 0.6);"></span>
+          </div>
+          <div class="absolute left-1/2 top-1/2 w-[540px] -translate-x-1/2 -translate-y-1/2">
+            <input
+              type="text"
+              placeholder="budibase.com/agent"
+              aria-label="Search"
+              class="h-5 w-full rounded-[4px] bg-[var(--bg-1)] px-2.5 text-[12px] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] outline-none border-0"
+            />
+          </div>
+          <div class="-mr-1 flex items-center">
+            <button
+              type="button"
+              class="rounded px-2 py-1 text-[12px] text-[var(--text-secondary)] transition-opacity duration-200 hover:bg-[rgb(var(--text)/0.06)] cursor-pointer"
+            >
+              Get Budibase
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-demo-tabbar border-b-[0.5px] border-[var(--border-color)] px-3 py-[2px] bg-[var(--bg-2)]">
+          <button class="hero-demo-tab is-active" type="button">Instructions</button>
+          <button class="hero-demo-tab" type="button">Knowledge</button>
+          <button class="hero-demo-tab" type="button">Deployment</button>
+        </div>
+
+        <div class="hero-demo-content flex flex-row">
+          <div class="hero-demo-left min-w-0 w-[55%] px-5 py-4 bg-[var(--bg-2)]">
+            <div class="flex flex-col gap-5">
+              <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                <div>
+                  <div class="text-[12px] font-medium text-text">AI Model</div>
+                  <div class="text-[12px] text-text-muted">
+                    Select which provider and model to use for the agent.
+                  </div>
+                </div>
+                <div class="hero-demo-select-wrap">
+                  <button
+                    class="hero-demo-select"
+                    type="button"
+                    aria-label="AI model"
+                    aria-expanded="false"
+                    data-hero-demo-select
+                  >
+                    <span class="flex items-center gap-1.5">
+                      <span class="flex h-6 w-6 items-center justify-center rounded-md p-1">
+                        <Image src={MistralLogo} alt="Mistral" class="h-full w-full" />
+                      </span>
+                      <span class="text-[12px] leading-none">Mistral 3</span>
+                    </span>
+                    <CaretDown class="h-3.5 w-3.5" />
+                  </button>
+                  <div class="hero-demo-select-menu" data-hero-demo-select-menu>
+                    <button class="hero-demo-select-option is-selected" type="button">
+                      <span class="hero-demo-select-option-label">
+                        <Image src={MistralLogo} alt="Mistral" class="hero-demo-select-logo" />
+                        Mistral 3
+                      </span>
+                      <span class="hero-demo-select-meta">Selected</span>
+                    </button>
+                    <button class="hero-demo-select-option" type="button">
+                      <span class="hero-demo-select-option-label">
+                        <Image src={BudibaseLogo} alt="Budibase" class="hero-demo-select-logo is-monochrome" />
+                        Budibase AI
+                      </span>
+                    </button>
+                    <button class="hero-demo-select-option" type="button">
+                      <span class="hero-demo-select-option-label">
+                        <Image src={AnthropicLogo} alt="Anthropic" class="hero-demo-select-logo is-monochrome" />
+                        Anthropic
+                      </span>
+                    </button>
+                    <button class="hero-demo-select-option" type="button">
+                      <span class="hero-demo-select-option-label">
+                        <Image src={GoogleLogo} alt="Google" class="hero-demo-select-logo" />
+                        Google
+                      </span>
+                    </button>
+                    <button class="hero-demo-select-option" type="button">
+                      <span class="hero-demo-select-option-label">
+                        <Image src={OpenAILogo} alt="OpenAI" class="hero-demo-select-logo is-monochrome is-openai" />
+                        OpenAI
+                      </span>
+                    </button>
+                    <a class="hero-demo-select-option" href="/platform/connections/">
+                      <span class="hero-demo-select-option-label">
+                        <Sparkle class="hero-demo-select-logo" />
+                        View all models
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                  <div>
+                    <div class="text-[12px] font-medium text-text">Tools</div>
+                    <div class="text-[12px] text-text-muted">Select which tools the agent can use.</div>
+                  </div>
+                  <Button
+                    label="Add tools"
+                    url="/platform/connections/"
+                    variant="secondary"
+                    size="small"
+                    class="text-[12px] bg-[var(--bg-1)]!"
+                  />
+                </div>
+
+                <div class="mt-2 flex flex-wrap gap-2">
+                  <div class="hero-demo-chip">
+                    <Image src={Slack} alt="Slack" class="h-3.5 w-3.5" />
+                    <span class="font-mono">api.slack.send_message</span>
+                  </div>
+                  <div class="hero-demo-chip">
+                    <FileText class="h-3.5 w-3.5" />
+                    <span class="font-mono">docs.it_guides</span>
+                  </div>
+                  <div class="hero-demo-chip">
+                    <Image src={Jira} alt="Jira" class="h-3.5 w-3.5" />
+                    <span class="font-mono">api.jira.create_issue</span>
+                  </div>
+                  <div class="hero-demo-chip">
+                    <Image src={Jira} alt="Jira" class="h-3.5 w-3.5" />
+                    <span class="font-mono">api.jira.search_issue</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <div>
+                  <div class="text-[12px] font-medium text-text">Instructions</div>
+                  <div class="text-[12px] text-text-muted">
+                    Set the rules for how the AI agent responds, uses tools, and structures output.
+                  </div>
+                </div>
+                <div class="hero-demo-instructions-editor">
+                  <ol class="hero-demo-instructions-lines">
+                      <li><span class="token-heading">## Persona</span></li>
+                      <li>
+                        You are an IT Help Desk assistant for end users. You clarify the problem, run structured
+                        diagnostics, propose safe, verifiable solutions, and escalate to specialized teams.
+                      </li>
+                      <li class="is-empty"></li>
+                      <li><span class="token-heading">## Tasks</span></li>
+                      <li>1. Answer IT questions, guide users through diagnosis and resolution</li>
+                      <li>
+                        2. Escalate issues to Jira upon approval
+                        <span class="token-chip">
+                          <Image src={Jira} alt="" class="token-chip-icon" />
+                          api.jira.create_issue
+                        </span>
+                      </li>
+                      <li>
+                        3. Send message via Slack with confirmation
+                        <span class="token-chip">
+                          <Image src={Slack} alt="" class="token-chip-icon" />
+                          api.slack.send_message
+                        </span>
+                      </li>
+                      <li class="is-empty"></li>
+                      <li><span class="token-heading">## Context</span></li>
+                      <li>
+                        Use attached docs for runbooks and troubleshooting steps.
+                        <span class="token-chip">
+                          <FileText class="token-chip-icon" />
+                          docs.it_guides
+                        </span>
+                      </li>
+                      <li>Do not ask for or store sensitive credentials (passwords, MFA codes).</li>
+                      <li>Redact PII where present.</li>
+                      <li class="is-empty"></li>
+                      <li><span class="token-heading">## Workflow</span></li>
+                      <li>
+                        Clarification: Gather
+                        <span class="token-accent">{` {device}`}</span>,
+                        <span class="token-accent">{` {environment}`}</span>,
+                        <span class="token-accent">{` {error_message}`}</span>,
+                        <span class="token-accent">{` {timing}`}</span>,
+                        <span class="token-accent">{` {impact}`}</span>
+                      </li>
+                      <li>
+                        <span class="token-bullet token-bullet-purple">-</span>
+                        Knowledge: Search docs for relevant runbooks; ask which to follow
+                      </li>
+                      <li>
+                        <span class="token-bullet token-bullet-purple">-</span>
+                        Resolution: Provide numbered steps from least to most invasive
+                      </li>
+                      <li>
+                        <span class="token-bullet token-bullet-purple">-</span>
+                        Documentation: Summarize problem, steps taken, result, remaining todos
+                      </li>
+                      <li class="is-empty"></li>
+                      <li><span class="token-heading">## Rules</span></li>
+                      <li>
+                        <span class="token-bullet token-bullet-purple">-</span>
+                        <span class="token-label">De-duplication</span>
+                        <span>: Search for existing issues first using</span>
+                        <span class="token-chip">
+                          <Image src={Jira} alt="" class="token-chip-icon" />
+                          api.jira.search_issue
+                        </span>
+                      </li>
+                    </ol>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-demo-right min-w-0 w-[45%] px-5 py-4 flex flex-col min-h-0">
+            <div class="flex items-center justify-between">
+              <div class="text-[12px] font-medium text-text">Chat preview</div>
+              <button class="text-[12px] text-[var(--text-secondary)]" type="button">Refresh chat</button>
+            </div>
+
+            <div class="mt-4 flex flex-1 min-h-0 flex-col">
+              <div class="flex-1 min-h-0 overflow-auto py-8" data-hero-demo-messages>
+                <div class="flex flex-col items-end justify-center mb-6">
+                  <div class="hero-demo-user-bubble">
+                    I’m unable to connect to the office wifi
+                  </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                  <div class="token-chip token-chip-compact">
+                    <FileText class="token-chip-icon" />
+                    docs.it_guides
+                  </div>
+                  <div class="hero-demo-assistant-block">
+                    <p class="mb-2 text-[12px]">Let’s try a few basic troubleshooting steps:</p>
+                    <p class="mb-2 text-[12px]">1. Please turn Wi-Fi off and back on on your laptop.</p>
+                    <p class="mb-2 text-[12px]">2. Then, try forgetting the network (go to Wi-Fi settings → select the office network → “Forget”) and reconnect using your credentials.</p>
+                    <p class="mb-2 text-[12px]">Let me know what happens after that.</p>
+                  </div>
+                </div>
+              </div>
+              <form class="hero-demo-input-bar rounded-[8px]" data-hero-demo-form>
+                <textarea
+                  class="hero-demo-input rounded-[8px]"
+                  data-hero-demo-input
+                  placeholder="Ask anything"
+                  aria-label="Chat input"
+                ></textarea>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero-demo {
+    font-size: 12px;
+  }
+
+  .hero-demo-backdrop {
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+  }
+
+  .hero-demo-icon {
+    display: grid;
+    place-items: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 8px;
+    color: var(--text-secondary);
+  }
+
+  .hero-demo-logo {
+    filter: brightness(0) saturate(100%) invert(92%) sepia(4%) saturate(120%)
+      hue-rotate(12deg) brightness(101%) contrast(94%);
+  }
+
+  .hero-demo-tab {
+    position: relative;
+    padding: 2px 8px 4px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .hero-demo-tab.is-active {
+    color: var(--text-primary);
+    font-weight: 400;
+  }
+
+  .hero-demo-tab-plain {
+    padding: 0;
+  }
+
+  .hero-demo-tabbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 36px;
+  }
+
+  .hero-demo-select-wrap {
+    position: relative;
+  }
+
+  .hero-demo-select {
+    display: flex;
+    min-width: 240px;
+    height: 32px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    border-radius: 6px;
+    border: 0.5px solid var(--border-color);
+    background: var(--bg-1);
+    color: var(--text-primary);
+    padding: 0 12px;
+    font-size: 12px;
+  }
+
+  .hero-demo-select-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    width: 100%;
+    border-radius: 6px;
+    border: 0.5px solid var(--border-color);
+    background: var(--bg-1);
+    padding: 4px;
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    box-shadow: 0 12px 24px rgb(var(--text) / 0.15);
+    z-index: 20;
+  }
+
+  .hero-demo-select-menu.is-open {
+    display: flex;
+  }
+
+  .hero-demo-select-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 12px;
+    color: var(--text-primary);
+    background: transparent;
+    border: 0;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .hero-demo-select-option-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-demo-select-logo {
+    height: 14px;
+    width: 14px;
+    flex-shrink: 0;
+    color: var(--text-secondary);
+  }
+
+  .hero-demo-select-logo.is-openai {
+    transform: scale(1.15);
+  }
+
+  :global(.dark) .hero-demo-select-logo.is-monochrome {
+    filter: invert(1) brightness(1.1);
+  }
+
+  .hero-demo-select-option:hover {
+    background: rgb(var(--text) / 0.06);
+  }
+
+  .hero-demo-select-option.is-selected {
+    color: var(--accent-blue);
+    font-weight: 600;
+  }
+
+  .hero-demo-select-meta {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .hero-demo-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 4px;
+    background: rgb(var(--brand) / 0.2);
+    color: var(--text-primary);
+    height: 22px;
+    padding: 0 6px;
+    font-size: 12px;
+    }
+
+  .hero-demo-chip img {
+    height: 12px;
+    width: 12px;
+  }
+
+  .hero-demo-chip svg {
+    height: 14px;
+    width: 14px;
+  }
+
+  .hero-demo-avatar {
+    height: 24px;
+    width: 24px;
+    border-radius: 8px;
+    background: rgb(var(--brand));
+    color: rgb(var(--on-brand));
+    display: grid;
+    place-items: center;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .hero-demo-assistant-bubble {
+    max-width: 80%;
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: var(--bg-3);
+    color: var(--text-primary);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .hero-demo-assistant-block {
+    color: var(--text-primary);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .hero-demo-assistant-block p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .hero-demo-right {
+    background: var(--bg-1);
+  }
+
+  .hero-demo-user-bubble {
+    max-width: 80%;
+    border-radius: 6px;
+    padding: 10px 12px;
+    background: var(--hero-demo-user-bubble);
+    color: var(--text-primary);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .hero-demo-input-bar {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 0;
+    background: transparent;
+  }
+
+  .hero-demo-input {
+    width: 100%;
+    top: 0;
+    resize: none;
+    padding: 20px;
+    font-size: 12px;
+    background-color: var(--bg-2);
+    color: var(--text-primary);
+    border-radius: 8px;
+    border: 0.5px solid var(--border-color) !important;
+    outline: none;
+    min-height: 60px;
+  }
+
+  .hero-demo-input:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgb(var(--brand) / 0.6);
+  }
+
+  
+
+  .hero-demo-cta {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .hero-demo-cta-link {
+    color: var(--accent-blue);
+  }
+
+  .hero-demo-cta-link:hover {
+    text-decoration: underline;
+  }
+
+  .hero-demo-cta-code {
+    margin-left: 4px;
+    border-radius: 6px;
+    background: var(--bg-3);
+    padding: 2px 6px;
+    font-size: 12px;
+  }
+
+  .hero-demo-instructions-editor,
+  .hero-demo-instructions-lines,
+  .hero-demo-instructions-lines li {
+    font-family: var(--font-mono);
+  }
+
+  .hero-demo-instructions-editor {
+    border-radius: 6px;
+    background: var(--bg-1);
+    border: 0;
+    padding: 12px 6px;
+    color: var(--text-body);
+  }
+
+  .hero-demo-instructions-lines {
+    --line-number-width: 18px;
+    --line-number-gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: line;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-body) !important;
+  }
+
+  .hero-demo-instructions-lines li {
+    position: relative;
+    padding-left: calc(var(--line-number-width) + var(--line-number-gap));
+    counter-increment: line;
+    min-height: 18px;
+    color: var(--text-body) !important;
+    margin-bottom: 2px !important;
+  }
+
+  .hero-demo-instructions-lines li::before {
+    content: counter(line);
+    position: absolute;
+    left: 0;
+    width: var(--line-number-width);
+    text-align: right;
+    color: var(--text-secondary);
+    font-size: 12px;
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hero-demo-instructions-lines li.is-empty {
+    min-height: 18px;
+  }
+
+  .token-heading {
+    color: var(--accent-orange);
+    font-weight: 600;
+  }
+
+  .token-muted {
+    color: var(--text-secondary);
+  }
+
+  .token-accent {
+    color: var(--accent-purple) !important;
+  }
+
+  .token-label {
+    color: inherit;
+  }
+
+  .token-code {
+    color: var(--accent-blue);
+  }
+
+  .token-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 6px;
+    border-radius: 4px;
+    background: rgb(var(--brand) / 0.2);
+    padding: 1px 5px;
+    font-size: 12px;
+    color: var(--text-primary);
+  }
+
+  .token-chip-compact {
+    margin-left: 0;
+    padding: 0 8px;
+    align-self: flex-start;
+  }
+
+  .token-chip-icon {
+    height: 10px;
+    width: 10px;
+  }
+
+  .token-bullet {
+    color: var(--text-body);
+    margin-right: 4px;
+  }
+
+  .token-bullet-purple {
+    color: var(--accent-purple);
+  }
+
+  .hero-demo-shell {
+    min-height: 520px;
+  }
+
+  @media (max-width: 900px) {
+    .hero-demo-shell {
+      border-radius: 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-demo-select {
+      width: 100%;
+    }
+  }
+</style>
+
+<script define:vars={{ id }}>
+  (() => {
+    const root = document.getElementById(id);
+    if (!root) return;
+
+    const form = root.querySelector("[data-hero-demo-form]");
+    const input = root.querySelector("[data-hero-demo-input]");
+    const messages = root.querySelector("[data-hero-demo-messages]");
+    const select = root.querySelector("[data-hero-demo-select]");
+    const selectMenu = root.querySelector("[data-hero-demo-select-menu]");
+    const scopeAttr = root
+      .getAttributeNames()
+      .find((name) => name.startsWith("data-astro-cid-"));
+
+    if (!form || !input || !messages) return;
+
+    const ctaHref = "https://account.budibase.app/register";
+    const command = "curl -fsSL https://install.budibase.com | bash";
+
+    function applyScopeAttr(element) {
+      if (scopeAttr) element.setAttribute(scopeAttr, "");
+    }
+
+    function appendUserMessage(text) {
+      const wrapper = document.createElement("div");
+      wrapper.className = "flex flex-col items-end gap-1";
+      applyScopeAttr(wrapper);
+
+      const bubble = document.createElement("div");
+      bubble.className = "hero-demo-user-bubble";
+      bubble.textContent = text;
+      applyScopeAttr(bubble);
+      bubble.style.margin = "4px 0";
+
+      const cta = document.createElement("div");
+      cta.className = "hero-demo-cta";
+      applyScopeAttr(cta);
+
+      const link = document.createElement("a");
+      link.href = ctaHref;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.className = "hero-demo-cta-link";
+      link.textContent = "Try Budibase Cloud";
+      applyScopeAttr(link);
+
+      const code = document.createElement("code");
+      code.className = "hero-demo-cta-code";
+      code.textContent = command;
+      applyScopeAttr(code);
+
+      cta.append(link);
+      cta.append(document.createTextNode(", or run it locally "));
+      cta.append(code);
+
+      wrapper.append(bubble);
+      wrapper.append(cta);
+      messages.append(wrapper);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function closeSelectMenu() {
+      if (!select || !selectMenu) return;
+      selectMenu.classList.remove("is-open");
+      select.setAttribute("aria-expanded", "false");
+    }
+
+    if (select && selectMenu) {
+      select.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isOpen = selectMenu.classList.toggle("is-open");
+        select.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!root.contains(event.target)) return;
+        if (!selectMenu.classList.contains("is-open")) return;
+        if (selectMenu.contains(event.target) || select.contains(event.target)) return;
+        closeSelectMenu();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeSelectMenu();
+      });
+    }
+
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        if (form.requestSubmit) {
+          form.requestSubmit();
+        } else {
+          form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+        }
+      }
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const text = input.value.trim();
+      if (!text) return;
+      appendUserMessage(text);
+      input.value = "";
+      input.focus();
+    });
+  })();
+</script>

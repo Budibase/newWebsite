@@ -4,12 +4,16 @@ import "../styles/fonts.css";
 import Nav from "@components/Nav.astro";
 import Head from "@components/Head.astro";
 import Footer from "@components/Footer.astro";
+import { ClientRouter } from "astro:transitions";
+
+const { enableTransitions = false } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <Head />
+    {enableTransitions && <ClientRouter />}
   </head>
 
   <body>

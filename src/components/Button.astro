@@ -13,6 +13,7 @@ import Icon from "@components/Icon.astro";
 // - iconSize?: string (optional icon size in pixels, overrides default size-based calculation)
 
 type Variant = "primary" | "secondary" | "cta";
+type Size = "small" | "medium" | "large" | "sm";
 
 interface Props {
   label: string;
@@ -21,7 +22,7 @@ interface Props {
   type?: "button" | "submit" | "reset";
   class?: string;
   ariaLabel?: string;
-  size?: "small" | "medium" | "large";
+  size?: Size;
   icon?: string;
   iconSize?: string;
   target?: string;
@@ -49,8 +50,10 @@ const iconSizes: Record<"small" | "medium" | "large", string> = {
   large: "20",
 };
 
+const normalizedSize = size === "sm" ? "small" : size;
+
 // Use provided iconSize if available, otherwise calculate based on button size
-const iconSize = icon ? (providedIconSize ?? iconSizes[size]) : undefined;
+const iconSize = icon ? (providedIconSize ?? iconSizes[normalizedSize]) : undefined;
 
 // Build Tailwind classes based on variant and size
 const variantClasses = {
@@ -80,8 +83,8 @@ const gapClasses = {
 const baseClasses =
   "inline-flex items-center justify-center rounded-full !font-medium transition-colors duration-150 active:scale-[0.98] no-underline cursor-pointer font-sans focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
-const paddingClasses = sizeClasses[size];
-const gapClass = gapClasses[size];
+const paddingClasses = sizeClasses[normalizedSize];
+const gapClass = gapClasses[normalizedSize];
 
 const classes = [baseClasses, variantClasses[variant], paddingClasses, gapClass, className]
   .filter(Boolean)

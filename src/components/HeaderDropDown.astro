@@ -123,39 +123,41 @@ const defaultDescriptionsByLabel: Record<string, string> = {
 </header-drop-down>
 
 <script>
-	customElements.define(
-		'header-drop-down',
-		class HeaderDropDown extends HTMLElement {
-			connectedCallback() {
-				const menu = this.querySelector('details');
-				if (menu) {
-					// Handle hover to open/close dropdown
-					let hoverTimeout: NodeJS.Timeout;
-					
-					this.addEventListener('mouseenter', () => {
-						clearTimeout(hoverTimeout);
-						menu.open = true;
-					});
-					
-					this.addEventListener('mouseleave', () => {
-						hoverTimeout = setTimeout(() => {
-							if (!menu.matches(':focus-within')) {
-								menu.open = false;
-							}
-						}, 200);
-					});
-					
-					// Handle focusout for keyboard navigation
-					menu.addEventListener('focusout', () => {
-						if (!menu.matches(':focus-within')) {
-							// delay the transition on focusout so the menu doesn't immediately disappear
-							setTimeout(() => {
-								menu.open = false;
+	if (!customElements.get('header-drop-down')) {
+		customElements.define(
+			'header-drop-down',
+			class HeaderDropDown extends HTMLElement {
+				connectedCallback() {
+					const menu = this.querySelector('details');
+					if (menu) {
+						// Handle hover to open/close dropdown
+						let hoverTimeout: NodeJS.Timeout;
+
+						this.addEventListener('mouseenter', () => {
+							clearTimeout(hoverTimeout);
+							menu.open = true;
+						});
+
+						this.addEventListener('mouseleave', () => {
+							hoverTimeout = setTimeout(() => {
+								if (!menu.matches(':focus-within')) {
+									menu.open = false;
+								}
 							}, 200);
-						}
-					});
+						});
+
+						// Handle focusout for keyboard navigation
+						menu.addEventListener('focusout', () => {
+							if (!menu.matches(':focus-within')) {
+								// delay the transition on focusout so the menu doesn't immediately disappear
+								setTimeout(() => {
+									menu.open = false;
+								}, 200);
+							}
+						});
+					}
 				}
-			}
-		},
-	);
+			},
+		);
+	}
 </script>

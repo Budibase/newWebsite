@@ -1,15 +1,31 @@
 ---
-const { frontmatter } = Astro.props;
+const { frontmatter, enableTransitions = false, transitionKey = '' } = Astro.props;
 import Layout from './MainLayout.astro';
+import { format } from 'date-fns';
+const publishDate = frontmatter.publishDate;
 
 ---
 
-<Layout>
-  <div class="max-w-prose mx-auto w-full">
-    <h1 class="mb-4 mt-24">{frontmatter.title}</h1>
-    <p class="text-stone-500! dark:text-stone-400!">Written by {frontmatter.author}</p>
+<Layout enableTransitions={enableTransitions}>
+  <div class="max-w-xl mx-auto w-full">
+    <h1 class="post-title mb-4 mt-24" transition:name={`${transitionKey}-title`}>
+      {frontmatter.title}
+    </h1>
+    <div class="post-meta" transition:name={`${transitionKey}-meta`}>
+      {publishDate && (
+        <time datetime={publishDate.toISOString()}>
+          {format(publishDate, 'MMM d, yyyy')}
+        </time>
+      )}
+      {frontmatter.author && (
+        <span>
+          {publishDate ? 'by ' : 'By '}
+          {frontmatter.author}
+        </span>
+      )}
+    </div>
   </div>
-  <div class="max-w-prose mx-auto w-full">
+  <div class="max-w-xl mx-auto w-full">
     <slot />
   </div>
 </Layout>

@@ -92,10 +92,87 @@
 
 @layer base {
   :root {
+    /* Color aliases (no "color-" prefix) */
+    --grey-50: var(--color-grey-50);
+    --grey-100: var(--color-grey-100);
+    --grey-200: var(--color-grey-200);
+    --grey-300: var(--color-grey-300);
+    --grey-400: var(--color-grey-400);
+    --grey-500: var(--color-grey-500);
+    --grey-600: var(--color-grey-600);
+    --grey-700: var(--color-grey-700);
+    --grey-800: var(--color-grey-800);
+    --grey-900: var(--color-grey-900);
+    --grey-950: var(--color-grey-950);
+
+    --stone-50: var(--color-stone-50);
+    --stone-100: var(--color-stone-100);
+    --stone-200: var(--color-stone-200);
+    --stone-300: var(--color-stone-300);
+    --stone-400: var(--color-stone-400);
+    --stone-500: var(--color-stone-500);
+    --stone-600: var(--color-stone-600);
+    --stone-700: var(--color-stone-700);
+    --stone-800: var(--color-stone-800);
+    --stone-900: var(--color-stone-900);
+    --stone-950: var(--color-stone-950);
+
+    --blue-100: var(--color-blue-100);
+    --blue-200: var(--color-blue-200);
+    --blue-300: var(--color-blue-300);
+    --blue-400: var(--color-blue-400);
+    --blue-500: var(--color-blue-500);
+    --blue-600: var(--color-blue-600);
+    --blue-700: var(--color-blue-700);
+    --blue-800: var(--color-blue-800);
+    --blue-900: var(--color-blue-900);
+
+    --orange-100: var(--color-orange-100);
+    --orange-200: var(--color-orange-200);
+    --orange-300: var(--color-orange-300);
+    --orange-400: var(--color-orange-400);
+    --orange-500: var(--color-orange-500);
+    --orange-600: var(--color-orange-600);
+    --orange-700: var(--color-orange-700);
+    --orange-800: var(--color-orange-800);
+    --orange-900: var(--color-orange-900);
+
+    --green-100: var(--color-green-100);
+    --green-200: var(--color-green-200);
+    --green-300: var(--color-green-300);
+    --green-400: var(--color-green-400);
+    --green-500: var(--color-green-500);
+    --green-600: var(--color-green-600);
+    --green-700: var(--color-green-700);
+    --green-800: var(--color-green-800);
+    --green-900: var(--color-green-900);
+
+    --purple-100: var(--color-purple-100);
+    --purple-200: var(--color-purple-200);
+    --purple-300: var(--color-purple-300);
+    --purple-400: var(--color-purple-400);
+    --purple-500: var(--color-purple-500);
+    --purple-600: var(--color-purple-600);
+    --purple-700: var(--color-purple-700);
+    --purple-800: var(--color-purple-800);
+    --purple-900: var(--color-purple-900);
+
+    --red-100: var(--color-red-100);
+    --red-200: var(--color-red-200);
+    --red-300: var(--color-red-300);
+    --red-400: var(--color-red-400);
+    --red-500: var(--color-red-500);
+    --red-600: var(--color-red-600);
+    --red-700: var(--color-red-700);
+    --red-800: var(--color-red-800);
+    --red-900: var(--color-red-900);
+
     --font-sans: "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
       "Noto Color Emoji", sans-serif;
     --font-display: "Inter Display", "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+    --font-mono: "iA Writer Mono", ui-monospace, SFMono-Regular, SF Mono, Menlo,
+      Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
     /* Core semantic RGB tokens (Tailwind-friendly) */
     --bg: 250 249 245;
@@ -110,6 +187,7 @@
     /* grey-400 */
 
     --text: 47 47 45;
+    --text-article: 82 79 72;
     /* grey-700 */
     --text-muted: 102 102 99;
     /* grey-600 */
@@ -141,7 +219,14 @@
     --bg-3: rgb(var(--surface-2));
     --text-primary: rgb(var(--text));
     --text-secondary: rgb(var(--text-muted));
-    /* Border: make it visible + consistent across browsers */
+    --text-body: rgb(var(--text-article));
+    --accent-grey: var(--color-grey-500);
+    --accent-blue: var(--color-blue-500);
+    --accent-orange: var(--color-orange-500);
+    --accent-green: var(--color-green-500);
+    --accent-purple: var(--color-purple-500);
+    --accent-red: var(--color-red-500);
+    --hero-demo-user-bubble: var(--color-blue-200);
     --border-color: rgb(var(--border) / 0.9);
 
     color-scheme: light;
@@ -152,10 +237,10 @@
   }
 
   /* Dark mode variables */
-  .dark {
+.dark {
     --bg: 20 20 19;
     /* grey-950 */
-    --surface: 25 25 25;
+    --surface: 26 25 24;
     /* grey-900 */
     --surface-2: 38 38 37;
     /* grey-800 */
@@ -166,6 +251,9 @@
 
     --text: 240 238 230;
     /* grey-100 */
+    --text-article: 229 228 223;
+      /* grey-200 */
+    /* grey-400 (safer than 400 for reading) */
     --text-muted: 145 145 141;
     /* grey-400 (safer than 400 for reading) */
     --text-subtle: 91 91 141;
@@ -187,14 +275,40 @@
     --ring: 106 155 204;
     /* blue-400 */
     --manila: #22201D;
-    /* Backwards-compatible aliases */
     --bg-1: rgb(var(--bg));
     --bg-2: rgb(var(--surface));  
     --bg-3: rgb(var(--surface-2));
     --text-primary: rgb(var(--text));
     --text-secondary: rgb(var(--text-muted));
+    --text-body: rgb(var(--text-article));
+    --accent-grey: var(--color-grey-500);
+    --accent-blue: var(--color-blue-500);
+    --accent-orange: var(--color-orange-500);
+    --accent-green: var(--color-green-500);
+    --accent-purple: var(--color-purple-500);
+    --accent-red: var(--color-red-500);
+    --hero-demo-user-bubble: var(--color-blue-800);
     --border-color: rgb(var(--border) / 1);
     color-scheme: dark;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 200ms;
+}
+
+::view-transition-old(site-chrome),
+::view-transition-new(site-chrome),
+::view-transition-old(site-footer),
+::view-transition-new(site-footer) {
+  animation-duration: 0ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0ms;
   }
 }
 
@@ -234,6 +348,13 @@ pre,
 .expressive-code .frame,
 .expressive-code .ec-frame {
   background-color: var(--color-theme-bg-secondary) !important;
+  font-family: var(--font-mono);
+}
+
+code,
+kbd,
+samp {
+  font-family: var(--font-mono);
 }
 
 /* Keep code borders consistent */
@@ -372,10 +493,28 @@ article h5,
 article h6 {
   font-family: var(--font-display);
   color: var(--text-primary) !important;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.15px !important;
   margin: 2.2rem 0 1rem 0;
+}
+
+article h1 {
+  font-size: 32px;
+}
+
+.post-title {
+  font-size: 32px;
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  font-size: 1rem;
+  color: rgb(var(--text-muted));
+  letter-spacing: -0.15px;
 }
 
 .dark article h1,
@@ -393,7 +532,7 @@ article h5,
 article h6 {
   font-family: var(--font-display);
   color: var(--text-primary) !important;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.15px !important;
   margin: 1.6rem 0 0.8rem 0;
@@ -408,22 +547,28 @@ article h6 {
 
 article p {
   font-family: var(--font-sans);
-  color: var(--text-primary) !important;
+  color: rgb(var(--text-article)) !important;
   font-weight: 400;
+  text-wrap: pretty;
+  margin-bottom: calc(1rem * 1.4);
+  font-size: 15px;
   line-height: 1.5;
   letter-spacing: -0.15px !important;
-  margin: 0.7rem 0;
 }
 
 .dark article p {
-  color: var(--text-secondary) !important;
+  color: rgb(var(--text-article)) !important;
 }
 
 article ul,
 article li,
 article ol {
   font-family: var(--font-sans);
-  color: var(--text-primary) !important;
+  color: rgb(var(--text-article)) !important;
+  text-wrap: pretty;
+  margin-bottom: calc(1rem * 1.4);
+  font-size: 15px;
+  line-height: 1.5;
   letter-spacing: -0.15px !important;
   margin: 0.7rem 0.5rem !important;
   list-style: disc !important;
@@ -432,7 +577,7 @@ article ol {
 .dark article ul,
 .dark article li,
 .dark article ol {
-  color: var(--text-secondary) !important;
+  color: rgb(var(--text-article)) !important;
 }
 
 article strong {
