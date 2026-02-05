@@ -1,6 +1,6 @@
 ---
 slug: access-request
-title: Automated Access Request System
+title: Access Request
 sidebar:
   - id: overview
     label: Overview
@@ -70,15 +70,13 @@ faq:
     answer: Every decision includes a reasoning trail in the audit log.
 lastUpdated: 2026-02-05
 ---
-## Overview {#overview}
+import AccessRequestPrompt from "@components/AccessRequestPrompt.astro";
 
-Effective software access request and provisioning workflows are critical for security, but they also present a huge time-sink for IT teams.
+<h2 id="overview">Overview</h2>
 
-Manually assessing and responding to routine requests places an outsized burden on IT colleagues, as well as creating unnecessary delays for end users.
+Effective software access request and provisioning workflows are critical for security, but they also present a huge time-sink for IT teams, and manually assessing and responding to routine requests places an outsized burden on IT colleagues, as well as creating unnecessary delays for end users.
 
-In this guide, we’re building an automated access request system using Budibase Agents (Beta).
-
-The goal is to show how an agent can evaluate access requests against a policy, gather the required context, and make a recommendation — while keeping humans in control of final decisions.
+In this guide, we’re building an automated access request system using Budibase Agents (Beta), and the goal is to show how an agent can evaluate access requests against a policy, gather the required context, and make a recommendation — while keeping humans in control of final decisions.
 
 What are we building?
 - The agent is invoked when a new row is added to the Access Requests table.
@@ -94,9 +92,9 @@ All human decisions are logged.
 (Flowchart placeholder)
 
 ![Flowchart: Automated access request system](/images/workflows/access-request/02.png)
-<!-- TODO: replace with real image -->
+{/* TODO: replace with real image */}
 
-## Data {#data}
+<h2 id="data">Data</h2>
 
 Tables
 
@@ -123,7 +121,7 @@ Columns:
 - manual_approver
 
 ![Screenshot: Access Requests table schema](/images/workflows/access-request/01.png)
-<!-- TODO: replace with real image -->
+{/* TODO: replace with real image */}
 
 API endpoints
 
@@ -132,12 +130,12 @@ We use three Okta API requests:
 - listApplications (GET)
 - assignUserToApplication (POST)
 
-## Screens {#screens}
+<h2 id="screens">Screens</h2>
 
 Users submit access requests via a form.
 Admins review requests in a table UI and approve or deny them.
 
-## Agents {#agents}
+<h2 id="agents">Agents</h2>
 
 We create an agent named Access Request Agent.
 
@@ -149,25 +147,9 @@ Adding RAG
 - Vector DB: Postgres with pgvector
 - Provider: OpenRouter
 
-AGENT INSTRUCTIONS
-access policy
-````Justification Structure (Hard Gate)
-The justification must include:
-1. Action
-2. Object
-3. Business purposeAccess policy
+<AccessRequestPrompt />
 
-You are an access decision agent.
-Evaluate requests strictly against policy.
-Return a recommendation and rationale.
-
-You are an access decision agent.
-Evaluate requests strictly against policy.
-Return a recommendation and rationale.
-
-````
-
-## Automations {#automations}
+<h2 id="automations">Automations</h2>
 
 - Invoke agent on row creation
 - Row action for deny

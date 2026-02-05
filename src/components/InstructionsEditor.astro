@@ -1,0 +1,151 @@
+---
+const { class: className = "", background, border } = Astro.props;
+const inlineStyle = [
+  background ? `background: ${background};` : "",
+  border ? `border: ${border};` : "",
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<div
+  class={`hero-demo-instructions-editor${className ? ` ${className}` : ""}`}
+  style={inlineStyle || undefined}
+>
+  <ol class="hero-demo-instructions-lines">
+    <slot />
+  </ol>
+</div>
+
+<style>
+  .hero-demo-instructions-editor,
+  .hero-demo-instructions-lines,
+  .hero-demo-instructions-lines :global(li) {
+    font-family: var(--font-mono);
+  }
+
+  .hero-demo-instructions-editor {
+    border-radius: 6px;
+    background: var(--bg-1);
+    border: 0;
+    padding: 12px 10px;
+    color: var(--text-body);
+  }
+
+  .hero-demo-instructions-lines {
+    --line-number-width: 18px;
+    --line-number-gap: 12px;
+    list-style: none !important;
+    list-style-type: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    counter-reset: line;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    color: var(--text-body) !important;
+  }
+
+  .hero-demo-instructions-lines :global(li) {
+    position: relative;
+    padding-left: calc(var(--line-number-width) + var(--line-number-gap));
+    counter-increment: line;
+    min-height: 18px;
+    color: var(--text-body) !important;
+    margin: 0 0 2px 0 !important;
+    list-style: none !important;
+    list-style-type: none !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  .hero-demo-instructions-lines :global(li)::marker {
+    content: "" !important;
+    color: transparent !important;
+  }
+
+  .hero-demo-instructions-editor :global(ol),
+  .hero-demo-instructions-editor :global(ol li) {
+    list-style: none !important;
+    margin: 0 !important;
+  }
+
+  :global(article) .hero-demo-instructions-editor .hero-demo-instructions-lines,
+  :global(article) .hero-demo-instructions-editor .hero-demo-instructions-lines :global(li) {
+    list-style: none !important;
+    list-style-type: none !important;
+    margin: 0 !important;
+  }
+
+  .hero-demo-instructions-editor :global(p) {
+    margin: 0 !important;
+  }
+
+  .hero-demo-instructions-lines :global(li)::before {
+    content: counter(line);
+    position: absolute;
+    left: 0;
+    width: var(--line-number-width);
+    text-align: right;
+    color: var(--text-secondary);
+    font-size: 14px;
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hero-demo-instructions-lines :global(li.is-empty) {
+    min-height: 18px;
+  }
+
+  .hero-demo-instructions-editor :global(.token-heading) {
+    color: var(--accent-orange);
+    font-weight: 600;
+  }
+
+  .hero-demo-instructions-editor :global(.token-muted) {
+    color: var(--text-secondary);
+  }
+
+  .hero-demo-instructions-editor :global(.token-accent) {
+    color: var(--accent-purple) !important;
+  }
+
+  .hero-demo-instructions-editor :global(.token-label) {
+    color: inherit;
+  }
+
+  .hero-demo-instructions-editor :global(.token-code) {
+    color: var(--accent-blue);
+  }
+
+  .hero-demo-instructions-editor :global(.token-chip) {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 6px;
+    border-radius: 4px;
+    background: rgb(var(--brand) / 0.2);
+    padding: 1px 5px;
+    font-size: 12px;
+    color: var(--text-primary);
+  }
+
+  .hero-demo-instructions-editor :global(.token-chip-compact) {
+    margin-left: 0;
+    padding: 0 8px;
+    align-self: flex-start;
+  }
+
+  .hero-demo-instructions-editor :global(.token-chip-icon) {
+    height: 10px;
+    width: 10px;
+  }
+
+  .hero-demo-instructions-editor :global(.token-bullet) {
+    color: var(--text-body);
+    margin-right: 4px;
+  }
+
+  .hero-demo-instructions-editor :global(.token-bullet-purple) {
+    color: var(--accent-purple);
+  }
+</style>

@@ -1,87 +1,86 @@
-
 @import "tailwindcss";
 @config "../../tailwind.config.mjs";
 
 @theme {
   /* Greys / Stone */
-  --color-grey-50:  #FAF9F5;
-  --color-grey-100: #F0EEE6;
-  --color-grey-200: #E5E4DF;
-  --color-grey-300: #BFBFBA;
-  --color-grey-400: #91918D;
+  --color-grey-50: #faf9f5;
+  --color-grey-100: #f0eee6;
+  --color-grey-200: #e5e4df;
+  --color-grey-300: #bfbfba;
+  --color-grey-400: #91918d;
   --color-grey-500: #666663;
-  --color-grey-600: #40403E;
-  --color-grey-700: #2F2F2D;
+  --color-grey-600: #40403e;
+  --color-grey-700: #2f2f2d;
   --color-grey-800: #262625;
   --color-grey-900: #191919;
   --color-grey-950: #141413;
 
   /* Alias stone -> grey (backwards compatibility) */
-  --color-stone-50:  #FAF9F5;
-  --color-stone-100: #F0EEE6;
-  --color-stone-200: #E5E4DF;
-  --color-stone-300: #BFBFBA;
-  --color-stone-400: #91918D;
+  --color-stone-50: #faf9f5;
+  --color-stone-100: #f0eee6;
+  --color-stone-200: #e5e4df;
+  --color-stone-300: #bfbfba;
+  --color-stone-400: #91918d;
   --color-stone-500: #666663;
-  --color-stone-600: #40403E;
-  --color-stone-700: #2F2F2D;
+  --color-stone-600: #40403e;
+  --color-stone-700: #2f2f2d;
   --color-stone-800: #262625;
   --color-stone-900: #191919;
-  --color-stone-950: #0F0F0F;
+  --color-stone-950: #0f0f0f;
 
   /* Sky / Blue */
-  --color-blue-100: #EAF2F9;
-  --color-blue-200: #C3DAEA;
-  --color-blue-300: #89B5E2;
-  --color-blue-400: #6A9BCC;
-  --color-blue-500: #467DB4;
-  --color-blue-600: #215F9E;
-  --color-blue-700: #1B436A;
-  --color-blue-800: #13324F;
-  --color-blue-900: #0C2236;
+  --color-blue-100: #eaf2f9;
+  --color-blue-200: #c3daea;
+  --color-blue-300: #89b5e2;
+  --color-blue-400: #6a9bcc;
+  --color-blue-500: #467db4;
+  --color-blue-600: #215f9e;
+  --color-blue-700: #1b436a;
+  --color-blue-800: #13324f;
+  --color-blue-900: #0c2236;
 
   /* Clay / Orange */
-  --color-orange-100: #F6E6DA;
-  --color-orange-200: #ECD3C2;
-  --color-orange-300: #DDB99A;
-  --color-orange-400: #D4A27F;
-  --color-orange-500: #D97757;
-  --color-orange-600: #C86240;
-  --color-orange-700: #AA4321;
-  --color-orange-800: #7F3118;
-  --color-orange-900: #4A1D0E;
+  --color-orange-100: #f6e6da;
+  --color-orange-200: #ecd3c2;
+  --color-orange-300: #ddb99a;
+  --color-orange-400: #d4a27f;
+  --color-orange-500: #d97757;
+  --color-orange-600: #c86240;
+  --color-orange-700: #aa4321;
+  --color-orange-800: #7f3118;
+  --color-orange-900: #4a1d0e;
 
   /* Grass / Green */
-  --color-green-100: #EEF3E9;
-  --color-green-200: #D2DDC3;
-  --color-green-300: #B6C7A8;
-  --color-green-400: #9FB88A;
-  --color-green-500: #8CA171;
-  --color-green-600: #788C5D;
-  --color-green-700: #4C622F;
-  --color-green-800: #35461F;
-  --color-green-900: #1F2A12;
+  --color-green-100: #eef3e9;
+  --color-green-200: #d2ddc3;
+  --color-green-300: #b6c7a8;
+  --color-green-400: #9fb88a;
+  --color-green-500: #8ca171;
+  --color-green-600: #788c5d;
+  --color-green-700: #4c622f;
+  --color-green-800: #35461f;
+  --color-green-900: #1f2a12;
 
   /* Lavender / Purple */
-  --color-purple-100: #F1EEFB;
-  --color-purple-200: #D2CCEF;
-  --color-purple-300: #BDB0F5;
-  --color-purple-400: #A292E3;
-  --color-purple-500: #8777D1;
+  --color-purple-100: #f1eefb;
+  --color-purple-200: #d2ccef;
+  --color-purple-300: #bdb0f5;
+  --color-purple-400: #a292e3;
+  --color-purple-500: #8777d1;
   --color-purple-600: #585392;
   --color-purple-700: #363174;
   --color-purple-800: #252154;
   --color-purple-900: #171336;
 
   /* Reds */
-  --color-red-100: #F4E7E4;
-  --color-red-200: #E9C8C3;
-  --color-red-300: #D9A29A;
-  --color-red-400: #C87C72;
-  --color-red-500: #B4564B;
-  --color-red-600: #9C3F36;
-  --color-red-700: #7E2C24;
-  --color-red-800: #5A1E19;
+  --color-red-100: #f4e7e4;
+  --color-red-200: #e9c8c3;
+  --color-red-300: #d9a29a;
+  --color-red-400: #c87c72;
+  --color-red-500: #b4564b;
+  --color-red-600: #9c3f36;
+  --color-red-700: #7e2c24;
+  --color-red-800: #5a1e19;
   --color-red-900: #361210;
 
   --spacing-hero-image: 12px;
@@ -167,12 +166,15 @@
     --red-800: var(--color-red-800);
     --red-900: var(--color-red-900);
 
-    --font-sans: "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    --font-sans:
+      "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
       "Noto Color Emoji", sans-serif;
-    --font-display: "Inter Display", "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
-    --font-mono: "iA Writer Mono", ui-monospace, SFMono-Regular, SF Mono, Menlo,
-      Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-display:
+      "Inter Display", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji", sans-serif;
+    --font-mono:
+      "iA Writer Mono", ui-monospace, SFMono-Regular, SF Mono, Menlo, Monaco,
+      Consolas, "Liberation Mono", "Courier New", monospace;
 
     /* Core semantic RGB tokens (Tailwind-friendly) */
     --bg: 250 249 245;
@@ -191,7 +193,7 @@
     /* grey-700 */
     --text-muted: 102 102 99;
     /* grey-600 */
-    --text-subtle: 91 91 141; 
+    --text-subtle: 91 91 141;
     /* grey-500 */
 
     /* Brand */
@@ -211,11 +213,11 @@
     /* red-600 */
     --ring: 70 125 180;
     /* blue-500 */
-    --manila: #EBDBBC;
+    --manila: #ebdbbc;
 
     /* Backwards-compatible aliases (keep your current API) */
     --bg-1: rgb(var(--bg));
-    --bg-2: rgb(var(--surface));  
+    --bg-2: rgb(var(--surface));
     --bg-3: rgb(var(--surface-2));
     --text-primary: rgb(var(--text));
     --text-secondary: rgb(var(--text-muted));
@@ -237,7 +239,7 @@
   }
 
   /* Dark mode variables */
-.dark {
+  .dark {
     --bg: 20 20 19;
     /* grey-950 */
     --surface: 26 25 24;
@@ -252,7 +254,7 @@
     --text: 240 238 230;
     /* grey-100 */
     --text-article: 229 228 223;
-      /* grey-200 */
+    /* grey-200 */
     /* grey-400 (safer than 400 for reading) */
     --text-muted: 145 145 141;
     /* grey-400 (safer than 400 for reading) */
@@ -274,9 +276,9 @@
     /* red-300 */
     --ring: 106 155 204;
     /* blue-400 */
-    --manila: #22201D;
+    --manila: #22201d;
     --bg-1: rgb(var(--bg));
-    --bg-2: rgb(var(--surface));  
+    --bg-2: rgb(var(--surface));
     --bg-3: rgb(var(--surface-2));
     --text-primary: rgb(var(--text));
     --text-secondary: rgb(var(--text-muted));
@@ -318,8 +320,6 @@
   box-sizing: border-box;
 }
 
-
-
 html {
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
@@ -329,16 +329,15 @@ html {
   -webkit-font-smoothing: antialiased;
   font-family: var(--font-sans);
   color: var(--text-primary);
-  background-color: var(--color-theme-bg);
+  background-color: var(--bg-1);
   text-rendering: optimizeLegibility;
   font-variant-numeric: normal;
 }
 
-
 body {
   margin: 0;
   line-height: inherit;
-  background-color: var(--color-theme-bg);
+  background-color: var(--bg-1);
 }
 
 /* Code blocks should use the same surface as selected tabs */
@@ -633,11 +632,13 @@ article blockquote p {
   background-color: transparent;
 }
 
-.bg, .bg-primary {
+.bg,
+.bg-primary {
   background-color: var(--bg);
 }
 
-.bg-2, .bg-secondary {
+.bg-2,
+.bg-secondary {
   background-color: var(--bg-2);
 }
 

@@ -40,20 +40,16 @@ const workflowRows = orderedWorkflows.length ? orderedWorkflows : workflows;
       </aside>
 
       <main class="blog-main">
-        <section class="pb-10">
+        <section class="pb-5">
           <div class="max-w-3xl">
-            <h1 class="text-3xl md:text-4xl font-semibold text-stone-900 dark:text-stone-100">
+            <h1 class="mb-2 text-xl!">
               Workflow Library
             </h1>
-            <p class="text-lg md:text-xl text-[color:var(--text-secondary)] mt-3">
-              Proven workflows for how real work gets done.
-            </p>
           </div>
         </section>
 
         <section class="pb-12">
-          <div class="grid grid-cols-[32px_1fr_180px_140px] gap-4 !text-base tracking-wide text-stone-500 dark:text-stone-400 border-b border-stone-200/70 dark:border-stone-800/70 pb-2 px-2">
-            <span>#</span>
+          <div class="grid grid-cols-[1fr_180px_140px] gap-4 !text-base tracking-wide text-stone-500 dark:text-stone-400 border-b border-stone-200/70 dark:border-stone-800/70 pb-2 px-2">
             <span>Workflow</span>
             <span>Role</span>
             <span>Copies</span>
@@ -65,7 +61,6 @@ const workflowRows = orderedWorkflows.length ? orderedWorkflows : workflows;
                 return (
               <PlaybookRow
                 href={`/learn/workflows/${entrySlug}`}
-                index={index + 1}
                 title={entry.data.title}
                 role={entry.data.role}
                 tags={entry.data.tags}

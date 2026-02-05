@@ -44,7 +44,7 @@ function isLearnActive(link: string): boolean {
 ---
 
 <aside class="categories-sidebar">
-	<h1 class="mb-4 h2">{title}</h1>
+	<h1 class:list={[isLearnLinks ? "mb-2 text-xl!" : "mb-4 h2"]}>{title}</h1>
 	{description && <p class="text-stone-500! dark:text-stone-400! mb-4!">{description}</p>}
 	<nav>
 		<ul class:list={["nav-list", isLearnLinks && "learn-list"]}>

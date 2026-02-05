@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { URL } from "node:url";
 import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
+import mdx from "@astrojs/mdx";
 
 import expressiveCode from "astro-expressive-code";
 import remarkGemoji from "remark-gemoji";
@@ -43,5 +44,5 @@ export default defineConfig({
   },
 
   adapter: netlify(),
-  integrations: [sitemap(), expressiveCode()],
+  integrations: [sitemap(), expressiveCode(), mdx()],
 });

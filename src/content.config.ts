@@ -102,7 +102,7 @@ const caseStudies = defineCollection({
 
 const workflows = defineCollection({
   loader: glob({
-    pattern: ["**/*.md", "!**/README.md"],
+    pattern: ["**/*.md", "**/*.mdx", "!**/README.md"],
     base: "./src/content/workflows",
   }),
   schema: z.object({
