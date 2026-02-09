@@ -8,6 +8,7 @@ interface NavItem {
 	sectionId: string;
 	icon?: any;
 	linkVariant?: "primary" | "secondary" | "cta";
+	disabled?: boolean;
 	tag?: {
 		label: string;
 		variant: "primary" | "secondary" | "cta" | "orange";
@@ -16,6 +17,7 @@ interface NavItem {
 
 interface NavGroup {
 	header?: string;
+	headerStyle?: "default" | "label";
 	items: NavItem[];
 }
 
@@ -32,7 +34,7 @@ const groupedNavItems = isGrouped ? (navItems as NavGroup[]) : null;
 const flatNavItems = isGrouped ? null : (navItems as NavItem[]);
 
 function isActive(link: string): boolean {
-	return currentPath === link || (link === "/platform" && currentPath === "/platform/");
+	return currentPath === link || (link === "/product" && currentPath === "/product/");
 }
 ---
 
@@ -44,7 +46,11 @@ function isActive(link: string): boolean {
 					<>
 						{group.header && (
 							<li class:list={["nav-group-header", groupIndex > 0 && "nav-group-header-spaced"]}>
-								<span class="text-xs text-stone-600 dark:text-stone-500 uppercase tracking-wider px-3 py-2">
+								<span class:list={[
+									group.headerStyle === "label"
+										? "px-3 text-sm text-secondary"
+										: "text-xs text-stone-600 dark:text-stone-500 uppercase tracking-wider px-3 py-2",
+								]}>
 									{group.header}
 								</span>
 							</li>
@@ -52,7 +58,14 @@ function isActive(link: string): boolean {
 						{group.items.map((item, itemIndex) => {
 							return (
 								<li>
-									{item.linkVariant === "cta" ? (
+									{item.disabled ? (
+										<div
+											class="nav-link nav-link-disabled flex flex-row items-center h-8 px-3 rounded-md text-sm text-text-subtle cursor-default select-none"
+											aria-disabled="true"
+										>
+											<span>{item.text}</span>
+										</div>
+									) : item.linkVariant === "cta" ? (
 										<Link
 											label={item.text}
 											url={item.link}
@@ -87,7 +100,12 @@ function isActive(link: string): boolean {
 						})}
 						{groupIndex < groupedNavItems!.length - 1 && (
 							<li class="nav-group-divider">
-								<hr class="nav-hr border-stone-200 dark:border-stone-900 border-t my-2" />
+								<hr
+									class:list={[
+										"nav-hr border-t-[0.5px] chrome-border mb-2",
+										groupedNavItems![groupIndex + 1]?.headerStyle === "label" ? "mt-5" : "mt-2",
+									]}
+								/>
 							</li>
 						)}
 					</>
@@ -96,7 +114,14 @@ function isActive(link: string): boolean {
 				flatNavItems!.map((item, index) => {
 					return (
 						<li>
-							{item.linkVariant === "cta" ? (
+							{item.disabled ? (
+								<div
+									class="nav-link nav-link-disabled flex flex-row items-center h-8 px-3 rounded-md text-sm text-text-subtle cursor-default select-none"
+									aria-disabled="true"
+								>
+									<span>{item.text}</span>
+								</div>
+							) : item.linkVariant === "cta" ? (
 								<Link
 									label={item.text}
 									url={item.link}

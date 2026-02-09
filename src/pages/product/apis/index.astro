@@ -13,10 +13,9 @@ import Database from "phosphor-astro/GridNine.astro";
 import Sparkle from "phosphor-astro/Sparkle.astro";
 import Cloud from "phosphor-astro/Cloud.astro";
 import TrendUp from "phosphor-astro/TrendUp.astro";
-import AutomationImage from "@assets/images/platform/AgentInAutomations.png";
-import HeroBg from "@assets/images/homepage/valley.png";
-import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
+import APIExplorerDemo from "@components/APIExplorerDemo.astro";
+import APIsBackdrop from "@assets/images/backgrounds/light/api.png";
 
 const iconMap: Record<string, any> = {
 	Circles,
@@ -42,7 +41,7 @@ const navItems = platformNavItemsData.map(group => ({
 const currentNavItem = platformNavItemsData
 	.flatMap(group => group.items)
 	.find(item => item.link === Astro.url.pathname || `${item.link}/` === Astro.url.pathname);
-const pageTitle = currentNavItem?.pageTitle ?? "Platform";
+const pageTitle = currentNavItem?.pageTitle ?? "Product";
 const pageDescription =
 	currentNavItem?.pageDescription ??
 	"The privacy-first platform for building agents, chat, automations & apps.";
@@ -52,53 +51,50 @@ const pageDescription =
 	<PlatformLayout
 		title={pageTitle}
 		description={pageDescription}
+		mainContentWidth="narrow"
 		{navItems}
 	>
 		<div class="mb-8">
-			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-				<Image
-					src={AutomationImage}
-					alt="Automations workflows"
-					class="w-full h-96 object-cover rounded-md"
-				/>
-			</div>
+				<div class="mb-4">
+					<div class="api-explorer-demo-plain">
+						<APIExplorerDemo backdropImage={APIsBackdrop.src} backdropPaddingXClass="px-12" />
+					</div>
+				</div>
 
 			<div
 				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
 			>
 				<Card
-					label="Visual builder"
-					description="Design workflows visually with drag-and-drop nodes and connections."
+					label="Beautiful interface for making API requests"
+					description="Interact with APIs through a clean, intuitive UI."
 				/>
 				<Card
-					label="100s of connectors"
-					description="Integrate with the tools you already use, out of the box."
+					label="100 API templates"
+					description="Get started fast with ready-made templates for popular services."
 				/>
 				<Card
-					label="AI workflows"
-					description="Blend deterministic logic with AI reasoning in the same workflow."
+					label="Multiple auth types support"
+					description="Authenticate securely using Basic, Bearer, or OAuth2."
 				/>
 				<Card
-					label="Agent integration"
-					description="Trigger agents from within automations and allow them to take actions."
+					label="Test requests within the API explorer"
+					description="Validate APIs instantly without external tools."
 				/>
 				<Card
-					label="Triggers"
-					description="Start workflows with webhooks, schedules, database changes, or manual triggers."
+					label="Control access to APIs (RBAC)"
+					description="Manage who can access which APIs with fine-grained permissions."
 				/>
 				<Card
-					label="Add code (JS / Script support)"
-					description="Drop into code when you need full control — without leaving the flow."
-				/>
-				<Card
-					label="Logs"
-					description="See exactly what happened, when, and why with detailed execution logs."
-				/>
-				<Card
-					label="Branching / Looping"
-					description="Model real-world processes with conditional paths and loops."
+					label="Quickly see where your API is getting used"
+					description="Understand usage and dependencies at a glance."
 				/>
 			</div>
 		</div>
 	</PlatformLayout>
 </Layout>
+
+<style>
+	.api-explorer-demo-plain :global(.api-explorer-demo-backdrop::before) {
+		background: rgb(var(--bg) / 0.45);
+	}
+</style>

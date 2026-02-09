@@ -5,6 +5,7 @@ export interface NavItem {
   iconName: string;
   pageTitle: string;
   pageDescription: string;
+  disabled?: boolean;
   tag?: {
     label: string;
     variant: "primary" | "secondary" | "cta" | "orange";
@@ -13,6 +14,7 @@ export interface NavItem {
 
 export interface NavGroup {
   header?: string;
+  headerStyle?: "default" | "label";
   items: NavItem[];
 }
 
@@ -21,7 +23,7 @@ export const platformNavItemsData: NavGroup[] = [
     items: [
       {
         text: "Agents",
-        link: "/platform/agents",
+        link: "/product/agents",
         sectionId: "agents",
         iconName: "Memory",
         pageTitle: "Agents",
@@ -33,21 +35,8 @@ export const platformNavItemsData: NavGroup[] = [
         },
       },
       {
-        text: "Chat",
-        link: "/platform/chat",
-        sectionId: "chat",
-        iconName: "ChatCircle",
-        pageTitle: "Chat",
-        pageDescription:
-          "A secure, flexible chat experience for humans and agents to collaborate in real time.",
-        tag: {
-          label: "Alpha",
-          variant: "secondary",
-        },
-      },
-      {
         text: "Automations",
-        link: "/platform/automations",
+        link: "/product/automations",
         sectionId: "automations",
         iconName: "Path",
         pageTitle: "Automations",
@@ -56,7 +45,7 @@ export const platformNavItemsData: NavGroup[] = [
       },
       {
         text: "Apps",
-        link: "/platform/apps",
+        link: "/product/apps",
         sectionId: "apps",
         iconName: "Browsers",
         pageTitle: "Apps",
@@ -69,7 +58,7 @@ export const platformNavItemsData: NavGroup[] = [
     items: [
       {
         text: "Connections",
-        link: "/platform/connections",
+        link: "/product/connections",
         sectionId: "connections",
         iconName: "Link",
         pageTitle: "Connections",
@@ -77,7 +66,7 @@ export const platformNavItemsData: NavGroup[] = [
       },
       {
         text: "API explorer",
-        link: "/platform/apis",
+        link: "/product/apis",
         sectionId: "apis",
         iconName: "Webhooks",
         pageTitle: "API Explorer",
@@ -86,12 +75,45 @@ export const platformNavItemsData: NavGroup[] = [
       },
       {
         text: "Data tables",
-        link: "/platform/data",
+        link: "/product/data",
         sectionId: "data",
         iconName: "Database",
         pageTitle: "Data",
         pageDescription:
           "A flexible data layer that powers apps, workflows, and AI — without friction.",
+      },
+    ],
+  },
+  {
+    header: "Coming soon",
+    headerStyle: "label",
+    items: [
+      {
+        text: "Agent Chat",
+        link: "/product/ai-chat",
+        sectionId: "ai-chat",
+        iconName: "ChatCircle",
+        pageTitle: "Agent Chat",
+        pageDescription: "Coming soon.",
+        disabled: true,
+      },
+      {
+        text: "HITL",
+        link: "/product/hitl",
+        sectionId: "hitl",
+        iconName: "Path",
+        pageTitle: "HITL",
+        pageDescription: "Coming soon.",
+        disabled: true,
+      },
+      {
+        text: "Agent Logs",
+        link: "/product/logs",
+        sectionId: "logs",
+        iconName: "TrendUp",
+        pageTitle: "Agent Logs",
+        pageDescription: "Coming soon.",
+        disabled: true,
       },
     ],
   },

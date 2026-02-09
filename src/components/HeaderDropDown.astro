@@ -20,7 +20,7 @@ interface Props {
 type Item = Props["items"][number];
 
 const pinnedBottomLabels =
-	Astro.props.label === "Platform"
+	["Platform", "Product"].includes(Astro.props.label)
 		? ["Resources", "Enterprise", "Roadmap"]
 		: [];
 

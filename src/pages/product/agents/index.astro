@@ -13,9 +13,8 @@ import Database from "phosphor-astro/GridNine.astro";
 import Sparkle from "phosphor-astro/Sparkle.astro";
 import Cloud from "phosphor-astro/Cloud.astro";
 import TrendUp from "phosphor-astro/TrendUp.astro";
-import HeroBg from "@assets/images/homepage/valley.png";
-import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
+import AgentDemo from "@components/AgentDemo.astro";
 
 const iconMap: Record<string, any> = {
 	Circles,
@@ -41,55 +40,52 @@ const navItems = platformNavItemsData.map(group => ({
 const currentNavItem = platformNavItemsData
 	.flatMap(group => group.items)
 	.find(item => item.link === Astro.url.pathname || `${item.link}/` === Astro.url.pathname);
-const pageTitle = currentNavItem?.pageTitle ?? "Platform";
+const pageTitle = currentNavItem?.pageTitle ?? "Product";
 const pageDescription =
 	currentNavItem?.pageDescription ??
 	"The privacy-first platform for building agents, chat, automations & apps.";
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-	<PlatformLayout
-		title={pageTitle}
-		description={pageDescription}
-		{navItems}
-	>
-		<div class="mb-8">
-			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-				<Image
-					src={HeroBg}
-					alt="Apps builder"
-					class="w-full h-96 object-cover rounded-md"
-				/>
-			</div>
+  <PlatformLayout
+    title={pageTitle}
+    description={pageDescription}
+    mainContentWidth="narrow"
+    {navItems}
+  >
+    <div class="mb-8">
+      <div class="mb-4">
+        <AgentDemo />
+      </div>
 
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-			>
-				<Card
-					label="No-code app builder"
-					description="Create production-ready apps without writing a single line of code."
-				/>
-				<Card
-					label="40+ prebuilt components"
-					description="Assemble rich interfaces using a growing library of components."
-				/>
-				<Card
-					label="Auto-generate app screens"
-					description="Generate a fully working CRUD app from your data in just three clicks."
-				/>
-				<Card
-					label="Coding optional"
-					description="Drop into code only when you want — not because you have to."
-				/>
-				<Card
-					label="Theming"
-					description="Match your brand with fully customizable themes."
-				/>
-				<Card
-					label="Embeds"
-					description="Embed apps seamlessly into existing products or portals."
-				/>
-			</div>
-		</div>
-	</PlatformLayout>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      >
+        <Card
+          label="Instructions"
+          description="Define clear, reusable instructions that shape how your agents think and behave."
+        />
+        <Card
+          label="Custom model support"
+          description="Use the models you trust — from OpenAI to open-source — without compromise."
+        />
+        <Card
+          label="Connect to over 100 tools"
+          description="Give agents real capabilities by connecting them to your tools and services."
+        />
+        <Card
+          label="Connect databases"
+          description="Let agents read from and write to your data securely and reliably."
+        />
+        <Card
+          label="Bring your own RAG"
+          description="Plug in your own retrieval pipelines for precise, context-aware responses."
+        />
+        <Card
+          label="Deploy agents"
+          description="Use the same agent across automations, apps, and conversations."
+        />
+      </div>
+    </div>
+  </PlatformLayout>
 </Layout>

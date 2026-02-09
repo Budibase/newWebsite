@@ -18,9 +18,11 @@ const { Content } = await render(entry);
 
 <Layout title={`${title} Workflow Playbook | Budibase`} description={outcome}>
   <div class="side-rail-shell">
-    <aside class="side-rail-left" aria-label="Workflow navigation">
+    <aside
+      class="side-rail-left chrome-border"
+      aria-label="Workflow navigation"
+    >
       <div class="side-rail-left-scroll" data-workflow-sidebar>
-        <div class="px-3 mb-3 text-sm text-secondary">Learn</div>
         <a
           href="/learn/workflows"
           class="inline-flex items-center gap-[6px] text-sm text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 mb-2"
@@ -30,32 +32,33 @@ const { Content } = await render(entry);
         </a>
         <nav aria-label="Build steps">
           <ul class="flex flex-col">
-            {sidebar.map((item, index) => {
-              const iconNames = [
-                "One",
-                "Two",
-                "Three",
-                "Four",
-                "Five",
-                "Six",
-                "Seven",
-                "Eight",
-                "Nine",
-              ];
-              const iconSuffix = iconNames[Math.min(index, iconNames.length - 1)];
-              const iconName = `NumberCircle${iconSuffix}`;
-              return (
-                <li>
+            {
+              sidebar.map((item, index) => {
+                const iconNames = [
+                  "One",
+                  "Two",
+                  "Three",
+                  "Four",
+                  "Five",
+                  "Six",
+                  "Seven",
+                  "Eight",
+                  "Nine",
+                ];
+                const iconSuffix =
+                  iconNames[Math.min(index, iconNames.length - 1)];
+                const iconName = `NumberCircle${iconSuffix}`;
+                return (
+                  <li>
                     <a
-                    class:list={[
-                      "nav-link group flex flex-row gap-3 items-center h-8 px-3 rounded-md text-primary dark:text-primary hover:text-primary dark:hover:text-primary [&.active]:text-sky-700 dark:[&.active]:text-sky-200 [&.active:hover]:text-sky-600 dark:[&.active:hover]:text-sky-100 [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800 text-sm",
-                      item.id === "overview" && "active",
-                    ]}
-                    href={`#${item.id}`}
-                    data-step-id={item.id}
-                    aria-current={item.id === "overview" ? "page" : undefined}
-                  >
-                    <span class="flex items-center gap-2">
+                      class:list={[
+                        "nav-link group flex items-center gap-2 h-8 px-3 rounded-md text-sm text-primary dark:text-primary hover:text-primary dark:hover:text-primary [&.active]:text-sky-700 dark:[&.active]:text-sky-200 [&.active:hover]:text-sky-600 dark:[&.active:hover]:text-sky-100 [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800",
+                        item.id === "overview" && "active",
+                      ]}
+                      href={`#${item.id}`}
+                      data-step-id={item.id}
+                      aria-current={item.id === "overview" ? "page" : undefined}
+                    >
                       <Icon
                         name={iconName}
                         weight="fill"
@@ -63,34 +66,35 @@ const { Content } = await render(entry);
                       />
                       <span class="sr-only">Step {index + 1}</span>
                       <span>{item.label}</span>
-                    </span>
-                  </a>
-                </li>
-              );
-            })}
+                    </a>
+                  </li>
+                );
+              })
+            }
           </ul>
         </nav>
       </div>
     </aside>
 
     <div class="side-rail-main">
-      <div class="side-rail-main-inner pb-20">
-        <section class="side-rail-page-header max-w-3xl">
+      <main class="side-rail-main-inner workflow-main pb-20">
+        <header class="side-rail-page-header">
           <h1 class="mb-2 text-5xl!">{title}</h1>
-          <p class="text-stone-500! dark:text-stone-400!">
-            {outcome}
-          </p>
-        </section>
-        <main class="min-w-0">
-          <article class="workflow-article max-w-3xl">
-            <Content />
-          </article>
-        </main>
-      </div>
+          <p class="text-stone-500! dark:text-stone-400!">{outcome}</p>
+        </header>
+        <article class="workflow-article">
+          <Content />
+        </article>
+      </main>
     </div>
   </div>
 
   <style>
+    .workflow-main {
+      width: min(100%, 48rem);
+      margin-inline: auto;
+    }
+
     .workflow-article :where(h2, h3, h4) {
       scroll-margin-top: calc(var(--site-nav-height) + 24px);
     }
@@ -100,7 +104,11 @@ const { Content } = await render(entry);
     }
   </style>
 
-  <script define:vars={{ steps: sidebar.map((item) => ({ id: item.id, label: item.label })) }}>
+  <script
+    define:vars={{
+      steps: sidebar.map((item) => ({ id: item.id, label: item.label })),
+    }}
+  >
     (() => {
       if (!Array.isArray(steps) || steps.length === 0) return;
 
@@ -112,7 +120,7 @@ const { Content } = await render(entry);
           sidebarRoot._workflowCleanup();
         }
 
-        const links = Array.from(sidebarRoot.querySelectorAll("a[href^=\"#\"]"));
+        const links = Array.from(sidebarRoot.querySelectorAll('a[href^="#"]'));
         const stepIds = steps.map((step) => step.id);
         const article = document.querySelector("article");
         const sections = [];
@@ -123,8 +131,10 @@ const { Content } = await render(entry);
             const headings = Array.from(article.querySelectorAll("h2, h3, h4"));
             section = headings.find((heading) => {
               const text = (heading.textContent || "").trim();
-              return text.includes(`{#${step.id}}`) ||
-                text.toLowerCase().startsWith(step.label.toLowerCase());
+              return (
+                text.includes(`{#${step.id}}`) ||
+                text.toLowerCase().startsWith(step.label.toLowerCase())
+              );
             });
           }
 
@@ -133,7 +143,9 @@ const { Content } = await render(entry);
               section.id = step.id;
             }
             if (section.textContent?.includes(`{#${step.id}}`)) {
-              section.textContent = section.textContent.replace(`{#${step.id}}`, "").trim();
+              section.textContent = section.textContent
+                .replace(`{#${step.id}}`, "")
+                .trim();
             }
             sections.push(section);
           }
@@ -159,9 +171,10 @@ const { Content } = await render(entry);
         ).matches;
 
         const onClick = (event) => {
-          const target = event.target && event.target.closest
-            ? event.target.closest("a[href^=\"#\"]")
-            : null;
+          const target =
+            event.target && event.target.closest
+              ? event.target.closest('a[href^="#"]')
+              : null;
           if (!target || !sidebarRoot.contains(target)) return;
 
           const id = target.getAttribute("data-step-id");
@@ -188,7 +201,9 @@ const { Content } = await render(entry);
           (entries) => {
             const visible = entries
               .filter((entry) => entry.isIntersecting)
-              .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+              .sort(
+                (a, b) => a.boundingClientRect.top - b.boundingClientRect.top,
+              );
             if (visible.length > 0) {
               setActive(visible[0].target.id);
             }

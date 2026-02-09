@@ -13,9 +13,9 @@ import Database from "phosphor-astro/GridNine.astro";
 import Sparkle from "phosphor-astro/Sparkle.astro";
 import Cloud from "phosphor-astro/Cloud.astro";
 import TrendUp from "phosphor-astro/TrendUp.astro";
+import HeroBg from "@assets/images/homepage/valley.png";
+import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
-import APIExplorerDemo from "@components/APIExplorerDemo.astro";
-import APIsBackdrop from "@assets/images/backgrounds/light/api.png";
 
 const iconMap: Record<string, any> = {
 	Circles,
@@ -41,7 +41,7 @@ const navItems = platformNavItemsData.map(group => ({
 const currentNavItem = platformNavItemsData
 	.flatMap(group => group.items)
 	.find(item => item.link === Astro.url.pathname || `${item.link}/` === Astro.url.pathname);
-const pageTitle = currentNavItem?.pageTitle ?? "Platform";
+const pageTitle = currentNavItem?.pageTitle ?? "Product";
 const pageDescription =
 	currentNavItem?.pageDescription ??
 	"The privacy-first platform for building agents, chat, automations & apps.";
@@ -51,49 +51,46 @@ const pageDescription =
 	<PlatformLayout
 		title={pageTitle}
 		description={pageDescription}
+		mainContentWidth="narrow"
 		{navItems}
 	>
 		<div class="mb-8">
-				<div class="rounded-md mb-4 overflow-hidden">
-					<div class="api-explorer-demo-plain">
-						<APIExplorerDemo backdropImage={APIsBackdrop.src} backdropPaddingXClass="px-12" />
-					</div>
-				</div>
+			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+				<Image
+					src={HeroBg}
+					alt="Apps builder"
+					class="w-full h-96 object-cover rounded-md"
+				/>
+			</div>
 
 			<div
 				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
 			>
 				<Card
-					label="Beautiful interface for making API requests"
-					description="Interact with APIs through a clean, intuitive UI."
+					label="No-code app builder"
+					description="Create production-ready apps without writing a single line of code."
 				/>
 				<Card
-					label="100 API templates"
-					description="Get started fast with ready-made templates for popular services."
+					label="40+ prebuilt components"
+					description="Assemble rich interfaces using a growing library of components."
 				/>
 				<Card
-					label="Multiple auth types support"
-					description="Authenticate securely using Basic, Bearer, or OAuth2."
+					label="Auto-generate app screens"
+					description="Generate a fully working CRUD app from your data in just three clicks."
 				/>
 				<Card
-					label="Test requests within the API explorer"
-					description="Validate APIs instantly without external tools."
+					label="Coding optional"
+					description="Drop into code only when you want — not because you have to."
 				/>
 				<Card
-					label="Control access to APIs (RBAC)"
-					description="Manage who can access which APIs with fine-grained permissions."
+					label="Theming"
+					description="Match your brand with fully customizable themes."
 				/>
 				<Card
-					label="Quickly see where your API is getting used"
-					description="Understand usage and dependencies at a glance."
+					label="Embeds"
+					description="Embed apps seamlessly into existing products or portals."
 				/>
 			</div>
 		</div>
 	</PlatformLayout>
 </Layout>
-
-<style>
-	.api-explorer-demo-plain :global(.api-explorer-demo-backdrop::before) {
-		background: rgb(var(--bg) / 0.45);
-	}
-</style>

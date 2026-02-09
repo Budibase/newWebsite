@@ -23,7 +23,7 @@ import FutureGov from "@assets/images/homepage/futureGov.png";
 const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
-<div id={id} class="hero-demo w-full overflow-hidden">
+<div id={id} class="hero-demo demo-breakout w-full overflow-hidden">
   <div
     class="hero-demo-backdrop w-full overflow-hidden px-4 py-4 sm:px-8 sm:py-8 lg:px-12 lg:py-10"
     style={`background-image: url('${FutureGov.src}');`}
@@ -119,7 +119,7 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
                         OpenAI
                       </span>
                     </button>
-                    <a class="hero-demo-select-option" href="/platform/connections/">
+                    <a class="hero-demo-select-option" href="/product/connections/">
                       <span class="hero-demo-select-option-label">
                         <Sparkle class="hero-demo-select-logo" />
                         View all models
@@ -137,7 +137,7 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
                   </div>
                   <Button
                     label="Add tools"
-                    url="/platform/connections/"
+                    url="/product/connections/"
                     variant="secondary"
                     size="small"
                     class="text-[12px] bg-[var(--bg-1)]!"
@@ -297,7 +297,7 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
   .hero-demo-backdrop {
     background-size: cover;
     background-position: center;
-    border-radius: 12px;
+    border-radius: 8px;
   }
 
   .hero-demo-content {
@@ -351,8 +351,8 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
 
   .hero-demo-select {
     display: flex;
-    min-width: 0;
-    width: min(100%, 300px);
+    min-width: 200px;
+    width: min(100%, 360px);
     height: 32px;
     align-items: center;
     justify-content: space-between;
@@ -447,7 +447,7 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
     color: var(--text-primary);
     height: 22px;
     padding: 0 6px;
-    font-size: 12px;
+    font-size: 11px;
     min-width: 0;
     max-width: 100%;
     }

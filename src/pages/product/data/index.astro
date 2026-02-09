@@ -13,7 +13,6 @@ import Database from "phosphor-astro/GridNine.astro";
 import Sparkle from "phosphor-astro/Sparkle.astro";
 import Cloud from "phosphor-astro/Cloud.astro";
 import TrendUp from "phosphor-astro/TrendUp.astro";
-import ChatImage from "@assets/images/platform/AgentInChat.png";
 import HeroBg from "@assets/images/homepage/valley.png";
 import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
@@ -42,7 +41,7 @@ const navItems = platformNavItemsData.map(group => ({
 const currentNavItem = platformNavItemsData
 	.flatMap(group => group.items)
 	.find(item => item.link === Astro.url.pathname || `${item.link}/` === Astro.url.pathname);
-const pageTitle = currentNavItem?.pageTitle ?? "Platform";
+const pageTitle = currentNavItem?.pageTitle ?? "Product";
 const pageDescription =
 	currentNavItem?.pageDescription ??
 	"The privacy-first platform for building agents, chat, automations & apps.";
@@ -52,13 +51,14 @@ const pageDescription =
 	<PlatformLayout
 		title={pageTitle}
 		description={pageDescription}
+		mainContentWidth="narrow"
 		{navItems}
 	>
 		<div class="mb-8">
 			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
 				<Image
-					src={ChatImage}
-					alt="Chat interface"
+					src={HeroBg}
+					alt="Database connections"
 					class="w-full h-96 object-cover rounded-md"
 				/>
 			</div>
@@ -67,36 +67,32 @@ const pageDescription =
 				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
 			>
 				<Card
-					label="Beautiful chat interface"
-					description="A clean, modern UI your users actually enjoy using."
+					label="Built-in database (BudibaseDB)"
+					description="Store and manage data without setting up external infrastructure."
 				/>
 				<Card
-					label="Multi-agent chat"
-					description="Let multiple agents collaborate and reason together in a single conversation."
+					label="Table GUI like Airtable bases"
+					description="Work with data through a fast, familiar visual interface."
 				/>
 				<Card
-					label="Built-in RBAC"
-					description="Control who can see, use, and manage chat experiences."
+					label="SQL sync"
+					description="Sync existing SQL tables and visualize your data instantly."
 				/>
 				<Card
-					label="Model agnostic"
-					description="Switch models freely without rewriting your chat logic."
+					label="Custom queries"
+					description="Write custom SQL queries for full control over your data."
 				/>
 				<Card
-					label="Web search"
-					description="Ground responses in fresh, real-time information from the web."
+					label="Dev/Prod switcher for tables"
+					description="Safely manage schema changes across environments."
 				/>
 				<Card
-					label="Document search"
-					description="Chat directly with your documents for instant, contextual answers."
+					label="Views"
+					description="Create performant, permission-aware views to filter and shape your data."
 				/>
 				<Card
-					label="Forms integration"
-					description="Start conversations with structured input from forms."
-				/>
-				<Card
-					label="Shortcuts"
-					description="Present users with predefined shortcuts to encourage more productive conversations."
+					label="Security"
+					description="Configure read and write access at the table level to keep data secure."
 				/>
 			</div>
 		</div>

@@ -19,8 +19,18 @@ export default defineConfig({
   },
 
   redirects: {
-    "/platform": "/platform/agents",
-    "/platform/integrations": "/platform/connections",
+    "/product": "/product/agents",
+    "/product/integrations": "/product/connections",
+    "/platform": "/product/agents",
+    "/platform/integrations": "/product/connections",
+    "/platform/agents": "/product/agents",
+    "/platform/automations": "/product/automations",
+    "/platform/apps": "/product/apps",
+    "/platform/connections": "/product/connections",
+    "/platform/apis": "/product/apis",
+    "/platform/data": "/product/data",
+    "/platform/resources": "/product/resources",
+    "/platform/enterprise": "/product/enterprise",
   },
 
   markdown: {

@@ -161,7 +161,7 @@ const navItems = platformNavItemsData.map(group => ({
 const currentNavItem = platformNavItemsData
 	.flatMap(group => group.items)
 	.find(item => item.link === Astro.url.pathname || `${item.link}/` === Astro.url.pathname);
-const pageTitle = currentNavItem?.pageTitle ?? "Platform";
+const pageTitle = currentNavItem?.pageTitle ?? "Product";
 const pageDescription =
 	currentNavItem?.pageDescription ??
 	"The privacy-first platform for building agents, chat, automations & apps.";
@@ -171,6 +171,7 @@ const pageDescription =
 	<PlatformLayout
 		title={pageTitle}
 		description={pageDescription}
+		mainContentWidth="narrow"
 		{navItems}
 	>
 		<div class="mb-8 space-y-8">
