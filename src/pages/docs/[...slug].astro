@@ -31,9 +31,10 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
 const currentPath = normalizePath(Astro.url.pathname);
 const pageDescription = entry.data.description ?? "Budibase documentation.";
+const outlineHeadings = headings.filter((heading) => heading.depth === 2);
 
 function isActive(path?: string): boolean {
   if (!path || path === "#") return false;
@@ -58,7 +59,7 @@ function isGroupActive(
         <nav aria-label="Data docs navigation">
           <ul class="docs-nav-root flex flex-col gap-8" data-docs-nav-root>
             {
-              docsNavData.map((group, groupIndex) => (
+              docsNavData.map((group) => (
                 <li>
                   <div class="docs-nav-group text-sm !text-secondary tracking-wider px-3 py-1">
                     {group.title}
@@ -174,10 +175,46 @@ function isGroupActive(
     </aside>
 
     <div class="side-rail-main">
-      <div class="side-rail-main-inner side-rail-main-inner--narrow">
-        <article class="docs-article">
-          <Content />
-        </article>
+      <div class="side-rail-main-inner">
+        <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-10 xl:items-start">
+          <article
+            class="docs-article flex-1 min-w-0 space-y-8 px-4 sm:px-6 lg:px-8 pt-8 pb-8 max-w-3xl"
+            data-docs-article
+          >
+            <Content />
+          </article>
+          {
+            outlineHeadings.length > 0 && (
+              <aside class="hidden xl:block pt-8" aria-label="On this page">
+                <div
+                  class="sticky"
+                  style="top: calc(var(--site-nav-height) + 1rem)"
+                  data-docs-outline-root
+                >
+                  <p class="text-sm !text-primary font-medium px-1 pb-2">
+                    On this page
+                  </p>
+                  <nav aria-label="On this page outline">
+                    <ul class="flex flex-col gap-1">
+                      {outlineHeadings.map((heading) => (
+                        <li>
+                          <a
+                            href={`#${heading.slug}`}
+                            class="block py-1 px-1 text-sm !text-secondary hover:!text-primary transition-colors"
+                            data-docs-outline-link
+                            data-docs-outline-id={heading.slug}
+                          >
+                            {heading.text}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                </div>
+              </aside>
+            )
+          }
+        </div>
       </div>
     </div>
   </div>
@@ -251,7 +288,7 @@ function isGroupActive(
 
 <script is:inline>
   (() => {
-    const init = () => {
+    const initFolderNav = () => {
       const root = document.querySelector("[data-docs-nav-root]");
       if (!root) return;
 
@@ -302,6 +339,101 @@ function isGroupActive(
       root._docsFolderCleanup = () => {
         cleanups.forEach((cleanup) => cleanup());
       };
+    };
+
+    const initOutline = () => {
+      const root = document.querySelector("[data-docs-outline-root]");
+      if (!root) return;
+
+      if (root._docsOutlineCleanup) {
+        root._docsOutlineCleanup();
+      }
+
+      const links = Array.from(
+        root.querySelectorAll("[data-docs-outline-link]"),
+      );
+      if (links.length === 0) return;
+
+      const sectionIds = links
+        .map((link) => link.getAttribute("data-docs-outline-id"))
+        .filter(Boolean);
+      const sections = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+      if (sections.length === 0) return;
+
+      const setActive = (id) => {
+        links.forEach((link) => {
+          const linkId = link.getAttribute("data-docs-outline-id");
+          const isActive = linkId === id;
+          link.classList.toggle("!text-primary", isActive);
+          link.classList.toggle("!text-secondary", !isActive);
+          if (isActive) {
+            link.setAttribute("aria-current", "location");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      };
+
+      const onHashChange = () => {
+        const hash = decodeURIComponent(window.location.hash.replace("#", ""));
+        if (hash && sectionIds.includes(hash)) {
+          setActive(hash);
+        }
+      };
+
+      const onClick = (event) => {
+        const target =
+          event.target && event.target.closest
+            ? event.target.closest("[data-docs-outline-link]")
+            : null;
+        if (!target || !root.contains(target)) return;
+        const id = target.getAttribute("data-docs-outline-id");
+        if (id) {
+          setActive(id);
+        }
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort(
+              (a, b) => a.boundingClientRect.top - b.boundingClientRect.top,
+            );
+          if (visible.length > 0) {
+            setActive(visible[0].target.id);
+          }
+        },
+        {
+          rootMargin: "0px 0px -70% 0px",
+          threshold: 0.2,
+        },
+      );
+
+      sections.forEach((section) => observer.observe(section));
+
+      const initialHash = decodeURIComponent(window.location.hash.replace("#", ""));
+      if (initialHash && sectionIds.includes(initialHash)) {
+        setActive(initialHash);
+      } else {
+        setActive(sections[0].id);
+      }
+
+      root.addEventListener("click", onClick);
+      window.addEventListener("hashchange", onHashChange);
+
+      root._docsOutlineCleanup = () => {
+        observer.disconnect();
+        root.removeEventListener("click", onClick);
+        window.removeEventListener("hashchange", onHashChange);
+      };
+    };
+
+    const init = () => {
+      initFolderNav();
+      initOutline();
     };
 
     if (document.readyState === "loading") {
