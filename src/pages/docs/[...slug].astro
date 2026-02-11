@@ -20,6 +20,7 @@ export async function getStaticPaths() {
       const slugParts = entry.id
         .split("/")
         .filter(Boolean)
+        .map((part) => part.replace(/\.(md|mdx)$/i, ""))
         .filter((part, index, parts) => !(index === parts.length - 1 && part === "index"));
       if (slugParts.length === 0) return null;
       return {
@@ -178,22 +179,23 @@ function isGroupActive(
       <div class="side-rail-main-inner">
         <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-10 xl:items-start">
           <article
-            class="docs-article flex-1 min-w-0 space-y-8 px-4 sm:px-6 lg:px-8 pt-8 pb-8 max-w-3xl"
+            class="docs-article flex-1 min-w-0 space-y-8 px-4 sm:px-6 lg:px-8 pt-8 pb-8 max-w-3xl [&_h1]:!mt-0"
             data-docs-article
           >
             <Content />
           </article>
           {
             outlineHeadings.length > 0 && (
-              <aside class="hidden xl:block pt-8" aria-label="On this page">
-                <div
-                  class="sticky"
-                  style="top: calc(var(--site-nav-height) + 1rem)"
-                  data-docs-outline-root
-                >
-                  <p class="text-sm !text-primary font-medium px-1 pb-2">
+              <aside
+                class="hidden xl:block pt-8 xl:sticky xl:self-start docs-side-rail-scroll"
+                style="top: calc(var(--site-nav-height) + 1rem); max-height: calc(100dvh - var(--site-nav-height) - 1rem); overflow-y: auto;"
+                aria-label="On this page"
+                data-docs-outline-root
+              >
+                <div>
+                  <div class="text-sm !text-primary font-medium px-1 pb-2">
                     On this page
-                  </p>
+                  </div>
                   <nav aria-label="On this page outline">
                     <ul class="flex flex-col gap-1">
                       {outlineHeadings.map((heading) => (

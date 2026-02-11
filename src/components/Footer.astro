@@ -21,31 +21,26 @@ const footerColumns: FooterColumn[] = [
   {
     title: "Product",
     links: [
-      { label: "Chat", url: "/chat" },
-      { label: "Agents", url: "/agents" },
-      { label: "Automations", url: "/automations" },
-      { label: "Apps", url: "/apps" },
-      { label: "Enterprise", url: "/enterprise" },
+      { label: "Agents", url: "/product/agents" },
+      { label: "Automations", url: "/product/automations" },
+      { label: "Apps", url: "/product/apps" },
       { label: "Pricing", url: "/pricing" },
     ],
   },
   {
-    title: "Community",
+    title: "Enterprise",
     links: [
-      { label: "Community", url: "https://discord.com/invite/budibase-733030666647765003" },
-      { label: "Integrations", url: "/learn/blog" },
+      { label: "Enterprise", url: "/enterprise" },
+      { label: "Security", url: "/enterprise/security" },
+      { label: "Contact Sales", url: "/enterprise/contact-sales" },
     ],
   },
   {
-    title: "Resources",
+    title: "Learn",
     links: [
-      { label: "Learn", url: "/learn/workflows" },
       { label: "Workflows", url: "/learn/workflows" },
       { label: "Blog", url: "/learn/blog" },
-      { label: "Changelog", url: "/learn/changelog" },
       { label: "Docs", url: "https://docs.budibase.com", target: "_blank" },
-      { label: "Status", url: "/status" },
-      { label: "Company", url: "/learn/company" },
     ],
   },
   {
@@ -53,15 +48,21 @@ const footerColumns: FooterColumn[] = [
     links: [
       { label: "Terms of Service", url: "/terms" },
       { label: "Privacy Policy", url: "/privacy" },
-      { label: "Data Use", url: "/data-use" },
-      { label: "Security", url: "/security" },
     ],
   },
   {
     title: "Connect",
     links: [
-      { label: "X", url: "https://twitter.com/budibase", target: "_blank" },
-      { label: "LinkedIn", url: "https://linkedin.com/company/budibase", target: "_blank" },
+      {
+        label: "Discord",
+        url: "https://discord.com/invite/budibase-733030666647765003",
+        target: "_blank",
+      },
+      {
+        label: "LinkedIn",
+        url: "https://linkedin.com/company/budibase",
+        target: "_blank",
+      },
       { label: "YouTube", url: "https://youtube.com/@budibase", target: "_blank" },
     ],
   },
