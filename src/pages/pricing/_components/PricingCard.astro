@@ -21,6 +21,7 @@ interface Props {
   userLabel?: string;
   additionalPriceText?: string;
   features?: FeatureItem[];
+  addOns?: string[];
   recommended?: boolean;
   buttonLabel: string;
   buttonVariant?: ButtonVariant;
@@ -41,6 +42,7 @@ const {
   userLabel = "per end user",
   additionalPriceText,
   features = [],
+  addOns = [],
   recommended = false,
   buttonLabel,
   buttonVariant = "primary",
@@ -108,6 +110,15 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
         )}
       </div>
     </div>
+    <div class="cta">
+      <Button
+        label={buttonLabel}
+        url={buttonUrl}
+        variant={buttonVariant}
+        size={buttonSize}
+        target={buttonTarget}
+      />
+    </div>
     <div class="description-features">
       <div>
         {description && <p class="text-stone-600! dark:text-stone-400!">{description}</p>}
@@ -134,15 +145,23 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
           </ul>
         ) : null
       }
-    </div>
-    <div class="cta">
-      <Button
-        label={buttonLabel}
-        url={buttonUrl}
-        variant={buttonVariant}
-        size={buttonSize}
-        target={buttonTarget}
-      />
+      {
+        addOns?.length ? (
+          <div class="add-ons-section">
+            <p class="text-stone-600! dark:text-stone-400!">Add ons</p>
+            <ul class="gap-1 flex flex-col mt-2" aria-label="Plan add ons">
+              {addOns.map((item, index) => (
+                <li key={`add-on-${index}`}>
+                  <span class="check">
+                    <Plus class="fill-stone-700 dark:fill-stone-300 w-3" aria-hidden="true" />
+                  </span>
+                  <span class="feature-text text-stone-900 dark:text-stone-100">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null
+      }
     </div>
   </div>
 </div>
@@ -194,6 +213,16 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
     height: fit-content;
   }
 
+  .add-ons-section {
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-stone-200);
+  }
+
+  :global(.dark) .add-ons-section {
+    border-color: var(--color-stone-800);
+  }
+
   .prices {
     display: block;
   }
@@ -207,7 +236,7 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
 
   .cta {
     flex-shrink: 0;
-    margin-bottom: 16px;
+    margin-bottom: 0;
   }
 
   .feature {

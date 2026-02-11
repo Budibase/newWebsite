@@ -1,6 +1,12 @@
 ---
 /* removed self-host switcher imports */
 import PricingCard from "./PricingCard.astro";
+
+const addOns = [
+  "$2 per user",
+  "$10 per 1000 automation runs",
+  "$10 per 10m BB AI tokens",
+];
 ---
 
 <section class="container max-w-7xl mx-auto flex flex-col mt-8 px-2 lg:px-0">
@@ -75,6 +81,7 @@ import PricingCard from "./PricingCard.astro";
             buttonVariant="cta"
             buttonUrl="https://docs.budibase.com/docs/docker"
             buttonTarget="_blank"
+            addOns={addOns}
             features={[
               "Unlimited users",
               "SSO",
@@ -94,6 +101,7 @@ import PricingCard from "./PricingCard.astro";
             buttonLabel="Contact sales"
             buttonVariant="primary"
             buttonUrl="/signup-plus"
+            addOns={addOns}
             features={[
               "Workspaces",
               "Enforced SSO",
@@ -117,6 +125,7 @@ import PricingCard from "./PricingCard.astro";
             buttonLabel="Contact sales"
             buttonVariant="primary"
             buttonUrl="/signup-plus"
+            addOns={addOns}
             features={[
               "Bulk discounts",
               "Active directory / SCIM",
@@ -151,6 +160,7 @@ import PricingCard from "./PricingCard.astro";
           buttonLabel="Start 14 day free trial"
           buttonVariant="cta"
           buttonUrl="/signup-plus"
+          addOns={addOns}
           features={[
             "1K automation runs",
             "Custom RBAC",
@@ -172,6 +182,7 @@ import PricingCard from "./PricingCard.astro";
           buttonLabel="Start 14 day free trial"
           buttonVariant="cta"
           buttonUrl="/signup-plus"
+          addOns={addOns}
           features={[
             "10K automation runs",
             "1 year automation logs",
@@ -191,6 +202,7 @@ import PricingCard from "./PricingCard.astro";
           buttonLabel="Contact sales"
           buttonVariant="primary"
           buttonUrl="/signup-plus"
+          addOns={addOns}
           features={[
             "50K automation runs",
             "1 year automation logs",
@@ -212,6 +224,7 @@ import PricingCard from "./PricingCard.astro";
           buttonLabel="Contact sales"
           buttonVariant="primary"
           buttonUrl="/signup-plus"
+          addOns={addOns}
           features={[
             "Custom automation runs",
             "Unlimited automation logs",
