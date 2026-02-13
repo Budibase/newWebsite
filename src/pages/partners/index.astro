@@ -1,0 +1,48 @@
+---
+import Layout from "../../layouts/MainLayout.astro";
+import Button from "@components/Button.astro";
+---
+
+<Layout
+  title="Partners"
+  description="Partner with Budibase to deliver AI-driven internal tooling and workflow automation."
+>
+  <section class="container max-w-6xl mx-auto px-2 md:px-3 lg:px-4 py-16 md:py-20">
+    <header class="max-w-3xl">
+      <h1 class="text-[34px] leading-[1.1] font-semibold text-[var(--text-primary)] sm:text-[48px]">
+        Budibase Partners
+      </h1>
+      <p class="mt-4 text-lg text-secondary">
+        Build and deliver AI-powered internal tools with a flexible open-source platform.
+      </p>
+    </header>
+
+    <div class="mt-10 grid gap-4 md:grid-cols-3">
+      <article class="rounded-lg border border-[var(--border-color)] bg-2 p-4">
+        <h2 class="text-xl text-[var(--text-primary)]">Technology partners</h2>
+        <p class="mt-2 text-secondary">
+          Integrate models, data platforms, and developer tooling into enterprise workflows.
+        </p>
+      </article>
+
+      <article class="rounded-lg border border-[var(--border-color)] bg-2 p-4">
+        <h2 class="text-xl text-[var(--text-primary)]">Services partners</h2>
+        <p class="mt-2 text-secondary">
+          Deliver implementation, governance, and migration programs for shared customers.
+        </p>
+      </article>
+
+      <article class="rounded-lg border border-[var(--border-color)] bg-2 p-4">
+        <h2 class="text-xl text-[var(--text-primary)]">Channel partners</h2>
+        <p class="mt-2 text-secondary">
+          Bring Budibase to your market with packaged offers and customer success support.
+        </p>
+      </article>
+    </div>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <Button label="Talk to us" url="/enterprise" variant="primary" size="small" />
+      <Button label="Read docs" url="https://docs.budibase.com" target="_blank" variant="secondary" size="small" />
+    </div>
+  </section>
+</Layout>

@@ -3,7 +3,7 @@
 import PricingCard from "./PricingCard.astro";
 ---
 
-<section class="container max-w-7xl mx-auto flex flex-col mt-8 px-2 lg:px-0">
+<section class="container max-w-6xl mx-auto flex flex-col mt-8 px-2 lg:px-0">
   <!--Title section -->
   <div class="flex flex-col items-center text-center">
     <h1 class="max-w-2xl !text-5xl mb-4 text-stone-950 dark:text-stone-100">
@@ -16,27 +16,27 @@ import PricingCard from "./PricingCard.astro";
       <ul role="group" aria-label="Deployment type" class="inline-flex flex-row bg-secondary rounded-[20px] p-1" id="deployment-switcher">
         <li>
           <button
-            id="self-hosted-button"
-            data-deployment="self-hosted"
-            aria-pressed="true"
-            class="bg-white dark:bg-stone-800 rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-900 dark:text-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 dark:focus-visible:ring-stone-400 focus-visible:ring-offset-2 min-h-[44px]"
-          >
-            Self-hosted
-          </button>
-        </li>
-        <li>
-          <button
             id="budibase-hosted-button"
             data-deployment="cloud"
-            aria-pressed="false"
-            class="bg-transparent rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-600 dark:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 dark:focus-visible:ring-stone-400 focus-visible:ring-offset-2 min-h-[44px]"
+            aria-pressed="true"
+            class="bg-white dark:bg-stone-800 rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-900 dark:text-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 dark:focus-visible:ring-stone-400 focus-visible:ring-offset-2 min-h-[44px]"
           >
             Budibase Hosted
           </button>
         </li>
+        <li>
+          <button
+            id="self-hosted-button"
+            data-deployment="self-hosted"
+            aria-pressed="false"
+            class="bg-transparent rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-600 dark:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 dark:focus-visible:ring-stone-400 focus-visible:ring-offset-2 min-h-[44px]"
+          >
+            Self-hosted
+          </button>
+        </li>
       </ul>
       <!-- Yearly/Monthly Toggle (hidden by default, shown only for cloud) -->
-      <ul role="group" aria-label="Billing period" class="inline-flex flex-row bg-secondary rounded-[20px] p-1 hidden" id="billing-toggle">
+      <ul role="group" aria-label="Billing period" class="inline-flex flex-row bg-secondary rounded-[20px] p-1" id="billing-toggle">
         <li>
           <button
             id="annual-button"
@@ -61,7 +61,7 @@ import PricingCard from "./PricingCard.astro";
     </div>
 
     <!-- Self-Hosted Plans -->
-    <section class="mb-12 md:mb-20" id="self-hosted-plans" aria-hidden="false">
+    <section class="mb-12 md:mb-20 hidden" id="self-hosted-plans" aria-hidden="true">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 justify-center items-stretch">
         <div class="min-w-[420px] h-full">
           <PricingCard
@@ -135,7 +135,7 @@ import PricingCard from "./PricingCard.astro";
     </section>
 
     <!-- Cloud Plans -->
-    <section class="mb-12 md:mb-20 hidden" id="cloud-plans" aria-hidden="true">
+    <section class="mb-12 md:mb-20" id="cloud-plans" aria-hidden="false">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 justify-center items-stretch">
         <PricingCard
           title="Pro"
@@ -321,8 +321,18 @@ import PricingCard from "./PricingCard.astro";
     });
   });
 
-  // Initialize: default to self-hosted
-  applyDeploymentType("self-hosted");
+  const getInitialDeploymentType = () => {
+    const params = new URLSearchParams(window.location.search);
+    const deployment = params.get("deployment");
+
+    if (deployment === "cloud") return "cloud";
+    if (deployment === "self-hosted") return "self-hosted";
+
+    return "cloud";
+  };
+
+  // Initialize: defaults to cloud unless overridden by query string.
+  applyDeploymentType(getInitialDeploymentType());
   // Initialize billing for cloud plans (will be hidden initially)
   applyBilling("annual");
 </script>

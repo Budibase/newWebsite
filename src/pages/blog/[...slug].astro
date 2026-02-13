@@ -1,16 +1,62 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import CTA from "@components/CTA.astro";
+import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
 
-export const prerender = true;
+export type Props = {
+  kind: "blog" | "caseStudy";
+  post?: CollectionEntry<"blog">;
+  caseStudy?: CollectionEntry<"caseStudies">;
+};
 
 export async function getStaticPaths() {
-	const blog = await getCollection('blog');
+  const blogPosts = await getCollection("blog", ({ data }) => !data.draft);
+  const caseStudies = await getCollection("caseStudies");
 
-	return blog.map((post) => ({
-		params: { slug: post.id },
-	}));
+  return [
+    ...blogPosts.map((post) => ({
+      params: { slug: post.id },
+      props: { kind: "blog" as const, post },
+    })),
+    ...caseStudies.map((caseStudy) => ({
+      params: { slug: caseStudy.id },
+      props: { kind: "caseStudy" as const, caseStudy },
+    })),
+  ];
 }
 
-const slugParam = Astro.params.slug;
-const target = `/learn/blog/${slugParam}/`;
-return Astro.redirect(target, 301);
+const { kind, post, caseStudy } = Astro.props as Props;
+
+if (kind === "blog" && !post) {
+  throw new Error("Blog post not found");
+}
+
+if (kind === "caseStudy" && !caseStudy) {
+  throw new Error("Case study not found");
+}
+
+const entry = kind === "blog" ? post! : caseStudy!;
+const { Content } = await render(entry);
+const transitionKey = entry.id.replaceAll("/", "-");
+
+const frontmatter =
+  kind === "blog"
+    ? post!.data
+    : {
+        title: caseStudy!.data.title,
+        description: caseStudy!.data.quote,
+        author: caseStudy!.data.author?.name,
+      };
+---
+
+<MarkdownPostLayout frontmatter={frontmatter} transitionKey={transitionKey}>
+  <article class="article my-8 max-w-xl mx-auto">
+    {
+      kind === "caseStudy" && (
+        <div class="mb-4 text-sm text-stone-500 dark:text-stone-400">Customers</div>
+      )
+    }
+    <Content />
+  </article>
+  <CTA />
+</MarkdownPostLayout>

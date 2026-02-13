@@ -3,81 +3,64 @@ import bbSymbol from "@assets/BBSymbol.svg";
 import bbSymbolWhite from "@assets/BBSymbolWhite.svg";
 import { Image } from "astro:assets";
 import Button from "@components/Button.astro";
+import HeaderDropDown from "@components/HeaderDropDown.astro";
+import {
+  productDropdownItems,
+  resourcesDropdownItems,
+} from "@components/navDropdownData";
 ---
 
 <nav
   id="site-nav"
-  class="nav-shell sticky top-0 z-50 w-full border-b-[0.5px] chrome-border bg-1 transition-colors duration-150"
+  class="nav-shell sticky top-0 z-50 w-full bg-1 transition-colors duration-150"
   transition:persist
   transition:name="site-chrome"
 >
   <div
-    class="relative flex w-full items-center justify-between px-2 md:px-3 lg:px-4 py-3"
+    class="relative z-10 mx-auto grid h-[var(--site-nav-height)] w-full max-w-6xl grid-cols-[1fr_auto_auto] items-center px-2 md:px-3 lg:grid-cols-[auto_1fr_auto] lg:gap-6 lg:px-0"
   >
-    <div class="flex items-center gap-6 xl:gap-8">
-      <a href="/" class="z-10 shrink-0">
-        <div class="relative w-6">
-          <Image
-            src={bbSymbol}
-            alt="Budibase symbol"
-            class="hover:cursor-pointer dark:hidden"
-          />
-          <Image
-            src={bbSymbolWhite}
-            alt="Budibase symbol"
-            class="hover:cursor-pointer hidden dark:block"
-          />
-        </div>
-      </a>
-
-      <div class="hidden items-center gap-6 whitespace-nowrap lg:flex xl:gap-8">
-        <a
-          href="/product/agents"
-          class="text-sm nav-link transition-colors"
-          data-astro-prefetch
-        >
-          Product
-        </a>
-        <a
-          href="https://discord.com/invite/budibase-733030666647765003"
-          target="_blank"
-          class="text-sm nav-link transition-colors"
-        >
-          Community
-        </a>
-        <a
-          href="/enterprise"
-          class="text-sm nav-link transition-colors"
-          data-astro-prefetch
-        >
-          Enterprise
-        </a>
-        <a
-          target="_self"
-          href="/pricing"
-          class="text-sm nav-link transition-colors"
-          data-astro-prefetch
-        >
-          Pricing
-        </a>
-        <a
-          href="/learn/workflows"
-          class="text-sm nav-link transition-colors"
-          data-astro-prefetch
-        >
-          Learn
-        </a>
+    <a href="/" class="z-10 shrink-0">
+      <div class="relative w-6">
+        <Image
+          src={bbSymbol}
+          alt="Budibase symbol"
+          class="hover:cursor-pointer dark:hidden"
+        />
+        <Image
+          src={bbSymbolWhite}
+          alt="Budibase symbol"
+          class="hover:cursor-pointer hidden dark:block"
+        />
       </div>
+    </a>
+
+    <div class="hidden items-center gap-5 whitespace-nowrap lg:flex xl:gap-7">
+      <HeaderDropDown label="Product" items={productDropdownItems} />
+      <a
+        href="https://discord.com/invite/budibase-733030666647765003"
+        target="_blank"
+        class="text-sm nav-link transition-colors"
+      >
+        Community
+      </a>
+      <a
+        target="_self"
+        href="/pricing?deployment=cloud"
+        class="text-sm nav-link transition-colors"
+        data-astro-prefetch
+      >
+        Pricing
+      </a>
+      <HeaderDropDown label="Resources" items={resourcesDropdownItems} />
     </div>
 
-    <div class="flex items-center gap-2 lg:gap-3 z-10">
+    <div class="z-10 flex items-center gap-2 justify-self-end lg:gap-3">
       <a
         href="https://github.com/budibase/budibase"
         target="_blank"
         class="relative justify-center items-center px-1.5 text-center ease-out duration-150 rounded-sm transition-all hover:bg-stone-200 dark:hover:bg-stone-800 border-transparent text-xs hidden xl:flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-stone-900"
         ><span class="truncate"
-          ><span
-            class="flex text-sm items-center gap-0.5 nav-link transition-colors"
+          ><span class="flex text-sm items-center gap-0.5 nav-link transition-colors"
             ><svg
               class="w-5 h-5"
               viewBox="0 0 17 16"
@@ -122,8 +105,7 @@ import Button from "@components/Button.astro";
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"
-          ></path>
+            d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
         <svg
           id="close-icon"
@@ -137,23 +119,19 @@ import Button from "@components/Button.astro";
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          ></path>
+            d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
   </div>
 </nav>
 
-<!-- Mobile Menu Overlay -->
 <div
   id="mobile-menu"
   class="fixed inset-0 z-50 bg-stone-50 dark:bg-stone-950 hidden lg:hidden"
   aria-hidden="true"
 >
-  <!-- Main Menu View -->
   <div id="main-menu-view" class="h-full flex flex-col relative">
-    <!-- Header with close button -->
     <div class="flex justify-end p-4">
       <button
         id="close-menu-button"
@@ -171,13 +149,11 @@ import Button from "@components/Button.astro";
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          ></path>
+            d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
 
-    <!-- Navigation Items -->
     <nav class="flex-1 px-4 pt-8">
       <ul class="space-y-6 flex flex-col gap-4">
         <li>
@@ -200,16 +176,7 @@ import Button from "@components/Button.astro";
         </li>
         <li>
           <a
-            href="/enterprise"
-            class="block text-3xl nav-link transition-colors"
-            data-astro-prefetch
-          >
-            Enterprise
-          </a>
-        </li>
-        <li>
-          <a
-            href="/pricing"
+            href="/pricing?deployment=cloud"
             class="block text-3xl nav-link transition-colors"
             data-astro-prefetch
           >
@@ -217,25 +184,75 @@ import Button from "@components/Button.astro";
           </a>
         </li>
         <li>
-          <a
-            href="/learn/workflows"
-            class="block text-3xl nav-link transition-colors"
-            data-astro-prefetch
-          >
-            Learn
-          </a>
+          <span class="block text-3xl nav-link">Resources</span>
+          <ul class="mt-2 flex flex-col gap-2">
+            <li>
+              <a
+                href="https://docs.budibase.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block text-2xl nav-link transition-colors"
+              >
+                Docs
+              </a>
+            </li>
+            <li>
+              <a
+                href="/workflows"
+                class="block text-2xl nav-link transition-colors"
+                data-astro-prefetch
+              >
+                Agent workflows
+              </a>
+            </li>
+            <li>
+              <a
+                href="/blog/category/all"
+                class="block text-2xl nav-link transition-colors"
+                data-astro-prefetch
+              >
+                Blog
+              </a>
+            </li>
+            <li>
+              <a
+                href="/changelog"
+                class="block text-2xl nav-link transition-colors"
+                data-astro-prefetch
+              >
+                Changelog
+              </a>
+            </li>
+            <li>
+              <a
+                href="/enterprise"
+                class="block text-2xl nav-link transition-colors"
+                data-astro-prefetch
+              >
+                Enterprise
+              </a>
+            </li>
+            <li>
+              <a
+                href="/partners"
+                class="block text-2xl nav-link transition-colors"
+                data-astro-prefetch
+              >
+                Partners
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>
-
   </div>
-
 </div>
 
 <style>
-
   #mobile-menu {
-    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    transition:
+      opacity 0.2s ease-in-out,
+      visibility 0.2s ease-in-out;
   }
 
   #mobile-menu.hidden {
@@ -253,57 +270,95 @@ import Button from "@components/Button.astro";
   }
 
   .nav-link {
-    color: var(--text-primary);
+    color: var(--text-secondary);
+    font-weight: 500;
   }
 
   .nav-link:hover {
     color: var(--text-secondary) !important;
   }
 
+  .nav-shell :global(header-drop-down summary),
+  .nav-shell :global(header-drop-down summary a) {
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+  }
+
+  .nav-shell :global(header-drop-down summary:hover),
+  .nav-shell :global(header-drop-down summary:focus-visible),
+  .nav-shell :global(header-drop-down summary a:hover),
+  .nav-shell :global(header-drop-down summary a:focus-visible) {
+    color: var(--text-secondary) !important;
+  }
+
   .nav-shell {
     background-color: var(--bg-1) !important;
   }
-
 </style>
 
 <script>
   (function () {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeMenuButton = document.getElementById('close-menu-button');
-    const mainMenuView = document.getElementById('main-menu-view');
-    const menuIcon = document.getElementById('menu-icon');
-    const closeIcon = document.getElementById('close-icon');
+    function normalizeLegacyNavLinks() {
+      const remap = {
+        "/learn/blog": "/blog/category/all",
+        "/learn/workflows": "/workflows",
+        "/learn/changelog": "/changelog",
+      };
+
+      const links = document.querySelectorAll(
+        '#site-nav a[href^="/learn/"], #mobile-menu a[href^="/learn/"]',
+      );
+
+      links.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (!href) return;
+
+        const normalized = href.endsWith("/") && href.length > 1
+          ? href.slice(0, -1)
+          : href;
+        const replacement = remap[normalized];
+        if (replacement) {
+          link.setAttribute("href", replacement);
+        }
+      });
+    }
+
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const closeMenuButton = document.getElementById("close-menu-button");
+    const mainMenuView = document.getElementById("main-menu-view");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
+
+    normalizeLegacyNavLinks();
 
     function openMenu() {
-      mobileMenu?.classList.remove('hidden');
-      mobileMenuButton?.setAttribute('aria-expanded', 'true');
-      menuIcon?.classList.add('hidden');
-      closeIcon?.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
+      mobileMenu?.classList.remove("hidden");
+      mobileMenuButton?.setAttribute("aria-expanded", "true");
+      menuIcon?.classList.add("hidden");
+      closeIcon?.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
     }
 
     function closeMenu() {
-      mobileMenu?.classList.add('hidden');
-      mobileMenuButton?.setAttribute('aria-expanded', 'false');
-      menuIcon?.classList.remove('hidden');
-      closeIcon?.classList.add('hidden');
-      document.body.style.overflow = '';
-      mainMenuView?.classList.remove('hidden');
+      mobileMenu?.classList.add("hidden");
+      mobileMenuButton?.setAttribute("aria-expanded", "false");
+      menuIcon?.classList.remove("hidden");
+      closeIcon?.classList.add("hidden");
+      document.body.style.overflow = "";
+      mainMenuView?.classList.remove("hidden");
     }
 
-    mobileMenuButton?.addEventListener('click', openMenu);
-    closeMenuButton?.addEventListener('click', closeMenu);
-    // Close menu when clicking outside (on the overlay background)
-    mobileMenu?.addEventListener('click', (e) => {
+    mobileMenuButton?.addEventListener("click", openMenu);
+    closeMenuButton?.addEventListener("click", closeMenu);
+    mobileMenu?.addEventListener("click", (e) => {
       if (e.target === mobileMenu) {
         closeMenu();
       }
     });
 
-    // Close menu on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !mobileMenu?.classList.contains('hidden')) {
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !mobileMenu?.classList.contains("hidden")) {
         closeMenu();
       }
     });

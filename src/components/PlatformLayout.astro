@@ -1,78 +1,78 @@
 ---
-import PlatformSidebar from "./PlatformSidebar.astro";
 import CTA from "@components/CTA.astro";
 
 interface NavItem {
-	text: string;
-	link: string;
-	sectionId: string;
-	icon?: any;
-	pageTitle?: string;
-	pageDescription?: string;
+  text: string;
+  link: string;
+  sectionId: string;
+  icon?: any;
+  pageTitle?: string;
+  pageDescription?: string;
 }
 
 interface NavGroup {
-	header?: string;
-	items: NavItem[];
+  header?: string;
+  items: NavItem[];
 }
 
 interface Props {
-	title: string;
-	description: string;
-	navItems: NavItem[] | NavGroup[];
-	mainContentWidth?: "default" | "narrow";
+  title: string;
+  description: string;
+  navItems: NavItem[] | NavGroup[];
+  mainContentWidth?: "default" | "narrow";
 }
 
-const { title, description, navItems, mainContentWidth = "default" } = Astro.props as Props;
+const {
+  title,
+  description,
+  navItems,
+  mainContentWidth = "default",
+} = Astro.props as Props;
 const currentPath = Astro.url.pathname;
 
 function normalizePath(path: string): string {
-	if (path.length > 1 && path.endsWith("/")) {
-		return path.slice(0, -1);
-	}
-	return path;
+  if (path.length > 1 && path.endsWith("/")) {
+    return path.slice(0, -1);
+  }
+  return path;
 }
 
 const normalizedCurrentPath = normalizePath(currentPath);
 const isGrouped = navItems.length > 0 && "items" in navItems[0];
 const flattenedNavItems = isGrouped
-	? (navItems as NavGroup[]).flatMap(group => group.items)
-	: (navItems as NavItem[]);
-const activeNavItem = flattenedNavItems.find(item => normalizePath(item.link) === normalizedCurrentPath);
+  ? (navItems as NavGroup[]).flatMap((group) => group.items)
+  : (navItems as NavItem[]);
+const activeNavItem = flattenedNavItems.find(
+  (item) => normalizePath(item.link) === normalizedCurrentPath,
+);
 const resolvedTitle = activeNavItem?.pageTitle ?? title;
 const resolvedDescription = activeNavItem?.pageDescription ?? description;
-const sideRailLabel = normalizedCurrentPath.startsWith("/enterprise") ? "Enterprise" : "Product";
 const mainInnerClass =
-	mainContentWidth === "narrow"
-		? "side-rail-main-inner side-rail-main-inner--narrow"
-		: "side-rail-main-inner";
+  mainContentWidth === "narrow"
+    ? "side-rail-main-inner side-rail-main-inner--narrow"
+    : "side-rail-main-inner";
 ---
 
-<div class="side-rail-shell">
-	<aside class="side-rail-left chrome-border" aria-label={`${sideRailLabel} navigation`}>
-		<div class="side-rail-left-scroll">
-			<div class="px-3 mb-3 text-sm text-secondary">{sideRailLabel}</div>
-			<PlatformSidebar {navItems} />
-		</div>
-	</aside>
-
-	<div class="side-rail-main">
-		<div class={mainInnerClass}>
-			<section class="side-rail-page-header max-w-3xl">
-				<h1 class="mb-2 text-5xl!">{resolvedTitle}</h1>
-				<p class="text-stone-500! dark:text-stone-400!">{resolvedDescription}</p>
-			</section>
-			<main class="platform-main">
-				<slot />
-			</main>
-			<CTA />
-		</div>
-	</div>
+<div class="platform-layout">
+  <div class={mainInnerClass}>
+    <section class="side-rail-page-header max-w-3xl">
+      <h1 class="mb-2 text-5xl!">{resolvedTitle}</h1>
+      <p class="text-stone-500! dark:text-stone-400!">{resolvedDescription}</p>
+    </section>
+    <main class="platform-main">
+      <slot />
+    </main>
+    <CTA />
+  </div>
 </div>
 
 <style>
-	.platform-main {
-		flex: 1;
-		min-width: 0;
-	}
+  .platform-layout {
+    width: 100%;
+  }
+
+  .platform-main {
+    flex: 1;
+    min-width: 0;
+  }
 </style>

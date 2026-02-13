@@ -31,15 +31,15 @@ const footerColumns: FooterColumn[] = [
     title: "Enterprise",
     links: [
       { label: "Enterprise", url: "/enterprise" },
-      { label: "Security", url: "/enterprise/security" },
-      { label: "Contact Sales", url: "/enterprise/contact-sales" },
+      { label: "Customers", url: "/blog/category/customers" },
     ],
   },
   {
-    title: "Learn",
+    title: "Resources",
     links: [
-      { label: "Workflows", url: "/learn/workflows" },
-      { label: "Blog", url: "/learn/blog" },
+      { label: "Workflows", url: "/workflows" },
+      { label: "Blog", url: "/blog" },
+      { label: "Changelog", url: "/changelog" },
       { label: "Docs", url: "https://docs.budibase.com", target: "_blank" },
     ],
   },
@@ -70,13 +70,13 @@ const footerColumns: FooterColumn[] = [
 ---
 
 <footer
-  class="footer bg-1 border-t-[0.5px] chrome-border px-2 md:px-3 lg:px-4"
+  class="footer bg-1 border-t-[0.5px] chrome-border"
   transition:persist
   transition:name="site-footer"
 >
-  <div class="footer-container w-full">
+  <div class="footer-container container mx-auto px-2 md:px-3 lg:px-4">
     <!-- Upper section: Navigation columns -->
-    <div class="footer-nav px-2 md:px-3 lg:px-4">
+    <div class="footer-nav">
       {footerColumns.map((column) => (
         <div class="footer-column">
           <p>{column.title}</p>
@@ -99,7 +99,7 @@ const footerColumns: FooterColumn[] = [
     </div>
 
     <!-- Lower section: Copyright and controls -->
-    <div class="footer-bottom px-2 md:px-3 lg:px-4">
+    <div class="footer-bottom">
       <div class="footer-copyright">
         <span>© 2025 Budibase, Inc.</span>
         <span class="footer-certification">

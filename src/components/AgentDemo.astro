@@ -10,6 +10,8 @@ import CaretDown from "phosphor-astro/CaretDown.astro";
 import PaperPlaneTilt from "phosphor-astro/PaperPlaneTilt.astro";
 import FileText from "phosphor-astro/FileText.astro";
 import Sparkle from "phosphor-astro/Sparkle.astro";
+import Sun from "phosphor-astro/Sun.astro";
+import Moon from "phosphor-astro/Moon.astro";
 import BBSymbol from "@assets/logos/BBSymbol.svg";
 import MistralLogo from "@assets/logos/Mistral.svg";
 import BudibaseLogo from "@assets/logos/BBSymbol.svg";
@@ -18,7 +20,7 @@ import GoogleLogo from "@assets/logos/Google.svg";
 import OpenAILogo from "@assets/logos/OpenAI.svg";
 import Slack from "@assets/logos/Slack.svg";
 import Jira from "@assets/logos/Jira.svg";
-import FutureGov from "@assets/images/homepage/futureGov.png";
+import BeachBackground from "@assets/images/backgrounds/light/beachtextured.png";
 
 const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
 ---
@@ -26,7 +28,7 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
 <div id={id} class="hero-demo demo-breakout w-full overflow-hidden">
   <div
     class="hero-demo-backdrop w-full overflow-hidden px-4 py-4 sm:px-8 sm:py-8 lg:px-12 lg:py-10"
-    style={`background-image: url('${FutureGov.src}');`}
+    style={`background-image: url('${BeachBackground.src}');`}
   >
     <div class="hero-demo-shell w-full max-w-full overflow-hidden rounded-[6px] border-[0.5px] border-[var(--border-color)] bg-[var(--bg-1)] shadow-[0px_10px_30px_rgb(var(--text)/0.25)]">
     <div class="flex">
@@ -37,7 +39,7 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
             <span class="inline-block h-2.5 w-2.5 rounded-full" style="background-color: rgb(var(--text-muted) / 0.6);"></span>
             <span class="inline-block h-2.5 w-2.5 rounded-full" style="background-color: rgb(var(--text-muted) / 0.6);"></span>
           </div>
-          <div class="absolute left-1/2 top-1/2 w-[min(540px,calc(100%-5.5rem))] -translate-x-1/2 -translate-y-1/2">
+          <div class="absolute left-1/2 top-1/2 w-[min(540px,calc(100%-12.5rem))] -translate-x-1/2 -translate-y-1/2">
             <input
               type="text"
               placeholder="budibase/agents"
@@ -46,6 +48,26 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
             />
           </div>
           <div class="-mr-1 flex items-center">
+            <div class="hero-demo-theme-toggle ml-3" role="group" aria-label="Demo theme selection">
+              <button
+                type="button"
+                class="hero-demo-theme-button"
+                data-hero-demo-theme="light"
+                aria-label="Light theme"
+                aria-pressed="false"
+              >
+                <Sun class="h-3.5 w-3.5" />
+              </button>
+              <button
+                type="button"
+                class="hero-demo-theme-button"
+                data-hero-demo-theme="dark"
+                aria-label="Dark theme"
+                aria-pressed="false"
+              >
+                <Moon class="h-3.5 w-3.5" />
+              </button>
+            </div>
             <button
               type="button"
               class="rounded px-2 py-1 text-[12px] text-[var(--text-secondary)] transition-opacity duration-200 hover:bg-[rgb(var(--text)/0.06)] cursor-pointer"
@@ -294,6 +316,36 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 12px;
   }
 
+  .hero-demo-theme-light {
+    color-scheme: light;
+    --text: 47 47 45;
+    --text-muted: 102 102 99;
+    --brand: 33 95 158;
+    --bg-1: rgb(250 249 245);
+    --bg-2: rgb(240 238 230);
+    --bg-3: rgb(229 228 223);
+    --text-primary: rgb(47 47 45);
+    --text-secondary: rgb(102 102 99);
+    --text-body: rgb(82 79 72);
+    --border-color: rgb(191 191 186 / 0.9);
+    --hero-demo-user-bubble: rgb(195 218 234);
+  }
+
+  .hero-demo-theme-dark {
+    color-scheme: dark;
+    --text: 240 238 230;
+    --text-muted: 145 145 141;
+    --brand: 70 125 180;
+    --bg-1: rgb(20 20 19);
+    --bg-2: rgb(26 25 24);
+    --bg-3: rgb(38 38 37);
+    --text-primary: rgb(240 238 230);
+    --text-secondary: rgb(145 145 141);
+    --text-body: rgb(229 228 223);
+    --border-color: rgb(38 38 37 / 1);
+    --hero-demo-user-bubble: rgb(19 50 79);
+  }
+
   .hero-demo-backdrop {
     background-size: cover;
     background-position: center;
@@ -343,6 +395,45 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
     align-items: center;
     gap: 8px;
     height: 36px;
+  }
+
+  .hero-demo-theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    border-radius: 6px;
+    padding: 2px;
+  }
+
+  .hero-demo-theme-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease;
+  }
+
+  .hero-demo-theme-button:hover {
+    background: rgb(var(--text) / 0.06);
+    color: var(--text-primary);
+  }
+
+  .hero-demo-theme-button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgb(var(--brand) / 0.6);
+  }
+
+  .hero-demo-theme-button.is-active {
+    background: rgb(var(--text) / 0.08);
+    color: var(--text-primary);
   }
 
   .hero-demo-select-wrap {
@@ -420,7 +511,7 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
     transform: scale(1.15);
   }
 
-  :global(.dark) .hero-demo-select-logo.is-monochrome {
+  .hero-demo-theme-dark .hero-demo-select-logo.is-monochrome {
     filter: invert(1) brightness(1.1);
   }
 
@@ -765,6 +856,9 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
     const selectMenu = root.querySelector("[data-hero-demo-select-menu]");
     const refresh = root.querySelector("[data-hero-demo-refresh]");
     const assistant = root.querySelector("[data-hero-demo-assistant]");
+    const themeButtons = Array.from(
+      root.querySelectorAll("[data-hero-demo-theme]"),
+    );
     const scopeAttr = root
       .getAttributeNames()
       .find((name) => name.startsWith("data-astro-cid-"));
@@ -777,7 +871,47 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
     const thinkingDuration = 3200;
     const typingDelay = 22;
     const paragraphDelay = 180;
+    const DEMO_THEME_KEY = "agentDemoTheme";
     let animationId = 0;
+
+    function getInitialDemoTheme() {
+      try {
+        const stored = localStorage.getItem(DEMO_THEME_KEY);
+        if (stored === "light" || stored === "dark") return stored;
+      } catch {
+        // localStorage may be unavailable in restricted contexts.
+      }
+
+      return document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
+    }
+
+    function updateThemeButtons(activeTheme) {
+      themeButtons.forEach((button) => {
+        const htmlButton = button;
+        const theme = htmlButton.getAttribute("data-hero-demo-theme");
+        const isActive = theme === activeTheme;
+        htmlButton.setAttribute("aria-pressed", String(isActive));
+        htmlButton.classList.toggle("is-active", isActive);
+      });
+    }
+
+    function applyDemoTheme(theme, persist = true) {
+      if (theme !== "light" && theme !== "dark") return;
+
+      root.classList.toggle("hero-demo-theme-dark", theme === "dark");
+      root.classList.toggle("hero-demo-theme-light", theme === "light");
+      updateThemeButtons(theme);
+
+      if (persist) {
+        try {
+          localStorage.setItem(DEMO_THEME_KEY, theme);
+        } catch {
+          // localStorage may be unavailable in restricted contexts.
+        }
+      }
+    }
 
     function applyScopeAttr(element) {
       if (scopeAttr) element.setAttribute(scopeAttr, "");
@@ -966,6 +1100,19 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
 
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") closeSelectMenu();
+      });
+    }
+
+    if (themeButtons.length > 0) {
+      const initialTheme = getInitialDemoTheme();
+      applyDemoTheme(initialTheme, false);
+
+      themeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const theme = button.getAttribute("data-hero-demo-theme");
+          if (!theme) return;
+          applyDemoTheme(theme, true);
+        });
       });
     }
 

@@ -1,0 +1,64 @@
+---
+import { BLOG_CATEGORY_ITEMS, type BlogCategory } from "../_feed";
+
+interface Props {
+  currentCategory?: BlogCategory;
+  title?: string;
+}
+
+const { currentCategory = "all", title = "Blog" } = Astro.props as Props;
+---
+
+<aside class="categories-sidebar">
+  <h1 class="mb-4 h2">{title}</h1>
+  <nav aria-label="Blog categories">
+    <ul class="nav-list">
+      {
+        BLOG_CATEGORY_ITEMS.map((category) => (
+          <li>
+            <a
+              href={category.id === "all"
+                ? "/blog"
+                : `/blog/category/${category.id}`}
+              class:list={[
+                "nav-link flex h-8 items-center rounded px-2 text-sm text-primary hover:text-primary dark:text-primary dark:hover:text-primary [&.active]:bg-stone-100 [&.active]:text-sky-700 dark:[&.active]:bg-stone-800 dark:[&.active]:text-sky-200",
+                currentCategory === category.id && "active",
+              ]}
+              data-astro-prefetch
+              data-astro-transition="none"
+            >
+              <span>{category.label}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</aside>
+
+<style>
+  .categories-sidebar {
+    width: 100%;
+  }
+
+  .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 768px) {
+    .nav-list {
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 0.5rem;
+      padding-bottom: 0.25rem;
+    }
+
+    .nav-link {
+      white-space: nowrap;
+    }
+  }
+</style>

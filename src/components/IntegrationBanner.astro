@@ -1,7 +1,7 @@
 ---
 import Button from "@components/Button.astro";
 import { Image } from "astro:assets";
-import CockapooJigsaw from "@assets/images/homepage/CockapooJigsaw.png";
+import ClarenceIcon from "@assets/images/mascot/clarenceIcon.png";
 
 // Logo imports
 import DiscordLogoSvg from "@assets/logos/discord.svg";
@@ -199,7 +199,7 @@ const logos = [
 ];
 ---
 
-<div class="mx-auto grid grid-cols-[repeat(15,40px)] grid-rows-[repeat(7,40px)] md:grid-cols-[repeat(15,56px)] md:grid-rows-[repeat(7,56px)] lg:grid-cols-[repeat(15,66px)] lg:grid-rows-[repeat(7,66px)] gap-3 bg-2 p-8 rounded-lg justify-center">
+<div class="mx-auto grid grid-cols-[repeat(15,34px)] grid-rows-[repeat(7,34px)] md:grid-cols-[repeat(15,50px)] md:grid-rows-[repeat(7,50px)] lg:grid-cols-[repeat(15,60px)] lg:grid-rows-[repeat(7,60px)] gap-3 bg-2 p-8 rounded-lg justify-center">
   {logos.map((logo, index) => {
     // Insert text/button block at position 23 (one position to the left of 24)
     const shouldInsertTextBlock = index === 23;
@@ -211,8 +211,8 @@ const logos = [
             class="col-span-5 row-span-5 flex flex-col items-start justify-center text-left p-6 rounded-lg bg-3"
           >
             <Image
-              src={CockapooJigsaw}
-              alt="Cockapoo with puzzle pieces"
+              src={ClarenceIcon}
+              alt="Clarence icon"
               width={120}
               height={120}
               class="mb-[6px] shrink-0"
@@ -228,7 +228,7 @@ const logos = [
           </div>
         )}
         <div
-          class="shadow-2 h-[40px] w-[40px] md:h-[56px] md:w-[56px] lg:h-[66px] lg:w-[66px] shrink-0 overflow-hidden rounded-lg bg-3 p-4 flex items-center justify-center"
+          class="shadow-2 h-[34px] w-[34px] md:h-[50px] md:w-[50px] lg:h-[60px] lg:w-[60px] shrink-0 overflow-hidden rounded-lg bg-3 p-4 flex items-center justify-center"
           style="opacity: 1; transition: opacity 300ms;"
         >
           <Image

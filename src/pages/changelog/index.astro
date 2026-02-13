@@ -1,22 +1,18 @@
 ---
 import { getCollection } from "astro:content";
 import { format } from "date-fns";
-import Layout from "../../../layouts/MainLayout.astro";
+import Layout from "../../layouts/MainLayout.astro";
 import Tag from "@components/Tag.astro";
-import CategoriesSidebar from "../../blog/_components/CategoriesSidebar.astro";
-import { learnLinks } from "../_learnLinks";
 
-const activeLearnLink = learnLinks.find((link) => link.href === "/learn/changelog");
-const pageTitle = activeLearnLink?.pageTitle ?? "Changelog";
-const pageDescription =
-  activeLearnLink?.pageDescription ?? "What shipped and what changed.";
+const pageTitle = "Changelog";
+const pageDescription = "What shipped and what changed.";
 
-const entries = (await getCollection("changelog", ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
-);
+const entries = (
+  await getCollection("changelog", ({ data }) => !data.draft)
+).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 function getEntryHref(id: string): string {
-  return `/learn/changelog/${id}/`;
+  return `/changelog/${id}/`;
 }
 
 function getTagClass(tag: string): string {
@@ -44,138 +40,132 @@ function getTransitionKey(id: string): string {
 ---
 
 <Layout title={pageTitle} description={pageDescription} enableTransitions>
-  <div class="side-rail-shell">
-    <aside class="side-rail-left chrome-border" aria-label="Learn navigation">
-      <div class="side-rail-left-scroll">
-        <div class="px-3 mb-3 text-sm text-secondary">Learn</div>
-        <CategoriesSidebar
-          showHeader={false}
-          links={learnLinks}
-          activeHref="/learn/changelog"
-        />
-      </div>
-    </aside>
+  <div class="learn-page-shell">
+    <div class="side-rail-main-inner">
+      <section class="side-rail-page-header max-w-3xl">
+        <h1 class="mb-2 text-5xl!">{pageTitle}</h1>
+      </section>
 
-    <div class="side-rail-main">
-      <div class="side-rail-main-inner">
-        <section class="side-rail-page-header max-w-3xl">
-          <h1 class="mb-2 text-5xl!">{pageTitle}</h1>
-        </section>
-
-        <main class="changelog-main">
-          {
-            entries.length === 0 ? (
-              <section class="changelog-empty rounded-2xl p-6 md:p-8">
-                <p class="text-sm md:text-base text-secondary m-0">
-                  No changelog entries yet.
-                </p>
-              </section>
-            ) : (
-              <section class="changelog-table-wrap" aria-labelledby="changelog-table-title">
-                <h2 id="changelog-table-title" class="sr-only">Changelog entries</h2>
-                <div class="changelog-table-scroll" role="region" aria-label="Changelog table">
-                  <table class="changelog-table" data-changelog-table>
-                    <colgroup>
-                      <col class="changelog-col-date" />
-                      <col class="changelog-col-title" />
-                      <col class="changelog-col-version" />
-                      <col class="changelog-col-tags" />
-                    </colgroup>
-                    <thead>
-                      <tr>
-                        <th scope="col" aria-sort="descending">
-                          <button
-                            type="button"
-                            class="changelog-sort-btn"
-                            data-sort-key="date"
-                          >
-                            Date
-                          </button>
-                        </th>
-                        <th scope="col" aria-sort="none">
-                          <button
-                            type="button"
-                            class="changelog-sort-btn"
-                            data-sort-key="title"
-                          >
-                            Title
-                          </button>
-                        </th>
-                        <th scope="col" aria-sort="none">
-                          <button
-                            type="button"
-                            class="changelog-sort-btn"
-                            data-sort-key="version"
-                          >
-                            Version
-                          </button>
-                        </th>
-                        <th scope="col">Tags</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {
-                        entries.map((entry) => {
-                          const href = getEntryHref(entry.id);
-                          const transitionKey = getTransitionKey(entry.id);
-                          return (
-                            <tr
-                              tabindex="0"
-                              role="link"
-                              data-changelog-row
-                              data-href={href}
-                              data-date-ms={String(entry.data.date.getTime())}
-                              data-title={entry.data.title.toLocaleLowerCase()}
-                              data-version={entry.data.version.toLocaleLowerCase()}
-                              aria-label={`Open ${entry.data.title}`}
+      <main class="changelog-main">
+        {
+          entries.length === 0 ? (
+            <section class="changelog-empty rounded-2xl p-6 md:p-8">
+              <p class="text-sm md:text-base text-secondary m-0">
+                No changelog entries yet.
+              </p>
+            </section>
+          ) : (
+            <section
+              class="changelog-table-wrap"
+              aria-labelledby="changelog-table-title"
+            >
+              <h2 id="changelog-table-title" class="sr-only">
+                Changelog entries
+              </h2>
+              <div
+                class="changelog-table-scroll"
+                role="region"
+                aria-label="Changelog table"
+              >
+                <table class="changelog-table" data-changelog-table>
+                  <colgroup>
+                    <col class="changelog-col-date" />
+                    <col class="changelog-col-title" />
+                    <col class="changelog-col-version" />
+                    <col class="changelog-col-tags" />
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th scope="col" aria-sort="descending">
+                        <button
+                          type="button"
+                          class="changelog-sort-btn"
+                          data-sort-key="date"
+                        >
+                          Date
+                        </button>
+                      </th>
+                      <th scope="col" aria-sort="none">
+                        <button
+                          type="button"
+                          class="changelog-sort-btn"
+                          data-sort-key="title"
+                        >
+                          Title
+                        </button>
+                      </th>
+                      <th scope="col" aria-sort="none">
+                        <button
+                          type="button"
+                          class="changelog-sort-btn"
+                          data-sort-key="version"
+                        >
+                          Version
+                        </button>
+                      </th>
+                      <th scope="col">Tags</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {entries.map((entry) => {
+                      const href = getEntryHref(entry.id);
+                      const transitionKey = getTransitionKey(entry.id);
+                      return (
+                        <tr
+                          tabindex="0"
+                          role="link"
+                          data-changelog-row
+                          data-href={href}
+                          data-date-ms={String(entry.data.date.getTime())}
+                          data-title={entry.data.title.toLocaleLowerCase()}
+                          data-version={entry.data.version.toLocaleLowerCase()}
+                          aria-label={`Open ${entry.data.title}`}
+                        >
+                          <td>
+                            <time
+                              class="changelog-date"
+                              datetime={entry.data.date.toISOString()}
                             >
-                              <td>
-                                <time
-                                  class="changelog-date"
-                                  datetime={entry.data.date.toISOString()}
-                                >
-                                  {format(entry.data.date, "MMM d, yyyy")}
-                                </time>
-                              </td>
-                              <td>
-                                <a
-                                  href={href}
-                                  data-astro-prefetch
-                                  class="changelog-title-link"
-                                  transition:name={`${transitionKey}-title`}
-                                >
-                                  {entry.data.title}
-                                </a>
-                              </td>
-                              <td>
-                                <span class="changelog-version">{entry.data.version}</span>
-                              </td>
-                              <td>
-                                <div class="changelog-tags" aria-label="Tags">
-                                  {
-                                    entry.data.tags.map((tag) => (
-                                      <Tag
-                                        label={tag}
-                                        variant="secondary"
-                                        size="small"
-                                        class={`changelog-tag ${getTagClass(tag)}`}
-                                      />
-                                    ))
-                                  }
-                                </div>
-                              </td>
-                            </tr>
-                          );
-                        })
-                      }
-                    </tbody>
-                  </table>
-                </div>
-              </section>
-            )
-          }
-        </main>
-      </div>
+                              {format(entry.data.date, "MMM d, yyyy")}
+                            </time>
+                          </td>
+                          <td>
+                            <a
+                              href={href}
+                              data-astro-prefetch
+                              class="changelog-title-link"
+                              transition:name={`${transitionKey}-title`}
+                            >
+                              {entry.data.title}
+                            </a>
+                          </td>
+                          <td>
+                            <span class="changelog-version">
+                              {entry.data.version}
+                            </span>
+                          </td>
+                          <td>
+                            <div class="changelog-tags" aria-label="Tags">
+                              {entry.data.tags.map((tag) => (
+                                <Tag
+                                  label={tag}
+                                  variant="secondary"
+                                  size="small"
+                                  class={`changelog-tag ${getTagClass(tag)}`}
+                                />
+                              ))}
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          )
+        }
+      </main>
     </div>
   </div>
 
@@ -195,7 +185,10 @@ function getTransitionKey(id: string): string {
 
           row.addEventListener("click", (event) => {
             const target = event.target;
-            if (target instanceof Element && target.closest(interactiveSelector)) {
+            if (
+              target instanceof Element &&
+              target.closest(interactiveSelector)
+            ) {
               return;
             }
             window.location.assign(href);
@@ -214,9 +207,7 @@ function getTransitionKey(id: string): string {
         if (table.getAttribute("data-sort-bound") !== "true") {
           table.setAttribute("data-sort-bound", "true");
 
-          const headers = Array.from(
-            table.querySelectorAll("[data-sort-key]"),
-          );
+          const headers = Array.from(table.querySelectorAll("[data-sort-key]"));
           const body = table.tBodies[0];
           if (!body || headers.length === 0) return;
 
@@ -243,7 +234,10 @@ function getTransitionKey(id: string): string {
           const sortRows = (key, direction) => {
             const rowsToSort = Array.from(body.querySelectorAll("tr"));
             rowsToSort.sort((a, b) => {
-              if (!(a instanceof HTMLTableRowElement) || !(b instanceof HTMLTableRowElement)) {
+              if (
+                !(a instanceof HTMLTableRowElement) ||
+                !(b instanceof HTMLTableRowElement)
+              ) {
                 return 0;
               }
 
@@ -310,6 +304,10 @@ function getTransitionKey(id: string): string {
   :global(::view-transition-old(*)),
   :global(::view-transition-new(*)) {
     animation-duration: 120ms;
+  }
+
+  .learn-page-shell {
+    width: 100%;
   }
 
   .changelog-main {
@@ -457,32 +455,56 @@ function getTransitionKey(id: string): string {
   }
 
   :global(.changelog-tag.changelog-tag--added) {
-    background: color-mix(in srgb, var(--accent-green) 16%, var(--bg-3)) !important;
+    background: color-mix(
+      in srgb,
+      var(--accent-green) 16%,
+      var(--bg-3)
+    ) !important;
     color: var(--accent-green) !important;
   }
 
   :global(.changelog-tag.changelog-tag--changed) {
-    background: color-mix(in srgb, var(--accent-blue) 16%, var(--bg-3)) !important;
+    background: color-mix(
+      in srgb,
+      var(--accent-blue) 16%,
+      var(--bg-3)
+    ) !important;
     color: var(--accent-blue) !important;
   }
 
   :global(.changelog-tag.changelog-tag--deprecated) {
-    background: color-mix(in srgb, var(--accent-orange) 16%, var(--bg-3)) !important;
+    background: color-mix(
+      in srgb,
+      var(--accent-orange) 16%,
+      var(--bg-3)
+    ) !important;
     color: var(--accent-orange) !important;
   }
 
   :global(.changelog-tag.changelog-tag--removed) {
-    background: color-mix(in srgb, var(--accent-red) 16%, var(--bg-3)) !important;
+    background: color-mix(
+      in srgb,
+      var(--accent-red) 16%,
+      var(--bg-3)
+    ) !important;
     color: var(--accent-red) !important;
   }
 
   :global(.changelog-tag.changelog-tag--fixed) {
-    background: color-mix(in srgb, var(--accent-purple) 16%, var(--bg-3)) !important;
+    background: color-mix(
+      in srgb,
+      var(--accent-purple) 16%,
+      var(--bg-3)
+    ) !important;
     color: var(--accent-purple) !important;
   }
 
   :global(.changelog-tag.changelog-tag--security) {
-    background: color-mix(in srgb, var(--accent-grey) 20%, var(--bg-3)) !important;
+    background: color-mix(
+      in srgb,
+      var(--accent-grey) 20%,
+      var(--bg-3)
+    ) !important;
     color: var(--text-primary) !important;
   }
 

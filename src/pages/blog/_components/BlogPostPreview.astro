@@ -1,89 +1,88 @@
 ---
-import { format } from 'date-fns';
-import type { CollectionEntry } from 'astro:content';
+import { format } from "date-fns";
+import type { BlogFeedItem } from "../_feed";
 
 interface Props {
-	post: CollectionEntry<'blog'>;
-	basePath?: string;
+  item: BlogFeedItem;
 }
 
-const { post, basePath = '/blog' } = Astro.props as Props;
-const metaLabel = post.data.category ?? (post.data.featured ? 'Featured' : 'Blog');
-const transitionKey = post.id.replaceAll('/', '-');
+const { item } = Astro.props as Props;
 ---
 
 <article class="blog-post-preview">
-	<a
-		href={`${basePath}/${post.id}/`}
-		data-astro-prefetch
-		class="blog-post-card"
-	>
-		<h3 class="blog-post-title" transition:name={`${transitionKey}-title`}>
-			{post.data.title}
-		</h3>
-		{post.data.description && (
-			<p class="blog-post-summary text-[color:rgb(var(--text-subtle))]">
-				{post.data.description}
-			</p>
-		)}
-		<div class="blog-post-meta" transition:name={`${transitionKey}-meta`}>
-			<span class="blog-post-category">{metaLabel}</span>
-			<span class="blog-post-dot">·</span>
-			<time datetime={post.data.publishDate.toISOString()}>
-				{format(post.data.publishDate, 'MMM d, yyyy')}
-			</time>
-		</div>
-	</a>
+  <a href={`/blog/${item.slug}/`} data-astro-prefetch class="blog-post-card">
+    <h3 class="blog-post-title" transition:name={`${item.transitionKey}-title`}>
+      {item.title}
+    </h3>
+    {item.description && (
+      <p class="blog-post-summary text-[color:rgb(var(--text-subtle))]">
+        {item.description}
+      </p>
+    )}
+    <div class="blog-post-meta" transition:name={`${item.transitionKey}-meta`}>
+      <span class="blog-post-category">{item.categoryLabel}</span>
+      {
+        item.publishDate && (
+          <>
+            <span class="blog-post-dot">·</span>
+            <time datetime={item.publishDate.toISOString()}>
+              {format(item.publishDate, "MMM d, yyyy")}
+            </time>
+          </>
+        )
+      }
+    </div>
+  </a>
 </article>
 
 <style>
-	.blog-post-preview {
-		margin-bottom: 0;
-	}
+  .blog-post-preview {
+    margin-bottom: 0;
+  }
 
-	.blog-post-card {
-		display: block;
-		width: 100%;
-		max-width: 600px;
-		padding: 1.1rem 1.25rem;
-		border-radius: 6px;
-		background: rgb(var(--surface));
-		border: none;
-		color: inherit;
-		text-decoration: none;
-		transition: transform 120ms ease, background 120ms ease;
-	}
+  .blog-post-card {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    padding: 1.1rem 1.25rem;
+    border-radius: 6px;
+    background: rgb(var(--surface));
+    border: none;
+    color: inherit;
+    text-decoration: none;
+    transition: transform 120ms ease, background 120ms ease;
+  }
 
-	.blog-post-card:hover {
-		transform: translateY(-1px);
-		background: rgb(var(--surface-2));
-	}
+  .blog-post-card:hover {
+    transform: translateY(-1px);
+    background: rgb(var(--surface-2));
+  }
 
-	.blog-post-title {
-		margin: 0 0 0.35rem;
-		font-size: 1rem;
-		font-weight: 500;
-		color: rgb(var(--text));
-		text-decoration: none;
-	}
+  .blog-post-title {
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(var(--text));
+    text-decoration: none;
+  }
 
-	.blog-post-summary {
-		margin: 0 0 0.75rem;
-		font-size: 0.95rem;
-		color: rgb(var(--text-subtle));
-		text-decoration: none;
-	}
+  .blog-post-summary {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+    color: rgb(var(--text-subtle));
+    text-decoration: none;
+  }
 
-	.blog-post-meta {
-		display: flex;
-		gap: 0.4rem;
-		align-items: center;
-		font-size: 0.85rem;
-		color: var(--color-grey-500);
-		text-decoration: none;
-	}
+  .blog-post-meta {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--color-grey-500);
+    text-decoration: none;
+  }
 
-	.blog-post-dot {
-		opacity: 0.7;
-	}
+  .blog-post-dot {
+    opacity: 0.7;
+  }
 </style>

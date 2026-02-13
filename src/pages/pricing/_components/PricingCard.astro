@@ -82,9 +82,9 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
           >
           <span class="inline-flex gap-0.5">
             {creatorLabel && (
-              <span class="text-base text-stone-600 dark:text-stone-400">{creatorLabel}</span>
+              <span class="text-[15px] text-stone-600 dark:text-stone-400">{creatorLabel}</span>
             )}
-            <span class="text-base text-stone-600 dark:text-stone-400">{creatorUnit}</span>
+            <span class="text-[15px] text-stone-600 dark:text-stone-400">{creatorUnit}</span>
           </span>
         </p>
         {userPrice !== undefined && (
@@ -96,14 +96,14 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
               {typeof userPrice === "number" ? `$${userPrice}` : userPrice}
             </span>
             <span class="inline-flex gap-0.5">
-              <span class="text-base text-stone-600 dark:text-stone-400">{userLabel}</span>
-              <span class="text-base text-stone-600 dark:text-stone-400">{userUnit}</span>
+              <span class="text-[15px] text-stone-600 dark:text-stone-400">{userLabel}</span>
+              <span class="text-[15px] text-stone-600 dark:text-stone-400">{userUnit}</span>
             </span>
           </p>
         )}
         {additionalPriceText && (
           <p class="price-line">
-            <span class="text-base text-stone-600 dark:text-stone-400">{additionalPriceText}</span>
+            <span class="text-[15px] text-stone-600 dark:text-stone-400">{additionalPriceText}</span>
           </p>
         )}
       </div>
@@ -119,7 +119,7 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
               const featureText = typeof feat === "string" ? feat : feat.text;
               const iconType = typeof feat === "string" ? "check" : (feat.icon || "check");
               return (
-                <li key={`feature-${index}`}>
+                <li key={`feature-${index}`} class="text-[15px]">
                   <span class="check">
                     {iconType === "plus" ? (
                       <Plus class="fill-stone-700 dark:fill-stone-300 w-3" aria-hidden="true" />

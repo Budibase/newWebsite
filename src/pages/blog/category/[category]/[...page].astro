@@ -1,14 +1,27 @@
 ---
 import type { GetStaticPathsOptions, Page } from "astro";
-import Pagination from "../../components/Pagination.astro";
-import Layout from "../../layouts/MainLayout.astro";
-import BlogPostPreview from "./_components/BlogPostPreview.astro";
-import CategoryFilters from "./_components/CategoryFilters.astro";
-import { getBlogFeedItems, type BlogFeedItem } from "./_feed";
+import Pagination from "../../../../components/Pagination.astro";
+import Layout from "../../../../layouts/MainLayout.astro";
+import BlogPostPreview from "../../../blog/_components/BlogPostPreview.astro";
+import CategoryFilters from "../../../blog/_components/CategoryFilters.astro";
+import {
+  BLOG_CATEGORY_ITEMS,
+  filterBlogFeed,
+  getBlogFeedItems,
+  isValidBlogCategory,
+  type BlogCategory,
+  type BlogFeedItem,
+} from "../../../blog/_feed";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const feedItems = await getBlogFeedItems();
-  return paginate(feedItems, { pageSize: 12 });
+  const items = await getBlogFeedItems();
+
+  return BLOG_CATEGORY_ITEMS.flatMap((category) =>
+    paginate(filterBlogFeed(items, category.id), {
+      pageSize: 12,
+      params: { category: category.id },
+    }),
+  );
 }
 
 interface Props {
@@ -16,24 +29,31 @@ interface Props {
 }
 
 const { page } = Astro.props as Props;
+const rawCategory = Astro.params.category ?? "all";
+const category: BlogCategory = isValidBlogCategory(rawCategory)
+  ? rawCategory
+  : "all";
 
+const currentCategoryLabel =
+  BLOG_CATEGORY_ITEMS.find((item) => item.id === category)?.label ?? "All posts";
 const allPages = [...Array(page.lastPage).keys()].map((num) => {
-  return `/blog${num === 0 ? "" : `/${String(num + 1)}`}`;
+  return `/blog/category/${category}${num === 0 ? "" : `/${String(num + 1)}`}`;
 });
 ---
 
 <Layout
-  title="Blog"
+  title={`Blog / ${currentCategoryLabel}`}
   description="Product updates, customer stories, and workflow guides from Budibase."
   image={{ src: "/og/blog.jpg", alt: "What's new in the Budibase ecosystem" }}
 >
   <div class="mt-24 container max-w-6xl mx-auto blog-index">
     <div class="blog-layout">
       <aside class="blog-sidebar">
-        <CategoryFilters currentCategory="all" title="Blog" />
+        <CategoryFilters currentCategory={category} title="Blog" />
       </aside>
 
       <main class="blog-main">
+        <h1 class="text-5xl! mb-4">Blog / {currentCategoryLabel}</h1>
         <ul class="blog-posts-list flex flex-col gap-3">
           {
             page.data.map((item) => (

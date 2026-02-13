@@ -1,106 +1,201 @@
 ---
 import Layout from "../../layouts/MainLayout.astro";
 import PlatformLayout from "@components/PlatformLayout.astro";
-import { enterpriseNavItemsData } from "./_navItems";
-import Buildings from "phosphor-astro/Buildings.astro";
-import ShieldCheck from "phosphor-astro/ShieldCheck.astro";
-import Sliders from "phosphor-astro/Sliders.astro";
-import Headset from "phosphor-astro/Headset.astro";
-import MapPin from "phosphor-astro/MapPin.astro";
-import HardHat from "phosphor-astro/HardHat.astro";
-import Broadcast from "phosphor-astro/Broadcast.astro";
-import Recycle from "phosphor-astro/Recycle.astro";
-import Truck from "phosphor-astro/Truck.astro";
-import Bank from "phosphor-astro/Bank.astro";
-import Gear from "phosphor-astro/Gear.astro";
-import Package from "phosphor-astro/Package.astro";
-import ChartBar from "phosphor-astro/ChartBar.astro";
-import EnvelopeSimple from "phosphor-astro/EnvelopeSimple.astro";
 import HeroBg from "@assets/images/homepage/valley.png";
 import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
 
-const iconMap: Record<string, any> = {
-	Buildings,
-	ShieldCheck,
-	Sliders,
-	Headset,
-	MapPin,
-	HardHat,
-	Broadcast,
-	Recycle,
-	Truck,
-	Bank,
-	Gear,
-	Package,
-	ChartBar,
-	EnvelopeSimple,
-};
-
-const navItems = enterpriseNavItemsData.map(group => ({
-	...group,
-	items: group.items.map(item => ({
-		...item,
-		icon: iconMap[item.iconName],
-	})),
-}));
-const currentNavItem = enterpriseNavItemsData
-	.flatMap(group => group.items)
-	.find(item => item.link === Astro.url.pathname || `${item.link}/` === Astro.url.pathname);
-const pageTitle = currentNavItem?.pageTitle ?? "Enterprise";
+const pageTitle = "Enterprise";
 const pageDescription =
-	currentNavItem?.pageDescription ??
-	"Enterprise-grade security, control, & support for mission-critical workflows.";
+  "Budibase Enterprise delivers the security, control, and dedicated support that large organizations need.";
+
+const navItems = [
+  {
+    text: "Overview",
+    link: "/enterprise",
+    sectionId: "overview",
+    pageTitle,
+    pageDescription,
+  },
+];
+
+const featureCards = [
+  {
+    label: "SOC 2 Compliant",
+    description:
+      "Enterprise-grade security certifications to meet your compliance requirements.",
+  },
+  {
+    label: "Self-hosted",
+    description: "Deploy on your own infrastructure with complete data sovereignty.",
+  },
+  {
+    label: "SSO & SCIM",
+    description:
+      "Integrate with your identity provider for seamless authentication and user provisioning.",
+  },
+  {
+    label: "Air-gapped support",
+    description: "Run completely offline in secure, isolated environments.",
+  },
+  {
+    label: "Multi-tenancy",
+    description:
+      "Isolate teams and departments with separate workspaces and data.",
+  },
+  {
+    label: "Custom branding",
+    description:
+      "White-label the platform with your own logos, colors, and domain.",
+  },
+  {
+    label: "Environment controls",
+    description:
+      "Manage development, staging, and production environments separately.",
+  },
+  {
+    label: "SOC 2 Type II",
+    description:
+      "Independently audited security controls demonstrating our commitment to data protection.",
+  },
+  {
+    label: "Encryption at rest",
+    description: "All data encrypted using AES-256 encryption standards.",
+  },
+  {
+    label: "Encryption in transit",
+    description: "TLS 1.3 for all data transmission between clients and servers.",
+  },
+  {
+    label: "SSO integration",
+    description:
+      "SAML 2.0 and OpenID Connect support for enterprise identity providers.",
+  },
+  {
+    label: "Audit logging",
+    description:
+      "Comprehensive audit trails for all user actions and system events.",
+  },
+  {
+    label: "Role-based access",
+    description:
+      "Fine-grained permissions with custom roles and group management.",
+  },
+  {
+    label: "Priority response",
+    description:
+      "Guaranteed response times with escalation paths for critical issues.",
+  },
+  {
+    label: "Dedicated CSM",
+    description:
+      "A dedicated Customer Success Manager to guide your journey.",
+  },
+  {
+    label: "Onboarding assistance",
+    description: "Hands-on help to get your team up and running quickly.",
+  },
+  {
+    label: "Training sessions",
+    description:
+      "Custom training for your team on platform features and best practices.",
+  },
+  {
+    label: "Architecture review",
+    description: "Expert guidance on designing scalable, secure solutions.",
+  },
+  {
+    label: "SLA guarantees",
+    description:
+      "Contractual uptime and support commitments you can rely on.",
+  },
+];
+
+const customerCards = [
+  {
+    label: "Pays Basque",
+    description: "Basque Country water network digitized critical operations.",
+    linkUrl: "/blog/pays-basque",
+  },
+  {
+    label: "Knights Brown",
+    description: "Accelerating internal tool development with low-code.",
+    linkUrl: "/blog/knights-brown",
+  },
+  {
+    label: "Ströer-x",
+    description: "Operational workflows transformed with custom applications.",
+    linkUrl: "/blog/stroer-x",
+  },
+  {
+    label: "Reworld",
+    description: "Projected savings through streamlined enterprise workflows.",
+    linkUrl: "/blog/reworld",
+  },
+  {
+    label: "Schnellecke",
+    description: "Delivery time cut from days to under an hour.",
+    linkUrl: "/blog/schnellecke",
+  },
+  {
+    label: "Bulgarian Government",
+    description: "Mission-critical refugee response delivered at national scale.",
+    linkUrl: "/blog/bulgarian-government",
+  },
+  {
+    label: "Herrenknecht",
+    description: "Fast deployment of data-intensive tools for field teams.",
+    linkUrl: "/blog/herrenknecht",
+  },
+  {
+    label: "Geis",
+    description: "Non-developers built internal apps with speed and confidence.",
+    linkUrl: "/blog/geis",
+  },
+  {
+    label: "Minitab",
+    description: "Unified campaign operations in a single enterprise platform.",
+    linkUrl: "/blog/minitab",
+  },
+];
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-	<PlatformLayout
-		title={pageTitle}
-		description={pageDescription}
-		{navItems}
-	>
-		<!-- Overview Section -->
-		<div class="mb-8">
-			<div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-			<Image
-				src={HeroBg}
-				alt="Enterprise overview"
-				class="w-full h-96 object-cover rounded-md"
-			/>
-			</div>
+  <PlatformLayout title={pageTitle} description={pageDescription} {navItems}>
+    <div class="mb-10">
+      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+        <Image
+          src={HeroBg}
+          alt="Enterprise overview"
+          class="w-full h-96 object-cover rounded-md"
+        />
+      </div>
 
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-			>
-				<Card
-					label="SOC 2 Compliant"
-					description="Enterprise-grade security certifications to meet your compliance requirements."
-				/>
-				<Card
-					label="Self-hosted"
-					description="Deploy on your own infrastructure with complete data sovereignty."
-				/>
-				<Card
-					label="SSO & SCIM"
-					description="Integrate with your identity provider for seamless authentication and user provisioning."
-				/>
-				<Card
-					label="Air-gapped support"
-					description="Run completely offline in secure, isolated environments."
-				/>
-				<Card
-					label="Multi-tenancy"
-					description="Isolate teams and departments with separate workspaces and data."
-				/>
-				<Card
-					label="Custom branding"
-					description="White-label the platform with your own logos, colors, and domain."
-				/>
-				<Card
-					label="Environment controls"
-					description="Manage development, staging, and production environments separately."
-				/>
-			</div>
-		</div>
-	</PlatformLayout>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-2">
+        {
+          featureCards.map((card) => (
+            <Card label={card.label} description={card.description} />
+          ))
+        }
+      </div>
+    </div>
+
+    <section class="mb-8">
+      <h2 class="mb-6 text-xl md:text-2xl lg:text-3xl text-secondary text-center">
+        Enterprise customers
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-2">
+        {
+          customerCards.map((card) => (
+            <Card
+              tag="/Customers"
+              label={card.label}
+              description={card.description}
+              linkUrl={card.linkUrl}
+            />
+          ))
+        }
+      </div>
+    </section>
+  </PlatformLayout>
 </Layout>

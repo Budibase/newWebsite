@@ -1,0 +1,79 @@
+---
+import Layout from "../../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+import PlaybookRow from "@components/workflows/PlaybookRow.astro";
+
+const workflows = await getCollection("workflows");
+const orderedSlugs = [
+  "incident-triage",
+  "access-request",
+  "change-management",
+  "password-reset",
+  "employee-onboarding",
+  "holiday-approval",
+  "invoice-approval",
+  "support-ticket-triage",
+];
+const orderedWorkflows = orderedSlugs
+  .map((slug) =>
+    workflows.find((entry) => entry.data.slug === slug || entry.id === slug),
+  )
+  .filter(Boolean) as typeof workflows;
+const workflowRows = orderedWorkflows.length ? orderedWorkflows : workflows;
+const pageTitle = "Agent workflows";
+const pageDescription = "Proven workflow playbooks for real-world use cases.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <div class="learn-page-shell">
+    <div class="side-rail-main-inner">
+      <section class="side-rail-page-header max-w-3xl">
+        <h1 class="mb-2 text-5xl!">{pageTitle}</h1>
+      </section>
+
+      <main class="blog-main">
+        <section class="pb-12">
+          <div
+            class="grid grid-cols-[1fr_180px_140px] gap-4 !text-base tracking-wide text-stone-500 dark:text-stone-400 border-b border-stone-200/70 dark:border-stone-800/70 pb-2 px-2"
+          >
+            <span>Workflow</span>
+            <span>Role</span>
+            <span>Copies</span>
+          </div>
+          <div>
+            {
+              workflowRows.map((entry) =>
+                (() => {
+                  const entrySlug = entry.data.slug ?? entry.id;
+                  return (
+                    <PlaybookRow
+                      href={`/workflows/${entrySlug}`}
+                      title={entry.data.title}
+                      role={entry.data.role}
+                      tags={entry.data.tags}
+                      copies={
+                        Math.floor(Math.random() * (5000 - 200 + 1)) + 200
+                      }
+                    />
+                  );
+                })(),
+              )
+            }
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .learn-page-shell {
+    width: 100%;
+  }
+
+  .blog-main {
+    flex: 1;
+    min-width: 0;
+    min-height: 60vh;
+  }
+</style>

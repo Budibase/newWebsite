@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import { format } from "date-fns";
-import Layout from "../../../layouts/MainLayout.astro";
+import Layout from "../../layouts/MainLayout.astro";
 import Tag from "@components/Tag.astro";
 import Icon from "@components/Icon.astro";
 
@@ -45,63 +45,73 @@ function getTagClass(tag: string): string {
 ---
 
 <Layout title={pageTitle} description={pageDescription} enableTransitions>
-  <div class="side-rail-shell">
-    <aside class="side-rail-left chrome-border changelog-detail-rail" aria-label="Release metadata">
-      <div class="side-rail-left-scroll changelog-detail-meta">
-        <a href="/learn/changelog" class="changelog-back-link" data-astro-prefetch>
-          <Icon name="ArrowRight" class="w-4 h-4 rotate-180" />
-          <span>Back</span>
-        </a>
+  <div class="learn-detail-shell">
+    <main class="side-rail-main-inner changelog-detail-main pb-20">
+      <header class="side-rail-page-header changelog-detail-header">
+        <p class="changelog-eyebrow">Changelog</p>
+        <h1
+          class="changelog-detail-title"
+          transition:name={`${transitionKey}-title`}
+        >
+          {entry.data.title}
+        </h1>
+        {
+          entry.data.description && (
+            <p class="changelog-detail-description">{entry.data.description}</p>
+          )
+        }
 
-        <div class="changelog-meta-group">
-          <div class="changelog-meta-label">Version</div>
-          <div class="changelog-meta-value changelog-version-value">{entry.data.version}</div>
-        </div>
+        <div class="changelog-detail-meta-card bg-2 rounded-md p-3 mt-4">
+          <a
+            href="/changelog"
+            class="changelog-back-link"
+            data-astro-prefetch
+          >
+            <Icon name="ArrowRight" class="w-4 h-4 rotate-180" />
+            <span>Back</span>
+          </a>
 
-        <div class="changelog-meta-group">
-          <div class="changelog-meta-label">Date</div>
-          <time class="changelog-meta-value changelog-date-value" datetime={entry.data.date.toISOString()}>
-            {format(entry.data.date, "MMM d, yyyy")}
-          </time>
-        </div>
+          <div class="changelog-detail-meta">
+            <div class="changelog-meta-group">
+              <div class="changelog-meta-label">Version</div>
+              <div class="changelog-meta-value changelog-version-value">
+                {entry.data.version}
+              </div>
+            </div>
 
-        <div class="changelog-meta-group">
-          <div class="changelog-meta-label">Tags</div>
-          <div class="changelog-tag-list">
-            {
-              entry.data.tags.map((tag) => (
-                <Tag
-                  label={tag}
-                  variant="secondary"
-                  size="small"
-                  class={`changelog-tag ${getTagClass(tag)}`}
-                />
-              ))
-            }
+            <div class="changelog-meta-group">
+              <div class="changelog-meta-label">Date</div>
+              <time
+                class="changelog-meta-value changelog-date-value"
+                datetime={entry.data.date.toISOString()}
+              >
+                {format(entry.data.date, "MMM d, yyyy")}
+              </time>
+            </div>
+
+            <div class="changelog-meta-group">
+              <div class="changelog-meta-label">Tags</div>
+              <div class="changelog-tag-list">
+                {
+                  entry.data.tags.map((tag) => (
+                    <Tag
+                      label={tag}
+                      variant="secondary"
+                      size="small"
+                      class={`changelog-tag ${getTagClass(tag)}`}
+                    />
+                  ))
+                }
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </aside>
+      </header>
 
-    <div class="side-rail-main">
-      <main class="side-rail-main-inner changelog-detail-main">
-        <header class="side-rail-page-header changelog-detail-header">
-          <p class="changelog-eyebrow">Changelog</p>
-          <h1 class="changelog-detail-title" transition:name={`${transitionKey}-title`}>
-            {entry.data.title}
-          </h1>
-          {
-            entry.data.description && (
-              <p class="changelog-detail-description">{entry.data.description}</p>
-            )
-          }
-        </header>
-
-        <article class="changelog-article">
-          <Content />
-        </article>
-      </main>
-    </div>
+      <article class="changelog-article">
+        <Content />
+      </article>
+    </main>
   </div>
 </Layout>
 
@@ -112,14 +122,18 @@ function getTagClass(tag: string): string {
     animation-duration: 120ms;
   }
 
+  .learn-detail-shell {
+    width: 100%;
+  }
+
+  .changelog-detail-meta-card {
+    display: grid;
+    gap: 0.85rem;
+  }
+
   .changelog-detail-meta {
     display: grid;
     gap: 0.85rem;
-    align-content: start;
-  }
-
-  .changelog-detail-rail {
-    display: none;
   }
 
   .changelog-back-link {
@@ -171,32 +185,56 @@ function getTagClass(tag: string): string {
   }
 
   :global(.changelog-tag.changelog-tag--added) {
-    background: color-mix(in srgb, var(--accent-green) 16%, var(--bg-3)) !important;
+    background: color-mix(
+      in srgb,
+      var(--accent-green) 16%,
+      var(--bg-3)
+    ) !important;
     color: var(--accent-green) !important;
   }
 
   :global(.changelog-tag.changelog-tag--changed) {
-    background: color-mix(in srgb, var(--accent-blue) 16%, var(--bg-3)) !important;
+    background: color-mix(
+      in srgb,
+      var(--accent-blue) 16%,
+      var(--bg-3)
+    ) !important;
     color: var(--accent-blue) !important;
   }
 
   :global(.changelog-tag.changelog-tag--deprecated) {
-    background: color-mix(in srgb, var(--accent-orange) 16%, var(--bg-3)) !important;
+    background: color-mix(
+      in srgb,
+      var(--accent-orange) 16%,
+      var(--bg-3)
+    ) !important;
     color: var(--accent-orange) !important;
   }
 
   :global(.changelog-tag.changelog-tag--removed) {
-    background: color-mix(in srgb, var(--accent-red) 16%, var(--bg-3)) !important;
+    background: color-mix(
+      in srgb,
+      var(--accent-red) 16%,
+      var(--bg-3)
+    ) !important;
     color: var(--accent-red) !important;
   }
 
   :global(.changelog-tag.changelog-tag--fixed) {
-    background: color-mix(in srgb, var(--accent-purple) 16%, var(--bg-3)) !important;
+    background: color-mix(
+      in srgb,
+      var(--accent-purple) 16%,
+      var(--bg-3)
+    ) !important;
     color: var(--accent-purple) !important;
   }
 
   :global(.changelog-tag.changelog-tag--security) {
-    background: color-mix(in srgb, var(--accent-grey) 20%, var(--bg-3)) !important;
+    background: color-mix(
+      in srgb,
+      var(--accent-grey) 20%,
+      var(--bg-3)
+    ) !important;
     color: var(--text-primary) !important;
   }
 
@@ -242,9 +280,10 @@ function getTagClass(tag: string): string {
     scroll-margin-top: calc(var(--site-nav-height) + 24px);
   }
 
-  @media (min-width: 1024px) {
-    .changelog-detail-rail {
-      display: block;
+  @media (min-width: 768px) {
+    .changelog-detail-meta {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
     }
   }
 </style>

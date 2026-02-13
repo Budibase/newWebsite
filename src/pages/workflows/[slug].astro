@@ -1,5 +1,5 @@
 ---
-import Layout from "../../../layouts/MainLayout.astro";
+import Layout from "../../layouts/MainLayout.astro";
 import Icon from "@components/Icon.astro";
 import { getCollection, render } from "astro:content";
 
@@ -12,84 +12,84 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { title, outcome, sidebar } = entry.data;
+const { title, outcome, sidebar = [] } = entry.data;
 const { Content } = await render(entry);
 ---
 
 <Layout title={`${title} Workflow Playbook | Budibase`} description={outcome}>
-  <div class="side-rail-shell">
-    <aside
-      class="side-rail-left chrome-border"
-      aria-label="Workflow navigation"
-    >
-      <div class="side-rail-left-scroll" data-workflow-sidebar>
-        <a
-          href="/learn/workflows"
-          class="inline-flex items-center gap-[6px] text-sm text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 mb-2"
-        >
-          <Icon name="ArrowRight" class="w-4 h-4 rotate-180" />
-          <span>Back</span>
-        </a>
-        <nav aria-label="Build steps">
-          <ul class="flex flex-col">
-            {
-              sidebar.map((item, index) => {
-                const iconNames = [
-                  "One",
-                  "Two",
-                  "Three",
-                  "Four",
-                  "Five",
-                  "Six",
-                  "Seven",
-                  "Eight",
-                  "Nine",
-                ];
-                const iconSuffix =
-                  iconNames[Math.min(index, iconNames.length - 1)];
-                const iconName = `NumberCircle${iconSuffix}`;
-                return (
-                  <li>
-                    <a
-                      class:list={[
-                        "nav-link group flex items-center gap-2 h-8 px-3 rounded-md text-sm text-primary dark:text-primary hover:text-primary dark:hover:text-primary [&.active]:text-sky-700 dark:[&.active]:text-sky-200 [&.active:hover]:text-sky-600 dark:[&.active:hover]:text-sky-100 [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800",
-                        item.id === "overview" && "active",
-                      ]}
-                      href={`#${item.id}`}
-                      data-step-id={item.id}
-                      aria-current={item.id === "overview" ? "page" : undefined}
-                    >
-                      <Icon
-                        name={iconName}
-                        weight="fill"
-                        class="w-4 h-4 text-stone-500 dark:text-stone-500 group-[.active]:text-sky-700 dark:group-[.active]:text-sky-200"
-                      />
-                      <span class="sr-only">Step {index + 1}</span>
-                      <span>{item.label}</span>
-                    </a>
-                  </li>
-                );
-              })
-            }
-          </ul>
-        </nav>
-      </div>
-    </aside>
+  <div class="learn-detail-shell">
+    <main class="side-rail-main-inner workflow-main pb-20">
+      <header class="side-rail-page-header">
+        <h1 class="mb-2 text-5xl!">{title}</h1>
+        <p class="text-stone-500! dark:text-stone-400!">{outcome}</p>
 
-    <div class="side-rail-main">
-      <main class="side-rail-main-inner workflow-main pb-20">
-        <header class="side-rail-page-header">
-          <h1 class="mb-2 text-5xl!">{title}</h1>
-          <p class="text-stone-500! dark:text-stone-400!">{outcome}</p>
-        </header>
-        <article class="workflow-article">
-          <Content />
-        </article>
-      </main>
-    </div>
+        <div
+          class="workflow-nav-card bg-2 rounded-md p-3 mt-4"
+          data-workflow-sidebar
+        >
+          <a
+            href="/workflows"
+            class="inline-flex items-center gap-[6px] text-sm text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 mb-2"
+          >
+            <Icon name="ArrowRight" class="w-4 h-4 rotate-180" />
+            <span>Back</span>
+          </a>
+          <nav aria-label="Build steps">
+            <ul class="flex flex-col gap-1">
+              {
+                sidebar.map((item, index) => {
+                  const iconNames = [
+                    "One",
+                    "Two",
+                    "Three",
+                    "Four",
+                    "Five",
+                    "Six",
+                    "Seven",
+                    "Eight",
+                    "Nine",
+                  ];
+                  const iconSuffix =
+                    iconNames[Math.min(index, iconNames.length - 1)];
+                  const iconName = `NumberCircle${iconSuffix}`;
+                  return (
+                    <li>
+                      <a
+                        class:list={[
+                          "nav-link group flex items-center gap-2 h-8 px-3 rounded-md text-sm text-primary dark:text-primary hover:text-primary dark:hover:text-primary [&.active]:text-sky-700 dark:[&.active]:text-sky-200 [&.active:hover]:text-sky-600 dark:[&.active:hover]:text-sky-100 [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800",
+                          item.id === "overview" && "active",
+                        ]}
+                        href={`#${item.id}`}
+                        data-step-id={item.id}
+                        aria-current={item.id === "overview" ? "page" : undefined}
+                      >
+                        <Icon
+                          name={iconName}
+                          weight="fill"
+                          class="w-4 h-4 text-stone-500 dark:text-stone-500 group-[.active]:text-sky-700 dark:group-[.active]:text-sky-200"
+                        />
+                        <span class="sr-only">Step {index + 1}</span>
+                        <span>{item.label}</span>
+                      </a>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <article class="workflow-article">
+        <Content />
+      </article>
+    </main>
   </div>
 
   <style>
+    .learn-detail-shell {
+      width: 100%;
+    }
+
     .workflow-main {
       width: min(100%, 48rem);
       margin-inline: auto;
@@ -201,9 +201,7 @@ const { Content } = await render(entry);
           (entries) => {
             const visible = entries
               .filter((entry) => entry.isIntersecting)
-              .sort(
-                (a, b) => a.boundingClientRect.top - b.boundingClientRect.top,
-              );
+              .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
             if (visible.length > 0) {
               setActive(visible[0].target.id);
             }
