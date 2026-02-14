@@ -21,9 +21,10 @@ const { currentCategory = "all", title = "Blog" } = Astro.props as Props;
                 ? "/blog"
                 : `/blog/category/${category.id}`}
               class:list={[
-                "nav-link flex h-8 items-center rounded px-2 text-sm text-primary hover:text-primary dark:text-primary dark:hover:text-primary [&.active]:bg-stone-100 [&.active]:text-sky-700 dark:[&.active]:bg-stone-800 dark:[&.active]:text-sky-200",
+                "nav-link flex h-8 items-center rounded px-2 text-sm text-primary hover:text-primary dark:text-primary dark:hover:text-primary",
                 currentCategory === category.id && "active",
               ]}
+              aria-current={currentCategory === category.id ? "page" : undefined}
               data-astro-prefetch
               data-astro-transition="none"
             >
@@ -47,6 +48,16 @@ const { currentCategory = "all", title = "Blog" } = Astro.props as Props;
     margin: 0;
     display: flex;
     flex-direction: column;
+  }
+
+  .nav-link.active {
+    background-color: var(--color-stone-100);
+    color: var(--color-blue-700);
+  }
+
+  .dark .nav-link.active {
+    background-color: var(--color-stone-800);
+    color: var(--color-blue-200);
   }
 
   @media (max-width: 768px) {

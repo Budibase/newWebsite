@@ -54,3 +54,14 @@
     local("Fraunces72ptSuperSoft-Light"),
     local("Fraunces");
 }
+
+@font-face {
+  font-display: swap;
+  font-family: "Libre Baskerville";
+  font-style: normal;
+  font-weight: 400 700;
+  src:
+    url("/fonts/LibreBaskerville-VariableFont_wght.ttf")
+      format("truetype-variations"),
+    local("Libre Baskerville");
+}

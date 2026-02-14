@@ -1,49 +1,29 @@
 ---
 import Customers from "@components/Customers.astro";
 import Button from "@components/Button.astro";
-import Curl from "@components/Curl.astro";
 import AgentDemo from "@components/AgentDemo.astro";
-import ClarenceIcon from "@assets/images/mascot/clarenceIcon.png";
-import ClarenceIconWhite from "@assets/images/mascot/clarenceIconWhite.svg";
-
-const darkMascotSrc =
-  typeof ClarenceIconWhite === "string" ? ClarenceIconWhite : ClarenceIconWhite.src;
 ---
 
-<section class="container max-w-5xl mx-auto px-2 lg:px-0 flex flex-col mt-8 md:mt-8">
+<section class="container max-w-6xl mx-auto px-2 lg:px-0 flex flex-col mt-8 md:mt-8">
 
-  <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-    <div class="flex-1 flex flex-col items-center text-center">
-      <img
-        src={ClarenceIcon.src}
-        alt=""
-        height="150"
-        class="!h-[150px] w-auto max-w-none dark:hidden"
-        style="height: 150px; max-height: 150px; width: auto; max-width: none;"
-      />
-      <img
-        src={darkMascotSrc}
-        alt=""
-        height="150"
-        class="hidden !h-[150px] w-auto max-w-none dark:block"
-        style="height: 150px; max-height: 150px; width: auto; max-width: none;"
-      />
-      <h1 class="mb-2 w-full font-serif text-[32px] font-[600] leading-[1.2] text-[var(--text-primary)] sm:text-[48px]">
-        <span class="block">Build AI agents that do real work</span>
+  <div class="flex flex-col md:flex-row items-start gap-8 md:gap-12">
+    <div class="flex-1 flex flex-col items-start text-left">
+      <h1 class="hero-title mt-12 mb-2 w-full max-w-2xl text-[50px]! leading-[1.02]! tracking-[-0.02em]! text-[var(--text-primary)] sm:text-[50px]! sm:leading-[1.02]!">
+        <span class="block">
+          Open-source AI agents for real work
+        </span>
       </h1>
-      <div class="max-w-3xl !mb-4 !text-xl text-secondary">
-        Open-source. Instruction-first. Built for operations.
+      <div class="max-w-3xl !mb-4 !text-xl text-primary">
+        Connect your tools. Define the rules. Let agents handle the work.
       </div>
       <div class="flex flex-row">
         <Button
           label="Try Budibase Cloud"
           url="https://account.budibase.app/register"
-          variant="cta"
+          variant="primary"
+          size="large"
           target="_blank"
         />
-      </div>
-      <div class="mt-2 md:mt-4 w-fit">
-        <Curl />
       </div>
     </div>
   </div>

@@ -51,13 +51,28 @@ const mainInnerClass =
   mainContentWidth === "narrow"
     ? "side-rail-main-inner side-rail-main-inner--narrow"
     : "side-rail-main-inner";
+const homepageStylePaths = new Set([
+  "/product/agents",
+  "/product/automations",
+  "/product/apps",
+  "/product/data",
+  "/product/connections",
+  "/product/apis",
+]);
+const useHomepageHeaderStyles = homepageStylePaths.has(normalizedCurrentPath);
+const titleClass = useHomepageHeaderStyles
+  ? "hero-title mb-2 w-full max-w-3xl text-[50px]! leading-[1.02]! tracking-[-0.02em]! text-[var(--text-primary)] sm:text-[50px]! sm:leading-[1.02]!"
+  : "mb-2 text-5xl!";
+const descriptionClass = useHomepageHeaderStyles
+  ? "mx-auto max-w-3xl !mb-4 !text-xl text-secondary"
+  : "text-stone-500! dark:text-stone-400!";
 ---
 
 <div class="platform-layout">
-  <div class={mainInnerClass}>
-    <section class="side-rail-page-header max-w-3xl">
-      <h1 class="mb-2 text-5xl!">{resolvedTitle}</h1>
-      <p class="text-stone-500! dark:text-stone-400!">{resolvedDescription}</p>
+  <div class={`${mainInnerClass} space-y-12`}>
+    <section class="side-rail-page-header mx-auto max-w-3xl text-center">
+      <h1 class={titleClass}>{resolvedTitle}</h1>
+      <p class={descriptionClass}>{resolvedDescription}</p>
     </section>
     <main class="platform-main">
       <slot />
