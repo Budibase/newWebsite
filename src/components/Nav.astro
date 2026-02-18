@@ -1,6 +1,6 @@
 ---
-import bbSymbol from "@assets/BBSymbol.svg";
-import bbSymbolWhite from "@assets/BBSymbolWhite.svg";
+import budibaseLogoBlack from "@assets/BudibaseLogoBlack.svg";
+import budibaseLogoWhite from "@assets/BudibaseLogoWhite.svg";
 import { Image } from "astro:assets";
 import Button from "@components/Button.astro";
 import HeaderDropDown from "@components/HeaderDropDown.astro";
@@ -19,35 +19,45 @@ import {
   <div
     class="relative z-10 mx-auto grid h-[var(--site-nav-height)] w-full max-w-6xl grid-cols-[1fr_auto_auto] items-center px-2 md:px-3 lg:grid-cols-[auto_1fr_auto] lg:gap-6 lg:px-0"
   >
-    <a href="/" class="z-10 shrink-0">
-      <div class="relative w-6">
+    <a href="/" class="z-10 shrink-0 flex items-center">
+      <div class="relative w-[120px] flex items-center">
         <Image
-          src={bbSymbol}
-          alt="Budibase symbol"
-          class="hover:cursor-pointer dark:hidden"
+          src={budibaseLogoBlack}
+          alt="Budibase logo"
+          class="block hover:cursor-pointer dark:hidden"
         />
         <Image
-          src={bbSymbolWhite}
-          alt="Budibase symbol"
-          class="hover:cursor-pointer hidden dark:block"
+          src={budibaseLogoWhite}
+          alt="Budibase logo"
+          class="block hover:cursor-pointer hidden dark:block"
         />
       </div>
     </a>
 
-    <div class="hidden items-center gap-5 whitespace-nowrap lg:flex xl:gap-7">
-      <HeaderDropDown label="Product" items={productDropdownItems} />
-      <a
-        target="_self"
-        href="/pricing?deployment=cloud"
-        class="text-sm nav-link transition-colors"
-        data-astro-prefetch
-      >
-        Pricing
-      </a>
-      <HeaderDropDown label="Resources" items={resourcesDropdownItems} />
-    </div>
+    <div class="z-10 flex items-center gap-2 justify-self-end lg:col-start-3 lg:gap-3">
+      <div class="hidden items-center gap-5 whitespace-nowrap lg:flex xl:gap-7">
+        <HeaderDropDown label="Product" items={productDropdownItems} />
+        <a
+          target="_self"
+          href="/pricing?deployment=cloud"
+          class="text-sm nav-link transition-colors"
+          data-astro-prefetch
+        >
+          Pricing
+        </a>
+        <HeaderDropDown label="Resources" items={resourcesDropdownItems} />
+      </div>
 
-    <div class="z-10 flex items-center gap-2 justify-self-end lg:gap-3">
+      <a
+        href="https://discord.com/invite/budibase-733030666647765003"
+        target="_blank"
+        class="relative justify-center items-center px-1.5 text-center ease-out duration-150 rounded-sm transition-all hover:bg-stone-200 dark:hover:bg-stone-800 border-transparent text-xs hidden xl:flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-stone-900"
+        ><span class="truncate"
+          ><span class="flex text-sm items-center gap-0.5 nav-link transition-colors"
+            >Community</span
+          ></span
+        ></a
+      >
       <a
         href="https://github.com/budibase/budibase"
         target="_blank"
@@ -68,21 +78,11 @@ import {
           ></span
         ></a
       >
-      <a
-        href="https://discord.com/invite/budibase-733030666647765003"
-        target="_blank"
-        class="relative justify-center items-center px-1.5 text-center ease-out duration-150 rounded-sm transition-all hover:bg-stone-200 dark:hover:bg-stone-800 border-transparent text-xs hidden xl:flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-stone-900"
-        ><span class="truncate"
-          ><span class="flex text-sm items-center gap-0.5 nav-link transition-colors"
-            >Discord</span
-          ></span
-        ></a
-      >
 
       <div class="hidden lg:flex items-center gap-2 lg:gap-3">
-        <Button label="Sign in" url="/" variant="secondary" size="small" />
+        <Button label="Log in" url="/" variant="secondary" size="small" />
         <Button
-          label="Get Budibase free"
+          label="Try it free"
           url="https://account.budibase.app/register"
           variant="primary"
           size="small"
@@ -174,7 +174,7 @@ import {
             target="_blank"
             class="block text-3xl nav-link transition-colors"
           >
-            Discord
+            Community
           </a>
         </li>
         <li>
@@ -273,17 +273,17 @@ import {
   }
 
   .nav-link {
-    color: var(--text-secondary);
+    color: var(--text-primary);
     font-weight: 500;
   }
 
   .nav-link:hover {
-    color: var(--text-secondary) !important;
+    color: var(--text-primary) !important;
   }
 
   .nav-shell :global(header-drop-down summary),
   .nav-shell :global(header-drop-down summary a) {
-    color: var(--text-secondary) !important;
+    color: var(--text-primary) !important;
     font-weight: 500;
   }
 
@@ -291,7 +291,7 @@ import {
   .nav-shell :global(header-drop-down summary:focus-visible),
   .nav-shell :global(header-drop-down summary a:hover),
   .nav-shell :global(header-drop-down summary a:focus-visible) {
-    color: var(--text-secondary) !important;
+    color: var(--text-primary) !important;
   }
 
   .nav-shell {

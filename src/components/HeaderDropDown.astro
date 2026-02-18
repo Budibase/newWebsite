@@ -19,7 +19,7 @@ const useTwoColumns = Astro.props.items.length > 4;
 
 <header-drop-down>
   <details class="group relative">
-    <summary class="accordion cursor-pointer link flex items-center gap-2 text-sm px-1 text-stone-900 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 group-open:text-stone-700 dark:group-open:text-stone-200 transition-colors">
+    <summary class="accordion cursor-pointer link flex items-center gap-2 text-sm px-1 text-primary hover:text-primary group-open:text-primary transition-colors">
       {Astro.props.labelHref ? (
         <a
           href={Astro.props.labelHref}
@@ -61,11 +61,11 @@ const useTwoColumns = Astro.props.items.length > 4;
               {disabled ? (
                 <span
                   aria-disabled="true"
-                  class="nav__sub-nav__link inline-flex cursor-not-allowed items-center gap-2 py-[2px] text-sm font-medium text-stone-500 dark:text-stone-500"
+                  class="nav__sub-nav__link inline-flex cursor-not-allowed items-center gap-2 py-[2px] text-sm font-medium text-primary"
                 >
                   <span>{label}</span>
                   {badge && (
-                    <span class="text-xs leading-none font-mono text-stone-500 dark:text-stone-500">
+                    <span class="text-xs leading-none font-mono text-primary">
                       {badge}
                     </span>
                   )}
@@ -77,11 +77,11 @@ const useTwoColumns = Astro.props.items.length > 4;
                   rel={rel ??
                     (target === "_blank" ? "noopener noreferrer" : undefined)}
                   data-astro-prefetch={prefetch ? "" : undefined}
-                  class="nav__sub-nav__link inline-flex items-center gap-2 py-[2px] text-sm font-medium transition-colors text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100"
+                  class="nav__sub-nav__link inline-flex items-center gap-2 py-[2px] text-sm font-medium transition-colors text-primary hover:text-primary"
                 >
                   <span>{label}</span>
                   {badge && (
-                    <span class="text-xs leading-none font-mono text-stone-600 dark:text-stone-400">
+                    <span class="text-xs leading-none font-mono text-primary">
                       {badge}
                     </span>
                   )}
