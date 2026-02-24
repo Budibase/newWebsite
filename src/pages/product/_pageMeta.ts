@@ -3,7 +3,7 @@ import { platformNavItemsData } from "./_navItems";
 const defaultPageMeta = {
   title: "Product",
   description:
-    "The privacy-first platform for building agents, chat, automations & apps.",
+    "Enterprise-grade security and governance built for deploying AI into real business operations.",
 } as const;
 
 function normalizePath(path: string): string {

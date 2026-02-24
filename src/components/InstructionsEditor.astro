@@ -1,5 +1,18 @@
 ---
-const { class: className = "", background, border } = Astro.props;
+interface Props {
+  class?: string;
+  background?: string;
+  border?: string;
+  variant?: "default" | "agent-demo";
+}
+
+const {
+  class: className = "",
+  background,
+  border,
+  variant = "default",
+} = Astro.props as Props;
+
 const inlineStyle = [
   background ? `background: ${background};` : "",
   border ? `border: ${border};` : "",
@@ -10,6 +23,7 @@ const inlineStyle = [
 
 <div
   class={`hero-demo-instructions-editor${className ? ` ${className}` : ""}`}
+  data-variant={variant}
   style={inlineStyle || undefined}
 >
   <ol class="hero-demo-instructions-lines">
@@ -147,5 +161,24 @@ const inlineStyle = [
 
   .hero-demo-instructions-editor :global(.token-bullet-purple) {
     color: var(--accent-purple);
+  }
+
+  .hero-demo-instructions-editor[data-variant="agent-demo"] {
+    padding: 12px 6px;
+  }
+
+  .hero-demo-instructions-editor[data-variant="agent-demo"] .hero-demo-instructions-lines {
+    --line-number-gap: 8px;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  .hero-demo-instructions-editor[data-variant="agent-demo"] .hero-demo-instructions-lines :global(li) {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  .hero-demo-instructions-editor[data-variant="agent-demo"] .hero-demo-instructions-lines :global(li)::before {
+    font-size: 12px;
   }
 </style>

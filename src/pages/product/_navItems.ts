@@ -28,7 +28,7 @@ export const platformNavItemsData: NavGroup[] = [
         iconName: "Memory",
         pageTitle: "Agents",
         pageDescription:
-          "Design intelligent agents that reason, act, and integrate directly into your existing systems.",
+          "Build AI agents that automate decisions and execute real operational work across your business systems.",
         tag: {
           label: "Beta",
           variant: "cta",
@@ -41,7 +41,7 @@ export const platformNavItemsData: NavGroup[] = [
         iconName: "Path",
         pageTitle: "Automations",
         pageDescription:
-          "Automate complex processes by combining AI, logic, and integrations in a single visual flow.",
+          "Create event-driven workflows that streamline operations by connecting agents, apps, data, and external tools.",
       },
       {
         text: "Apps",
@@ -50,7 +50,7 @@ export const platformNavItemsData: NavGroup[] = [
         iconName: "Browsers",
         pageTitle: "Apps",
         pageDescription:
-          "Build powerful internal tools and AI-enabled apps at the speed your business moves.",
+          "Build secure internal apps that give teams structured, AI-powered tools to run daily operations efficiently.",
       },
     ],
   },
@@ -71,16 +71,16 @@ export const platformNavItemsData: NavGroup[] = [
         iconName: "Webhooks",
         pageTitle: "API Explorer",
         pageDescription:
-          "Explore, test, and manage APIs with a developer-friendly experience built in.",
+          "Connect the tools you rely on so agents and workflows can securely take action across your stack.",
       },
       {
         text: "Data tables",
         link: "/product/data",
         sectionId: "data",
         iconName: "Database",
-        pageTitle: "Data",
+        pageTitle: "Data tables",
         pageDescription:
-          "A flexible data layer that powers apps, workflows, and AI — without friction.",
+          "Manage structured operational data that powers AI agents, workflows, and internal apps.",
       },
     ],
   },

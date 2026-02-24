@@ -28,7 +28,19 @@
   --color-stone-900: #191919;
   --color-stone-950: #0f0f0f;
 
-  /* Sky / Blue */
+  /* Brand */
+  --color-brand-100: #e9f0ff;
+  --color-brand-200: #d3e0ff;
+  --color-brand-300: #afc7ff;
+  --color-brand-400: #7fa6ff;
+  --color-brand-500: #386cf4;
+  --color-brand-600: #2660f3;
+  --color-brand-700: #1e4fd4;
+  --color-brand-800: #173ea8;
+  --color-brand-900: #112d7a;
+  --color-brand-950: #091841;
+
+  /* Blue */
   --color-blue-100: #eaf2f9;
   --color-blue-200: #c3daea;
   --color-blue-300: #89b5e2;
@@ -38,6 +50,7 @@
   --color-blue-700: #1b436a;
   --color-blue-800: #13324f;
   --color-blue-900: #0c2236;
+  --color-blue-950: #0c2236;
 
   /* Clay / Orange */
   --color-orange-100: #f6e6da;
@@ -49,6 +62,7 @@
   --color-orange-700: #aa4321;
   --color-orange-800: #7f3118;
   --color-orange-900: #4a1d0e;
+  --color-orange-950: #301208;
 
   /* Grass / Green */
   --color-green-100: #eef3e9;
@@ -60,6 +74,7 @@
   --color-green-700: #4c622f;
   --color-green-800: #35461f;
   --color-green-900: #1f2a12;
+  --color-green-950: #141b0c;
 
   /* Lavender / Purple */
   --color-purple-100: #f1eefb;
@@ -71,6 +86,7 @@
   --color-purple-700: #363174;
   --color-purple-800: #252154;
   --color-purple-900: #171336;
+  --color-purple-950: #110e27;
 
   /* Reds */
   --color-red-100: #f4e7e4;
@@ -82,6 +98,7 @@
   --color-red-700: #7e2c24;
   --color-red-800: #5a1e19;
   --color-red-900: #361210;
+  --color-red-950: #220b0a;
 
   --spacing-hero-image: 12px;
 }
@@ -125,6 +142,18 @@
     --blue-700: var(--color-blue-700);
     --blue-800: var(--color-blue-800);
     --blue-900: var(--color-blue-900);
+    --blue-950: var(--color-blue-950);
+
+    --brand-100: var(--color-brand-100);
+    --brand-200: var(--color-brand-200);
+    --brand-300: var(--color-brand-300);
+    --brand-400: var(--color-brand-400);
+    --brand-500: var(--color-brand-500);
+    --brand-600: var(--color-brand-600);
+    --brand-700: var(--color-brand-700);
+    --brand-800: var(--color-brand-800);
+    --brand-900: var(--color-brand-900);
+    --brand-950: var(--color-brand-950);
 
     --orange-100: var(--color-orange-100);
     --orange-200: var(--color-orange-200);
@@ -135,6 +164,7 @@
     --orange-700: var(--color-orange-700);
     --orange-800: var(--color-orange-800);
     --orange-900: var(--color-orange-900);
+    --orange-950: var(--color-orange-950);
 
     --green-100: var(--color-green-100);
     --green-200: var(--color-green-200);
@@ -145,6 +175,7 @@
     --green-700: var(--color-green-700);
     --green-800: var(--color-green-800);
     --green-900: var(--color-green-900);
+    --green-950: var(--color-green-950);
 
     --purple-100: var(--color-purple-100);
     --purple-200: var(--color-purple-200);
@@ -155,6 +186,7 @@
     --purple-700: var(--color-purple-700);
     --purple-800: var(--color-purple-800);
     --purple-900: var(--color-purple-900);
+    --purple-950: var(--color-purple-950);
 
     --red-100: var(--color-red-100);
     --red-200: var(--color-red-200);
@@ -165,6 +197,7 @@
     --red-700: var(--color-red-700);
     --red-800: var(--color-red-800);
     --red-900: var(--color-red-900);
+    --red-950: var(--color-red-950);
 
     --font-sans:
       "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
@@ -197,13 +230,13 @@
     /* grey-400 */
 
     /* Brand */
-    --brand: 56 108 244; /* rgb(56, 108, 244) */
-    --brand-hover: 27 67 106; /* blue-700 */
+    --brand: 56 108 244; /* #386cf4 */
+    --brand-hover: 38 96 243; /* #2660f3 */
     --on-brand: 250 249 245;
     /* light text */
-    --primary: 70 125 180;
+    --primary: 56 108 244;
     /* blue-500 */
-    --primary-hover: 33 95 158;
+    --primary-hover: 38 96 243;
     /* blue-600 */
     --on-primary: 250 249 245;
     /* grey-50 */
@@ -223,7 +256,7 @@
     --text-secondary: rgb(var(--text-muted));
     --text-body: rgb(var(--text-article));
     --accent-grey: var(--color-grey-500);
-    --accent-blue: rgb(56, 108, 244);
+    --accent-blue: var(--color-blue-500);
     --accent-orange: var(--color-orange-500);
     --accent-green: var(--color-green-500);
     --accent-purple: var(--color-purple-500);
@@ -262,14 +295,14 @@
     --text-subtle: 102 102 99;
     /* grey-500 */
 
-    --brand: 56 108 244; /* rgb(56, 108, 244) */
-    --brand-hover: 106 155 204; /* blue-400 */
+    --brand: 56 108 244; /* #386cf4 */
+    --brand-hover: 38 96 243; /* #2660f3 */
     --on-brand: 12 34 54;
     /* blue-900 */
-    --primary: 106 155 204;
-    /* blue-400 */
-    --primary-hover: 137 181 226;
-    /* blue-300 */
+    --primary: 56 108 244;
+    /* brand-500 */
+    --primary-hover: 38 96 243;
+    /* brand-600 */
     --on-primary: 12 34 54;
     /* blue-900 */
 
@@ -285,7 +318,7 @@
     --text-secondary: rgb(var(--text-muted));
     --text-body: rgb(var(--text-article));
     --accent-grey: var(--color-grey-500);
-    --accent-blue: rgb(56, 108, 244);
+    --accent-blue: var(--color-blue-500);
     --accent-orange: var(--color-orange-500);
     --accent-green: var(--color-green-500);
     --accent-purple: var(--color-purple-500);
@@ -429,7 +462,7 @@ h1,
 .h1 {
   font-family: "Fraunces", var(--font-display);
   color: var(--text-primary);
-  font-size: 36px;
+  font-size: 44px;
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.25px !important;
@@ -447,7 +480,7 @@ h2,
 .h2 {
   font-family: var(--font-display);
   color: var(--text-primary);
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 500;
   line-height: 1.25;
   letter-spacing: -0.2px !important;
@@ -514,6 +547,7 @@ article h1 {
 }
 
 .post-title {
+  font-family: "Fraunces", var(--font-display);
   font-size: 32px;
   text-wrap: pretty;
 }
@@ -609,7 +643,7 @@ article a {
 }
 
 article a:hover {
-  color: var(--color-blue-400) !important;
+  color: rgb(var(--brand-hover)) !important;
 }
 
 article blockquote {
@@ -635,7 +669,7 @@ article blockquote p {
 }
 
 .dark article a:hover {
-  color: var(--color-blue-400) !important;
+  color: rgb(var(--brand-hover)) !important;
 }
 
 .bg-transparent {
@@ -782,27 +816,11 @@ article blockquote p {
 }
 
 .api-explorer-demo-backdrop {
-  border-radius: 12px;
+  border-radius: 8px;
   background-image: var(--api-demo-backdrop-image);
   background-position: center;
   background-size: cover;
-  position: relative;
   overflow: hidden;
-  isolation: isolate;
-}
-
-.api-explorer-demo-backdrop::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: rgb(var(--bg) / 0.6);
-  pointer-events: none;
-}
-
-.api-explorer-demo-backdrop > * {
-  position: relative;
-  z-index: 1;
 }
 
 .api-explorer-demo-window-dot {
@@ -816,7 +834,7 @@ article blockquote p {
 .api-explorer-demo-shell {
   background: var(--bg-1);
   color: var(--text-primary);
-  box-shadow: 0 10px 30px rgb(0 0 0 / 0.35);
+  box-shadow: 0px 10px 30px rgb(var(--text) / 0.25);
 }
 
 .api-explorer-demo-title {
@@ -1360,10 +1378,6 @@ article blockquote p {
 }
 
 @media (max-width: 768px) {
-  .api-explorer-demo-backdrop {
-    padding: 28px 8px;
-  }
-
   .api-explorer-demo-inner-header {
     padding-left: 12px;
     padding-right: 12px;

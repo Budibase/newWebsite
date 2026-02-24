@@ -2,7 +2,10 @@
 import Layout from "../../../layouts/MainLayout.astro";
 import PlatformLayout from "@components/PlatformLayout.astro";
 import { getProductPageMeta } from "../_pageMeta";
-import HeroBg from "@assets/images/homepage/valley.png";
+import HeroBg from "@assets/images/DataTables/hero.png";
+import Mountains1 from "@assets/images/DataTables/cards/mountains1.png";
+import Mountains2 from "@assets/images/backgrounds/mountains/2.png";
+import Mountains4 from "@assets/images/backgrounds/mountains/4.png";
 import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
 
@@ -14,46 +17,62 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
 <Layout title={pageTitle} description={pageDescription}>
   <PlatformLayout title={pageTitle} description={pageDescription}>
     <div class="mb-8">
-      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
+      <div class="mb-4">
         <Image
           src={HeroBg}
-          alt="Database connections"
+          alt="Data tables"
           class="w-full h-96 object-cover rounded-md"
         />
       </div>
 
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-      >
-        <Card
-          label="Built-in database (BudibaseDB)"
-          description="Store and manage data without setting up external infrastructure."
-        />
-        <Card
-          label="Table GUI like Airtable bases"
-          description="Work with data through a fast, familiar visual interface."
-        />
-        <Card
-          label="SQL sync"
-          description="Sync existing SQL tables and visualize your data instantly."
-        />
-        <Card
-          label="Custom queries"
-          description="Write custom SQL queries for full control over your data."
-        />
-        <Card
-          label="Dev/Prod switcher for tables"
-          description="Safely manage schema changes across environments."
-        />
-        <Card
-          label="Views"
-          description="Create performant, permission-aware views to filter and shape your data."
-        />
-        <Card
-          label="Security"
-          description="Configure read and write access at the table level to keep data secure."
-        />
-      </div>
+      <section class="mt-16 mb-8">
+        <h2 class="text-primary text-center mb-4">
+          Structure workflows with clean, reliable operational data.
+        </h2>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+        >
+          <Card
+            label="Built-in database"
+            description="Use a built-in data layer to power operational apps and workflows."
+            imageSrc={Mountains1}
+          />
+          <Card
+            label="Spreadsheet-like GUI"
+            description="Manage data quickly with a familiar, spreadsheet-style interface."
+            imageSrc={Mountains2}
+          />
+          <Card
+            label="External database connectors"
+            description="Connect Postgres, MySQL, and other external databases without migration overhead."
+            imageSrc={Mountains4}
+          />
+          <Card
+            label="Structured operational data"
+            description="Model clean, reliable data to power apps, workflows, and agents."
+          />
+          <Card
+            label="Flexible data architecture"
+            description="Use built-in tables or connect external databases without disrupting your stack."
+          />
+          <Card
+            label="Table-level security"
+            description="Apply RBAC on tables and Views to control read and write access by role."
+          />
+          <Card
+            label="Data validation rules"
+            description="Enforce data quality with structured validation rules at the table level."
+          />
+          <Card
+            label="Query builder"
+            description="Create queries visually or with SQL for flexible data retrieval."
+          />
+          <Card
+            label="Audit history"
+            description="Review data changes with built-in audit history for operational traceability."
+          />
+        </div>
+      </section>
     </div>
   </PlatformLayout>
 </Layout>

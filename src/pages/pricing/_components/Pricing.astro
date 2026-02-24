@@ -1,41 +1,301 @@
 ---
-/* removed self-host switcher imports */
 import PricingCard from "./PricingCard.astro";
+import Plus from "phosphor-astro/Plus.astro";
+
+type PlanKey = "pro" | "proPlus" | "premium" | "team" | "business" | "enterprise";
+type FaqItem = {
+  question: string;
+  paragraphs: string[];
+  bullets?: string[];
+};
+
+const comparisonColumns: { key: PlanKey; label: string }[] = [
+  { key: "pro", label: "Starter" },
+  { key: "proPlus", label: "Pro" },
+  { key: "premium", label: "Premium" },
+  { key: "team", label: "Team" },
+  { key: "business", label: "Business" },
+  { key: "enterprise", label: "Enterprise" },
+];
+
+const formatComparisonYearlyPrice = (base: number) => `$${base}`;
+const formatComparisonMonthlyPrice = (base: number) => `$${Math.round(base * 1.2)}`;
+
+const comparisonRows: Array<{ feature: string; values: Record<PlanKey, string> }> = [
+  {
+    feature: "Price yearly",
+    values: {
+      pro: formatComparisonYearlyPrice(19),
+      proPlus: formatComparisonYearlyPrice(49),
+      premium: formatComparisonYearlyPrice(99),
+      team: formatComparisonYearlyPrice(149),
+      business: formatComparisonYearlyPrice(299),
+      enterprise: "Flexible",
+    },
+  },
+  {
+    feature: "Price monthly",
+    values: {
+      pro: formatComparisonMonthlyPrice(19),
+      proPlus: formatComparisonMonthlyPrice(49),
+      premium: formatComparisonMonthlyPrice(99),
+      team: formatComparisonMonthlyPrice(149),
+      business: formatComparisonMonthlyPrice(299),
+      enterprise: "Flexible",
+    },
+  },
+  {
+    feature: "Operations",
+    values: {
+      pro: "5K",
+      proPlus: "20K",
+      premium: "50K",
+      team: "100K",
+      business: "300K",
+      enterprise: "Flexible",
+    },
+  },
+  {
+    feature: "Budibase AI credits",
+    values: {
+      pro: "1K",
+      proPlus: "3K",
+      premium: "8K",
+      team: "20K",
+      business: "50K",
+      enterprise: "Flexible",
+    },
+  },
+  {
+    feature: "Creators",
+    values: {
+      pro: "1 included, cannot add more",
+      proPlus: "1 included, cannot add more",
+      premium: "1 included, cannot add more",
+      team: "1 included, then $50/creator",
+      business: "3 included, then $50/creator",
+      enterprise: "Flexible",
+    },
+  },
+  {
+    feature: "End users",
+    values: {
+      pro: "2 included, then $5/end user",
+      proPlus: "5 included, then $5/end user",
+      premium: "10 included, then $5/end user",
+      team: "20 included, then $5/end user",
+      business: "30 included, then $5/end user",
+      enterprise: "Flexible",
+    },
+  },
+  {
+    feature: "Logs",
+    values: {
+      pro: "1 day logs",
+      proPlus: "7 days logs",
+      premium: "7 days logs",
+      team: "30 days logs",
+      business: "30 days logs",
+      enterprise: "365 days logs",
+    },
+  },
+  {
+    feature: "Workspaces",
+    values: {
+      pro: "1",
+      proPlus: "3",
+      premium: "10",
+      team: "unlimited",
+      business: "unlimited",
+      enterprise: "unlimited",
+    },
+  },
+  {
+    feature: "Backups and restore",
+    values: {
+      pro: "—",
+      proPlus: "—",
+      premium: "—",
+      team: "Included",
+      business: "Included",
+      enterprise: "Included",
+    },
+  },
+  {
+    feature: "Chat/Email support",
+    values: {
+      pro: "—",
+      proPlus: "—",
+      premium: "—",
+      team: "Included",
+      business: "Included",
+      enterprise: "Included",
+    },
+  },
+  {
+    feature: "Environment variables",
+    values: {
+      pro: "—",
+      proPlus: "—",
+      premium: "—",
+      team: "—",
+      business: "Included",
+      enterprise: "Included",
+    },
+  },
+  {
+    feature: "On-premise support",
+    values: {
+      pro: "—",
+      proPlus: "—",
+      premium: "—",
+      team: "—",
+      business: "Included",
+      enterprise: "Included",
+    },
+  },
+  {
+    feature: "Custom operations",
+    values: {
+      pro: "—",
+      proPlus: "—",
+      premium: "—",
+      team: "—",
+      business: "—",
+      enterprise: "Included",
+    },
+  },
+  {
+    feature: "Enforced SSO",
+    values: {
+      pro: "—",
+      proPlus: "—",
+      premium: "—",
+      team: "—",
+      business: "—",
+      enterprise: "Included",
+    },
+  },
+  {
+    feature: "Active directory/SCIM",
+    values: {
+      pro: "—",
+      proPlus: "—",
+      premium: "—",
+      team: "—",
+      business: "—",
+      enterprise: "Included",
+    },
+  },
+  {
+    feature: "User groups",
+    values: {
+      pro: "—",
+      proPlus: "—",
+      premium: "—",
+      team: "—",
+      business: "—",
+      enterprise: "Included",
+    },
+  },
+  {
+    feature: "Audit logs",
+    values: {
+      pro: "—",
+      proPlus: "—",
+      premium: "—",
+      team: "—",
+      business: "—",
+      enterprise: "Included",
+    },
+  },
+  {
+    feature: "Priorty support/SLAs",
+    values: {
+      pro: "—",
+      proPlus: "—",
+      premium: "—",
+      team: "—",
+      business: "—",
+      enterprise: "Included",
+    },
+  },
+];
+
+const faqItems: FaqItem[] = [
+  {
+    question: "Why do you have multiple plans?",
+    paragraphs: [
+      "Each plan includes a hard monthly limit on operations. As your AI agents and automations do more work, you move up plans. This keeps pricing predictable and aligned with the scale of operations you're running.",
+    ],
+  },
+  {
+    question: 'What are "operations"?',
+    paragraphs: [
+      "Operations represent the total work your agents and automations perform.",
+      "If your agent takes an action or your workflow runs a step, that counts as an operation.",
+    ],
+    bullets: ["AI agent tool calls", "Automation node executions"],
+  },
+  {
+    question: "Why do you price by operations?",
+    paragraphs: [
+      "Operations directly reflect the amount of useful work your AI agents are doing. This aligns pricing with real business value, not just seats or arbitrary limits.",
+    ],
+  },
+  {
+    question: "Are operations soft limits or hard limits?",
+    paragraphs: [
+      "Operations are hard monthly limits per plan. When you reach your limit, you'll need to upgrade to continue running agents and automations.",
+      "This ensures:",
+    ],
+    bullets: [
+      "Predictable infrastructure performance",
+      "Clear cost control",
+      "Transparent scaling as your operational volume grows",
+    ],
+  },
+  {
+    question: "Why use hard limits instead of overage billing?",
+    paragraphs: [
+      "Hard limits keep costs predictable for SMEs. You always know exactly what you're paying each month with no surprise overages.",
+    ],
+  },
+  {
+    question: "Can I add more users?",
+    paragraphs: ["Yes. You can add additional end users on all paid plans."],
+  },
+  {
+    question: "Can I add more creators (builders)?",
+    paragraphs: [
+      "Yes. On Team, Business, and Enterprise plans, you can add additional creators as your internal team grows.",
+    ],
+  },
+  {
+    question: "Does Budibase offer a free open-source plan?",
+    paragraphs: [
+      "Yes. Budibase offers a fully open-source self-hosted plan that is free to use indefinitely.",
+      "You can build and run apps, agents, and automations on your own infrastructure without software licensing fees.",
+    ],
+  },
+  {
+    question: "When should I choose cloud instead of self-hosting?",
+    paragraphs: [
+      "Cloud is best if you want managed infrastructure, built-in scalability, collaboration tools, AI credits, and support.",
+      "Self-hosting is ideal if you require full control over your infrastructure and deployment.",
+    ],
+  },
+];
 ---
 
 <section class="container max-w-6xl mx-auto flex flex-col mt-8 px-2 lg:px-0">
-  <!--Title section -->
   <div class="flex flex-col items-center text-center">
     <h1 class="max-w-2xl !text-5xl mb-4 text-stone-950 dark:text-stone-100">
       Pricing
     </h1>
   </div>
-  <div class="w-full flex flex-col gap-2">
-    <div class="flex flex-row gap-2 mb-4 justify-center">
-      <!-- Deployment Type Switcher -->
-      <ul role="group" aria-label="Deployment type" class="inline-flex flex-row bg-secondary rounded-[20px] p-1" id="deployment-switcher">
-        <li>
-          <button
-            id="budibase-hosted-button"
-            data-deployment="cloud"
-            aria-pressed="true"
-            class="bg-white dark:bg-stone-800 rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-900 dark:text-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 dark:focus-visible:ring-stone-400 focus-visible:ring-offset-2 min-h-[44px]"
-          >
-            Budibase Hosted
-          </button>
-        </li>
-        <li>
-          <button
-            id="self-hosted-button"
-            data-deployment="self-hosted"
-            aria-pressed="false"
-            class="bg-transparent rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-600 dark:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 dark:focus-visible:ring-stone-400 focus-visible:ring-offset-2 min-h-[44px]"
-          >
-            Self-hosted
-          </button>
-        </li>
-      </ul>
-      <!-- Yearly/Monthly Toggle (hidden by default, shown only for cloud) -->
+  <div class="w-full flex flex-col gap-8">
+    <div class="flex flex-row gap-2 mb-2 justify-center">
       <ul role="group" aria-label="Billing period" class="inline-flex flex-row bg-secondary rounded-[20px] p-1" id="billing-toggle">
         <li>
           <button
@@ -60,184 +320,265 @@ import PricingCard from "./PricingCard.astro";
       </ul>
     </div>
 
-    <!-- Self-Hosted Plans -->
-    <section class="mb-12 md:mb-20 hidden" id="self-hosted-plans" aria-hidden="true">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 justify-center items-stretch">
-        <div class="min-w-[420px] h-full">
-          <PricingCard
-            title="Community"
-            description="Includes:"
-            creatorPrice="Free"
-            creatorUnit=""
-            creatorLabel=""
-            recommended={false}
-            buttonLabel="Install on-prem"
-            buttonVariant="cta"
-            buttonUrl="https://docs.budibase.com/docs/docker"
-            buttonTarget="_blank"
-            features={[
-              "Unlimited users",
-              "SSO",
-              "Custom RBAC",
-              "Unlimited automation runs",
-            ]}
-          />
-        </div>
-        <div class="min-w-[420px] h-full">
-          <PricingCard
-            title="Business"
-            description="Everything in Community, plus:"
-            creatorPrice="From $600"
-            creatorUnit="/ month, billed yearly"
-            creatorLabel=""
-            recommended={false}
-            buttonLabel="Contact sales"
-            buttonVariant="primary"
-            buttonUrl="/signup-plus"
-            features={[
-              "Workspaces",
-              "Enforced SSO",
-              "Environment variables",
-              "User groups",
-              "Custom branding",
-              "1 year automation logs",
-              "1 year backups",
-              "Email support",
-            ]}
-          />
-        </div>
-        <div class="min-w-[420px] h-full">
-          <PricingCard
-            title="Enterprise"
-            description="Everything in Business, plus:"
-            creatorPrice="From $1250"
-            creatorUnit="/ month, billed yearly"
-            creatorLabel=""
-            recommended={false}
-            buttonLabel="Contact sales"
-            buttonVariant="primary"
-            buttonUrl="/signup-plus"
-            features={[
-              "Bulk discounts",
-              "Active directory / SCIM",
-              "Audit Logs",
-              "Import / Export API",
-              "SLAs",
-              "Unlimited automation logs",
-              "Unlimited backups",
-              "Dedicated support",
-              { text: "Airgapped deployment", icon: "plus" },
-              { text: "Professional services", icon: "plus" },
-            ]}
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- Cloud Plans -->
-    <section class="mb-12 md:mb-20" id="cloud-plans" aria-hidden="false">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 justify-center items-stretch">
+    <section class="mb-4">
+      <h3 class="pt-4 mb-4 text-stone-900 dark:text-stone-100">Individual</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-center items-stretch">
         <PricingCard
-          title="Pro"
+          title="Starter"
           description="Includes:"
-          creatorPrice={10}
-          userPrice={2}
+          creatorPrice={19}
           billingPlan="pro"
           creatorUnit="/ month"
-          userUnit="/ month"
-          creatorLabel="per creator"
-          userLabel="per end user"
+          creatorLabel=""
           recommended={false}
-          buttonLabel="Start 14 day free trial"
+          buttonLabel="Free 14 day trial"
           buttonVariant="cta"
           buttonUrl="/signup-plus"
           features={[
-            "1K automation runs",
-            "Custom RBAC",
-            "SSO",
-            "Synchronous automations",
+            "5K operations",
+            "1K Budibase AI credits",
+            "1 creator",
+            "2 end users",
+            "1 day logs",
+            "1 workspace",
+          ]}
+        />
+        <PricingCard
+          title="Pro"
+          description="Includes:"
+          creatorPrice={49}
+          billingPlan="pro-plus"
+          creatorUnit="/ month"
+          creatorLabel=""
+          recommended={false}
+          buttonLabel="Free 14 day trial"
+          buttonVariant="cta"
+          buttonUrl="/signup-plus"
+          features={[
+            "20K operations",
+            "3K Budibase AI credits",
+            "1 creator",
+            "5 end users",
+            "7 days logs",
+            "3 workspaces",
           ]}
         />
         <PricingCard
           title="Premium"
-          description="Everything in Pro, plus:"
-          creatorPrice={50}
-          userPrice={5}
+          tagLabel="Recommended"
+          description="Includes:"
+          creatorPrice={99}
           billingPlan="premium"
           creatorUnit="/ month"
-          userUnit="/ month"
-          creatorLabel="per creator"
-          userLabel="per end user"
-          recommended={true}
-          buttonLabel="Start 14 day free trial"
+          creatorLabel=""
+          recommended={false}
+          buttonLabel="Free 14 day trial"
           buttonVariant="cta"
           buttonUrl="/signup-plus"
           features={[
-            "10K automation runs",
-            "1 year automation logs",
-            "1 year backups",
-            "Workspaces",
-            "Custom branding",
+            "50K operations",
+            "8K Budibase AI credits",
+            "1 creator",
+            "10 end users",
+            "7 days logs",
+            "10 workspaces",
+          ]}
+        />
+      </div>
+    </section>
+
+    <section class="mb-12 md:mb-20">
+      <h3 class="pt-4 mb-4 text-stone-900 dark:text-stone-100">Teams and businesses</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-center items-stretch">
+        <PricingCard
+          title="Team"
+          description="Includes:"
+          creatorPrice={149}
+          billingPlan="team"
+          creatorUnit="/ month"
+          creatorLabel=""
+          recommended={false}
+          buttonLabel="Contact sales"
+          buttonVariant="primary"
+          buttonUrl="/signup-plus"
+          features={[
+            "100K operations",
+            "20K Budibase AI credits",
+            "1 creator",
+            "20 end users",
+            "30 days logs",
+            "Unlimited workspaces",
+            "Backups and restore",
+            "Chat/email support",
           ]}
         />
         <PricingCard
           title="Business"
-          description="Everything in Premium, plus:"
-          creatorPrice="From $600"
-          creatorUnit="/ month, billed yearly"
+          description="Includes:"
+          creatorPrice={299}
+          billingPlan="business"
+          creatorUnit="/ month"
           creatorLabel=""
-          additionalPriceText="Incl 2 creators & 80 end-users"
           recommended={false}
           buttonLabel="Contact sales"
           buttonVariant="primary"
           buttonUrl="/signup-plus"
           features={[
-            "50K automation runs",
-            "1 year automation logs",
-            "1 year backups",
-            "Enforced SSO",
-            "User groups",
-            "Env variables",
-            "Email support",
+            "300K operations",
+            "50K Budibase AI credits",
+            "3 creators",
+            "30 end users",
+            "30 days logs",
+            "Unlimited workspaces",
+            "Environment variables",
+            "On-premise support",
+            "Backups and restore",
+            "Chat/email support",
           ]}
         />
         <PricingCard
           title="Enterprise"
-          description="Everything in Business, plus:"
-          creatorPrice="From $1250"
-          creatorUnit="/ month, billed yearly"
+          description="Includes:"
+          creatorPrice="Flexible"
+          creatorUnit=""
           creatorLabel=""
-          additionalPriceText="Incl 2 creators & 100 end-users"
+          additionalPriceText="Custom operations"
+          additionalPriceTone="primary"
           recommended={false}
           buttonLabel="Contact sales"
           buttonVariant="primary"
           buttonUrl="/signup-plus"
           features={[
-            "Custom automation runs",
-            "Unlimited automation logs",
-            "Unlimited backups",
-            "Flexible pricing",
-            "Active directory / SCIM",
-            "Audit Logs",
-            "Import / Export API",
-            "SLAs",
-            "Dedicated Support",
-            { text: "Airgapped deployment", icon: "plus" },
-            { text: "Professional services", icon: "plus" },
+            "Enforced SSO",
+            "Active directory/SCIM",
+            "User groups",
+            "Audit logs",
+            "365 days logs",
+            "Environment variables",
+            "On-premise support",
+            "Backups and restore",
+            "Chat/email support",
+            "Priorty support/SLAs",
           ]}
         />
+      </div>
+    </section>
+
+    <section class="mb-12 md:mb-20">
+      <h2 class="text-3xl font-semibold text-stone-900 dark:text-stone-100 mb-4">Compare plans</h2>
+      <div
+        class="rounded-md overflow-hidden border border-stone-300/70 dark:border-stone-700/70"
+        style="background: var(--bg-2);"
+      >
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[1100px] border-collapse text-sm table-fixed">
+            <caption id="comparison-caption" class="sr-only">
+              Comparison of pricing, limits, and included features across current plans.
+            </caption>
+            <colgroup>
+              <col style="width: 254px;" />
+              {
+                comparisonColumns.map(() => (
+                  <col style={`width: calc((100% - 254px) / ${comparisonColumns.length});`} />
+                ))
+              }
+            </colgroup>
+            <thead>
+              <tr class="border-b border-stone-300/70 dark:border-stone-700/70">
+                <th
+                  scope="col"
+                  class="text-left px-4 py-3 font-semibold text-stone-900 dark:text-stone-100"
+                >
+                  Feature
+                </th>
+                {
+                  comparisonColumns.map((column) => (
+                    <th
+                      scope="col"
+                      class="text-left px-4 py-3 font-semibold text-stone-900 dark:text-stone-100"
+                    >
+                      {column.label}
+                    </th>
+                  ))
+                }
+              </tr>
+            </thead>
+            <tbody>
+              {
+                comparisonRows.map((row) => (
+                  <tr class="border-b border-stone-300/70 dark:border-stone-700/70 last:border-b-0">
+                    <th scope="row" class="text-left px-4 py-3 font-medium text-stone-900 dark:text-stone-100">
+                      {row.feature}
+                    </th>
+                    {comparisonColumns.map((column) => (
+                      <td class="px-4 py-3 text-stone-600 dark:text-stone-300">
+                        {row.values[column.key]}
+                      </td>
+                    ))}
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12 md:mb-20" aria-labelledby="pricing-faqs-heading">
+      <h2
+        id="pricing-faqs-heading"
+        class="text-3xl font-semibold text-stone-900 dark:text-stone-100 mb-6 md:mb-8"
+      >
+        FAQs
+      </h2>
+      <div
+        data-faq-accordion
+        class="border-t border-dotted border-stone-300/80 dark:border-stone-700/80"
+      >
+        {
+          faqItems.map((item) => (
+            <details
+              data-faq-item
+              class="group border-b border-dotted border-stone-300/80 dark:border-stone-700/80"
+            >
+              <summary
+                class="list-none [&::-webkit-details-marker]:hidden min-h-[64px] py-4 md:py-5 cursor-pointer flex items-center justify-between gap-4 text-left text-stone-900 dark:text-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 dark:focus-visible:ring-stone-400 focus-visible:ring-offset-2"
+              >
+                <h3 class="m-0 text-lg md:text-xl text-stone-900 dark:text-stone-100">
+                  {item.question}
+                </h3>
+                <span class="shrink-0">
+                  <Plus
+                    class="w-5 h-5 md:w-6 md:h-6 text-stone-900 dark:text-stone-100 transition-transform duration-200 ease-out group-open:rotate-45"
+                    aria-hidden="true"
+                  />
+                </span>
+              </summary>
+              <div class="pb-5 md:pb-6 pr-1 md:pr-12">
+                {
+                  item.paragraphs.map((paragraph) => (
+                    <p class="text-base md:text-lg text-stone-600 dark:text-stone-300 mb-3">
+                      {paragraph}
+                    </p>
+                  ))
+                }
+                {
+                  item.bullets && item.bullets.length > 0 && (
+                    <ul class="list-disc pl-6 text-base md:text-lg text-stone-600 dark:text-stone-300 mb-3">
+                      {item.bullets.map((bullet) => <li class="mb-1">{bullet}</li>)}
+                    </ul>
+                  )
+                }
+              </div>
+            </details>
+          ))
+        }
       </div>
     </section>
   </div>
 </section>
 
 <script>
-  // Deployment type switching
-  const deploymentButtons = document.querySelectorAll("[data-deployment]");
-  const billingToggle = document.getElementById("billing-toggle");
-  const selfHostedPlans = document.getElementById("self-hosted-plans");
-  const cloudPlans = document.getElementById("cloud-plans");
-
   const activeClasses = [
     "bg-white",
     "dark:bg-stone-800",
@@ -250,49 +591,11 @@ import PricingCard from "./PricingCard.astro";
     "dark:text-stone-400",
   ];
 
-  const applyDeploymentType = (deploymentType: string) => {
-    deploymentButtons.forEach((button) => {
-      const htmlButton = button as HTMLButtonElement;
-      const isActive = htmlButton.dataset.deployment === deploymentType;
-      htmlButton.setAttribute("aria-pressed", isActive ? "true" : "false");
-      activeClasses.forEach((className) => htmlButton.classList.toggle(className, isActive));
-      inactiveClasses.forEach((className) => htmlButton.classList.toggle(className, !isActive));
-    });
-
-    if (deploymentType === "self-hosted") {
-      // Show self-hosted plans, hide cloud plans and billing toggle
-      selfHostedPlans?.classList.remove("hidden");
-      selfHostedPlans?.setAttribute("aria-hidden", "false");
-      cloudPlans?.classList.add("hidden");
-      cloudPlans?.setAttribute("aria-hidden", "true");
-      billingToggle?.classList.add("hidden");
-      billingToggle?.setAttribute("aria-hidden", "true");
-      billingToggle?.classList.remove("inline-flex");
-    } else {
-      // Show cloud plans and billing toggle, hide self-hosted plans
-      selfHostedPlans?.classList.add("hidden");
-      selfHostedPlans?.setAttribute("aria-hidden", "true");
-      cloudPlans?.classList.remove("hidden");
-      cloudPlans?.setAttribute("aria-hidden", "false");
-      billingToggle?.classList.remove("hidden");
-      billingToggle?.setAttribute("aria-hidden", "false");
-      billingToggle?.classList.add("inline-flex");
-    }
-  };
-
-  deploymentButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const htmlButton = button as HTMLButtonElement;
-      applyDeploymentType(htmlButton.dataset.deployment || "self-hosted");
-    });
-  });
-
-  // Billing toggle (yearly/monthly) - only for cloud plans
+  // Billing toggle (yearly/monthly)
   const toggleButtons = document.querySelectorAll("[data-billing]");
   const cards = document.querySelectorAll("[data-billing-plan]");
 
-  const formatPrice = (value: number) =>
-    Number.isInteger(value) ? value.toString() : value.toFixed(2);
+  const formatPrice = (value: number) => Math.round(value).toString();
 
   const applyBilling = (billing: string) => {
     toggleButtons.forEach((button) => {
@@ -303,15 +606,68 @@ import PricingCard from "./PricingCard.astro";
       inactiveClasses.forEach((className) => htmlButton.classList.toggle(className, !isActive));
     });
 
+    const multiplier = billing === "monthly" ? 1.2 : 1;
+
     cards.forEach((card) => {
+
       card.querySelectorAll(".amount[data-base-price]").forEach((amountEl) => {
         const htmlEl = amountEl as HTMLElement;
         const basePrice = Number(htmlEl.dataset.basePrice);
-        const multiplier = billing === "monthly" ? 1.2 : 1;
         const updatedPrice = basePrice * multiplier;
         htmlEl.textContent = `$${formatPrice(updatedPrice)}`;
       });
+
+      card.querySelectorAll("[data-overage-kind][data-base-overage]").forEach((popoverEl) => {
+        const htmlEl = popoverEl as HTMLElement;
+        const baseOverage = Number(htmlEl.dataset.baseOverage);
+        const kind = htmlEl.dataset.overageKind;
+        const updatedOverage = Math.round(baseOverage * multiplier);
+
+        if (kind === "creators") {
+          htmlEl.textContent = `Add more creators for $${updatedOverage} per creator per month`;
+          return;
+        }
+
+        if (kind === "end-users") {
+          htmlEl.textContent = `Add more end users for $${updatedOverage} per end user per month`;
+        }
+      });
     });
+
+    const comparisonCaption = document.getElementById("comparison-caption");
+    const comparisonTable = comparisonCaption?.closest("table");
+
+    if (comparisonTable) {
+      const tableRows = Array.from(comparisonTable.querySelectorAll("tbody tr"));
+      const findRowByFeature = (featureLabel: string) =>
+        tableRows.find(
+          (row) => row.querySelector("th[scope='row']")?.textContent?.trim() === featureLabel,
+        );
+
+      const endUsersRow = findRowByFeature("End users");
+      if (endUsersRow) {
+        const updatedEndUsersValue = `$${formatPrice(5 * multiplier)}/end user`;
+        endUsersRow.querySelectorAll("td").forEach((cell) => {
+          const htmlCell = cell as HTMLElement;
+          const currentValue = htmlCell.textContent?.trim() || "";
+          if (/\/\s*end user/.test(currentValue)) {
+            htmlCell.textContent = currentValue.replace(/\$\d+\s*\/\s*end user/, updatedEndUsersValue);
+          }
+        });
+      }
+
+      const creatorsIncludedRow = findRowByFeature("Creators");
+      if (creatorsIncludedRow) {
+        const updatedCreatorsValue = `$${formatPrice(50 * multiplier)}/creator`;
+        creatorsIncludedRow.querySelectorAll("td").forEach((cell) => {
+          const htmlCell = cell as HTMLElement;
+          const currentValue = htmlCell.textContent?.trim() || "";
+          if (/\/\s*creator/.test(currentValue)) {
+            htmlCell.textContent = currentValue.replace(/\$\d+\s*\/\s*creator/, updatedCreatorsValue);
+          }
+        });
+      }
+    }
   };
 
   toggleButtons.forEach((button) => {
@@ -321,18 +677,29 @@ import PricingCard from "./PricingCard.astro";
     });
   });
 
-  const getInitialDeploymentType = () => {
-    const params = new URLSearchParams(window.location.search);
-    const deployment = params.get("deployment");
-
-    if (deployment === "cloud") return "cloud";
-    if (deployment === "self-hosted") return "self-hosted";
-
-    return "cloud";
-  };
-
-  // Initialize: defaults to cloud unless overridden by query string.
-  applyDeploymentType(getInitialDeploymentType());
-  // Initialize billing for cloud plans (will be hidden initially)
   applyBilling("annual");
+
+  const faqDetails = Array.from(
+    document.querySelectorAll("[data-faq-item]"),
+  ) as HTMLDetailsElement[];
+
+  faqDetails.forEach((detail) => {
+    if (detail.dataset.faqBound === "true") {
+      return;
+    }
+
+    detail.dataset.faqBound = "true";
+
+    detail.addEventListener("toggle", () => {
+      if (!detail.open) {
+        return;
+      }
+
+      faqDetails.forEach((otherDetail) => {
+        if (otherDetail !== detail) {
+          otherDetail.open = false;
+        }
+      });
+    });
+  });
 </script>

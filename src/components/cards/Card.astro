@@ -2,15 +2,30 @@
 import Link from "@components/Link.astro";
 import Tag from "@components/Tag.astro";
 import ArrowUpRight from "phosphor-astro/ArrowUpRight.astro";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
 interface Props {
   label: string;
   description: string;
   linkUrl?: string;
   tag?: string;
+  imageSrc?: ImageMetadata;
+  imageAlt?: string;
+  imagePlaceholderColor?: string;
 }
 
-const { label, description, linkUrl, tag } = Astro.props as Props;
+const {
+  label,
+  description,
+  linkUrl,
+  tag,
+  imageSrc,
+  imageAlt = label,
+  imagePlaceholderColor,
+} = Astro.props as Props;
+
+const hasImageOverlay = Astro.slots.has("image-overlay");
 ---
 
 {linkUrl ? (
@@ -25,6 +40,27 @@ const { label, description, linkUrl, tag } = Astro.props as Props;
           )}
         </h3>
         <p class="text-stone-500! dark:text-stone-400!">{description}</p>
+        {(imageSrc || imagePlaceholderColor || hasImageOverlay) && (
+          <div class="card-image-wrap">
+            {imageSrc && (
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                class="card-image rounded-sm"
+                loading="lazy"
+              />
+            )}
+            {!imageSrc && imagePlaceholderColor && (
+              <div
+                class="card-image rounded-sm"
+                role="img"
+                aria-label={imageAlt}
+                style={`background-color: ${imagePlaceholderColor};`}
+              ></div>
+            )}
+            <slot name="image-overlay" />
+          </div>
+        )}
       </div>
     </div>
   </Link>
@@ -34,6 +70,27 @@ const { label, description, linkUrl, tag } = Astro.props as Props;
       {tag && <Tag label={tag} variant="secondary" size="small" class="w-fit mb-2" />}
       <h3 class="text-lg!">{label}</h3>
       <p class="text-stone-500! dark:text-stone-400! text-sm!">{description}</p>
+      {(imageSrc || imagePlaceholderColor || hasImageOverlay) && (
+        <div class="card-image-wrap">
+          {imageSrc && (
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              class="card-image rounded-sm"
+              loading="lazy"
+            />
+          )}
+          {!imageSrc && imagePlaceholderColor && (
+            <div
+              class="card-image rounded-sm"
+              role="img"
+              aria-label={imageAlt}
+              style={`background-color: ${imagePlaceholderColor};`}
+            ></div>
+          )}
+          <slot name="image-overlay" />
+        </div>
+      )}
     </div>
   </div>
 )}
@@ -62,6 +119,10 @@ const { label, description, linkUrl, tag } = Astro.props as Props;
     gap: 6px;
   }
 
+  .card-content h3 {
+    line-height: 1.2;
+  }
+
   .card-title {
     display: inline-flex;
     align-items: center;
@@ -78,5 +139,20 @@ const { label, description, linkUrl, tag } = Astro.props as Props;
     color: inherit;
   }
 
-</style>
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
+  .card-image-wrap {
+    width: 100%;
+    height: 300px;
+    border: 1px solid var(--border);
+    border-radius: 0.25rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+</style>

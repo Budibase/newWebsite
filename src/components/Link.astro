@@ -52,13 +52,13 @@ const underlineClass = underline ? "underline" : "";
 const variantColorClasses = {
   primary: "text-stone-900 dark:text-stone-50",
   secondary: "text-stone-500 dark:text-stone-400",
-  cta: "text-sky-700 dark:text-sky-200",
+  cta: "text-brand",
 };
 
 const hoverColorClasses = {
   primary: "hover:text-stone-700 dark:hover:text-stone-100",
   secondary: "hover:text-stone-700 dark:hover:text-stone-300",
-  cta: "hover:text-sky-600 dark:hover:text-sky-100",
+  cta: "hover:text-brand-hover",
 };
 
 const classes = [
@@ -116,6 +116,10 @@ const computedRel =
   /* Hover opacity - colors are handled via Tailwind dark mode classes */
   .alink:hover {
     opacity: 0.9;
+  }
+
+  .alink.cta:hover {
+    opacity: 1;
   }
 
   /* Underline styling */

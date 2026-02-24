@@ -4,6 +4,12 @@ import PlatformLayout from "@components/PlatformLayout.astro";
 import { getProductPageMeta } from "../_pageMeta";
 import Card from "@components/cards/Card.astro";
 import AgentDemo from "@components/AgentDemo.astro";
+import InstructionsEditor from "@components/InstructionsEditor.astro";
+import AgentInstructionsContent from "@components/AgentInstructionsContent.astro";
+import AgentModelSelectorOverlay from "@components/AgentModelSelectorOverlay.astro";
+import Sky1 from "@assets/images/backgrounds/sky/1.png";
+import Sky2 from "@assets/images/backgrounds/sky/2.png";
+import Sky3 from "@assets/images/backgrounds/sky/3.png";
 
 const { title: pageTitle, description: pageDescription } = getProductPageMeta(
   Astro.url.pathname,
@@ -17,34 +23,108 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
         <AgentDemo />
       </div>
 
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-      >
-        <Card
-          label="Instructions"
-          description="Define clear, reusable instructions that shape how your agents think and behave."
-        />
-        <Card
-          label="Custom model support"
-          description="Use the models you trust — from OpenAI to open-source — without compromise."
-        />
-        <Card
-          label="Connect to over 100 tools"
-          description="Give agents real capabilities by connecting them to your tools and services."
-        />
-        <Card
-          label="Connect databases"
-          description="Let agents read from and write to your data securely and reliably."
-        />
-        <Card
-          label="Bring your own RAG"
-          description="Plug in your own retrieval pipelines for precise, context-aware responses."
-        />
-        <Card
-          label="Deploy agents"
-          description="Use the same agent across automations, apps, and conversations."
-        />
-      </div>
+      <section class="mt-16 mb-8">
+        <h2 class="text-primary text-center mb-4">
+          Automate complex work without losing control.
+        </h2>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+        >
+          <Card
+            label="Build agents like writing a list"
+            description="Define controlled agent behavior with structured instructions and reusable guidance."
+            imageSrc={Sky1}
+          >
+            <div slot="image-overlay" class="agents-card-overlay" aria-hidden="true">
+              <InstructionsEditor
+                variant="agent-demo"
+                class="agents-card-overlay-editor"
+                background="var(--bg-1)"
+                border="0.5px solid var(--border-color)"
+              >
+                <AgentInstructionsContent />
+              </InstructionsEditor>
+            </div>
+          </Card>
+          <Card
+            label="Choose between 100s of AI models"
+            description="Run agents with OpenAI, Anthropic, Mistral, or custom model providers."
+            imageSrc={Sky2}
+          >
+            <div
+              slot="image-overlay"
+              class="agents-card-overlay agents-card-overlay-interactive agents-card-overlay-center-top"
+            >
+              <AgentModelSelectorOverlay class="agents-card-overlay-selector" />
+            </div>
+          </Card>
+          <Card
+            label="Deploy where work happens"
+            description="Run agents inside Automations, Budibase Chat, Discord, and soon Teams and Slack."
+            imageSrc={Sky3}
+          />
+          <Card
+            label="Multi-step reasoning with tool usage"
+            description="Plan and execute multi-step tasks by combining reasoning with connected tools."
+          />
+          <Card
+            label="Connect 100s of tools"
+            description="Give your agent access to over 10,000 operations across 100s of tools."
+          />
+          <Card
+            label="Structured instruction builder"
+            description="Define controlled agent behavior with structured instructions and reusable guidance."
+          />
+          <Card
+            label="Knowledge retrieval (RAG)"
+            description="Ground responses with retrieval workflows, including pgvector support."
+          />
+          <Card
+            label="Data and API access"
+            description="Access internal data tables and external APIs to execute operational tasks."
+          />
+          <Card
+            label="Multi-channel deployment"
+            description="Deploy to Automations, Budibase Chat, Discord, and upcoming Teams and Slack."
+          />
+        </div>
+      </section>
     </div>
   </PlatformLayout>
 </Layout>
+
+<style>
+  .agents-card-overlay {
+    position: absolute;
+    inset: 0;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    pointer-events: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .agents-card-overlay-editor {
+    width: min(100%, 420px);
+    max-height: 100%;
+    overflow: auto;
+    border-radius: 10px;
+  }
+
+  .agents-card-overlay-selector {
+    max-height: 100%;
+    overflow: auto;
+  }
+
+  .agents-card-overlay-interactive {
+    pointer-events: auto;
+  }
+
+  .agents-card-overlay-center-top {
+    align-items: flex-start;
+    justify-content: center;
+  }
+</style>

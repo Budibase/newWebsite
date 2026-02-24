@@ -4,7 +4,6 @@ import PlatformLayout from "@components/PlatformLayout.astro";
 import { getProductPageMeta } from "../_pageMeta";
 import Card from "@components/cards/Card.astro";
 import APIExplorerDemo from "@components/APIExplorerDemo.astro";
-import APIsBackdrop from "@assets/images/backgrounds/light/api.png";
 
 const { title: pageTitle, description: pageDescription } = getProductPageMeta(
   Astro.url.pathname,
@@ -15,48 +14,57 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
   <PlatformLayout title={pageTitle} description={pageDescription}>
     <div class="mb-8">
       <div class="mb-4">
-        <div class="api-explorer-demo-plain">
-          <APIExplorerDemo
-            backdropImage={APIsBackdrop.src}
-            backdropPaddingXClass="px-12"
-          />
-        </div>
+        <APIExplorerDemo />
       </div>
 
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-      >
-        <Card
-          label="Beautiful interface for making API requests"
-          description="Interact with APIs through a clean, intuitive UI."
-        />
-        <Card
-          label="100 API templates"
-          description="Get started fast with ready-made templates for popular services."
-        />
-        <Card
-          label="Multiple auth types support"
-          description="Authenticate securely using Basic, Bearer, or OAuth2."
-        />
-        <Card
-          label="Test requests within the API explorer"
-          description="Validate APIs instantly without external tools."
-        />
-        <Card
-          label="Control access to APIs (RBAC)"
-          description="Manage who can access which APIs with fine-grained permissions."
-        />
-        <Card
-          label="Quickly see where your API is getting used"
-          description="Understand usage and dependencies at a glance."
-        />
-      </div>
+      <section class="mt-16 mb-8">
+        <h2 class="text-primary text-center mb-4">
+          Connect systems once and reuse everywhere.
+        </h2>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+        >
+          <Card
+            label="Connect your operational stack"
+            description="Integrate external systems so workflows and agents can take action across tools."
+            imagePlaceholderColor="var(--green-900)"
+          />
+          <Card
+            label="Reusable integrations"
+            description="Define API calls once and use them across apps, automations, and agents."
+            imagePlaceholderColor="var(--green-900)"
+          />
+          <Card
+            label="Secure credential management"
+            description="Store and manage authentication centrally with full visibility."
+            imagePlaceholderColor="var(--green-900)"
+          />
+          <Card
+            label="REST API connector"
+            description="Connect and execute REST API calls from a unified explorer."
+          />
+          <Card
+            label="Secure credential storage"
+            description="Store and manage authentication credentials in a central location."
+          />
+          <Card
+            label="Reusable API actions"
+            description="Define API actions once and reuse them across apps, automations, and agents."
+          />
+          <Card
+            label="Webhook support"
+            description="Use webhook endpoints to trigger and integrate operational workflows."
+          />
+          <Card
+            label="Request and response schema mapping"
+            description="Map request inputs and response outputs into structured operational data."
+          />
+          <Card
+            label="API execution logging"
+            description="Monitor API runs with execution logs for visibility and troubleshooting."
+          />
+        </div>
+      </section>
     </div>
   </PlatformLayout>
 </Layout>
-
-<style>
-  .api-explorer-demo-plain :global(.api-explorer-demo-backdrop::before) {
-    background: rgb(var(--bg) / 0.45);
-  }
-</style>

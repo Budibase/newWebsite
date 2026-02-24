@@ -2,7 +2,7 @@
 import Layout from "../../../layouts/MainLayout.astro";
 import PlatformLayout from "@components/PlatformLayout.astro";
 import { getProductPageMeta } from "../_pageMeta";
-import HeroBg from "@assets/images/homepage/valley.png";
+import HeroBg from "@assets/images/apps/apps hero.png";
 import { Image } from "astro:assets";
 import Card from "@components/cards/Card.astro";
 
@@ -22,34 +22,54 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
         />
       </div>
 
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-      >
-        <Card
-          label="No-code app builder"
-          description="Create production-ready apps without writing a single line of code."
-        />
-        <Card
-          label="40+ prebuilt components"
-          description="Assemble rich interfaces using a growing library of components."
-        />
-        <Card
-          label="Auto-generate app screens"
-          description="Generate a fully working CRUD app from your data in just three clicks."
-        />
-        <Card
-          label="Coding optional"
-          description="Drop into code only when you want — not because you have to."
-        />
-        <Card
-          label="Theming"
-          description="Match your brand with fully customizable themes."
-        />
-        <Card
-          label="Embeds"
-          description="Embed apps seamlessly into existing products or portals."
-        />
-      </div>
+      <section class="mt-16 mb-8">
+        <h2 class="text-primary text-center mb-4">
+          Give teams intuitive tools for daily operations.
+        </h2>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+        >
+          <Card
+            label="Operational tools for real work"
+            description="Build structured internal apps for tasks, approvals, and process management."
+            imagePlaceholderColor="var(--orange-950)"
+          />
+          <Card
+            label="Fast to ship, easy to adapt"
+            description="Launch production-ready tools quickly and evolve them as processes change."
+            imagePlaceholderColor="var(--orange-950)"
+          />
+          <Card
+            label="Built-in governance"
+            description="Control access, permissions, and data visibility across every app."
+            imagePlaceholderColor="var(--orange-950)"
+          />
+          <Card
+            label="Drag-and-drop UI builder"
+            description="Build operational interfaces quickly with a visual app builder."
+          />
+          <Card
+            label="Generate apps from data with 1 click"
+            description="Turn Data Tables and external databases into working apps instantly."
+          />
+          <Card
+            label="Custom roles and permissions"
+            description="Control who can view, edit, and operate each part of your app."
+          />
+          <Card
+            label="Responsive layouts"
+            description="Create app experiences that work across desktop and mobile screens."
+          />
+          <Card
+            label="Reusable components and theming"
+            description="Standardize UI patterns with reusable components and shared themes."
+          />
+          <Card
+            label="Embed workflows and operational actions"
+            description="Run workflows and operational actions directly inside your app experiences."
+          />
+        </div>
+      </section>
     </div>
   </PlatformLayout>
 </Layout>

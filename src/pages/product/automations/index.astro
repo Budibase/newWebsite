@@ -22,42 +22,54 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
         />
       </div>
 
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
-      >
-        <Card
-          label="Visual builder"
-          description="Design workflows visually with drag-and-drop nodes and connections."
-        />
-        <Card
-          label="100s of connectors"
-          description="Integrate with the tools you already use, out of the box."
-        />
-        <Card
-          label="AI workflows"
-          description="Blend deterministic logic with AI reasoning in the same workflow."
-        />
-        <Card
-          label="Agent integration"
-          description="Trigger agents from within automations and allow them to take actions."
-        />
-        <Card
-          label="Triggers"
-          description="Start workflows with webhooks, schedules, database changes, or manual triggers."
-        />
-        <Card
-          label="Add code (JS / Script support)"
-          description="Drop into code when you need full control — without leaving the flow."
-        />
-        <Card
-          label="Logs"
-          description="See exactly what happened, when, and why with detailed execution logs."
-        />
-        <Card
-          label="Branching / Looping"
-          description="Model real-world processes with conditional paths and loops."
-        />
-      </div>
+      <section class="mt-16 mb-8">
+        <h2 class="text-primary text-center mb-4">
+          Run operations faster with fewer manual steps.
+        </h2>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+        >
+          <Card
+            label="Orchestrate operational processes"
+            description="Design multi-step workflows that connect systems, approvals, and logic."
+            imagePlaceholderColor="var(--purple-900)"
+          />
+          <Card
+            label="Power agent execution"
+            description="Give agents structured steps and controlled system access to complete work safely."
+            imagePlaceholderColor="var(--purple-900)"
+          />
+          <Card
+            label="Triggered by real events"
+            description="Launch workflows from data changes, user actions, schedules, or webhooks."
+            imagePlaceholderColor="var(--purple-900)"
+          />
+          <Card
+            label="Visual workflow builder"
+            description="Design operational workflows with a visual drag-and-drop builder."
+          />
+          <Card
+            label="Event, webhook, and schedule triggers"
+            description="Start workflows from events, incoming webhooks, or scheduled runs."
+          />
+          <Card
+            label="Conditional logic and branching"
+            description="Route execution with conditions, branching paths, and dynamic outcomes."
+          />
+          <Card
+            label="Third-party API steps"
+            description="Call external APIs as workflow steps to sync and update systems."
+          />
+          <Card
+            label="Agent-triggered workflow steps"
+            description="Invoke agents within workflows to handle reasoning-driven actions."
+          />
+          <Card
+            label="Execution logs and run history"
+            description="Track every run with detailed logs and execution history."
+          />
+        </div>
+      </section>
     </div>
   </PlatformLayout>
 </Layout>

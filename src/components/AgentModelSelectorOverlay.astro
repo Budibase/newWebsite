@@ -1,0 +1,218 @@
+---
+import { Image } from "astro:assets";
+import CaretDown from "phosphor-astro/CaretDown.astro";
+import Sparkle from "phosphor-astro/Sparkle.astro";
+import MistralLogo from "@assets/logos/Mistral.svg";
+import BudibaseLogo from "@assets/logos/BBSymbol.svg";
+import AnthropicLogo from "@assets/logos/anthropic.svg";
+import GoogleLogo from "@assets/logos/Google.svg";
+import OpenAILogo from "@assets/logos/OpenAI.svg";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props as Props;
+const overlayId = `agent-model-overlay-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div
+  id={overlayId}
+  class={`agent-model-overlay-select-wrap${className ? ` ${className}` : ""}`}
+>
+  <button
+    class="agent-model-overlay-select"
+    type="button"
+    aria-label="AI model"
+    aria-controls={`${overlayId}-menu`}
+    aria-expanded="true"
+    data-agent-model-toggle
+  >
+    <span class="agent-model-overlay-select-option-label">
+      <Image src={MistralLogo} alt="Mistral" class="agent-model-overlay-select-logo" />
+      Mistral 3
+    </span>
+    <CaretDown class="h-3.5 w-3.5" />
+  </button>
+  <div
+    id={`${overlayId}-menu`}
+    class="agent-model-overlay-select-menu is-open"
+    data-agent-model-menu
+  >
+    <button class="agent-model-overlay-select-option is-selected" type="button">
+      <span class="agent-model-overlay-select-option-label">
+        <Image src={MistralLogo} alt="Mistral" class="agent-model-overlay-select-logo" />
+        Mistral 3
+      </span>
+      <span class="agent-model-overlay-select-meta">Selected</span>
+    </button>
+    <button class="agent-model-overlay-select-option" type="button">
+      <span class="agent-model-overlay-select-option-label">
+        <Image
+          src={BudibaseLogo}
+          alt="Budibase"
+          class="agent-model-overlay-select-logo is-monochrome"
+        />
+        Budibase AI
+      </span>
+    </button>
+    <button class="agent-model-overlay-select-option" type="button">
+      <span class="agent-model-overlay-select-option-label">
+        <Image
+          src={AnthropicLogo}
+          alt="Anthropic"
+          class="agent-model-overlay-select-logo is-monochrome"
+        />
+        Anthropic
+      </span>
+    </button>
+    <button class="agent-model-overlay-select-option" type="button">
+      <span class="agent-model-overlay-select-option-label">
+        <Image src={GoogleLogo} alt="Google" class="agent-model-overlay-select-logo" />
+        Google
+      </span>
+    </button>
+    <button class="agent-model-overlay-select-option" type="button">
+      <span class="agent-model-overlay-select-option-label">
+        <Image
+          src={OpenAILogo}
+          alt="OpenAI"
+          class="agent-model-overlay-select-logo is-monochrome is-openai"
+        />
+        OpenAI
+      </span>
+    </button>
+    <a class="agent-model-overlay-select-option" href="/product/connections/">
+      <span class="agent-model-overlay-select-option-label">
+        <Sparkle class="agent-model-overlay-select-logo" />
+        View all models
+      </span>
+    </a>
+  </div>
+</div>
+
+<style>
+  .agent-model-overlay-select-wrap {
+    position: relative;
+    width: min(100%, 260px);
+  }
+
+  .agent-model-overlay-select {
+    display: flex;
+    width: 100%;
+    height: 32px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    border-radius: 6px;
+    border: 0.5px solid var(--border-color);
+    background: var(--bg-1);
+    color: var(--text-primary);
+    padding: 0 12px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .agent-model-overlay-select-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    width: 100%;
+    border-radius: 6px;
+    border: 0.5px solid var(--border-color);
+    background: var(--bg-1);
+    padding: 4px;
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    box-shadow: 0 12px 24px rgb(var(--text) / 0.15);
+    z-index: 20;
+    max-height: 210px;
+    overflow: auto;
+  }
+
+  .agent-model-overlay-select-menu.is-open {
+    display: flex;
+  }
+
+  .agent-model-overlay-select-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 12px;
+    color: var(--text-primary);
+    background: transparent;
+    border: 0;
+    text-align: left;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .agent-model-overlay-select-option-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .agent-model-overlay-select-logo {
+    height: 14px;
+    width: 14px;
+    flex-shrink: 0;
+    color: var(--text-secondary);
+  }
+
+  .agent-model-overlay-select-logo.is-openai {
+    transform: scale(1.15);
+  }
+
+  :global(.dark) .agent-model-overlay-select-logo.is-monochrome {
+    filter: invert(1) brightness(1.1);
+  }
+
+  .agent-model-overlay-select-option.is-selected {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .agent-model-overlay-select-meta {
+    font-size: 11px;
+    color: var(--accent-blue);
+  }
+</style>
+
+<script define:vars={{ overlayId }}>
+  (() => {
+    const root = document.getElementById(overlayId);
+    if (!root) return;
+
+    const toggle = root.querySelector("[data-agent-model-toggle]");
+    const menu = root.querySelector("[data-agent-model-menu]");
+    if (!toggle || !menu) return;
+
+    function setOpen(isOpen) {
+      menu.classList.toggle("is-open", isOpen);
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    }
+
+    toggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      setOpen(!menu.classList.contains("is-open"));
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!root.contains(event.target)) {
+        setOpen(false);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    });
+  })();
+</script>

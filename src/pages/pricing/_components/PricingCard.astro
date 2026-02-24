@@ -1,11 +1,15 @@
 ---
 
 import Button from "@components/Button.astro";
+import Tag from "@components/Tag.astro";
 import Check from "phosphor-astro/check.astro";
+import InfoFill from "phosphor-astro/InfoFill.astro";
 import Plus from "phosphor-astro/Plus.astro";
+import PlusCircleFill from "phosphor-astro/PlusCircleFill.astro";
 
 type ButtonVariant = "primary" | "secondary" | "cta";
 type ButtonSize = "small" | "medium" | "large";
+type AdditionalPriceTone = "muted" | "primary";
 // features can be an array of strings or objects with text and icon
 type FeatureItem = string | { text: string; icon?: "check" | "plus" };
 
@@ -20,8 +24,10 @@ interface Props {
   creatorLabel?: string;
   userLabel?: string;
   additionalPriceText?: string;
+  additionalPriceTone?: AdditionalPriceTone;
   features?: FeatureItem[];
   recommended?: boolean;
+  tagLabel?: string;
   buttonLabel: string;
   buttonVariant?: ButtonVariant;
   buttonUrl?: string;
@@ -40,8 +46,10 @@ const {
   creatorLabel = "per creator",
   userLabel = "per end user",
   additionalPriceText,
+  additionalPriceTone = "muted",
   features = [],
   recommended = false,
+  tagLabel,
   buttonLabel,
   buttonVariant = "primary",
   buttonUrl = "#",
@@ -52,21 +60,34 @@ const {
 const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
   .filter(Boolean)
   .join(" ");
+
+const isOperationsFeature = (feature: FeatureItem): feature is string =>
+  typeof feature === "string" &&
+  (/^Operations:\s*/i.test(feature) || /^(.+?)\s+operations$/i.test(feature));
+
+const operationsFeature = features.find(isOperationsFeature);
+const nonOperationsFeatures = features.filter((feature) => !isOperationsFeature(feature));
+const operationsValue = operationsFeature?.match(/^Operations:\s*(.+)$/i)?.[1] ||
+  operationsFeature?.match(/^(.+?)\s+operations$/i)?.[1];
+const operationsLabel = operationsValue ? `${operationsValue} operations` : operationsFeature;
 ---
 
 <div class={`${cardClasses} h-full flex flex-col`} data-billing-plan={billingPlan}>
   <header class="header">
-    <h3 class="text-stone-900 dark:text-stone-100">{title}</h3>
-    {
-      recommended && (
-        <span
-          class="text-stone-100 ml-auto px-2 py-0.5 bg-sky-700 text-sm font-mono rounded-md"
-          aria-label="Recommended"
-        >
-          Recommended
-        </span>
-      )
-    }
+    <div class="header-main">
+      <h3 class="text-stone-900 dark:text-stone-100">{title}</h3>
+      {tagLabel && <Tag label={tagLabel} size="small" variant="orange" class="ml-auto" />}
+      {
+        recommended && (
+          <span
+            class="text-stone-100 ml-auto px-2 py-0.5 bg-sky-700 text-sm font-mono rounded-md"
+            aria-label="Recommended"
+          >
+            Recommended
+          </span>
+        )
+      }
+    </div>
   </header>
 
   <div class="body">
@@ -84,7 +105,9 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
             {creatorLabel && (
               <span class="text-[15px] text-stone-600 dark:text-stone-400">{creatorLabel}</span>
             )}
-            <span class="text-[15px] text-stone-600 dark:text-stone-400">{creatorUnit}</span>
+            <span class="unit-text text-[15px] text-stone-600 dark:text-stone-400">
+              {creatorUnit}
+            </span>
           </span>
         </p>
         {userPrice !== undefined && (
@@ -97,27 +120,82 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
             </span>
             <span class="inline-flex gap-0.5">
               <span class="text-[15px] text-stone-600 dark:text-stone-400">{userLabel}</span>
-              <span class="text-[15px] text-stone-600 dark:text-stone-400">{userUnit}</span>
+              <span class="unit-text text-[15px] text-stone-600 dark:text-stone-400">
+                {userUnit}
+              </span>
             </span>
           </p>
         )}
         {additionalPriceText && (
           <p class="price-line">
-            <span class="text-[15px] text-stone-600 dark:text-stone-400">{additionalPriceText}</span>
+            <span
+              class={`text-[15px] ${
+                additionalPriceTone === "primary"
+                  ? "text-stone-900 dark:text-stone-100"
+                  : "text-stone-600 dark:text-stone-400"
+              }`}
+            >
+              {additionalPriceText}
+            </span>
           </p>
         )}
       </div>
+      {operationsLabel && (
+        <p class="text-[15px] text-stone-900 dark:text-stone-100 mt-1">
+          <span class="end-users-inline">
+            <span>{operationsLabel}</span>
+            <span class="end-users-help">
+              <button
+                type="button"
+                class="end-users-help-button"
+                aria-label="Operations info"
+              >
+                <InfoFill
+                  class="w-4 h-4 fill-stone-700 dark:fill-stone-300"
+                  aria-hidden="true"
+                />
+              </button>
+              <span
+                role="tooltip"
+                class="end-users-popover p-3 rounded-sm text-sm text-primary"
+              >
+                An operation is a unit of work performed by your AI agents or automations.
+              </span>
+            </span>
+          </span>
+        </p>
+      )}
     </div>
     <div class="description-features">
       <div>
         {description && <p class="text-stone-600! dark:text-stone-400!">{description}</p>}
       </div>
       {
-        features?.length ? (
+        nonOperationsFeatures.length ? (
           <ul class=" gap-1 flex flex-col mb-5" aria-label="Plan features">
-            {features.map((feat, index) => {
+            {nonOperationsFeatures.map((feat, index) => {
               const featureText = typeof feat === "string" ? feat : feat.text;
               const iconType = typeof feat === "string" ? "check" : (feat.icon || "check");
+              const endUsersMatch = typeof feat === "string"
+                ? (
+                  feat.match(/^End users:\s*(.+)$/i) ||
+                  feat.match(/^(.+?)\s+end users?$/i)
+                )
+                : null;
+              const endUsersValue = endUsersMatch?.[1] || "";
+              const showEndUsersPopover = Boolean(endUsersMatch && /\d/.test(endUsersValue));
+              const creatorsMatch = typeof feat === "string"
+                ? (
+                  feat.match(/^Creators:\s*(.+)$/i) ||
+                  feat.match(/^(.+?)\s+creators?\b/i)
+                )
+                : null;
+              const creatorsValue = creatorsMatch?.[1] || "";
+              const showCreatorsPopover = Boolean(
+                creatorsMatch &&
+                /\d/.test(creatorsValue) &&
+                (billingPlan === "team" || billingPlan === "business")
+              );
               return (
                 <li key={`feature-${index}`} class="text-[15px]">
                   <span class="check">
@@ -127,7 +205,59 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
                       <Check class="fill-stone-700 dark:fill-stone-300 w-3" aria-hidden="true" />
                     )}
                   </span>
-                  <span class="feature-text text-stone-900 dark:text-stone-100">{featureText}</span>
+                  <span class="feature-text text-stone-900 dark:text-stone-100">
+                    {showEndUsersPopover ? (
+                      <span class="end-users-inline">
+                        <span>{`${endUsersValue} end users`}</span>
+                        <span class="end-users-help">
+                          <button
+                            type="button"
+                            class="end-users-help-button"
+                            aria-label="Add end users pricing info"
+                          >
+                            <PlusCircleFill
+                              class="w-4 h-4 fill-stone-700 dark:fill-stone-300"
+                              aria-hidden="true"
+                            />
+                          </button>
+                          <span
+                            role="tooltip"
+                            class="end-users-popover p-3 rounded-sm text-sm text-primary"
+                            data-overage-kind="end-users"
+                            data-base-overage="5"
+                          >
+                            Add more end users for $5 per end user per month
+                          </span>
+                        </span>
+                      </span>
+                    ) : showCreatorsPopover ? (
+                      <span class="end-users-inline">
+                        <span>{featureText}</span>
+                        <span class="end-users-help">
+                          <button
+                            type="button"
+                            class="end-users-help-button"
+                            aria-label="Add creators pricing info"
+                          >
+                            <PlusCircleFill
+                              class="w-4 h-4 fill-stone-700 dark:fill-stone-300"
+                              aria-hidden="true"
+                            />
+                          </button>
+                          <span
+                            role="tooltip"
+                            class="end-users-popover p-3 rounded-sm text-sm text-primary"
+                            data-overage-kind="creators"
+                            data-base-overage="50"
+                          >
+                            Add more creators for $50 per creator per month
+                          </span>
+                        </span>
+                      </span>
+                    ) : (
+                      featureText
+                    )}
+                  </span>
                 </li>
               );
             })}
@@ -166,10 +296,14 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
   }
 
   .header {
+    display: block;
+  }
+
+  .header-main {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-wrap: wrap;
+    min-width: 0;
   }
 
   .body {
@@ -218,6 +352,65 @@ const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
   }
   .check {
     display: inline-flex;
+  }
+
+  .unit-text {
+    font-family: "Inter", var(--font-sans);
+    font-weight: 500 !important;
+  }
+
+  .end-users-help {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 6px;
+  }
+
+  .end-users-inline {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1.2;
+  }
+
+  .end-users-help-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: help;
+    line-height: 1;
+  }
+
+  .end-users-help-button:focus-visible {
+    outline: 2px solid rgb(var(--ring));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .end-users-popover {
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 8px);
+    transform: translate(-50%, -4px);
+    min-width: 220px;
+    max-width: 260px;
+    background: var(--bg-1);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 150ms ease, transform 150ms ease, visibility 150ms ease;
+    z-index: 20;
+  }
+
+  .end-users-help:hover .end-users-popover,
+  .end-users-help:focus-within .end-users-popover {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
   }
 
 </style>

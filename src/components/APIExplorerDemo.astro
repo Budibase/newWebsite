@@ -5,6 +5,7 @@ import Cube from "phosphor-astro/Cube.astro";
 import PaperPlaneTilt from "phosphor-astro/PaperPlaneTilt.astro";
 
 import Icon from "@components/Icon.astro";
+import APIExplorerBackdrop from "@assets/images/backgrounds/light/api-explorer-sunset.png";
 import StripeLogo from "@assets/logos/stripe.svg";
 import NotionLogo from "@assets/logos/notion.svg";
 import JiraLogo from "@assets/logos/Jira.svg";
@@ -16,14 +17,18 @@ import SageLogo from "@assets/logos/sage.svg";
 
 interface Props {
   backdropImage?: string;
-  backdropPaddingXClass?: string;
+  backdropPaddingClass?: string;
 }
 
-const { backdropImage, backdropPaddingXClass = "px-4 sm:px-8 lg:px-12" } =
+const {
+  backdropImage,
+  backdropPaddingClass = "px-6 py-6 sm:px-10 sm:py-10 lg:px-32 lg:py-12",
+} =
   Astro.props as Props;
 const id = `api-explorer-demo-${Math.random().toString(36).slice(2, 8)}`;
-const apiExplorerStyle = backdropImage
-  ? `--api-demo-backdrop-image: url("${backdropImage}")`
+const resolvedBackdropImage = backdropImage ?? APIExplorerBackdrop.src;
+const apiExplorerStyle = resolvedBackdropImage
+  ? `--api-demo-backdrop-image: url("${resolvedBackdropImage}")`
   : undefined;
 
 const responsePayload = `{
@@ -36,9 +41,9 @@ const responsePayload = `{
 ---
 
 <div id={id} class="api-explorer-demo demo-breakout w-full overflow-hidden" style={apiExplorerStyle}>
-  <div class={`api-explorer-demo-backdrop ${backdropPaddingXClass} py-12`}>
+  <div class={`api-explorer-demo-backdrop ${backdropPaddingClass}`}>
     <div
-      class="api-explorer-demo-shell w-full max-w-full overflow-hidden rounded-[8px] border-[0.5px] border-[var(--api-demo-border)]"
+      class="api-explorer-demo-shell w-full max-w-full overflow-hidden rounded-[6px] border-[0.5px] border-[var(--border-color)] bg-[var(--bg-1)] shadow-[0px_10px_30px_rgb(var(--text)/0.25)]"
     >
       <div
         class="group relative flex h-7 items-center justify-between border-b-[0.5px] border-[var(--border-color)] bg-[var(--bg-2)] px-2"
