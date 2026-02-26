@@ -14,6 +14,12 @@ type OperationTier = {
   yearlyPrice?: number;
   aiCredits?: string;
 };
+type AddonDisplayItem = {
+  text: string;
+  baseAmount?: number;
+  prefix?: string;
+  suffix?: string;
+};
 // features can be an array of strings or objects with text and icon
 type FeatureItem = string | { text: string; icon?: "check" | "plus" };
 
@@ -129,12 +135,31 @@ const initialDisplayPrice = typeof initialBasePrice === "number"
   ? `$${initialBasePrice}`
   : (typeof creatorPrice === "number" ? `$${creatorPrice}` : creatorPrice);
 const defaultAddonItems = billingPlan === "premium" || billingPlan === "business"
-  ? ["End users for $5/user/mo", "Creator for $50/user/mo"]
+  ? ["End users for $5/user/mo", "Creators for $50/creator/mo"]
   : billingPlan === "enterprise"
     ? []
     : ["End users for $5/user/mo"];
 const addonsToShow = addonItems ?? defaultAddonItems;
-const showAddonsSection = addonsToShow.length > 0;
+const addonPricePattern = /^(.*)\$(\d+)(.*)$/;
+const normalizedAddonItems: AddonDisplayItem[] = addonsToShow.map((addon) => {
+  const priceMatch = addon.match(addonPricePattern);
+  if (!priceMatch) {
+    return { text: addon };
+  }
+
+  const baseAmount = Number(priceMatch[2]);
+  if (Number.isNaN(baseAmount)) {
+    return { text: addon };
+  }
+
+  return {
+    text: addon,
+    baseAmount,
+    prefix: priceMatch[1],
+    suffix: priceMatch[3],
+  };
+});
+const showAddonsSection = normalizedAddonItems.length > 0;
 ---
 
 <div
@@ -282,7 +307,7 @@ const showAddonsSection = addonsToShow.length > 0;
               const showCreatorsPopover = Boolean(
                 creatorsMatch &&
                 /\d/.test(creatorsValue) &&
-                (billingPlan === "team" || billingPlan === "business")
+                billingPlan === "team"
               );
               return (
                 <li key={`feature-${index}`} class="text-[14px]">
@@ -356,12 +381,17 @@ const showAddonsSection = addonsToShow.length > 0;
     {showAddonsSection && (
       <div class="addons-section">
         <p class="addons-label text-[14px] text-stone-600! dark:text-stone-400!">Available add-ons:</p>
-        {addonsToShow.map((addon) => (
-          <p class="addon-line text-[14px] text-stone-900 dark:text-stone-100">
+        {normalizedAddonItems.map((addon) => (
+          <p
+            class="addon-line text-[14px] text-stone-900 dark:text-stone-100"
+            data-addon-base={addon.baseAmount !== undefined ? String(addon.baseAmount) : undefined}
+            data-addon-prefix={addon.prefix}
+            data-addon-suffix={addon.suffix}
+          >
             <span class="check">
               <Plus class="w-3 h-3 fill-current" aria-hidden="true" />
             </span>
-            <span>{addon}</span>
+            <span data-addon-text>{addon.text}</span>
           </p>
         ))}
       </div>

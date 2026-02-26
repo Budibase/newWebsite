@@ -370,12 +370,12 @@ const faqItems: FaqItem[] = [
             "10 workspaces",
             "Custom branding",
             "SSO: OIDC, Google, Microsoft",
-            "AI chat support",
+            "AI support",
           ]}
         />
         <PricingCard
           title="Business"
-          description="Everything in Business, plus:"
+          description="Everything in Premium, plus:"
           creatorPrice={299}
           billingPlan="business"
           creatorUnit="/ month"
@@ -389,7 +389,7 @@ const faqItems: FaqItem[] = [
           ]}
           defaultTierIndex={0}
           features={[
-            "3+ creators",
+            "3 creators",
             "30 end users",
             "30 days logs",
             "Unlimited workspaces",
@@ -418,9 +418,9 @@ const faqItems: FaqItem[] = [
           features={[
             "Enforced SSO",
             "Active directory/SCIM",
+            "365 days logs",
             "User groups",
             "Audit logs",
-            "365 days logs",
             "On-premise support",
             "Priorty support/SLAs",
           ]}
@@ -633,6 +633,24 @@ const faqItems: FaqItem[] = [
 
         if (kind === "end-users") {
           htmlEl.textContent = `Add more end users for $${updatedOverage} per end user per month`;
+        }
+      });
+
+      card.querySelectorAll("[data-addon-base][data-addon-prefix][data-addon-suffix]").forEach((addonEl) => {
+        const htmlEl = addonEl as HTMLElement;
+        const baseAddon = Number(htmlEl.dataset.addonBase);
+        if (Number.isNaN(baseAddon)) {
+          return;
+        }
+
+        const prefix = htmlEl.dataset.addonPrefix || "";
+        const suffix = htmlEl.dataset.addonSuffix || "";
+        const updatedAddonValue = formatPrice(baseAddon * multiplier);
+        const updatedAddonText = `${prefix}$${updatedAddonValue}${suffix}`;
+        const addonTextEl = htmlEl.querySelector("[data-addon-text]");
+
+        if (addonTextEl) {
+          (addonTextEl as HTMLElement).textContent = updatedAddonText;
         }
       });
     });
