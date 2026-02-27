@@ -581,6 +581,19 @@ const faqItems: FaqItem[] = [
     background-position: center top;
     background-repeat: no-repeat;
     z-index: 0;
+    overflow: hidden;
+  }
+
+  .pricing-cards-backdrop::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.42) 0%,
+      rgba(0, 0, 0, 0.32) 100%
+    );
+    pointer-events: none;
   }
 
   .pricing-cards-grid {
