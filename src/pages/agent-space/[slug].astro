@@ -1,11 +1,69 @@
 ---
 import Layout from "../../layouts/MainLayout.astro";
 import AccessRequestPrompt from "@components/AccessRequestPrompt.astro";
+import AgentDetailHero from "@components/agent-space/AgentDetailHero.astro";
+import AgentPromptPanel from "@components/agent-space/AgentPromptPanel.astro";
+import AgentAssetsRail from "@components/agent-space/AgentAssetsRail.astro";
+import RelatedAgentsSection from "@components/agent-space/RelatedAgentsSection.astro";
 import { getCollection, render, type CollectionEntry } from "astro:content";
+import { getAgentSpaceCards } from "../../data/agentSpaceCardData";
 import {
   coreAgentDetails,
   type CoreAgentDetail,
 } from "../../data/agentSpaceCoreAgents";
+
+const DEFAULT_CTA_LABEL = "Use this template";
+const DEFAULT_CTA_HREF = "https://account.budibase.app/register";
+
+const ASSET_GROUP_ORDER = [
+  { key: "tables", label: "Tables" },
+  { key: "automations", label: "Automations" },
+  { key: "tools", label: "Tools" },
+  { key: "aiModel", label: "AI model" },
+  { key: "apps", label: "Apps" },
+] as const;
+
+type AssetKey = (typeof ASSET_GROUP_ORDER)[number]["key"];
+
+type AssetBuckets = {
+  tables?: string[];
+  automations?: string[];
+  tools?: string[];
+  aiModel?: string[];
+  apps?: string[];
+};
+
+type ResolvedAssetBuckets = Record<AssetKey, string[]>;
+
+type WorkflowPageProps = {
+  kind: "workflow";
+  entry: CollectionEntry<"workflows">;
+};
+
+type CorePageProps = {
+  kind: "core";
+  agent: CoreAgentDetail;
+};
+
+type DetailViewModel = {
+  title: string;
+  outcome: string;
+  slug: string;
+  pageTitle: string;
+  ctaLabel: string;
+  ctaHref: string;
+  heroPrompt: string;
+  useAccessRequestPrompt: boolean;
+  assetsUsed: ResolvedAssetBuckets;
+};
+
+type RelatedAgent = {
+  slug: string;
+  name: string;
+  description: string;
+  department: string;
+  linkUrl: string;
+};
 
 export async function getStaticPaths() {
   const workflows = await getCollection("workflows");
@@ -23,80 +81,265 @@ export async function getStaticPaths() {
   return [...workflowPaths, ...coreAgentPaths];
 }
 
-type WorkflowPageProps = {
-  kind: "workflow";
-  entry: CollectionEntry<"workflows">;
+const uniqueStrings = (items: Array<string | undefined | null>) =>
+  Array.from(
+    new Set(
+      items
+        .map((item) => item?.trim())
+        .filter((item): item is string => Boolean(item)),
+    ),
+  );
+
+const mergeAssetsWithFallback = (
+  explicitAssets: AssetBuckets | undefined,
+  fallbackAssets: AssetBuckets,
+): ResolvedAssetBuckets => {
+  const merged = {} as ResolvedAssetBuckets;
+
+  for (const group of ASSET_GROUP_ORDER) {
+    const explicitItems = explicitAssets?.[group.key] ?? [];
+    const fallbackItems = fallbackAssets[group.key] ?? [];
+    merged[group.key] = uniqueStrings(
+      explicitItems.length > 0 ? explicitItems : fallbackItems,
+    );
+  }
+
+  return merged;
 };
 
-type CorePageProps = {
-  kind: "core";
-  agent: CoreAgentDetail;
+const buildWorkflowPromptFallback = (entry: CollectionEntry<"workflows">) => {
+  const assists = entry.data.aiAssists.slice(0, 3).join(", ");
+  const humanChecks = entry.data.humansDecide.slice(0, 3).join(", ");
+
+  return [
+    `You are orchestrating the \"${entry.data.title}\" workflow for ${entry.data.role}.`,
+    `Goal: ${entry.data.outcome}`,
+    assists ? `AI assistance: ${assists}.` : "AI assistance: classify, summarize, and route work.",
+    humanChecks
+      ? `Human decision points: ${humanChecks}.`
+      : "Human decision points: exceptions and final approvals.",
+    "Keep outputs clear, auditable, and policy-aligned.",
+  ].join("\n");
+};
+
+const buildCorePromptFallback = (agent: CoreAgentDetail) => {
+  const capability = agent.capabilities[0] ?? "Support operational workflows";
+  const review = agent.humanReview[0] ?? "Escalate exceptions for human review";
+
+  return [
+    `You are the \"${agent.title}\" assistant.`,
+    `Goal: ${agent.outcome}`,
+    `Primary capability: ${capability}`,
+    `Human checkpoint: ${review}`,
+    "Respond concisely with clear reasoning and traceable actions.",
+  ].join("\n");
+};
+
+const buildWorkflowFallbackAssets = (
+  entry: CollectionEntry<"workflows">,
+): AssetBuckets => {
+  const slug = entry.data.slug ?? entry.id;
+  const dataTableSignals = entry.data.integrations.filter((integration) =>
+    /(database|erp|hris|accounting|file storage)/i.test(integration),
+  );
+
+  return {
+    tables: uniqueStrings([
+      slug === "access-request" ? "Access Requests" : undefined,
+      slug === "access-request" ? "Decisions" : undefined,
+      ...dataTableSignals.map((signal) => `${signal} records`),
+      entry.data.tags.includes("Human-in-the-loop") ? "Decision audit log" : undefined,
+    ]),
+    automations: uniqueStrings([
+      ...entry.data.steps
+        .filter((step) => !step.humanDecision)
+        .slice(0, 4)
+        .map((step) => step.title),
+      entry.data.tags.includes("Automations")
+        ? "Event-based workflow routing"
+        : undefined,
+    ]),
+    tools: uniqueStrings(entry.data.integrations),
+    aiModel: uniqueStrings([
+      slug === "access-request" ? "Ministral-8B-2512" : undefined,
+      slug === "access-request" ? "mistralai/mistral-embed-2312" : undefined,
+      slug !== "access-request" ? "Configurable LLM provider" : undefined,
+    ]),
+    apps: uniqueStrings([
+      entry.data.tags.includes("Apps") ? "Budibase app interface" : undefined,
+      entry.data.tags.includes("Chat") ? "Chat request channel" : undefined,
+      "Admin review workspace",
+    ]),
+  };
+};
+
+const coreAgentAssetDefaults: Record<string, AssetBuckets> = {
+  "company-guide": {
+    tables: ["Policy index", "Knowledge articles"],
+    automations: ["Answer routing", "Escalation logging"],
+    tools: ["Internal knowledge base", "Search index"],
+    aiModel: ["Configurable LLM provider"],
+    apps: ["Employee self-service app"],
+  },
+  "it-triage-agent": {
+    tables: ["Incident queue", "Ticket history"],
+    automations: ["Priority classification", "Queue assignment"],
+    tools: ["ITSM ticketing", "Monitoring alerts"],
+    aiModel: ["Configurable LLM provider"],
+    apps: ["IT operations console"],
+  },
+  "executive-analysis-agent": {
+    tables: ["KPI snapshots", "Trend summaries"],
+    automations: ["Signal aggregation", "Executive briefing distribution"],
+    tools: ["Analytics stack", "Reporting integrations"],
+    aiModel: ["Configurable LLM provider"],
+    apps: ["Leadership dashboard"],
+  },
+  "contract-analyser-agent": {
+    tables: ["Contract records", "Renewal timelines"],
+    automations: ["Clause extraction", "Risk scoring"],
+    tools: ["Document storage", "Compliance checks"],
+    aiModel: ["Configurable LLM provider"],
+    apps: ["Finance and legal review app"],
+  },
+  "employee-onboarding-agent": {
+    tables: ["Onboarding checklist", "Access matrix"],
+    automations: ["Task orchestration", "Reminder notifications"],
+    tools: ["Identity provider", "HR system"],
+    aiModel: ["Configurable LLM provider"],
+    apps: ["Onboarding coordinator app"],
+  },
 };
 
 const page = Astro.props as WorkflowPageProps | CorePageProps;
 
-let title = "";
-let outcome = "";
-let workflowSlug: string | null = null;
 let WorkflowContent: Awaited<ReturnType<typeof render>>["Content"] | null = null;
 let coreAgent: CoreAgentDetail | null = null;
-let pageTitle = "";
+let detail: DetailViewModel;
 
 if (page.kind === "workflow") {
   const { entry } = page;
-  title = entry.data.title;
-  outcome = entry.data.outcome;
-  workflowSlug = entry.data.slug ?? entry.id;
+  const slug = entry.data.slug ?? entry.id;
+  const explicitPrompt = entry.data.heroPrompt?.trim() ?? "";
   const rendered = await render(entry);
+
   WorkflowContent = rendered.Content;
-  pageTitle = `${title} Workflow Playbook | Budibase`;
+
+  detail = {
+    title: entry.data.title,
+    outcome: entry.data.outcome,
+    slug,
+    pageTitle: `${entry.data.title} Workflow Playbook | Budibase`,
+    ctaLabel: entry.data.cta?.label?.trim() || DEFAULT_CTA_LABEL,
+    ctaHref: entry.data.cta?.href?.trim() || DEFAULT_CTA_HREF,
+    heroPrompt: explicitPrompt || buildWorkflowPromptFallback(entry),
+    useAccessRequestPrompt: slug === "access-request" && !explicitPrompt,
+    assetsUsed: mergeAssetsWithFallback(
+      entry.data.assetsUsed,
+      buildWorkflowFallbackAssets(entry),
+    ),
+  };
 } else {
   coreAgent = page.agent;
-  title = coreAgent.title;
-  outcome = coreAgent.outcome;
-  pageTitle = `${title} Agent | Budibase`;
+  const explicitPrompt = coreAgent.heroPrompt?.trim() ?? "";
+
+  detail = {
+    title: coreAgent.title,
+    outcome: coreAgent.outcome,
+    slug: coreAgent.slug,
+    pageTitle: `${coreAgent.title} Agent | Budibase`,
+    ctaLabel: coreAgent.cta?.label?.trim() || DEFAULT_CTA_LABEL,
+    ctaHref: coreAgent.cta?.href?.trim() || DEFAULT_CTA_HREF,
+    heroPrompt: explicitPrompt || buildCorePromptFallback(coreAgent),
+    useAccessRequestPrompt: false,
+    assetsUsed: mergeAssetsWithFallback(
+      coreAgent.assetsUsed,
+      coreAgentAssetDefaults[coreAgent.slug] ?? {},
+    ),
+  };
 }
+
+const assetGroups = ASSET_GROUP_ORDER.map((group) => ({
+  label: group.label,
+  items: detail.assetsUsed[group.key],
+}));
+
+const allAgentCards = await getAgentSpaceCards();
+const currentAgentCard = allAgentCards.find((card) => card.slug === detail.slug);
+const relatedAgents: RelatedAgent[] = allAgentCards
+  .filter((card) => card.slug !== detail.slug)
+  .sort((a, b) => {
+    const aSameDepartment = currentAgentCard
+      ? a.departmentId === currentAgentCard.departmentId
+      : false;
+    const bSameDepartment = currentAgentCard
+      ? b.departmentId === currentAgentCard.departmentId
+      : false;
+
+    if (aSameDepartment !== bSameDepartment) {
+      return aSameDepartment ? -1 : 1;
+    }
+
+    return a.name.localeCompare(b.name);
+  })
+  .slice(0, 3)
+  .map((card) => ({
+    slug: card.slug,
+    name: card.name,
+    description: card.description,
+    department: card.department,
+    linkUrl: card.linkUrl,
+  }));
 ---
 
-<Layout title={pageTitle} description={outcome}>
+<Layout title={detail.pageTitle} description={detail.outcome}>
   <div class="learn-detail-shell">
-    <main class="side-rail-main-inner workflow-main pb-20">
-      <header class="side-rail-page-header">
-        <h1 class="hero-title mb-2 text-5xl!">{title}</h1>
-        <p class="text-stone-500! dark:text-stone-400!">{outcome}</p>
+    <main class="side-rail-main-inner agent-detail-main pb-20">
+      <AgentDetailHero
+        title={detail.title}
+        outcome={detail.outcome}
+        ctaLabel={detail.ctaLabel}
+        ctaHref={detail.ctaHref}
+      >
         {
-          workflowSlug === "access-request" && (
-            <div class="mt-4">
-              <AccessRequestPrompt collapsible collapsedHeight={200} />
-            </div>
-          )
-        }
-      </header>
-
-      <article class="workflow-article">
-        {
-          WorkflowContent ? (
-            <WorkflowContent />
+          detail.useAccessRequestPrompt ? (
+            <AccessRequestPrompt collapsible collapsedHeight={260} />
           ) : (
-            coreAgent && (
-              <>
-                <h2 id="overview">Overview</h2>
-                {coreAgent.overview.map((paragraph) => <p>{paragraph}</p>)}
-
-                <h2 id="capabilities">Capabilities</h2>
-                <ul class="mb-6 list-disc pl-6 text-stone-700 dark:text-stone-300">
-                  {coreAgent.capabilities.map((item) => <li>{item}</li>)}
-                </ul>
-
-                <h2 id="human-review">Human decision points</h2>
-                <ul class="list-disc pl-6 text-stone-700 dark:text-stone-300">
-                  {coreAgent.humanReview.map((item) => <li>{item}</li>)}
-                </ul>
-              </>
-            )
+            <AgentPromptPanel prompt={detail.heroPrompt} />
           )
         }
-      </article>
+      </AgentDetailHero>
+
+      <section class="agent-detail-content-grid">
+        <article class="workflow-article agent-detail-article">
+          {
+            WorkflowContent ? (
+              <WorkflowContent />
+            ) : (
+              coreAgent && (
+                <>
+                  <h2 id="overview">Overview</h2>
+                  {coreAgent.overview.map((paragraph) => <p>{paragraph}</p>)}
+
+                  <h2 id="capabilities">Capabilities</h2>
+                  <ul class="mb-6 list-disc pl-6 text-stone-700 dark:text-stone-300">
+                    {coreAgent.capabilities.map((item) => <li>{item}</li>)}
+                  </ul>
+
+                  <h2 id="human-review">Human decision points</h2>
+                  <ul class="list-disc pl-6 text-stone-700 dark:text-stone-300">
+                    {coreAgent.humanReview.map((item) => <li>{item}</li>)}
+                  </ul>
+                </>
+              )
+            )
+          }
+        </article>
+
+        <AgentAssetsRail groups={assetGroups} />
+      </section>
+
+      <RelatedAgentsSection cards={relatedAgents} />
     </main>
   </div>
 
@@ -105,9 +348,22 @@ if (page.kind === "workflow") {
       width: 100%;
     }
 
-    .workflow-main {
-      width: min(100%, 48rem);
+    .agent-detail-main {
+      width: min(100%, 82rem);
       margin-inline: auto;
+    }
+
+    .agent-detail-content-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .agent-detail-article {
+      border: 0.5px solid var(--border-color);
+      background: var(--bg-1);
+      border-radius: 0.8rem;
+      padding: 1rem;
+      min-width: 0;
     }
 
     .workflow-article :where(h2, h3, h4) {
@@ -116,6 +372,27 @@ if (page.kind === "workflow") {
 
     .workflow-article :where(h2#overview) {
       margin-top: 0 !important;
+    }
+
+    @media (min-width: 768px) {
+      .agent-detail-main {
+        padding-top: 1.1rem;
+      }
+
+      .agent-detail-article {
+        padding: 1.2rem 1.35rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .agent-detail-content-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+        align-items: start;
+      }
+
+      .agent-detail-article {
+        padding: 1.25rem 1.5rem;
+      }
     }
   </style>
 

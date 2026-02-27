@@ -2,6 +2,18 @@ export interface CoreAgentDetail {
   slug: string;
   title: string;
   outcome: string;
+  cta?: {
+    label?: string;
+    href?: string;
+  };
+  heroPrompt?: string;
+  assetsUsed?: {
+    tables?: string[];
+    automations?: string[];
+    tools?: string[];
+    aiModel?: string[];
+    apps?: string[];
+  };
   overview: string[];
   capabilities: string[];
   humanReview: string[];

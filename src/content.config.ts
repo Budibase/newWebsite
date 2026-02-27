@@ -123,6 +123,14 @@ const caseStudies = defineCollection({
   }),
 });
 
+const assetsUsedSchema = z.object({
+  tables: z.array(z.string()).optional(),
+  automations: z.array(z.string()).optional(),
+  tools: z.array(z.string()).optional(),
+  aiModel: z.array(z.string()).optional(),
+  apps: z.array(z.string()).optional(),
+});
+
 const workflows = defineCollection({
   loader: glob({
     pattern: ["**/*.md", "**/*.mdx", "!**/README.md"],
@@ -141,6 +149,14 @@ const workflows = defineCollection({
     outcome: z.string(),
     setupTime: z.string(),
     difficulty: z.string(),
+    cta: z
+      .object({
+        label: z.string().optional(),
+        href: z.string().optional(),
+      })
+      .optional(),
+    heroPrompt: z.string().optional(),
+    assetsUsed: assetsUsedSchema.optional(),
     tags: z.array(z.string()),
     aiAssists: z.array(z.string()),
     humansDecide: z.array(z.string()),

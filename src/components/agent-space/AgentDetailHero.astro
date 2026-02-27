@@ -1,0 +1,105 @@
+---
+interface Props {
+  title: string;
+  outcome: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+const { title, outcome, ctaLabel, ctaHref } = Astro.props as Props;
+---
+
+<section class="agent-detail-hero">
+  <div class="agent-detail-hero-main">
+    <h1 class="hero-title mb-2 text-[clamp(2rem,1.5rem+2vw,3.4rem)]! leading-[0.98]!">
+      {title}
+    </h1>
+    <p class="agent-detail-hero-outcome">{outcome}</p>
+    <a href={ctaHref} class="agent-detail-hero-cta" data-astro-prefetch>{ctaLabel}</a>
+  </div>
+  <div class="agent-detail-hero-prompt">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .agent-detail-hero {
+    border-radius: 0.9rem;
+    padding: 1rem;
+    display: grid;
+    gap: 0.95rem;
+    align-items: center;
+    margin-bottom: 1.2rem;
+  }
+
+  .agent-detail-hero-main {
+    display: grid;
+    gap: 0.8rem;
+    align-content: center;
+  }
+
+  .agent-detail-hero-outcome {
+    margin: 0;
+    color: var(--text-secondary);
+    max-width: 38ch;
+  }
+
+  .agent-detail-hero-prompt {
+    display: flex;
+    align-items: center;
+  }
+
+  .agent-detail-hero-prompt :global(*) {
+    width: 100%;
+  }
+
+  .agent-detail-hero-cta {
+    width: fit-content;
+    min-height: 2.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 0.44rem 1rem;
+    text-decoration: none;
+    background: rgb(var(--brand));
+    color: rgb(var(--on-brand));
+    font-size: 0.98rem;
+    font-weight: 600;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .agent-detail-hero-cta:hover {
+    background: rgb(var(--brand-hover));
+  }
+
+  .agent-detail-hero-cta:active {
+    transform: translateY(1px);
+  }
+
+  .agent-detail-hero-cta:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--bg-1),
+      0 0 0 4px rgb(var(--ring) / 0.65);
+  }
+
+  @media (min-width: 1024px) {
+    .agent-detail-hero {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      align-items: stretch;
+      gap: 1.1rem;
+      padding: 1.2rem;
+    }
+
+    .agent-detail-hero-main {
+      grid-column: span 5;
+    }
+
+    .agent-detail-hero-prompt {
+      grid-column: span 7;
+    }
+  }
+</style>
