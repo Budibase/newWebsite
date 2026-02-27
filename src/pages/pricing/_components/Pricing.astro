@@ -1,6 +1,7 @@
 ---
 import PricingCard from "./PricingCard.astro";
 import Plus from "phosphor-astro/Plus.astro";
+import CoralReef from "@assets/images/pricing/coralreef.png";
 
 type PlanKey = "pro" | "proPlus" | "premium" | "team" | "business" | "enterprise";
 type FaqItem = {
@@ -10,10 +11,8 @@ type FaqItem = {
 };
 
 const comparisonColumns: { key: PlanKey; label: string }[] = [
-  { key: "pro", label: "Starter" },
-  { key: "proPlus", label: "Pro" },
+  { key: "pro", label: "Pro" },
   { key: "premium", label: "Premium" },
-  { key: "team", label: "Team" },
   { key: "business", label: "Business" },
   { key: "enterprise", label: "Enterprise" },
 ];
@@ -27,10 +26,10 @@ const comparisonRows: Array<{ feature: string; values: Record<PlanKey, string> }
     values: {
       pro: formatComparisonYearlyPrice(19),
       proPlus: formatComparisonYearlyPrice(49),
-      premium: formatComparisonYearlyPrice(99),
+      premium: formatComparisonYearlyPrice(49),
       team: formatComparisonYearlyPrice(149),
       business: formatComparisonYearlyPrice(299),
-      enterprise: "Flexible",
+      enterprise: "Custom",
     },
   },
   {
@@ -38,10 +37,10 @@ const comparisonRows: Array<{ feature: string; values: Record<PlanKey, string> }
     values: {
       pro: formatComparisonMonthlyPrice(19),
       proPlus: formatComparisonMonthlyPrice(49),
-      premium: formatComparisonMonthlyPrice(99),
+      premium: formatComparisonMonthlyPrice(49),
       team: formatComparisonMonthlyPrice(149),
       business: formatComparisonMonthlyPrice(299),
-      enterprise: "Flexible",
+      enterprise: "Custom",
     },
   },
   {
@@ -49,21 +48,21 @@ const comparisonRows: Array<{ feature: string; values: Record<PlanKey, string> }
     values: {
       pro: "5K",
       proPlus: "20K",
-      premium: "50K",
+      premium: "20K",
       team: "100K",
-      business: "300K",
-      enterprise: "Flexible",
+      business: "250K",
+      enterprise: "Custom",
     },
   },
   {
     feature: "Budibase AI credits",
     values: {
-      pro: "1K",
+      pro: "2K",
       proPlus: "3K",
-      premium: "8K",
+      premium: "10K",
       team: "20K",
       business: "50K",
-      enterprise: "Flexible",
+      enterprise: "Custom",
     },
   },
   {
@@ -226,7 +225,8 @@ const faqItems: FaqItem[] = [
   {
     question: "Why do you have multiple plans?",
     paragraphs: [
-      "Each plan includes a hard monthly limit on operations. As your AI agents and automations do more work, you move up plans. This keeps pricing predictable and aligned with the scale of operations you're running.",
+      "Each plan includes a hard monthly operations limit. Pro and Premium also let you choose between operations tiers using the dropdown on each card, while Business has a fixed tier and Enterprise is custom.",
+      "This keeps pricing predictable and aligned with the scale of work your AI agents and automations are running.",
     ],
   },
   {
@@ -246,7 +246,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Are operations soft limits or hard limits?",
     paragraphs: [
-      "Operations are hard monthly limits per plan. When you reach your limit, you'll need to upgrade to continue running agents and automations.",
+      "Operations are hard monthly limits based on your selected plan tier. When you reach your limit, you'll need to move to a higher tier or plan to continue running agents and automations.",
       "This ensures:",
     ],
     bullets: [
@@ -263,12 +263,23 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "Can I add more users?",
-    paragraphs: ["Yes. You can add additional end users on all paid plans."],
+    paragraphs: [
+      "Yes. Pro, Premium, and Business include an End users add-on.",
+      "End users are $5/user/mo on yearly billing. Monthly billing follows the same +20% pricing logic shown on the page.",
+    ],
   },
   {
     question: "Can I add more creators (builders)?",
     paragraphs: [
-      "Yes. On Team, Business, and Enterprise plans, you can add additional creators as your internal team grows.",
+      "Yes. Premium and Business include a Creators add-on.",
+      "Creators are $50/creator/mo on yearly billing. Monthly billing follows the same +20% pricing logic shown on the page.",
+    ],
+  },
+  {
+    question: "Do add-on prices change with yearly vs monthly billing?",
+    paragraphs: [
+      "Yes. Add-ons follow the same yearly/monthly toggle as plan pricing.",
+      "Monthly values are calculated as yearly price +20%.",
     ],
   },
   {
@@ -290,8 +301,8 @@ const faqItems: FaqItem[] = [
 
 <section class="container max-w-6xl mx-auto flex flex-col mt-8 px-2 lg:px-0">
   <div class="flex flex-col items-center text-center">
-    <h1 class="hero-title max-w-2xl !text-5xl mb-4 text-stone-950 dark:text-stone-100">
-      Pricing
+    <h1 class="hero-title max-w-2xl !text-5xl mb-4 mt-6 text-center md:mt-10 lg:mt-16 text-stone-950 dark:text-stone-100">
+      Give your team their time back
     </h1>
   </div>
   <div class="w-full flex flex-col gap-8">
@@ -320,126 +331,98 @@ const faqItems: FaqItem[] = [
       </ul>
     </div>
 
-    <section class="mb-4">
-      <h3 class="pt-4 mb-4 text-stone-900 dark:text-stone-100">Individual</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-center items-stretch">
+    <section class="mb-12 md:mb-20">
+      <div class="pricing-cards-stage">
+        <div
+          class="pricing-cards-backdrop"
+          style={`background-image: url('${CoralReef.src}');`}
+          aria-hidden="true"
+        >
+        </div>
+        <div class="pricing-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 justify-center items-stretch">
         <PricingCard
-          title="Starter"
+          title="Pro"
           description="Includes:"
           creatorPrice={19}
           billingPlan="pro"
           creatorUnit="/ month"
           creatorLabel=""
           recommended={false}
-          buttonLabel="Free 14 day trial"
+          buttonLabel="Start 14 day free trial"
           buttonVariant="cta"
           buttonUrl="/signup-plus"
+          operationTiers={[
+            { operations: "5K", yearlyPrice: 19, aiCredits: "2K" },
+            { operations: "10K", yearlyPrice: 29, aiCredits: "2K" },
+          ]}
+          defaultTierIndex={0}
           features={[
-            "5K operations",
-            "1K Budibase AI credits",
             "1 creator",
             "2 end users",
             "1 day logs",
             "1 workspace",
-          ]}
-        />
-        <PricingCard
-          title="Pro"
-          description="Includes:"
-          creatorPrice={49}
-          billingPlan="pro-plus"
-          creatorUnit="/ month"
-          creatorLabel=""
-          recommended={false}
-          buttonLabel="Free 14 day trial"
-          buttonVariant="cta"
-          buttonUrl="/signup-plus"
-          features={[
-            "20K operations",
-            "3K Budibase AI credits",
-            "1 creator",
-            "5 end users",
-            "7 days logs",
-            "3 workspaces",
+            "Unlimited agents",
+            "Synchronous automations",
+            "Community support",
           ]}
         />
         <PricingCard
           title="Premium"
           tagLabel="Recommended"
-          description="Includes:"
-          creatorPrice={99}
+          description="Everything in Pro, plus:"
+          creatorPrice={49}
           billingPlan="premium"
           creatorUnit="/ month"
           creatorLabel=""
           recommended={false}
-          buttonLabel="Free 14 day trial"
+          buttonLabel="Start 14 day free trial"
           buttonVariant="cta"
           buttonUrl="/signup-plus"
+          operationTiers={[
+            { operations: "20K", yearlyPrice: 49, aiCredits: "10K" },
+            { operations: "50K", yearlyPrice: 79, aiCredits: "10K" },
+          ]}
+          defaultTierIndex={0}
           features={[
-            "50K operations",
-            "8K Budibase AI credits",
             "1 creator",
             "10 end users",
             "7 days logs",
             "10 workspaces",
-          ]}
-        />
-      </div>
-    </section>
-
-    <section class="mb-12 md:mb-20">
-      <h3 class="pt-4 mb-4 text-stone-900 dark:text-stone-100">Teams and businesses</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-center items-stretch">
-        <PricingCard
-          title="Team"
-          description="Includes:"
-          creatorPrice={149}
-          billingPlan="team"
-          creatorUnit="/ month"
-          creatorLabel=""
-          recommended={false}
-          buttonLabel="Contact sales"
-          buttonVariant="primary"
-          buttonUrl="/signup-plus"
-          features={[
-            "100K operations",
-            "20K Budibase AI credits",
-            "1 creator",
-            "20 end users",
-            "30 days logs",
-            "Unlimited workspaces",
-            "Backups and restore",
-            "Chat/email support",
+            "Custom branding",
+            "SSO: OIDC, Google, Microsoft",
+            "AI support",
           ]}
         />
         <PricingCard
           title="Business"
-          description="Includes:"
+          description="Everything in Premium, plus:"
           creatorPrice={299}
           billingPlan="business"
           creatorUnit="/ month"
           creatorLabel=""
           recommended={false}
-          buttonLabel="Contact sales"
-          buttonVariant="primary"
+          buttonLabel="Start 14 day free trial"
+          buttonVariant="cta"
           buttonUrl="/signup-plus"
+          operationTiers={[
+            { operations: "250K", yearlyPrice: 299, aiCredits: "50K" },
+          ]}
+          defaultTierIndex={0}
           features={[
-            "300K operations",
-            "50K Budibase AI credits",
             "3 creators",
             "30 end users",
             "30 days logs",
             "Unlimited workspaces",
             "Environment variables",
-            "On-premise support",
             "Backups and restore",
-            "Chat/email support",
+            "AI/Human support",
           ]}
         />
         <PricingCard
           title="Enterprise"
-          description="Includes:"
-          creatorPrice="Flexible"
+          description="Everything in Business, plus:"
+          creatorPrice="Custom"
+          billingPlan="enterprise"
           creatorUnit=""
           creatorLabel=""
           additionalPriceText="Custom operations"
@@ -448,23 +431,25 @@ const faqItems: FaqItem[] = [
           buttonLabel="Contact sales"
           buttonVariant="primary"
           buttonUrl="/signup-plus"
+          addonItems={[
+            "Air-gapped deployment",
+            "Onboarding and training",
+          ]}
           features={[
             "Enforced SSO",
             "Active directory/SCIM",
+            "365 days logs",
             "User groups",
             "Audit logs",
-            "365 days logs",
-            "Environment variables",
             "On-premise support",
-            "Backups and restore",
-            "Chat/email support",
             "Priorty support/SLAs",
           ]}
         />
+        </div>
       </div>
     </section>
 
-    <section class="mb-12 md:mb-20">
+    <section class="hidden mb-12 md:mb-20">
       <h2 class="text-3xl font-semibold text-stone-900 dark:text-stone-100 mb-4">Compare plans</h2>
       <div
         class="rounded-md overflow-hidden border border-stone-300/70 dark:border-stone-700/70"
@@ -578,6 +563,56 @@ const faqItems: FaqItem[] = [
   </div>
 </section>
 
+<style>
+  .pricing-cards-stage {
+    position: relative;
+    padding-top: 32px;
+    padding-inline: 8px;
+  }
+
+  .pricing-cards-backdrop {
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 58%;
+    min-height: 220px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+
+  .pricing-cards-grid {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (min-width: 768px) {
+    .pricing-cards-stage {
+      padding-top: 44px;
+      padding-inline: 12px;
+    }
+
+    .pricing-cards-backdrop {
+      height: 56%;
+      min-height: 300px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .pricing-cards-stage {
+      padding-top: 56px;
+      padding-inline: 16px;
+    }
+
+    .pricing-cards-backdrop {
+      height: 54%;
+      min-height: 360px;
+    }
+  }
+</style>
+
 <script>
   const activeClasses = [
     "bg-white",
@@ -596,8 +631,46 @@ const faqItems: FaqItem[] = [
   const cards = document.querySelectorAll("[data-billing-plan]");
 
   const formatPrice = (value: number) => Math.round(value).toString();
+  let currentBilling = "annual";
+
+  const syncCardTierSelection = (card: Element) => {
+    const operationsSelect = card.querySelector("[data-operations-select]") as HTMLSelectElement | null;
+    if (!operationsSelect || !operationsSelect.selectedOptions.length) {
+      return;
+    }
+
+    const selectedOption = operationsSelect.selectedOptions[0] as HTMLOptionElement;
+    const tierIndex = selectedOption.dataset.tierIndex;
+    const tierPrice = selectedOption.dataset.tierPrice;
+    const tierAi = selectedOption.dataset.tierAi;
+
+    if (tierIndex !== undefined) {
+      (card as HTMLElement).dataset.tierIndex = tierIndex;
+    }
+
+    if (tierPrice !== undefined && tierPrice !== "") {
+      const basePrice = Number(tierPrice);
+      if (!Number.isNaN(basePrice)) {
+        card.querySelectorAll(".amount[data-base-price]").forEach((amountEl) => {
+          (amountEl as HTMLElement).dataset.basePrice = String(basePrice);
+        });
+      }
+    }
+
+    if (tierAi) {
+      const aiValueEl = card.querySelector("[data-tier-ai-value]");
+      if (aiValueEl) {
+        (aiValueEl as HTMLElement).textContent = tierAi;
+      }
+      const aiRow = card.querySelector("[data-tier-ai]");
+      if (aiRow) {
+        (aiRow as HTMLElement).dataset.tierAi = tierAi;
+      }
+    }
+  };
 
   const applyBilling = (billing: string) => {
+    currentBilling = billing;
     toggleButtons.forEach((button) => {
       const htmlButton = button as HTMLButtonElement;
       const isActive = htmlButton.dataset.billing === billing;
@@ -609,6 +682,7 @@ const faqItems: FaqItem[] = [
     const multiplier = billing === "monthly" ? 1.2 : 1;
 
     cards.forEach((card) => {
+      syncCardTierSelection(card);
 
       card.querySelectorAll(".amount[data-base-price]").forEach((amountEl) => {
         const htmlEl = amountEl as HTMLElement;
@@ -630,6 +704,24 @@ const faqItems: FaqItem[] = [
 
         if (kind === "end-users") {
           htmlEl.textContent = `Add more end users for $${updatedOverage} per end user per month`;
+        }
+      });
+
+      card.querySelectorAll("[data-addon-base][data-addon-prefix][data-addon-suffix]").forEach((addonEl) => {
+        const htmlEl = addonEl as HTMLElement;
+        const baseAddon = Number(htmlEl.dataset.addonBase);
+        if (Number.isNaN(baseAddon)) {
+          return;
+        }
+
+        const prefix = htmlEl.dataset.addonPrefix || "";
+        const suffix = htmlEl.dataset.addonSuffix || "";
+        const updatedAddonValue = formatPrice(baseAddon * multiplier);
+        const updatedAddonText = `${prefix}$${updatedAddonValue}${suffix}`;
+        const addonTextEl = htmlEl.querySelector("[data-addon-text]");
+
+        if (addonTextEl) {
+          (addonTextEl as HTMLElement).textContent = updatedAddonText;
         }
       });
     });
@@ -669,6 +761,18 @@ const faqItems: FaqItem[] = [
       }
     }
   };
+
+  cards.forEach((card) => {
+    const operationsSelect = card.querySelector("[data-operations-select]") as HTMLSelectElement | null;
+    if (!operationsSelect || operationsSelect.dataset.tierBound === "true") {
+      return;
+    }
+
+    operationsSelect.dataset.tierBound = "true";
+    operationsSelect.addEventListener("change", () => {
+      applyBilling(currentBilling);
+    });
+  });
 
   toggleButtons.forEach((button) => {
     button.addEventListener("click", () => {

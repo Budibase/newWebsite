@@ -3,13 +3,23 @@
 import Button from "@components/Button.astro";
 import Tag from "@components/Tag.astro";
 import Check from "phosphor-astro/Check.astro";
-import InfoFill from "phosphor-astro/InfoFill.astro";
 import Plus from "phosphor-astro/Plus.astro";
 import PlusCircleFill from "phosphor-astro/PlusCircleFill.astro";
 
 type ButtonVariant = "primary" | "secondary" | "cta";
 type ButtonSize = "small" | "medium" | "large";
 type AdditionalPriceTone = "muted" | "primary";
+type OperationTier = {
+  operations: string;
+  yearlyPrice?: number;
+  aiCredits?: string;
+};
+type AddonDisplayItem = {
+  text: string;
+  baseAmount?: number;
+  prefix?: string;
+  suffix?: string;
+};
 // features can be an array of strings or objects with text and icon
 type FeatureItem = string | { text: string; icon?: "check" | "plus" };
 
@@ -25,6 +35,9 @@ interface Props {
   userLabel?: string;
   additionalPriceText?: string;
   additionalPriceTone?: AdditionalPriceTone;
+  operationTiers?: OperationTier[];
+  defaultTierIndex?: number;
+  addonItems?: string[];
   features?: FeatureItem[];
   recommended?: boolean;
   tagLabel?: string;
@@ -47,6 +60,9 @@ const {
   userLabel = "per end user",
   additionalPriceText,
   additionalPriceTone = "muted",
+  operationTiers = [],
+  defaultTierIndex = 0,
+  addonItems,
   features = [],
   recommended = false,
   tagLabel,
@@ -65,17 +81,95 @@ const isOperationsFeature = (feature: FeatureItem): feature is string =>
   typeof feature === "string" &&
   (/^Operations:\s*/i.test(feature) || /^(.+?)\s+operations$/i.test(feature));
 
+const isEndUsersFeature = (feature: FeatureItem): boolean => {
+  const featureText = typeof feature === "string" ? feature : feature.text;
+  return /^End users:\s*/i.test(featureText) || /^(.+?)\s+end users?\b/i.test(featureText);
+};
+
+const isAICreditsFeature = (feature: FeatureItem): boolean => {
+  const featureText = typeof feature === "string" ? feature : feature.text;
+  return /^Budibase AI credits:\s*/i.test(featureText) || /^(.+?)\s+Budibase AI credits$/i.test(featureText);
+};
+
+const toOperationsLabel = (value: string): string => {
+  const trimmed = value.trim();
+  return /operations$/i.test(trimmed) ? trimmed : `${trimmed} operations`;
+};
+
+const normalizedOperationTiers = operationTiers.map((tier) => ({
+  ...tier,
+  operationsLabel: toOperationsLabel(tier.operations),
+}));
+const safeDefaultTierIndex = Number.isFinite(defaultTierIndex)
+  ? Math.floor(defaultTierIndex)
+  : 0;
+const selectedTierIndex = normalizedOperationTiers.length
+  ? Math.min(Math.max(safeDefaultTierIndex, 0), normalizedOperationTiers.length - 1)
+  : 0;
+const selectedOperationTier = normalizedOperationTiers[selectedTierIndex];
+
 const operationsFeature = features.find(isOperationsFeature);
 const nonOperationsFeatures = features.filter((feature) => !isOperationsFeature(feature));
+const aiCreditsFeature = features.find(isAICreditsFeature);
+const visibleFeatures = nonOperationsFeatures.filter((feature) =>
+  !isEndUsersFeature(feature) && !isAICreditsFeature(feature)
+);
 const operationsValue = operationsFeature?.match(/^Operations:\s*(.+)$/i)?.[1] ||
   operationsFeature?.match(/^(.+?)\s+operations$/i)?.[1];
-const operationsLabel = operationsValue ? `${operationsValue} operations` : operationsFeature;
+const operationsLabel = operationsValue ? `${operationsValue} operations` : operationsFeature || undefined;
+const fallbackAICreditsValue = typeof aiCreditsFeature === "string"
+  ? (
+    aiCreditsFeature.match(/^Budibase AI credits:\s*(.+)$/i)?.[1] ||
+    aiCreditsFeature.match(/^(.+?)\s+Budibase AI credits$/i)?.[1]
+  )
+  : undefined;
+const operationsDropdownOptions = normalizedOperationTiers.length
+  ? normalizedOperationTiers
+  : (operationsLabel ? [{ operationsLabel, yearlyPrice: undefined, aiCredits: undefined }] : []);
+const initialAICredits = selectedOperationTier?.aiCredits || fallbackAICreditsValue;
+const selectedCreatorPrice = selectedOperationTier?.yearlyPrice;
+const initialBasePrice = typeof selectedCreatorPrice === "number"
+  ? selectedCreatorPrice
+  : (typeof creatorPrice === "number" ? creatorPrice : undefined);
+const initialDisplayPrice = typeof initialBasePrice === "number"
+  ? `$${initialBasePrice}`
+  : (typeof creatorPrice === "number" ? `$${creatorPrice}` : creatorPrice);
+const defaultAddonItems = billingPlan === "premium" || billingPlan === "business"
+  ? ["End users for $5/user/mo", "Creators for $50/creator/mo"]
+  : billingPlan === "enterprise"
+    ? []
+    : ["End users for $5/user/mo"];
+const addonsToShow = addonItems ?? defaultAddonItems;
+const addonPricePattern = /^(.*)\$(\d+)(.*)$/;
+const normalizedAddonItems: AddonDisplayItem[] = addonsToShow.map((addon) => {
+  const priceMatch = addon.match(addonPricePattern);
+  if (!priceMatch) {
+    return { text: addon };
+  }
+
+  const baseAmount = Number(priceMatch[2]);
+  if (Number.isNaN(baseAmount)) {
+    return { text: addon };
+  }
+
+  return {
+    text: addon,
+    baseAmount,
+    prefix: priceMatch[1],
+    suffix: priceMatch[3],
+  };
+});
+const showAddonsSection = normalizedAddonItems.length > 0;
 ---
 
-<div class={`${cardClasses} h-full flex flex-col`} data-billing-plan={billingPlan}>
+<div
+  class={`${cardClasses} h-full flex flex-col`}
+  data-billing-plan={billingPlan}
+  data-tier-index={String(selectedTierIndex)}
+>
   <header class="header">
     <div class="header-main">
-      <h3 class="text-stone-900 dark:text-stone-100">{title}</h3>
+      <h3 class="!text-lg text-stone-900 dark:text-stone-100">{title}</h3>
       {tagLabel && <Tag label={tagLabel} size="small" variant="orange" class="ml-auto" />}
       {
         recommended && (
@@ -95,17 +189,15 @@ const operationsLabel = operationsValue ? `${operationsValue} operations` : oper
       <div class="prices">
         <p class="price-line">
           <span
-            class="amount"
-            data-base-price={typeof creatorPrice === "number" ? creatorPrice : undefined}
-            >{
-              typeof creatorPrice === "number" ? `$${creatorPrice}` : creatorPrice
-            }</span
+            class="amount !text-2xl"
+            data-base-price={typeof initialBasePrice === "number" ? initialBasePrice : undefined}
+            >{initialDisplayPrice}</span
           >
           <span class="inline-flex gap-0.5">
             {creatorLabel && (
-              <span class="text-[15px] text-stone-600 dark:text-stone-400">{creatorLabel}</span>
+              <span class="text-[14px] text-stone-600 dark:text-stone-400">{creatorLabel}</span>
             )}
-            <span class="unit-text text-[15px] text-stone-600 dark:text-stone-400">
+            <span class="unit-text text-[14px] text-stone-600 dark:text-stone-400">
               {creatorUnit}
             </span>
           </span>
@@ -113,67 +205,88 @@ const operationsLabel = operationsValue ? `${operationsValue} operations` : oper
         {userPrice !== undefined && (
           <p class="price-line">
             <span
-              class="amount"
+              class="amount !text-2xl"
               data-base-price={typeof userPrice === "number" ? userPrice : undefined}
             >
               {typeof userPrice === "number" ? `$${userPrice}` : userPrice}
             </span>
             <span class="inline-flex gap-0.5">
-              <span class="text-[15px] text-stone-600 dark:text-stone-400">{userLabel}</span>
-              <span class="unit-text text-[15px] text-stone-600 dark:text-stone-400">
+              <span class="text-[14px] text-stone-600 dark:text-stone-400">{userLabel}</span>
+              <span class="unit-text text-[14px] text-stone-600 dark:text-stone-400">
                 {userUnit}
               </span>
             </span>
           </p>
         )}
-        {additionalPriceText && (
-          <p class="price-line">
-            <span
-              class={`text-[15px] ${
-                additionalPriceTone === "primary"
-                  ? "text-stone-900 dark:text-stone-100"
-                  : "text-stone-600 dark:text-stone-400"
-              }`}
-            >
-              {additionalPriceText}
-            </span>
-          </p>
-        )}
       </div>
-      {operationsLabel && (
-        <p class="text-[15px] text-stone-900 dark:text-stone-100 mt-1">
-          <span class="end-users-inline">
-            <span>{operationsLabel}</span>
-            <span class="end-users-help">
-              <button
-                type="button"
-                class="end-users-help-button"
-                aria-label="Operations info"
-              >
-                <InfoFill
-                  class="w-4 h-4 fill-stone-700 dark:fill-stone-300"
-                  aria-hidden="true"
-                />
-              </button>
-              <span
-                role="tooltip"
-                class="end-users-popover p-3 rounded-sm text-sm text-primary"
-              >
-                An operation is a unit of work performed by your AI agents or automations.
-              </span>
-            </span>
-          </span>
-        </p>
+      {operationsDropdownOptions.length > 1 && (
+        <div class="operations-row operations-select-row text-[14px] text-stone-900 dark:text-stone-100 mt-3">
+          <select class="operations-select" aria-label="Operations limit" data-operations-select>
+            {
+              operationsDropdownOptions.map((option, index) => (
+                <option
+                  value={option.operationsLabel}
+                  selected={index === selectedTierIndex}
+                  data-tier-index={String(index)}
+                  data-tier-price={option.yearlyPrice !== undefined ? String(option.yearlyPrice) : undefined}
+                  data-tier-ai={option.aiCredits}
+                  data-tier-operations={option.operationsLabel}
+                >
+                  {option.operationsLabel}
+                </option>
+              ))
+            }
+          </select>
+        </div>
       )}
+      {operationsDropdownOptions.length === 1 && (
+        <div class="operations-row mt-3">
+          <p class="operations-static text-stone-900 dark:text-stone-100">
+            {operationsDropdownOptions[0].operationsLabel}
+          </p>
+        </div>
+      )}
+      {operationsDropdownOptions.length === 0 && additionalPriceText && (
+        <div class="operations-row mt-3">
+          <p
+            class={`operations-static ${
+              additionalPriceTone === "primary"
+                ? "text-stone-900 dark:text-stone-100"
+                : "text-stone-600 dark:text-stone-400"
+            }`}
+          >
+            {additionalPriceText}
+          </p>
+        </div>
+      )}
+    </div>
+    <div class="cta">
+      <Button
+        label={buttonLabel}
+        url={buttonUrl}
+        variant={buttonVariant}
+        size={buttonSize}
+        target={buttonTarget}
+      />
     </div>
     <div class="description-features">
       <div>
-        {description && <p class="text-stone-600! dark:text-stone-400!">{description}</p>}
+        {description && <p class="!text-[14px] text-stone-600! dark:text-stone-400!">{description}</p>}
       </div>
       {
-        nonOperationsFeatures.length ? (
+        (initialAICredits || visibleFeatures.length) ? (
           <ul class=" gap-1 flex flex-col mb-5" aria-label="Plan features">
-            {nonOperationsFeatures.map((feat, index) => {
+            {initialAICredits && (
+              <li class="text-[14px]" data-tier-ai={initialAICredits}>
+                <span class="check">
+                  <Check class="fill-stone-700 dark:fill-stone-300 w-3" aria-hidden="true" />
+                </span>
+                <span class="feature-text text-stone-900 dark:text-stone-100">
+                  <span data-tier-ai-value>{initialAICredits}</span> Budibase AI credits
+                </span>
+              </li>
+            )}
+            {visibleFeatures.map((feat, index) => {
               const featureText = typeof feat === "string" ? feat : feat.text;
               const iconType = typeof feat === "string" ? "check" : (feat.icon || "check");
               const endUsersMatch = typeof feat === "string"
@@ -194,10 +307,10 @@ const operationsLabel = operationsValue ? `${operationsValue} operations` : oper
               const showCreatorsPopover = Boolean(
                 creatorsMatch &&
                 /\d/.test(creatorsValue) &&
-                (billingPlan === "team" || billingPlan === "business")
+                billingPlan === "team"
               );
               return (
-                <li key={`feature-${index}`} class="text-[15px]">
+                <li key={`feature-${index}`} class="text-[14px]">
                   <span class="check">
                     {iconType === "plus" ? (
                       <Plus class="fill-stone-700 dark:fill-stone-300 w-3" aria-hidden="true" />
@@ -265,34 +378,40 @@ const operationsLabel = operationsValue ? `${operationsValue} operations` : oper
         ) : null
       }
     </div>
-    <div class="cta">
-      <Button
-        label={buttonLabel}
-        url={buttonUrl}
-        variant={buttonVariant}
-        size={buttonSize}
-        target={buttonTarget}
-      />
-    </div>
+    {showAddonsSection && (
+      <div class="addons-section">
+        <p class="addons-label !text-[14px] text-stone-600! dark:text-stone-400!">Available add-ons:</p>
+        {normalizedAddonItems.map((addon) => (
+          <p
+            class="addon-line text-[14px] text-stone-900 dark:text-stone-100"
+            data-addon-base={addon.baseAmount !== undefined ? String(addon.baseAmount) : undefined}
+            data-addon-prefix={addon.prefix}
+            data-addon-suffix={addon.suffix}
+          >
+            <span class="check">
+              <Plus class="w-3 h-3 fill-current" aria-hidden="true" />
+            </span>
+            <span data-addon-text>{addon.text}</span>
+          </p>
+        ))}
+      </div>
+    )}
   </div>
 </div>
 
 <style>
   .pricing-card {
     background: var(--bg-2);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
-    padding: 20px;
+    padding: 24px 16px;
     min-height: 100%;
   }
 
   @media (min-width: 640px) {
     .pricing-card {
-      padding: 24px;
+      padding: 24px 16px;
     }
-  }
-
-  :global(.dark) .pricing-card {
-    border-color: var(--color-stone-800);
   }
 
   .header {
@@ -339,9 +458,100 @@ const operationsLabel = operationsValue ? `${operationsValue} operations` : oper
     color: var(--color-stone-100);
   }
 
+  .operations-row {
+    display: block;
+    width: 100%;
+  }
+
+  .operations-select-row {
+    position: relative;
+  }
+
+  .operations-select-row::after {
+    content: "";
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid var(--color-stone-900);
+    border-bottom: 1.5px solid var(--color-stone-900);
+    transform: translateY(-60%) rotate(45deg);
+    pointer-events: none;
+  }
+
+  .operations-select {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    font-size: 14px;
+    line-height: 1.2;
+    padding: 10px 40px 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-1);
+    color: var(--text-primary);
+    max-width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  .operations-static {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 44px;
+    font-size: 14px;
+    line-height: 1.2;
+    padding: 0 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-1);
+    margin: 0;
+  }
+
+  :global(.dark) .operations-select-row::after {
+    border-right-color: var(--color-stone-100);
+    border-bottom-color: var(--color-stone-100);
+  }
+
   .cta {
     flex-shrink: 0;
     margin-bottom: 16px;
+    width: 100%;
+  }
+
+  .cta :global(a),
+  .cta :global(button) {
+    width: 100%;
+  }
+
+  .addons-section {
+    flex-shrink: 0;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 68px;
+  }
+
+  .addons-label {
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .addon-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px !important;
+    margin-bottom: 0;
+    line-height: 1.3;
+  }
+
+  .addon-line + .addon-line {
+    margin-top: 6px;
   }
 
   .feature {
