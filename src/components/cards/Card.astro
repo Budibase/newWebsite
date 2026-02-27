@@ -9,6 +9,11 @@ interface Props {
   label: string;
   description: string;
   linkUrl?: string;
+  openInNewTab?: boolean;
+  showLinkIcon?: boolean;
+  truncateDescription?: boolean;
+  tagPosition?: "top" | "bottom";
+  tagNoPadding?: boolean;
   tag?: string;
   imageSrc?: ImageMetadata;
   imageAlt?: string;
@@ -19,6 +24,11 @@ const {
   label,
   description,
   linkUrl,
+  openInNewTab = true,
+  showLinkIcon = true,
+  truncateDescription = false,
+  tagPosition = "top",
+  tagNoPadding = false,
   tag,
   imageSrc,
   imageAlt = label,
@@ -26,20 +36,52 @@ const {
 } = Astro.props as Props;
 
 const hasImageOverlay = Astro.slots.has("image-overlay");
+const showTagAtTop = Boolean(tag) && tagPosition === "top";
+const showTagAtBottom = Boolean(tag) && tagPosition === "bottom";
+const tagClass = tagNoPadding ? "w-fit !px-0 !py-0" : "w-fit";
+const descriptionStyle = truncateDescription
+  ? "white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+  : undefined;
 ---
 
 {linkUrl ? (
-  <Link url={linkUrl} label="" ariaLabel={label} class="card-link" target="_blank">
-    <div class="card bg-secondary ease-in-out duration-50 hover:bg-stone-200! dark:hover:bg-stone-800! p-4 rounded-md">
+  <Link
+    url={linkUrl}
+    label=""
+    ariaLabel={label}
+    class="card-link"
+    target={openInNewTab ? "_blank" : "_self"}
+  >
+    <div class="card w-full max-w-full min-w-0 bg-secondary ease-in-out duration-50 hover:bg-stone-200! dark:hover:bg-stone-800! p-4 rounded-md">
       <div class="card-content">
-        {tag && <Tag label={tag} variant="secondary" size="small" class="w-fit mb-2" />}
+        {showTagAtTop && (
+          <Tag
+            label={tag!}
+            variant="secondary"
+            size="small"
+            class={`${tagClass} mb-2`}
+          />
+        )}
         <h3 class="text-lg! card-title">
           {label}
-          {linkUrl && (
+          {linkUrl && showLinkIcon && (
             <ArrowUpRight class="card-icon text-stone-600 dark:text-stone-400" />
           )}
         </h3>
-        <p class="text-stone-500! dark:text-stone-400!">{description}</p>
+        <p
+          class="w-full min-w-0 text-stone-500! dark:text-stone-400!"
+          style={descriptionStyle}
+        >
+          {description}
+        </p>
+        {showTagAtBottom && (
+          <Tag
+            label={tag!}
+            variant="secondary"
+            size="small"
+            class={tagClass}
+          />
+        )}
         {(imageSrc || imagePlaceholderColor || hasImageOverlay) && (
           <div class="card-image-wrap">
             {imageSrc && (
@@ -65,11 +107,31 @@ const hasImageOverlay = Astro.slots.has("image-overlay");
     </div>
   </Link>
 ) : (
-  <div class="card bg-secondary ease-in-out duration-50 p-4 rounded-md">
+  <div class="card w-full max-w-full min-w-0 bg-secondary ease-in-out duration-50 p-4 rounded-md">
     <div class="card-content">
-      {tag && <Tag label={tag} variant="secondary" size="small" class="w-fit mb-2" />}
+      {showTagAtTop && (
+        <Tag
+          label={tag!}
+          variant="secondary"
+          size="small"
+          class={`${tagClass} mb-2`}
+        />
+      )}
       <h3 class="text-lg!">{label}</h3>
-      <p class="text-stone-500! dark:text-stone-400! text-sm!">{description}</p>
+      <p
+        class="w-full min-w-0 text-stone-500! dark:text-stone-400! text-sm!"
+        style={descriptionStyle}
+      >
+        {description}
+      </p>
+      {showTagAtBottom && (
+        <Tag
+          label={tag!}
+          variant="secondary"
+          size="small"
+          class={tagClass}
+        />
+      )}
       {(imageSrc || imagePlaceholderColor || hasImageOverlay) && (
         <div class="card-image-wrap">
           {imageSrc && (
@@ -98,18 +160,27 @@ const hasImageOverlay = Astro.slots.has("image-overlay");
 <style>
   .card {
     border: 1px solid var(--border);
+    min-width: 0;
+    overflow: hidden;
   }
 
   .card-link {
     display: block !important;
     text-decoration: none;
-    width: 100%;
+    width: 100% !important;
+    min-width: 0;
   }
 
-  .card-link :global(.alink) {
+  .card-link:global(.alink),
+  :global(a.card-link.alink) {
     display: block !important;
+    width: 100% !important;
+    min-width: 0;
+  }
+
+  .card-link > .card {
     width: 100%;
-    font-size: 0;
+    min-width: 0;
   }
 
 
@@ -117,10 +188,18 @@ const hasImageOverlay = Astro.slots.has("image-overlay");
     display: flex;
     flex-direction: column;
     gap: 6px;
+    min-width: 0;
   }
 
   .card-content h3 {
     line-height: 1.2;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .card-content p {
+    min-width: 0;
+    max-width: 100%;
   }
 
   .card-title {

@@ -200,7 +200,7 @@ export async function getBlogFeedItems(): Promise<BlogFeedItem[]> {
   const workflowItems: BlogFeedItem[] = workflows.map((entry) => ({
     kind: "workflow",
     slug: entry.id,
-    href: `/workflows/${entry.data.slug ?? entry.id}/`,
+    href: `/agent-space/${entry.data.slug ?? entry.id}/`,
     title: entry.data.title,
     description: entry.data.outcome,
     category: "useCases",

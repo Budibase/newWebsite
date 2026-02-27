@@ -1,0 +1,145 @@
+---
+interface Props {
+  prompt: string;
+  title?: string;
+}
+
+const { prompt, title = "Prompt" } = Astro.props as Props;
+---
+
+<section class="agent-prompt-panel" data-agent-prompt-panel>
+  <div class="agent-prompt-panel-header">
+    <p class="agent-prompt-panel-title">{title}</p>
+    <button
+      type="button"
+      class="agent-prompt-panel-copy"
+      data-agent-prompt-copy
+      aria-label="Copy prompt"
+    >
+      Copy
+    </button>
+  </div>
+  <pre class="agent-prompt-panel-content" data-agent-prompt-content>{prompt}</pre>
+</section>
+
+<style>
+  .agent-prompt-panel {
+    height: 100%;
+    border: 0.5px solid var(--border-color);
+    border-radius: 0.8rem;
+    background: var(--bg-1);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 18rem;
+  }
+
+  .agent-prompt-panel-header {
+    border-bottom: 0.5px solid var(--border-color);
+    padding: 0.55rem 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .agent-prompt-panel-title {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+  }
+
+  .agent-prompt-panel-copy {
+    appearance: none;
+    border: 0.5px solid var(--border-color);
+    background: var(--bg-2);
+    color: var(--text-primary);
+    border-radius: 999px;
+    min-height: 1.8rem;
+    padding: 0 0.65rem;
+    font-size: 0.82rem;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .agent-prompt-panel-copy:hover {
+    background: var(--bg-3);
+  }
+
+  .agent-prompt-panel-copy:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--bg-1),
+      0 0 0 4px rgb(var(--ring) / 0.65);
+  }
+
+  .agent-prompt-panel-content {
+    margin: 0;
+    padding: 0.9rem 0.85rem 1rem;
+    color: rgb(var(--text-article));
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    overflow: auto;
+    background: transparent !important;
+    border: 0 !important;
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const initPromptPanels = () => {
+      const panels = Array.from(
+        document.querySelectorAll("[data-agent-prompt-panel]"),
+      );
+
+      panels.forEach((panel) => {
+        if (!(panel instanceof HTMLElement)) return;
+        if (panel.dataset.agentPromptReady === "true") return;
+        panel.dataset.agentPromptReady = "true";
+
+        const copyButton = panel.querySelector("[data-agent-prompt-copy]");
+        const content = panel.querySelector("[data-agent-prompt-content]");
+        if (!(copyButton instanceof HTMLButtonElement)) return;
+        if (!(content instanceof HTMLElement)) return;
+
+        copyButton.addEventListener("click", async () => {
+          const raw = content.textContent ?? "";
+          const prompt = raw.trim();
+          if (!prompt) return;
+
+          try {
+            await navigator.clipboard.writeText(prompt);
+            const previousText = copyButton.textContent;
+            copyButton.textContent = "Copied";
+            window.setTimeout(() => {
+              copyButton.textContent = previousText;
+            }, 1200);
+          } catch {
+            copyButton.textContent = "Failed";
+            window.setTimeout(() => {
+              copyButton.textContent = "Copy";
+            }, 1200);
+          }
+        });
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initPromptPanels, {
+        once: true,
+      });
+    } else {
+      initPromptPanels();
+    }
+
+    document.addEventListener("astro:after-swap", initPromptPanels);
+  })();
+</script>

@@ -1,0 +1,83 @@
+---
+import Card from "@components/cards/Card.astro";
+
+interface RelatedAgentCard {
+  name: string;
+  description: string;
+  department: string;
+  linkUrl: string;
+}
+
+interface Props {
+  cards: RelatedAgentCard[];
+}
+
+const { cards } = Astro.props as Props;
+const cardsToRender = cards.slice(0, 3);
+---
+
+{
+  cardsToRender.length > 0 && (
+    <section class="related-agents-section" aria-labelledby="related-agents-heading">
+      <h2 id="related-agents-heading" class="related-agents-heading">Related agents</h2>
+
+      <ul class="related-agents-grid">
+        {cardsToRender.map((card) => (
+          <li class="related-agents-item">
+            <Card
+              label={card.name}
+              description={card.description}
+              tag={`/${card.department}`}
+              tagPosition="bottom"
+              tagNoPadding={true}
+              linkUrl={card.linkUrl}
+              openInNewTab={false}
+              showLinkIcon={false}
+              truncateDescription={true}
+            />
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+<style>
+  .related-agents-section {
+    margin-top: 1.6rem;
+  }
+
+  .related-agents-heading {
+    margin: 0 0 0.8rem;
+    font-size: clamp(1.6rem, 1.3rem + 1vw, 2rem);
+    line-height: 1.1;
+    color: var(--text-primary);
+  }
+
+  .related-agents-grid {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .related-agents-item {
+    margin: 0 !important;
+    list-style: none !important;
+    min-width: 0;
+  }
+
+  @media (min-width: 768px) {
+    .related-agents-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .related-agents-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

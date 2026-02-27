@@ -1,6 +1,6 @@
 # Workflow Playbooks content
 
-This folder contains the workflow playbooks for `/workflows`.
+This folder contains the workflow playbooks for `/agent-space`.
 
 ## Add a new workflow
 1. Create a new markdown file in `src/content/workflows/`.
@@ -15,9 +15,9 @@ This folder contains the workflow playbooks for `/workflows`.
 4. Add 2–3 short paragraphs in the markdown body describing what the workflow solves.
 
 ## Routing
-- The directory lives at `/workflows`.
-- Each playbook lives at `/workflows/[slug]`.
+- The directory lives at `/agent-space`.
+- Each playbook lives at `/agent-space/[slug]`.
 
 ## Update links
-- Navigation should point to `/workflows`.
-- Any legacy `/learn/workflows` links should be updated to `/workflows`.
+- Navigation should point to `/agent-space`.
+- Any legacy `/learn/workflows` links should be updated to `/agent-space`.

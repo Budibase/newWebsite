@@ -1,55 +1,26 @@
 ---
-import ProductSection from "@components/cards/ProductSection.astro";
-import HeroBackground from "@assets/images/homepage/HeroBackground.png";
 import Card from "@components/cards/Card.astro";
+import { getAgentSpaceCards } from "../../../data/agentSpaceCardData";
+
+const cards = (await getAgentSpaceCards()).slice(0, 6);
 ---
 <div class="container max-w-6xl mx-auto mt-12 md:mt-24 px-2 lg:px-0">
   <h2 class="mb-6 text-center! text-3xl! md:text-4xl! lg:text-5xl! tracking-[-0.015em]! text-balance! max-w-4xl! mx-auto!">
     Real AI workflows, real solutions,  
     <span class="text-primary">real results.</span>
   </h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-2">
-    <Card
-      tag="/Security"
-      label="Incident Triage"
-      description="Help analysts process, classify, and respond to incidents faster."
-      linkUrl="/use-cases/customer-support"
-    />
-    <Card
-      tag="/Security"
-      label="Access request"
-      description="Automate the process of granting, reviewing, and revoking access"
-      linkUrl="/use-cases/data-processing"
-    />
-    <Card
-    tag="/Security"
-    label="Analyze Crowdstrike alerts"
-    description="Fetch Crowdstrike alerts, analyze them with AI, and create Jira tickets."
-    linkUrl="/use-cases/data-processing"
-  />
-    <Card
-      tag="/IT"
-      label="Change management"
-      description="Streamline, validate, and audit IT change requests."
-      linkUrl="/use-cases/workflow-automation"
-    />
-    <Card
-      tag="/IT"
-      label="Password reset"
-      description="Automate password resets and account unlocks."
-      linkUrl="/use-cases/content-generation"
-    />
-    <Card
-      tag="/IT"
-      label="Employee onboarding"
-      description="Automate onboarding by creating accounts and permissions."
-      linkUrl="/use-cases/content-generation"
-    />
-    <Card
-      tag="/IT"
-      label="IT ticket triage"
-      description="Triage incoming IT tickets and assign them to the appropriate team."
-      linkUrl="/use-cases/content-generation"
-    />
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-2">
+    {
+      cards.map((card) => (
+        <Card
+          tag={`/${card.department}`}
+          label={card.name}
+          description={card.description}
+          linkUrl={card.linkUrl}
+          openInNewTab={false}
+          showLinkIcon={false}
+        />
+      ))
+    }
   </div>
 </div>

@@ -1,0 +1,238 @@
+---
+import Layout from "../../layouts/MainLayout.astro";
+import Card from "../../components/cards/Card.astro";
+import Icon from "../../components/Icon.astro";
+import spaceBackground from "../../assets/images/backgrounds/AgentSpace/space.png";
+import {
+  agentSpaceDepartments,
+  getAgentSpaceCards,
+} from "../../data/agentSpaceCardData";
+
+const title = "Agent Space";
+const description =
+  "Browse ready-to-run AI agents for internal teams. Search by name and filter by department.";
+const heroBackgroundStyle = `background-image: url('${spaceBackground.src}')`;
+
+const departments = agentSpaceDepartments;
+const agents = await getAgentSpaceCards();
+---
+
+<Layout title={title} description={description}>
+  <div data-agent-space-root class="w-full">
+    <section
+      class="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={heroBackgroundStyle}
+    >
+      <div
+        class="pointer-events-none absolute inset-0 bg-[rgb(var(--bg)_/_0.35)] dark:bg-[rgb(var(--bg)_/_0.55)]"
+      >
+      </div>
+
+      <div class="relative mx-auto max-w-6xl px-4 max-md:px-[0.9rem]">
+        <section
+          class="mx-auto mt-[clamp(5.6rem,8vw,7.2rem)] flex w-full flex-col items-center text-center max-md:mt-[max(calc(var(--site-nav-height)+1.1rem),4.8rem)]"
+        >
+          <h1
+            class="hero-title mt-4 mb-4 w-full max-w-4xl text-[56px]! leading-[0.95]! tracking-[-0.02em]! text-[var(--text-primary)] sm:text-[70px]! sm:leading-[0.9]!"
+          >
+            Agent Space
+          </h1>
+          <p
+            class="m-0 max-w-3xl text-base text-[var(--text-secondary)] md:text-xl"
+          >
+            Browse ready-to-run AI agents for internal teams. Search by name and filter by
+            department.
+          </p>
+        </section>
+
+        <section class="mx-auto mb-8 mt-8 w-full">
+          <div
+            class="rounded-[10px] border border-[var(--border-color)] bg-[var(--bg-2)] p-4 md:p-5"
+          >
+            <div class="flex flex-col gap-4">
+              <label for="agent-space-search" class="sr-only">Search agent name</label>
+              <div class="relative">
+                <input
+                  id="agent-space-search"
+                  type="search"
+                  placeholder="Search agent name..."
+                  autocomplete="off"
+                  data-agent-search
+                  class="h-11 w-full rounded-[8px] border border-[var(--border-color)] bg-[var(--bg-1)] px-3 pr-10 text-base text-[var(--text-primary)] outline-none placeholder:text-[var(--text-secondary)] focus-visible:ring-4 focus-visible:ring-[rgb(var(--ring)_/_0.5)]"
+                />
+                <button
+                  type="button"
+                  data-agent-search-clear
+                  aria-label="Clear search"
+                  hidden
+                  class="absolute right-2 top-1/2 inline-flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-md text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[rgb(var(--ring)_/_0.5)]"
+                >
+                  <Icon name="X" size="16" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="mx-auto mb-16 mt-5 w-full max-w-6xl px-4 max-md:px-[0.9rem]">
+      <ul
+        class="m-0 flex list-none flex-wrap gap-5 p-0 max-md:flex-nowrap max-md:overflow-x-auto max-md:pb-[0.2rem] max-md:[scrollbar-width:thin]"
+        aria-label="Agent department filters"
+      >
+        {
+          departments.map((department) => (
+            <li>
+              <button
+                type="button"
+                data-agent-filter={department.id}
+                aria-pressed={department.id === "all" ? "true" : "false"}
+                class="inline-flex min-h-8 items-center gap-[0.38rem] whitespace-nowrap rounded-full bg-[color-mix(in_srgb,var(--bg-1)_85%,var(--bg-2))] text-[0.95rem] leading-none text-[var(--text-secondary)] transition-colors duration-150 hover:bg-[var(--bg-2)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[rgb(var(--ring)_/_0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-1)] aria-pressed:bg-[var(--bg-1)] aria-pressed:text-[var(--text-primary)]"
+              >
+                {department.label}
+              </button>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div
+        class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3"
+        data-agent-grid
+      >
+        {
+          agents.map((agent) => (
+            <div
+              class="min-w-0"
+              data-agent-card
+              data-agent-name={agent.name.toLowerCase()}
+              data-agent-department={agent.departmentId}
+            >
+              <Card
+                label={agent.name}
+                description={agent.description}
+                tag={`/${agent.department}`}
+                tagPosition="bottom"
+                tagNoPadding={true}
+                linkUrl={agent.linkUrl}
+                openInNewTab={false}
+                showLinkIcon={false}
+                truncateDescription={true}
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <section
+        data-agent-empty
+        hidden
+        class="mt-5 rounded-[10px] border border-[var(--border-color)] bg-[var(--bg-2)] p-4"
+      >
+        <p class="m-0 text-[var(--text-secondary)]">
+          No agents match your current search and filter.
+        </p>
+      </section>
+    </section>
+  </div>
+</Layout>
+
+<script is:inline>
+  (() => {
+    const initAgentSpace = () => {
+      const root = document.querySelector("[data-agent-space-root]");
+      if (!root || root instanceof HTMLElement === false) return;
+      if (root.dataset.agentSpaceReady === "true") return;
+      root.dataset.agentSpaceReady = "true";
+
+      const searchInput = root.querySelector("[data-agent-search]");
+      const clearButton = root.querySelector("[data-agent-search-clear]");
+      const filterButtons = Array.from(
+        root.querySelectorAll("[data-agent-filter]"),
+      );
+      const cards = Array.from(root.querySelectorAll("[data-agent-card]"));
+      const emptyState = root.querySelector("[data-agent-empty]");
+
+      if (
+        !(searchInput instanceof HTMLInputElement) ||
+        !(emptyState instanceof HTMLElement)
+      ) {
+        return;
+      }
+
+      let activeFilter = "all";
+
+      const applyFilters = () => {
+        const query = searchInput.value.trim().toLowerCase();
+        if (clearButton instanceof HTMLButtonElement) {
+          clearButton.hidden = query.length === 0;
+        }
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+          if (!(card instanceof HTMLElement)) return;
+          const name = card.dataset.agentName ?? "";
+          const department = card.dataset.agentDepartment ?? "";
+          const matchesName = name.includes(query);
+          const matchesDepartment =
+            activeFilter === "all" || department === activeFilter;
+          const isVisible = matchesName && matchesDepartment;
+          card.hidden = !isVisible;
+          if (isVisible) visibleCount += 1;
+        });
+
+        emptyState.hidden = visibleCount > 0;
+      };
+
+      const setActiveFilter = (nextFilter) => {
+        activeFilter = nextFilter;
+        filterButtons.forEach((button) => {
+          if (!(button instanceof HTMLButtonElement)) return;
+          button.setAttribute(
+            "aria-pressed",
+            button.dataset.agentFilter === activeFilter ? "true" : "false",
+          );
+        });
+        applyFilters();
+      };
+
+      filterButtons.forEach((button) => {
+        if (!(button instanceof HTMLButtonElement)) return;
+        button.addEventListener("click", () => {
+          setActiveFilter(button.dataset.agentFilter ?? "all");
+        });
+      });
+
+      searchInput.addEventListener("input", applyFilters);
+      if (clearButton instanceof HTMLButtonElement) {
+        clearButton.addEventListener("click", () => {
+          searchInput.value = "";
+          searchInput.focus();
+          applyFilters();
+        });
+      }
+      applyFilters();
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initAgentSpace, {
+        once: true,
+      });
+    } else {
+      initAgentSpace();
+    }
+
+    document.addEventListener("astro:after-swap", initAgentSpace);
+  })();
+</script>
+
+<style is:global>
+  [data-agent-search]::-webkit-search-cancel-button,
+  [data-agent-search]::-webkit-search-decoration,
+  [data-agent-search]::-webkit-search-results-button,
+  [data-agent-search]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+</style>

@@ -33,6 +33,7 @@ export default defineConfig({
     "/platform/data": "/product/data",
     "/platform/resources": "/product/resources",
     "/platform/enterprise": "/product/enterprise",
+    "/use-cases": "/agent-space",
   },
 
   markdown: {
