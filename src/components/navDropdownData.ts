@@ -32,7 +32,7 @@ export const productDropdownItems: NavDropdownItem[] = [
       const item = productItemsByHref.get(href);
       if (!item) return null;
       return {
-        href: href === "/product/agents" ? "/" : item.link,
+        href: item.link,
         label,
         description: item.pageDescription,
         prefetch: true,

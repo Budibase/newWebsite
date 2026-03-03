@@ -474,7 +474,16 @@ h1,
   font-size: 56px;
   font-variation-settings: "opsz" 72, "SOFT" 50, "WONK" 10;
   letter-spacing: -0.01em;
-  line-height: 1.02;
+  line-height: 0.9;
+}
+
+.hero-title-small {
+  font-family: "Fraunces", var(--font-display);
+  font-weight: 500;
+  font-size: 56px;
+  font-variation-settings: "opsz" 72, "SOFT" 50, "WONK" 10;
+  letter-spacing: -0.01em;
+  line-height: 0.9;
 }
 
 @media (min-width: 1024px) {

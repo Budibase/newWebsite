@@ -1,0 +1,276 @@
+---
+import Icon from "@components/Icon.astro";
+import BackgroundAutomationSquare from "@assets/images/automations/BackgroundAutomationSquare.png";
+
+interface Props {
+  backdropImage?: string;
+  backdropPaddingClass?: string;
+  class?: string;
+}
+
+const {
+  backdropImage,
+  backdropPaddingClass = "p-4 sm:p-5 md:p-6",
+  class: className = "",
+} = Astro.props as Props;
+
+const resolvedBackdropImage = backdropImage ?? BackgroundAutomationSquare.src;
+const rootStyle = `--automation-demo-backdrop-image: url("${resolvedBackdropImage}")`;
+
+const flowSteps = [
+  {
+    label: "Incoming Email",
+    tone: "email",
+    iconName: "EnvelopeOpen",
+  },
+  {
+    label: "Security Agent",
+    tone: "agent",
+    iconName: "Sparkle",
+  },
+  {
+    label: "Alert Sec Team",
+    tone: "alert",
+    iconName: "Sparkle",
+  },
+  {
+    label: "Broadcast Agent",
+    tone: "agent",
+    iconName: "Sparkle",
+  },
+] as const;
+---
+
+<div class:list={["automation-demo-small", className]} style={rootStyle}>
+  <div class:list={["automation-demo-small-backdrop", backdropPaddingClass]}>
+    <div class="automation-demo-small-shell">
+      <div class="automation-demo-small-header">
+        <div class="automation-demo-small-dots" aria-hidden="true">
+          <span class="automation-demo-small-dot"></span>
+          <span class="automation-demo-small-dot"></span>
+          <span class="automation-demo-small-dot"></span>
+        </div>
+
+        <div class="automation-demo-small-address" aria-hidden="true">
+          budibase/automations
+        </div>
+
+        <button type="button" class="automation-demo-small-header-cta">
+          Get Budibase
+        </button>
+      </div>
+
+      <div class="automation-demo-small-body">
+        <div class="automation-demo-small-flow">
+          <span class="automation-demo-small-trigger">Email trigger</span>
+
+          <ul class="automation-demo-small-list" aria-label="Automation flow">
+            {
+              flowSteps.map((step) => (
+                <li class="automation-demo-small-step" data-tone={step.tone}>
+                  <span class="automation-demo-small-step-icon" aria-hidden="true">
+                    <Icon name={step.iconName} class="h-3.5 w-3.5" weight="fill" />
+                  </span>
+                  <span class="automation-demo-small-step-label">{step.label}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .automation-demo-small {
+    width: 100%;
+    font-size: 12px;
+    color: rgb(250 250 247);
+  }
+
+  .automation-demo-small-backdrop {
+    width: 100%;
+    border-radius: 10px;
+    background-image: var(--automation-demo-backdrop-image);
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+  }
+
+  .automation-demo-small-shell {
+    overflow: hidden;
+    border-radius: 8px;
+    border: 0.5px solid rgb(57 57 57);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.32);
+    background: rgb(26 26 26);
+  }
+
+  .automation-demo-small-header {
+    position: relative;
+    display: flex;
+    height: 28px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid rgb(57 57 57);
+    background: rgb(30 30 30 / 0.9);
+    padding: 0 8px;
+  }
+
+  .automation-demo-small-dots {
+    display: inline-flex;
+    gap: 6px;
+  }
+
+  .automation-demo-small-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: rgb(145 145 141 / 0.65);
+  }
+
+  .automation-demo-small-address {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(220px, calc(100% - 150px));
+    transform: translate(-50%, -50%);
+    border-radius: 4px;
+    border: 0.5px solid rgb(57 57 57);
+    background: rgb(26 26 26);
+    padding: 1px 8px;
+    color: rgb(145 145 141);
+    font-size: 12px;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .automation-demo-small-header-cta {
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: rgb(145 145 141);
+    font-size: 12px;
+    line-height: 1;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: background-color 120ms ease, color 120ms ease;
+  }
+
+  .automation-demo-small-header-cta:hover {
+    background: rgb(240 238 230 / 0.08);
+    color: rgb(240 238 230);
+  }
+
+  .automation-demo-small-body {
+    background:
+      radial-gradient(circle at center, rgb(57 57 57 / 0.32) 1px, transparent 1px)
+      0 0 / 20px 20px,
+      rgb(26 26 26);
+    min-height: 360px;
+    padding: 24px 20px 24px;
+  }
+
+  .automation-demo-small-flow {
+    position: relative;
+    width: min(100%, 245px);
+    margin: 0 auto;
+  }
+
+  .automation-demo-small-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: #585392;
+    color: #fafaf7;
+    font-size: 10px;
+    line-height: 1;
+    padding: 4px 7px;
+    margin-bottom: 8px;
+  }
+
+  .automation-demo-small-list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .automation-demo-small-step {
+    position: relative;
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #393939;
+    border-radius: 6px;
+    background: #2c2c2c;
+    padding: 8px 12px;
+  }
+
+  .automation-demo-small-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 5px);
+    width: 1px;
+    height: 12px;
+    transform: translateX(-50%);
+    background-image: linear-gradient(to bottom, #2f5f94 50%, transparent 0%);
+    background-size: 1px 4px;
+    background-repeat: repeat-y;
+  }
+
+  .automation-demo-small-step-icon {
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: #fafaf7;
+  }
+
+  .automation-demo-small-step[data-tone="email"] .automation-demo-small-step-icon {
+    background: #4c622f;
+  }
+
+  .automation-demo-small-step[data-tone="agent"] .automation-demo-small-step-icon {
+    background: #585392;
+  }
+
+  .automation-demo-small-step[data-tone="alert"] .automation-demo-small-step-icon {
+    background: #215f9e;
+  }
+
+  .automation-demo-small-step-label {
+    color: #fafaf7;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  @media (max-width: 767px) {
+    .automation-demo-small-backdrop {
+      border-radius: 8px;
+    }
+
+    .automation-demo-small-body {
+      min-height: 280px;
+      padding: 16px;
+    }
+
+    .automation-demo-small-flow {
+      width: min(100%, 260px);
+    }
+  }
+</style>

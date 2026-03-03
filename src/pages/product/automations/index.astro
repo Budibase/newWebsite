@@ -1,25 +1,55 @@
 ---
 import Layout from "../../../layouts/MainLayout.astro";
-import PlatformLayout from "@components/PlatformLayout.astro";
+import CTA from "@components/CTA.astro";
+import Button from "@components/Button.astro";
 import { getProductPageMeta } from "../_pageMeta";
-import AutomationImage from "@assets/images/platform/AgentInAutomations.png";
-import { Image } from "astro:assets";
+import AutomationDemo from "@components/AutomationDemo.astro";
 import Card from "@components/cards/Card.astro";
 
-const { title: pageTitle, description: pageDescription } = getProductPageMeta(
+const { description: pageMetaDescription } = getProductPageMeta(
   Astro.url.pathname,
 );
+const pageTitle = "Orchestrate AI agents across your operations.";
+const pageDescription =
+  "Agents can trigger automations, collaborate inside them, and execute controlled changes - from approvals and support to reporting and system updates - all with full visibility.";
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
-  <PlatformLayout title={pageTitle} description={pageDescription}>
+<Layout title={pageTitle} description={pageMetaDescription}>
+  <section class="automations-hero">
+    <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0">
+      <div class="automations-hero-grid">
+        <div class="automations-hero-copy max-w-xl">
+          <h1
+            class="hero-title-small mb-4 w-full leading-[0.9]! tracking-[-0.02em]!"
+          >
+            <span class="block text-primary">Orchestrate AI agents</span>
+            <span class="block text-secondary">across your operations.</span>
+          </h1>
+        </div>
+
+        <div class="automations-hero-description max-w-xl">
+          <p class="m-0 mx-auto max-w-xl text-base text-[var(--text-secondary)] md:text-xl !mb-4 !text-xl text-secondary">
+            {pageDescription}
+          </p>
+        </div>
+
+        <div class="automations-hero-cta">
+          <Button
+            label="Try for free"
+            url="https://account.budibase.app/register"
+            variant="primary"
+            size="large"
+            target="_blank"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-7xl px-2 pb-12 pt-6 md:px-3 lg:px-0">
     <div class="mb-8">
-      <div class="bg-stone-100 dark:bg-stone-900 rounded-md p-4 mb-4">
-        <Image
-          src={AutomationImage}
-          alt="Automations workflows"
-          class="w-full h-96 object-cover rounded-md"
-        />
+      <div class="mb-4">
+        <AutomationDemo />
       </div>
 
       <section class="mt-16 mb-8">
@@ -71,5 +101,45 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
         </div>
       </section>
     </div>
-  </PlatformLayout>
+  </section>
+
+  <CTA />
 </Layout>
+
+<style>
+  .automations-hero {
+    background: var(--bg-1);
+    padding-top: max(calc(var(--site-nav-height) + 1.2rem), 4.8rem);
+    padding-bottom: 3rem;
+  }
+
+  :global(#site-nav.nav-shell) {
+    background-color: var(--bg-1) !important;
+  }
+
+  .automations-hero-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  .automations-hero-cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  .automations-hero :global(.hero-title-small) {
+    font-size: 54px;
+    font-weight: 400;
+  }
+
+  @media (max-width: 767px) {
+    .automations-hero {
+      padding-bottom: 2rem;
+    }
+
+  }
+</style>

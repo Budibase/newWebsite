@@ -1,0 +1,1074 @@
+---
+import { Image } from "astro:assets";
+import Button from "@components/Button.astro";
+import Icon from "@components/Icon.astro";
+import BackgroundAutomation from "@assets/images/automations/BackgroundAutomation.png";
+import SlackLogo from "@assets/logos/Slack.svg";
+import JiraLogo from "@assets/logos/Jira.svg";
+
+interface Props {
+  backdropImage?: string;
+  backdropPaddingClass?: string;
+  class?: string;
+}
+
+type WorkflowTone = "email" | "agent" | "alert";
+type WorkflowBadgeState = "trigger" | "running" | "completed" | "hidden";
+
+interface WorkflowNode {
+  id: string;
+  label: string;
+  tone: WorkflowTone;
+}
+
+type SidebarTone =
+  | "agent"
+  | "api"
+  | "javascript"
+  | "email"
+  | "connector"
+  | "create"
+  | "update"
+  | "query"
+  | "delete"
+  | "delay"
+  | "condition"
+  | "filter";
+
+interface SidebarItem {
+  label: string;
+  tone: SidebarTone;
+}
+
+interface SidebarSection {
+  title?: string;
+  items: SidebarItem[];
+}
+
+const {
+  backdropImage,
+  backdropPaddingClass = "px-6 py-6 sm:px-10 sm:py-10 lg:px-32 lg:py-12",
+  class: className = "",
+} = Astro.props as Props;
+
+const resolvedBackdropImage = backdropImage ?? BackgroundAutomation.src;
+const rootStyle = `--automation-demo-backdrop-image: url("${resolvedBackdropImage}")`;
+const id = `automation-demo-${Math.random().toString(36).slice(2, 8)}`;
+
+const workflowNodes: WorkflowNode[] = [
+  {
+    id: "incoming-email",
+    label: "Incoming Email",
+    tone: "email",
+  },
+  {
+    id: "security-agent",
+    label: "Security Agent",
+    tone: "agent",
+  },
+  {
+    id: "alert-team",
+    label: "Alert IT team",
+    tone: "alert",
+  },
+  {
+    id: "broadcast-agent",
+    label: "Broadcast Agent",
+    tone: "agent",
+  },
+];
+
+const sidebarSections: SidebarSection[] = [
+  {
+    items: [
+      { label: "Agent", tone: "agent" },
+      { label: "API request", tone: "api" },
+      { label: "Javascript", tone: "javascript" },
+      { label: "Send email", tone: "email" },
+      { label: "100+ Connectors", tone: "connector" },
+    ],
+  },
+  {
+    title: "Data",
+    items: [
+      { label: "Create record", tone: "create" },
+      { label: "Update record", tone: "update" },
+      { label: "Query record", tone: "query" },
+      { label: "Delete record", tone: "delete" },
+    ],
+  },
+  {
+    title: "Logic",
+    items: [
+      { label: "Delay", tone: "delay" },
+      { label: "Condition", tone: "condition" },
+      { label: "Filter", tone: "filter" },
+    ],
+  },
+];
+
+const nodeIconMap: Record<WorkflowTone, string> = {
+  email: "EnvelopeOpen",
+  agent: "Sparkle",
+  alert: "Sparkle",
+};
+
+const nodeIconClassMap: Record<WorkflowTone, string> = {
+  email: "automation-demo-node-icon-email",
+  agent: "automation-demo-node-icon-agent",
+  alert: "automation-demo-node-icon-alert",
+};
+
+const sidebarIconMap: Record<SidebarTone, string> = {
+  agent: "Sparkle",
+  api: "Path",
+  javascript: "Browser",
+  email: "EnvelopeOpen",
+  connector: "Cube",
+  create: "Plus",
+  update: "ArrowUpRight",
+  query: "Copy",
+  delete: "X",
+  delay: "Moon",
+  condition: "UserSwitch",
+  filter: "Browser",
+};
+
+const sidebarIconClassMap: Record<SidebarTone, string> = {
+  agent: "automation-demo-sidebar-icon-api",
+  api: "automation-demo-sidebar-icon-api",
+  javascript: "automation-demo-sidebar-icon-api",
+  email: "automation-demo-sidebar-icon-api",
+  connector: "automation-demo-sidebar-icon-api",
+  create: "automation-demo-sidebar-icon-data",
+  update: "automation-demo-sidebar-icon-data",
+  query: "automation-demo-sidebar-icon-data",
+  delete: "automation-demo-sidebar-icon-data",
+  delay: "automation-demo-sidebar-icon-logic",
+  condition: "automation-demo-sidebar-icon-logic",
+  filter: "automation-demo-sidebar-icon-logic",
+};
+---
+
+<div
+  id={id}
+  class:list={["automation-demo automation-demo-theme-dark dark demo-breakout w-full overflow-hidden", className]}
+  style={rootStyle}
+>
+  <div class:list={["automation-demo-backdrop w-full overflow-hidden", backdropPaddingClass]}>
+    <div class="automation-demo-shell w-full max-w-full overflow-hidden rounded-[6px] border-[0.5px] border-[var(--grey-800)] bg-[var(--grey-950)] shadow-[0px_10px_30px_rgb(var(--text)/0.25)]">
+      <div class="group relative flex h-7 items-center justify-between border-b-[0.5px] border-[var(--grey-800)] px-2 bg-[var(--grey-900)]">
+        <div class="flex items-center gap-1.5">
+          <span class="inline-block h-2.5 w-2.5 rounded-full" style="background-color: rgb(var(--text-muted) / 0.6);"></span>
+          <span class="inline-block h-2.5 w-2.5 rounded-full" style="background-color: rgb(var(--text-muted) / 0.6);"></span>
+          <span class="inline-block h-2.5 w-2.5 rounded-full" style="background-color: rgb(var(--text-muted) / 0.6);"></span>
+        </div>
+        <div class="absolute left-1/2 top-1/2 w-[min(540px,calc(100%-12.5rem))] -translate-x-1/2 -translate-y-1/2">
+          <input
+            type="text"
+            placeholder="budibase/automations"
+            aria-label="Search"
+            class="h-5 w-full rounded-[4px] bg-[var(--grey-950)] px-2.5 text-[13px] text-[var(--grey-100)] placeholder:text-[var(--grey-400)] outline-none border-0"
+          />
+        </div>
+        <div class="-mr-1 flex items-center">
+          <div class="hero-demo-theme-toggle ml-3" role="group" aria-label="Demo theme selection">
+            <button
+              type="button"
+              class="hero-demo-theme-button"
+              data-hero-demo-theme="light"
+              aria-label="Light theme"
+              aria-pressed="false"
+            >
+              <Icon name="Sun" class="h-3.5 w-3.5" />
+            </button>
+            <button
+              type="button"
+              class="hero-demo-theme-button is-active"
+              data-hero-demo-theme="dark"
+              aria-label="Dark theme"
+              aria-pressed="true"
+            >
+              <Icon name="Moon" class="h-3.5 w-3.5" />
+            </button>
+          </div>
+          <button
+            type="button"
+            class="rounded px-2 py-1 text-[13px] text-[var(--grey-400)] transition-opacity duration-200 hover:bg-[rgb(var(--text)/0.06)] cursor-pointer"
+          >
+            Get Budibase
+          </button>
+        </div>
+      </div>
+
+      <div class="automation-demo-toolbar">
+        <div class="automation-demo-tabs" role="tablist" aria-label="Automation view tabs">
+          <button class="automation-demo-tab is-active" type="button" role="tab" aria-selected="true">Editor</button>
+          <button class="automation-demo-tab" type="button" role="tab" aria-selected="false">Logs</button>
+        </div>
+        <Button
+          label="Test automation"
+          size="small"
+          variant="primary"
+          class="automation-demo-run-button !text-[13px] !px-2 !py-[3px] !gap-1"
+        />
+      </div>
+
+      <div class="automation-demo-body">
+        <div class="automation-demo-canvas-shell">
+          <div class="automation-demo-canvas">
+            <div class="automation-demo-flow" aria-label="Automation flow">
+              {
+                workflowNodes.map((node, index) => (
+                  <div class="automation-demo-flow-item">
+                    <article class="automation-demo-node" data-workflow-node-id={node.id}>
+                      <span class="automation-demo-status is-hidden" data-workflow-status></span>
+                      <div class="automation-demo-node-card">
+                        <span class:list={["automation-demo-node-icon", nodeIconClassMap[node.tone]]}>
+                          {
+                            node.tone === "alert" ? (
+                              <Image src={SlackLogo} alt="Slack" class="h-3.5 w-3.5" />
+                            ) : (
+                              <Icon name={nodeIconMap[node.tone]} weight="fill" class="h-3.5 w-3.5" />
+                            )
+                          }
+                        </span>
+                        <span class="automation-demo-node-label">{node.label}</span>
+                      </div>
+                    </article>
+                    {index < workflowNodes.length - 1 && <span class="automation-demo-edge" aria-hidden="true"></span>}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <aside class="automation-demo-sidebar">
+          <h3 class="automation-demo-sidebar-heading">Automation steps</h3>
+          {
+            sidebarSections.map((section) => (
+              <section class="automation-demo-sidebar-section">
+                {section.title && <h4 class="automation-demo-sidebar-title">{section.title}</h4>}
+                <ul class="automation-demo-sidebar-list">
+                {section.items.map((item) => (
+                  <li>
+                    {item.tone === "connector" ? (
+                      <a
+                        class="automation-demo-sidebar-item"
+                        href="/product/connections/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span class:list={["automation-demo-sidebar-icon", sidebarIconClassMap[item.tone]]}>
+                          <Icon name={sidebarIconMap[item.tone]} weight="fill" class="h-3 w-3" />
+                        </span>
+                        <span class="automation-demo-sidebar-label">{item.label}</span>
+                        <span class="automation-demo-sidebar-logos">
+                          <Image src={SlackLogo} alt="Slack" class="h-3 w-3" />
+                          <Image src={JiraLogo} alt="Jira" class="h-3 w-3" />
+                          <span class="automation-demo-sidebar-logo-block" aria-hidden="true"></span>
+                        </span>
+                      </a>
+                    ) : (
+                      <button class="automation-demo-sidebar-item" type="button">
+                        <span class:list={["automation-demo-sidebar-icon", sidebarIconClassMap[item.tone]]}>
+                          <Icon name={sidebarIconMap[item.tone]} weight="fill" class="h-3 w-3" />
+                        </span>
+                        <span class="automation-demo-sidebar-label">{item.label}</span>
+                      </button>
+                    )}
+                  </li>
+                ))}
+                </ul>
+              </section>
+            ))
+          }
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .automation-demo {
+    font-family: var(--font-sans);
+    font-size: 13px;
+  }
+
+  .automation-demo-theme-light {
+    color-scheme: light;
+    --text: 47 47 45;
+    --text-muted: 102 102 99;
+    --grey-950: var(--color-grey-50);
+    --grey-900: var(--color-grey-100);
+    --grey-800: var(--color-grey-200);
+    --grey-700: var(--color-grey-300);
+    --grey-400: var(--color-grey-600);
+    --grey-100: var(--color-grey-900);
+  }
+
+  .automation-demo-theme-dark {
+    color-scheme: dark;
+    --text: 240 238 230;
+    --text-muted: 145 145 141;
+  }
+
+  .automation-demo-backdrop {
+    border-radius: 8px;
+    background-image: var(--automation-demo-backdrop-image);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .automation-demo-shell {
+    min-height: 520px;
+    background: var(--grey-950);
+  }
+
+  .automation-demo-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid var(--grey-800);
+    padding: 6px 8px;
+    background: var(--grey-900);
+  }
+
+  .automation-demo-tabs {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .automation-demo-tab {
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--grey-400);
+    font-size: 13px;
+    line-height: 1;
+    padding: 6px 8px;
+    cursor: pointer;
+  }
+
+  .automation-demo-tab.is-active {
+    background: var(--grey-800);
+    color: var(--grey-100);
+  }
+
+  .automation-demo-body {
+    display: grid;
+    min-height: 476px;
+    grid-template-columns: minmax(0, 1fr) 250px;
+  }
+
+  .automation-demo-canvas-shell {
+    border-right: 0.5px solid var(--grey-800);
+  }
+
+  .automation-demo-canvas {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 476px;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    padding: 24px;
+    background: var(--grey-900);
+  }
+
+  .automation-demo-canvas::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.74;
+    background-image:
+      radial-gradient(circle at center, color-mix(in srgb, var(--grey-700) 70%, transparent) 1px, transparent 1px);
+    background-size: 18px 18px;
+    background-position: 0 0;
+  }
+
+  .automation-demo-canvas::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    background-image:
+      radial-gradient(circle at center, color-mix(in srgb, var(--grey-400) 42%, transparent) 1px, transparent 1px);
+    background-size: 18px 18px;
+    background-position: 9px 9px;
+  }
+
+  .automation-demo-canvas.is-shimmering::before {
+    animation:
+      automation-demo-polka-shimmer-loop 3.6s ease-in-out 1,
+      automation-demo-polka-drift-loop 3.6s ease-in-out 1;
+  }
+
+  .automation-demo-canvas.is-shimmering::after {
+    animation:
+      automation-demo-polka-sparkle-loop 3.6s ease-in-out 1,
+      automation-demo-polka-drift-alt-loop 3.6s ease-in-out 1;
+  }
+
+  @keyframes automation-demo-polka-shimmer-loop {
+    0%,
+    18%,
+    52%,
+    100% {
+      opacity: 0.5;
+    }
+    30% {
+      opacity: 0.96;
+    }
+  }
+
+  @keyframes automation-demo-polka-sparkle-loop {
+    0%,
+    16%,
+    56%,
+    100% {
+      opacity: 0.06;
+    }
+    30% {
+      opacity: 0.72;
+    }
+  }
+
+  @keyframes automation-demo-polka-drift-loop {
+    0% {
+      background-position: 0 0;
+    }
+    16% {
+      background-position: 0 0;
+    }
+    42% {
+      background-position: 18px 9px;
+    }
+    100% {
+      background-position: 18px 9px;
+    }
+  }
+
+  @keyframes automation-demo-polka-drift-alt-loop {
+    0% {
+      background-position: 9px 9px;
+    }
+    16% {
+      background-position: 9px 9px;
+    }
+    42% {
+      background-position: 27px 0;
+    }
+    100% {
+      background-position: 27px 0;
+    }
+  }
+
+  .automation-demo-flow {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: max-content;
+    min-width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .automation-demo-flow-item {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .automation-demo-node {
+    position: relative;
+    width: 180px;
+  }
+
+  .automation-demo-status {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 13px;
+    line-height: 1;
+    color: var(--grey-50);
+  }
+
+  .automation-demo-status.is-hidden {
+    display: none;
+  }
+
+  .automation-demo-status.is-trigger {
+    background: var(--orange-700);
+  }
+
+  .automation-demo-status.is-complete {
+    background: var(--green-700);
+  }
+
+  .automation-demo-status.is-running {
+    background: var(--blue-600);
+  }
+
+  .automation-demo-status-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 2px;
+  }
+
+  .automation-demo-status-dot {
+    display: inline-block;
+    height: 2.5px;
+    width: 2.5px;
+    border-radius: 999px;
+    background: var(--grey-50);
+    opacity: 0.4;
+    animation: automation-demo-thinking 1s infinite ease-in-out;
+    flex-shrink: 0;
+  }
+
+  .automation-demo-status-dot:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .automation-demo-status-dot:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes automation-demo-thinking {
+    0%,
+    100% {
+      opacity: 0.3;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+  }
+
+  .automation-demo-node-card {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 6px;
+    border: 0.5px solid var(--grey-700);
+    background: var(--grey-800);
+    padding: 9px 12px;
+    color: var(--grey-100);
+  }
+
+  .automation-demo-node-icon {
+    display: inline-flex;
+    height: 24px;
+    width: 24px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: var(--grey-50);
+    flex-shrink: 0;
+  }
+
+  .automation-demo-node-icon-email {
+    background: var(--green-800);
+  }
+
+  .automation-demo-node-icon-agent {
+    background: var(--blue-700);
+  }
+
+  .automation-demo-node-icon-alert {
+    background: var(--grey-700);
+  }
+
+  .automation-demo-node-label {
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
+    line-height: 1.2;
+    color: var(--grey-100);
+  }
+
+  .automation-demo-edge {
+    width: 26px;
+    height: 1px;
+    margin: 0 6px;
+    background-image: linear-gradient(to right, var(--blue-400) 50%, transparent 0);
+    background-size: 6px 1px;
+    background-repeat: repeat-x;
+    opacity: 0.85;
+  }
+
+  .automation-demo-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    background: var(--grey-950);
+  }
+
+  .automation-demo-sidebar-heading {
+    margin: 0;
+    color: var(--grey-100);
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+
+  .automation-demo-sidebar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .automation-demo-sidebar-title {
+    margin: 4px 0 0;
+    font-family: "Inter", sans-serif;
+    color: var(--grey-400);
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+
+  .automation-demo-sidebar-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .automation-demo-sidebar-item {
+    display: flex;
+    width: 100%;
+    min-height: 30px;
+    align-items: center;
+    gap: 8px;
+    border: 0.5px solid var(--grey-800);
+    border-radius: 6px;
+    background: var(--grey-900);
+    color: var(--grey-100);
+    padding: 6px 10px;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .automation-demo-sidebar-item:hover {
+    background: var(--grey-800);
+  }
+
+  .automation-demo-sidebar-icon {
+    display: inline-flex;
+    height: 18px;
+    width: 18px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: var(--grey-50);
+    flex-shrink: 0;
+  }
+
+  .automation-demo-sidebar-icon-api {
+    background: var(--blue-700);
+  }
+
+  .automation-demo-sidebar-icon-data {
+    background: var(--green-800);
+  }
+
+  .automation-demo-sidebar-icon-logic {
+    background: var(--purple-700);
+  }
+
+  .automation-demo-sidebar-label {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  .automation-demo-sidebar-logos {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .automation-demo-sidebar-logo-block {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    background: var(--purple-500);
+  }
+
+  .hero-demo-theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    border-radius: 6px;
+    padding: 2px;
+  }
+
+  .hero-demo-theme-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--grey-400);
+    cursor: pointer;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease;
+  }
+
+  .hero-demo-theme-button:hover {
+    background: rgb(var(--text) / 0.06);
+    color: var(--grey-100);
+  }
+
+  .hero-demo-theme-button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgb(var(--brand) / 0.6);
+  }
+
+  .hero-demo-theme-button.is-active {
+    background: rgb(var(--text) / 0.08);
+    color: var(--grey-100);
+  }
+
+  @media (max-width: 1340px) {
+    .automation-demo-body {
+      grid-template-columns: minmax(0, 1fr) 280px;
+    }
+
+    .automation-demo-node {
+      width: 180px;
+    }
+  }
+
+  @media (max-width: 1180px) {
+    .automation-demo-body {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .automation-demo-canvas-shell {
+      border-right: 0;
+      border-bottom: 0.5px solid var(--grey-800);
+    }
+
+    .automation-demo-sidebar {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 980px) {
+    .automation-demo-toolbar {
+      padding: 6px;
+    }
+
+    .automation-demo-canvas {
+      min-height: 360px;
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .automation-demo-shell {
+      min-height: 0;
+    }
+
+    .automation-demo-canvas {
+      min-height: 320px;
+      padding: 16px;
+    }
+
+    .automation-demo-sidebar {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .automation-demo-canvas.is-shimmering::before {
+      animation: none;
+      opacity: 0.8;
+      background-position: 0 0;
+    }
+
+    .automation-demo-canvas.is-shimmering::after {
+      animation: none;
+      opacity: 0;
+      background-position: 9px 9px;
+    }
+
+    .automation-demo-status-dot {
+      animation: none;
+      opacity: 0.6;
+      transform: none;
+    }
+  }
+</style>
+
+<script define:vars={{ id }}>
+  (() => {
+    const root = document.getElementById(id);
+    if (!root) return;
+
+    const DEMO_THEME_KEY = "automationDemoTheme";
+    const STEP_GAP_MS = 500;
+    const RUNNING_DURATION_MS = 2000;
+    const WORKFLOW_SEQUENCE = ["security-agent", "alert-team", "broadcast-agent"];
+    const runButton = root.querySelector(".automation-demo-run-button");
+    const workflowCanvas = root.querySelector(".automation-demo-canvas");
+    const themeButtons = Array.from(
+      root.querySelectorAll("[data-hero-demo-theme]"),
+    );
+    const scopeAttr = root
+      .getAttributeNames()
+      .find((name) => name.startsWith("data-astro-cid-"));
+    const workflowNodeMap = new Map();
+    const workflowNodeElements = Array.from(
+      root.querySelectorAll("[data-workflow-node-id]"),
+    );
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let hasAutoRunSequence = false;
+    let sequenceId = 0;
+    let observer;
+
+    workflowNodeElements.forEach((node) => {
+      const nodeId = node.getAttribute("data-workflow-node-id");
+      if (nodeId) workflowNodeMap.set(nodeId, node);
+    });
+
+    function sleep(duration) {
+      return new Promise((resolve) => {
+        window.setTimeout(resolve, duration);
+      });
+    }
+
+    function applyScopeAttr(element) {
+      if (scopeAttr) element.setAttribute(scopeAttr, "");
+    }
+
+    function setCanvasShimmer(isActive) {
+      if (!workflowCanvas) return;
+      workflowCanvas.classList.toggle("is-shimmering", isActive);
+    }
+
+    function getInitialDemoTheme() {
+      try {
+        const stored = localStorage.getItem(DEMO_THEME_KEY);
+        if (stored === "light" || stored === "dark") return stored;
+      } catch {
+        // localStorage may be unavailable in restricted contexts.
+      }
+
+      return document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
+    }
+
+    function updateThemeButtons(activeTheme) {
+      themeButtons.forEach((button) => {
+        const htmlButton = button;
+        const theme = htmlButton.getAttribute("data-hero-demo-theme");
+        const isActive = theme === activeTheme;
+        htmlButton.setAttribute("aria-pressed", String(isActive));
+        htmlButton.classList.toggle("is-active", isActive);
+      });
+    }
+
+    function applyDemoTheme(theme, persist = true) {
+      if (theme !== "light" && theme !== "dark") return;
+
+      root.classList.toggle("dark", theme === "dark");
+      root.classList.toggle("automation-demo-theme-dark", theme === "dark");
+      root.classList.toggle("automation-demo-theme-light", theme === "light");
+      updateThemeButtons(theme);
+
+      if (persist) {
+        try {
+          localStorage.setItem(DEMO_THEME_KEY, theme);
+        } catch {
+          // localStorage may be unavailable in restricted contexts.
+        }
+      }
+    }
+
+    function setWorkflowStatus(nodeId, status) {
+      const node = workflowNodeMap.get(nodeId);
+      if (!node) return;
+
+      const statusEl = node.querySelector("[data-workflow-status]");
+      if (!statusEl) return;
+
+      statusEl.classList.remove("is-trigger", "is-running", "is-complete", "is-hidden");
+
+      if (status === "hidden") {
+        statusEl.classList.add("is-hidden");
+        statusEl.textContent = "";
+        return;
+      }
+
+      if (status === "trigger") {
+        statusEl.classList.add("is-trigger");
+        statusEl.textContent = "Trigger";
+        return;
+      }
+
+      if (status === "completed") {
+        statusEl.classList.add("is-complete");
+        statusEl.textContent = "Completed";
+        return;
+      }
+
+      statusEl.classList.add("is-running");
+      statusEl.textContent = "";
+
+      const label = document.createElement("span");
+      label.className = "automation-demo-status-label";
+      label.textContent = "Running";
+      applyScopeAttr(label);
+
+      const dots = document.createElement("span");
+      dots.className = "automation-demo-status-dots";
+      applyScopeAttr(dots);
+
+      for (let i = 0; i < 3; i += 1) {
+        const dot = document.createElement("span");
+        dot.className = "automation-demo-status-dot";
+        applyScopeAttr(dot);
+        dots.append(dot);
+      }
+
+      statusEl.append(label, dots);
+    }
+
+    function applyInitialWorkflowState() {
+      setCanvasShimmer(false);
+      workflowNodeMap.forEach((_node, nodeId) => {
+        setWorkflowStatus(nodeId, "hidden");
+      });
+    }
+
+    function applyReducedMotionFinalState() {
+      setWorkflowStatus("incoming-email", "trigger");
+      WORKFLOW_SEQUENCE.forEach((nodeId) => {
+        setWorkflowStatus(nodeId, "completed");
+      });
+      setCanvasShimmer(true);
+    }
+
+    async function runWorkflowSequence() {
+      const currentSequenceId = ++sequenceId;
+      applyInitialWorkflowState();
+      setCanvasShimmer(false);
+      setWorkflowStatus("incoming-email", "trigger");
+
+      await sleep(STEP_GAP_MS);
+      if (currentSequenceId !== sequenceId) return;
+
+      for (let i = 0; i < WORKFLOW_SEQUENCE.length; i += 1) {
+        const nodeId = WORKFLOW_SEQUENCE[i];
+        setWorkflowStatus(nodeId, "running");
+        await sleep(RUNNING_DURATION_MS);
+        if (currentSequenceId !== sequenceId) return;
+        setWorkflowStatus(nodeId, "completed");
+        if (i < WORKFLOW_SEQUENCE.length - 1) {
+          await sleep(STEP_GAP_MS);
+          if (currentSequenceId !== sequenceId) return;
+        }
+      }
+
+      if (currentSequenceId === sequenceId) {
+        setCanvasShimmer(true);
+      }
+    }
+
+    function startWorkflowSequence() {
+      if (hasAutoRunSequence) return;
+      hasAutoRunSequence = true;
+
+      if (prefersReducedMotion.matches) {
+        applyReducedMotionFinalState();
+        return;
+      }
+
+      runWorkflowSequence();
+    }
+
+    applyInitialWorkflowState();
+
+    if ("IntersectionObserver" in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (hasAutoRunSequence) return;
+          if (!entries.some((entry) => entry.isIntersecting)) return;
+
+          startWorkflowSequence();
+          observer.disconnect();
+        },
+        { threshold: 0.35 },
+      );
+      observer.observe(root);
+    } else {
+      startWorkflowSequence();
+    }
+
+    if (runButton) {
+      runButton.addEventListener("click", () => {
+        hasAutoRunSequence = true;
+        if (observer) observer.disconnect();
+
+        if (prefersReducedMotion.matches) {
+          sequenceId += 1;
+          applyReducedMotionFinalState();
+          return;
+        }
+
+        runWorkflowSequence();
+      });
+    }
+
+    const initialTheme = getInitialDemoTheme();
+    applyDemoTheme(initialTheme, false);
+
+    if (themeButtons.length > 0) {
+      themeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const theme = button.getAttribute("data-hero-demo-theme");
+          if (!theme) return;
+          applyDemoTheme(theme, true);
+        });
+      });
+    }
+  })();
+</script>
