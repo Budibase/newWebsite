@@ -7,7 +7,7 @@ import RowsPlusBottomFill from "phosphor-astro/RowsPlusBottomFill.astro";
 import PaperPlaneTiltFill from "phosphor-astro/PaperPlaneTiltFill.astro";
 import SparkleFill from "phosphor-astro/SparkleFill.astro";
 import CheckCircleFill from "phosphor-astro/CheckCircleFill.astro";
-import TitleBlock from "@components/TitleBlock.astro";
+import SectionBlock from "@components/SectionBlock.astro";
 
 interface FrameNode {
   title: string;
@@ -137,7 +137,7 @@ const frames: FrameScenario[] = [
 ];
 ---
 
-<section id={id} class="mt-12 md:mt-16">
+<section id={id}>
   <div class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:gap-20">
     <div>
       <div class="automation-trigger-outcome-canvas rounded-xl px-4 py-5 sm:px-5 sm:py-6">
@@ -210,24 +210,19 @@ const frames: FrameScenario[] = [
       </div>
     </div>
 
-    <div class="space-y-5">
-      <TitleBlock
-        variant="section"
-        containerClass="flex flex-col gap-2"
-        titleColorMode="split-secondary-primary"
-        titleLines={[
-          { text: "More powerful triggers." },
-          { text: "More agent-driven execution." },
-        ]}
-        titleClass="m-0 max-w-xl"
-      />
-      <p class="hero-description-small max-w-xl">
-        Automations can start from agents, schedules, emails, apps, or data changes - then orchestrate decisions and
-        system actions automatically across your business.
-      </p>
-
-      <div class="space-y-3">
-        <h3 class="m-0 mt-12 mb-6 !text-lg text-[var(--text-primary)]">With Budibase, you can:</h3>
+    <SectionBlock
+      titleColorMode="split-secondary-primary"
+      titleLines={[
+        { text: "More powerful triggers." },
+        { text: "More agent-driven execution." },
+      ]}
+      description="Automations can start from agents, schedules, emails, apps, or data changes - then orchestrate decisions and system actions automatically across your business."
+      maxWidth="xl"
+      spacing="default"
+      contentClass="pt-1"
+    >
+      <div class="flex flex-col gap-[var(--section-gap-sm)]">
+        <h3 class="m-0 !text-lg text-[var(--text-primary)]">With Budibase, you can:</h3>
         <ul class="flex flex-col gap-4">
           <li class="flex items-start gap-3">
             <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
@@ -254,7 +249,7 @@ const frames: FrameScenario[] = [
           </li>
         </ul>
       </div>
-    </div>
+    </SectionBlock>
   </div>
 </section>
 

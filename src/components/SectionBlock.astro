@@ -1,0 +1,156 @@
+---
+import TitleBlock from "@components/TitleBlock.astro";
+
+interface TitleLine {
+  text: string;
+  className?: string;
+}
+
+interface Props {
+  variant?: "section";
+  title?: string;
+  titleLines?: TitleLine[];
+  titleColorMode?: "single" | "split-secondary-primary" | "split-primary-secondary";
+  description?: string;
+  align?: "left" | "center";
+  maxWidth?: "lg" | "xl" | "2xl" | "3xl" | "full";
+  spacing?: "compact" | "default" | "relaxed";
+  containerClass?: string;
+  copyClass?: string;
+  titleClass?: string;
+  descriptionClass?: string;
+  contentClass?: string;
+}
+
+const {
+  variant = "section",
+  title,
+  titleLines = [],
+  titleColorMode = "single",
+  description,
+  align = "left",
+  maxWidth = "xl",
+  spacing = "default",
+  containerClass,
+  copyClass,
+  titleClass,
+  descriptionClass,
+  contentClass,
+} = Astro.props as Props;
+
+const hasContent = Astro.slots.has("default");
+
+function joinClasses(...values: Array<string | undefined | false>) {
+  return values.filter(Boolean).join(" ");
+}
+
+function getWidthClass(width: Props["maxWidth"]) {
+  switch (width) {
+    case "lg":
+      return "max-w-lg";
+    case "2xl":
+      return "max-w-2xl";
+    case "3xl":
+      return "max-w-3xl";
+    case "full":
+      return "w-full max-w-none";
+    case "xl":
+    default:
+      return "max-w-xl";
+  }
+}
+
+const copyWidthClass = getWidthClass(maxWidth);
+const rootClass = joinClasses("section-block", `is-align-${align}`, `is-spacing-${spacing}`, containerClass);
+const copyWrapperClass = joinClasses("section-block-copy", "w-full", copyWidthClass, copyClass);
+const titleWrapperClass = joinClasses("section-block-title-wrap", align === "center" && "w-full");
+const resolvedTitleClass = joinClasses("m-0", align === "center" && "w-full !text-center", titleClass);
+const resolvedDescriptionClass = joinClasses(
+  "section-block-description",
+  "hero-description-small",
+  align === "center" && "!text-center",
+  descriptionClass,
+);
+const resolvedContentClass = joinClasses("section-block-content", contentClass);
+---
+
+<div class={rootClass}>
+  <div class={copyWrapperClass}>
+    <TitleBlock
+      variant={variant}
+      title={title}
+      titleLines={titleLines}
+      titleColorMode={titleColorMode}
+      containerClass={titleWrapperClass}
+      titleClass={resolvedTitleClass}
+    />
+    {description && <p class={resolvedDescriptionClass}>{description}</p>}
+  </div>
+
+  {hasContent && (
+    <div class={resolvedContentClass}>
+      <slot />
+    </div>
+  )}
+</div>
+
+<style>
+  .section-block {
+    --section-block-copy-gap: var(--section-gap-md);
+    --section-block-content-gap: var(--section-gap-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-block-content-gap);
+  }
+
+  .section-block.is-spacing-compact {
+    --section-block-copy-gap: var(--section-gap-sm);
+    --section-block-content-gap: var(--section-gap-md);
+  }
+
+  .section-block.is-spacing-relaxed {
+    --section-block-copy-gap: var(--section-gap-lg);
+    --section-block-content-gap: calc(var(--section-gap-lg) + 0.5rem);
+  }
+
+  .section-block.is-align-center {
+    align-items: center;
+  }
+
+  .section-block.is-align-center .section-block-copy,
+  .section-block.is-align-center .section-block-title-wrap,
+  .section-block.is-align-center .section-block-description,
+  .section-block.is-align-center .section-block-content {
+    margin-inline: auto;
+  }
+
+  .section-block.is-align-center .section-block-copy {
+    align-items: center;
+    text-align: center;
+  }
+
+  .section-block.is-align-left {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .section-block-copy {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: var(--section-block-copy-gap);
+  }
+
+  .section-block-title-wrap,
+  .section-block-content {
+    width: 100%;
+  }
+
+  .section-block-description {
+    margin: 0;
+  }
+
+  .section-block :global(.section-title) {
+    line-height: 1.1;
+  }
+</style>

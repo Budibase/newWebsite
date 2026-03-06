@@ -1,0 +1,237 @@
+---
+import { Image } from "astro:assets";
+import PostgresLogo from "@assets/logos/Postgres.svg";
+import MySQLLogo from "@assets/logos/MYSQL.svg";
+import GoogleSheetsLogo from "@assets/logos/google-sheets.svg";
+
+const rows = [
+  { id: "IT-2041", priority: "High", status: "In Progress" },
+  { id: "IT-2040", priority: "Medium", status: "Completed" },
+  { id: "IT-2039", priority: "Medium", status: "Completed" },
+  { id: "IT-2038", priority: "High", status: "Completed" },
+  { id: "IT-2037", priority: "Low", status: "In Progress" },
+];
+
+const tabs = [
+  { label: "PostgreSQL", icon: PostgresLogo, active: true },
+  { label: "MySQL", icon: MySQLLogo, active: false },
+  { label: "Google Sheets", icon: GoogleSheetsLogo, active: false },
+];
+---
+
+<div
+  class="app-data-sources-preview"
+  role="img"
+  aria-label="Preview of data source tabs connected to a request table"
+>
+  <div class="app-data-sources-tabs" aria-hidden="true">
+    {tabs.map((tab) => (
+      <span class:list={["app-data-sources-tab", tab.active && "is-active"]}>
+        <Image src={tab.icon} alt="" class="app-data-sources-tab-icon" />
+        <span class="app-data-sources-tab-label">{tab.label}</span>
+      </span>
+    ))}
+  </div>
+
+  <div class="app-data-sources-table">
+    <div class="app-data-sources-header">
+      <span>Request id</span>
+      <span class="is-center">Priority</span>
+      <span class="app-data-sources-status-heading">Status</span>
+    </div>
+
+    {rows.map((row) => (
+      <div class="app-data-sources-row">
+        <span class="app-data-sources-id">{row.id}</span>
+        <span
+          class:list={[
+            "app-data-sources-priority",
+            row.priority === "High" && "is-high",
+            row.priority === "Medium" && "is-medium",
+            row.priority === "Low" && "is-low",
+          ]}
+        >
+          {row.priority}
+        </span>
+        <span class="app-data-sources-status">{row.status}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .app-data-sources-preview {
+    width: 100%;
+    height: 100%;
+    padding-top: 8px;
+    padding-left: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+    background: var(--grey-100);
+    border-radius: 6px;
+    pointer-events: none;
+  }
+
+  .app-data-sources-tabs {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+
+  .app-data-sources-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+    padding: 4px 8px;
+    border-radius: 10px;
+    color: var(--grey-500);
+    background: transparent;
+  }
+
+  .app-data-sources-tab.is-active {
+    background: var(--grey-200);
+    color: var(--grey-900);
+  }
+
+  .app-data-sources-tab-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  .app-data-sources-tab-label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .app-data-sources-table {
+    width: 100%;
+    flex: 1 1 auto;
+    background: var(--grey-50);
+    border: 1px solid var(--grey-200);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .app-data-sources-header,
+  .app-data-sources-row {
+    display: grid;
+    grid-template-columns: 72px 74px minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 18px;
+  }
+
+  .app-data-sources-header {
+    border-bottom: 1px solid var(--grey-200);
+    color: var(--grey-400);
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+
+  .app-data-sources-row {
+    border-bottom: 1px solid var(--grey-200);
+    color: var(--grey-500);
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+
+  .app-data-sources-row:last-child {
+    border-bottom: 0;
+  }
+
+  .app-data-sources-header .is-center {
+    text-align: center;
+  }
+
+  .app-data-sources-id {
+    color: var(--grey-600);
+  }
+
+  .app-data-sources-priority {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: 3px 10px;
+    border-radius: 999px;
+    color: var(--grey-50);
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .app-data-sources-priority.is-high {
+    background: var(--red-500);
+  }
+
+  .app-data-sources-priority.is-medium {
+    background: var(--orange-500);
+  }
+
+  .app-data-sources-priority.is-low {
+    background: var(--blue-400);
+  }
+
+  .app-data-sources-status {
+    padding-left: 6px;
+    white-space: nowrap;
+  }
+
+  .app-data-sources-status-heading {
+    padding-left: 6px;
+  }
+
+  @media (max-width: 420px) {
+    .app-data-sources-preview {
+      gap: 10px;
+    }
+
+    .app-data-sources-tabs {
+      gap: 2px;
+    }
+
+    .app-data-sources-tab {
+      padding: 4px 6px;
+      gap: 3px;
+    }
+
+    .app-data-sources-tab-icon {
+      width: 12px;
+      height: 12px;
+    }
+
+    .app-data-sources-tab-label {
+      font-size: 11px;
+    }
+
+    .app-data-sources-header,
+    .app-data-sources-row {
+      grid-template-columns: 64px 68px minmax(0, 1fr);
+      column-gap: 10px;
+      padding: 0 14px;
+      font-size: 12px;
+      min-height: 30px;
+    }
+
+    .app-data-sources-priority {
+      padding-inline: 8px;
+      font-size: 11px;
+    }
+  }
+</style>

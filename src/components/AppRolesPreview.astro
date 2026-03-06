@@ -1,0 +1,151 @@
+---
+const roles = [
+  { label: "Employee", tone: "is-orange", selected: false },
+  { label: "IT staff", tone: "is-blue", selected: false },
+  { label: "IT manager", tone: "is-green", selected: true },
+  { label: "Admin", tone: "is-purple", selected: false },
+];
+---
+
+<div
+  class="app-roles-preview"
+  role="img"
+  aria-label="Preview of a user role selector with the IT manager role selected"
+>
+  <div class="app-roles-preview-select-wrap">
+    <button
+      class="app-roles-preview-select"
+      type="button"
+      aria-label="User role"
+      aria-controls="app-roles-preview-menu"
+      aria-expanded="true"
+    >
+      <span class="app-roles-preview-option-label">
+        <span class="app-roles-preview-dot is-green" aria-hidden="true"></span>
+        IT manager
+      </span>
+      <span class="app-roles-preview-caret" aria-hidden="true"></span>
+    </button>
+
+    <div
+      id="app-roles-preview-menu"
+      class="app-roles-preview-menu is-open"
+      aria-hidden="true"
+    >
+      {roles.map((role) => (
+        <div class:list={["app-roles-preview-option", role.selected && "is-selected"]}>
+          <span class="app-roles-preview-option-label">
+            <span class:list={["app-roles-preview-dot", role.tone]} aria-hidden="true"></span>
+            {role.label}
+          </span>
+          {role.selected && <span class="app-roles-preview-meta">Selected</span>}
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .app-roles-preview {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 12px;
+    pointer-events: none;
+  }
+
+  .app-roles-preview-select-wrap {
+    position: relative;
+    width: min(100%, 260px);
+  }
+
+  .app-roles-preview-select {
+    display: flex;
+    width: 100%;
+    height: 32px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    border-radius: 6px;
+    border: 0.5px solid var(--border-color);
+    background: var(--bg-1);
+    color: var(--text-primary);
+    padding: 0 12px;
+    font-size: 12px;
+    font-weight: 500;
+    box-shadow: 0 12px 24px rgb(var(--text) / 0.08);
+  }
+
+  .app-roles-preview-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    width: 100%;
+    border-radius: 6px;
+    border: 0.5px solid var(--border-color);
+    background: var(--bg-1);
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    box-shadow: 0 12px 24px rgb(var(--text) / 0.15);
+  }
+
+  .app-roles-preview-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 12px;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .app-roles-preview-option-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .app-roles-preview-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+
+  .app-roles-preview-dot.is-orange {
+    background: var(--accent-orange);
+  }
+
+  .app-roles-preview-dot.is-blue {
+    background: var(--accent-blue);
+  }
+
+  .app-roles-preview-dot.is-green {
+    background: var(--accent-green);
+  }
+
+  .app-roles-preview-dot.is-purple {
+    background: var(--accent-purple);
+  }
+
+  .app-roles-preview-meta {
+    font-size: 11px;
+    color: var(--accent-blue);
+  }
+
+  .app-roles-preview-caret {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--text-secondary);
+    flex-shrink: 0;
+  }
+</style>

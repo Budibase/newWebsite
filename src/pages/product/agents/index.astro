@@ -1,22 +1,95 @@
 ---
 import Layout from "../../../layouts/MainLayout.astro";
-import PlatformLayout from "@components/PlatformLayout.astro";
-import { getProductPageMeta } from "../_pageMeta";
+import CTA from "@components/CTA.astro";
+import Button from "@components/Button.astro";
+import TitleBlock from "@components/TitleBlock.astro";
 import AgentDemo from "@components/AgentDemo.astro";
 import AgentFeatureCards from "../../_components/landing-page/AgentFeatureCards.astro";
 
-const { title: pageTitle, description: pageDescription } = getProductPageMeta(
-  Astro.url.pathname,
-);
+const pageTitle = "AI agents that\nrun your operations";
+const pageDescription =
+  "Build agents that handle requests, answer questions, and take action across your business. Connect your data, trigger automations, and let AI manage the routine work that keeps teams moving.";
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <PlatformLayout title={pageTitle} description={pageDescription}>
-    <div class="mb-8">
-      <div class="mb-4">
-        <AgentDemo />
+  <section class="agents-hero">
+    <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0">
+      <div class="agents-hero-grid">
+        <div class="agents-hero-copy max-w-xl">
+          <TitleBlock
+            variant="hero"
+            titleColorMode="split-primary-secondary"
+            titleLines={[
+              { text: "AI agents that" },
+              { text: "run your operations" },
+            ]}
+            titleClass="mb-4 w-full leading-[0.9]! tracking-[-0.02em]!"
+          />
+          <p
+            class="hero-description-small mx-auto max-w-xl text-base md:!text-xl !mb-4"
+          >
+            {pageDescription}
+          </p>
+        </div>
+
+        <div class="agents-hero-cta">
+          <Button
+            label="Try for free"
+            url="https://account.budibase.app/register"
+            variant="primary"
+            size="large"
+            target="_blank"
+          />
+        </div>
       </div>
-      <AgentFeatureCards />
     </div>
-  </PlatformLayout>
+  </section>
+
+  <section class="mx-auto w-full max-w-7xl px-2 pb-12 pt-6 md:px-3 lg:px-0">
+    <div class="flex flex-col gap-[var(--section-spacing-y)]">
+      <div class="flex flex-col gap-[var(--section-gap-lg)]">
+        <AgentDemo />
+        <AgentFeatureCards />
+      </div>
+    </div>
+  </section>
+
+  <CTA />
 </Layout>
+
+<style>
+  .agents-hero {
+    background: var(--bg-1);
+    padding-top: max(calc(var(--site-nav-height) + 1.2rem), 4.8rem);
+    padding-bottom: 3rem;
+  }
+
+  :global(#site-nav.nav-shell) {
+    background-color: var(--bg-1) !important;
+  }
+
+  .agents-hero-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  .agents-hero-cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  .agents-hero :global(.hero-title-small) {
+    font-size: 54px;
+    font-weight: 400;
+  }
+
+  @media (max-width: 767px) {
+    .agents-hero {
+      padding-bottom: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,412 @@
+---
+import { Image } from "astro:assets";
+import CaretDownIcon from "@assets/images/demos/app-demo/481b5637386cfa51221252c07d627de130d801d4.svg";
+import GmailLogo from "@assets/logos/Gmail.svg";
+import SparkleFill from "phosphor-astro/SparkleFill.astro";
+
+const id = `form-demo-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div id={id} class="form-demo rounded-xl bg-[var(--bg-2)] px-4 py-5 sm:px-5 sm:py-6" data-stage="form">
+  <div class="form-demo-flow">
+    <section class="form-demo-form-card" aria-label="Access request form">
+      <h3 class="form-demo-title">Access request</h3>
+
+      <div class="form-demo-field-group">
+        <p class="form-demo-field-label">What would you like access to?</p>
+        <div class="form-demo-select" aria-hidden="true">
+          <span class="form-demo-select-value">Product data</span>
+          <Image src={CaretDownIcon} alt="" class="form-demo-caret" aria-hidden="true" />
+        </div>
+      </div>
+
+      <button type="button" class="form-demo-submit" data-form-demo-submit>Submit</button>
+    </section>
+
+    <div class="form-demo-reveal-group" data-form-demo-group="agent" aria-hidden="true">
+      <div class="form-demo-connector" aria-hidden="true"></div>
+      <article class="form-demo-agent-card">
+        <span class="form-demo-agent-icon" aria-hidden="true">
+          <SparkleFill class="h-4 w-4" />
+        </span>
+        <div class="form-demo-card-copy">
+          <div class="form-demo-agent-title">Access Agent</div>
+          <p class="form-demo-agent-description">
+            Handle employee access requests and approvals automatically.
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <div class="form-demo-reveal-group" data-form-demo-group="notification" aria-hidden="true">
+      <div class="form-demo-connector" aria-hidden="true"></div>
+      <article class="form-demo-notification-card">
+        <span class="form-demo-notification-icon" aria-hidden="true">
+          <Image src={GmailLogo} alt="" class="form-demo-notification-logo" aria-hidden="true" />
+        </span>
+        <div class="form-demo-card-copy">
+          <div class="form-demo-notification-title">Gmail notification</div>
+          <p class="form-demo-notification-description">
+            The Access Agent has granted you access to Product data.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<style>
+  .form-demo {
+    --form-demo-grid-dot: rgb(var(--text) / 0.12);
+    --form-demo-connector: rgb(var(--brand) / 0.92);
+    --form-demo-form-bg: var(--bg-1);
+    --form-demo-form-border: rgb(var(--border) / 0.72);
+    --form-demo-select-bg: var(--bg-1);
+    --form-demo-select-border: rgb(var(--border) / 0.82);
+    --form-demo-agent-bg: var(--bg-3);
+    --form-demo-agent-text: var(--text-primary);
+    --form-demo-notification-bg: var(--bg-1);
+    --form-demo-notification-border: rgb(var(--border) / 0.72);
+    --form-demo-agent-icon-bg: var(--blue-600);
+    --form-demo-agent-icon-fg: var(--bg-1);
+    --form-demo-notification-icon-bg: var(--bg-2);
+    width: 100%;
+    border: 1px solid rgb(var(--border) / 0.45);
+    background:
+      radial-gradient(circle at center, var(--form-demo-grid-dot) 1.3px, transparent 1.3px) 0 0 / 20px 20px,
+      var(--bg-2);
+    animation: form-demo-dot-drift 14s linear infinite;
+  }
+
+  .form-demo-flow {
+    display: flex;
+    min-height: 520px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 auto;
+    padding-top: 28px;
+  }
+
+  .form-demo-form-card {
+    width: min(100%, 500px);
+    border: 1px solid var(--form-demo-form-border);
+    border-radius: 8px;
+    background: var(--form-demo-form-bg);
+    padding: 32px;
+    box-shadow: 0 12px 32px rgb(0 0 0 / 0.08);
+  }
+
+  .form-demo-title {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .form-demo-field-group {
+    margin-top: 20px;
+  }
+
+  .form-demo-field-label {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--text-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  .form-demo-select {
+    display: flex;
+    min-height: 38px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border: 1px solid var(--form-demo-select-border);
+    border-radius: 4px;
+    background: var(--form-demo-select-bg);
+    padding: 8px 12px;
+  }
+
+  .form-demo-select-value {
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+
+  .form-demo-caret {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    opacity: 0.78;
+  }
+
+  .form-demo-submit {
+    margin-top: 20px;
+    display: inline-flex;
+    min-height: 34px;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 999px;
+    background: var(--orange-600);
+    color: rgb(var(--on-primary));
+    padding: 8px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 17px;
+    cursor: pointer;
+    transition:
+      background-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .form-demo-submit:hover,
+  .form-demo-submit:focus-visible {
+    background: var(--orange-700);
+  }
+
+  .form-demo-submit:focus-visible {
+    outline: 2px solid rgb(var(--brand));
+    outline-offset: 2px;
+  }
+
+  .form-demo-submit:active {
+    transform: translateY(1px);
+  }
+
+  .form-demo-reveal-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: min(100%, 360px);
+    max-height: 0;
+    margin: 0 auto;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-10px);
+    transition:
+      max-height 280ms ease,
+      opacity 220ms ease,
+      transform 220ms ease;
+  }
+
+  .form-demo[data-stage="agent"] [data-form-demo-group="agent"],
+  .form-demo[data-stage="notification"] [data-form-demo-group="agent"] {
+    max-height: 132px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .form-demo[data-stage="notification"] [data-form-demo-group="notification"] {
+    max-height: 156px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .form-demo-connector {
+    width: 1px;
+    height: 40px;
+    margin: 0 auto;
+    background-image: linear-gradient(to bottom, var(--form-demo-connector) 50%, transparent 50%);
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: 1px 6px;
+    animation: form-demo-connector-march 800ms linear infinite;
+  }
+
+  .form-demo-agent-card,
+  .form-demo-notification-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 6px;
+    padding: 12px;
+    box-shadow: 0 12px 28px rgb(0 0 0 / 0.12);
+  }
+
+  .form-demo-agent-card {
+    width: min(100%, 360px);
+    background: var(--form-demo-agent-bg);
+  }
+
+  .form-demo-notification-card {
+    width: min(100%, 320px);
+    background: var(--form-demo-notification-bg);
+    border: 1px solid var(--form-demo-notification-border);
+    box-shadow: 0 12px 24px rgb(0 0 0 / 0.08);
+  }
+
+  .form-demo-agent-icon,
+  .form-demo-notification-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+  }
+
+  .form-demo-agent-icon {
+    width: 24px;
+    height: 24px;
+    background: var(--form-demo-agent-icon-bg);
+    color: var(--form-demo-agent-icon-fg);
+  }
+
+  .form-demo-notification-icon {
+    width: 49px;
+    height: 48px;
+    background: var(--form-demo-notification-icon-bg);
+  }
+
+  .form-demo-notification-logo {
+    width: 22px;
+    height: 22px;
+  }
+
+  .form-demo-card-copy {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .form-demo-agent-title,
+  .form-demo-notification-title {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+  }
+
+  .form-demo-agent-description,
+  .form-demo-notification-description {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+  }
+
+  .form-demo-agent-title {
+    color: var(--text-primary);
+  }
+
+  .form-demo-agent-description,
+  .form-demo-notification-description {
+    color: var(--text-secondary) !important;
+  }
+
+  .form-demo-notification-title {
+    color: var(--text-primary);
+  }
+
+  @keyframes form-demo-dot-drift {
+    from {
+      background-position: 0 0, 0 0;
+    }
+    to {
+      background-position: 20px 20px, 0 0;
+    }
+  }
+
+  @keyframes form-demo-connector-march {
+    from {
+      background-position-y: 0;
+    }
+    to {
+      background-position-y: 6px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .form-demo,
+    .form-demo-submit,
+    .form-demo-reveal-group,
+    .form-demo-connector {
+      transition: none;
+      animation: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .form-demo {
+      padding: 16px;
+    }
+
+    .form-demo-flow {
+      min-height: 468px;
+      padding-top: 8px;
+    }
+
+    .form-demo-form-card {
+      padding: 24px 20px;
+    }
+
+    .form-demo-reveal-group,
+    .form-demo-agent-card,
+    .form-demo-notification-card {
+      width: min(100%, 320px);
+    }
+  }
+</style>
+
+<script define:vars={{ id }}>
+  (() => {
+    const root = document.getElementById(id);
+    if (!root) return;
+
+    const submitButton = root.querySelector("[data-form-demo-submit]");
+    const revealGroups = {
+      agent: root.querySelector('[data-form-demo-group="agent"]'),
+      notification: root.querySelector('[data-form-demo-group="notification"]'),
+    };
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    let agentTimer = null;
+    let notificationTimer = null;
+
+    function clearTimers() {
+      if (agentTimer) {
+        window.clearTimeout(agentTimer);
+        agentTimer = null;
+      }
+      if (notificationTimer) {
+        window.clearTimeout(notificationTimer);
+        notificationTimer = null;
+      }
+    }
+
+    function syncVisibility(stage) {
+      root.dataset.stage = stage;
+
+      const isAgentVisible = stage === "agent" || stage === "notification";
+      const isNotificationVisible = stage === "notification";
+
+      revealGroups.agent?.setAttribute("aria-hidden", isAgentVisible ? "false" : "true");
+      revealGroups.notification?.setAttribute("aria-hidden", isNotificationVisible ? "false" : "true");
+    }
+
+    function playSequence() {
+      clearTimers();
+      syncVisibility("form");
+
+      if (prefersReducedMotion.matches) {
+        syncVisibility("notification");
+        return;
+      }
+
+      agentTimer = window.setTimeout(() => {
+        syncVisibility("agent");
+      }, 1000);
+
+      notificationTimer = window.setTimeout(() => {
+        syncVisibility("notification");
+      }, 2000);
+    }
+
+    submitButton?.addEventListener("click", playSequence);
+    playSequence();
+  })();
+</script>

@@ -1,0 +1,193 @@
+---
+const rows = [
+  { id: "IT-2041", priority: "High", status: "In Progress" },
+  { id: "IT-2040", priority: "Medium", status: "Completed" },
+  { id: "IT-2039", priority: "Medium", status: "Completed" },
+  { id: "IT-2038", priority: "High", status: "Completed" },
+];
+---
+
+<div
+  class="app-requests-preview"
+  role="img"
+  aria-label="Preview of a requests app with a new request button and request table"
+>
+  <div class="app-requests-preview-button-wrap">
+    <span class="app-requests-preview-button">New request</span>
+  </div>
+
+  <div class="app-requests-preview-table">
+    <div class="app-requests-preview-header">
+      <span>Request id</span>
+      <span class="is-center">Priority</span>
+      <span>Status</span>
+    </div>
+
+    {rows.map((row) => (
+      <div class="app-requests-preview-row">
+        <span class="app-requests-preview-id">{row.id}</span>
+        <span
+          class:list={[
+            "app-requests-preview-priority",
+            row.priority === "High" ? "is-high" : "is-medium",
+          ]}
+        >
+          {row.priority}
+        </span>
+        <span class="app-requests-preview-status">{row.status}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .app-requests-preview {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 10px;
+    overflow: hidden;
+    background: var(--grey-100);
+    border-radius: 6px;
+    pointer-events: none;
+  }
+
+  .app-requests-preview-button-wrap {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2px;
+    min-height: 60px;
+    padding-top: 8px;
+  }
+
+  .app-requests-preview-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: var(--brand-500);
+    color: var(--grey-50);
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    transform: rotate(-15deg) translateY(-2px);
+    transform-origin: center;
+    box-shadow: 0 1px 0 rgb(var(--border) / 0.15);
+    cursor: pointer;
+  }
+
+  .app-requests-preview-table {
+    width: 376px;
+    max-width: calc(100% + 8px);
+    margin-left: -10px;
+    background: var(--grey-50);
+    border: 1px solid var(--grey-200);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .app-requests-preview-header,
+  .app-requests-preview-row {
+    display: grid;
+    grid-template-columns: 80px 82px minmax(0, 1fr);
+    column-gap: 18px;
+    align-items: center;
+    min-height: 39px;
+    padding: 0 20px;
+  }
+
+  .app-requests-preview-header {
+    color: var(--grey-400);
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+    border-bottom: 1px solid var(--grey-200);
+  }
+
+  .app-requests-preview-header .is-center {
+    text-align: center;
+  }
+
+  .app-requests-preview-row {
+    color: var(--grey-500);
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+    border-bottom: 1px solid var(--grey-200);
+  }
+
+  .app-requests-preview-row:last-child {
+    border-bottom: 0;
+  }
+
+  .app-requests-preview-id {
+    color: var(--grey-600);
+  }
+
+  .app-requests-preview-priority {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 74px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    color: var(--grey-50);
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .app-requests-preview-priority.is-high {
+    background: var(--red-500);
+  }
+
+  .app-requests-preview-priority.is-medium {
+    background: var(--orange-500);
+  }
+
+  .app-requests-preview-status {
+    color: var(--grey-500);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 420px) {
+    .app-requests-preview {
+      padding: 10px;
+    }
+
+    .app-requests-preview-button-wrap {
+      min-height: 52px;
+    }
+
+    .app-requests-preview-button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+
+    .app-requests-preview-table {
+      width: 340px;
+      margin-left: -4px;
+    }
+
+    .app-requests-preview-header,
+    .app-requests-preview-row {
+      grid-template-columns: 74px 74px minmax(0, 1fr);
+      column-gap: 12px;
+      padding: 0 16px;
+      font-size: 13px;
+    }
+
+    .app-requests-preview-priority {
+      min-width: 70px;
+      font-size: 13px;
+    }
+  }
+</style>

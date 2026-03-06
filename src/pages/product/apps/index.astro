@@ -5,6 +5,10 @@ import Mountains2 from "@assets/images/backgrounds/mountains/2.png";
 import Card from "@components/cards/Card.astro";
 import AppProcessOutcomeSection from "@components/AppProcessOutcomeSection.astro";
 import AppDemo from "@components/AppDemo.astro";
+import AppDataSourcesPreview from "@components/AppDataSourcesPreview.astro";
+import AppRequestsPreview from "@components/AppRequestsPreview.astro";
+import AppRolesPreview from "@components/AppRolesPreview.astro";
+import SectionBlock from "@components/SectionBlock.astro";
 
 const pageTitle = "Build internal tools\nin minutes";
 const pageDescription =
@@ -13,59 +17,73 @@ const pageDescription =
 
 <Layout title={pageTitle} description={pageDescription}>
   <PlatformLayout title={pageTitle} description={pageDescription}>
-    <div class="mb-8">
-      <AppDemo backdropImage={Mountains2.src} />
+    <div class="flex flex-col gap-[var(--section-spacing-y)]">
+      <div class="flex flex-col gap-[var(--section-gap-lg)]">
+        <AppDemo backdropImage={Mountains2.src} />
+        <AppProcessOutcomeSection />
+      </div>
 
-      <AppProcessOutcomeSection />
-
-      <section class="mt-16 mb-8">
-        <h2 class="text-primary text-center mb-4">
-          Give teams intuitive tools for daily operations.
-        </h2>
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      <section>
+        <SectionBlock
+          align="center"
+          maxWidth="lg"
+          titleColorMode="split-secondary-primary"
+          titleLines={[
+            { text: "Build apps quickly" },
+            { text: "with powerful tools" },
+          ]}
+          description="Budibase gives you everything you need to create internal tools without heavy engineering."
+          contentClass="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-2 lg:grid-cols-3"
         >
           <Card
-            label="Operational tools for real work"
-            description="Build structured internal apps for tasks, approvals, and process management."
-            imagePlaceholderColor="var(--orange-950)"
-          />
+            label="Drag-and-drop builder"
+            description="Create forms, dashboards, and workflows visually."
+          >
+            <div slot="image-overlay" class="app-card-overlay">
+              <AppRequestsPreview />
+            </div>
+          </Card>
           <Card
-            label="Fast to ship, easy to adapt"
-            description="Launch production-ready tools quickly and evolve them as processes change."
-            imagePlaceholderColor="var(--orange-950)"
-          />
+            label="Connect your data"
+            description="Use Postgres, MySQL, REST APIs, Sheets, and more."
+          >
+            <div slot="image-overlay" class="app-card-overlay">
+              <AppDataSourcesPreview />
+            </div>
+          </Card>
           <Card
-            label="Built-in governance"
-            description="Control access, permissions, and data visibility across every app."
-            imagePlaceholderColor="var(--orange-950)"
-          />
+            label="User permissions built in"
+            description="Control who can submit, approve, or manage data."
+          >
+            <div slot="image-overlay" class="app-card-overlay">
+              <AppRolesPreview />
+            </div>
+          </Card>
           <Card
-            label="Drag-and-drop UI builder"
-            description="Build operational interfaces quickly with a visual app builder."
+            label="Responsive layouts"
+            description="Create app experiences that work across desktop and mobile screens."
           />
           <Card
             label="Generate apps from data with 1 click"
             description="Turn Data Tables and external databases into working apps instantly."
           />
           <Card
-            label="Custom roles and permissions"
-            description="Control who can view, edit, and operate each part of your app."
-          />
-          <Card
-            label="Responsive layouts"
-            description="Create app experiences that work across desktop and mobile screens."
-          />
-          <Card
-            label="Reusable components and theming"
-            description="Standardize UI patterns with reusable components and shared themes."
-          />
-          <Card
             label="Embed workflows and operational actions"
             description="Run workflows and operational actions directly inside your app experiences."
           />
-        </div>
+        </SectionBlock>
       </section>
     </div>
   </PlatformLayout>
 </Layout>
+
+<style>
+  .app-card-overlay {
+    position: absolute;
+    inset: 0;
+    padding: 28px;
+    background-color: var(--blue-500);
+    border-radius: 6px;
+    pointer-events: auto;
+  }
+</style>

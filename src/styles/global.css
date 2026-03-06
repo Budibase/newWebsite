@@ -101,6 +101,10 @@
   --color-red-950: #220b0a;
 
   --spacing-hero-image: 12px;
+  --spacing-section-gap-sm: 0.75rem;
+  --spacing-section-gap-md: 1.25rem;
+  --spacing-section-gap-lg: 1.5rem;
+  --spacing-section-y: 4rem;
 }
 
 /* Override dark variant to use class selector instead of prefers-color-scheme */
@@ -264,6 +268,10 @@
     --hero-demo-user-bubble: var(--color-blue-200);
     --border-color: rgb(var(--border) / 0.9);
     --site-nav-height: 56px;
+    --section-gap-sm: var(--spacing-section-gap-sm);
+    --section-gap-md: var(--spacing-section-gap-md);
+    --section-gap-lg: var(--spacing-section-gap-lg);
+    --section-spacing-y: var(--spacing-section-y);
 
     color-scheme: light;
   }
@@ -382,6 +390,12 @@
     --hero-demo-user-bubble: var(--color-blue-800);
     --border-color: rgb(var(--border) / 1);
     color-scheme: dark;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-spacing-y: 5rem;
   }
 }
 
@@ -535,7 +549,7 @@ h1,
 
 .hero-title-small {
   font-family: "Fraunces", var(--font-display);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 56px;
   font-variation-settings: "opsz" 72, "SOFT" 50, "WONK" 10;
   letter-spacing: -0.01em;

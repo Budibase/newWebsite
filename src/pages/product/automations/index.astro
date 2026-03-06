@@ -7,6 +7,7 @@ import AutomationDemo from "@components/AutomationDemo.astro";
 import AutomationTriggerOutcomeSection from "@components/AutomationTriggerOutcomeSection.astro";
 import Card from "@components/cards/Card.astro";
 import TitleBlock from "@components/TitleBlock.astro";
+import SectionBlock from "@components/SectionBlock.astro";
 import AutomationTestDemo from "@components/AutomationTestDemo.astro";
 import AutomationDataFlow from "@components/AutomationDataFlow.astro";
 import AutomationLogsDemo from "@components/AutomationLogsDemo.astro";
@@ -54,32 +55,24 @@ const pageDescription =
   </section>
 
   <section class="mx-auto w-full max-w-7xl px-2 pb-12 pt-6 md:px-3 lg:px-0">
-    <div class="mb-8">
-      <div class="mb-4">
+    <div class="flex flex-col gap-[var(--section-spacing-y)]">
+      <div class="flex flex-col gap-[var(--section-gap-lg)]">
         <AutomationDemo />
+        <AutomationTriggerOutcomeSection />
       </div>
 
-      <AutomationTriggerOutcomeSection />
-
-      <section class="mt-24 mb-8">
-        <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <TitleBlock
-            variant="section"
-            titleColorMode="split-secondary-primary"
-            titleLines={[
-              { text: "Full visibility into" },
-              { text: "every decision and action." },
-            ]}
-            titleClass="mb-4 w-full"
-          />
-          <p class="hero-description-small text-lg! !mb-6 max-w-lg mx-auto">
-            Automations don’t just run - they’re fully observable. Test
-            workflows before going live, inspect data at every step, and track
-            every decision agents make.
-          </p>
-        </div>
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-2"
+      <section>
+        <SectionBlock
+          align="center"
+          maxWidth="3xl"
+          titleColorMode="split-secondary-primary"
+          titleLines={[
+            { text: "Full visibility into" },
+            { text: "every decision and action." },
+          ]}
+          description="Automations don’t just run - they’re fully observable. Test workflows before going live, inspect data at every step, and track every decision agents make."
+          descriptionClass="mx-auto max-w-lg text-lg!"
+          contentClass="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-2 lg:grid-cols-3"
         >
           <Card
             label="Run tests before going live"
@@ -105,7 +98,7 @@ const pageDescription =
               <AutomationLogsDemo />
             </div>
           </Card>
-        </div>
+        </SectionBlock>
       </section>
     </div>
   </section>
@@ -158,17 +151,17 @@ const pageDescription =
   }
 
   .automation-test-card-overlay {
-    background-color: var(--blue-400);
+    background-color: var(--blue-500);
     padding: 28px;
   }
 
   .automation-data-flow-card-overlay {
-    background-color: var(--blue-400);
+    background-color: var(--blue-500);
     padding: 28px;
   }
 
   .automation-logs-card-overlay {
-    background-color: var(--blue-400);
+    background-color: var(--blue-500);
     padding: 28px;
   }
 </style>
