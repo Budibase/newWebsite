@@ -119,11 +119,16 @@ const operationsLogos = [
 
       <div class="flex items-center justify-center lg:col-start-2 lg:row-start-1 lg:row-span-2">
         <div
-          class="max-w-sm rounded-2xl border border-[var(--border)] bg-white px-6 py-8 text-center shadow-xl dark:bg-stone-900"
+          class="max-w-lg rounded-2xl border border-[var(--border)] bg-white px-6 py-8 text-center shadow-xl dark:bg-stone-900"
         >
           <SectionBlock
-            title="Your models, your tools, your data, your privacy."
+            titleLines={[
+              { text: "Your models, your tools," },
+              { text: "your data, your privacy.", className: "!text-[var(--text-secondary)]" },
+            ]}
+            titleColorMode="split-primary-secondary"
             align="center"
+            maxWidth="3xl"
           />
         </div>
       </div>
