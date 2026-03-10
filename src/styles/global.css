@@ -768,7 +768,7 @@ article p {
   color: var(--text-primary) !important;
   font-size: 19px;
   line-height: 30px;
-  font-weight: 500;
+  font-weight: 400;
   display: flow-root;
   margin-top: 16px;
   margin-bottom: 32px;
@@ -794,7 +794,7 @@ article ol {
   color: var(--text-primary) !important;
   font-size: 19px;
   line-height: 30px;
-  font-weight: 500;
+  font-weight: 400;
   text-wrap: pretty;
   margin-bottom: calc(1rem * 1.4);
   margin: 0.2rem 0.4rem !important;
@@ -820,7 +820,7 @@ article strong {
 article a {
   font-size: 19px;
   line-height: 30px;
-  font-weight: 500;
+  font-weight: 400;
   color: inherit;
   text-decoration-line: underline;
   text-decoration-style: solid;
@@ -858,6 +858,10 @@ article blockquote p {
 
 .dark article a:hover {
   text-decoration-color: var(--text-primary);
+}
+
+main ul article > a {
+  text-decoration: none;
 }
 
 .bg-transparent {
