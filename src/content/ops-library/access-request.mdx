@@ -245,7 +245,7 @@ Within the `AI config` settings menu, we can configure these under `Embeddings`.
 
 
 The full text of our policy is:
-{{< highlight plaintext "linenos=inline" >}}
+```text
 Justification Structure (Hard Gate) The justification must
 include all of the following: 1. Action: a concrete task the requester
 will perform. 2. Object: an application-specific reference. 3. Business
@@ -266,8 +266,7 @@ misaligned, recommend DENY.
 
 Sensitivity Classification (Informational) - Jira: Low -
 Bitbucket: Medium - Dropbox Business: Medium - BambooHR: High
-{{< /highlight >}}
-
+```
 
 <h2 id="automations">Automations</h2>
 
@@ -280,12 +279,12 @@ From the `Access Requests` table in the Data section, we’ve created a new auto
 
 We’ve then used the bindings drawer for the `Prompt` field to set our required inputs to the appropriate data from our trigger output, using:
 
-{{< highlight plaintext "linenos=inline" >}}
+```text
 tool: {{ trigger.row.toolRequested }}
 justification: {{ trigger.row.justification }}
 _id: {{ trigger.id }}
 requestor_email: {{ trigger.row.createdBy.email }}
-{{< /highlight >}}
+```
 Denying requests
 We’re also going to handle approval and denial for requests via automations, starting with denial. Again, we’ve created an automation from the `Access Requests` table in our Data section, this time opting for a `Row Action`. This creates an end-user triggerable automation rule associated with individual rows on our table.
 
