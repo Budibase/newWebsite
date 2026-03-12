@@ -421,7 +421,7 @@ Decisions and commitments must be documented in the appropriate system of record
 
 <h2 id="tables">Tables</h2>
 
-Our Agent also requires a single BudibaseDB table called `Notion Pages` to function correctly. This is queried by our agent using {{ budibase.Notion Pages.list_rows }}. The table stores two attributes relating to each of our Notion Pages:
+Our Agent also requires a single BudibaseDB table called `Notion Pages` to function correctly. This is queried by our agent using `budibase.Notion Pages.list_rows`. The table stores two attributes relating to each of our Notion Pages:
 `name` - the name of the document which can be referenced by the Agent.
 `notion_id` - the unique identifier of the document, which is required to retrieve it via our two API requests.
 
