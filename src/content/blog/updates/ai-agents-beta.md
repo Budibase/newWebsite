@@ -25,7 +25,7 @@ Each Budibase Workspace now includes an Agents tab, alongside your existing Data
 
 We can use the Chat preview to test and iterate over Agent behavior. Budibase Agents eliminate the boilerplate required to run AI workflows, providing a fast, maintainable experience for configuring agents that you can roll out with trust and confidence.
 
-{{< vimeo id="1172923510" title="BudibaseAgents" >}}
+![AI Agents](https://res.cloudinary.com/daog6scxm/image/upload/v1773328119/cms/agents/Rectangle_2-2_b5ahgi.webp "AI Agents")
 
 ## Chat with agents, wherever work happens
 
