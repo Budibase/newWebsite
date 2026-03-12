@@ -250,7 +250,12 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
       <div class="ops-platform-demo-new__table" role="table" aria-label="Requests table">
         <div class="ops-platform-demo-new__table-row ops-platform-demo-new__table-row--header" role="row">
           <div class="ops-platform-demo-new__table-cell" role="columnheader">Request</div>
-          <div class="ops-platform-demo-new__table-cell" role="columnheader">Category</div>
+          <div
+            class="ops-platform-demo-new__table-cell ops-platform-demo-new__table-cell--category"
+            role="columnheader"
+          >
+            Category
+          </div>
           <div class="ops-platform-demo-new__table-cell" role="columnheader">Priority</div>
           <div class="ops-platform-demo-new__table-cell" role="columnheader">Status</div>
         </div>
@@ -260,7 +265,12 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
             <span>Laptop for new marketing hire</span>
             <span class="ops-platform-demo-new__new-badge">New</span>
           </div>
-          <div class="ops-platform-demo-new__table-cell" role="cell">Hardware</div>
+          <div
+            class="ops-platform-demo-new__table-cell ops-platform-demo-new__table-cell--category"
+            role="cell"
+          >
+            Hardware
+          </div>
           <div class="ops-platform-demo-new__table-cell" role="cell">
             <span class="ops-platform-demo-new__priority">
               <span class="ops-platform-demo-new__priority-dot ops-platform-demo-new__priority-dot--high"></span>
@@ -277,7 +287,12 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
         {requestRows.map((row) => (
           <div class="ops-platform-demo-new__table-row" role="row">
             <div class="ops-platform-demo-new__table-cell" role="cell">{row.request}</div>
-            <div class="ops-platform-demo-new__table-cell" role="cell">{row.category}</div>
+            <div
+              class="ops-platform-demo-new__table-cell ops-platform-demo-new__table-cell--category"
+              role="cell"
+            >
+              {row.category}
+            </div>
             <div class="ops-platform-demo-new__table-cell" role="cell">
               <span class="ops-platform-demo-new__priority">
                 <span class={`ops-platform-demo-new__priority-dot ops-platform-demo-new__priority-dot--${row.priorityTone}`}></span>
@@ -929,11 +944,19 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
       font-size: 15px;
     }
 
+    .ops-platform-demo-new__table-row {
+      grid-template-columns: minmax(0, 1fr) 88px 88px;
+    }
+
     .ops-platform-demo-new__table-cell {
       padding: 8px 10px;
       font-size: 12px;
       line-height: 15px;
       gap: 10px;
+    }
+
+    .ops-platform-demo-new__table-cell--category {
+      display: none;
     }
 
     .ops-platform-demo-new__status {
