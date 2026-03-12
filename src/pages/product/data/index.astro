@@ -5,9 +5,6 @@ import TitleBlock from "@components/TitleBlock.astro";
 import Button from "@components/Button.astro";
 import { getProductPageMeta } from "../_pageMeta";
 import TableDemo from "@components/TableDemo.astro";
-import Mountains1 from "@assets/images/DataTables/cards/mountains1.png";
-import Mountains2 from "@assets/images/backgrounds/mountains/2.png";
-import Mountains4 from "@assets/images/backgrounds/mountains/4.png";
 import Card from "@components/cards/Card.astro";
 
 const { title: pageTitle, description: pageDescription } = getProductPageMeta(
@@ -66,17 +63,14 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
           <Card
             label="Built-in database"
             description="Use a built-in data layer to power operational apps and workflows."
-            imageSrc={Mountains1}
           />
           <Card
             label="Spreadsheet-like GUI"
             description="Manage data quickly with a familiar, spreadsheet-style interface."
-            imageSrc={Mountains2}
           />
           <Card
             label="External database connectors"
             description="Connect Postgres, MySQL, and other external databases without migration overhead."
-            imageSrc={Mountains4}
           />
           <Card
             label="Structured operational data"
