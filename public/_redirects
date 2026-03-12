@@ -8,5 +8,14 @@
 /directories/* /product/apps/ 301
 /forms /product/apps/ 301
 /forms/* /product/apps/ 301
+/integration /product/connections/ 301
+/integration/* /product/connections/ 301
+/internal-tools /product/apps/ 301
+/internal-tools/* /product/apps/ 301
+/it/templates/* /product/apps/ 301
+/about / 301
+/careers / 301
+/blog/building-a-crud-app-with-budibase-and-next.js/ /blog/data/building-a-crud-app-with-budibase-and-nextjs/ 301
+/blog/data /blog/category/data/ 301
 /customers/reworld /blog/reworld/ 301
 /eula /terms/ 301

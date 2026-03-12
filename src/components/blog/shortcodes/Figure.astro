@@ -53,6 +53,7 @@ const resolvedSrc = resolveImageReference(src);
             href={resolvedSrc}
             target={target}
             rel={target === "_blank" ? "noopener" : undefined}
+            aria-label={`Open image: ${alt}`}
           >
             <img
               src={resolvedSrc}
