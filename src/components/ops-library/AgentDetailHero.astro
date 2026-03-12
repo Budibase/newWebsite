@@ -27,7 +27,7 @@ const { title, outcome } = Astro.props as Props;
   <div
     class="agent-detail-hero-main relative z-[1] mx-auto mt-[var(--agent-detail-title-offset)] grid max-w-[min(100%,46rem)] justify-items-center gap-[0.8rem] text-center md:mt-[clamp(5.6rem,8vw,7.2rem)]"
   >
-    <h1 class="hero-title mb-2 text-[clamp(2rem,1.5rem+2vw,3.4rem)]! leading-[0.9]!">
+    <h1 class="hero-title mb-2 text-[clamp(2rem,1.5rem+2vw,3.4rem)]! sm:!text-[70px] leading-[0.9]!">
       {title}
     </h1>
     <p class="m-0 max-w-[56ch] text-[rgb(var(--text-primary)_/_0.84)]">{outcome}</p>

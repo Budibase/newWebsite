@@ -1,0 +1,7 @@
+---
+export const prerender = false;
+
+const page = Astro.params.page;
+const suffix = page && page !== "1" ? `/${page}` : "";
+return Astro.redirect(`/blog${suffix}`, 301);
+---

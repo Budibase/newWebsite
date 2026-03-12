@@ -30,7 +30,7 @@ const activePillClass =
         return (
           <li>
             <a
-              href={`/blog/category/${topic.id}`}
+              href={topic.href}
               class:list={[
                 basePillClass,
                 isActive ? activePillClass : inactivePillClass,

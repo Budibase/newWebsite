@@ -10,17 +10,81 @@ export type ResourceCategory =
   | "useCases";
 export type BlogCategoryRoute = "all" | "blog" | "product" | "customers";
 export const BLOG_TOPIC_ITEMS = [
-  { id: "blog", label: "All blog" },
-  { id: "ai-agents", label: "AI agents" },
-  { id: "alternatives", label: "Alternatives" },
-  { id: "app-building", label: "App building" },
-  { id: "automation", label: "Automation" },
-  { id: "data", label: "Data" },
-  { id: "inside-it", label: "Inside IT" },
-  { id: "tutorials", label: "Tutorials" },
-  { id: "workflow-guides", label: "Workflow guides" },
+  {
+    id: "blog",
+    label: "All blog",
+    href: "/blog",
+    seoTitle: "Blog and Resources",
+    seoDescription:
+      "Product updates, customer stories, and workflow guides from Budibase.",
+  },
+  {
+    id: "ai-agents",
+    label: "AI agents",
+    href: "/blog/category/ai-agents",
+    seoTitle: "AI Agents Blog",
+    seoDescription:
+      "Budibase's AI Agents blog, covering everything you need to know about creating agentic workflows.",
+  },
+  {
+    id: "alternatives",
+    label: "Alternatives",
+    href: "/blog/category/alternatives",
+    seoTitle: "Software Alternatives Blog",
+    seoDescription:
+      "Compare leading software alternatives for internal tools, automation, IT operations, and AI workflows.",
+  },
+  {
+    id: "app-building",
+    label: "App building",
+    href: "/blog/category/app-building",
+    seoTitle: "App Building Blog",
+    seoDescription:
+      "Learn how to design, build, and ship secure internal apps, portals, and business software faster.",
+  },
+  {
+    id: "automation",
+    label: "Automation",
+    href: "/blog/category/automation",
+    seoTitle: "Automation Blog",
+    seoDescription:
+      "Explore workflow automation strategies, process improvement, and practical ways to automate internal operations.",
+  },
+  {
+    id: "data",
+    label: "Data",
+    href: "/blog/category/data",
+    seoTitle: "Data Blog",
+    seoDescription:
+      "Guides to data modeling, integrations, databases, and the systems behind secure internal applications.",
+  },
+  {
+    id: "inside-it",
+    label: "Inside IT",
+    href: "/blog/category/inside-it",
+    seoTitle: "Inside IT Blog",
+    seoDescription:
+      "Insights for IT leaders on digital transformation, governance, service delivery, and modern internal operations.",
+  },
+  {
+    id: "tutorials",
+    label: "Tutorials",
+    href: "/blog/category/tutorials",
+    seoTitle: "Tutorials Blog",
+    seoDescription:
+      "Step-by-step Budibase tutorials for building forms, dashboards, portals, databases, and workflow apps.",
+  },
+  {
+    id: "workflow-guides",
+    label: "Workflow guides",
+    href: "/blog/category/workflow-guides",
+    seoTitle: "Workflow Guides Blog",
+    seoDescription:
+      "Practical guides to designing, improving, and scaling repeatable workflows across teams and operations.",
+  },
 ] as const;
 export type BlogTopicRoute = (typeof BLOG_TOPIC_ITEMS)[number]["id"];
+export type BlogTopicItem = (typeof BLOG_TOPIC_ITEMS)[number];
 type BlogFeedCategory = Exclude<ResourceCategory, "all">;
 type BlogFeedCategoryLabel = "Blog" | "Product" | "Customers" | "Use cases";
 const BLOG_TOPIC_SET = new Set<string>(BLOG_TOPIC_ITEMS.map((topic) => topic.id));
@@ -257,6 +321,16 @@ export function filterBlogFeedByTopic(
   const blogItems = items.filter((item) => item.category === "blog");
   if (topic === "blog") return blogItems;
   return blogItems.filter((item) => item.blogTopic === topic);
+}
+
+export function getBlogTopicItem(topic: BlogTopicRoute): BlogTopicItem {
+  const item = BLOG_TOPIC_ITEMS.find((entry) => entry.id === topic);
+
+  if (!item) {
+    throw new Error(`Unknown blog topic: ${topic}`);
+  }
+
+  return item;
 }
 
 export function isValidBlogCategory(value: string): value is BlogCategoryRoute {

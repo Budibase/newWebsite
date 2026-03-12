@@ -5,7 +5,11 @@ import Layout from "../../layouts/MainLayout.astro";
 import BlogTimelineRow from "./_components/BlogTimelineRow.astro";
 import BlogFilterPills from "./_components/BlogFilterPills.astro";
 import BlogTopicPills from "./_components/BlogTopicPills.astro";
-import { getBlogFeedItems, type BlogFeedItem } from "./_feed";
+import {
+  getBlogFeedItems,
+  getBlogTopicItem,
+  type BlogFeedItem,
+} from "./_feed";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const feedItems = await getBlogFeedItems();
@@ -21,6 +25,7 @@ const isPaginatedArchive = page.currentPage > 1;
 const robots = isPaginatedArchive
   ? "noindex,follow,max-image-preview:large"
   : undefined;
+const blogTopic = getBlogTopicItem("blog");
 
 const allPages = [...Array(page.lastPage).keys()].map((num) => {
   return `/blog${num === 0 ? "" : `/${String(num + 1)}`}`;
@@ -28,8 +33,8 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
 ---
 
 <Layout
-  title="Blog"
-  description="Product updates, customer stories, and workflow guides from Budibase."
+  title={blogTopic.seoTitle}
+  description={blogTopic.seoDescription}
   image={{ src: "/og/blog.jpg", alt: "What's new in the Budibase ecosystem" }}
   robots={robots}
 >
@@ -37,11 +42,11 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
     class="mx-auto mt-[clamp(5.6rem,8vw,7.2rem)] w-full max-w-[62rem] px-4 pb-16 max-md:mt-[max(calc(var(--site-nav-height)+1.1rem),4.8rem)] max-md:px-[0.9rem]"
   >
     <header class="mb-[1.4rem] grid gap-6 max-md:mb-4 max-md:gap-5">
-      <h1 class="hero-title m-0 font-['Fraunces'] text-[clamp(2.8rem,2.3rem+2vw,4.75rem)] leading-[0.9] tracking-[-0.02em] text-[var(--text-primary)]">
+      <h1 class="hero-title m-0 font-['Fraunces'] text-[clamp(2.8rem,2.3rem+2vw,4.75rem)] sm:!text-[70px] leading-[0.9] tracking-[-0.02em] text-[var(--text-primary)]">
         Blog
       </h1>
       <BlogFilterPills context="blog" activePill="all" />
-      <BlogTopicPills />
+      <BlogTopicPills activeTopic="blog" />
     </header>
 
     <main class="min-h-[60vh]">

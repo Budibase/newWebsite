@@ -9,6 +9,7 @@ import {
   BLOG_TOPIC_ITEMS,
   filterBlogFeedByTopic,
   getBlogFeedItems,
+  getBlogTopicItem,
   isValidBlogTopic,
   type BlogTopicRoute,
   type BlogFeedItem,
@@ -17,10 +18,12 @@ import {
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const items = await getBlogFeedItems();
   return BLOG_TOPIC_ITEMS.flatMap((category) =>
-    paginate(filterBlogFeedByTopic(items, category.id), {
-      pageSize: 12,
-      params: { category: category.id },
-    }),
+    category.id === "blog"
+      ? []
+      : paginate(filterBlogFeedByTopic(items, category.id), {
+          pageSize: 12,
+          params: { category: category.id },
+        }),
   );
 }
 
@@ -37,9 +40,8 @@ const rawCategory = Astro.params.category ?? "blog";
 const category: BlogTopicRoute = isValidBlogTopic(rawCategory)
   ? rawCategory
   : "blog";
-
-const currentCategoryLabel =
-  BLOG_TOPIC_ITEMS.find((item) => item.id === category)?.label ?? "All blog";
+const currentTopic = getBlogTopicItem(category);
+const currentCategoryLabel = currentTopic.label;
 const activePill = "blog";
 const allPages = [...Array(page.lastPage).keys()].map((num) => {
   return `/blog/category/${category}${num === 0 ? "" : `/${String(num + 1)}`}`;
@@ -47,8 +49,8 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
 ---
 
 <Layout
-  title={`Blog / ${currentCategoryLabel}`}
-  description="Product updates, customer stories, and workflow guides from Budibase."
+  title={currentTopic.seoTitle}
+  description={currentTopic.seoDescription}
   image={{ src: "/og/blog.jpg", alt: "What's new in the Budibase ecosystem" }}
   robots={robots}
 >
@@ -57,7 +59,7 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
   >
     <header class="mb-[1.4rem] grid gap-6 max-md:mb-4 max-md:gap-5">
       <h1
-        class="hero-title m-0 font-['Fraunces'] text-[clamp(2.8rem,2.3rem+2vw,4.75rem)] leading-[0.9] tracking-[-0.02em] text-[var(--text-primary)]"
+        class="hero-title m-0 font-['Fraunces'] text-[clamp(2.8rem,2.3rem+2vw,4.75rem)] sm:!text-[70px] leading-[0.9] tracking-[-0.02em] text-[var(--text-primary)]"
       >
         Blog
       </h1>

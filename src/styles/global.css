@@ -585,7 +585,7 @@ h1,
   letter-spacing: -0.2px !important;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 640px) {
   .hero-title {
     font-size: 70px;
   }
