@@ -28,19 +28,20 @@ const productItemsByHref = new Map(
 
 export const productDropdownItems: NavDropdownItem[] = [
   ...productItemOrder
-    .map(({ href, label }) => {
+    .flatMap(({ href, label }) => {
       const item = productItemsByHref.get(href);
-      if (!item) return null;
-      return {
-        href: item.link,
-        label,
-        description: item.pageDescription,
-        prefetch: true,
-        badge: item.tag?.label,
-        disabled: item.disabled,
-      };
-    })
-    .filter((item): item is NavDropdownItem => Boolean(item)),
+      if (!item) return [];
+      return [
+        {
+          href: item.link,
+          label,
+          description: item.pageDescription,
+          prefetch: true,
+          badge: item.tag?.label,
+          disabled: item.disabled,
+        },
+      ];
+    }),
 ];
 
 export const resourcesDropdownItems: NavDropdownItem[] = [

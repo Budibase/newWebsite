@@ -57,9 +57,9 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
   <div
     class="mx-auto mt-[clamp(5.6rem,8vw,7.2rem)] w-full max-w-[62rem] px-4 pb-16 max-md:mt-[max(calc(var(--site-nav-height)+1.1rem),4.8rem)] max-md:px-[0.9rem]"
   >
-    <header class="mb-[1.4rem] grid gap-6 max-md:mb-4 max-md:gap-5">
+    <header class="mb-[1.4rem] grid min-w-0 gap-6 max-md:mb-4 max-md:gap-5">
       <h1
-        class="hero-title m-0 font-['Fraunces'] text-[clamp(2.8rem,2.3rem+2vw,4.75rem)] sm:!text-[70px] leading-[0.9] tracking-[-0.02em] text-[var(--text-primary)]"
+        class="hero-title m-0 text-[clamp(2.8rem,2.3rem+2vw,4.75rem)] sm:!text-[70px] leading-[0.9] tracking-[-0.02em] text-[var(--text-primary)]"
       >
         Blog
       </h1>
@@ -67,7 +67,7 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
       <BlogTopicPills activeTopic={category} />
     </header>
 
-    <main class="min-h-[60vh]">
+    <main class="min-h-[60vh] min-w-0">
       {
         page.data.length === 0 ? (
           <section class="rounded-[10px] border border-[var(--border-color)] bg-[var(--bg-2)] p-4">
@@ -76,9 +76,9 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
             </p>
           </section>
         ) : (
-          <ul class="m-0 flex list-none flex-col p-0">
+          <ul class="m-0 flex min-w-0 list-none flex-col p-0">
             {page.data.map((item, index) => (
-              <li>
+              <li class="min-w-0">
                 <BlogTimelineRow
                   item={item}
                   showConnector={index < page.data.length - 1}

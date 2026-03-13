@@ -22,13 +22,13 @@ const activePillClass =
   "border-[var(--border-color)] bg-[var(--bg-2)] text-[var(--text-primary)]";
 ---
 
-<nav class="w-full" aria-label={ariaLabel}>
-  <ul class="m-0 flex list-none flex-wrap gap-[0.45rem] p-0 max-md:flex-nowrap max-md:overflow-x-auto max-md:pb-[0.2rem] max-md:[scrollbar-width:thin]">
+<nav class="w-full min-w-0" aria-label={ariaLabel}>
+  <ul class="m-0 flex w-full max-w-full min-w-0 list-none flex-wrap gap-[0.45rem] p-0 max-md:flex-nowrap max-md:overflow-x-auto max-md:overscroll-x-contain max-md:pb-[0.2rem] max-md:[scrollbar-width:thin]">
     {
       BLOG_TOPIC_ITEMS.map((topic) => {
         const isActive = activeTopic === topic.id;
         return (
-          <li>
+          <li class="shrink-0">
             <a
               href={topic.href}
               class:list={[

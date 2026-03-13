@@ -104,7 +104,7 @@ const useTwoColumns = Astro.props.items.length > 4;
           const menu = this.querySelector("details");
           if (!menu) return;
 
-          let hoverTimeout;
+          let hoverTimeout: ReturnType<typeof setTimeout> | undefined;
 
           this.addEventListener("mouseenter", () => {
             clearTimeout(hoverTimeout);

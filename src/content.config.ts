@@ -1,7 +1,8 @@
 // Import the glob loader
 import { glob } from "astro/loaders";
 // Import utilities from `astro:content`
-import { z, defineCollection } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 
 const seoSchema = z.object({
   title: z.string().min(5).max(120),
@@ -11,14 +12,20 @@ const seoSchema = z.object({
       src: z.string().default("/og.png"),
       alt: z.string().default("Make work flow"),
     })
-    .default({}),
+    .default({
+      src: "/og.png",
+      alt: "Make work flow",
+    }),
   pageType: z.enum(["website", "article"]).default("website"),
   robots: z
     .object({
       index: z.boolean().default(true),
       follow: z.boolean().default(true),
     })
-    .default({}),
+    .default({
+      index: true,
+      follow: true,
+    }),
 });
 
 // Blog collection with complete schema

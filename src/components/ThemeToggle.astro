@@ -44,6 +44,10 @@ import Icon from "@components/Icon.astro";
 <script>
   // @ts-nocheck
   (function () {
+    function getCodeTheme(theme) {
+      return theme === "dark" ? "github-dark" : "github-light";
+    }
+
     // Get effective theme (resolves system preference)
     function getEffectiveTheme() {
       const stored = localStorage.getItem("theme");
@@ -63,11 +67,8 @@ import Icon from "@components/Icon.astro";
       }
       
       const effectiveTheme = getEffectiveTheme();
-      if (effectiveTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+      document.documentElement.classList.toggle("dark", effectiveTheme === "dark");
+      document.documentElement.dataset.theme = getCodeTheme(effectiveTheme);
       
       if (skipTransitions) {
         // Force reflow to ensure the class is applied
@@ -117,6 +118,11 @@ import Icon from "@components/Icon.astro";
     function init() {
       const themeSwitcher = document.querySelector('[role="group"][aria-label="Theme selection"]');
       if (!themeSwitcher) return;
+      if (themeSwitcher.dataset.themeToggleReady === "true") {
+        applyTheme();
+        return;
+      }
+      themeSwitcher.dataset.themeToggleReady = "true";
 
       const buttons = themeSwitcher.querySelectorAll(".theme-button");
       

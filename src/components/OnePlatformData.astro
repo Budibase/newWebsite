@@ -4,7 +4,23 @@ import OnePlatformDataBg from "@assets/images/homepage/onePlatform/OnePlatformDa
 import BBSymbol from "@assets/logos/bbSymbol.svg";
 import Icon from "@components/Icon.astro";
 
-const tabs = [
+interface DataTab {
+  label: string;
+  tone: "default" | "active" | "muted" | "icon";
+  icon?: "budibase";
+}
+
+interface DataRow {
+  employee: string;
+  system: string;
+  category: string;
+  categoryTone: string;
+  status: string;
+  statusTone: string;
+  highlight?: boolean;
+}
+
+const tabs: DataTab[] = [
   { label: "Budibase DB", tone: "default", icon: "budibase" },
   { label: "Access Requests", tone: "active" },
   { label: "Support Tickets", tone: "muted" },
@@ -13,7 +29,7 @@ const tabs = [
   { label: "Add table", tone: "icon" },
 ] as const;
 
-const rows = [
+const rows: DataRow[] = [
   {
     employee: "Sarah Chen",
     system: "Salesforce",

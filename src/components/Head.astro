@@ -1,4 +1,5 @@
 ---
+import { Font } from "astro:assets";
 import Favicon from "./Favicon.astro";
 import SEO from './SEO.astro';
 import { resolveImageReference } from "../lib/imageReference";
@@ -53,6 +54,11 @@ const routeSeoFallbacks = {
   },
 } as const;
 
+type RouteSeoFallback = {
+  title: string;
+  description?: string;
+};
+
 const genericTitleCandidates = new Set([
   "Agents",
   "Apps",
@@ -72,10 +78,12 @@ function getRouteSeoFallback(pathname: string) {
   if (pathname === "/blog" || /^\/blog\/\d+$/.test(pathname)) {
     return {
       title: "Blog and Resources",
-    };
+    } satisfies RouteSeoFallback;
   }
 
-  return routeSeoFallbacks[pathname as keyof typeof routeSeoFallbacks];
+  return routeSeoFallbacks[
+    pathname as keyof typeof routeSeoFallbacks
+  ] as RouteSeoFallback | undefined;
 }
 
 function resolvePageTitle(
@@ -180,6 +188,10 @@ function smartypants(text: string, _mode?: number): string {
   // Prevent flash of unstyled content by applying theme immediately
   // Solution based on: https://medium.com/@maiowebdesign/astro-dark-mode-flickering-62da94d08ce6
   (function() {
+    function getCodeTheme(theme) {
+      return theme === 'dark' ? 'github-dark' : 'github-light';
+    }
+
     function getEffectiveTheme() {
       try {
         const stored = localStorage.getItem('theme');
@@ -194,12 +206,8 @@ function smartypants(text: string, _mode?: number): string {
 
     function applyTheme() {
       const effectiveTheme = getEffectiveTheme();
-      const isDark = document.documentElement.classList.contains('dark');
-      if (effectiveTheme === 'dark' && !isDark) {
-        document.documentElement.classList.add('dark');
-      } else if (effectiveTheme === 'light' && isDark) {
-        document.documentElement.classList.remove('dark');
-      }
+      document.documentElement.classList.toggle('dark', effectiveTheme === 'dark');
+      document.documentElement.dataset.theme = getCodeTheme(effectiveTheme);
     }
 
     // Apply theme immediately before any rendering
@@ -229,10 +237,9 @@ function smartypants(text: string, _mode?: number): string {
 </style>
 
 
-<!-- Font preloads, omit MDIO to improve initial load -->
-<link rel="preload" href="/fonts/InterDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/Inter-Medium.woff2" as="font" type="font/woff2" crossorigin />
+<Font cssVariable="--font-inter" preload={[{ weight: 400 }, { weight: 500 }]} />
+<Font cssVariable="--font-fraunces" preload={[{ weight: 400 }]} />
+<Font cssVariable="--font-ia-writer-mono" />
 
 
 <!-- Low Priority Global Metadata -->

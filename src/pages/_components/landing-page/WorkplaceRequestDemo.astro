@@ -18,8 +18,8 @@ interface Props {
   timeLabel: string;
   promptText: string;
   assistantIntro: string;
-  bulletItems: string[];
-  footerSegments: FooterSegment[];
+  bulletItems: readonly string[];
+  footerSegments: readonly FooterSegment[];
 }
 
 const {
@@ -102,7 +102,7 @@ const {
 
   <div class="workplace-request-demo__input">
     <span class="workplace-request-demo__input-icon">
-      <Plus weight="bold" />
+      <Plus />
     </span>
     <span>Add a reply</span>
   </div>
@@ -146,7 +146,7 @@ const {
 
   .workplace-request-demo__channel-name,
   .workplace-request-demo__author {
-    font-family: "Inter", var(--font-sans);
+    font-family: var(--font-sans);
     font-weight: 500;
     color: #202020;
   }

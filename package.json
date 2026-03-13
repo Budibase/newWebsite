@@ -2,6 +2,9 @@
   "name": "newwebsite",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -11,8 +14,8 @@
     "format:fix": "prettier . --write"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.7-beta.1",
-    "@astrojs/language-server": "^2.16.1-beta.1",
+    "@astrojs/check": "^0.9.7",
+    "@astrojs/language-server": "^2.16.4",
     "@modelcontextprotocol/server-filesystem": "^2025.8.21",
     "docs-mcp": "github:withastro/docs-mcp",
     "prettier": "^3.3.3",
@@ -20,11 +23,11 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.4",
-    "@astrojs/netlify": "^6.5.9",
-    "@astrojs/sitemap": "^3.5.1",
+    "@astrojs/mdx": "^5.0.0",
+    "@astrojs/netlify": "^7.0.2",
+    "@astrojs/sitemap": "^3.7.1",
     "@tailwindcss/vite": "^4.1.11",
-    "astro": "5.17.0",
+    "astro": "^6.0.4",
     "astro-embed": "^0.12.0",
     "astro-expressive-code": "^0.41.3",
     "astro-og-canvas": "^0.7.2",

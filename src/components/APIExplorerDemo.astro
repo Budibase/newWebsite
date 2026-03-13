@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import CaretDown from "phosphor-astro/CaretDown.astro";
 import Cube from "phosphor-astro/Cube.astro";
-import PaperPlaneTilt from "phosphor-astro/PaperPlaneTilt.astro";
 
 import Icon from "@components/Icon.astro";
 import APIExplorerBackdrop from "@assets/images/backgrounds/light/api-explorer-sunset.png";
@@ -359,7 +358,11 @@ const responsePayload = `{
                     type="button"
                     data-api-demo-send
                   >
-                    <PaperPlaneTilt class="h-3.5 w-3.5" weight="fill" />
+                    <Icon
+                      name="PaperPlaneTilt"
+                      weight="fill"
+                      class="h-3.5 w-3.5"
+                    />
                     Send
                   </button>
                 </div>

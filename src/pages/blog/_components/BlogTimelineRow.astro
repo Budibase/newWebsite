@@ -76,7 +76,8 @@ const authorAvatar = resolveImageReference(item.authorAvatar);
     class="group block rounded-[8px] pb-[1.7rem] text-inherit no-underline focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[rgb(var(--ring)_/_0.48)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-1)] max-md:pb-[1.35rem]"
   >
     <h2
-      class="!m-0 text-[clamp(1.3rem,1.05rem+0.72vw,1.9rem)] leading-[1.16] text-[var(--text-primary)] transition-colors duration-150 [text-wrap:balance] group-hover:text-[color-mix(in_srgb,var(--text-primary)_74%,var(--accent-blue))] max-md:[text-wrap:initial]"
+      class="!m-0 text-[clamp(1.3rem,1.05rem+0.72vw,1.9rem)] font-medium leading-[1.16] text-[var(--text-primary)] transition-colors duration-150 [text-wrap:balance] group-hover:text-[color-mix(in_srgb,var(--text-primary)_74%,var(--accent-blue))] max-md:[text-wrap:initial]"
+      style='font-family: var(--font-display); font-variation-settings: "opsz" 72, "SOFT" 50, "WONK" 10;'
       transition:name={`${transitionKey}-title`}
     >
       {item.title}

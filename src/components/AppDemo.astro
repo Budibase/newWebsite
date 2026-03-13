@@ -42,8 +42,20 @@ const appDemoStyle = backdropImage
   ? `--app-demo-backdrop-image: url("${backdropImage}")`
   : undefined;
 
-const topTabs = ["Home", "Request inbox", "Risks", "Insights", "IT support form"];
-const workspaceItems = ["Home", "Request Inbox", "Risks", "Insights", "IT support form"];
+const topTabs: string[] = [
+  "Home",
+  "Request inbox",
+  "Risks",
+  "Insights",
+  "IT support form",
+];
+const workspaceItems: string[] = [
+  "Home",
+  "Request Inbox",
+  "Risks",
+  "Insights",
+  "IT support form",
+];
 const priorityTabs = [
   { label: "All priorities", key: "all" },
   { label: "High", key: "high" },
@@ -206,7 +218,7 @@ const builderSections = [
                         type="button"
                         class:list={[
                           "app-demo-workspace-link",
-                          item === "Request Inbox" && "is-active",
+                          "is-active",
                         ]}
                         data-app-demo-to-support
                       >
@@ -343,7 +355,7 @@ const builderSections = [
                         type="button"
                         class:list={[
                           "app-demo-workspace-link",
-                          item === "IT support form" && "is-active",
+                          "is-active",
                         ]}
                         data-app-demo-to-inbox
                       >

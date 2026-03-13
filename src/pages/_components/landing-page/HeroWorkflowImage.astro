@@ -786,7 +786,7 @@ import Gmail from "@assets/logos/Gmail.svg";
   /**
    * @param {string} targetId
    */
-  function activate(targetId) {
+  function activate(targetId: string) {
     // Toggle section visibility
     sections.forEach((el) => {
       el.id === targetId
@@ -821,23 +821,15 @@ import Gmail from "@assets/logos/Gmail.svg";
 
   // Minimal chat behavior for Agents tab
   /** @type {HTMLFormElement | null} */
-  const chatForm = /** @type {HTMLFormElement | null} */ (
-    document.getElementById("agent-chat-form")
-  );
-  /** @type {HTMLInputElement | null} */
-  const chatInput = /** @type {HTMLInputElement | null} */ (
-    document.getElementById("agent-chat-input")
-  );
-  /** @type {HTMLElement | null} */
-  const chatMessages = /** @type {HTMLElement | null} */ (
-    document.getElementById("agent-chat-messages")
-  );
+  const chatForm = document.getElementById("agent-chat-form") as HTMLFormElement | null;
+  const chatInput = document.getElementById("agent-chat-input") as HTMLInputElement | null;
+  const chatMessages = document.getElementById("agent-chat-messages") as HTMLElement | null;
 
   /**
    * @param {'user'|'assistant'} role
    * @param {string} text
    */
-  function appendMessage(role, text) {
+  function appendMessage(role: "user" | "assistant", text: string) {
     if (!chatMessages) return;
     const wrapper = document.createElement("div");
     wrapper.className = "flex items-start gap-2";

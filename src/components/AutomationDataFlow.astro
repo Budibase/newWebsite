@@ -3,13 +3,26 @@ import CaretRight from "phosphor-astro/CaretRight.astro";
 import WarningFill from "phosphor-astro/WarningFill.astro";
 
 const id = `automation-data-flow-${Math.random().toString(36).slice(2, 8)}`;
+interface DataInRow {
+  key: string;
+  nested: boolean;
+  meta?: string;
+  value?: string;
+}
+
+interface DataOutRow {
+  key: string;
+  value: string;
+  tone: string;
+}
+
 const tabs = [
   { key: "data-in", label: "Data in", tone: "default" },
   { key: "data-out", label: "Data out", tone: "default" },
   { key: "errors", label: "Errors", tone: "error" },
 ] as const;
 
-const dataInRows = [
+const dataInRows: DataInRow[] = [
   { key: "env", meta: "{ } 20 keys", nested: false },
   { key: "settings", meta: "{ } 3 keys", nested: false },
   { key: "trigger", meta: "{ } 3 keys", nested: false },
@@ -19,7 +32,7 @@ const dataInRows = [
   { key: "user", meta: "{ } 8 keys", nested: false },
 ] as const;
 
-const dataOutRows = [
+const dataOutRows: DataOutRow[] = [
   { key: "comparisonValue", value: '"donald@gmail.com"', tone: "string" },
   { key: "refValue", value: '"jim@example.com"', tone: "string" },
   { key: "result", value: "false", tone: "error" },
@@ -71,7 +84,7 @@ const dataOutRows = [
           >
             {!row.nested && (
               <span class="automation-data-flow-caret" aria-hidden="true">
-                <CaretRight class="h-3 w-3" weight="fill" />
+                <CaretRight class="h-3 w-3" />
               </span>
             )}
             <span class="automation-data-flow-key">{row.key}</span>
@@ -116,7 +129,7 @@ const dataOutRows = [
     >
       <div class="automation-data-flow-error">
         <span class="automation-data-flow-warning" aria-hidden="true">
-          <WarningFill class="h-4 w-4" weight="fill" />
+          <WarningFill class="h-4 w-4" />
         </span>
         <p class="automation-data-flow-error-text">
           The conditions were not met and the automation flow was stopped.
