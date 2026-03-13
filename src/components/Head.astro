@@ -232,6 +232,44 @@ function smartypants(text: string, _mode?: number): string {
     );
   }
 </script>
+<script is:inline>
+  (() => {
+    const GTM_ID = "GTM-TW89LL3";
+    const PROD_HOSTS = new Set(["budibase.com", "www.budibase.com"]);
+
+    function shouldLoadGtm() {
+      return PROD_HOSTS.has(window.location.hostname);
+    }
+
+    function injectGtm() {
+      if (!shouldLoadGtm() || document.getElementById("gtm-loader")) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        "gtm.start": Date.now(),
+        event: "gtm.js",
+      });
+
+      const script = document.createElement("script");
+      script.id = "gtm-loader";
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
+      document.head.appendChild(script);
+    }
+
+    window.addEventListener(
+      "load",
+      () => {
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(injectGtm, { timeout: 3000 });
+        } else {
+          window.setTimeout(injectGtm, 1500);
+        }
+      },
+      { once: true },
+    );
+  })();
+</script>
 <style is:inline>
   /* Intentionally left blank */
 </style>
