@@ -1,3 +1,5 @@
+---
+import { Image } from "astro:assets";
 import Button from "@components/Button.astro";
 import InstructionsEditor from "@components/InstructionsEditor.astro";
 import AgentInstructionsContent from "@components/AgentInstructionsContent.astro";
@@ -29,16 +31,18 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
   <div
     class="hero-demo-backdrop w-full overflow-hidden px-6 py-6 sm:px-10 sm:py-10 lg:px-32 lg:py-12"
   >
-    <img
-      src={AgentDemoBackground.src}
+    <Image
+      src={AgentDemoBackground}
       alt=""
       aria-hidden="true"
       class="hero-demo-backdrop-image"
+      format="webp"
+      quality={68}
+      widths={[768, 1280, 1600]}
+      sizes="(min-width: 1280px) 1280px, calc(100vw - 1rem)"
       loading="eager"
       fetchpriority="high"
       decoding="async"
-      width={AgentDemoBackground.width}
-      height={AgentDemoBackground.height}
     />
     <div class="hero-demo-shell w-full max-w-full overflow-hidden rounded-[6px] border-[0.5px] border-[var(--border-color)] bg-[var(--bg-1)] shadow-[0px_10px_30px_rgb(var(--text)/0.25)]">
     <div class="flex">

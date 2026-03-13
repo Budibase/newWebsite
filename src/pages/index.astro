@@ -8,13 +8,9 @@ import WorkplaceRequests from "./_components/landing-page/WorkplaceRequests.astr
 import OpsPlatform from "./_components/landing-page/OpsPlatform.astro";
 import Connections from "./_components/landing-page/Connections.astro";
 import CTA from "@components/CTA.astro";
-import AgentDemoBackground from "@assets/images/backgrounds/AgentDemo/background.png";
 ---
 
 <Layout rawTitle="Build AI agents. Make work flow.">
-  <Fragment slot="head">
-    <link rel="preload" as="image" href={AgentDemoBackground.src} />
-  </Fragment>
   <Hero />
   <Customers />
   <Platform />

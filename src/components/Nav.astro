@@ -19,7 +19,11 @@ import {
   <div
     class="relative z-10 mx-auto grid h-[var(--site-nav-height)] w-full max-w-7xl grid-cols-[1fr_auto_auto] items-center px-2 md:px-3 lg:grid-cols-[auto_1fr_auto] lg:gap-6 lg:px-0"
   >
-    <a href="/" aria-label="Budibase home" class="z-10 shrink-0 flex items-center">
+    <a
+      href="/"
+      aria-label="Budibase home"
+      class="z-10 shrink-0 flex items-center"
+    >
       <div class="relative w-[120px] flex items-center">
         <Image
           src={budibaseLogoBlack}
@@ -159,14 +163,28 @@ import {
 
 <div
   id="mobile-menu"
-  class="fixed inset-0 z-50 bg-stone-50 dark:bg-stone-950 hidden lg:hidden"
+  class="mobile-nav-overlay hidden lg:hidden"
   aria-hidden="true"
 >
-  <div id="main-menu-view" class="h-full flex flex-col relative">
-    <div class="flex justify-end p-4">
+  <div id="main-menu-view" class="mobile-nav-panel">
+    <div class="mobile-nav-header">
+      <a href="/" aria-label="Budibase home" class="mobile-nav-logo">
+        <div class="relative w-[120px] flex items-center">
+          <Image
+            src={budibaseLogoBlack}
+            alt="Budibase logo"
+            class="block dark:hidden"
+          />
+          <Image
+            src={budibaseLogoWhite}
+            alt="Budibase logo"
+            class="hidden dark:block"
+          />
+        </div>
+      </a>
       <button
         id="close-menu-button"
-        class="p-2 text-stone-800 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 rounded transition-colors"
+        class="mobile-nav-close-button"
         aria-label="Close menu"
       >
         <svg
@@ -185,14 +203,16 @@ import {
       </button>
     </div>
 
-    <nav class="flex-1 px-4 pt-8">
-      <ul class="space-y-6 flex flex-col gap-4">
-        <li>
+    <nav class="mobile-nav-scroll">
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item">
           <details class="mobile-nav-accordion" data-mobile-nav-accordion>
-            <summary class="mobile-nav-accordion-summary">
-              <span class="text-3xl nav-link transition-colors">Product</span>
+            <summary class="mobile-nav-row mobile-nav-accordion-summary">
+              <span class="mobile-nav-row-label nav-link transition-colors"
+                >Product</span
+              >
               <svg
-                class="mobile-nav-accordion-caret"
+                class="mobile-nav-plus-icon"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -202,84 +222,89 @@ import {
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="M6 9l6 6 6-6"
-                ></path>
+                  d="M12 5v14M5 12h14"></path>
               </svg>
             </summary>
-            <ul class="mt-[18px] flex flex-col gap-2">
+            <ul class="mobile-nav-sub-list">
               {
-                productDropdownItems.map(({ href, label, prefetch, badge, target, rel, disabled }) => (
-                  <li>
-                    {disabled ? (
-                      <span
-                        aria-disabled="true"
-                        class="mobile-nav-sub-link mobile-nav-sub-link-disabled"
-                      >
-                        <span>{label}</span>
-                        {badge && (
-                          <span class="text-sm leading-none font-mono text-[var(--text-secondary)]">
-                            {badge}
-                          </span>
-                        )}
-                      </span>
-                    ) : (
-                      <a
-                        href={href}
-                        target={target}
-                        rel={rel ??
-                          (target === "_blank"
-                            ? "noopener noreferrer"
-                            : undefined)}
-                        data-astro-prefetch={prefetch ? "" : undefined}
-                        class="mobile-nav-sub-link nav-link transition-colors"
-                      >
-                        <span>{label}</span>
-                        {badge && (
-                          <span class="text-sm leading-none font-mono text-[var(--text-secondary)]">
-                            {badge}
-                          </span>
-                        )}
-                      </a>
-                    )}
-                  </li>
-                ))
+                productDropdownItems.map(
+                  ({ href, label, prefetch, badge, target, rel, disabled }) => (
+                    <li class="mobile-nav-sub-item">
+                      {disabled ? (
+                        <span
+                          aria-disabled="true"
+                          class="mobile-nav-sub-link mobile-nav-sub-link-disabled"
+                        >
+                          <span>{label}</span>
+                          {badge && (
+                            <span class="text-sm leading-none font-mono text-[var(--text-secondary)]">
+                              {badge}
+                            </span>
+                          )}
+                        </span>
+                      ) : (
+                        <a
+                          href={href}
+                          target={target}
+                          rel={
+                            rel ??
+                            (target === "_blank"
+                              ? "noopener noreferrer"
+                              : undefined)
+                          }
+                          data-astro-prefetch={prefetch ? "" : undefined}
+                          class="mobile-nav-sub-link nav-link transition-colors"
+                        >
+                          <span>{label}</span>
+                          {badge && (
+                            <span class="text-sm leading-none font-mono text-[var(--text-secondary)]">
+                              {badge}
+                            </span>
+                          )}
+                        </a>
+                      )}
+                    </li>
+                  ),
+                )
               }
             </ul>
           </details>
         </li>
-        <li>
+        <li class="mobile-nav-item">
           <a
             href="/ops"
-            class="block text-3xl nav-link transition-colors"
+            class="mobile-nav-row nav-link transition-colors"
             data-astro-prefetch
           >
             Ops
           </a>
         </li>
-        <li>
+        <li class="mobile-nav-item">
           <a
             href="https://discord.com/invite/budibase-733030666647765003"
             target="_blank"
-            class="block text-3xl nav-link transition-colors"
+            class="mobile-nav-row nav-link transition-colors"
           >
             Community
           </a>
         </li>
-        <li>
+        <li class="mobile-nav-item">
           <a
             href="/pricing"
-            class="block text-3xl nav-link transition-colors"
+            class="mobile-nav-row nav-link transition-colors"
             data-astro-prefetch
           >
             Pricing
           </a>
         </li>
-        <li>
+        <li class="mobile-nav-item">
           <details class="mobile-nav-accordion" data-mobile-nav-accordion>
-            <summary class="mobile-nav-accordion-summary">
-              <span class="text-3xl nav-link transition-colors">Resources</span>
+            <summary class="mobile-nav-row mobile-nav-accordion-summary">
+              <span class="mobile-nav-row-label nav-link transition-colors"
+                >Resources</span
+              >
               <svg
-                class="mobile-nav-accordion-caret"
+                class="mobile-nav-plus-icon"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -289,195 +314,155 @@ import {
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="M6 9l6 6 6-6"
-                ></path>
+                  d="M12 5v14M5 12h14"></path>
               </svg>
             </summary>
-            <ul class="mt-[18px] flex flex-col gap-2">
+            <ul class="mobile-nav-sub-list">
               {
-                resourcesDropdownItems.map(({ href, label, prefetch, badge, target, rel, disabled }) => (
-                  <li>
-                    {disabled ? (
-                      <span
-                        aria-disabled="true"
-                        class="mobile-nav-sub-link mobile-nav-sub-link-disabled"
-                      >
-                        <span>{label}</span>
-                        {badge && (
-                          <span class="text-sm leading-none font-mono text-[var(--text-secondary)]">
-                            {badge}
-                          </span>
-                        )}
-                      </span>
-                    ) : (
-                      <a
-                        href={href}
-                        target={target}
-                        rel={rel ??
-                          (target === "_blank"
-                            ? "noopener noreferrer"
-                            : undefined)}
-                        data-astro-prefetch={prefetch ? "" : undefined}
-                        class="mobile-nav-sub-link nav-link transition-colors"
-                      >
-                        <span>{label}</span>
-                        {badge && (
-                          <span class="text-sm leading-none font-mono text-[var(--text-secondary)]">
-                            {badge}
-                          </span>
-                        )}
-                      </a>
-                    )}
-                  </li>
-                ))
+                resourcesDropdownItems.map(
+                  ({ href, label, prefetch, badge, target, rel, disabled }) => (
+                    <li class="mobile-nav-sub-item">
+                      {disabled ? (
+                        <span
+                          aria-disabled="true"
+                          class="mobile-nav-sub-link mobile-nav-sub-link-disabled"
+                        >
+                          <span>{label}</span>
+                          {badge && (
+                            <span class="text-sm leading-none font-mono text-[var(--text-secondary)]">
+                              {badge}
+                            </span>
+                          )}
+                        </span>
+                      ) : (
+                        <a
+                          href={href}
+                          target={target}
+                          rel={
+                            rel ??
+                            (target === "_blank"
+                              ? "noopener noreferrer"
+                              : undefined)
+                          }
+                          data-astro-prefetch={prefetch ? "" : undefined}
+                          class="mobile-nav-sub-link nav-link transition-colors"
+                        >
+                          <span>{label}</span>
+                          {badge && (
+                            <span class="text-sm leading-none font-mono text-[var(--text-secondary)]">
+                              {badge}
+                            </span>
+                          )}
+                        </a>
+                      )}
+                    </li>
+                  ),
+                )
               }
             </ul>
           </details>
         </li>
       </ul>
     </nav>
+
+    <div class="mobile-nav-actions">
+      <Button
+        label="Log in"
+        url="https://account.budibase.app/auth/login"
+        variant="secondary"
+        size="large"
+        target="_blank"
+        class="mobile-nav-action-button"
+      />
+      <Button
+        label="Sign up"
+        url="https://account.budibase.app/register"
+        variant="primary"
+        size="large"
+        target="_blank"
+        class="mobile-nav-action-button"
+      />
+    </div>
   </div>
 </div>
 
-<style>
-  #mobile-menu {
-    transition:
-      opacity 0.2s ease-in-out,
-      visibility 0.2s ease-in-out;
-  }
-
-  #mobile-menu.hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  #mobile-menu:not(.hidden) {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  #main-menu-view {
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .mobile-nav-accordion {
-    border-bottom: 0.5px solid rgb(var(--text) / 0.12);
-    padding-bottom: 1rem;
-  }
-
-  .mobile-nav-accordion-summary {
-    display: flex;
-    list-style: none;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    cursor: pointer;
-    outline: none;
-  }
-
-  .mobile-nav-accordion-summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .mobile-nav-accordion-summary:focus-visible {
-    border-radius: 0.375rem;
-    box-shadow: 0 0 0 2px rgb(var(--text) / 0.2);
-  }
-
-  .mobile-nav-accordion-caret {
-    height: 1.5rem;
-    width: 1.5rem;
-    color: var(--text-primary);
-    transition: transform 0.2s ease-in-out;
-  }
-
-  .mobile-nav-accordion[open] .mobile-nav-accordion-caret {
-    transform: rotate(180deg);
-  }
-
-  .mobile-nav-sub-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    padding-left: 0.25rem;
-    font-size: 1.5rem;
-    line-height: 1.2;
-  }
-
-  .mobile-nav-sub-link-disabled {
-    color: var(--text-secondary);
-    cursor: not-allowed;
-  }
-
-  .nav-link {
-    color: var(--text-primary);
-    font-weight: 500;
-  }
-
-  .nav-link:hover {
-    color: var(--text-secondary) !important;
-  }
-
-  .nav-shell :global(header-drop-down summary),
-  .nav-shell :global(header-drop-down summary a) {
-    color: var(--text-primary) !important;
-    font-weight: 500;
-  }
-
-  .nav-shell :global(header-drop-down summary:hover),
-  .nav-shell :global(header-drop-down summary:focus-visible),
-  .nav-shell :global(header-drop-down summary a:hover),
-  .nav-shell :global(header-drop-down summary a:focus-visible) {
-    color: var(--text-secondary) !important;
-  }
-
-  .nav-shell {
-    background-color: var(--bg-1) !important;
-  }
-</style>
-
 <script>
   (function () {
+    if (window.__siteMobileNavBound) return;
+    window.__siteMobileNavBound = true;
+
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
     const closeMenuButton = document.getElementById("close-menu-button");
-    const mainMenuView = document.getElementById("main-menu-view");
     const menuIcon = document.getElementById("menu-icon");
     const closeIcon = document.getElementById("close-icon");
+    const desktopBreakpoint = window.matchMedia("(min-width: 1024px)");
+    let previousBodyOverflow = "";
+
+    function isMenuOpen() {
+      return !mobileMenu?.classList.contains("hidden");
+    }
 
     function openMenu() {
+      if (!mobileMenu || isMenuOpen()) return;
+
+      previousBodyOverflow = document.body.style.overflow;
       mobileMenu?.classList.remove("hidden");
       mobileMenuButton?.setAttribute("aria-expanded", "true");
+      mobileMenu?.setAttribute("aria-hidden", "false");
       menuIcon?.classList.add("hidden");
       closeIcon?.classList.remove("hidden");
       document.body.style.overflow = "hidden";
     }
 
     function closeMenu() {
+      if (!mobileMenu || !isMenuOpen()) return;
+
       mobileMenu?.classList.add("hidden");
       mobileMenuButton?.setAttribute("aria-expanded", "false");
+      mobileMenu?.setAttribute("aria-hidden", "true");
       menuIcon?.classList.remove("hidden");
       closeIcon?.classList.add("hidden");
-      document.body.style.overflow = "";
-      mainMenuView?.classList.remove("hidden");
+      document.body.style.overflow = previousBodyOverflow;
       mobileMenu
         ?.querySelectorAll("[data-mobile-nav-accordion][open]")
         .forEach((accordion) => accordion.removeAttribute("open"));
     }
 
-    mobileMenuButton?.addEventListener("click", openMenu);
+    mobileMenuButton?.addEventListener("click", () => {
+      if (isMenuOpen()) {
+        closeMenu();
+        return;
+      }
+
+      openMenu();
+    });
     closeMenuButton?.addEventListener("click", closeMenu);
     mobileMenu?.addEventListener("click", (e) => {
       if (e.target === mobileMenu) {
         closeMenu();
       }
     });
+    mobileMenu?.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && !mobileMenu?.classList.contains("hidden")) {
+      if (e.key === "Escape" && isMenuOpen()) {
         closeMenu();
       }
     });
+
+    const handleResize = () => {
+      if (desktopBreakpoint.matches) {
+        closeMenu();
+      }
+    };
+
+    if (desktopBreakpoint.addEventListener) {
+      desktopBreakpoint.addEventListener("change", handleResize);
+    } else {
+      desktopBreakpoint.addListener(handleResize);
+    }
   })();
 </script>
