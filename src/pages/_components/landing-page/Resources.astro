@@ -1,12 +1,25 @@
 ---
+import Button from "@components/Button.astro";
+import SectionBlock from "@components/SectionBlock.astro";
 import IntegrationBanner from "@components/IntegrationBanner.astro";
 ---
 
-<div class="container max-w-7xl mx-auto mt-12 md:mt-24 px-2 lg:px-0">
-    <h2 class="mb-6 text-center! text-balance! max-w-4xl! mx-auto!">
-        Your models, your tools, your data, <span class="text-primary"
-            >your privacy.</span
-        >
-    </h2>
-    <IntegrationBanner />
-</div>
+<section class="container max-w-7xl mx-auto mt-12 md:mt-24 px-2 lg:px-0">
+  <SectionBlock
+    title="Connect the tools your business runs on"
+    description="Integrate with databases, AI models, and business apps so agents and automations can take action across your operations."
+    align="center"
+    maxWidth="3xl"
+  >
+    <div class="w-full">
+      <IntegrationBanner />
+      <div class="mt-8 flex justify-center md:mt-10">
+        <Button
+          label="See all connectors"
+          url="/product/connections"
+          variant="primary"
+        />
+      </div>
+    </div>
+  </SectionBlock>
+</section>

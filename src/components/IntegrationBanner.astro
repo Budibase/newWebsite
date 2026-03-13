@@ -1,7 +1,5 @@
 ---
-import Button from "@components/Button.astro";
 import { Image } from "astro:assets";
-import ConnectionsBackground from "@assets/images/homepage/connectionsBGImage.png";
 
 // Logo imports
 import DiscordLogoSvg from "@assets/logos/discord.svg";
@@ -197,63 +195,29 @@ const logos = [
   { src: LinodeLogo, alt: "Linode" },
   { src: DigitalOceanLogo, alt: "Digital Ocean" },
 ];
-
 ---
 
-<div class="integration-banner-shell mx-auto w-full max-w-full overflow-hidden rounded-lg bg-2">
-  <Image
-    src={ConnectionsBackground}
-    alt=""
-    aria-hidden="true"
-    class="integration-banner-bg"
-    format="webp"
-    quality={72}
-    loading="lazy"
-    decoding="async"
-  />
-  <div class="integration-banner-overlay" aria-hidden="true"></div>
-
+<div
+  class="integration-banner-shell mx-auto w-full max-w-full overflow-hidden rounded-lg bg-2"
+>
   <div
-    class="integration-banner-grid relative z-[1] grid grid-cols-[repeat(5,minmax(0,64px))] auto-rows-[34px] gap-3 p-4 justify-center sm:grid-cols-[repeat(8,minmax(0,34px))] sm:p-6 md:grid-cols-[repeat(15,50px)] md:grid-rows-[repeat(7,50px)] md:p-8 lg:grid-cols-[repeat(15,60px)] lg:grid-rows-[repeat(7,60px)]"
+    class="integration-banner-grid grid grid-cols-[repeat(5,minmax(0,64px))] auto-rows-[34px] gap-3 p-4 justify-center sm:grid-cols-[repeat(8,minmax(0,34px))] sm:p-6 md:grid-cols-[repeat(15,50px)] md:grid-rows-[repeat(7,50px)] md:p-8 lg:grid-cols-[repeat(15,60px)] lg:grid-rows-[repeat(7,60px)]"
   >
     {
-      logos.map((logo, index) => {
-        // Insert text/button block at position 23 (one position to the left of 24)
-        const shouldInsertTextBlock = index === 23;
-
+      logos.map((logo) => {
         return (
-          <>
-            {shouldInsertTextBlock && (
-              <div class="integration-banner-copy col-span-5 row-span-3 flex flex-col items-start justify-center rounded-lg bg-3 p-4 text-left sm:col-span-4 md:col-span-5 md:row-span-5 md:p-6">
-                <div class="h-full flex flex-col justify-between">
-                  <p class="integration-banner-copy-text mb-0 !text-[var(--text-primary)]">
-                    Connect with over 100 tools, AI models, databases, and take
-                    action with over 10,000 operations.
-                  </p>
-                  <div class="w-full mt-4">
-                    <Button
-                      label="See all connectors"
-                      url="/product/connections"
-                      variant="primary"
-                      class="w-full"
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
-            <div
-              class="integration-banner-logo shadow-2 h-[34px] w-[34px] shrink-0 overflow-hidden rounded-lg bg-3 p-2 flex items-center justify-center md:h-[50px] md:w-[50px] md:p-4 lg:h-[60px] lg:w-[60px]"
-              style="opacity: 1; transition: opacity 300ms;"
-            >
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                class="h-full w-full object-contain"
-                width={72}
-                height={72}
-              />
-            </div>
-          </>
+          <div
+            class="integration-banner-logo shadow-2 h-[34px] w-[34px] shrink-0 overflow-hidden rounded-lg bg-3 p-2 flex items-center justify-center md:h-[50px] md:w-[50px] md:p-4 lg:h-[60px] lg:w-[60px]"
+            style="opacity: 1; transition: opacity 300ms;"
+          >
+            <Image
+              src={logo.src}
+              alt={logo.alt}
+              class="h-full w-full object-contain"
+              width={72}
+              height={72}
+            />
+          </div>
         );
       })
     }
@@ -266,41 +230,8 @@ const logos = [
     isolation: isolate;
   }
 
-  .integration-banner-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .integration-banner-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background: linear-gradient(
-      180deg,
-      rgb(250 249 245 / 0.72) 0%,
-      rgb(250 249 245 / 0.58) 100%
-    );
-  }
-
   .integration-banner-grid {
     width: 100%;
     max-width: 100%;
-  }
-
-  .integration-banner-copy-text {
-    font-size: 1rem;
-    line-height: 1.45;
-  }
-
-  @media (min-width: 768px) {
-    .integration-banner-copy-text {
-      font-size: 1.25rem;
-      line-height: 1.4;
-    }
   }
 </style>
