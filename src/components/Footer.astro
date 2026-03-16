@@ -79,7 +79,7 @@ const footerColumns: FooterColumn[] = [
         footerColumns.map((column) => (
           <div class="footer-column">
             <p>{column.title}</p>
-            <ul class="text-stone-500! gap-0.5! flex flex-col">
+            <ul class="text-stone-500! flex flex-col gap-1.5! sm:gap-0.5!">
               {column.links.map((link) => (
                 <li>
                   <Link
@@ -88,7 +88,7 @@ const footerColumns: FooterColumn[] = [
                     target={link.target}
                     variant="secondary"
                     size="small"
-                    class="footer-link"
+                    class="footer-link min-h-12 py-1.5 sm:min-h-0 sm:py-0"
                   />
                 </li>
               ))}
@@ -186,12 +186,6 @@ const footerColumns: FooterColumn[] = [
     gap: 0.25rem;
   }
 
-  .footer-link {
-    min-height: 44px;
-    padding: 0.35rem 0;
-    align-items: center;
-  }
-
   .footer-check-icon {
     width: 16px;
     height: 16px;
@@ -217,10 +211,4 @@ const footerColumns: FooterColumn[] = [
     }
   }
 
-  @media (min-width: 641px) {
-    .footer-link {
-      min-height: auto;
-      padding: 0;
-    }
-  }
 </style>
