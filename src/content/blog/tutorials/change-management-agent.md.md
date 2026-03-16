@@ -66,19 +66,13 @@ We're starting with a new Budibase Workspace. When we create this, the first thi
 
 We’re choosing the option to upload a CSV. The data we’re going to use for this is:
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 title,description,service,created_at,external_ticket_url
-
 Add reporting export feature,Customers have requested CSV exports; requirements unclear.,Reporting,2026-01-11T10:30:00.000Z,
-
 Migrate authentication provider,Move from current auth provider to new identity platform.,Authentication,2026-01-12T14:15:00.000Z,
-
 Add users to Budibase,Add our new hires to Budibase tennant,Accounts,2026-01-22T17:01:39.501Z,
-
 Restart cache service,Restart Redis cache to clear stale entries.,Auth,2026-01-10T09:00:00.000Z,
-
-{{< /highlight >}}
+```
 
 We’ll call this `Change Requests` and select the following data types for our columns:
 
@@ -96,13 +90,10 @@ Here’s how this should look in Budibase’s Data section.
 
 We’re going to repeat this process to add two more tables. First, we’ll create our `Decisions` table with the following CSV data:
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 Change Type,Confidence,Reason,Date
-
 standard,0.0,dummy,1970-01-01T00:00:00.000Z
-
-{{< /highlight >}}
+```
 
 This time, our data types are:
 
@@ -115,13 +106,10 @@ This time, our data types are:
 
 Our tasks table will use the following CSV:
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 title,description,status,created_at
-
 Add audit logging,Introduce audit logs for user actions,open,2026-01-15T10:00:00.000Z
-
-{{< /highlight >}}
+```
 
 Its data types are:
 
@@ -198,8 +186,7 @@ Now, we can start configuring our Agent behavior using the Instructions box. The
 
 So, we’ll start our prompt with.
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 You are a change request triage assistant.
 
 Task:
@@ -219,15 +206,13 @@ Inputs you will receive:
 \- service (string, may be empty)
 
 \- triggerRowId (the unique identifier of the row on the Change Requests table that contains these)
-
-{{< /highlight >}}
+```
 
 ![Change Management Agent](https://res.cloudinary.com/daog6scxm/image/upload/v1770895918/cms/change-management-agent/Change_Request_Agent_Q3_th4bbp.webp "Change Management Agent")
 
 Next, we want to start adding logic for how the Agent can categorize incoming change requests as either Standard, Normal, or Major.
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 Definitions:
 
 STANDARD change
@@ -235,232 +220,151 @@ STANDARD change
 Routine, low risk, well understood, and can be executed immediately without additional scoping or review.
 
 A change is STANDARD only if ALL of the following are true:
-
-\- The work is small in scope and clearly described
-
-\- The action is operational and repeatable
-
-\- Risk and user impact are low or implied minimal
-
-\- Rollback is simple or obvious
-
-\- No investigation, design, or decision-making is required
+- The work is small in scope and clearly described
+- The action is operational and repeatable
+- Risk and user impact are low or implied minimal
+- Rollback is simple or obvious
+- No investigation, design, or decision-making is required
 
 Strong signals that a change IS STANDARD:
-
-\- Restarting or redeploying a service
-
-\- Enabling or disabling a feature flag
-
-\- Small, explicit configuration changes
-
-\- Routine maintenance steps described like a runbook action
+- Restarting or redeploying a service
+- Enabling or disabling a feature flag
+- Small, explicit configuration changes
+- Routine maintenance steps described like a runbook action
 
 A change is NOT STANDARD if ANY of the following apply:
-
-\- It introduces new functionality or changes user-facing behaviour
-
-\- It involves data or schema changes, migrations, or backfills
-
-\- It affects authentication, authorization, identity, billing, or payments
-
-\- It requires planning, coordination, or scoping
-
-\- Impact, scope, or rollback are unclear or ambiguous
-
-\- The description lacks enough detail to confidently execute the change
+- It introduces new functionality or changes user-facing behaviour
+- It involves data or schema changes, migrations, or backfills
+- It affects authentication, authorization, identity, billing, or payments
+- It requires planning, coordination, or scoping
+- Impact, scope, or rollback are unclear or ambiguous
+- The description lacks enough detail to confidently execute the change
 
 NORMAL change
 
 A non-routine change that requires scoping or coordination, but does not appear high-risk/high-impact.
 
 Typical NORMAL signals:
-
-\- New feature or user-facing behavioural change (but not broad/high-risk)
-
-\- Non-trivial refactor or configuration/infrastructure changes
-
-\- Integration changes with a limited blast radius
-
-\- Work that needs requirements clarified or broken down before execution
-
-\- Rollback appears feasible and not inherently complex (or risk is moderate)
+- New feature or user-facing behavioural change (but not broad/high-risk)
+- Non-trivial refactor or configuration/infrastructure changes
+- Integration changes with a limited blast radius
+- Work that needs requirements clarified or broken down before execution
+- Rollback appears feasible and not inherently complex (or risk is moderate)
 
 MAJOR change
 
 A high-risk or high-impact change, or a change with unclear/complex rollback. Treat changes as MAJOR when they affect core security, auth, billing, or data integrity, or imply broad user impact.
 
 MAJOR triggers (any one is enough to classify as MAJOR):
-
-\- Authentication/authorization/identity/SSO/permissions changes
-
-\- Billing/pricing/payments/subscriptions/invoicing changes
-
-\- Database schema changes, migrations, backfills, data deletion, reindexing
-
-\- Security-sensitive changes (encryption, key management beyond routine rotation, permission model changes)
-
-\- Vendor/provider swap or large platform migration
-
-\- Mentions downtime/outage/maintenance window required
-
-\- Mentions “all users”, “production-wide”, “critical”, “high risk”
-
-\- Rollback is complex, unclear, irreversible, or explicitly not available
+- Authentication/authorization/identity/SSO/permissions changes
+- Billing/pricing/payments/subscriptions/invoicing changes
+- Database schema changes, migrations, backfills, data deletion, reindexing
+- Security-sensitive changes (encryption, key management beyond routine rotation, permission model changes)
+- Vendor/provider swap or large platform migration
+- Mentions downtime/outage/maintenance window required
+- Mentions “all users”, “production-wide”, “critical”, “high risk”
+- Rollback is complex, unclear, irreversible, or explicitly not available
 
 Bias rules:
+- If unsure between STANDARD and NORMAL, choose NORMAL.
+- If unsure between NORMAL and MAJOR, choose MAJOR.
+- Do not invent missing details. Use only what is provided.
+```
 
-\- If unsure between STANDARD and NORMAL, choose NORMAL.
 
-\- If unsure between NORMAL and MAJOR, choose MAJOR.
-
-\- Do not invent missing details. Use only what is provided.
-
-{{< /highlight >}}
 
 ![Logic](https://res.cloudinary.com/daog6scxm/image/upload/v1770895919/cms/change-management-agent/Change_Request_Agent_Q4_r2okte.webp "Logic")
 
 Then, we’ll add logic for creating a row on the `Tasks` table in the case that a Change Request is deemed to be `Standard`.
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 Actions:
 
-\- If change_type = STANDARD: create a row with the appropriate details on the Tasks table using:
-
+- If change_type = STANDARD: create a row with the appropriate details on the Tasks table using:
  {{ budibase.Tasks.create_row }} .
 
-\- When creating a row on the Tasks table, you MUST assign the value for the “change_request” column to the input you received at the beginning, beginning with “ro_ta_”
+- When creating a row on the Tasks table, you MUST assign the value for the “change_request” column to the input you received at the beginning, beginning with “ro_ta_”
+```
 
-{{< /highlight >}}
+
 
 ![GitHub](https://res.cloudinary.com/daog6scxm/image/upload/v1770895920/cms/change-management-agent/Change_Request_Agent_Q5_wkfiac.webp "GitHub")
 
 Similarly, we’ll add logic for triggering our GitHub API request for Normal and Major changes, as well as updating the `Change Requests` row with the URL of our new issue.
 
-{{< highlight plaintext "linenos=inline" >}}
-
-\- If change_type = NORMAL or MAJOR: prepare a GitHub issue payload. The label MUST be exactly:
-
- \- "Normal" for NORMAL changes
-
- \- "Major" for MAJOR changes
+```
+- If change_type = NORMAL or MAJOR: prepare a GitHub issue payload. The label MUST be exactly:
+ - "Normal" for NORMAL changes
+ - "Major" for MAJOR changes
 
  Send GitHub Action by populating this request: 
-
 {{ api.github.issues/create }} with bindings owner = *insertYourOwnerName* and repo = *insertYourRepoName*
 
 With the following bindings:
-
 {
-
  "title": "{{ Binding.title }}",
-
  "body": "{{ Binding.body }}",
-
  "assignee": "*insertYourOwnerName",
-
  "labels": [
-
   "{{ Binding.labels }}"
-
  ],
-
  "type": "{{ Binding.type }}"
-
 }
 
 When you receive the response from this GitHub API request. Note, remember the “html_url” attribute that is returned.
-
 When you send the GitHub Action, you need to:
-
-\- retrieve the original row on the Change Requests table with the id that corresponds to the triggerRowId (beginning with “ro_ta_”) that you received as an input using {{ budibase.Change Requests.get_row }}
-
-\- Assign the “external_ticket_url” column on this row to the “html_url” from the GitHub API response isomer {{ budibase.Change Requests.update_row }} - Do not update any other fields.
-
-{{< /highlight >}}
+- retrieve the original row on the Change Requests table with the id that corresponds to the triggerRowId (beginning with “ro_ta_”) that you received as an input using {{ budibase.Change Requests.get_row }}
+- Assign the “external_ticket_url” column on this row to the “html_url” from the GitHub API response isomer {{ budibase.Change Requests.update_row }} - Do not update any other fields.
+```
 
 ![Instructions](https://res.cloudinary.com/daog6scxm/image/upload/v1770895918/cms/change-management-agent/Change_Request_Agent_Q6_pxbcip.webp "Instructions")
 
 And lastly, we’ll add instructions for creating a record of this on our `Decisions` table and linking it to the original `Change Requests` row.
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 Output:
 
 Return ONLY a single JSON object with exactly these keys:
-
 {
-
  "change_type": "standard" | "normal" | "major",
-
  "confidence": <number between 0 and 1>,
-
  "reason": "<one sentence explaining the decision>",
-
  "task": {
-
   "title": "<only if change_type=standard; otherwise empty string>",
-
   "description": "<only if change_type=standard; otherwise empty string>"
-
  },
-
  "github_issue": {
-
   "title": "<only if change_type is normal or major; otherwise empty string>",
-
   "body": "<only if change_type is normal or major; otherwise empty string>",
-
-  "labels": ["<only if change_type is normal or major; otherwise empty array>"]
-
+  "labels": ["<only if change_type is normal or major; otherwise empty array>"],
 ​	“url”: “<the html_url output from the GitHub response>”
-
  }
-
 }
 
 Task rules (only when change_type = standard):
-
-\- Create exactly ONE task
-
-\- task.title must be short, action-oriented, and start with a verb
-
-\- task.description must be 1–3 sentences describing the concrete action and a simple verification step
-
-\- Do not include scoping questions or speculative steps
+- Create exactly ONE task
+- task.title must be short, action-oriented, and start with a verb
+- task.description must be 1–3 sentences describing the concrete action and a simple verification step
+- Do not include scoping questions or speculative steps
 
 GitHub issue rules (only when change_type is normal or major):
-
-\- github_issue.title must be concise and start with:
-
- \- "[Needs scoping] " if normal
-
- \- "[Needs review] " if major
-
-\- github_issue.body must include, in plain text:
-
- \- Service: <service or "unknown">
-
- \- Original title: <title or "none">
-
- \- Original description: <description>
-
- \- Agent reason: <reason>
-
- \- Next step: one sentence ("Scope this change..." for normal; "Review risks/impact..." for major)
-
-\- github_issue.labels must contain exactly one label:
-
- \- ["Normal"] if normal
-
- \- ["Major"] if major
+- github_issue.title must be concise and start with:
+- "[Needs scoping] " if normal
+- "[Needs review] " if major
+- github_issue.body must include, in plain text:
+- Service: <service or "unknown">
+- Original title: <title or "none">
+- Original description: <description>
+- Agent reason: <reason>
+- Next step: one sentence ("Scope this change..." for normal; "Review risks/impact..." for major)
+- github_issue.labels must contain exactly one label:
+- ["Normal"] if normal
+- ["Major"] if major
 
 Now evaluate the given change request and output only the JSON. 
 
 Log your decisions on the “Decisions” table using: {{ budibase.Decisions.create_row }} to derive the correct schema from the actual table. Assign Change Request Row to the input you received at the beginning, beginning with “ro_ta_”
-
-{{< /highlight >}}
+```
 
 ![Decisions](https://res.cloudinary.com/daog6scxm/image/upload/v1770895918/cms/change-management-agent/Change_Request_Agent_Q7_lv6cgv.webp "Decisions")
 
@@ -494,21 +398,16 @@ To start, we’ll open the bindings menu using the lightning bolt icon.
 
 We can access the values we need as bindings under `Trigger Outputs`. The specific expression we’re going to use here is:
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 {
-
 "title": {{ trigger.row.title }},
-
 "description": {{ trigger.row.description }},
-
 "service": {{ trigger.row.service }},
-
 "triggerRowId": {{ trigger.id }}
-
 }
+```
 
-{{< /highlight >}}
+
 
 ![Bindings](https://res.cloudinary.com/daog6scxm/image/upload/v1770895921/cms/change-management-agent/Change_Request_Agent_A6_fxgpx0.webp "Bindings")
 

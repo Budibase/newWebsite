@@ -72,15 +72,11 @@ We have the option of creating our tables from scratch, but to make life easier,
 
 When we choose this option, we’ll be presented with a modal where we can upload a file, give our table a name, and select data types for each of its columns. The data we’re using for our `Service Requests` table is:
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 title,description,requester,submitted_at,category,routing_confidence,routing_reason
-
 Enable feature flag for billing,Need to enable new billing flow for all customers,maria.lee,2026-01-12T10:02:00Z,,,
-
 Reset VPN access,VPN access stopped working after laptop replacement,alex.jones,2026-01-12T09:14:00Z,,,
-
-{{< /highlight >}}
+```
 
 The data types we’re using for each of our columns are:
 
@@ -98,15 +94,11 @@ We’ll then repeat this exact process for our `Tasks` and `Change Reviews` tabl
 
 The data for the `Tasks` table is:
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 title,summary,task_type
-
 Reset VPN access,Restore VPN access for user,access_request
-
 New employee laptop,Provision laptop for new hire,hardware_request
-
-{{< /highlight >}}
+```
 
 The data types are:
 
@@ -116,15 +108,11 @@ The data types are:
 
 For `Change Reviews`, we’ll use:
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 title,summary,change_type
-
 Enable feature flag for billing,Enable billing feature flag globally,configuration_change
-
 Update authentication flow,Modify authentication logic,application_change
-
-{{< /highlight >}}
+```
 
 With the following data types:
 
@@ -172,111 +160,66 @@ Next, we can move on to setting up our Agent behavior. In Budibase, we can do th
 
 We’re going to start by giving the core context of what we want our agent to achieve, along with the inputs it can expect.
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 You are an LLM router for service requests.
-
 You will be given ONE record from the `service_requests` table with:
-
-\- title
-
-\- description
-
-\- rowId (the unique identifier of the service_request row that triggers each run)
-
-{{< /highlight >}}
+- title
+- description
+- rowId (the unique identifier of the service_request row that triggers each run)
+```
 
 ![Prompts](https://res.cloudinary.com/daog6scxm/image/upload/v1770906102/cms/mistral-agent/Mistral_Agent_Q4_tbcczv.webp "Prompt")
 
 We’ll then provide guidance on the tools we’re making available to our Agent in order to achieve this, adding the following to our instructions:
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 Tools:
-
 You can use {{ budibase.list_tables }} to find the reference ID of the tables you need to interact with and {{ budibase.get_table }} to find their schemas.
-
 Your job:
-
 1) Categorise it as exactly ONE of:
-
-  \- known_service (a standard, repeatable fulfilment request)
-
-  \- change     (a request that modifies systems/config/code/infrastructure/processes and should go to change review)
-
+- known_service (a standard, repeatable fulfilment request)
+- change (a request that modifies systems/config/code/infrastructure/processes and should go to change review)
 2) Provide a confidence score from 0.00 to 1.00
-
-\- Assign routing_confidence, routing_reason, and category values to the original row in Service Requests, using{{ budibase.Change Reviews.get_row }} to find the Rev followed by {{ budibase.Change Reviews.update_row }}. Use {{ budibase.get_table }} to find the appropriate Table ID to identify the correct row.
-
+- Assign routing_confidence, routing_reason, and category values to the original row in Service Requests, using{{ budibase.Change Reviews.get_row }} to find the Rev followed by {{ budibase.Change Reviews.update_row }}. Use {{ budibase.get_table }} to find the appropriate Table ID to identify the correct row.
 3) Produce the fields needed to create ONE related row:
-
-  \- if known_service: create a row in `tasks` with { title, summary, task_type } using {{ budibase.Tasks.create_row }} and setting the service_request value to the rowId from your input
-
-  \- if change: create a row in `change_reviews` with { title, summary, change_type } using {{ budibase.Change Reviews.create_row }} and setting the service_request value to the rowId from your input
-
-{{< /highlight >}}
+- if known_service: create a row in `tasks` with { title, summary, task_type } using {{ budibase.Tasks.create_row }} and setting the service_request value to the rowId from your input
+- if change: create a row in `change_reviews` with { title, summary, change_type } using {{ budibase.Change Reviews.create_row }} and setting the service_request value to the rowId from your input
+```
 
 ![Tool Calling](https://res.cloudinary.com/daog6scxm/image/upload/v1770906103/cms/mistral-agent/Mistral_Agent_Q5_b0cjrl.webp "Tool Calling")
 
 Finally, we want to add some additional rules and constraints to our prompt to ensure that the correct behavior is achieved.
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 Rules:
-
-\- Use ONLY the provided title/description. No external knowledge.
-
-\- Do NOT invent specifics that aren’t present (system names, owners, dates, approvals, impact, etc.).
-
-\- Keep `summary` to one short sentence.
-
-\- `task_type` must be one of:
-
- \- access_request
-
- \- hardware_request
-
-\- Choose `task_type` using these rules:
-
- \- access_request, access/permissions/auth/connectivity requests (VPN, login, password reset, MFA, account access, group membership)
-
- \- hardware_request, physical device provisioning/replacement/repair (laptop, monitor, phone, peripherals)
-
-\- `change_type` must be one of:
-
- \- configuration_change
-
- \- application_change
-
-\- Choose `change_type` using these rules:
-
- \- configuration_change, enabling/disabling flags, changing settings, modifying configuration values
-
- \- application_change, changes to application logic/behaviour, flows, code-level behaviour
-
-\- Return JSON ONLY. No extra text.
-
-\- Only Create one Tasks or change_reviews table per run.
-
+- Use ONLY the provided title/description. No external knowledge.
+- Do NOT invent specifics that aren’t present (system names, owners, dates, approvals, impact, etc.).
+- Keep `summary` to one short sentence.
+ - `task_type` must be one of:
+ - access_request
+ - hardware_request
+- Choose `task_type` using these rules:
+- access_request, access/permissions/auth/connectivity requests (VPN, login, password reset, MFA, account access, group membership)
+- hardware_request, physical device provisioning/replacement/repair (laptop, monitor, phone, peripherals)
+- `change_type` must be one of:
+- configuration_change
+- application_change
+- Choose `change_type` using these rules:
+- configuration_change, enabling/disabling flags, changing settings, modifying configuration values
+- application_change, changes to application logic/behaviour, flows, code-level behaviour
+- Return JSON ONLY. No extra text.
+- Only Create one Tasks or change_reviews table per run.
 Heuristics:
-
-\- known_service if it’s about fulfilling a request for a specific user/team without changing how a system works for others.
-
-\- change if it alters how a system behaves for multiple users or modifies config/code/integrations, or implies rollout/enable/upgrade/migrate/deploy.
+- known_service if it’s about fulfilling a request for a specific user/team without changing how a system works for others.
+- change if it alters how a system behaves for multiple users or modifies config/code/integrations, or implies rollout/enable/upgrade/migrate/deploy.
 
 Input:
-
 title: {{title}}
-
 description: {{description}}
-
 Notes:
-
-\- If category=known_service then create.table="tasks" and row must include title, summary, task_type.
-
-\- If category=change then create.table="change_reviews" and row must include title, summary, change_type.
-
-{{< /highlight >}}
+- If category=known_service then create.table="tasks" and row must include title, summary, task_type.
+- If category=change then create.table="change_reviews" and row must include title, summary, change_type.
+```
 
 ![Rules](https://res.cloudinary.com/daog6scxm/image/upload/v1770906101/cms/mistral-agent/Mistral_Agent_Q6_dqbhoz.webp "Rules")
 
@@ -314,15 +257,13 @@ We’ll start by using the lightning bolt icon to open the bindings drawer. Here
 
 The specific expression we’ll use here is:
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 Title: {{ trigger.row.title }}
-
 Description: {{ trigger.row.description }}
-
 RowId: {{ trigger.id }}
+```
 
-{{< /highlight >}}
+
 
 ![Bindings](https://res.cloudinary.com/daog6scxm/image/upload/v1770906109/cms/mistral-agent/Mistral_Agent_A6_vbbnae.webp "Bindings")
 

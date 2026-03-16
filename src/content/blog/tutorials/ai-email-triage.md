@@ -160,12 +160,11 @@ We’ll start by giving our Agent context for what we want to achieve and defini
 
 So, the start of our prompt will be:
 
-````
+```
 You are an email triage classifier.
 You will be given From, Subject, and Body. You will also be given a unique id for the corresponding row in the Emails table. Your task is to assign one Category, one Priority, and one Agent Rationale using the rules below.
 Only use the allowed values. Do not invent new labels.
 ```
-````
 
 Here’s what this looks like in the instructions editor.
 
@@ -173,7 +172,7 @@ Here’s what this looks like in the instructions editor.
 
 We then need to add the logic for determining which Priority and Category to assign the Email. To do this, we’ll add the following to our existing instructions:
 
-{{< highlight plaintext "linenos=inline" >}}
+```
 Allowed Category values (one word):
 Billing, Support, Sales, Legal, Security, General
 Category logic:
@@ -183,7 +182,6 @@ Sales → pricing requests, demos, trials, buying intent
 Legal → contracts, renewals, legal terms, compliance
 Security → fraud, suspicious activity, breaches, account risk
 General → anything else
-
 Allowed Priority values:
 Urgent, High, Normal, Low
 Priority logic:
@@ -197,11 +195,9 @@ If unsure → Category = General and Priority = Normal
 Rationale rules:
 Include a short, factual explanation (1–2 sentences max)
 Reference concrete signals (keywords, tone, impact)
-Do not restate the email verbatim
-
-Allowed Priority values:
+Do not restate the email verbatimAllowed Rationale values:
 Brief explanation of why this category and priority were chosen.
-{{< /highlight >}}
+```
 
 ![Prompt](https://res.cloudinary.com/daog6scxm/image/upload/v1770830895/cms/ai-email-triage/Email_Triage_Agent_A2_qaf06u.webp "Prompt")
 
@@ -209,17 +205,15 @@ Lastly, we need to outline which tool it can use to actually update our target r
 
 We’ll add the following to our existing prompt to configure our Agent to update the relevant `Emails` row.
 
-{{< highlight plaintext "linenos=inline" >}}
+```
 Output format (JSON only):
 {
   "category": "Billing|Support|Sales|Legal|Security|General",
   "priority": "Urgent|High|Normal|Low",
   "rationale": "Brief explanation of why this category and priority were chosen."
 }
-
 Use this information to update the Category, Agent Rationale, and Priority fields of the relevant row in the Emails table based on its _id, using {{ budibase.Emails.get_row }}{{ budibase.Emails.update_row }}
-
-{{< /highlight >}}
+```
 
 ![Tool Calls](https://res.cloudinary.com/daog6scxm/image/upload/v1770830895/cms/ai-email-triage/Email_Triage_Agent_A3_vfvfa1.webp "Tool Calls")
 

@@ -134,57 +134,32 @@ Most of our API endpoints will provide the data we want in the format we need. H
 
 To convert this into natural language, we’re adding the following JavaScript under the `Transformer` section of this endpoint.
 
-{{< highlight javascript "linenos=inline" >}}
-
+```javascript
 function b64decode(str) {
-
  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-
  let out = "", buffer = 0, bits = 0;
-
  str = (str || "").replace(/\n/g, "");
-
  for (let i = 0; i < str.length; i++) {
-
   const c = str[i];
-
   if (c === "=") break;
-
   const val = chars.indexOf(c);
-
   if (val < 0) continue;
-
   buffer = (buffer << 6) | val;
-
   bits += 6;
-
   if (bits >= 8) {
-
    bits -= 8;
-
    out += String.fromCharCode((buffer >> bits) & 0xff);
-
   }
-
  }
-
  return out;
-
 }
-
 return {
-
  html_url: data.html_url,
-
  path: data.path,
-
  name: data.name,
-
  decoded_content: b64decode(data.content)
-
 };
-
-{{< /highlight >}}
+```
 
 ![JavaScript](https://res.cloudinary.com/daog6scxm/image/upload/v1772036858/cms/agentic-issue-resolution/AI_Issue_Resolution_9.1_vcgdex.webp "JavaScript")
 
@@ -202,10 +177,8 @@ To make it easier to understand how our Agent works, we’ll provide our instruc
 
 To do this, we’ll use:
 
-{{< highlight plaintext "linenos=inline" >}}
-
-**Agent role** 
-
+```tex
+**Agent role**
 You are an IT support resolution agent. Your responsibility is to evaluate incoming user requests and choose exactly one appropriate action: initiate an Okta password reset, return a knowledge base document link from the GitHub repository, or create a GitHub issue when self-service is not appropriate.
 
 **Inputs** 
@@ -221,15 +194,15 @@ The agent receives:
 \- Access to the GitHub API 
 
 \- Access to the knowledge base repository (GitHub) 
+```
 
-{{< /highlight >}}
+
 
 ![Instructions](https://res.cloudinary.com/daog6scxm/image/upload/v1772036858/cms/agentic-issue-resolution/AI_Issue_Resolution_12_lt1us4.webp "Instructions")
 
 We’ll then add our three-step logic to action an Okta password reset, return the relevant documentation, or create a GitHub issue, including outlining the default values that need to be overwritten, and the formatting rules the Agent must apply to these.
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 **Actions** 
 
 \- Assess the user request to determine intent.
@@ -269,15 +242,13 @@ We’ll then add our three-step logic to action an Okta password reset, return t
 \- Create an issue using {{ api.github.issues/create }} with a relevant Title and Description.
 
 \- Never perform multiple actions.
-
-{{< /highlight >}}
+```
 
 ![Outputs](https://res.cloudinary.com/daog6scxm/image/upload/v1772036858/cms/agentic-issue-resolution/AI_Issue_Resolution_13_vygggh.webp "Outputs")
 
 And lastly, we’ll add instructions for our required output, along with any additional rules we require.
 
-{{< highlight plaintext "linenos=inline" >}}
-
+```
 **Output** 
 
 Responses must be short, mechanical, and contain no extra commentary.
@@ -315,8 +286,7 @@ Support issue created. The team will assist you. Issue URL
 \- Prefer escalation over incorrect automation 
 
 \- Never combine actions 
-
-{{< /highlight >}}
+```
 
 We can then use the chat preview to confirm that this behaves as expected, and iterate over our workflow where necessary.
 
