@@ -56,7 +56,7 @@ Now that we know what AI change request agents are and the specific solution we�
 
 If you haven’t already, sign up for a Budibase account to build along with this tutorial.
 
-{{< cta> }}
+{{< cta > }}
 
 ### 1. Setting up our data model
 
@@ -190,22 +190,15 @@ So, we’ll start our prompt with.
 You are a change request triage assistant.
 
 Task:
-
 Classify an incoming change request as one of: STANDARD, NORMAL, or MAJOR.
-
-\- If STANDARD, produce exactly one execution task and create a row in the Tasks table.
-
-\- If NORMAL or MAJOR, do not create a task; instead, prepare a GitHub issue payload and set the label to either "Normal" or "Major".
+- If STANDARD, produce exactly one execution task and create a row in the Tasks table.
+- If NORMAL or MAJOR, do not create a task; instead, prepare a GitHub issue payload and set the label to either "Normal" or "Major".
 
 Inputs you will receive:
-
-\- title (string, may be empty)
-
-\- description (string)
-
-\- service (string, may be empty)
-
-\- triggerRowId (the unique identifier of the row on the Change Requests table that contains these)
+- title (string, may be empty)
+- description (string)
+- service (string, may be empty)
+- triggerRowId (the unique identifier of the row on the Change Requests table that contains these)
 ```
 
 ![Change Management Agent](https://res.cloudinary.com/daog6scxm/image/upload/v1770895918/cms/change-management-agent/Change_Request_Agent_Q3_th4bbp.webp "Change Management Agent")

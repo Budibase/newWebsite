@@ -196,7 +196,7 @@ Rationale rules:
 Include a short, factual explanation (1–2 sentences max)
 Reference concrete signals (keywords, tone, impact)
 Do not restate the email verbatimAllowed Rationale values:
-Brief explanation of why this category and priority were chosen.
+Brief explanation of why this category and priority were chosen. 
 ```
 
 ![Prompt](https://res.cloudinary.com/daog6scxm/image/upload/v1770830895/cms/ai-email-triage/Email_Triage_Agent_A2_qaf06u.webp "Prompt")
