@@ -154,7 +154,7 @@ Then, we can select this from the `Model` dropdown in Agent editor.
 
 ![Model](https://res.cloudinary.com/daog6scxm/image/upload/v1770830895/cms/ai-email-triage/Email_Triage_Agent_3_jjyhep.webp "Model")
 
-Now, we can start to configure Agent behavior in natural language using the `Instructions` field. 
+Now, we can start to configure Agent behavior in natural language using the `Instructions` field.  
 
 We’ll start by giving our Agent context for what we want to achieve and defining the variables it will need to handle.
 
