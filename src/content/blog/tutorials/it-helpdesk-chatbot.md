@@ -1,6 +1,6 @@
 ---
 author: "Ronan McQuillan"
-date: 2026-03-11
+publishDate: "2026-03-11"
 description: "Learn how to build an IT helpdesk chatbot with Budibase."
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 title: "How to Build an IT Helpdesk Chatbot in 6 Steps"

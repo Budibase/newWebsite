@@ -1,6 +1,6 @@
 ---
 author: "Ronan McQuillan"
-date: 2026-03-12
+publishDate: "2026-03-12"
 description: "Learn how to build a custom AI agent to triage incoming emails."
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 title: "How to Build an AI Email Triage Agent in 4 Steps"

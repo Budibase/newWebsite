@@ -1,6 +1,6 @@
 ---
 author: "Ronan McQuillan"
-date: 2026-03-10
+publishDate: "2026-03-10"
 description: "Learn how to build a custom Budibase Agents with Mistral models."
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 title: "Build an AI Agent with Budibase & Mistral in 4 Steps"
