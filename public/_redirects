@@ -48,3 +48,14 @@
 /blog/data /blog/category/data/ 301
 /customers/reworld /blog/reworld/ 301
 /eula /terms/ 301
+/integrations/*  /product/connections/  301
+/host-a-web-app /product/apps/ 301
+/blog/automation/page/2/ /blog/category/automation/2/ 301
+/it/ / 301
+/)web / 301
+/blog/app- / 301
+/it/index.xml / 301
+/IT/templates / 301
+/budibase.com / 301
+/blog/web-applicationdevelopment/ /blog/web-application-development/ 301
+/customers/covanta /customers/ 301
