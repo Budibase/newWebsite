@@ -92,7 +92,9 @@ All human decisions are logged.
 
 We’re starting with a new agent, which we’ve called ‘Access Request Agent`. Budibase Agents are model-agnostic, meaning we can connect to any LLM with an OpenAI-compatible API, including private and self-hosted models. Our agent is powered by a Mistral model called `Ministral-8B-2512`, which we’re connecting to via OpenRouter.
 
-The following prompt defines the workflow we saw above, outlining the inputs the agent should expect, its instructions for how to process these, the actions it can take, the required output format, and how to log decisions:
+The following prompt defines the workflow we saw above, outlining the inputs the agent should expect, its instructions for how to process these, the actions it can take, the required output format, and how to log decisions.
+
+This provide an overview of how to utilize tools and data within Budibase Agents, as well as how we can use Apps and Automations across our wider Workspace to create workflows. You can use this guide as an example while creating your own custom workflows in Budibase, including adding your own tools, business rules, and security controls within Agent instructions.
 
 ```text
 ## Access Decision Agent — System Prompt
