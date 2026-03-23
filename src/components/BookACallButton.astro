@@ -1,0 +1,86 @@
+---
+import Icon from "@components/Icon.astro";
+import {
+  getButtonClasses,
+  getButtonIconSize,
+  getButtonRel,
+} from "../lib/button-classes.js";
+
+// Reusable Button component
+// Props:
+// - label: string (required)
+// - url?: string (if provided, renders an anchor)
+// - variant?: 'primary' | 'secondary' | 'cta' | 'large' (defaults to 'primary')
+// - type?: 'button' | 'submit' | 'reset' (button only)
+// - class?: string (additional classes)
+// - size?: 'small' | 'medium' | 'large' (defaults to 'medium')
+// - icon?: string (optional icon name to display before the label)
+// - iconSize?: string (optional icon size in pixels, overrides default size-based calculation)
+
+type Variant = "primary" | "secondary" | "cta" | "large";
+type Size = "small" | "medium" | "large" | "sm";
+
+interface Props {
+  label: string;
+  url?: string;
+  variant?: Variant;
+  type?: "button" | "submit" | "reset";
+  class?: string;
+  ariaLabel?: string;
+  size?: Size;
+  icon?: string;
+  iconSize?: string;
+  target?: string;
+  rel?: string;
+}
+
+const {
+  label,
+  url,
+  variant = "primary",
+  type = "button",
+  class: className = "",
+  ariaLabel,
+  size = "medium",
+  icon,
+  iconSize: providedIconSize,
+  target,
+  rel,
+} = Astro.props as Props;
+const iconSize = icon ? (providedIconSize ?? getButtonIconSize(size)) : undefined;
+const classes = getButtonClasses({ variant, size, className });
+const computedRel = getButtonRel({ target, rel });
+---
+
+  <!-- Cal element-click embed code begins -->
+  <script type="text/javascript">
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "contact-sales", {origin:"https://app.cal.com"});
+
+  Cal.ns["contact-sales"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+  </script>
+  <!-- Cal element-click embed code ends -->
+
+{
+  url ? (
+    <a
+      href={url}
+      class={classes}
+      aria-label={ariaLabel}
+      role="button"
+      target={target}
+      rel={computedRel}
+      data-cal-link="team/budibase/contact-sales"
+              data-cal-namespace="contact-sales"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+    >
+      {icon && iconSize && <Icon name={icon} size={iconSize} />}
+      {label}
+    </a>
+  ) : (
+    <button type={type} class={classes} aria-label={ariaLabel}>
+      {icon && iconSize && <Icon name={icon} size={iconSize} />}
+      {label}
+    </button>
+  )
+}
