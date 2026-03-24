@@ -4,7 +4,10 @@ import { format } from 'date-fns';
 import { resolveImageReference } from "../lib/imageReference";
 
 const { frontmatter, enableTransitions = false, transitionKey = '' } = Astro.props;
-const publishDate = frontmatter.publishDate;
+const publishDate = frontmatter.publishDate instanceof Date
+  ? frontmatter.publishDate
+  : undefined;
+const publishDateIso = publishDate?.toISOString();
 const seoImageSrc =
   resolveImageReference(frontmatter.socialImage) ??
   resolveImageReference(frontmatter.coverImage);
@@ -20,8 +23,6 @@ const blogSchema = {
   "@type": "BlogPosting",
   headline: frontmatter.title,
   url: canonicalUrl,
-  datePublished: publishDate.toISOString(),
-  dateModified: publishDate.toISOString(),
   license: "This work is licensed and owned by Budibase",
   description: frontmatter.description,
   mainEntityOfPage: {
@@ -45,6 +46,11 @@ const blogSchema = {
   },
 };
 
+if (publishDateIso) {
+  blogSchema.datePublished = publishDateIso;
+  blogSchema.dateModified = publishDateIso;
+}
+
 ---
 
 <Layout
@@ -61,7 +67,7 @@ const blogSchema = {
     </h1>
     <div class="post-meta" transition:name={`${transitionKey}-meta`}>
       {publishDate && (
-        <time datetime={publishDate.toISOString()}>
+        <time datetime={publishDateIso}>
           {format(publishDate, 'MMM d, yyyy')}
         </time>
       )}
