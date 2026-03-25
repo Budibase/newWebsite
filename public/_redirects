@@ -59,8 +59,8 @@
 /budibase.com / 301
 /blog/web-applicationdevelopment/ /blog/web-application-development/ 301
 /customers/covanta /customers/ 301
-/blog/updates/page/:page  /changelog/  301
-/blog/updates/        /blog/changelog/        301
+/blog/updates/page/:number  /changelog/  301
+/blog/updates/        /changelog/        301
 /blog/:category/page/:number /blog/category/:category/:number 301
 /blog/page/:page            /blog/:page                    301
 /blog/ai-agents/      /blog/category/ai-agents/      301
