@@ -59,4 +59,15 @@
 /budibase.com / 301
 /blog/web-applicationdevelopment/ /blog/web-application-development/ 301
 /customers/covanta /customers/ 301
-/blog/:category/page/:page   /blog/category/:category/:page   301
+/blog/updates/page/:page  /changelog/  301
+/blog/updates/        /blog/changelog/        301
+/blog/:category/page/:number /blog/category/:category/:number 301
+/blog/page/:page            /blog/:page                    301
+/blog/ai-agents/      /blog/category/ai-agents/      301
+/blog/automation/     /blog/category/automation/     301
+/blog/alternatives/   /blog/category/alternatives/   301
+/blog/inside-it/      /blog/category/inside-it/      301
+/blog/app-building/   /blog/category/app-building/   301
+/blog/data/           /blog/category/data/           301
+/blog/tutorials/      /blog/category/tutorials/      301
+/customers/:page/     /blog/:page 301
