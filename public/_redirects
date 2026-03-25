@@ -59,3 +59,4 @@
 /budibase.com / 301
 /blog/web-applicationdevelopment/ /blog/web-application-development/ 301
 /customers/covanta /customers/ 301
+/blog/:category/page/:page   /blog/category/:category/:page   301
