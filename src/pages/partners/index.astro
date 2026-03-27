@@ -1,0 +1,386 @@
+---
+import BookACallButton from "../../components/BookACallButton.astro";
+import Layout from "../../layouts/MainLayout.astro";
+
+const pageTitle = "Contact us";
+const pageDescription = "Let's explore how Budibase can work for you.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <section class="contact-page">
+    <div class="contact-shell">
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <h1 class="contact-title">Become a partner</h1>
+          <p class="contact-lede">
+            Join our growing ecosystem of developers and agencies.
+          </p>
+          <p class="contact-lede">
+           As a Budibase partner, you'll connect with clients who need your expertise to build their workflows in Budibase.
+          </p>
+
+
+
+          <div class="contact-topics" aria-label="Reasons to speak to sales">
+            <article class="contact-topic">
+              <div class="contact-topic__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                    width="26" 
+                    height="26" 
+                    fill="none" 
+                    focusable="false" 
+                    viewBox="0 0 256 256">
+                    <path 
+                      stroke="currentColor"
+                      stroke-width="1.8" 
+                      stroke-linecap="round"
+                      fill="currentColor"
+                      d="M247.31,124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57,61.26,162.88,48,128,48S61.43,61.26,36.34,86.35C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208s66.57-13.26,91.66-38.34c18.83-18.83,27.3-37.61,27.65-38.4A8,8,0,0,0,247.31,124.76ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.47,133.47,0,0,1,25,128,133.33,133.33,0,0,1,48.07,97.25C70.33,75.19,97.22,64,128,64s57.67,11.19,79.93,33.25A133.46,133.46,0,0,1,231.05,128C223.84,141.46,192.43,192,128,192Zm0-112a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z"></path>
+                </svg>
+
+              </div>
+              <div class="contact-topic__body">
+                <h2>Insider Track</h2>
+                <p>
+                  Get priority access to new platform features and exclusive resources.
+                </p>
+              </div>
+            </article>
+
+            <article class="contact-topic">
+              <div class="contact-topic__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                    width="26" 
+                    height="26" 
+                    fill="none" 
+                    focusable="false" 
+                    viewBox="0 0 256 256">
+                    <path 
+                      stroke="currentColor"
+                      stroke-width="1.8" 
+                      stroke-linecap="round"
+                      fill="currentColor"
+                      d="M240,56v64a8,8,0,0,1-16,0V75.31l-82.34,82.35a8,8,0,0,1-11.32,0L96,123.31,29.66,189.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0L136,140.69,212.69,64H168a8,8,0,0,1,0-16h64A8,8,0,0,1,240,56Z"></path>
+                </svg>
+              </div>
+              <div class="contact-topic__body">
+                <h2>Grow with us</h2>
+                <p>
+                  Grow your business with co-marketing opportunities and revenue sharing.
+                </p>
+              </div>
+            </article>
+
+            <article class="contact-topic">
+              <div class="contact-topic__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                    width="26" 
+                    height="26" 
+                    fill="none" 
+                    focusable="false" 
+                    viewBox="0 0 256 256">
+                    <path 
+                      stroke="currentColor"
+                      stroke-width="1.8" 
+                      stroke-linecap="round"
+                      fill="currentColor"
+                      d="M201.89,54.66A103.43,103.43,0,0,0,128.79,24H128A104,104,0,0,0,24,128v56a24,24,0,0,0,24,24H64a24,24,0,0,0,24-24V144a24,24,0,0,0-24-24H40.36A88.12,88.12,0,0,1,190.54,65.93,87.39,87.39,0,0,1,215.65,120H192a24,24,0,0,0-24,24v40a24,24,0,0,0,24,24h24a24,24,0,0,1-24,24H136a8,8,0,0,0,0,16h56a40,40,0,0,0,40-40V128A103.41,103.41,0,0,0,201.89,54.66ZM64,136a8,8,0,0,1,8,8v40a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V136Zm128,56a8,8,0,0,1-8-8V144a8,8,0,0,1,8-8h24v56Z"></path>
+                </svg>
+              </div>
+              <div class="contact-topic__body">
+                <h2>Priority Support</h2>
+                <p>
+                  We treat you like one of our own, with access to our support and product team.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <p class="contact-support">
+            Looking for support?
+            <a href="/support">Visit our support policy</a>
+            or
+            <a href="https://docs.budibase.com">open the docs</a>
+          </p>
+        </div>
+
+        <div class="contact-form-column">
+          <form
+            class="contact-form"
+            name="partners"
+            method="post"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+            <p class="contact-form__honeypot">
+              <label>
+                Don't fill this out if you're human:
+                <input name="bot-field" type="text" tabindex="-1" />
+              </label>
+            </p>
+
+            <label class="contact-field">
+              <span>Name</span>
+              <input type="text" name="name" autocomplete="name" />
+            </label>
+
+            <label class="contact-field">
+              <span>Email Address</span>
+              <input type="email" name="email" autocomplete="email" />
+            </label>
+
+            <label class="contact-field">
+              <span>Company Name</span>
+              <input
+                type="text"
+                name="company_name"
+                autocomplete="organization"
+              />
+            </label>
+
+            <label class="contact-field">
+              <span>Additional Information</span>
+              <textarea name="message"></textarea>
+            </label>
+
+            <button type="submit" class="contact-submit">Submit</button>
+          </form>  
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-page {
+    background: rgb(var(--bg));
+    color: rgb(var(--text));
+  }
+
+  .contact-shell {
+    width: min(100%, 1240px);
+    margin: 0 auto;
+    padding: clamp(2rem, 3vw, 2.75rem) 1rem clamp(3.5rem, 6vw, 5rem);
+  }
+
+  .contact-grid {
+    display: grid;
+    gap: clamp(2.75rem, 5vw, 6rem);
+    align-items: start;
+  }
+
+  .contact-title {
+    margin: 0;
+    color: rgb(var(--text));
+    font-size: clamp(3.5rem, 7vw, 4.6rem);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+  }
+
+  .contact-lede {
+    margin: 1.75rem 0 0;
+    max-width: 28rem;
+    color: rgb(var(--text));
+    font-size: clamp(1.25rem, 2vw, 1.45rem);
+    line-height: 1.35;
+  }
+
+  .contact-topics {
+    margin-top: 2.25rem;
+    border: 1px solid rgb(var(--border) / 0.4);
+    border-radius: 1rem;
+    background: rgb(var(--surface) / 0.52);
+    overflow: hidden;
+  }
+
+  .contact-topic {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    padding: 1.7rem 1.65rem;
+  }
+
+  .contact-topic + .contact-topic {
+    border-top: 1px solid rgb(var(--border) / 0.22);
+  }
+
+  .contact-topic__icon {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    color: rgb(var(--text));
+  }
+
+  .contact-topic__icon svg {
+    width: 1.95rem;
+    height: 1.95rem;
+  }
+
+  .contact-topic__body h2 {
+    margin: 0;
+    color: rgb(var(--text));
+    font-size: clamp(1.05rem, 1.5vw, 1.15rem);
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .contact-topic__body p {
+    margin: 0.6rem 0 0;
+    max-width: 31rem;
+    color: rgb(var(--text));
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .contact-support {
+    margin: 1.5rem 0 0;
+    color: rgb(var(--text));
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    line-height: 1.5;
+  }
+
+  .contact-support a {
+    color: inherit;
+    font-weight: 700;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.12em;
+  }
+
+  .contact-support a:hover,
+  .contact-support a:focus-visible {
+    text-decoration-thickness: 2px;
+  }
+
+  .contact-form-column {
+    padding-top: 0.35rem;
+  }
+
+  .contact-field input:focus-visible,
+  .contact-field textarea:focus-visible,
+  .contact-submit:focus-visible {
+    outline: 2px solid rgb(var(--ring));
+    outline-offset: 3px;
+  }
+
+  .contact-form {
+    margin-top: 0;
+  }
+
+  .contact-form__honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .contact-field {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0;
+  }
+
+  .contact-field + .contact-field {
+    margin-top: 1.55rem;
+  }
+
+  .contact-field span {
+    color: rgb(var(--text));
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .contact-field input,
+  .contact-field textarea {
+    width: 100%;
+    border: 1px solid rgb(var(--border) / 0.92);
+    border-radius: 0.55rem;
+    background: transparent;
+    color: rgb(var(--text));
+    font: inherit;
+    transition:
+      border-color 150ms ease,
+      box-shadow 150ms ease,
+      background-color 150ms ease;
+  }
+
+  .contact-field input {
+    min-height: 3.1rem;
+    padding: 0 0.95rem;
+  }
+
+  .contact-field textarea {
+    min-height: 10.6rem;
+    resize: vertical;
+    padding: 0.9rem 0.95rem;
+  }
+
+  .contact-field input:hover,
+  .contact-field textarea:hover {
+    border-color: rgb(var(--border-strong) / 0.9);
+  }
+
+  .contact-field input::placeholder,
+  .contact-field textarea::placeholder {
+    color: rgb(var(--text-subtle));
+  }
+
+  .contact-submit {
+    margin-top: 2.2rem;
+    border: 0;
+    border-radius: 999px;
+    background: rgb(var(--text));
+    color: rgb(var(--bg));
+    min-height: 3.35rem;
+    padding: 0 1.45rem;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      transform 150ms ease,
+      opacity 150ms ease;
+  }
+
+  .contact-submit:hover {
+    transform: translateY(-1px);
+    opacity: 0.94;
+  }
+
+  @media (min-width: 1024px) {
+    .contact-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    }
+
+    .contact-form-column {
+      padding-top: 0.9rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .contact-shell {
+      padding-left: 0.9rem;
+      padding-right: 0.9rem;
+    }
+
+    .contact-title {
+      letter-spacing: -0.04em;
+    }
+
+    .contact-topic {
+      padding: 1.35rem 1.2rem;
+    }
+
+    .contact-form {
+      margin-top: 0;
+    }
+  }
+</style>
