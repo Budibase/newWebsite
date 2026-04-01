@@ -3,7 +3,7 @@ title: Logistic Properties of the Americas (LPA)
 quote: "Managing complexity at scale, without the overhead"
 industry: Logistics, Real Estate
 featured: true
-Employees: "11-50"
+employees: "11-50"
 order: 5
 ---
 
