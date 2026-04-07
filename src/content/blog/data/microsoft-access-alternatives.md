@@ -116,6 +116,7 @@ Here's a summary of what each one offers.
     overflow-x: auto;
     margin: 2rem 0;
   }
+
   .comparison-table {
     width: 100%;
     min-width: 980px;
@@ -123,23 +124,25 @@ Here's a summary of what each one offers.
     border-spacing: 0;
     font-size: 0.9rem;
     background: #fff;
-    border: 1px solid #e7e0d8;
+    border: 1px solid #ece8e1;
     border-radius: 14px;
     overflow: hidden;
   }
+
   .comparison-table th,
   .comparison-table td {
     padding: 0.85rem 0.75rem;
-    border-bottom: 1px solid #e7e0d8;
+    border-bottom: 1px solid #ece8e1;
     text-align: center;
     vertical-align: middle;
   }
 
   .comparison-table th {
-    background: #c8aff0;
-    color: #1f1235;
+    background: #faf9f6;
+    color: #2b2723;
     font-weight: 700;
     line-height: 1.25;
+    border-bottom: 1px solid #e3ddd5;
   }
 
   .comparison-table th:first-child,
@@ -152,21 +155,21 @@ Here's a summary of what each one offers.
   }
 
   .comparison-table th:first-child {
-    background: #c8aff0;
+    background: #faf9f6;
     z-index: 2;
   }
 
   .comparison-table td:first-child {
-    background: #f7f5f2;
+    background: #fff;
     color: #181512;
   }
 
   .comparison-table tr:nth-child(even) td {
-    background: #fbfaf8;
+    background: #fcfbf9;
   }
 
   .comparison-table tr:nth-child(even) td:first-child {
-    background: #fbfaf8;
+    background: #fcfbf9;
   }
 
   .comparison-table tr:last-child td {
