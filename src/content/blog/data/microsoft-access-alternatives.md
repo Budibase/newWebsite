@@ -110,7 +110,324 @@ With that in mind, here are eight of our favorite Microsoft Access alternatives 
 
 Here's a summary of what each one offers.
 
-||||||||||
+
+
+<div class="mb-4 mt-4 container-fw flex-row-md justify-center-xl" style="width:100% !important; table-layout:fixed !important;">
+        <div class='alt-container'>
+            <table class='alt-table no-scrollbar mx-auto' style="width:100% !important; table-layout:fixed !important; border-collapse: separate; border-spacing: 0;" >
+                <thead style="background-color: #c8aff0;">
+                    <tr>
+                        <th></th>
+                        <th style="text-align: center;">                                
+                            <div class="flex-row align-center" style="justify-content: center;">
+                                <div>
+                                    <p style="text-align: center;">Internal Database</p>
+                                </div>
+                            </div>
+                        </th>
+                        <th class='' style="text-align: center;">
+                            <div class="flex-row align-center" style="justify-content: center;">
+                                <div>
+                                    <p style="text-align: center;">SQL Connectors</p>
+                                </div>
+                            </div>
+                        </th>
+                        <th style="text-align: center;">
+                            <div class="flex-row align-center" style="justify-content: center;">
+                                <div>
+                                    <p style="text-align: center;">NoSQL Connectors</p>
+                                </div>
+                            </div>
+                        </th>
+                        <th style="text-align: center;">
+                            <div class="flex-row align-center" style="justify-content: center;">
+                                <div>
+                                    <p style="text-align: center;">REST Data Sources</p>
+                                </div>
+                            </div>
+                        </th>
+                        <th class='' style="text-align: center;">
+                            <div class="flex-row align-center " style="justify-content: center;">
+                                <div>
+                                    <p style="text-align: center;">App Builder</p>
+                                </div>
+                            </div>
+                        </th>
+                        <th style="text-align: center;">
+                            <div class="flex-row align-center" style="justify-content: center;">
+                                <div>
+                                    <p style="text-align: center;">Workflow Automations</p>
+                                </div>
+                            </div>
+                        </th>
+                        <th style="text-align: center;">
+                            <div class="flex-row align-center" style="justify-content: center;">
+                                <div>
+                                    <p style="text-align: center;">Cloud Platform</p>
+                                </div>
+                            </div>
+                        </th>
+                        <th class='' style="text-align: center;">
+                            <div class="flex-row align-center " style="justify-content: center;">
+                                <div>
+                                    <p style="text-align: center;">Self-Hosting</p>
+                                </div>
+                            </div>
+                        </th>
+                        <th style="text-align: center;">
+                            <div class="flex-row align-center" style="justify-content: center;">
+                                <div>
+                                    <p style="text-align: center;">Open-Source</p>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class='' style="background-color: #f7f5f2;">
+                        <td class='text-xs' data-title=''>
+                            <div class="flex-row align-center">
+                                <div>
+                                    <img src="https://res.cloudinary.com/daog6scxm/image/upload/v1736501803/cms/microsoft-access-alternatives/Access_Logo_gsrrlu.webp" class="u-xxs-avatar mr-1" />
+                                </div>
+                                <p class="alt-header font-weight-medium">Access</p>
+                            </div>
+                        </td>
+                        <td class='text-xs' data-title='Internal Database'><span class="tag-forestgreen">Yes</span></td>
+                        <td class='text-xs' data-title='SQL Connectors'><span class="tag-forestgreen">Yes</span></td>
+                        <td class='text-xs' data-title='NoSQL Connectors'><span class="tag-forestgreen">Yes</span></td>
+                        <td class='text-xs' data-title='REST Data Sources'><span class="tag-dark">No</span></td>
+                        <td class='text-xs' data-title='App Builder'><span class="tag-forestgreen">Yes</span></td>
+                        <td class='text-xs' data-title='Workflow Automations'><span class="tag-dark">No</span></td>
+                        <td class='text-xs' data-title='Cloud Platform'><span class="tag-dark">No</span></td>
+                        <td class='text-xs' data-title='Self-Hosting'><span class="tag-dark">No</span></td>
+                        <td class='text-xs' data-title='Open-Source'><span class="tag-dark">No</span></td>
+                    </tr>
+
+​                    <tr class='' style="background-color: #f7f5f2;">
+​                        <td class='text-xs' data-title=''>
+                            <div class="flex-row align-center">
+                                <div>
+                                    <img src="https://res.cloudinary.com/daog6scxm/image/upload/v1696515725/Branding/Assets/Symbol/RGB/Full%20Colour/Budibase_Symbol_RGB_FullColour_cbqvha_1_z5cwq2.svg" class="u-xxs-avatar mr-2" />
+                                </div>
+                                <p class="alt-header font-weight-medium">Budibase</p>
+                            </div>
+​                        </td>
+​                        <td class='text-xs' data-title='Internal Database'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='SQL Connectors'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='NoSQL Connectors'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='REST Data Sources'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='App Builder'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Workflow Automations'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Cloud Platform'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Self-Hosting'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Open-Source'><span class="tag-forestgreen">Yes</span></td>
+​                    </tr>
+
+​                    <tr class='' style="background-color: #f7f5f2;">
+​                        <td class='text-xs' data-title=''>
+                            <div class="flex-row align-center">
+                                <div>
+                                    <img src="https://res.cloudinary.com/daog6scxm/image/upload/v1736501802/cms/microsoft-access-alternatives/OpenOffice_Base_Logo_abhneu.webp" class="u-xxs-avatar mr-1"/>
+                                </div>
+                                <p class="alt-header font-weight-medium">OpenOffice</p>
+                            </div>
+​                        </td>
+​                        <td class='text-xs' data-title='Internal Database'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='SQL Connectors'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='NoSQL Connectors'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='REST Data Sources'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='App Builder'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Workflow Automations'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Cloud Platform'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Self-Hosting'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Open-Source'><span class="tag-forestgreen">Yes</span></td>
+​                    </tr>
+​                    <tr class='' style="background-color: #f7f5f2;">
+​                        <td class='text-xs' data-title=''>
+                            <div class="flex-row align-center ">
+                                <div>
+                                    <img src="https://res.cloudinary.com/daog6scxm/image/upload/v1736501802/cms/microsoft-access-alternatives/LibreBase_Logo_ena1ah.webp" class="u-xxs-avatar mr-2"/>
+                                </div>
+                                <p class="alt-header font-weight-medium">LibreOffice</p>
+                            </div>
+​                        </td>
+​                        <td class='text-xs' data-title='Internal Database'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='SQL Connectors'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='NoSQL Connectors'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='REST Data Sources'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='App Builder'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Workflow Automations'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Cloud Platform'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Self-Hosting'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Open-Source'><span class="tag-forestgreen">Yes</span></td>
+​                    </tr>
+
+​                    <tr class='' style="background-color: #f7f5f2;">
+​                        <td class='text-xs' data-title=''>
+                            <div class="flex-row align-center ">
+                                <div>
+                                    <img src="https://res.cloudinary.com/daog6scxm/image/upload/v1736503809/cms/microsoft-access-alternatives/sqlite_logo_vvinfo.webp" class="u-xxs-avatar mr-2" />
+                                </div>
+                                <p class="alt-header font-weight-medium">SQLite</p>
+                            </div>
+​                        </td>
+​                        <td class='text-xs' data-title='Internal Database'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='SQL Connectors'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='NoSQL Connectors'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='REST Data Sources'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='App Builder'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Workflow Automations'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Cloud Platform'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Self-Hosting'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Open-Source'><span class="tag-forestgreen">Yes</span></td>
+​                    </tr>
+
+​                    <tr class='' style="background-color: #f7f5f2;">
+​                        <td class='text-xs' data-title=''>
+                            <div class="flex-row align-center">
+                                <div>
+                                    <img src="https://res.cloudinary.com/daog6scxm/image/upload/v1736501802/cms/microsoft-access-alternatives/NeonDB_logo_ovzsat.webp" class="u-xxs-avatar mr-1"/>
+                                </div>
+                                <p class="alt-header font-weight-medium">NeonDB</p>
+                            </div>
+​                        </td>
+​                        <td class='text-xs' data-title='Internal Database'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='SQL Connectors'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='NoSQL Connectors'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='REST Data Sources'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='App Builder'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Workflow Automations'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Cloud Platform'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Self-Hosting'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Open-Source'><span class="tag-forestgreen">Yes</span></td>
+​                    </tr>
+
+​                    <tr class='' style="background-color: #f7f5f2;">
+​                        <td class='text-xs' data-title=''>
+                            <div class="flex-row align-center">
+                                <div>
+                                    <img src="https://res.cloudinary.com/daog6scxm/image/upload/v1736504057/cms/microsoft-access-alternatives/MongoDB_Logo_enkyth.svg" class="u-xxs-avatar mr-1" />
+                                </div>
+                                <p class="alt-header font-weight-medium">MongoDB</p>
+                            </div>
+​                        </td>
+​                        <td class='text-xs' data-title='Internal Database'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='SQL Connectors'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='NoSQL Connectors'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='REST Data Sources'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='App Builder'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Workflow Automations'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Cloud Platform'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Self-Hosting'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Open-Source'><span class="tag-forestgreen">Yes</span></td>
+​                    </tr>
+
+​                    <tr class='' style="background-color: #f7f5f2;">
+​                        <td class='text-xs' data-title=''>
+                            <div class="flex-row align-center ">
+                                <div>
+                                    <img src="https://res.cloudinary.com/daog6scxm/image/upload/v1736501802/cms/microsoft-access-alternatives/Google_SheetsLogo_vaqvn6.webp" class="u-xxs-avatar mr-2"/>
+                                </div>
+                                <p class="alt-header font-weight-medium">Sheets</p>
+                            </div>
+​                        </td>
+​                        <td class='text-xs' data-title='Internal Database'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='SQL Connectors'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='NoSQL Connectors'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='REST Data Sources'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='App Builder'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Workflow Automations'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Cloud Platform'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Self-Hosting'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Open-Source'><span class="tag-dark">No</span></td>
+​                    </tr>
+
+​                    <tr class='' style="background-color: #f7f5f2;">
+​                        <td class='text-xs' data-title=''>
+                            <div class="flex-row align-center">
+                                <div>
+                                    <img src="https://res.cloudinary.com/daog6scxm/image/upload/v1736508042/cms/microsoft-access-alternatives/Airtable_Logo_ouj1sy.webp" class="u-xxs-avatar mr-2" />
+                                </div>
+                                <p class="alt-header font-weight-medium">Airtable</p>
+                            </div>
+​                        </td>
+​                        <td class='text-xs' data-title='Internal Database'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='SQL Connectors'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='NoSQL Connectors'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='REST Data Sources'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='App Builder'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Workflow Automations'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Cloud Platform'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Self-Hosting'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Open-Source'><span class="tag-dark">No</span></td>
+​                    </tr>
+
+​                    <tr class='' style="background-color: #f7f5f2;">
+​                        <td class='text-xs' data-title=''>
+                            <div class="flex-row align-center">
+                                <div>
+                                    <img src="https://res.cloudinary.com/daog6scxm/image/upload/v1755526141/cms/microsoft-access-alternatives/dbeaver_logo_svnoaz.webp" class="u-xxs-avatar mr-2" />
+                                </div>
+                                <p class="alt-header font-weight-medium">DBeaver</p>
+                            </div>
+​                        </td>
+​                        <td class='text-xs' data-title='Internal Database'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='SQL Connectors'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='NoSQL Connectors'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='REST Data Sources'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='App Builder'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Workflow Automations'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Cloud Platform'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Self-Hosting'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Open-Source'><span class="tag-forestgreen">Yes</span></td>
+​                    </tr>
+
+​                    <tr class='' style="background-color: #f7f5f2;">
+​                        <td class='text-xs' data-title=''>
+                            <div class="flex-row align-center">
+                                <div>
+                                    <img src="https://res.cloudinary.com/daog6scxm/image/upload/v1755526094/cms/microsoft-access-alternatives/NocoDB_Logo_d6ehjs.webp" class="u-xxs-avatar mr-2" />
+                                </div>
+                                <p class="alt-header font-weight-medium">NocoDB</p>
+                            </div>
+​                        </td>
+​                        <td class='text-xs' data-title='Internal Database'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='SQL Connectors'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='NoSQL Connectors'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='REST Data Sources'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='App Builder'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Workflow Automations'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Cloud Platform'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Self-Hosting'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Open-Source'><span class="tag-forestgreen">Yes</span></td>
+​                    </tr>
+
+​                    <tr class='' style="background-color: #f7f5f2;">
+​                        <td class='text-xs' data-title=''>
+                            <div class="flex-row align-center ">
+                                <div>
+                                    <img src="https://res.cloudinary.com/daog6scxm/image/upload/v1736501802/cms/microsoft-access-alternatives/SmartSheet_Logo_h1htf1.webp" class="u-xxs-avatar mr-2"/>
+                                </div>
+                                <p class="alt-header font-weight-medium">Smartsheet</p>
+                            </div>
+​                        </td>
+​                        <td class='text-xs' data-title='Internal Database'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='SQL Connectors'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='NoSQL Connectors'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='REST Data Sources'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='App Builder'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Workflow Automations'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Cloud Platform'><span class="tag-forestgreen">Yes</span></td>
+​                        <td class='text-xs' data-title='Self-Hosting'><span class="tag-dark">No</span></td>
+​                        <td class='text-xs' data-title='Open-Source'><span class="tag-dark">No</span></td>
+​                    </tr>
+​                </tbody>
+​            </table>
+​        </div>
+​    </div>
+
+
 
 Let's check them out in more detail.
 
