@@ -71,7 +71,234 @@ Our top picks are:
 - [Filemaker](#6-filemaker)
 - [Quickbase](#7-quickbase)
 
-||||||||||
+<style>
+  .comparison-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin: 2rem 0;
+  }
+
+  .comparison-table {
+    width: 100%;
+    min-width: 980px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.9rem;
+    background: #fff;
+    border: 1px solid #ece8e1;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.85rem 0.75rem;
+    border-bottom: 1px solid #ece8e1;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .comparison-table th {
+    background: #faf9f6;
+    color: #2b2723;
+    font-weight: 700;
+    line-height: 1.25;
+    border-bottom: 1px solid #e3ddd5;
+  }
+
+  .comparison-table th:first-child,
+  .comparison-table td:first-child {
+    text-align: left;
+    font-weight: 700;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+  }
+
+  .comparison-table th:first-child {
+    background: #faf9f6;
+    z-index: 2;
+  }
+
+  .comparison-table td:first-child {
+    background: #fff;
+    color: #181512;
+  }
+
+  .comparison-table tr:nth-child(even) td {
+    background: #fcfbf9;
+  }
+
+  .comparison-table tr:nth-child(even) td:first-child {
+    background: #fcfbf9;
+  }
+
+  .comparison-table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .comparison-table .yes,
+  .comparison-table .no,
+  .comparison-table .tag {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .comparison-table .yes,
+  .comparison-table .no {
+    min-width: 3rem;
+  }
+
+  .comparison-table .yes {
+    background: #e4f6ec;
+    color: #187645;
+  }
+
+  .comparison-table .no {
+    background: #ede9e3;
+    color: #4f4942;
+  }
+
+  .comparison-table .tag {
+    margin: 0.1rem;
+    background: #f2eef8;
+    color: #5b3f8c;
+  }
+</style>
+
+<div class="comparison-table-wrap">
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Airtable</th>
+        <th>Budibase</th>
+        <th>Smartsheet</th>
+        <th>NocoDB</th>
+        <th>Zoho Creator</th>
+        <th>AppSheet</th>
+        <th>Filemaker</th>
+        <th>Quickbase</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Pricing Model</td>
+        <td>Per user</td>
+        <td>Per creator +<br />per user</td>
+        <td>Per user</td>
+        <td>Platform fee +<br />per user</td>
+        <td>Per user</td>
+        <td>Per user</td>
+        <td>Per user</td>
+        <td>Per user</td>
+      </tr>
+      <tr>
+        <td>Custom data sources</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+      </tr>
+      <tr>
+        <td>Multiplayer mode</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+      </tr>
+      <tr>
+        <td>App builder</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>Automation builder</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>JavaScript editor</td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>Security certs</td>
+        <td><span class="tag">SOC 2</span> <span class="tag">ISO27001</span></td>
+        <td><span class="tag">ISO27001</span></td>
+        <td><span class="tag">SOC 2</span> <span class="tag">ISO27001</span></td>
+        <td>None</td>
+        <td><span class="tag">SOC 2</span> <span class="tag">ISO27001</span></td>
+        <td><span class="tag">SOC 2</span> <span class="tag">ISO27001</span></td>
+        <td><span class="tag">SOC 2</span> <span class="tag">ISO27001</span></td>
+        <td><span class="tag">SOC 2</span> <span class="tag">ISO27001</span></td>
+      </tr>
+      <tr>
+        <td>Custom AI Configs</td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+      </tr>
+      <tr>
+        <td>Automation Branching</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>Visual RBAC</td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 Let’s check each one out in turn.
 
@@ -352,10 +579,6 @@ Similarly, we’ve seen that all vendors restrict certain features to premium us
 
 So, in order to make an informed decision, it’s vital to be cognizant of where your firm requirements sit within each vendor’s pricing model - for instance, SSO, audit logging, self-hosting, supported data source, and more.
 
-Here’s an illustrative breakdown of how much each platform might cost based on different user volumes in a month:
-
-||||||||||
-
 ## Scale
 The other obvious thing to keep abreast of is the scale of what we intend to build with our chosen solution. 
 
@@ -376,18 +599,12 @@ NocoDB and AppSheet target users who want to continue using spreadsheets, but ad
 
 Finally, Budibase and Zoho Creator offer solutions that are more in line with the reality of most modern businesses’ data operations - seeking instead to offer fast, flexible experiences for building applications and workflows to enable colleagues to fully leverage existing data assets.
 
-||||||||||
-
 ## Open-source/source-available vs closed-source
 Open-source solutions are a priority for enterprises, public bodies, and other large, security-conscious organizations. This is especially true for platforms that will interact with mission-critical data.
 
 The rationale for this is quite simple. IT teams want to be able to access and audit the source code of any platforms that will interact with production databases, be stored on internal servers, or be used as part of core business processes.
 
 It’s difficult to achieve similar levels of transparency with closed-source products.
-
-Here’s a summary of how our Airtable alternatives break up in this regard:
-
-||||||||||
 
 ## Creator personas
 Lastly, we want to consider the kinds of colleagues that will ultimately be responsible for building solutions in whichever platform we choose.

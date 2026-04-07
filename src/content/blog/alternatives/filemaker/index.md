@@ -88,7 +88,233 @@ Our top picks for FileMaker alternatives are:
 
 Here’s a summary of what each one brings to the table.
 
-||||||||||
+<style>
+  .comparison-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin: 2rem 0;
+  }
+
+  .comparison-table {
+    width: 100%;
+    min-width: 1100px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.9rem;
+    background: #fff;
+    border: 1px solid #ece8e1;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.85rem 0.75rem;
+    border-bottom: 1px solid #ece8e1;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .comparison-table th {
+    background: #faf9f6;
+    color: #2b2723;
+    font-weight: 700;
+    line-height: 1.25;
+    border-bottom: 1px solid #e3ddd5;
+  }
+
+  .comparison-table th:first-child,
+  .comparison-table td:first-child {
+    text-align: left;
+    font-weight: 700;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+  }
+
+  .comparison-table th:first-child {
+    background: #faf9f6;
+    z-index: 2;
+  }
+
+  .comparison-table td:first-child {
+    background: #fff;
+    color: #181512;
+  }
+
+  .comparison-table tr:nth-child(even) td {
+    background: #fcfbf9;
+  }
+
+  .comparison-table tr:nth-child(even) td:first-child {
+    background: #fcfbf9;
+  }
+
+  .comparison-table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .comparison-table .yes,
+  .comparison-table .no,
+  .comparison-table .tag {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .comparison-table .yes,
+  .comparison-table .no {
+    min-width: 3rem;
+  }
+
+  .comparison-table .yes {
+    background: #e4f6ec;
+    color: #187645;
+  }
+
+  .comparison-table .no {
+    background: #ede9e3;
+    color: #4f4942;
+  }
+
+  .comparison-table .tag {
+    margin: 0.1rem;
+    background: #f2eef8;
+    color: #5b3f8c;
+  }
+</style>
+
+<div class="comparison-table-wrap">
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Filemaker</th>
+        <th>Budibase</th>
+        <th>Retool</th>
+        <th>Mendix</th>
+        <th>PowerApps</th>
+        <th>Appian</th>
+        <th>Outsystems</th>
+        <th>Airtable</th>
+        <th>Zoho Creator</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Pricing Model</td>
+        <td>Per user</td>
+        <td>Per creator +<br />per user</td>
+        <td>Per creator +<br />per user</td>
+        <td>Flat fee +<br />per user</td>
+        <td>Per user</td>
+        <td>Per user +<br />usage-based</td>
+        <td>Custom</td>
+        <td>Per user</td>
+        <td>Per user</td>
+      </tr>
+      <tr>
+        <td>Built-In Database</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>RBAC</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>Custom Components</td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>Automation Builder</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td>Via Power Automate</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>SSO</td>
+        <td><span class="tag">Paid</span></td>
+        <td><span class="tag">Free</span></td>
+        <td><span class="tag">Paid</span></td>
+        <td><span class="tag">Paid</span></td>
+        <td><span class="tag">Paid</span></td>
+        <td><span class="tag">Paid</span></td>
+        <td><span class="tag">Paid</span></td>
+        <td><span class="tag">Paid</span></td>
+        <td><span class="tag">Paid</span></td>
+      </tr>
+      <tr>
+        <td>Security certs</td>
+        <td><span class="tag">ISO27001</span> <span class="tag">SOC 2</span></td>
+        <td><span class="tag">ISO27001</span></td>
+        <td><span class="tag">SOC 2</span></td>
+        <td><span class="tag">ISO27001</span> <span class="tag">SOC 2</span></td>
+        <td><span class="tag">ISO27001</span> <span class="tag">SOC 2</span></td>
+        <td><span class="tag">ISO27001</span> <span class="tag">SOC 2</span></td>
+        <td><span class="tag">ISO27001</span></td>
+        <td><span class="tag">ISO27001</span> <span class="tag">SOC 2</span></td>
+        <td><span class="tag">ISO27001</span> <span class="tag">SOC 2</span></td>
+      </tr>
+      <tr>
+        <td>Audit Logs</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>App Embeds</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 Let’s check each one out in turn.
 
@@ -460,7 +686,3 @@ In the world of low-code development, however, the most important thing is exter
 Lastly, we have the issue of open-source vs closed-source platforms. Open-source software is a top priority for many businesses - especially enterprises or organizations that deal with large volumes of sensitive data.
 
 Essentially, the power to audit the source code of any tools that will be hosted or internal infrastructure or interact with production data is a core security issue for these kinds of businesses.
-
-Here’s how the tools we’ve seen today break down in this regard.
-
-||||||||||

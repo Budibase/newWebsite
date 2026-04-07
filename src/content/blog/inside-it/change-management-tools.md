@@ -63,7 +63,196 @@ We’ve chosen a range of platforms, each taking a slightly different approach t
 
 Here’s a summary of the platforms we’ve chosen.
 
-||||||||||
+```html
+<style>
+  .comparison-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin: 2rem 0;
+  }
+
+  .comparison-table {
+    width: 100%;
+    min-width: 980px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.9rem;
+    background: #fff;
+    border: 1px solid #ece8e1;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.85rem 0.75rem;
+    border-bottom: 1px solid #ece8e1;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .comparison-table th {
+    background: #faf9f6;
+    color: #2b2723;
+    font-weight: 700;
+    line-height: 1.25;
+    border-bottom: 1px solid #e3ddd5;
+  }
+
+  .comparison-table th:first-child,
+  .comparison-table td:first-child {
+    text-align: left;
+    font-weight: 700;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+  }
+
+  .comparison-table th:first-child {
+    background: #faf9f6;
+    z-index: 2;
+  }
+
+  .comparison-table td:first-child {
+    background: #fff;
+    color: #181512;
+  }
+
+  .comparison-table tr:nth-child(even) td {
+    background: #fcfbf9;
+  }
+
+  .comparison-table tr:nth-child(even) td:first-child {
+    background: #fcfbf9;
+  }
+
+  .comparison-table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .comparison-table .yes,
+  .comparison-table .no,
+  .comparison-table .tag {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .comparison-table .yes,
+  .comparison-table .no {
+    min-width: 3rem;
+  }
+
+  .comparison-table .yes {
+    background: #e4f6ec;
+    color: #187645;
+  }
+
+  .comparison-table .no {
+    background: #ede9e3;
+    color: #4f4942;
+  }
+
+  .comparison-table .tag {
+    margin: 0.1rem;
+    background: #f2eef8;
+    color: #5b3f8c;
+  }
+</style>
+
+<div class="comparison-table-wrap">
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Budibase</th>
+        <th>Jira</th>
+        <th>Wrike</th>
+        <th>BMC Helix</th>
+        <th>Process Street</th>
+        <th>FreshService</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Platform Type</td>
+        <td>Low-Code</td>
+        <td>ITSM</td>
+        <td>Workflow Management</td>
+        <td>ITSM</td>
+        <td>Workflow Management</td>
+        <td>ITSM</td>
+      </tr>
+      <tr>
+        <td>Pricing Model</td>
+        <td>Per-user/creator +<br />Creator-only</td>
+        <td>Per-agent</td>
+        <td>Per User</td>
+        <td>Custom</td>
+        <td>Usage</td>
+        <td>Per-agent</td>
+      </tr>
+      <tr>
+        <td>Cloud</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>Self-Hosting</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+      </tr>
+      <tr>
+        <td>SSO</td>
+        <td><span class="tag">Free</span></td>
+        <td><span class="tag">Paid plan</span></td>
+        <td><span class="tag">Paid plan</span></td>
+        <td><span class="tag">Paid plan</span></td>
+        <td><span class="tag">Paid plan</span></td>
+        <td><span class="tag">Paid plan</span></td>
+      </tr>
+      <tr>
+        <td>Open-Source</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+      </tr>
+      <tr>
+        <td>Query external DBs</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+      </tr>
+      <tr>
+        <td>API</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
 
 Let’s take a look at each one in turn.
 

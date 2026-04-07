@@ -17,8 +17,130 @@ By the end, you’ll be able to make a fully informed decision about which optio
 
 But first, let’s start with the basics.
 
-||||||||||
-||||||||||
+<style>
+  .faq-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #faf9f6;
+    border: 1px solid #ece8e1;
+    border-radius: 14px;
+  }
+
+  .faq-section details {
+    background: #fff;
+    border: 1px solid #ece8e1;
+    border-radius: 12px;
+    margin: 0.75rem 0;
+    overflow: hidden;
+  }
+
+  .faq-section summary {
+    cursor: pointer;
+    padding: 1rem 1.15rem;
+    color: #2b2723;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
+    background: #fcfbf9;
+  }
+
+  .faq-section summary:hover {
+    background: #faf9f6;
+  }
+
+  .faq-section details[open] summary {
+    border-bottom: 1px solid #ece8e1;
+  }
+
+  .faq-section p {
+    margin: 0;
+    padding: 0.85rem 1.15rem 0;
+    color: #4f4942;
+    line-height: 1.65;
+  }
+
+  .faq-section p:last-child {
+    padding-bottom: 1rem;
+  }
+
+  .faq-section a {
+    color: #5b3f8c;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
+  }
+</style>
+
+<div class="faq-section">
+  <details>
+    <summary>What is asset management?</summary>
+    <p>
+      Asset management comprises all workflows involved in deploying devices to end users. This includes maintenance, monitoring, and lifecycle management.
+    </p>
+    <p>
+      This can take a few different forms. For example, buying, preparing, and deploying assets as a part of an onboarding process.
+    </p>
+    <p>
+      However, the core of this is around handling requests for device rentals. That is, helping IT teams to respond to asset requests based on internal business rules and device availability.
+    </p>
+    <p>
+      On top of this, asset management also requires us to handle device lifecycles. This includes tasks such as scheduling maintenance, patch management, or calculating annual depreciation.
+    </p>
+    <p>
+      We may even predict usage trends in order to inform procurement decisions down the line.
+    </p>
+    <p>
+      Check out our resource on <a href="https://budibase.com/resources/itil-processes/asset-management/">ITIL asset management</a>.
+    </p>
+  </details>
+
+  <details>
+    <summary>What do asset management tools do?</summary>
+    <p>
+      So, that’s what asset management means in theory. The next question is, what does asset management software do?
+    </p>
+    <p>
+      The most basic functionality is providing an asset inventory. This tracks the assets we have, usage data, deployment information, related business rules, and more.
+    </p>
+    <p>
+      Asset management tools then allow us to build out workflows leveraging this inventory data with a combination of end-user interfaces and automation rules.
+    </p>
+    <p>
+      So, for example, we can provide forms to service users to request a device rental. We could then automate approvals based on stored rules and availability or require manual input from our IT team.
+    </p>
+    <p>
+      IT colleagues and service users must have suitable access to data and actions for their role.
+    </p>
+    <p>
+      For example, allowing service users to browse available devices and view their own previous requests. But, exposing service-desk colleagues to real-time data relating to all devices and requests.
+    </p>
+    <p>
+      You might also like our roundup of <a href="https://budibase.com/blog/alternatives/servicenow/">ServiceNow alternatives</a>.
+    </p>
+  </details>
+
+  <details>
+    <summary>Why opt for an open-source solution?</summary>
+    <p>
+      There are a few reasons you might prioritize open-source asset management software.
+    </p>
+    <p>
+      The first is control. Open-source tools offer us flexibility for self-hosting or using existing databases.
+    </p>
+    <p>
+      We can also expect a higher level of configurability than we would with COTS solutions. So, integrating with other platforms in our ITSM tool stack or enforcing custom business rules.
+    </p>
+    <p>
+      Security is another key driver for businesses to adopt open-source technologies.
+    </p>
+    <p>
+      A huge part of this is the ability to audit, control, and potentially even internally maintain the source code. Especially for applications that interact with mission-critical data, infrastructure, and processes.
+    </p>
+    <p>
+      Many businesses opt for open-source asset management tools because of financial reasons. That is, open-source tools can generally be used wholly or in-part for free.
+    </p>
+  </details>
+</div>
 
 ## Top 8 open-source and free asset management tools
 
@@ -38,7 +160,209 @@ Our top picks are
 
 Here's a summary of what each one offers.
 
-||||||||||
+<style>
+  .comparison-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin: 2rem 0;
+  }
+
+  .comparison-table {
+    width: 100%;
+    min-width: 1100px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.9rem;
+    background: #fff;
+    border: 1px solid #ece8e1;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.85rem 0.75rem;
+    border-bottom: 1px solid #ece8e1;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .comparison-table th {
+    background: #faf9f6;
+    color: #2b2723;
+    font-weight: 700;
+    line-height: 1.25;
+    border-bottom: 1px solid #e3ddd5;
+  }
+
+  .comparison-table th:first-child,
+  .comparison-table td:first-child {
+    text-align: left;
+    font-weight: 700;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+  }
+
+  .comparison-table th:first-child {
+    background: #faf9f6;
+    z-index: 2;
+  }
+
+  .comparison-table td:first-child {
+    background: #fff;
+    color: #181512;
+  }
+
+  .comparison-table tr:nth-child(even) td {
+    background: #fcfbf9;
+  }
+
+  .comparison-table tr:nth-child(even) td:first-child {
+    background: #fcfbf9;
+  }
+
+  .comparison-table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .comparison-table .yes,
+  .comparison-table .no,
+  .comparison-table .tag {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .comparison-table .yes,
+  .comparison-table .no {
+    min-width: 3rem;
+  }
+
+  .comparison-table .yes {
+    background: #e4f6ec;
+    color: #187645;
+  }
+
+  .comparison-table .no {
+    background: #ede9e3;
+    color: #4f4942;
+  }
+
+  .comparison-table .tag {
+    margin: 0.1rem;
+    background: #f2eef8;
+    color: #5b3f8c;
+  }
+</style>
+
+<div class="comparison-table-wrap">
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Budibase</th>
+        <th>Ralph-3</th>
+        <th>Snipe-IT</th>
+        <th>CMDBuild</th>
+        <th>AssetTiger</th>
+        <th>OpenMaint</th>
+        <th>Shelf</th>
+        <th>AssetFrog</th>
+        <th>GLPI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Internal Database</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+      </tr>
+      <tr>
+        <td>External Database Connectors</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>Public API</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>Cloud Platform</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>Self-Hosting</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>Open-Source</td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="yes">Yes</span></td>
+        <td><span class="no">No</span></td>
+        <td><span class="yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>Free Assets</td>
+        <td><span class="tag">Unlimited</span></td>
+        <td><span class="tag">Unlimited</span></td>
+        <td><span class="tag">Unlimited</span></td>
+        <td><span class="tag">Unlimited</span></td>
+        <td><span class="tag">250</span></td>
+        <td><span class="tag">Unlimited</span></td>
+        <td><span class="tag">Unlimited</span></td>
+        <td><span class="tag">50</span></td>
+        <td><span class="tag">Unlimited</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 Let's check out of our free asset management tools in more detail.
 
