@@ -1,7 +1,7 @@
 ---
 title: "6 Make Alternatives for 2026"
 description: "Check out our round-up of the top Make alternatives and competitors."
-publishDate: "2026-03-08"
+publishDate: "2026-04-08"
 author: "Ronan McQuillan"
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 
