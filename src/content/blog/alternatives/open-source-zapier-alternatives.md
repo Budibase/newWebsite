@@ -1,7 +1,7 @@
 ---
-title: "6 Open-Source Zapier Alternatives for 2025"
+title: "6 Open-Source Zapier Alternatives for 2026"
 description: "Check out our round-up of the top open-source Zapier alternatives."
-publishDate: "2025-05-15"
+publishDate: "2025-07-15"
 author: "Ronan McQuillan"
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 ---

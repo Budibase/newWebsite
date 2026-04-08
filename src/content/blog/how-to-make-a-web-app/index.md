@@ -1,5 +1,5 @@
 ---
-title: "How to Build a Web App: Beginner's Guide (2025)"
+title: "How to Build a Web App: Beginner's Guide (2026)"
 description: "Follow our step-by-step guide for how to create a web app."
 publishDate: "2025-01-23T00:00:00+00:00"
 author: "Joe Johnston"
@@ -58,9 +58,9 @@ Even _with_ these tools, this is an involved process.
 
 That’s before you even think about testing, hosting, and deployment. Again, we’ll cover each stage of this process in a few minutes.
 
-### Building a web app in 2025
+### Building a web app in 2026
 
-These days, more and more developers are turning to more high-level, abstracted tools to build web apps. In 2025, there are two key clusters of tools that are leveraged here.
+These days, more and more developers are turning to more high-level, abstracted tools to build web apps. In 2026, there are two key clusters of tools that are leveraged here.
 
 #### Building web apps with low/no-code tools
 
@@ -76,14 +76,14 @@ Low-code offers just as much, if not more, for less technical personas. For exam
 
 We’ll take a look at exactly how this works towards the end of this guide.
 
-{{< web-app-cta >}}
+{{< cta >}}
 
 #### Creating web apps with AI tools
 In recent years, AI has made huge leaps forward in just about all aspects of life. But, one of the most prominent examples of this are AI tools that help us to develop software.
 
 So, we've seen a range of platforms bring functionality to market for generating web applications based on LLM prompts. Over the coming years, this will almost certainly transform the way we build web apps forever.
 
-At the same time, we have to take a realistic view of the pros and cons of using AI app builders in 2025. So, while there's undoubtedly time and money to be saved by using these platforms, there are also some key limitations at the current moment.
+At the same time, we have to take a realistic view of the pros and cons of using AI app builders in 2026. So, while there's undoubtedly time and money to be saved by using these platforms, there are also some key limitations at the current moment.
 
 For instance, whole applications that have been generated with AI prompts can be difficult to maintain or modify without the right underlying tools, whether these are low-code or traditional development-based.
 
@@ -539,7 +539,7 @@ Moving on to the backend.
 
 The backend is typically what manages your data. This refers to databases, servers, and everything the user can’t see within a web application.
 
-Building your backend is one of the toughest parts of web app development. If you feel overwhelmed, a tool like [Budibase](https://budibase.com) can take away many of the complexities - including the follow tasks.
+Building your backend is one of the toughest parts of web app development. If you feel overwhelmed, a tool like [Budibase](https://www.budibase.com) can take away many of the complexities - including the follow tasks.
 
 If you feel confident, continue on.
 
@@ -564,7 +564,7 @@ With a single page app, the backend will simply serve your static frontend files
 When choosing your backend:
 
 * Go with what’s familiar.
-* Try [Budibase](https://budibase.com)
+* Try [Budibase](https://www.budibase.com)
 * Server Pages / SPA should inform your decision of framework choices within your chosen language. For example, a SPA will only require an API only framework. Server pages need their own framework.
   * [Django](https://www.djangoproject.com/)
   * [Express](https://expressjs.com/)
@@ -592,7 +592,7 @@ Environments. You will usually need to create multiple environments. For example
 
 Hosting involves running your web app on a particular server.
 
-When using Budibase, this step can be automated with [Budibase hosting](https://budibase.com/). With Budibase, you are still required to buy a domain.
+When using Budibase, this step can be automated with [Budibase hosting](https://www.budibase.com/). With Budibase, you are still required to buy a domain.
 
 If you are not using Budibase to host your web application, follow these quick steps: \\
 

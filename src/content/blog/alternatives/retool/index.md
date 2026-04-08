@@ -1,5 +1,5 @@
 ---
-title: "Top 10 Retool Alternatives & Competitors for 2025"
+title: "Top 10 Retool Alternatives & Competitors for 2026"
 description: "Learn about the top 10 Retool alternatives & competitors to improve your internal workflows and save you time."
 publishDate: "2025-03-30"
 author: "Ronan McQuillan"
@@ -15,7 +15,7 @@ Retool is one of the biggest players in the low-code space. However, that doesn�
 Today, we’re covering the following:
 - [What is Retool?](#what-is-retool)
 - [Why would you look for an alternative to Retool?](#why-would-you-look-for-a-retool-alternative)
-- [10 Retool alternatives for 2025](#10-retool-alternatives-for-2025)
+- [10 Retool alternatives for 2026](#10-retool-alternatives-for-2026)
 - [Retool vs Budibase](#retool-vs-budibase)
 - [How to choose a low-code platform](#how-to-choose-a-retool-alternative)
 
@@ -138,7 +138,7 @@ These include the following:
   </details>
 </div>
 
-## 10 Retool Alternatives for 2025
+## 10 Retool Alternatives for 2026
 With that bit of context out of the way, we can start to think about some of the best platforms to bridge this gap as alternatives to Retool.
 
 We’ve chosen ten tools from different points across the low-code market:
