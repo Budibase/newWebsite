@@ -34,15 +34,12 @@ interface Props {
 const { page } = Astro.props as Props;
 const isPaginatedArchive = page.currentPage > 1;
 const robots = isPaginatedArchive
-  ? "max-image-preview:large"
+  ? "noindex,follow,max-image-preview:large"
   : undefined;
 const rawCategory = Astro.params.category ?? "blog";
 const category: BlogTopicRoute = isValidBlogTopic(rawCategory)
   ? rawCategory
   : "blog";
-const canonicalURL = isPaginatedArchive
-  ? `https:/budibase.com/blog/category/${category}/`
-  : undefined;
 const currentTopic = getBlogTopicItem(category);
 const currentCategoryLabel = currentTopic.label;
 const activePill = "blog";
@@ -56,7 +53,6 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
   description={currentTopic.seoDescription}
   image={{ src: "/og/blog.jpg", alt: "What's new in the Budibase ecosystem" }}
   robots={robots}
-  canonicalURL={canonicalURL}
 >
   <div
     class="mx-auto mt-[clamp(5.6rem,8vw,7.2rem)] w-full max-w-[62rem] px-4 pb-16 max-md:mt-[max(calc(var(--site-nav-height)+1.1rem),4.8rem)] max-md:px-[0.9rem]"
