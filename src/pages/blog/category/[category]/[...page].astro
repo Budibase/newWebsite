@@ -34,12 +34,15 @@ interface Props {
 const { page } = Astro.props as Props;
 const isPaginatedArchive = page.currentPage > 1;
 const robots = isPaginatedArchive
-  ? "noindex,follow,max-image-preview:large"
+  ? "index,follow,max-image-preview:large"
   : undefined;
 const rawCategory = Astro.params.category ?? "blog";
 const category: BlogTopicRoute = isValidBlogTopic(rawCategory)
   ? rawCategory
   : "blog";
+const canonical = isPaginatedArchive
+  ? `/blog/category/${category}/`
+  : undefined;
 const currentTopic = getBlogTopicItem(category);
 const currentCategoryLabel = currentTopic.label;
 const activePill = "blog";
