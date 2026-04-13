@@ -1,5 +1,6 @@
 ---
-import SectionBlock from "@components/SectionBlock.astro";
+import Button from "@components/Button.astro";
+import TitleBlock from "@components/TitleBlock.astro";
 import Card from "@components/cards/Card.astro";
 import OnePlatformAgent from "@components/OnePlatformAgent.astro";
 import OnePlatformAutomation from "@components/OnePlatformAutomation.astro";
@@ -29,13 +30,31 @@ const cards = [
 ] as const;
 ---
 
-<section class="container max-w-7xl mx-auto mt-12 md:mt-24 px-2 lg:px-0">
-  <SectionBlock
-    title="Run your operations on one platform"
-    description="Handle requests, automate workflows, manage processes, and connect your business systems - without stitching together multiple tools."
-    align="center"
-    maxWidth="3xl"
-  >
+<section class="platform-hero">
+  <div class="container max-w-7xl mx-auto px-2 lg:px-0">
+    <div class="platform-hero__copy">
+      <TitleBlock
+        variant="hero-large"
+        title="Save weeks building agents and apps for your business"
+        containerClass="w-full"
+        titleClass="platform-hero__title mx-auto m-0 w-full max-w-4xl text-center text-[var(--text-primary)]"
+      />
+      <p class="platform-hero__description hero-description-small">
+        Handle requests, automate workflows, manage processes, and connect your business systems -
+        without stitching together multiple tools.
+      </p>
+      <div class="platform-hero__cta">
+        <Button
+          label="Try it free"
+          url="https://account.budibase.app/register"
+          variant="primary"
+          size="large"
+          class="px-6 py-3 text-xl md:px-7 md:py-3.5 md:text-xl"
+          target="_blank"
+        />
+      </div>
+    </div>
+
     <div class="platform-section__grid">
       <div class="platform-section__card">
         <Card label={cards[0].label} description={cards[0].description}>
@@ -50,13 +69,13 @@ const cards = [
       </div>
 
       <div class="platform-section__card">
-        <Card label={cards[1].label} description={cards[1].description}>
+        <Card label={cards[2].label} description={cards[2].description}>
           <div
             slot="image-overlay"
-            class="platform-section__overlay platform-section__overlay--automation"
+            class="platform-section__overlay platform-section__overlay--app"
             aria-hidden="true"
           >
-            <OnePlatformAutomation />
+            <OnePlatformApp />
           </div>
         </Card>
       </div>
@@ -74,21 +93,53 @@ const cards = [
       </div>
 
       <div class="platform-section__card">
-        <Card label={cards[2].label} description={cards[2].description}>
+        <Card label={cards[1].label} description={cards[1].description}>
           <div
             slot="image-overlay"
-            class="platform-section__overlay platform-section__overlay--app"
+            class="platform-section__overlay platform-section__overlay--automation"
             aria-hidden="true"
           >
-            <OnePlatformApp />
+            <OnePlatformAutomation />
           </div>
         </Card>
       </div>
     </div>
-  </SectionBlock>
+  </div>
 </section>
 
 <style>
+  .platform-hero {
+    padding-top: max(calc(var(--site-nav-height) + 1.2rem), 4.8rem);
+    padding-bottom: 3rem;
+  }
+
+  .platform-hero__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto 2rem;
+    max-width: 56rem;
+    text-align: center;
+  }
+
+  .platform-hero__title {
+    line-height: 0.9 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .platform-hero__description {
+    margin: 1.25rem auto 0;
+    max-width: 48rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+  }
+
+  .platform-hero__cta {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
   .platform-section__grid {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -140,6 +191,18 @@ const cards = [
   }
 
   @media (min-width: 768px) {
+    .platform-hero {
+      padding-bottom: 4rem;
+    }
+
+    .platform-hero__copy {
+      margin-bottom: 2.5rem;
+    }
+
+    .platform-hero__description {
+      font-size: 1.25rem;
+    }
+
     .platform-section__grid {
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 0.5rem;
@@ -147,6 +210,12 @@ const cards = [
 
     .platform-section__card :global(.card-image-wrap) {
       height: 320px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .platform-hero {
+      padding-bottom: 2rem;
     }
   }
 </style>
