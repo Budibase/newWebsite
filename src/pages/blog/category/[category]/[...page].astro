@@ -40,7 +40,7 @@ const rawCategory = Astro.params.category ?? "blog";
 const category: BlogTopicRoute = isValidBlogTopic(rawCategory)
   ? rawCategory
   : "blog";
-const canonical = isPaginatedArchive
+const canonicalURL = isPaginatedArchive
   ? `/blog/category/${category}/`
   : undefined;
 const currentTopic = getBlogTopicItem(category);
