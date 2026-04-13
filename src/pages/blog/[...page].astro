@@ -23,10 +23,12 @@ interface Props {
 const { page } = Astro.props as Props;
 const isPaginatedArchive = page.currentPage > 1;
 const robots = isPaginatedArchive
-  ? "noindex,follow,max-image-preview:large"
+  ? "index,follow,max-image-preview:large"
   : undefined;
 const blogTopic = getBlogTopicItem("blog");
-
+const canonical = isPaginatedArchive
+  ? `/blog/category/${category}/`
+  : undefined;
 const allPages = [...Array(page.lastPage).keys()].map((num) => {
   return `/blog${num === 0 ? "" : `/${String(num + 1)}`}`;
 });
