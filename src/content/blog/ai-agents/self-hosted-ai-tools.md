@@ -82,6 +82,124 @@ Earlier, we hinted at some of the more granular types of self-hosted AI tools we
   - [LangSmith](#langsmith)
   - [Langfuse](#langfuse)
 
+<style>
+  .comparison-table {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #faf9f6;
+    border-radius: 14px;
+    overflow-x: auto;
+  }
+
+  .comparison-table table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border: 1px solid #ece8e1;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.75rem 0.85rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid #ece8e1;
+    color: #4f4942;
+    line-height: 1.45;
+    font-size: 0.9rem;
+  }
+
+  .comparison-table thead th {
+    background: #fcfbf9;
+    color: #2b2723;
+    font-weight: 700;
+    font-size: 0.88rem;
+  }
+
+  .comparison-table tbody th {
+    color: #2b2723;
+    font-weight: 700;
+    background: #fff;
+    white-space: nowrap;
+  }
+
+  .comparison-table tr:last-child th,
+  .comparison-table tr:last-child td {
+    border-bottom: 0;
+  }
+</style>
+
+<div class="comparison-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Best for</th>
+        <th>Category</th>
+        <th>Technical level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Budibase</th>
+        <td>Internal AI tools</td>
+        <td>AI workflow platform</td>
+        <td>Low-medium</td>
+      </tr>
+      <tr>
+        <th>n8n</th>
+        <td>AI workflows</td>
+        <td>Automation platform</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <th>CrewAI</th>
+        <td>Multi-agent systems</td>
+        <td>Agent platform</td>
+        <td>Medium-high</td>
+      </tr>
+      <tr>
+        <th>Gemma</th>
+        <td>Local open models</td>
+        <td>LLM family</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <th>Mistral</th>
+        <td>On-prem models</td>
+        <td>LLM family</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <th>LangChain</th>
+        <td>Custom AI apps</td>
+        <td>Framework</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <th>AutoGen</th>
+        <td>Multi-agent apps</td>
+        <td>Framework</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <th>LangSmith</th>
+        <td>Tracing and evals</td>
+        <td>Observability</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <th>Langfuse</th>
+        <td>LLM observability</td>
+        <td>Observability</td>
+        <td>Medium</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 
 ### AI platforms, automation tools, and app builders

@@ -81,6 +81,126 @@ As we said earlier, we’ve selected a range of options, from flexible developer
 
 We've chosen 9 open-source AI agent platforms from different corners of this space. Let's check each one out in turn.
 
+<style>
+  .comparison-table {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #faf9f6;
+    border-radius: 14px;
+    overflow-x: auto;
+  }
+
+  .comparison-table table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border: 1px solid #ece8e1;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.75rem 0.85rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid #ece8e1;
+    color: #4f4942;
+    line-height: 1.45;
+    font-size: 0.9rem;
+  }
+
+  .comparison-table thead th {
+    background: #fcfbf9;
+    color: #2b2723;
+    font-weight: 700;
+    font-size: 0.88rem;
+  }
+
+  .comparison-table tbody th {
+    color: #2b2723;
+    font-weight: 700;
+    background: #fff;
+    white-space: nowrap;
+  }
+
+  .comparison-table tr:last-child th,
+  .comparison-table tr:last-child td {
+    border-bottom: 0;
+  }
+</style>
+
+<div class="comparison-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Best for</th>
+        <th>Platform type</th>
+        <th>Technical level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Budibase</th>
+        <td>Internal AI workflows</td>
+        <td>AI workflow toolkit</td>
+        <td>Low-medium</td>
+      </tr>
+      <tr>
+        <th>LangChain</th>
+        <td>Custom agent systems</td>
+        <td>Agent framework</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <th>CrewAI</th>
+        <td>Multi-agent systems</td>
+        <td>Agent platform</td>
+        <td>Medium-high</td>
+      </tr>
+      <tr>
+        <th>AutoGPT</th>
+        <td>Autonomous agents</td>
+        <td>Low-code platform</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <th>MetaGPT</th>
+        <td>Software-building agents</td>
+        <td>Multi-agent framework</td>
+        <td>Medium-high</td>
+      </tr>
+      <tr>
+        <th>CAMEL</th>
+        <td>Agent research</td>
+        <td>Multi-agent framework</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <th>n8n</th>
+        <td>Agentic workflows</td>
+        <td>Automation platform</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <th>Semantic Kernel</th>
+        <td>Enterprise AI apps</td>
+        <td>Agent SDK</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <th>Langflow</th>
+        <td>Visual AI agents</td>
+        <td>Low-code platform</td>
+        <td>Medium</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 ### 1. Budibase
 
 First, we have Budibase, the open-source AI workflow toolkit for privacy-first teams.

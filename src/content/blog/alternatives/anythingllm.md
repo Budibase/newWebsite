@@ -1,5 +1,5 @@
 ---
-title: "5 AnythingLLM Alternatives & Competitors for 2026"
+title: "6 AnythingLLM Alternatives & Competitors for 2026"
 description: "Check out our in-depth round-up of the top AnythingLLM alternatives."
 publishDate: "2026-02-23"
 author: "Ronan McQuillan"
@@ -68,6 +68,127 @@ We’ve chosen a variety of platforms, each targeting slightly different user pe
 4. [Jan.ai](#4-jan-ai)
 5. [LangFlow](#5-langflow)
 6. [LibreChat](#6-librechat)
+
+Here's a summary of where each one sits in the market:
+
+<style>
+  .comparison-table {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #faf9f6;
+    border-radius: 14px;
+    overflow-x: auto;
+  }
+
+  .comparison-table table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 760px;
+    background: #fff;
+    border: 1px solid #ece8e1;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.7rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid #ece8e1;
+    color: #4f4942;
+    line-height: 1.4;
+    font-size: 0.88rem;
+  }
+
+  .comparison-table thead th {
+    background: #fcfbf9;
+    color: #2b2723;
+    font-weight: 700;
+    line-height: 1.25;
+    font-size: 0.86rem;
+  }
+
+  .comparison-table tbody th {
+    background: #fcfbf9;
+    color: #2b2723;
+    font-weight: 700;
+    width: 135px;
+    min-width: 135px;
+  }
+
+  .comparison-table tr:last-child th,
+  .comparison-table tr:last-child td {
+    border-bottom: 0;
+  }
+</style>
+
+
+
+<div class="comparison-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Criteria</th>
+        <th>Budibase</th>
+        <th>LM Studio</th>
+        <th>GPT4All</th>
+        <th>Jan.ai</th>
+        <th>LangFlow</th>
+        <th>LibreChat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Best for</th>
+        <td>Internal AI workflows with human input</td>
+        <td>Running local private models</td>
+        <td>Local AI chat with files and documents</td>
+        <td>Chat-style assistants with flexible model access</td>
+        <td>Visual agent building with custom logic</td>
+        <td>Open-source chat and agent workflows</td>
+      </tr>
+      <tr>
+       <th>Product type</th>
+         <td>AI workflow platform</td>
+        <td>Local model runtime</td>
+        <td>Local AI desktop app</td>
+         <td>AI assistant platform</td>
+        <td>Visual AI builder</td>
+        <td>AI chat and agent platform</td>
+</tr>
+      <tr>
+        <th>Deployment</th>
+        <td>Cloud or self-hosted</td>
+        <td>Local desktop app or headless server/CI deployment</td>
+        <td>Local desktop app</td>
+        <td>Local desktop app, local API, self-hosted server option</td>
+        <td>Self-hosted / deploy your own</td>
+        <td>Self-hosted or cloud-deployed</td>
+      </tr>
+      <tr>
+        <th>Open source</th>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <th>Document / RAG support</th>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 ### 1. Budibase
 

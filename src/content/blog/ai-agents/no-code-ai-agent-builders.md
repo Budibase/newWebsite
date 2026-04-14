@@ -86,6 +86,139 @@ Now that we have a better understanding of what we’re looking for, we can begi
 
 In order to give a full account of what’s available, we’ve chosen a broad range of tools, aimed at a diverse set of use cases and target personas.
 
+<style>
+  .comparison-table {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #faf9f6;
+    border-radius: 14px;
+    overflow-x: auto;
+  }
+
+  .comparison-table table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border: 1px solid #ece8e1;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.75rem 0.85rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid #ece8e1;
+    color: #4f4942;
+    line-height: 1.45;
+    font-size: 0.9rem;
+  }
+
+  .comparison-table thead th {
+    background: #fcfbf9;
+    color: #2b2723;
+    font-weight: 700;
+    font-size: 0.88rem;
+  }
+
+  .comparison-table tbody th {
+    color: #2b2723;
+    font-weight: 700;
+    background: #fff;
+    white-space: nowrap;
+  }
+
+  .comparison-table tr:last-child th,
+  .comparison-table tr:last-child td {
+    border-bottom: 0;
+  }
+</style>
+
+<div class="comparison-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Best for</th>
+        <th>Builder style</th>
+        <th>Technical level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Budibase</th>
+        <td>Internal AI workflows</td>
+        <td>Instruction-led</td>
+        <td>Low-medium</td>
+      </tr>
+      <tr>
+        <th>Copilot Studio</th>
+        <td>Microsoft teams</td>
+        <td>Visual + prompt</td>
+        <td>Low-medium</td>
+      </tr>
+      <tr>
+        <th>n8n</th>
+        <td>Agentic workflows</td>
+        <td>Flow builder</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <th>AutoGPT</th>
+        <td>Autonomous agents</td>
+        <td>Agent platform</td>
+        <td>Medium-high</td>
+      </tr>
+      <tr>
+        <th>Chatfuel</th>
+        <td>WhatsApp sales</td>
+        <td>No-code builder</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <th>Botpress</th>
+        <td>AI agents</td>
+        <td>Flow builder</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <th>watsonx.ai</th>
+        <td>Enterprise agents</td>
+        <td>Low-code suite</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <th>Langflow</th>
+        <td>Custom AI agents</td>
+        <td>Visual AI builder</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <th>Zapier</th>
+        <td>AI agents</td>
+        <td>Prompt + automation</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <th>Lindy</th>
+        <td>Business agents</td>
+        <td>Prompt + flow</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <th>Make</th>
+        <td>AI agents</td>
+        <td>Visual automation</td>
+        <td>Low</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
 Let’s check out what each one offers in more detail.
 
 ### 1. Budibase

@@ -123,6 +123,141 @@ In no particular order, these are:
 
 Let’s check each one out in turn.
 
+<style>
+  .comparison-table {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #faf9f6;
+    border-radius: 14px;
+    overflow-x: auto;
+  }
+
+  .comparison-table table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 860px;
+    background: #fff;
+    border: 1px solid #ece8e1;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.7rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid #ece8e1;
+    color: #4f4942;
+    line-height: 1.4;
+    font-size: 0.88rem;
+  }
+
+  .comparison-table thead th {
+    background: #fcfbf9;
+    color: #2b2723;
+    font-weight: 700;
+    line-height: 1.25;
+    font-size: 0.86rem;
+  }
+
+  .comparison-table tbody th {
+    background: #fcfbf9;
+    color: #2b2723;
+    font-weight: 700;
+    width: 130px;
+    min-width: 130px;
+  }
+
+  .comparison-table tr:last-child th,
+  .comparison-table tr:last-child td {
+    border-bottom: 0;
+  }
+</style>
+
+<div class="comparison-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Criteria</th>
+        <th>Budibase</th>
+        <th>LibreChat</th>
+        <th>LangChain</th>
+        <th>H2oGPT</th>
+        <th>Botpress</th>
+        <th>Jan</th>
+        <th>LM Studio</th>
+        <th>GPT4All</th>
+        <th>Open WebUI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Best for</th>
+        <td>Internal AI workflows</td>
+        <td>Custom chat</td>
+        <td>Custom AI apps</td>
+        <td>Offline AI</td>
+        <td>AI agents</td>
+        <td>Personal AI</td>
+        <td>Local models</td>
+        <td>Chat with docs</td>
+        <td>Self-hosted chat</td>
+      </tr>
+      <tr>
+        <th>Product type</th>
+        <td>Workflow platform</td>
+        <td>Chat platform</td>
+        <td>LLM framework</td>
+        <td>Local AI platform</td>
+        <td>Agent platform</td>
+        <td>Assistant platform</td>
+        <td>Model runtime</td>
+        <td>Desktop app</td>
+        <td>Chat workspace</td>
+      </tr>
+      <tr>
+        <th>Deployment</th>
+        <td>Cloud / self-hosted</td>
+        <td>Self-hosted / Railway</td>
+        <td>Developer-managed</td>
+        <td>Local / self-hosted</td>
+        <td>Cloud / self-hosted</td>
+        <td>Desktop / web / server</td>
+        <td>Desktop / headless</td>
+        <td>Local desktop</td>
+        <td>Self-hosted</td>
+      </tr>
+      <tr>
+        <th>UI included</th>
+        <td>Apps + chat</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <th>Technical level</th>
+        <td>Low-medium</td>
+        <td>Medium</td>
+        <td>High</td>
+        <td>Medium</td>
+        <td>Medium</td>
+        <td>Low-medium</td>
+        <td>Medium</td>
+        <td>Medium</td>
+        <td>Medium</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 ### 1. Budibase
 
 First up, we have Budibase, the all-in-one open-source AI workflow toolkit for creating Agents, Apps, and Automations.
