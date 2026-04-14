@@ -14,7 +14,7 @@ Specifically, we’ll be covering:
 
 - [What is AnythingLLM?](#what-is-anythingllm)
 - [What to look for in an AnythingLLM alternative](#what-to-look-for-in-an-anythingllm-alternative)
-- [6 AnythingLLM alternatives for 2026](#6-anything-llm-alternatives-for-2026)
+- [6 AnythingLLM alternatives for 2026](#6-anythingllm-alternatives-for-2026)
   - [Budibase](#1-budibase)
   - [LM Studio](#2-lm-studio)
   - [GPT4All](#3-gpt4all)
