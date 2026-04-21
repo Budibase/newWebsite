@@ -171,7 +171,7 @@ To reflect this, we’ve chosen a range of platforms that occupy different segme
       </tr>
       <tr>
         <th>Zoho Desk</th>
-        <td>Configurable support teams that want customization without custom builds</td>
+        <td>Flexible support workflows</td>
       </tr>
       <tr>
         <th>Help Scout</th>
