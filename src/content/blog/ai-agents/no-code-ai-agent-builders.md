@@ -1,10 +1,10 @@
 ---
 
 author: "Ronan McQuillan"
-publishDate: 2025-04-25
+publishDate: 2025-09-25
 description: "Take a look at our round-up of the top low & no-code AI agent builders."
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
-title: "11 Low & No-Code AI Agent Builders"
+title: "11 Low & No-Code AI Agent Builders for 2026"
 type: "ai-agents"
 ---
 

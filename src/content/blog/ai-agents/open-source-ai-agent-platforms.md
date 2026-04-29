@@ -1,9 +1,9 @@
 ---
 author: "Ronan McQuillan"
-publishDate: 2025-04-23
+publishDate: 2025-09-23
 description: "Take a look at our round-up of the top open-source AI agent platforms."
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
-title: "9 Open-Source AI Agent Platforms"
+title: "9 Open-Source AI Agent Platforms for 2026"
 type: "ai-agents"
 ---
 
@@ -38,7 +38,7 @@ Ultimately, the goal is to make the process of building AI agents faster and mor
 
 This works by enabling teams to focus on underlying goals and workflows, rather than building all aspects of their agents from scratch.
 
-Take a look at our guide to [AI agentic workflows](https://budibase.com/blog/ai-agents/ai-agentic-workflows/) to learn more.
+You might also like our guide to choosing a [no-code AI agent builder.](https://budibase.com/blog/ai-agents/no-code-ai-agent-builders/)
 
 An open-source AI agent platform is one that's licensed in such a way that the source code is available. Generally, this means that we can use, modify, and redistribute the code base for free, although there will often be restrictions on things like commerical use, reselling, or crediting the original developers, depending on the specific license.
 
