@@ -1,7 +1,7 @@
 ---
-title: "8 Filemaker Alternatives & Competitors for 2025"
+title: "8 Filemaker Alternatives & Competitors for 2026"
 description: "Check out our round-up of the top FileMaker alternatives."
-publishDate: "2025-01-10"
+publishDate: "2025-06-10"
 author: "Ronan McQuillan"
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 category: "alternatives"

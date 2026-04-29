@@ -1,7 +1,7 @@
 ---
-title: "10 PowerApps Alternatives & Competitors in 2025"
+title: "10 PowerApps Alternatives & Competitors in 2026"
 description: "Learn about the top 10 PowerApps alternatives & competitors to improve your internal workflows and save you time."
-publishDate: "2025-03-05"
+publishDate: "2025-06-05"
 author: "Ronan McQuillan"
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 category: "alternatives"

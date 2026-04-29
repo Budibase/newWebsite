@@ -1,7 +1,7 @@
 ---
 title: "Top 9 Free Asset Management Software Tools for 2026"
 description: "Check out our round-up of the best free asset management software."
-publishDate: "2025-03-15"
+publishDate: "2025-06-15"
 author: "Ronan McQuillan"
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 category: "alternatives"

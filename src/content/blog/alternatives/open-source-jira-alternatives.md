@@ -1,7 +1,7 @@
 ---
 title: "6 Open-Source Jira Alternatives for 2026"
 description: "Check out our round-up of the top open-source Jira alternatives."
-publishDate: "2025-06-19"
+publishDate: "2025-09-19"
 author: "Ronan McQuillan"
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 ---

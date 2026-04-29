@@ -1,7 +1,7 @@
 ---
 title: "How to Build a Web App: Beginner's Guide (2026)"
 description: "Follow our step-by-step guide for how to create a web app."
-publishDate: "2025-01-23T00:00:00+00:00"
+publishDate: "2025-09-23T00:00:00+00:00"
 author: "Joe Johnston"
 ---
 

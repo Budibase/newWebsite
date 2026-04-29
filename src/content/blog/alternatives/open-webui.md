@@ -1,6 +1,6 @@
 ---
-title: "9 Open WebUI Alternatives for 2025"
-description: "Take a look at our round-up of the top Open WebUI alternatives for 2025."
+title: "9 Open WebUI Alternatives for 2026"
+description: "Take a look at our round-up of the top Open WebUI alternatives for 2026."
 publishDate: "2025-11-04"
 author: "Ronan McQuillan"
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
