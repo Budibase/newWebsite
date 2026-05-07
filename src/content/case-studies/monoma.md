@@ -1,5 +1,5 @@
 ---
-title: Monoma
+title: Monoma Nederland B.V.
 quote: "Monoma standardizes internal operations with Budibase"
 employees: "200-500"
 industry: Real Estate and Property Management
