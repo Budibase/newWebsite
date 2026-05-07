@@ -4,7 +4,7 @@ quote: "Monoma standardizes internal operations with Budibase"
 employees: "200-500"
 industry: Real Estate and Property Management
 featured: true
-order: 5
+order: 4
 ---
 
 Monoma Nederland B.V. is a Dutch real estate and property management company specialising in the temporary use and management of vacant buildings. Founded in 1997 and headquartered in Eindhoven, Monoma works with property owners, municipalities, and housing organisations to give empty properties a meaningful interim purpose while they await redevelopment, renovation, or sale.
