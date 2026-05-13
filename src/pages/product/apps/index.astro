@@ -9,6 +9,7 @@ import AppDataSourcesPreview from "@components/AppDataSourcesPreview.astro";
 import AppRequestsPreview from "@components/AppRequestsPreview.astro";
 import AppRolesPreview from "@components/AppRolesPreview.astro";
 import SectionBlock from "@components/SectionBlock.astro";
+import AppProductionReadyFeatures from "@components/AppProductionReadyFeatures.astro"
 
 const pageTitle = "Build internal tools\nin minutes";
 const pageDescription =
@@ -73,7 +74,76 @@ const pageDescription =
           />
         </SectionBlock>
       </section>
+     <AppProductionReadyFeatures />
     </div>
+    <section class="mt-16 lg:mt-24">
+  <SectionBlock
+    align="center"
+    maxWidth="lg"
+    titleColorMode="split-secondary-primary"
+    titleLines={[
+      { text: "Data collection" },
+      { text: "your way" },
+    ]}
+    description="Budibase offers customizable data collection UIs for any data source or API."
+    contentClass="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-2 lg:grid-cols-4"
+  >
+    <Card
+      label="Create forms on top of your database"
+      description="Generate and build forms on top of multiple databases, including PostgreSQL, MySQL, MongoDB, and more."
+    />
+
+    <Card
+      label="Multi-step forms"
+      description="Create multi-step forms and surveys with ease using Budibase."
+    />
+
+    <Card
+      label="Validation"
+      description="Set up form validation rules, including regex support and built-in validations for common form-based apps."
+    />
+
+    <Card
+      label="Highly customizable"
+      description="Build forms of all levels of complexity with Budibase."
+    />
+  </SectionBlock>
+</section>
+
+      <section class="mt-16 lg:mt-24">
+        <SectionBlock
+          align="center"
+          maxWidth="lg"
+          titleColorMode="split-secondary-primary"
+          titleLines={[
+            { text: "Simple by default" },
+            { text: "customizable with code" },
+          ]}
+          description="Budibase Apps offer custom JavaScript and CSS for advanced use cases."
+          contentClass="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-2 lg:grid-cols-4"
+        >
+          <Card
+            label="Optional JavaScript"
+            description="From adding logic to your components to transforming data, Budibase allows to write JavaScript almost anywhere in the builder."
+          >
+          </Card>
+          <Card
+            label="Live Evaluation"
+            description="With Live Evaluation, you can see the output of your code in real-time, directly next to the code editor."
+          >
+          </Card>
+          <Card
+            label="Reusable Snippets"
+            description="Reusable Code Snippets speed up development by enabling you to write code once and then effortlessly apply it anywhere."
+          >
+          </Card>
+          <Card
+            label="AI Code Generation"
+            description="Use Budibase AI to generate custom JavaScript from natural language instructions."
+          >
+          </Card>
+        </SectionBlock>
+      </section>
   </PlatformLayout>
 </Layout>
 

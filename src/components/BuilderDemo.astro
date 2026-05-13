@@ -1,0 +1,377 @@
+---
+import { Image } from "astro:assets";
+import CompassRoseIcon from "@assets/images/demos/app-demo/1a3e8b89f8b4dd355babb5e63a1a0d531fdbf273.svg";
+import LineSeparator from "@assets/images/demos/app-demo/6eecc9af745568dbb93585967b9fd46bf92048bf.svg";
+import TextAaIcon from "@assets/images/demos/app-demo/a55e83de9c6875ba8d05c2033e2e57bf9ebe37ee.svg";
+import RectangleDashedIcon from "@assets/images/demos/app-demo/6eda4d501581f12b87a79a2b04194f19e11aa648.svg";
+import TableIcon from "@assets/images/demos/app-demo/cb1a1d9503b8e079398c4a40c9bdc4a135625c11.svg";
+import CodeIcon from "@assets/images/demos/app-demo/a5ec71ef297b83e86a4049f8faa47cc6870536ee.svg";
+import GlobeIcon from "@assets/images/demos/app-demo/ba32e17a75ce9f17b173396f9e95f996ab9cd3a4.svg";
+import ImageIcon from "@assets/images/demos/app-demo/0a5331ed22dec851863adce7a627dc7553ed57fc.svg";
+import TextboxIcon from "@assets/images/demos/app-demo/86212d4c9941834f8ba6959bb559be522b69b4ab.svg";
+import StepsIcon from "@assets/images/demos/app-demo/459800a1e792ea7a2df8874301abf8ff27baaf21.svg";
+import ListMagnifyingGlassIcon from "@assets/images/demos/app-demo/80c5c985d88a5c0a458dbfd554b9cb1a46da5059.svg";
+import NumberCircleFiveIcon from "@assets/images/demos/app-demo/ae070055bb301fb51199cff10bb2dadf4cd5247e.svg";
+import CheckIcon from "@assets/images/demos/app-demo/663e5eb8e63262e38ae7522a1dacde9895bfddb8.svg";
+import PaperclipIcon from "@assets/images/demos/app-demo/3bd603c6169b64b0dc30ba3f4b49c521ec51613a.svg";
+import CaretDownIcon from "@assets/images/demos/app-demo/481b5637386cfa51221252c07d627de130d801d4.svg";
+
+interface Props {
+  backdropImage?: string;
+  backdropPaddingClass?: string;
+  class?: string;
+}
+
+interface RequestRow {
+  id: string;
+  request: string;
+  priority: "High" | "Medium" | "Low";
+  status: string;
+  date: string;
+  tone: "high" | "medium" | "low";
+}
+
+const {
+  backdropImage,
+  backdropPaddingClass = "px-6 py-6 sm:px-10 sm:py-10 lg:px-32 lg:py-12",
+  class: className = "",
+} = Astro.props as Props;
+
+const id = `app-demo-${Math.random().toString(36).slice(2, 8)}`;
+const appDemoStyle = backdropImage
+  ? `--app-demo-backdrop-image: url("${backdropImage}")`
+  : undefined;
+
+const topTabs: string[] = [
+  "Home",
+  "Request inbox",
+];
+const workspaceItems: string[] = [
+  "Home",
+  "Request Inbox",
+];
+const priorityTabs = [
+  { label: "All priorities", key: "all" },
+  { label: "High", key: "high" },
+  { label: "Medium", key: "medium" },
+  { label: "Low", key: "low" },
+] as const;
+
+const inboxRows: RequestRow[] = [
+  {
+    id: "IT-2041",
+    request: "Laptop setup for new marketing hire (Sarah M.)",
+    priority: "High",
+    status: "In Progress",
+    date: "Mar 5",
+    tone: "high",
+  },
+  {
+    id: "IT-2040",
+    request: "Grant HubSpot access to sales contractor",
+    priority: "Medium",
+    status: "Completed",
+    date: "Mar 4",
+    tone: "medium",
+  },
+  {
+    id: "IT-2039",
+    request: "Reset VPN access for remote employee",
+    priority: "Medium",
+    status: "Completed",
+    date: "Mar 4",
+    tone: "medium",
+  },
+  {
+    id: "IT-2038",
+    request: "Configure Slack + Google Workspace for new hire",
+    priority: "High",
+    status: "Completed",
+    date: "Mar 3",
+    tone: "high",
+  },
+  {
+    id: "IT-2037",
+    request: "Replace faulty monitor in meeting room B",
+    priority: "Low",
+    status: "In Progress",
+    date: "Mar 3",
+    tone: "low",
+  },
+  {
+    id: "IT-2036",
+    request: "Enable MFA for finance team accounts",
+    priority: "High",
+    status: "Completed",
+    date: "Mar 2",
+    tone: "high",
+  },
+  {
+    id: "IT-2035",
+    request: "Install Figma + design plugins for design team",
+    priority: "Low",
+    status: "Completed",
+    date: "Mar 2",
+    tone: "low",
+  },
+  {
+    id: "IT-2034",
+    request: "Investigate suspicious login alert",
+    priority: "High",
+    status: "Open",
+    date: "Mar 2",
+    tone: "high",
+  }
+];
+
+const builderSections = [
+  {
+    items: [
+      { label: "Text", icon: TextAaIcon },
+      { label: "Container", icon: RectangleDashedIcon },
+      { label: "Table", icon: TableIcon },
+      { label: "Filter", icon: CodeIcon },
+      { label: "Button", icon: GlobeIcon },
+      { label: "Image", icon: ImageIcon },
+    ],
+  },
+  {
+    heading: "Forms",
+    items: [
+      { label: "Form", icon: TextboxIcon },
+      { label: "Form step", icon: StepsIcon },
+      { label: "Text field", icon: ListMagnifyingGlassIcon },
+      { label: "Number field", icon: NumberCircleFiveIcon },
+      { label: "Checkbox", icon: CheckIcon },
+      { label: "Attachment", icon: PaperclipIcon },
+    ],
+  },
+];
+---
+
+<div
+  id={id}
+  class:list={[
+    "app-demo demo-breakout w-full overflow-hidden",
+    className,
+  ]}
+  style={appDemoStyle}
+>
+  <div class:list={["app-demo-backdrop w-full overflow-hidden", backdropPaddingClass]}>
+    <div class="app-demo-shell w-full max-w-full overflow-hidden">
+      <section class="app-demo-screen is-active" data-app-demo-screen="inbox" aria-hidden="false">
+        <header class="app-demo-topbar">
+          <nav class="app-demo-top-tabs" aria-label="Views">
+            {
+              topTabs.map((tab, index) => (
+                <button
+                  type="button"
+                  class:list={[
+                    "app-demo-top-tab",
+                    index === 1 && "is-active",
+                  ]}
+                >
+                  {tab}
+                </button>
+              ))
+            }
+          </nav>
+          <button type="button" class="app-demo-publish">Publish changes</button>
+        </header>
+
+        <div class="app-demo-body">
+          <div class="app-demo-main-region">
+            <div class="app-demo-main-frame app-demo-main-frame-inbox">
+
+              <main class="app-demo-workspace-content">
+                <div class="app-demo-inbox-heading-wrap">
+                  <h3 class="app-demo-inbox-title">Request inbox</h3>
+                </div>
+
+                <div class="app-demo-priority-tabs" role="tablist" aria-label="Priority filters">
+                  {
+                    priorityTabs.map((tab, index) => (
+                      <button
+                        type="button"
+                        role="tab"
+                        class:list={["app-demo-priority-tab", index === 0 && "is-active"]}
+                        aria-selected={index === 0 ? "true" : "false"}
+                      >
+                        {tab.label}
+                      </button>
+                    ))
+                  }
+                </div>
+
+                <div class="app-demo-table-wrap">
+                  <div class="app-demo-table">
+                    <div class="app-demo-table-header">
+                      <span>Id</span>
+                      <span>Request</span>
+                      <span class="app-demo-priority-col-head">Priority</span>
+                      <span>Status</span>
+                    </div>
+
+                    {
+                      inboxRows.map((row) => (
+                        <div class="app-demo-table-item" data-app-demo-priority={row.tone}>
+                          <Image src={LineSeparator} alt="" class="app-demo-row-separator" aria-hidden="true" />
+                          <div class="app-demo-table-row">
+                            <span class="app-demo-id-cell">{row.id}</span>
+                            <span class="app-demo-request-cell">{row.request}</span>
+                            <span class:list={["app-demo-priority-pill", `is-${row.tone}`]}>{row.priority}</span>
+                            <span class="app-demo-status-cell">{row.status}</span>
+                          </div>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
+              </main>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<style>
+  .app-demo {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: stretch;
+    background: transparent;
+    overflow: hidden;
+  }
+
+  .app-demo-backdrop {
+    flex: 0 0 auto;
+    height: 100%;
+    width: auto !important;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    padding: 0 !important;
+    overflow: hidden;
+  }
+
+  .app-demo-shell {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .app-demo-screen {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .app-demo-screen.is-active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app-demo-body {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .app-demo-main-region,
+  .app-demo-main-frame,
+  .app-demo-workspace-nav,
+  .app-demo-workspace-content,
+  .app-demo-builder {
+    min-height: 0;
+  }
+
+  .app-demo-main-region,
+  .app-demo-main-frame {
+    height: 100%;
+  }
+
+  .app-demo-workspace-content {
+    overflow: hidden;
+  }
+
+  .app-demo-table-wrap,
+  .app-demo-builder-list,
+  .app-demo-support-main {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .app-demo-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .app-demo-top-tabs {
+    display: flex;
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  .app-demo-top-tab {
+    min-width: 0;
+    flex: 0 1 auto;
+  }
+
+  .app-demo-publish {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .app-demo-main-region,
+  .app-demo-main-frame,
+  .app-demo-workspace-content,
+  .app-demo-table-wrap,
+  .app-demo-table {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .app-demo-main-frame {
+    display: block;
+  }
+
+  .app-demo-table {
+    overflow: hidden;
+  }
+
+  .app-demo-table-header,
+  .app-demo-table-row {
+    display: grid;
+    grid-template-columns: minmax(52px, 0.75fr) minmax(0, 2.4fr) minmax(66px, 0.9fr) minmax(78px, 1fr);
+    min-width: 0;
+  }
+
+  .app-demo-table-header > *,
+  .app-demo-table-row > * {
+    min-width: 0;
+  }
+
+  .app-demo-id-cell,
+  .app-demo-request-cell,
+  .app-demo-status-cell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .app-demo-priority-pill {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>

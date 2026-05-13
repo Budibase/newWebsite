@@ -1,0 +1,56 @@
+---
+import CheckCircleFill from "phosphor-astro/CheckCircleFill.astro";
+import BuilderDemo from "@components/BuilderDemo.astro";
+import SectionBlock from "@components/SectionBlock.astro";
+import Button from "@components/Button.astro";
+---
+
+<section>
+  <div class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:gap-20">
+    <SectionBlock
+      titleColorMode="split-secondary-primary"
+      titleLines={[
+        { text: "Production-ready apps" },
+        { text: "without the overhead" },
+      ]}
+      description="Budibase empowers teams to ship production-ready apps in the cloud or on their own infrastructure, with no auth to stand up or code-base to maintain."
+      maxWidth="xl"
+      spacing="default"
+      contentClass="pt-1"
+    >
+      <ul class="m-0 flex flex-col gap-4">
+        <li class="flex items-start gap-3">
+          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            Customizable RBAC
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            SSO
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            Auth & user management
+          </div>
+        </li>
+      </ul>
+     <div class="mt-16">
+        <Button
+          label="Try it free"
+          url="https://account.budibase.app/register"
+          variant="primary"
+          size="large"
+          class="px-6 py-3 text-xl md:px-7 md:py-3.5 md:text-xl"
+          target="_blank"
+        />
+      </div>
+    </SectionBlock>
+        <div>
+      <BuilderDemo />
+    </div>
+  </div>
+</section>
