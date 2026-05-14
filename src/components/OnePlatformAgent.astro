@@ -11,18 +11,19 @@ import Icon from "@components/Icon.astro";
   role="img"
   aria-label="Agent preview showing a chat thread about Salesforce access and an add reply input"
 >
-  <Image
-    src={OnePlatformAgentBg}
-    alt=""
-    class="one-platform-agent__bg"
-    aria-hidden="true"
-    format="webp"
-    quality={60}
-    widths={[320, 480, 640]}
-    sizes="(min-width: 768px) 320px, calc(100vw - 1rem)"
-    loading="lazy"
-    decoding="async"
-  />
+<Image
+  src={OnePlatformAgentBg}
+  alt=""
+  class="one-platform-agent__bg"
+  aria-hidden="true"
+  format="webp"
+  quality={60}
+  widths={[320, 480, 640]}
+  sizes="(min-width: 768px) 320px, calc(100vw - 1rem)"
+  fetchpriority="high"
+  loading="eager"
+  decoding="async"
+/>
   <div class="one-platform-agent__surface" aria-hidden="true">
     <div class="one-platform-agent__panel">
       <div class="one-platform-agent__header">
