@@ -23,7 +23,7 @@ export const platformNavItemsData: NavGroup[] = [
     items: [
       {
         text: "Agents",
-        link: "/product/agents",
+        link: "/product/agents/",
         sectionId: "agents",
         iconName: "Memory",
         pageTitle: "Agents",
@@ -36,7 +36,7 @@ export const platformNavItemsData: NavGroup[] = [
       },
       {
         text: "Automations",
-        link: "/product/automations",
+        link: "/product/automations/",
         sectionId: "automations",
         iconName: "Path",
         pageTitle: "Automations",
@@ -45,7 +45,7 @@ export const platformNavItemsData: NavGroup[] = [
       },
       {
         text: "Apps",
-        link: "/product/apps",
+        link: "/product/apps/",
         sectionId: "apps",
         iconName: "Browsers",
         pageTitle: "Apps",
@@ -58,7 +58,7 @@ export const platformNavItemsData: NavGroup[] = [
     items: [
       {
         text: "Connections",
-        link: "/product/connections",
+        link: "/product/connections/",
         sectionId: "connections",
         iconName: "Link",
         pageTitle: "Connections",
@@ -66,7 +66,7 @@ export const platformNavItemsData: NavGroup[] = [
       },
       {
         text: "API explorer",
-        link: "/product/apis",
+        link: "/product/apis/",
         sectionId: "apis",
         iconName: "Webhooks",
         pageTitle: "API Explorer",
@@ -75,7 +75,7 @@ export const platformNavItemsData: NavGroup[] = [
       },
       {
         text: "Data tables",
-        link: "/product/data",
+        link: "/product/data/",
         sectionId: "data",
         iconName: "Database",
         pageTitle: "Data tables",
