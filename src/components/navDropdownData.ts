@@ -12,12 +12,12 @@ export interface NavDropdownItem {
 }
 
 const productItemOrder: Array<{ href: string; label: string }> = [
-  { href: "/product/agents", label: "Agents" },
-  { href: "/product/apps", label: "Apps" },
-  { href: "/product/automations", label: "Automations" },
-  { href: "/product/apis", label: "API explorer" },
-  { href: "/product/connections", label: "Connectors" },
-  { href: "/product/data", label: "Data tables" },
+  { href: "/product/agents/", label: "Agents" },
+  { href: "/product/apps/", label: "Apps" },
+  { href: "/product/automations/", label: "Automations" },
+  { href: "/product/apis/", label: "API explorer" },
+  { href: "/product/connections/", label: "Connectors" },
+  { href: "/product/data/", label: "Data tables" },
 ];
 
 const productItemsByHref = new Map(
@@ -53,31 +53,31 @@ export const resourcesDropdownItems: NavDropdownItem[] = [
     rel: "noopener noreferrer",
   },
   {
-    href: "/enterprise",
+    href: "/enterprise/",
     label: "Enterprise",
     description: "How Budibase meets the needs of large organizations.",
     prefetch: true,
   },
   {
-    href: "/customers",
+    href: "/customers/",
     label: "Customers",
     description: "Customer stories and case studies.",
     prefetch: true,
   },
   {
-    href: "/ops",
+    href: "/ops/",
     label: "Ops",
     description: "Common use cases.",
     prefetch: true,
   },
   {
-    href: "/blog",
+    href: "/blog/",
     label: "Blog",
     description: "All resources in one timeline.",
     prefetch: true,
   },
   {
-    href: "/changelog",
+    href: "/changelog/",
     label: "Changelog",
     description: "Changelog updates and release notes.",
     prefetch: true,
