@@ -13,7 +13,7 @@ export const BLOG_TOPIC_ITEMS = [
   {
     id: "blog",
     label: "All blog",
-    href: "/blog",
+    href: "/blog/",
     seoTitle: "Blog and Resources",
     seoDescription:
       "Product updates, customer stories, and workflow guides from Budibase.",
@@ -21,7 +21,7 @@ export const BLOG_TOPIC_ITEMS = [
   {
     id: "ai-agents",
     label: "AI agents",
-    href: "/blog/category/ai-agents",
+    href: "/blog/category/ai-agents/",
     seoTitle: "AI Agents Blog",
     seoDescription:
       "Budibase's AI Agents blog, covering everything you need to know about creating agentic workflows.",
@@ -29,7 +29,7 @@ export const BLOG_TOPIC_ITEMS = [
   {
     id: "alternatives",
     label: "Alternatives",
-    href: "/blog/category/alternatives",
+    href: "/blog/category/alternatives/",
     seoTitle: "Software Alternatives Blog",
     seoDescription:
       "Compare leading software alternatives for internal tools, automation, IT operations, and AI workflows.",
@@ -37,7 +37,7 @@ export const BLOG_TOPIC_ITEMS = [
   {
     id: "app-building",
     label: "App building",
-    href: "/blog/category/app-building",
+    href: "/blog/category/app-building/",
     seoTitle: "App Building Blog",
     seoDescription:
       "Learn how to design, build, and ship secure internal apps, portals, and business software faster.",
@@ -45,7 +45,7 @@ export const BLOG_TOPIC_ITEMS = [
   {
     id: "automation",
     label: "Automation",
-    href: "/blog/category/automation",
+    href: "/blog/category/automation/",
     seoTitle: "Automation Blog",
     seoDescription:
       "Explore workflow automation strategies, process improvement, and practical ways to automate internal operations.",
@@ -53,7 +53,7 @@ export const BLOG_TOPIC_ITEMS = [
   {
     id: "data",
     label: "Data",
-    href: "/blog/category/data",
+    href: "/blog/category/data/",
     seoTitle: "Data Blog",
     seoDescription:
       "Guides to data modeling, integrations, databases, and the systems behind secure internal applications.",
@@ -61,7 +61,7 @@ export const BLOG_TOPIC_ITEMS = [
   {
     id: "inside-it",
     label: "Inside IT",
-    href: "/blog/category/inside-it",
+    href: "/blog/category/inside-it/",
     seoTitle: "Inside IT Blog",
     seoDescription:
       "Insights for IT leaders on digital transformation, governance, service delivery, and modern internal operations.",
@@ -69,7 +69,7 @@ export const BLOG_TOPIC_ITEMS = [
   {
     id: "tutorials",
     label: "Tutorials",
-    href: "/blog/category/tutorials",
+    href: "/blog/category/tutorials/",
     seoTitle: "Tutorials Blog",
     seoDescription:
       "Step-by-step Budibase tutorials for building forms, dashboards, portals, databases, and workflow apps.",
@@ -77,7 +77,7 @@ export const BLOG_TOPIC_ITEMS = [
   {
     id: "workflow-guides",
     label: "Workflow guides",
-    href: "/blog/category/workflow-guides",
+    href: "/blog/category/workflow-guides/",
     seoTitle: "Workflow Guides Blog",
     seoDescription:
       "Practical guides to designing, improving, and scaling repeatable workflows across teams and operations.",
