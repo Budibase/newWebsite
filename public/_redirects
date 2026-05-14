@@ -78,7 +78,7 @@
 /customers/:page/     /blog/:page 301
 /resources/     /ops/ 301
 /components/     /product/apps/ 301
-/operations/     /ops/apps/ 301
+/operations/     /ops/ 301
 /platform/api-integration-platform/     /product/apis/ 301
 /categories/api/     /product/connections/ 301
 /categories/auth/     /product/connections/ 301
