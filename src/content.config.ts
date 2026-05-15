@@ -140,7 +140,12 @@ const assetsUsedSchema = z.object({
 
 const opsLibrary = defineCollection({
   loader: glob({
-    pattern: ["**/*.md", "**/*.mdx", "!**/README.md"],
+    pattern: [
+      "**/*.md",
+      "**/*.mdx",
+      "!**/README.md",
+      "!**/template-operation.mdx",
+    ],
     base: "./src/content/ops-library",
   }),
   schema: z.object({
