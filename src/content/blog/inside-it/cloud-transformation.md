@@ -168,10 +168,6 @@ We’ll also need to consider how users access our cloud services. For example, 
 
 And finally, cloud transformation requires concerted efforts toward security monitoring and threat detection. The more readily we can identify new threats, the easier it will be to put measures in place to mitigate them.
 
-![Security stats](https://res.cloudinary.com/daog6scxm/image/upload/v1678702810/cms/Cloud_Transformation_Security_https___www.insight.com_en_US_content-and-resources_2016_11032016-current-cloud-computing-statistics.html_vl6fbu.webp "Cloud transformation and security")
-
-([Insight](https://www.insight.com/en_US/content-and-resources/2016/11032016-current-cloud-computing-statistics.html))
-
 ## What does cloud transformation achieve?
 
 So, we have a pretty clear idea of what cloud transformation actually involves. We also know that this is one of the biggest hot-button issues in the world of business IT.

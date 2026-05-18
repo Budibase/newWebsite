@@ -175,10 +175,6 @@ Architecture also feeds your efforts toward data governance, security, complianc
 
 Perhaps more so than any of our other categories of data management solutions, architecture is a vast, far-reaching topic in its own right. We’ll look into the important points today, of course, but a comprehensive account is beyond our scope.
 
-![Data Management Solutions](https://res.cloudinary.com/daog6scxm/image/upload/v1677238457/cms/Data_Projects_Fail_https___www.dnb.com_content_dam_english_image-library_Modernization_illustrations_infographic-data-mgmt-challenges-stats.jpg_jss9cj.webp "Data Management Solutions")
-
-([DnB](https://www.dnb.com/content/dam/english/image-library/Modernization/illustrations/infographic-data-mgmt-challenges-stats.jpg))
-
 ### Data security
 
 Because data is a modern business’s most important asset, data *security* is a top risk factor. Therefore, maximizing security is obviously one of the central planks of our data management efforts.

@@ -264,10 +264,6 @@ We’ve alluded to a lot of the key use cases already - at least in passing.
 
 One of the most important is *big data* applications. So, things like data warehousing, data lakes, and other centralization or cloud migration projects. 
 
-![Data projects stats](https://res.cloudinary.com/daog6scxm/image/upload/v1680257285/cms/Data_Projects_Fail_https___www.dnb.com_content_dam_english_image-library_Modernization_illustrations_infographic-data-mgmt-challenges-stats.jpg_n8ixij.webp "Data projects stats")
-
-([DNB](https://www.dnb.com/content/dam/english/image-library/Modernization/illustrations/infographic-data-mgmt-challenges-stats.jpg))
-
 Essentially, when we have enormous stores of data, we’re constrained by the fact that all of this is unlikely to fit neatly into a strict schema - so we need solutions that can handle unstructured data.
 
 Similarly, *document management* is an important use case for non-relational databases. Digital media, like files, images, text documents, emails, or other assets need more complex data structures if we want to do anything but the most basic of operations to them.

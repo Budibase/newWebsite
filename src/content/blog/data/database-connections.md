@@ -103,10 +103,6 @@ This is tricky, because we’re actually constrained to a large extent by how ou
 
 Similarly, some tools will only be able to support a certain number of connections at once or might handle concurrent connections differently. We also need to deal with how connections are opened and closed in different platforms.
 
-![Data technology](https://res.cloudinary.com/daog6scxm/image/upload/v1693907173/cms/database-connections/Data_Projects_Fail_https___www.dnb.com_content_dam_english_image-library_Modernization_illustrations_infographic-data-mgmt-challenges-stats.jpg_pwfdu9.webp "Data technology")
-
-([DnB](https://www.dnb.com/content/dam/english/image-library/Modernization/illustrations/infographic-data-mgmt-challenges-stats.jpg))
-
 We’re also constrained by the infrastructure surrounding both our database server and our client applications. This is largely what’s going to determine the performance and reliability of our connections.
 
 We’ll check out some of the optimization strategies that are available to us here a little bit later.

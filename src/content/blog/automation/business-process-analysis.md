@@ -61,10 +61,6 @@ On the one hand, we have direct costs, like labor hours, materials, and equipmen
 
 Therefore, process analysis must take the net result of all of these into account.
 
-![BPM stats](https://res.cloudinary.com/daog6scxm/image/upload/v1669736959/cms/Reduce_Costs_https___www.bptrends.com_bpt_wp-content_uploads_Business_Process_Maturity_in_Polish_Organisations_2016.pdf_2_lqbnhz.webp "BPM stats")
-
-[BP Trends](https://www.bptrends.com/bpt/wp-content/uploads/Business_Process_Maturity_in_Polish_Organisations_2016.pdf)
-
 ### Efficiency
 
 Efficiency comes in a couple of different forms too. At the most basic level, this is a gauge of what you can achieve relative to the effort and resources required. So, an efficient process is one that allows you to complete a task with the least possible outlay.

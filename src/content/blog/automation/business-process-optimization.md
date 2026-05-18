@@ -513,10 +513,6 @@ Rather, BPO is a cultural shift that empowers us to seek out new and better ways
 
 Since we can always do things faster, business process optimization is never finished.
 
-![Continuous Improvement](https://res.cloudinary.com/daog6scxm/image/upload/v1669738403/cms/Continuous_Improvement_y8pwfo.webp "Continuous Improvement")
-
-[BP Trends](https://www.bptrends.com/bpt/wp-content/uploads/Business_Process_Maturity_in_Polish_Organisations_2016.pdf)
-
 ## 5 tips for business process optimization
 
 Now that we have a broad framework for optimizing business processes, we can move on to some more granular, situational tips for making the most of your efforts. These are the extra strategies that you can employ to shore up your success.

@@ -259,10 +259,6 @@ Some might resemble project management software more, with team collaboration to
 
 Therefore, this approach might only be suitable in relatively simple or generic cases.
 
-![Workflow application training stats](https://res.cloudinary.com/daog6scxm/image/upload/v1693301807/cms/workflow-application/Training_https___www.bptrends.com_bpt_wp-content_uploads_2020-BPM-Survey.pdf_p5bwbv.webp "Workflow application training stats")
-
-([BP Trends](https://www.bptrends.com/bpt/wp-content/uploads/2020-BPM-Survey.pdf))
-
 Finally, we have **low-code development tools**. Low-code is all about providing developers and less technical colleagues alike with the tools they need to build custom solutions, in a fraction of the time.
 
 Check out our [features overview](https://budibase.com/product/) to find out more about Budibase.

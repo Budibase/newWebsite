@@ -162,10 +162,6 @@ The key here is implementing compliance by design. That is, BPM affords us the o
 
 Once we’ve modeled our ideal processes around these, the next step is to choose the most effective way to implement them in the real world, to minimize the incidence of compliance issues.
 
-![Business Process Management Statistics](https://res.cloudinary.com/daog6scxm/image/upload/v1669735403/cms/Reduce_Costs_https___www.bptrends.com_bpt_wp-content_uploads_Business_Process_Maturity_in_Polish_Organisations_2016.pdf_2_wmzpph.webp "Business Process Management Statistics")
-
-[BP Trends](https://www.bptrends.com/bpt/wp-content/uploads/Business_Process_Maturity_in_Polish_Organisations_2016.pdf)
-
 ## Key challenges for BPM
 
 It’s also worth keeping in mind that, like any kind of transformation, business process management isn’t always plain sailing. Instead, there are almost innumerable issues out there that can undermine your efforts, or even block them entirely.
@@ -442,10 +438,6 @@ So, we really just need to follow the framework that’s provided for us.
 Of course, in practice, nothing is ever actually this simple. Indeed, we’ll need to be adaptive to unexpected issues, delays, and roadblocks. Of course, the best cure is always prevention. Nonetheless, it’s important to have a firm grasp of key mitigation strategies.
 
 For example, in any BPM methodology, it’s vital to thoroughly analyze and document individual processes’ dependencies in order to plan around and avoid unforeseen spillover.
-
-![Business process Management Training](https://res.cloudinary.com/daog6scxm/image/upload/v1669735654/cms/Training_https___www.bptrends.com_bpt_wp-content_uploads_2020-BPM-Survey.pdf_cpzrv2.webp "Business Process Management Training")
-
-[BP Trends](https://www.bptrends.com/bpt/wp-content/uploads/2020-BPM-Survey.pdf)
 
 ### 6. Review and follow-on actions
 

@@ -20,6 +20,6 @@ This update significantly enhances Budibase by not only expanding the total numb
 
 ## Connect Budibase DB with n8n 
 
-With this release, we're also rolling out the [Budibase DB node with n8n.](https://www.npmjs.com/package/n8n-nodes-budibasedb)This opens up a straightforward way to manage and update your data within the Budibase database directly through n8n, giving you the ability to automate data administration tasks with ease. Now, you can update records, manage your Budibase apps, automate data deletion, and more without ever leaving n8n.
+With this release, we're also rolling out the Budibase DB node with n8n. This opens up a straightforward way to manage and update your data within the Budibase database directly through n8n, giving you the ability to automate data administration tasks with ease. Now, you can update records, manage your Budibase apps, automate data deletion, and more without ever leaving n8n.
 
 We're excited to see how you'll use these new capabilities to take your workflows to another level!

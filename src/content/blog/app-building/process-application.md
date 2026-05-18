@@ -177,10 +177,6 @@ Some of the most important challenges to keep abreast of include:
 
 Of course, none of these are insurmountable.
 
-![User Training](https://res.cloudinary.com/daog6scxm/image/upload/v1693301807/cms/workflow-application/Training_https___www.bptrends.com_bpt_wp-content_uploads_2020-BPM-Survey.pdf_p5bwbv.webp "User Training")
-
-([BP Trends](https://www.bptrends.com/bpt/wp-content/uploads/2020-BPM-Survey.pdf))
-
 Rather the thing to be conscious of is how each can impact the suitability of process apps as a solution in specific use cases - or whether an alternative, like larger-scale transformations or existing SaaS platforms, might be more suitable.
 
 Take a look at our ultimate guide to [internal processes](https://budibase.com/blog/automation/internal-processes/) to learn more.

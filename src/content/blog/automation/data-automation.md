@@ -257,10 +257,6 @@ For a start, you’ll need to determine the appropriate *class* of automation so
 
 We might need to balance the relative costs and benefits of leveraging RPA, custom app development, data pipelines, machine learning, or a whole range of other strategies - or even several of these in combination.
 
-![Automated data processing projet failure](https://res.cloudinary.com/daog6scxm/image/upload/v1680257285/cms/Data_Projects_Fail_https___www.dnb.com_content_dam_english_image-library_Modernization_illustrations_infographic-data-mgmt-challenges-stats.jpg_n8ixij.webp "Data automation failure")
-
-([DNB](https://www.dnb.com/content/dam/english/image-library/Modernization/illustrations/infographic-data-mgmt-challenges-stats.jpg))
-
 Another thing to consider is the fact that we’ll also be constrained by indirect costs. For example, we’d need to account for the costs of licensing specific tools, maintaining solutions, onboarding staff, and the opportunity costs associated with the time to automate work.
 
 Plus, if we need to boost technical capabilities to implement a particular solution, we’ll need to factor this in too - both in terms of time and the financial burden. For instance, additional network infrastructure.

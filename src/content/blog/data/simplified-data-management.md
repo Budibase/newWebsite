@@ -181,10 +181,6 @@ More recently though, a whole range of object storage, wide-column, and other No
 
 To learn more, check out our guide to [relational vs non-relational databases](https://budibase.com/blog/app-building/relational-vs-non-relational-databases/).
 
-![Simplified data management](https://res.cloudinary.com/daog6scxm/image/upload/v1693907173/cms/database-connections/Data_Projects_Fail_https___www.dnb.com_content_dam_english_image-library_Modernization_illustrations_infographic-data-mgmt-challenges-stats.jpg_pwfdu9.webp "Simplifed data management")
-
-([DnB](https://www.dnb.com/content/dam/english/image-library/Modernization/illustrations/infographic-data-mgmt-challenges-stats.jpg))
-
 #### 8. Cloud hosting
 
 Cloud-based data storage isn’t exactly a *trend* anymore. Rather, it’s well and truly in the mainstream. From an ops point of view, one benefit to this is that we can access storage on an *as-a-service* model - so we only pay for what we need.

@@ -127,10 +127,6 @@ Resource allocation is a perennial challenge. Technology is a core part of the s
 
 So, the culmination of the benefits we’ve seen so far is that we can carry out tasks faster, more cost-effectively, or often both.
 
-![BPM Tools Stats](https://res.cloudinary.com/daog6scxm/image/upload/v1669739500/cms/Reduce_Costs_https___www.bptrends.com_bpt_wp-content_uploads_Business_Process_Maturity_in_Polish_Organisations_2016.pdf_2_pttizb.webp "BPM Tools stats")
-
-[BP Trends](https://www.bptrends.com/bpt/wp-content/uploads/Business_Process_Maturity_in_Polish_Organisations_2016.pdf)
-
 ### Compliance, security, and process-adherence
 
 Finally, BPM software aims to simplify our compliance efforts and mitigate against security threats. On the one hand, this is tied to specific functionality and features within particular tools.

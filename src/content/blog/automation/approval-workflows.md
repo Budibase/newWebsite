@@ -42,10 +42,6 @@ This is particularly important in businesses over a certain size - where it’s 
 
 But in order to distinguish between formal and informal approval workflows we need a more granular understanding of what we’re dealing with.
 
-![Approval workflow training](https://res.cloudinary.com/daog6scxm/image/upload/v1693301807/cms/workflow-application/Training_https___www.bptrends.com_bpt_wp-content_uploads_2020-BPM-Survey.pdf_p5bwbv.webp "Approval workflow training")
-
-([BP Trends](https://www.bptrends.com/bpt/wp-content/uploads/2020-BPM-Survey.pdf))
-
 ### What are the components of an approval workflow?
 
 Approval workflows are made up of a few key elements - even if these aren’t all explicitly defined.
