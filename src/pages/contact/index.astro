@@ -4,6 +4,7 @@ import Layout from "../../layouts/MainLayout.astro";
 
 const pageTitle = "Contact us";
 const pageDescription = "Let's explore how Budibase can work for you.";
+const requestedOp = Astro.url.searchParams.get("op") ?? "";
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
@@ -120,6 +121,8 @@ const pageDescription = "Let's explore how Budibase can work for you.";
                 <input name="bot-field" type="text" tabindex="-1" />
               </label>
             </p>
+
+            <input type="hidden" name="op" value={requestedOp} />
 
             <label class="contact-field">
               <span>First Name</span>

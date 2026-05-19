@@ -1,8 +1,5 @@
 ---
-import {
-  getButtonClasses,
-  getButtonRel,
-} from "../../../lib/button-classes.js";
+import { getButtonClasses, getButtonRel } from "../../../lib/button-classes.js";
 
 type Variant = "primary" | "secondary" | "cta" | "large";
 type Size = "small" | "medium" | "large" | "sm";
@@ -30,8 +27,7 @@ const {
 
 const classes = getButtonClasses({ variant, size, className });
 const computedRel = getButtonRel({ target, rel });
-const url = `/contact?op=${Astro.props.opSlug}`;
-
+const url = `/contact?op=${encodeURIComponent(Astro.props.opSlug)}`;
 ---
 
 <a
@@ -41,7 +37,6 @@ const url = `/contact?op=${Astro.props.opSlug}`;
   role="button"
   target={target}
   rel={computedRel}
-  >
+>
   {label}
-</a>  
-
+</a>
