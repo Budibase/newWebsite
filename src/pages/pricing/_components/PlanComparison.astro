@@ -1,6 +1,7 @@
 ---
 import Check from "phosphor-astro/Check.astro";
 import X from "phosphor-astro/X.astro";
+import Plus from "phosphor-astro/Plus.astro";
 import featureMatrix from "./feature-matrix.json";
 
 type PlanKey = "pro" | "premium" | "business" | "enterprise" | "open_source";
@@ -77,15 +78,21 @@ const planGroupEntries = Object.entries(planGroups) as Array<
 ---
 
 <section class="mb-12 md:mb-20" aria-labelledby="plan-comparison-heading">
-  <h2
-    id="plan-comparison-heading"
-    class="text-3xl font-semibold text-stone-900 dark:text-stone-100 mb-4"
-  >
-    Compare plans
-  </h2>
-  <div class="space-y-4">
-    {
-      planGroupEntries.map(([hostingOption, columns]) => (
+  <details class="plan-comparison-details">
+    <summary class="flex items-center justify-between cursor-pointer list-none">
+      <h2
+        id="plan-comparison-heading"
+        class="text-3xl font-semibold text-stone-900 dark:text-stone-100"
+      >
+        Compare plans
+      </h2>
+      <span class="plus-icon transition-transform duration-200">
+        <Plus class="h-5 w-5 text-stone-900 dark:text-stone-100" aria-hidden="true" />
+      </span>
+    </summary>
+    <div class="space-y-4 mt-4">
+      {
+        planGroupEntries.map(([hostingOption, columns]) => (
         <div
           data-hosting-panel={hostingOption}
           class:list={[
@@ -200,7 +207,8 @@ const planGroupEntries = Object.entries(planGroups) as Array<
         </div>
       ))
     }
-  </div>
+    </div>
+  </details>
 </section>
 
 <style>
@@ -275,5 +283,17 @@ const planGroupEntries = Object.entries(planGroups) as Array<
     text-decoration: underline;
     text-underline-offset: 2px;
     width: fit-content;
+  }
+
+  .plan-comparison-details > summary {
+    list-style: none;
+  }
+
+  .plan-comparison-details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .plan-comparison-details[open] .plus-icon {
+    transform: rotate(45deg);
   }
 </style>
