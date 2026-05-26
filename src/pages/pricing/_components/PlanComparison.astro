@@ -1,0 +1,369 @@
+---
+import Check from "phosphor-astro/Check.astro";
+import X from "phosphor-astro/X.astro";
+import Plus from "phosphor-astro/Plus.astro";
+import featureMatrix from "./feature-matrix.json";
+
+type PlanKey = "pro" | "premium" | "business" | "enterprise" | "open_source";
+
+type FeatureValues = Record<PlanKey, string | null> & {
+  category: string;
+  description?: string;
+  url?: string;
+};
+
+type FeatureEntry = {
+  key: string;
+  label: string;
+  values: FeatureValues;
+};
+
+type PlanColumn = {
+  key: PlanKey;
+  label: string;
+};
+
+const planGroups: Record<"cloud" | "self-host", PlanColumn[]> = {
+  cloud: [
+    { key: "pro", label: "Pro" },
+    { key: "premium", label: "Premium" },
+    { key: "business", label: "Business" },
+    { key: "enterprise", label: "Enterprise" },
+  ],
+  "self-host": [
+    { key: "open_source", label: "Open-source" },
+    { key: "enterprise", label: "Enterprise" },
+  ],
+};
+
+const formatFeatureLabel = (featureKey: string) =>
+  featureKey
+    .replace(/_/g, " ")
+    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+
+const formatFeatureValue = (value: string | null) => {
+  if (value === null || value === "") {
+    return "—";
+  }
+
+  return value;
+};
+
+const getAvailabilityValue = (value: string | null) =>
+  typeof value === "string" ? value.trim().toLowerCase() : null;
+
+const featuresByCategory = Object.entries(
+  featureMatrix as Record<string, FeatureValues>,
+).reduce<Record<string, FeatureEntry[]>>((categories, [key, values]) => {
+  const category = values.category || "Other";
+
+  if (!categories[category]) {
+    categories[category] = [];
+  }
+
+  categories[category].push({
+    key,
+    label: formatFeatureLabel(key),
+    values,
+  });
+
+  return categories;
+}, {});
+
+const categoryGroups = Object.entries(featuresByCategory);
+const planGroupEntries = Object.entries(planGroups) as Array<
+  ["cloud" | "self-host", PlanColumn[]]
+>;
+---
+
+<section class="mb-5 md:mb-5" aria-labelledby="plan-comparison-heading">
+  <div class="plan-comparison" data-plan-comparison data-expanded="false">
+    <h2
+      id="plan-comparison-heading"
+      class="text-3xl font-semibold text-stone-900 dark:text-stone-100"
+    >
+      <button
+        type="button"
+        class="plan-comparison-header flex w-full items-center justify-between cursor-pointer text-left"
+        data-plan-comparison-trigger
+        aria-controls="plan-comparison-content"
+        aria-expanded="false"
+      >
+        <span>Compare plans</span>
+        <span class="plus-icon transition-transform duration-200">
+          <Plus class="h-5 w-5" aria-hidden="true" />
+        </span>
+      </button>
+    </h2>
+    <div
+      id="plan-comparison-content"
+      class="plan-comparison-content space-y-4 mt-4"
+      data-plan-comparison-content
+    >
+      {
+        planGroupEntries.map(([hostingOption, columns]) => (
+        <div
+          data-hosting-panel={hostingOption}
+          class:list={[
+            "plan-comparison-panel rounded-md overflow-hidden border border-stone-300/70 dark:border-stone-700/70",
+            hostingOption === "self-host" && "hidden",
+          ]}
+          aria-hidden={hostingOption === "self-host" ? "true" : "false"}
+        >
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[720px] border-collapse text-sm table-fixed">
+              <caption class="sr-only">
+                Comparison of features available on currently displayed pricing
+                plans.
+              </caption>
+              <colgroup>
+                <col class="w-[240px] md:w-[280px]" />
+                {columns.map(() => (
+                  <col
+                    style={`width: calc((100% - 280px) / ${columns.length});`}
+                  />
+                ))}
+              </colgroup>
+              <thead>
+                <tr class="border-stone-300/70 dark:border-stone-700/70">
+                  <th
+                    scope="col"
+                    class="text-left px-4 py-3 font-semibold text-stone-900 dark:text-stone-100"
+                  />
+                  {columns.map((column) => (
+                    <th
+                      scope="col"
+                      class="text-center px-4 py-3 font-semibold text-stone-900 dark:text-stone-100"
+                    >
+                      {column.label}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              {categoryGroups.map(([category, features]) => (
+                <tbody>
+                  <tr class="border-b border-t border-stone-300/70 dark:border-stone-700/70">
+                    <th
+                      scope="rowgroup"
+                      colspan={columns.length + 1}
+                      class="bg-stone-50 dark:bg-stone-800/70 px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.08em] text-stone-700 dark:text-stone-300"
+                    >
+                      {category}
+                    </th>
+                  </tr>
+                  {features.map((feature) => (
+                    <tr class="border-b border-stone-300/70 dark:border-stone-700/70 last:border-b-0">
+                      <th
+                        scope="row"
+                        class="px-4 py-3 text-left font-medium text-stone-900 dark:text-stone-100"
+                      >
+                        {feature.values.description ? (
+                          <span class="feature-tooltip-wrap">
+                            <span class="feature-tooltip-trigger" tabindex="0">
+                              {feature.label}
+                            </span>
+                            <span
+                              role="tooltip"
+                              class="feature-tooltip text-sm text-stone-700 dark:text-stone-200"
+                            >
+                              <span>{feature.values.description}</span>
+                              {feature.values.url ? (
+                                <a
+                                  href={feature.values.url}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  class="feature-tooltip-link"
+                                >
+                                  visit docs
+                                </a>
+                              ) : null}
+                            </span>
+                          </span>
+                        ) : (
+                          feature.label
+                        )}
+                      </th>
+                      {columns.map((column) => (
+                        <td class="px-4 py-3 text-center text-stone-600 dark:text-stone-300">
+                          {getAvailabilityValue(feature.values[column.key]) ===
+                          "yes" ? (
+                            <span
+                              class="inline-flex h-5 w-5 items-center justify-center text-stone-900 dark:text-stone-100"
+                              aria-label="Yes"
+                            >
+                              <Check class="h-4 w-4" aria-hidden="true" />
+                            </span>
+                          ) : getAvailabilityValue(
+                              feature.values[column.key],
+                            ) === "no" ? (
+                            <span
+                              class="inline-flex h-5 w-5 items-center justify-center text-stone-500 dark:text-stone-400"
+                              aria-label="No"
+                            >
+                              <X class="h-4 w-4" aria-hidden="true" />
+                            </span>
+                          ) : (
+                            formatFeatureValue(feature.values[column.key])
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              ))}
+            </table>
+          </div>
+        </div>
+      ))
+    }
+    </div>
+  </div>
+</section>
+
+<style>
+  .plan-comparison-panel {
+    background: var(--bg-2);
+  }
+
+  .feature-tooltip-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .feature-tooltip-trigger {
+    display: inline;
+    border-bottom: 1px dotted rgb(168 162 158 / 0.8);
+    cursor: help;
+    line-height: 1.35;
+  }
+
+  .feature-tooltip-trigger:focus-visible {
+    outline: 2px solid rgb(var(--ring));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .feature-tooltip {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 10px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 240px;
+    max-width: 320px;
+    padding: 12px;
+    background: var(--bg-1);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition:
+      opacity 150ms ease,
+      transform 150ms ease,
+      visibility 150ms ease;
+    z-index: 30;
+    white-space: normal;
+  }
+
+  .feature-tooltip::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -10px;
+    width: 100%;
+    height: 10px;
+  }
+
+  .feature-tooltip-wrap:hover .feature-tooltip,
+  .feature-tooltip-wrap:focus-within .feature-tooltip {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .feature-tooltip-link {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    width: fit-content;
+  }
+
+  .plan-comparison-header {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 0;
+  }
+
+  .plan-comparison-header:focus-visible {
+    outline: 2px solid rgb(var(--ring));
+    outline-offset: 6px;
+    border-radius: 4px;
+  }
+
+  .plan-comparison-content {
+    position: relative;
+  }
+
+  .plan-comparison[data-expanded="false"] > .plan-comparison-content {
+    max-height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .plan-comparison[data-expanded="false"] > .plan-comparison-content::after {
+    content: "";
+    position: absolute;
+    inset: 150px 0 0;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--bg-1) 0%, transparent),
+      color-mix(in srgb, var(--bg-1) 96%, transparent) 74%,
+      var(--bg-1)
+    );
+    pointer-events: none;
+  }
+
+  .plan-comparison[data-expanded="true"] .plus-icon {
+    transform: rotate(45deg);
+  }
+</style>
+
+<script>
+  const planComparison = document.querySelector("[data-plan-comparison]");
+  const planComparisonTrigger = planComparison?.querySelector(
+    "[data-plan-comparison-trigger]",
+  ) as HTMLButtonElement | null;
+  const planComparisonContent = planComparison?.querySelector(
+    "[data-plan-comparison-content]",
+  ) as HTMLDivElement | null;
+
+  if (planComparison && planComparisonTrigger) {
+    const setExpanded = (nextExpanded: boolean) => {
+      planComparison.dataset.expanded = String(nextExpanded);
+      planComparisonTrigger.setAttribute(
+        "aria-expanded",
+        String(nextExpanded),
+      );
+    };
+
+    planComparisonTrigger.addEventListener("click", () => {
+      const isExpanded = planComparison.dataset.expanded === "true";
+      setExpanded(!isExpanded);
+    });
+
+    planComparisonContent?.addEventListener("click", () => {
+      const isExpanded = planComparison.dataset.expanded === "true";
+      if (!isExpanded) {
+        setExpanded(true);
+      }
+    });
+  }
+</script>

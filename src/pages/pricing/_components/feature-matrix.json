@@ -1,0 +1,672 @@
+{
+  "Automation builder": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Platform",
+    "description": "Build backend workflows by chaining automation triggers and action steps.",
+    "url": "https://docs.budibase.com/docs/automation-steps"
+  },
+  "App builder": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Platform",
+    "description": "Create end-user web apps that work with workspace data and automations.",
+    "url": "https://docs.budibase.com/docs/introduction-to-apps"
+  },
+  "Agent builder": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Platform",
+    "description": "Create AI agents with instructions, tools, models, and knowledge sources.",
+    "url": "https://docs.budibase.com/docs/agent-building-101"
+  },
+  "Internal and external datasources": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Platform",
+    "description": "Use Budibase DB alongside external data sources across your workspace.",
+    "url": "https://docs.budibase.com/docs/data"
+  },
+  "Drag-and-drop interface designer": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Platform",
+    "description": "Design application screens visually with components, bindings, and layouts.",
+    "url": "https://docs.budibase.com/docs/app-building-101"
+  },
+  "Workspace limit": {
+    "pro": "1",
+    "premium": "unlimited",
+    "business": "unlimited",
+    "enterprise": "unlimited",
+    "open_source": "1",
+    "category": "Platform",
+    "description": "Workspaces organize apps, automations, and shared data sources in one place.",
+    "url": "https://docs.budibase.com/docs/introduction-to-workspaces"
+  },
+  "Hosting": {
+    "pro": "cloud",
+    "premium": "cloud",
+    "business": "cloud",
+    "enterprise": "flexible",
+    "open_source": "self",
+    "category": "Platform",
+    "description": "Self-host Budibase on your own infrastructure using supported deployment methods.",
+    "url": "https://docs.budibase.com/docs/getting-started"
+  },
+  "Automations limit": {
+    "pro": "unlimited",
+    "premium": "unlimited",
+    "business": "unlimited",
+    "enterprise": "unlimited",
+    "open_source": "unlimited",
+    "category": "Automations",
+    "description": "",
+    "url": ""
+  },
+  "Sync automations": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Automations",
+    "description": "Return automation results directly to app users or webhook callers.",
+    "url": "https://docs.budibase.com/docs/synchronous-automations"
+  },
+  "20+ Triggers and actions": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Automations",
+    "description": "Automations can start from built-in triggers and run many different action steps.",
+    "url": "https://docs.budibase.com/docs/automation-actions"
+  },
+  "Automation log retention": {
+    "pro": "1 day",
+    "premium": "7 days",
+    "business": "30 days",
+    "enterprise": "unlimited",
+    "open_source": "1 day",
+    "category": "Automations",
+    "description": "Review past automation runs and inspect execution details in the logs view.",
+    "url": "https://docs.budibase.com/docs/logs"
+  },
+  "Synchronous webhooks": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Automations",
+    "description": "Webhook automations can return collected data in the HTTP response.",
+    "url": "https://docs.budibase.com/docs/synchronous-automations"
+  },
+  "Bring your own ai key": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Agents",
+    "description": "Connect your own AI model providers and credentials for Budibase Agents.",
+    "url": "https://docs.budibase.com/docs/agents-config"
+  },
+  "Budibase AI": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Agents",
+    "description": "Budibase AI covers agents, models, retrieval, and messaging channel integrations.",
+    "url": "https://docs.budibase.com/docs/ai"
+  },
+  "Tool calling": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Agents",
+    "description": "Control which tools an Agent can use to read data, write data, or trigger actions.",
+    "url": "https://docs.budibase.com/docs/agent-tools-and-permissions"
+  },
+  "Evals": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Agents",
+    "description": "Test and evaluate Agent behavior against defined scenarios before production use.",
+    "url": "https://docs.budibase.com/docs/agent-testing-guide"
+  },
+  "Knowledge sources": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Agents",
+    "description": "Attach vector databases and knowledge content so Agents can retrieve relevant context.",
+    "url": "https://docs.budibase.com/docs/agent-vector-databases"
+  },
+  "Agent log retention": {
+    "pro": "1 day",
+    "premium": "7 days",
+    "business": "30 days",
+    "enterprise": "unlimited",
+    "open_source": "unlimited",
+    "category": "Agents",
+    "description": "",
+    "url": ""
+  },
+  "Datasources": {
+    "pro": "unlimited",
+    "premium": "unlimited",
+    "business": "unlimited",
+    "enterprise": "unlimited",
+    "open_source": "unlimited",
+    "category": "Data",
+    "description": "Add and manage internal and external data sources for apps and automations.",
+    "url": "https://docs.budibase.com/docs/data"
+  },
+  "Custom REST API connector": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Data",
+    "description": "Connect REST APIs and configure requests, auth, variables, and pagination.",
+    "url": "https://docs.budibase.com/docs/rest"
+  },
+  "External records": {
+    "pro": "unlimited",
+    "premium": "unlimited",
+    "business": "unlimited",
+    "enterprise": "unlimited",
+    "open_source": "unlimited",
+    "category": "Data",
+    "description": "Use records from external databases and APIs through connected data sources.",
+    "url": "https://docs.budibase.com/docs/data-sources"
+  },
+  "Custom fields": {
+    "pro": "unlimited",
+    "premium": "unlimited",
+    "business": "unlimited",
+    "enterprise": "unlimited",
+    "open_source": "unlimited",
+    "category": "Data",
+    "description": "Define table columns with the field types needed for your Budibase data model.",
+    "url": "https://docs.budibase.com/docs/budibasedb"
+  },
+  "View permissions": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Data",
+    "description": "Use views to filter and present specific data for different use cases or users.",
+    "url": "https://docs.budibase.com/docs/views"
+  },
+  "View readonly columns": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Data",
+    "description": "Views let you hide columns and shape how table data is presented in the UI.",
+    "url": "https://docs.budibase.com/docs/views"
+  },
+  "Table access security": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Data",
+    "description": "Control app access with workspace roles and permissions across data and screens.",
+    "url": "https://docs.budibase.com/docs/user-roles"
+  },
+  "Budibase DB rows limit": {
+    "pro": "50,000",
+    "premium": "250,000",
+    "business": "500,000",
+    "enterprise": "unlimited",
+    "open_source": "unlimited",
+    "category": "Data",
+    "description": "Budibase DB is the built-in data source for storing tables, columns, and rows.",
+    "url": "https://docs.budibase.com/docs/budibasedb"
+  },
+  "Multi-screen responsive apps": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Design",
+    "description": "Design apps that adapt cleanly across mobile and larger screen sizes.",
+    "url": "https://docs.budibase.com/docs/designing-for-mobile"
+  },
+  "40+ Pre-built components": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Design",
+    "description": "Build screens with Budibase UI components such as tables, forms, cards, and charts.",
+    "url": "https://docs.budibase.com/docs/components"
+  },
+  "Powerful design blocks": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Design",
+    "description": "Use pre-built blocks that combine multiple components for common UI patterns.",
+    "url": "https://docs.budibase.com/docs/blocks"
+  },
+  "Reusable code snippets": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Design",
+    "description": "Create reusable JavaScript snippets and use them anywhere JavaScript bindings are supported.",
+    "url": "https://docs.budibase.com/docs/snippets"
+  },
+  "Custom email onboarding": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Design",
+    "description": "Invite users by email and let them set their own passwords when SMTP is configured.",
+    "url": "https://docs.budibase.com/docs/adding-users"
+  },
+  "Branding": {
+    "pro": "no",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Design",
+    "description": "Customize logos, colors, auth screens, and other Budibase branding settings.",
+    "url": "https://docs.budibase.com/docs/branding"
+  },
+  "PDF creator": {
+    "pro": "no",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Design",
+    "description": "Generate PDFs from Budibase data for exports, reports, or document workflows.",
+    "url": "https://docs.budibase.com/docs/pdf-exporting"
+  },
+  "Custom app scripts": {
+    "pro": "no",
+    "premium": "no",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Design",
+    "description": "Run custom JavaScript inside apps for advanced behavior beyond standard bindings.",
+    "url": "https://docs.budibase.com/docs/app-scripts"
+  },
+  "PWAs": {
+    "pro": "no",
+    "premium": "no",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Design",
+    "description": "Turn Budibase apps into progressive web apps for installable, app-like experiences.",
+    "url": "https://docs.budibase.com/docs/progressive-web-apps"
+  },
+  "Public users": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Users",
+    "description": "Public users are unauthenticated users who can access public screens and content.",
+    "url": "https://docs.budibase.com/docs/user-roles"
+  },
+  "Included creators": {
+    "pro": "1",
+    "premium": "1",
+    "business": "3",
+    "enterprise": "custom",
+    "open_source": "unlimited",
+    "category": "Users",
+    "description": "Creators are users with builder access to assigned workspaces.",
+    "url": "https://docs.budibase.com/docs/user-roles"
+  },
+  "Included end users": {
+    "pro": "0",
+    "premium": "0",
+    "business": "0",
+    "enterprise": "custom",
+    "open_source": "unlimited",
+    "category": "Users",
+    "description": "End users can use published apps without having builder access.",
+    "url": "https://docs.budibase.com/docs/user-roles"
+  },
+  "Max creators": {
+    "pro": "1",
+    "premium": "unlimited",
+    "business": "unlimited",
+    "enterprise": "unlimited",
+    "open_source": "unlimited",
+    "category": "Users",
+    "description": "Creators are builder users who can create and manage apps in assigned workspaces.",
+    "url": "https://docs.budibase.com/docs/user-roles"
+  },
+  "Max end users": {
+    "pro": "unlimited",
+    "premium": "unlimited",
+    "business": "unlimited",
+    "enterprise": "unlimited",
+    "open_source": "unlimited",
+    "category": "Users",
+    "description": "End users are published-app users without builder permissions.",
+    "url": "https://docs.budibase.com/docs/user-roles"
+  },
+  "User groups": {
+    "pro": "no",
+    "premium": "no",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Users",
+    "description": "Use groups to manage workspace and app access for multiple users at once.",
+    "url": "https://docs.budibase.com/docs/user-groups"
+  },
+  "Plugins limit": {
+    "pro": "unlimited",
+    "premium": "unlimited",
+    "business": "unlimited",
+    "enterprise": "unlimited",
+    "open_source": "unlimited",
+    "category": "Extensibility",
+    "description": "Plugins extend Budibase with custom components, data sources, and automations.",
+    "url": "https://docs.budibase.com/docs/custom-plugin"
+  },
+  "User interface plugins": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Extensibility",
+    "description": "Build custom UI component plugins to add new interface elements to Budibase.",
+    "url": "https://docs.budibase.com/docs/custom-component"
+  },
+  "Datasource plugins": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Extensibility",
+    "description": "Build custom datasource plugins to connect Budibase to unsupported systems.",
+    "url": "https://docs.budibase.com/docs/custom-datasource"
+  },
+  "Public API": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Extensibility",
+    "description": "Use the Budibase REST API to work with apps, users, tables, and data programmatically.",
+    "url": "https://docs.budibase.com/docs/public-api"
+  },
+  "Expanded public API": {
+    "pro": "no",
+    "premium": "no",
+    "business": "no",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Extensibility",
+    "description": "Use the Budibase REST API to work with apps, users, tables, and data programmatically.",
+    "url": "https://docs.budibase.com/docs/public-api"
+  },
+  "SSO": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Security and scaling",
+    "description": "Configure single sign-on providers so users can authenticate with external identity systems.",
+    "url": "https://docs.budibase.com/docs/authentication-and-sso"
+  },
+  "Role-based access control": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Security and scaling",
+    "description": "Assign tenant and app roles to control what different users can access and do.",
+    "url": "https://docs.budibase.com/docs/user-roles"
+  },
+  "Workspace backups": {
+    "pro": "no",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Security and scaling",
+    "description": "Create, restore, download, and manage backups for workspaces and published apps.",
+    "url": "https://docs.budibase.com/docs/backups-1"
+  },
+  "Workspace admin role": {
+    "pro": "no",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Security and scaling",
+    "description": "Workspace admins can manage members and access levels within a workspace.",
+    "url": "https://docs.budibase.com/docs/workspace-access"
+  },
+  "Workspace backup retention": {
+    "pro": "no",
+    "premium": "7 days",
+    "business": "unlimited",
+    "enterprise": "unlimited",
+    "open_source": "no",
+    "category": "Security and scaling",
+    "description": "Manage saved workspace backups and restore points from the backups section.",
+    "url": "https://docs.budibase.com/docs/backups-1"
+  },
+  "Environment variables": {
+    "pro": "no",
+    "premium": "no",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Security and scaling",
+    "description": "Store reusable configuration and secrets with separate development and production values.",
+    "url": "https://docs.budibase.com/docs/environment-variables"
+  },
+  "Enforceable SSO": {
+    "pro": "no",
+    "premium": "no",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Security and scaling",
+    "description": "Require users to authenticate through configured single sign-on providers.",
+    "url": "https://docs.budibase.com/docs/enforced-sso"
+  },
+  "Recaptcha": {
+    "pro": "no",
+    "premium": "no",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Security and scaling",
+    "description": "Protect forms and user flows with Google reCAPTCHA verification.",
+    "url": "https://docs.budibase.com/docs/v2-recaptcha"
+  },
+  "PKCE OIDC": {
+    "pro": "no",
+    "premium": "no",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Security and scaling",
+    "description": "Connect OpenID Connect providers using Budibase authentication settings.",
+    "url": "https://docs.budibase.com/docs/openid-connect"
+  },
+  "Translations": {
+    "pro": "no",
+    "premium": "no",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Security and scaling",
+    "description": "Localize Budibase apps by configuring translations for interface text.",
+    "url": "https://docs.budibase.com/docs/translations"
+  },
+  "Audit logs": {
+    "pro": "no",
+    "premium": "no",
+    "business": "no",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Security and scaling",
+    "description": "Track important system and workspace events through the Budibase audit log.",
+    "url": "https://docs.budibase.com/docs/audit-logs"
+  },
+  "Active directory sync (SCIM)": {
+    "pro": "no",
+    "premium": "no",
+    "business": "no",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Security and scaling",
+    "description": "Provision and manage users automatically with SCIM-based directory sync.",
+    "url": "https://docs.budibase.com/docs/scim-provisioning"
+  },
+  "Offline license": {
+    "pro": "no",
+    "premium": "no",
+    "business": "no",
+    "enterprise": "Add-on",
+    "open_source": "no",
+    "category": "Security and scaling",
+    "description": "Configure outbound license validation requirements for self-hosted Budibase deployments.",
+    "url": "https://docs.budibase.com/docs/self-hosted-licensing"
+  },
+  "Budibase forum": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Support",
+    "description": "",
+    "url": ""
+  },
+  "Budibase docs": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Support",
+    "description": "",
+    "url": ""
+  },
+  "Budibase community chat": {
+    "pro": "yes",
+    "premium": "yes",
+    "business": "yes",
+    "enterprise": "yes",
+    "open_source": "yes",
+    "category": "Support",
+    "description": "",
+    "url": ""
+  },
+  "Support": {
+    "pro": "Community",
+    "premium": "Community",
+    "business": "Email",
+    "enterprise": "Priority",
+    "open_source": "Community",
+    "category": "Support",
+    "description": "",
+    "url": ""
+  },
+  "SLAs": {
+    "pro": "no",
+    "premium": "no",
+    "business": "no",
+    "enterprise": "2 business days",
+    "open_source": "no",
+    "category": "Support",
+    "description": "",
+    "url": ""
+  },
+  "Account manager": {
+    "pro": "no",
+    "premium": "no",
+    "business": "no",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Support",
+    "description": "",
+    "url": ""
+  },
+  "Tailored onboarding": {
+    "pro": "no",
+    "premium": "no",
+    "business": "no",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Support",
+    "description": "",
+    "url": ""
+  },
+  "Custom invoicing": {
+    "pro": "no",
+    "premium": "no",
+    "business": "no",
+    "enterprise": "yes",
+    "open_source": "no",
+    "category": "Support",
+    "description": "",
+    "url": ""
+  }
+}
