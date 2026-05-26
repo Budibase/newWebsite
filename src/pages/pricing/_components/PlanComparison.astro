@@ -315,6 +315,7 @@ const planGroupEntries = Object.entries(planGroups) as Array<
   .plan-comparison[data-expanded="false"] > .plan-comparison-content {
     max-height: 300px;
     overflow: hidden;
+    cursor: pointer;
   }
 
   .plan-comparison[data-expanded="false"] > .plan-comparison-content::after {
@@ -340,17 +341,29 @@ const planGroupEntries = Object.entries(planGroups) as Array<
   const planComparisonTrigger = planComparison?.querySelector(
     "[data-plan-comparison-trigger]",
   ) as HTMLButtonElement | null;
+  const planComparisonContent = planComparison?.querySelector(
+    "[data-plan-comparison-content]",
+  ) as HTMLDivElement | null;
 
   if (planComparison && planComparisonTrigger) {
-    planComparisonTrigger.addEventListener("click", () => {
-      const isExpanded = planComparison.dataset.expanded === "true";
-      const nextExpanded = !isExpanded;
-
+    const setExpanded = (nextExpanded: boolean) => {
       planComparison.dataset.expanded = String(nextExpanded);
       planComparisonTrigger.setAttribute(
         "aria-expanded",
         String(nextExpanded),
       );
+    };
+
+    planComparisonTrigger.addEventListener("click", () => {
+      const isExpanded = planComparison.dataset.expanded === "true";
+      setExpanded(!isExpanded);
+    });
+
+    planComparisonContent?.addEventListener("click", () => {
+      const isExpanded = planComparison.dataset.expanded === "true";
+      if (!isExpanded) {
+        setExpanded(true);
+      }
     });
   }
 </script>
