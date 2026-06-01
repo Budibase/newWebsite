@@ -7,6 +7,7 @@ import HeaderDropDown from "@components/HeaderDropDown.astro";
 import {
   productDropdownItems,
   resourcesDropdownItems,
+  solutionsDropdownItems,
 } from "@components/navDropdownData";
 ---
 
@@ -44,6 +45,7 @@ import {
     >
       <div class="hidden items-center gap-5 whitespace-nowrap lg:flex xl:gap-7">
         <HeaderDropDown label="Product" items={productDropdownItems} />
+        <HeaderDropDown label="Solutions" items={solutionsDropdownItems} />
         <HeaderDropDown label="Resources" items={resourcesDropdownItems} />
         
         <a
@@ -256,6 +258,9 @@ import {
             </ul>
           </details>
         </li>
+
+
+        
         <li class="mobile-nav-item">
           <a
             href="/ops/"

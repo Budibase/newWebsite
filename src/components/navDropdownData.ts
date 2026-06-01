@@ -58,22 +58,10 @@ export const resourcesDropdownItems: NavDropdownItem[] = [
     description: "Customer stories and case studies.",
     prefetch: true,
   },
-  {
-    href: "/ops/",
-    label: "Use cases",
-    description: "Common use cases.",
-    prefetch: true,
-  },
    {
     href: "/blog/",
     label: "Blog",
     description: "All resources in one timeline.",
-    prefetch: true,
-  },
-  {
-    href: "/enterprise/",
-    label: "Enterprise",
-    description: "How Budibase meets the needs of large organizations.",
     prefetch: true,
   },
   
@@ -83,6 +71,34 @@ export const resourcesDropdownItems: NavDropdownItem[] = [
     href: "/changelog/",
     label: "Changelog",
     description: "Changelog updates and release notes.",
+    prefetch: true,
+  },
+];
+
+export const solutionsDropdownItems: NavDropdownItem[] = [
+  {
+    href: "/ops/",
+    label: "Use Cases",
+    description: "Common use cases.",
+    prefetch: true,
+  },
+  {
+    href: "/enterprise/",
+    label: "Enterprise",
+    description: "How Budibase meets the needs of large organizations.",
+    prefetch: true,
+  },
+    {
+    href: "/security/",
+    label: "Security",
+    description: "How Budibase meets the needs of security-first organizations.",
+    prefetch: true,
+  },
+
+      {
+    href: "/it/",
+    label: "IT Teams",
+    description: "How Budibase meets the needs of IT teams.",
     prefetch: true,
   },
 ];
