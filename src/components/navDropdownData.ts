@@ -78,7 +78,7 @@ export const resourcesDropdownItems: NavDropdownItem[] = [
 export const solutionsDropdownItems: NavDropdownItem[] = [
   {
     href: "/ops/",
-    label: "Use cases",
+    label: "Use Cases",
     description: "Common use cases.",
     prefetch: true,
   },
