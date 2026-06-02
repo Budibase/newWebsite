@@ -1,0 +1,139 @@
+{
+  "pro": {
+    "monthly": [
+      {
+        "base_price_per_month": 23,
+        "included_actions": "5K",
+        "included_ai_credits": "2K",
+        "additional_end_users_per_month": 6,
+        "additional_creators_users_per_month": null,
+        "hosting": "Budibase Cloud",
+        "included_creators": 1
+      },
+      {
+        "base_price_per_month": 35,
+        "included_actions": "10K",
+        "included_ai_credits": "2K",
+        "additional_end_users_per_month": 6,
+        "additional_creators_users_per_month": null,
+        "hosting": "Budibase Cloud",
+        "included_creators": 1
+      }
+    ],
+    "annual": [
+      {
+        "base_price_per_month": 19,
+        "included_actions": "5K",
+        "included_ai_credits": "2K",
+        "additional_end_users_per_month": 5,
+        "additional_creators_users_per_month": null,
+        "hosting": "Budibase Cloud",
+        "included_creators": 1
+      },
+      {
+        "base_price_per_month": 29,
+        "included_actions": "10K",
+        "included_ai_credits": "2K",
+        "additional_end_users_per_month": 5,
+        "additional_creators_users_per_month": null,
+        "hosting": "Budibase Cloud",
+        "included_creators": 1
+      }
+    ]
+  },
+  "premium": {
+    "monthly": [
+      {
+        "base_price_per_month": 59,
+        "included_actions": "20K",
+        "included_ai_credits": "10K",
+        "additional_end_users_per_month": 6,
+        "additional_creators_users_per_month": 60,
+        "hosting": "Budibase Cloud",
+        "included_creators": 1
+      },
+      {
+        "base_price_per_month": 95,
+        "included_actions": "50K",
+        "included_ai_credits": "10K",
+        "additional_end_users_per_month": 6,
+        "additional_creators_users_per_month": 60,
+        "hosting": "Budibase Cloud",
+        "included_creators": 1
+      }
+    ],
+    "annual": [
+      {
+        "base_price_per_month": 49,
+        "included_actions": "20K",
+        "included_ai_credits": "10K",
+        "additional_end_users_per_month": 5,
+        "additional_creators_users_per_month": 50,
+        "hosting": "Budibase Cloud",
+        "included_creators": 1
+      },
+      {
+        "base_price_per_month": 79,
+        "included_actions": "50K",
+        "included_ai_credits": "10K",
+        "additional_end_users_per_month": 5,
+        "additional_creators_users_per_month": 50,
+        "hosting": "Budibase Cloud",
+        "included_creators": 1
+      }
+    ]
+  },
+  "business": {
+    "monthly": [
+      {
+        "base_price_per_month": 359,
+        "included_actions": "250K",
+        "included_ai_credits": "50K",
+        "additional_end_users_per_month": 6,
+        "additional_creators_users_per_month": 60,
+        "hosting": "Budibase Cloud",
+        "included_creators": 3
+      }
+    ],
+    "annual": [
+      {
+        "base_price_per_month": 299,
+        "included_actions": "250K",
+        "included_ai_credits": "50K",
+        "additional_end_users_per_month": 5,
+        "additional_creators_users_per_month": 50,
+        "hosting": "Budibase Cloud",
+        "included_creators": 3
+      }
+    ]
+  },
+  "enterprise": [
+    {
+      "base_price_per_month": "Custom",
+      "included_actions": "Custom",
+      "included_ai_credits": "Custom",
+      "additional_end_users_per_month": "Custom",
+      "additional_creators_users_per_month": "Custom",
+      "hosting": "Budibase Cloud",
+      "included_creators": "Custom"
+    },
+    {
+      "base_price_per_month": "Custom",
+      "included_actions": "Unlimited",
+      "included_ai_credits": "Custom",
+      "additional_end_users_per_month": "Custom",
+      "additional_creators_users_per_month": "Custom",
+      "hosting": "Self-hosted",
+      "included_creators": "Custom"
+    }
+  ],
+  "open_source": {
+    "base_price_per_month": "Free",
+    "included_actions": "Unlimited",
+    "included_ai_credits": 0,
+    "additional_end_users_per_month": "Free",
+    "additional_creators_users_per_month": "Free",
+    "hosting": "Self-hosted",
+    "included_creators": "Unlimimted"
+  }
+}

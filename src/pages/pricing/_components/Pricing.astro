@@ -1,6 +1,7 @@
 ---
 import PricingCard from "./PricingCard.astro";
 import PlanComparison from "./PlanComparison.astro";
+import pricingData from "./pricing.json";
 import Plus from "phosphor-astro/Plus.astro";
 
 type FaqItem = {
@@ -8,6 +9,99 @@ type FaqItem = {
   paragraphs: string[];
   bullets?: string[];
 };
+
+type PlanValue = number | string | null;
+type PlanEntry = {
+  base_price_per_month: PlanValue;
+  included_actions: PlanValue;
+  included_ai_credits: PlanValue;
+  additional_end_users_per_month: PlanValue;
+  additional_creators_users_per_month: PlanValue;
+  hosting: string;
+  included_creators: PlanValue;
+};
+type TieredPlan = {
+  monthly: PlanEntry[];
+  annual: PlanEntry[];
+};
+type PricingData = {
+  pro: TieredPlan;
+  premium: TieredPlan;
+  business: TieredPlan;
+  enterprise: PlanEntry[];
+  open_source: PlanEntry;
+};
+
+const pricing = pricingData as PricingData;
+
+const toDisplayText = (value: PlanValue): string => {
+  if (value === null || value === undefined) {
+    return "";
+  }
+
+  return String(value);
+};
+
+const toNumericValue = (value: PlanValue): number | undefined =>
+  typeof value === "number" ? value : undefined;
+
+const toActionsText = (value: PlanValue): string => {
+  const text = toDisplayText(value);
+  if (!text) {
+    return "";
+  }
+
+  return /actions$/i.test(text) ? text : `${text} actions`;
+};
+
+const toHostingLabel = (value: string): string =>
+  value === "Self-hosted" ? "Self-host / on-premise" : value;
+
+const getHostingItems = (...entries: PlanEntry[]): string[] =>
+  [...new Set(entries.map((entry) => toHostingLabel(entry.hosting)).filter(Boolean))];
+
+const getTierOperationTiers = (plan: TieredPlan) =>
+  plan.annual.map((annualEntry, index) => ({
+    operations: toDisplayText(annualEntry.included_actions),
+    annualPrice: toNumericValue(annualEntry.base_price_per_month),
+    monthlyPrice: toNumericValue(plan.monthly[index]?.base_price_per_month),
+    aiCredits: toDisplayText(annualEntry.included_ai_credits),
+  }));
+
+const getAddonPricing = (plan: TieredPlan) => {
+  const annualEntry = plan.annual[0];
+  const monthlyEntry = plan.monthly[0];
+  const endUsersAnnual = toNumericValue(annualEntry?.additional_end_users_per_month);
+  const endUsersMonthly = toNumericValue(monthlyEntry?.additional_end_users_per_month);
+  const creatorsAnnual = toNumericValue(annualEntry?.additional_creators_users_per_month);
+  const creatorsMonthly = toNumericValue(monthlyEntry?.additional_creators_users_per_month);
+
+  return {
+    endUsers: endUsersAnnual !== undefined
+      ? { annual: endUsersAnnual, monthly: endUsersMonthly }
+      : undefined,
+    creators: creatorsAnnual !== undefined
+      ? { annual: creatorsAnnual, monthly: creatorsMonthly }
+      : undefined,
+  };
+};
+
+const getCreatorsFeature = (entry: PlanEntry): string => {
+  const creators = toDisplayText(entry.included_creators);
+  if (!creators) {
+    return "";
+  }
+
+  return `${creators} creator${creators === "1" ? "" : "s"}`;
+};
+
+const proAnnualEntry = pricing.pro.annual[0];
+const premiumAnnualEntry = pricing.premium.annual[0];
+const businessAnnualEntry = pricing.business.annual[0];
+const cloudEnterpriseEntry = pricing.enterprise.find((entry) => entry.hosting === "Budibase Cloud") ??
+  pricing.enterprise[0];
+const selfHostedEnterpriseEntry = pricing.enterprise.find((entry) => entry.hosting !== "Budibase Cloud") ??
+  pricing.enterprise[1];
 
 const openSourcePlanFeatures = [
   "1 Workspace",
@@ -30,6 +124,146 @@ const selfHostedEnterprisePlanFeatures = [
   "365 days logs",
   "Audit logs",
   "Priorty support/SLAs",
+];
+
+const cloudCards = [
+  {
+    title: "Pro",
+    description: "Includes:",
+    creatorPrice: toNumericValue(proAnnualEntry.base_price_per_month) ?? 0,
+    billingPlan: "pro",
+    creatorUnit: "/ month",
+    creatorLabel: "",
+    recommended: false,
+    buttonLabel: "Start 14 day free trial",
+    buttonVariant: "cta" as const,
+    buttonUrl: "https://account.budibase.app/register",
+    operationTiers: getTierOperationTiers(pricing.pro),
+    defaultTierIndex: 0,
+    addonPricing: getAddonPricing(pricing.pro),
+    features: [
+      getCreatorsFeature(proAnnualEntry),
+      "2 end users",
+      "1 day logs",
+      "1 workspace",
+      "Unlimited agents",
+      "Synchronous automations",
+    ].filter(Boolean),
+    hostingItems: getHostingItems(...pricing.pro.annual),
+  },
+  {
+    title: "Premium",
+    description: "Everything in Pro, plus:",
+    creatorPrice: toNumericValue(premiumAnnualEntry.base_price_per_month) ?? 0,
+    billingPlan: "premium",
+    creatorUnit: "/ month",
+    creatorLabel: "",
+    recommended: false,
+    buttonLabel: "Start 14 day free trial",
+    buttonVariant: "cta" as const,
+    buttonUrl: "https://account.budibase.app/register",
+    operationTiers: getTierOperationTiers(pricing.premium),
+    defaultTierIndex: 0,
+    addonPricing: getAddonPricing(pricing.premium),
+    features: [
+      getCreatorsFeature(premiumAnnualEntry),
+      "10 end users",
+      "7 days logs",
+      "10 workspaces",
+      "Custom branding",
+      "Backups and restore",
+      "SSO",
+    ].filter(Boolean),
+    hostingItems: getHostingItems(...pricing.premium.annual),
+  },
+  {
+    title: "Business",
+    tagLabel: "Best value",
+    description: "Everything in Premium, plus:",
+    creatorPrice: toNumericValue(businessAnnualEntry.base_price_per_month) ?? 0,
+    billingPlan: "business",
+    creatorUnit: "/ month",
+    creatorLabel: "",
+    recommended: false,
+    buttonLabel: "Start 14 day free trial",
+    buttonVariant: "cta" as const,
+    buttonUrl: "https://account.budibase.app/register",
+    operationTiers: getTierOperationTiers(pricing.business),
+    defaultTierIndex: 0,
+    addonPricing: getAddonPricing(pricing.business),
+    features: [
+      getCreatorsFeature(businessAnnualEntry),
+      "30 end users",
+      "30 days logs",
+      "Unlimited workspaces",
+      "Environment variables",
+      "Enforced SSO",
+      "User groups",
+      "Email support",
+    ].filter(Boolean),
+    hostingItems: getHostingItems(...pricing.business.annual),
+  },
+  {
+    title: "Enterprise",
+    description: "Everything in Business, plus:",
+    creatorPrice: toDisplayText(cloudEnterpriseEntry.base_price_per_month),
+    billingPlan: "enterprise",
+    creatorUnit: "",
+    creatorLabel: "",
+    additionalPriceText: toActionsText(cloudEnterpriseEntry.included_actions),
+    additionalPriceTone: "primary" as const,
+    recommended: false,
+    buttonLabel: "Contact sales",
+    buttonVariant: "primary" as const,
+    buttonUrl: "/contact",
+    addonItems: ["Air-gapped deployment", "Onboarding and training"],
+    features: [
+      "Active directory/SCIM",
+      "365 days logs",
+      "Audit logs",
+      "Priorty support/SLAs",
+      "Micro Frontends (MFEs)",
+    ],
+    hostingItems: getHostingItems(cloudEnterpriseEntry),
+  },
+];
+
+const selfHostedCards = [
+  {
+    title: "Open source",
+    description: "Includes:",
+    creatorPrice: toDisplayText(pricing.open_source.base_price_per_month),
+    billingPlan: "open-source",
+    creatorUnit: "",
+    creatorLabel: "",
+    additionalPriceText: toActionsText(pricing.open_source.included_actions),
+    additionalPriceTone: "primary" as const,
+    recommended: false,
+    buttonLabel: "Visit the docs",
+    buttonVariant: "primary" as const,
+    buttonUrl: "https://docs.budibase.com",
+    buttonTarget: "_blank",
+    addonItems: [],
+    features: openSourcePlanFeatures,
+    hostingItems: getHostingItems(pricing.open_source),
+  },
+  {
+    title: "Enterprise",
+    description: "Includes:",
+    creatorPrice: toDisplayText(selfHostedEnterpriseEntry.base_price_per_month),
+    billingPlan: "self-host-enterprise",
+    creatorUnit: "",
+    creatorLabel: "",
+    additionalPriceText: toActionsText(selfHostedEnterpriseEntry.included_actions),
+    additionalPriceTone: "primary" as const,
+    recommended: false,
+    buttonLabel: "Contact sales",
+    buttonVariant: "cta" as const,
+    buttonUrl: "/contact",
+    addonItems: ["Air-gapped deployment", "Onboarding and training"],
+    features: selfHostedEnterprisePlanFeatures,
+    hostingItems: getHostingItems(selfHostedEnterpriseEntry),
+  },
 ];
 
 const faqItems: FaqItem[] = [
@@ -192,151 +426,14 @@ const faqItems: FaqItem[] = [
           data-hosting-panel="cloud"
           class="pricing-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 justify-center items-stretch"
         >
-          <PricingCard
-            title="Pro"
-            description="Includes:"
-            creatorPrice={19}
-            billingPlan="pro"
-            creatorUnit="/ month"
-            creatorLabel=""
-            recommended={false}
-            buttonLabel="Start 14 day free trial"
-            buttonVariant="cta"
-            buttonUrl="https://account.budibase.app/register"
-            operationTiers={[
-              { operations: "5K", yearlyPrice: 19, aiCredits: "2K" },
-              { operations: "10K", yearlyPrice: 29, aiCredits: "2K" },
-            ]}
-            defaultTierIndex={0}
-            features={[
-              "1 creator",
-              "2 end users",
-              "1 day logs",
-              "1 workspace",
-              "Unlimited agents",
-              "Synchronous automations",
-            ]}
-            hostingItems={["Budibase Cloud"]}
-          />
-          <PricingCard
-            title="Premium"
-            description="Everything in Pro, plus:"
-            creatorPrice={49}
-            billingPlan="premium"
-            creatorUnit="/ month"
-            creatorLabel=""
-            recommended={false}
-            buttonLabel="Start 14 day free trial"
-            buttonVariant="cta"
-            buttonUrl="https://account.budibase.app/register"
-            operationTiers={[
-              { operations: "20K", yearlyPrice: 49, aiCredits: "10K" },
-              { operations: "50K", yearlyPrice: 79, aiCredits: "10K" },
-            ]}
-            defaultTierIndex={0}
-            features={[
-              "1 creator",
-              "10 end users",
-              "7 days logs",
-              "10 workspaces",
-              "Custom branding",
-              "Backups and restore",
-              "SSO",
-            ]}
-            hostingItems={["Budibase Cloud"]}
-          />
-          <PricingCard
-            title="Business"
-            tagLabel="Best value"
-            description="Everything in Premium, plus:"
-            creatorPrice={299}
-            billingPlan="business"
-            creatorUnit="/ month"
-            creatorLabel=""
-            recommended={false}
-            buttonLabel="Start 14 day free trial"
-            buttonVariant="cta"
-            buttonUrl="https://account.budibase.app/register"
-            operationTiers={[
-              { operations: "250K", yearlyPrice: 299, aiCredits: "50K" },
-            ]}
-            defaultTierIndex={0}
-            features={[
-              "3 creators",
-              "30 end users",
-              "30 days logs",
-              "Unlimited workspaces",
-              "Environment variables",
-              "Enforced SSO",
-              "User groups",
-              "Email support",
-            ]}
-            hostingItems={["Budibase Cloud"]}
-          />
-          <PricingCard
-            title="Enterprise"
-            description="Everything in Business, plus:"
-            creatorPrice="Custom"
-            billingPlan="enterprise"
-            creatorUnit=""
-            creatorLabel=""
-            additionalPriceText="Custom actions"
-            additionalPriceTone="primary"
-            recommended={false}
-            buttonLabel="Contact sales"
-            buttonVariant="primary"
-            buttonUrl="/contact"
-            addonItems={["Air-gapped deployment", "Onboarding and training"]}
-            features={[
-              "Active directory/SCIM",
-              "365 days logs",
-              "Audit logs",
-              "Priorty support/SLAs",
-              "Micro Frontends (MFEs)",
-            ]}
-            hostingItems={["Budibase Cloud", "Self-host / on-premise"]}
-          />
+          {cloudCards.map((card) => <PricingCard {...card} />)}
         </div>
         <div
           data-hosting-panel="self-host"
           class="pricing-cards-grid hidden grid grid-cols-1 md:grid-cols-2 gap-3 justify-center items-stretch max-w-3xl mx-auto"
           aria-hidden="true"
         >
-          <PricingCard
-            title="Open source"
-            description="Includes:"
-            creatorPrice="Free"
-            billingPlan="open-source"
-            creatorUnit=""
-            creatorLabel=""
-            additionalPriceText="Unlimited actions"
-            additionalPriceTone="primary"
-            recommended={false}
-            buttonLabel="Visit the docs"
-            buttonVariant="primary"
-            buttonUrl="https://docs.budibase.com"
-            buttonTarget="_blank"
-            addonItems={[]}
-            features={openSourcePlanFeatures}
-            hostingItems={["Self-host / on-premise"]}
-          />
-          <PricingCard
-            title="Enterprise"
-            description="Includes:"
-            creatorPrice="Custom pricing"
-            billingPlan="self-host-enterprise"
-            creatorUnit=""
-            creatorLabel=""
-            additionalPriceText="Unlimited actions"
-            additionalPriceTone="primary"
-            recommended={false}
-            buttonLabel="Contact sales"
-            buttonVariant="cta"
-            buttonUrl="/contact"
-            addonItems={["Air-gapped deployment", "Onboarding and training"]}
-            features={selfHostedEnterprisePlanFeatures}
-            hostingItems={["Budibase Cloud", "Self-host / on-premise"]}
-          />
+          {selfHostedCards.map((card) => <PricingCard {...card} />)}
         </div>
       </div>
     </section>
@@ -504,20 +601,26 @@ const faqItems: FaqItem[] = [
     const selectedOption = operationsSelect
       .selectedOptions[0] as HTMLOptionElement;
     const tierIndex = selectedOption.dataset.tierIndex;
-    const tierPrice = selectedOption.dataset.tierPrice;
+    const tierAnnualPrice = selectedOption.dataset.tierAnnualPrice;
+    const tierMonthlyPrice = selectedOption.dataset.tierMonthlyPrice;
     const tierAi = selectedOption.dataset.tierAi;
 
     if (tierIndex !== undefined) {
       (card as HTMLElement).dataset.tierIndex = tierIndex;
     }
 
-    if (tierPrice !== undefined && tierPrice !== "") {
-      const basePrice = Number(tierPrice);
-      if (!Number.isNaN(basePrice)) {
+    if (tierAnnualPrice !== undefined && tierAnnualPrice !== "") {
+      const annualPrice = Number(tierAnnualPrice);
+      if (!Number.isNaN(annualPrice)) {
         card
-          .querySelectorAll(".amount[data-base-price]")
+          .querySelectorAll(".amount[data-annual-price]")
           .forEach((amountEl) => {
-            (amountEl as HTMLElement).dataset.basePrice = String(basePrice);
+            (amountEl as HTMLElement).dataset.annualPrice = String(annualPrice);
+            if (tierMonthlyPrice !== undefined) {
+              (amountEl as HTMLElement).dataset.monthlyPrice = tierMonthlyPrice;
+            } else {
+              delete (amountEl as HTMLElement).dataset.monthlyPrice;
+            }
           });
       }
     }
@@ -538,25 +641,41 @@ const faqItems: FaqItem[] = [
     currentBilling = billing;
     setToggleButtonState(toggleButtons, "billing", billing);
 
-    const multiplier = billing === "monthly" ? 1.2 : 1;
-
     cards.forEach((card) => {
       syncCardTierSelection(card);
 
-      card.querySelectorAll(".amount[data-base-price]").forEach((amountEl) => {
+      card.querySelectorAll(".amount[data-annual-price]").forEach((amountEl) => {
         const htmlEl = amountEl as HTMLElement;
-        const basePrice = Number(htmlEl.dataset.basePrice);
-        const updatedPrice = basePrice * multiplier;
+        const annualPrice = Number(htmlEl.dataset.annualPrice);
+        const monthlyPrice = Number(htmlEl.dataset.monthlyPrice);
+        if (Number.isNaN(annualPrice)) {
+          return;
+        }
+
+        const updatedPrice = billing === "monthly" && !Number.isNaN(monthlyPrice)
+          ? monthlyPrice
+          : billing === "monthly"
+            ? annualPrice * 1.2
+            : annualPrice;
         htmlEl.textContent = `$${formatPrice(updatedPrice)}`;
       });
 
       card
-        .querySelectorAll("[data-overage-kind][data-base-overage]")
+        .querySelectorAll("[data-overage-kind][data-overage-annual]")
         .forEach((popoverEl) => {
           const htmlEl = popoverEl as HTMLElement;
-          const baseOverage = Number(htmlEl.dataset.baseOverage);
+          const annualOverage = Number(htmlEl.dataset.overageAnnual);
+          const monthlyOverage = Number(htmlEl.dataset.overageMonthly);
           const kind = htmlEl.dataset.overageKind;
-          const updatedOverage = Math.round(baseOverage * multiplier);
+          if (Number.isNaN(annualOverage)) {
+            return;
+          }
+
+          const updatedOverage = billing === "monthly" && !Number.isNaN(monthlyOverage)
+            ? monthlyOverage
+            : billing === "monthly"
+              ? Math.round(annualOverage * 1.2)
+              : annualOverage;
 
           if (kind === "creators") {
             htmlEl.textContent = `Add more creators for $${updatedOverage} per creator per month`;
@@ -570,18 +689,23 @@ const faqItems: FaqItem[] = [
 
       card
         .querySelectorAll(
-          "[data-addon-base][data-addon-prefix][data-addon-suffix]",
+          "[data-addon-annual][data-addon-prefix][data-addon-suffix]",
         )
         .forEach((addonEl) => {
           const htmlEl = addonEl as HTMLElement;
-          const baseAddon = Number(htmlEl.dataset.addonBase);
-          if (Number.isNaN(baseAddon)) {
+          const annualAddon = Number(htmlEl.dataset.addonAnnual);
+          const monthlyAddon = Number(htmlEl.dataset.addonMonthly);
+          if (Number.isNaN(annualAddon)) {
             return;
           }
 
           const prefix = htmlEl.dataset.addonPrefix || "";
           const suffix = htmlEl.dataset.addonSuffix || "";
-          const updatedAddonValue = formatPrice(baseAddon * multiplier);
+          const updatedAddonValue = billing === "monthly" && !Number.isNaN(monthlyAddon)
+            ? formatPrice(monthlyAddon)
+            : billing === "monthly"
+              ? formatPrice(annualAddon * 1.2)
+              : formatPrice(annualAddon);
           const updatedAddonText = `${prefix}$${updatedAddonValue}${suffix}`;
           const addonTextEl = htmlEl.querySelector("[data-addon-text]");
 

@@ -6,21 +6,31 @@ import Check from "phosphor-astro/Check.astro";
 import Cloud from "phosphor-astro/Cloud.astro";
 import HardDrives from "phosphor-astro/HardDrives.astro";
 import Plus from "phosphor-astro/Plus.astro";
-import PlusCircleFill from "phosphor-astro/PlusCircleFill.astro";
+import Info from "phosphor-astro/Info.astro";
 
 type ButtonVariant = "primary" | "secondary" | "cta";
 type ButtonSize = "small" | "medium" | "large";
 type AdditionalPriceTone = "muted" | "primary";
 type OperationTier = {
   operations: string;
-  yearlyPrice?: number;
+  annualPrice?: number;
+  monthlyPrice?: number;
   aiCredits?: string;
 };
 type AddonDisplayItem = {
   text: string;
-  baseAmount?: number;
+  annualAmount?: number;
+  monthlyAmount?: number;
   prefix?: string;
   suffix?: string;
+};
+type AddonPriceValue = {
+  annual: number;
+  monthly?: number;
+};
+type AddonPricing = {
+  endUsers?: AddonPriceValue;
+  creators?: AddonPriceValue;
 };
 type FeatureTone = "default" | "orange-accent";
 // features can be an array of strings or objects with text and icon
@@ -41,6 +51,7 @@ interface Props {
   operationTiers?: OperationTier[];
   defaultTierIndex?: number;
   addonItems?: string[];
+  addonPricing?: AddonPricing;
   hostingItems?: string[];
   features?: FeatureItem[];
   recommended?: boolean;
@@ -67,6 +78,7 @@ const {
   operationTiers = [],
   defaultTierIndex = 0,
   addonItems,
+  addonPricing,
   hostingItems = [],
   features = [],
   recommended = false,
@@ -137,40 +149,68 @@ const fallbackAICreditsValue = typeof aiCreditsFeature === "string"
   : undefined;
 const operationsDropdownOptions = normalizedOperationTiers.length
   ? normalizedOperationTiers
-  : (operationsLabel ? [{ operationsLabel, yearlyPrice: undefined, aiCredits: undefined }] : []);
+  : (operationsLabel ? [{ operationsLabel, annualPrice: undefined, monthlyPrice: undefined, aiCredits: undefined }] : []);
 const initialAICredits = selectedOperationTier?.aiCredits || fallbackAICreditsValue;
-const selectedCreatorPrice = selectedOperationTier?.yearlyPrice;
-const initialBasePrice = typeof selectedCreatorPrice === "number"
-  ? selectedCreatorPrice
+const selectedAnnualCreatorPrice = selectedOperationTier?.annualPrice;
+const selectedMonthlyCreatorPrice = selectedOperationTier?.monthlyPrice;
+const initialAnnualPrice = typeof selectedAnnualCreatorPrice === "number"
+  ? selectedAnnualCreatorPrice
   : (typeof creatorPrice === "number" ? creatorPrice : undefined);
-const initialDisplayPrice = typeof initialBasePrice === "number"
-  ? `$${initialBasePrice}`
+const initialDisplayPrice = typeof initialAnnualPrice === "number"
+  ? `$${initialAnnualPrice}`
   : (typeof creatorPrice === "number" ? `$${creatorPrice}` : creatorPrice);
 const defaultAddonItems = billingPlan === "premium" || billingPlan === "business"
   ? ["End users for $5/user/mo", "Creators for $50/creator/mo"]
   : billingPlan === "enterprise"
     ? []
     : ["End users for $5/user/mo"];
-const addonsToShow = addonItems ?? defaultAddonItems;
+const addonItemsFromPricing = addonPricing
+  ? [
+    addonPricing.endUsers
+      ? {
+        text: `End users for $${addonPricing.endUsers.annual}/user/mo`,
+        annualAmount: addonPricing.endUsers.annual,
+        monthlyAmount: addonPricing.endUsers.monthly,
+        prefix: "End users for ",
+        suffix: "/user/mo",
+      }
+      : null,
+    addonPricing.creators
+      ? {
+        text: `Creators for $${addonPricing.creators.annual}/creator/mo`,
+        annualAmount: addonPricing.creators.annual,
+        monthlyAmount: addonPricing.creators.monthly,
+        prefix: "Creators for ",
+        suffix: "/creator/mo",
+      }
+      : null,
+  ].filter(Boolean) as AddonDisplayItem[]
+  : null;
+const addonsToShow = addonItemsFromPricing ?? addonItems ?? defaultAddonItems;
 const addonPricePattern = /^(.*)\$(\d+)(.*)$/;
-const normalizedAddonItems: AddonDisplayItem[] = addonsToShow.map((addon) => {
-  const priceMatch = addon.match(addonPricePattern);
-  if (!priceMatch) {
-    return { text: addon };
-  }
+const normalizedAddonItems: AddonDisplayItem[] = Array.isArray(addonsToShow) &&
+    typeof addonsToShow[0] === "object"
+  ? addonsToShow as AddonDisplayItem[]
+  : (addonsToShow as string[]).map((addon) => {
+    const priceMatch = addon.match(addonPricePattern);
+    if (!priceMatch) {
+      return { text: addon };
+    }
 
-  const baseAmount = Number(priceMatch[2]);
-  if (Number.isNaN(baseAmount)) {
-    return { text: addon };
-  }
+    const annualAmount = Number(priceMatch[2]);
+    if (Number.isNaN(annualAmount)) {
+      return { text: addon };
+    }
 
-  return {
-    text: addon,
-    baseAmount,
-    prefix: priceMatch[1],
-    suffix: priceMatch[3],
-  };
-});
+    return {
+      text: addon,
+      annualAmount,
+      prefix: priceMatch[1],
+      suffix: priceMatch[3],
+    };
+  });
+const endUsersAddonPricing = addonPricing?.endUsers;
+const creatorsAddonPricing = addonPricing?.creators;
 const showAddonsSection = normalizedAddonItems.length > 0;
 const showHostingSection = hostingItems.length > 0;
 ---
@@ -203,7 +243,10 @@ const showHostingSection = hostingItems.length > 0;
         <p class="price-line">
           <span
             class="amount !text-2xl text-primary"
-            data-base-price={typeof initialBasePrice === "number" ? initialBasePrice : undefined}
+            data-annual-price={typeof initialAnnualPrice === "number" ? initialAnnualPrice : undefined}
+            data-monthly-price={typeof selectedMonthlyCreatorPrice === "number"
+              ? selectedMonthlyCreatorPrice
+              : undefined}
             >{initialDisplayPrice}</span
           >
           <span class="inline-flex gap-0.5">
@@ -241,7 +284,8 @@ const showHostingSection = hostingItems.length > 0;
                   value={option.operationsLabel}
                   selected={index === selectedTierIndex}
                   data-tier-index={String(index)}
-                  data-tier-price={option.yearlyPrice !== undefined ? String(option.yearlyPrice) : undefined}
+                  data-tier-annual-price={option.annualPrice !== undefined ? String(option.annualPrice) : undefined}
+                  data-tier-monthly-price={option.monthlyPrice !== undefined ? String(option.monthlyPrice) : undefined}
                   data-tier-ai={option.aiCredits}
                   data-tier-operations={option.operationsLabel}
                 >
@@ -321,7 +365,7 @@ const showHostingSection = hostingItems.length > 0;
               const showCreatorsPopover = Boolean(
                 creatorsMatch &&
                 /\d/.test(creatorsValue) &&
-                billingPlan === "team"
+                creatorsAddonPricing
               );
               return (
                 <li class="text-[14px]">
@@ -365,7 +409,7 @@ const showHostingSection = hostingItems.length > 0;
                             class="end-users-help-button"
                             aria-label="Add end users pricing info"
                           >
-                            <PlusCircleFill
+                            <Info
                               class="w-4 h-4 fill-stone-700 dark:fill-stone-300"
                               aria-hidden="true"
                             />
@@ -374,9 +418,10 @@ const showHostingSection = hostingItems.length > 0;
                             role="tooltip"
                             class="end-users-popover p-3 rounded-sm text-sm text-primary"
                             data-overage-kind="end-users"
-                            data-base-overage="5"
+                            data-overage-annual={endUsersAddonPricing?.annual}
+                            data-overage-monthly={endUsersAddonPricing?.monthly}
                           >
-                            Add more end users for $5 per end user per month
+                            Add more end users for ${endUsersAddonPricing ? `$${endUsersAddonPricing.annual}` : "$5"} per end user per month
                           </span>
                         </span>
                       </span>
@@ -389,7 +434,7 @@ const showHostingSection = hostingItems.length > 0;
                             class="end-users-help-button"
                             aria-label="Add creators pricing info"
                           >
-                            <PlusCircleFill
+                            <Info
                               class="w-4 h-4 fill-stone-700 dark:fill-stone-300"
                               aria-hidden="true"
                             />
@@ -398,9 +443,10 @@ const showHostingSection = hostingItems.length > 0;
                             role="tooltip"
                             class="end-users-popover p-3 rounded-sm text-sm text-primary"
                             data-overage-kind="creators"
-                            data-base-overage="50"
+                            data-overage-annual={creatorsAddonPricing?.annual}
+                            data-overage-monthly={creatorsAddonPricing?.monthly}
                           >
-                            Add more creators for $50 per creator per month
+                            Add more creators for ${creatorsAddonPricing ? `$${creatorsAddonPricing.annual}` : "$50"} per creator per month
                           </span>
                         </span>
                       </span>
@@ -423,7 +469,7 @@ const showHostingSection = hostingItems.length > 0;
             <span class="check">
               {hostingItem === "Budibase Cloud" ? (
                 <Cloud class="w-3 h-3 fill-stone-700 dark:fill-stone-300" aria-hidden="true" />
-              ) : hostingItem === "Self-host / on-premise" ? (
+              ) : hostingItem === "Self-host / on-premise" || hostingItem === "Self-hosted" ? (
                 <HardDrives class="w-3 h-3 fill-stone-700 dark:fill-stone-300" aria-hidden="true" />
               ) : (
                 <Check class="w-3 h-3 fill-stone-700 dark:fill-stone-300" aria-hidden="true" />
@@ -440,7 +486,8 @@ const showHostingSection = hostingItems.length > 0;
         {normalizedAddonItems.map((addon) => (
           <p
             class="addon-line text-[14px]"
-            data-addon-base={addon.baseAmount !== undefined ? String(addon.baseAmount) : undefined}
+            data-addon-annual={addon.annualAmount !== undefined ? String(addon.annualAmount) : undefined}
+            data-addon-monthly={addon.monthlyAmount !== undefined ? String(addon.monthlyAmount) : undefined}
             data-addon-prefix={addon.prefix}
             data-addon-suffix={addon.suffix}
           >
