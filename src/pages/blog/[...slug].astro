@@ -1,60 +1,13 @@
 ---
 export const prerender = false;
 
-import { getCollection, render } from "astro:content";
-import CTA from "@components/CTA.astro";
-import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
-import { renderBlogMarkdown } from "../../lib/render-blog-markdown.js";
-
-const slugParam = Astro.params.slug;
-const slug = Array.isArray(slugParam) ? slugParam.join("/") : slugParam;
-
-if (!slug) {
-  return new Response("Not found", { status: 404 });
-}
-
-const blogPosts = await getCollection("blog", ({ data }) => !data.draft);
-const caseStudies = await getCollection("caseStudies");
-
-const post = blogPosts.find((entry) => entry.id === slug);
-const caseStudy = caseStudies.find((entry) => entry.id === slug);
-
-const kind = post ? "blog" : caseStudy ? "caseStudy" : null;
-
-if (!kind) {
-  return new Response("Not found", { status: 404 });
-}
-
-const entry = kind === "blog" ? post! : caseStudy!;
-
-const accept = Astro.request.headers.get("accept") ?? "";
-Astro.response.headers.set("Vary", "Accept");
-
-if (kind === "blog" && accept.includes("text/markdown")) {
-  return new Response(post!.body, {
-    headers: {
-      "Content-Type": "text/markdown; charset=utf-8",
-      "Vary": "Accept",
-    },
-  });
-}
-
-const hasHugoShortcodes = kind === "blog" && post!.body.includes("{{<");
-const renderedEntry = hasHugoShortcodes ? null : await render(entry);
-const Content = renderedEntry?.Content;
-const shortcodeHtml = hasHugoShortcodes ? await renderBlogMarkdown(post!.body) : "";
-const transitionKey = entry.id.replaceAll("/", "-");
-
-const frontmatter =
-  kind === "blog"
-    ? post!.data
-    : {
-        title: caseStudy!.data.title,
-        description: caseStudy!.data.quote,
-        author: caseStudy!.data.author?.name,
-        coverImage: caseStudy!.data.coverImage,
-        socialImage: caseStudy!.data.coverImage,
-      };
+return new Response(JSON.stringify({
+  params: Astro.params,
+  url: Astro.url.pathname,
+}), {
+  status: 200,
+  headers: { "Content-Type": "application/json" },
+});
 ---
 
 <MarkdownPostLayout frontmatter={frontmatter} transitionKey={transitionKey}>
