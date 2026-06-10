@@ -6,7 +6,8 @@ import CTA from "@components/CTA.astro";
 import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
 import { renderBlogMarkdown } from "../../lib/render-blog-markdown.js";
 
-const slug = Astro.params.slug;
+const slugParam = Astro.params.slug;
+const slug = Array.isArray(slugParam) ? slugParam.join("/") : slugParam;
 
 if (!slug) {
   return new Response("Not found", { status: 404 });
