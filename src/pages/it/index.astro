@@ -1,20 +1,104 @@
 ---
+export const prerender = false;
+
 import Layout from "../../layouts/MainLayout.astro";
 import TitleBlock from "@components/TitleBlock.astro";
 import Button from "@components/Button.astro";
 import ITPlatform from "../_components/landing-page/ITPlatform.astro";
 import ITSecurity from "../_components/landing-page/ITSecurity.astro";
-import CTA from "@components/CTA.astro"
+import CTA from "@components/CTA.astro";
 import ContactSalesCTA from "@components/ContactSalesCTA.astro";
 import Customers from "../_components/landing-page/Customers.astro";
 import PlatformOverviewMidPage from "../_components/landing-page/PlatformOverviewMidPage.astro";
 import ITUseCases from "../_components/landing-page/ITUseCases.astro";
 import HostingOptionsMidPage from "../_components/landing-page/HostingOptionsMidPage.astro";
-import ChatRequestsMidPage from "../_components/landing-page/ChatRequestsMidPage.astro"
+import ChatRequestsMidPage from "../_components/landing-page/ChatRequestsMidPage.astro";
 
 const pageTitle = "AI Workflows for IT Teams | Budibase";
 const pageDescription =
   "Budibase is fully optimized for modern IT teams. Transform internal operations without compromising on security, governance, and control.";
+
+const accept = Astro.request.headers.get("accept") ?? "";
+Astro.response.headers.set("Vary", "Accept");
+
+if (accept.includes("text/markdown")) {
+  return new Response(
+    `# The AI workflow platform for IT teams
+
+Budibase is fully optimized for modern IT teams. Transform internal operations without compromising on security, governance, and control.
+
+
+## Trust Budibase to power mission-critical workflows
+
+IT teams in all kinds of teams trust Budibase to build Agents, Apps, and Automations that they can connect to mission-critical systems and deploy anywhere.
+
+- Open-source, with optional self-hosting and a cloud-based platform
+- Connect securely to data sources, LLMs, and REST APIs
+- Out-of-the-box audit logging, auth, user management, and more
+
+## One platform for Agents, Apps & Automations
+
+Build AI-powered or human-centered workflows that connect to your data, LLMs, or REST APIs and deploy anywhere.
+
+### Agents
+
+Answer employee questions and handle requests across multiple channels.
+
+### Apps
+
+Create internal tools for teams to manage processes and track work.
+
+### Tables
+
+Connect your databases, spreadsheets, and business systems.
+
+### Automations
+
+Run approvals, routing, notifications, and operational workflows automatically.
+
+## Built for modern IT workflows
+
+Thousands of IT teams choose Budibase to handle approvals, request management, operations, service management, ticketing, and other workflows.
+
+## Handle requests where work really happens
+
+Budibase agents help teams handle routine operational work automatically via existing messaging tools. They can understand requests, gather information, and take action across your systems.
+
+- Employee self-service
+- Approval requests
+- Support triage
+
+## Deploy in the cloud or your own secure environment
+
+Choose Budibase Cloud for a ready-to-use, secure platform to deploy workflow tools without the infrastructure overhead, or self-host for maximum control.
+
+- Budibase servers are hosted within the EU (Ireland) in data centers certified by SOC 1/2 and ISO 27001
+- Mandatory HTTPS connections and data encryption in-transit and at-rest
+- Self-hosting via Docker, Kubernetes, and more
+- Air-gapped deployments
+
+## Production-ready apps and automations
+
+Budibase gives you everything you need to create secure workflows without excessive engineering overhead.
+
+- Open-Source: Deploy on your own infrastructure with complete data sovereignty
+- ISO 27001: Enterprise-grade security certifications to meet your compliance requirements
+- Made in Europe
+- Pen Tests and Audits: Annual penetration tests and AWS security configuration audits from third-party vendors
+- RBAC: Tightly control the data and resources users can access
+- SSO: Integrate with auth tools including OpenID Connect
+- Audit Logs: Comprehensive audit trails for all user actions and system events
+- SCIM & AD: Integrate with existing user management tools
+- Environment Variables: Securely handle database credentials and API keys across the platform
+`,
+    {
+      headers: {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Vary": "Accept",
+      },
+    }
+  );
+}
 ---
 
 <Layout title={pageTitle} description={pageDescription}>

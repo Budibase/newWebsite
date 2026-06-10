@@ -1,4 +1,6 @@
 ---
+export const prerender = false;
+
 import Layout from "../../../layouts/MainLayout.astro";
 import CTA from "@components/CTA.astro";
 import Button from "@components/Button.astro";
@@ -11,6 +13,64 @@ import ContactSalesCTA from "@components/ContactSalesCTA.astro";
 const pageTitle = "AI agents that\nrun your operations";
 const pageDescription =
   "Build agents that handle requests, answer questions, and take action across your business. Connect your data, trigger automations, and let AI manage the routine work that keeps teams moving.";
+
+const accept = Astro.request.headers.get("accept") ?? "";
+Astro.response.headers.set("Vary", "Accept");
+
+if (accept.includes("text/markdown")) {
+  return new Response(
+    `# Agents that handle everyday requests
+
+Budibase agents help teams handle routine operational work automatically. They can understand requests, gather information, and take action across your systems.
+
+## Core use cases
+
+- Employee self-service: Employees ask questions and get instant answers
+- Approval requests: Agents can collect information and run approval workflows
+- Support triage: Agents can manage incoming requests and route them to the right team
+
+## Build agents like writing a list
+
+Automate complex work without losing control. Define controlled agent behavior with structured instructions and reusable guidance.
+
+## Choose between 100s of AI models
+
+Run agents with OpenAI, Anthropic, Mistral, or custom model providers.
+
+- Mistral
+- Budibase AI
+- Anthropic
+- Google
+- OpenAI
+
+## Deploy where work happens
+
+Run agents inside Automations, Discord, and soon Teams and Slack.
+
+- Slack
+- Microsoft Teams
+- Discord
+
+## Connect 100s of tools
+
+Give your agent access to over 10,000 operations across 100s of tools.
+
+## Knowledge retrieval (RAG)
+
+Ground responses with retrieval workflows, including pgvector support.
+
+## Data and API access
+
+Access internal data tables and external APIs to execute operational tasks.
+`,
+    {
+      headers: {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Vary": "Accept",
+      },
+    }
+  );
+}
 ---
 
 <Layout title={pageTitle} description={pageDescription}>

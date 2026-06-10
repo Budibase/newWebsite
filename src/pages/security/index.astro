@@ -1,19 +1,85 @@
 ---
+export const prerender = false;
+
 import Layout from "../../layouts/MainLayout.astro";
 import TitleBlock from "@components/TitleBlock.astro";
 import Button from "@components/Button.astro";
 import SecurityConnections from "../_components/landing-page/SecurityConnections.astro";
 import SecurityCloud from "../_components/landing-page/SecurityCloud.astro";
-import SecuritySelfHost from "../_components/landing-page/SecuritySelfHost.astro"
+import SecuritySelfHost from "../_components/landing-page/SecuritySelfHost.astro";
 import SecurityInThePlatform from "../_components/landing-page/SecurityInThePlatform.astro";
 import SecurityBudibaseOrg from "../_components/landing-page/SecurityBudibaseOrg.astro";
-import CTA from "@components/CTA.astro"
+import CTA from "@components/CTA.astro";
 import ContactSalesCTA from "@components/ContactSalesCTA.astro";
 import Customers from "../_components/landing-page/Customers.astro";
 
 const pageTitle = "Security Features | Budibase";
 const pageDescription =
   "Budibase is fully optimized for highly regulated organizations. Transform internal operations without compromising on security, governance, and digital sovereignty.";
+
+const accept = Astro.request.headers.get("accept") ?? "";
+Astro.response.headers.set("Vary", "Accept");
+
+if (accept.includes("text/markdown")) {
+  return new Response(
+    `# The AI workflow toolkit for security-first teams
+
+Budibase is fully optimized for highly regulated organizations. Transform internal operations without compromising on security, governance, and digital sovereignty.
+
+## Budibase powers mission-critical workflows
+
+IT teams in highly regulated industries choose Budibase to build Agents, Apps, and Automations that they can connect to mission-critical systems and deploy anywhere.
+
+- Open-source, with optional self-hosting and a cloud-based platform
+- Connect securely to data sources, LLMs, and REST APIs
+- Out-of-the-box audit logging, auth, user management, and more
+
+## Advanced security tools out of the box
+
+Budibase gives you everything you need to create secure workflows without heavy engineering.
+
+- RBAC: Tightly control the data and resources users can access
+- SSO: Integrate with auth tools including OpenID Connect
+- Audit Logs: Comprehensive audit trails for all user actions and system events
+- SCIM & AD: Integrate with existing user management tools
+- Environment Variables: Securely handle database credentials and API keys across the platform
+- User Groups: Simplify the process of managing users' access to apps
+
+## Host Budibase within your own environment
+
+Budibase is open-source and self-hostable, enabling teams to transform operations entirely within their own secure environments.
+
+- Open-source
+- Deploy Budibase using Kubernetes, Docker, and more
+- Air-gapped deployments
+
+
+## Deploy in seconds with Budibase Cloud
+
+Budibase Cloud provides a ready-to-use, secure platform to deploy workflow tools without the infrastructure overhead.
+
+- All servers are hosted within the EU (Ireland) in data centers certified by SOC 1/2 and ISO 27001
+- Mandatory HTTPS connections
+- Data-in-transit encryption using TLS 1.3
+- Data is also encrypted at rest with AES256
+
+## Transform your operations with Budibase
+
+Thousands of teams choose Budibase to handle mission-critical workflows.
+
+- Open-Source: Deploy on your own infrastructure with complete data sovereignty
+- ISO 27001: Enterprise-grade security certifications to meet your compliance requirements
+- Made in Europe
+- Pen Tests and Audits: Annual penetration tests and AWS security configuration audits from third-party vendors
+`,
+    {
+      headers: {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Vary": "Accept",
+      },
+    }
+  );
+}
 ---
 
 <Layout title={pageTitle} description={pageDescription}>

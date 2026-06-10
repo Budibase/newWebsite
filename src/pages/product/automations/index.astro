@@ -1,4 +1,6 @@
 ---
+export const prerender = false;
+
 import Layout from "../../../layouts/MainLayout.astro";
 import CTA from "@components/CTA.astro";
 import Button from "@components/Button.astro";
@@ -20,6 +22,75 @@ const { description: pageMetaDescription } = getProductPageMeta(
 const pageTitle = "Automate operations with any data, LLM, or API";
 const pageDescription =
   "Build advanced logic that can be triggered by AI Agents, in-app actions, system events, WebHooks, and more.";
+
+const accept = Astro.request.headers.get("accept") ?? "";
+Astro.response.headers.set("Vary", "Accept");
+
+if (accept.includes("text/markdown")) {
+  return new Response(
+    `# Automate workflows with any data, LLM, or REST API
+
+Build advanced logic that can be triggered by AI Agents, in-app actions, system events, WebHooks, and more.
+
+## More powerful triggers. More agent-driven execution.
+
+Automations can start from agents, schedules, emails, apps, or data changes, then orchestrate decisions and system actions automatically across your business.
+
+With Budibase, you can:
+
+- Trigger workflows from agents and real operational events
+- Execute real system actions with full control
+
+## Trigger workflows from agents and real operational events
+
+Agents, schedules, emails, data updates, and webhooks can all start a controlled workflow.
+
+## Execute real system actions with full control
+
+Combine Agent steps, API requests, database updates, email notifications, and logic, with logs, testing, and full data visibility.
+
+## Full visibility into every decision and action
+
+Automations don’t just run. They’re fully observable. Test workflows before going live, inspect data at every step, and track every decision agents make.
+
+### Run tests before going live
+
+Simulate triggers and verify outcomes instantly.
+
+### Inspect data at every step
+
+See exactly what went in and what came out.
+
+### Automation logs and run history
+
+Track every execution with full traceability.
+
+
+## Define automation flows with ease
+
+Budibase Automations offer a drag-and-drop experience for creating complex logic.
+
+Automate anything with:
+
+- Pre-built actions
+- Looping, branching, and conditional logic
+
+## Pre-built actions
+
+When creating an automation you can pick from over 20 triggers and actions.
+
+## Looping, branching, and conditional logic
+
+Add looping, branching, and conditional logic to craft intelligent rules for real-world workflows.
+`,
+    {
+      headers: {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Vary": "Accept",
+      },
+    }
+  );
+}
 ---
 
 <Layout title={pageTitle} description={pageMetaDescription}>

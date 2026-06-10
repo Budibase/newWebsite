@@ -55,7 +55,6 @@
 /integrations/*  /product/connections/  301
 /host-a-web-app /product/apps/ 301
 /blog/automation/page/2/ /blog/category/automation/2/ 301
-/it/ / 301
 /)web / 301
 /blog/app- / 301
 /it/index.xml / 301

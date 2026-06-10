@@ -1,4 +1,6 @@
 ---
+export const prerender = false;
+
 import Layout from "../../../layouts/MainLayout.astro";
 import PlatformLayout from "@components/PlatformLayout.astro";
 import Mountains2 from "@assets/images/backgrounds/mountains/2.png";
@@ -9,12 +11,97 @@ import AppDataSourcesPreview from "@components/AppDataSourcesPreview.astro";
 import AppRequestsPreview from "@components/AppRequestsPreview.astro";
 import AppRolesPreview from "@components/AppRolesPreview.astro";
 import SectionBlock from "@components/SectionBlock.astro";
-import AppProductionReadyFeatures from "@components/AppProductionReadyFeatures.astro"
+import AppProductionReadyFeatures from "@components/AppProductionReadyFeatures.astro";
 import ContactSalesCTA from "@components/ContactSalesCTA.astro";
 
 const pageTitle = "Build internal tools\nin minutes";
 const pageDescription =
   "Create apps for approvals, operations, and internal requests without engineering resources. Connect your data and give your team simple tools that keep work moving.";
+
+const accept = Astro.request.headers.get("accept") ?? "";
+Astro.response.headers.set("Vary", "Accept");
+
+if (accept.includes("text/markdown")) {
+  return new Response(
+    `# Build internal tools in minutes
+
+Create apps for approvals, operations, and internal requests without engineering resources. Connect your data and give your team simple tools that keep work moving.
+
+
+## Turn messy processes into simple apps
+
+Growing businesses run on requests, approvals, and internal processes, but too often those live in spreadsheets, inboxes, or Slack threads. Within Budibase, you can turn those processes into simple internal apps your team can rely on.
+
+- Collect requests with forms
+- Track work in structured workflows
+- Give teams one place to manage operations with no engineering required
+
+
+## Build apps quickly with powerful tools
+
+Budibase gives you everything you need to create internal tools without heavy engineering.
+
+### Drag-and-drop builder
+
+Create forms, dashboards, and workflows visually.
+
+### Connect your data
+
+Use Postgres, MySQL, REST APIs, Sheets, and more.
+
+
+### User permissions built in
+
+Control who can submit, approve, or manage data.
+
+### Responsive layouts
+
+Create app experiences that work across desktop and mobile screens.
+
+### Generate apps from data with 1 click
+
+Turn Data Tables and external databases into working apps instantly.
+
+### Embed workflows and operational actions
+
+Run workflows and operational actions directly inside your app experiences.
+
+
+## Production-ready apps without the overhead
+
+Budibase empowers teams to ship production-ready apps in the cloud or on their own infrastructure, with no auth to stand up or code-base to maintain.
+
+- Customizable RBAC
+- SSO
+- Auth & user management
+
+
+## Data collection your way
+
+Budibase offers customizable data collection UIs for any data source or API.
+
+- Create forms on top of your database
+- Multi-step forms
+- Validation
+- Highly customizable
+
+## Simple by default, customizable with code
+
+Budibase Apps offer custom JavaScript and CSS for advanced use cases.
+
+- Optional JavaScript: Add logic to components or transform data
+- Live Evaluation: See the output of your code in real time
+- Reusable Snippets: Write code once and apply it anywhere
+- AI Code Generation: Use Budibase AI to generate custom JavaScript from natural language instructions
+`,
+    {
+      headers: {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Vary": "Accept",
+      },
+    }
+  );
+}
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
