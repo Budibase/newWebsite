@@ -235,7 +235,7 @@ const planGroupEntries = Object.entries(planGroups) as Array<
 
   .feature-tooltip-trigger {
     display: inline;
-    border-bottom: 1px dotted rgb(168 162 158 / 0.8);
+    border-bottom: 1px dotted color-mix(in srgb, var(--bb-border-bold) 80%, transparent);
     cursor: help;
     line-height: 1.35;
   }
@@ -258,7 +258,7 @@ const planGroupEntries = Object.entries(planGroups) as Array<
     padding: 12px;
     background: var(--bg-1);
     border: 1px solid var(--border-color);
-    box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+    box-shadow: 0 8px 24px var(--bb-transparent-black-200);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;

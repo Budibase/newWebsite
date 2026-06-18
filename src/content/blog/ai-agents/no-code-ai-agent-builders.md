@@ -92,7 +92,7 @@ In order to give a full account of what’s available, we’ve chosen a broad ra
   .comparison-table {
     margin: 2rem 0;
     padding: 1rem;
-    background: #faf9f6;
+    background: var(--bb-background-surface);
     border-radius: 14px;
     overflow-x: auto;
   }
@@ -101,8 +101,8 @@ In order to give a full account of what’s available, we’ve chosen a broad ra
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    background: #fff;
-    border: 1px solid #ece8e1;
+    background: var(--bb-white);
+    border: 1px solid var(--bb-border-base);
     border-radius: 12px;
     overflow: hidden;
   }
@@ -112,23 +112,23 @@ In order to give a full account of what’s available, we’ve chosen a broad ra
     padding: 0.75rem 0.85rem;
     text-align: left;
     vertical-align: top;
-    border-bottom: 1px solid #ece8e1;
-    color: #4f4942;
+    border-bottom: 1px solid var(--bb-border-base);
+    color: var(--bb-gray-700);
     line-height: 1.45;
     font-size: 0.9rem;
   }
 
   .comparison-table thead th {
-    background: #fcfbf9;
-    color: #2b2723;
+    background: var(--bb-background-base);
+    color: var(--bb-text-base);
     font-weight: 700;
     font-size: 0.88rem;
   }
 
   .comparison-table tbody th {
-    color: #2b2723;
+    color: var(--bb-text-base);
     font-weight: 700;
-    background: #fff;
+    background: var(--bb-white);
     white-space: nowrap;
   }
 

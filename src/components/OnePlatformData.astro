@@ -189,7 +189,7 @@ const rows: DataRow[] = [
     height: 100%;
     overflow: hidden;
     padding: 40px 0 0 20px;
-    background: var(--color-grey-50);
+    background: var(--bb-gray-50);
   }
 
   .one-platform-data::after {
@@ -200,9 +200,9 @@ const rows: DataRow[] = [
     pointer-events: none;
     background: linear-gradient(
       180deg,
-      rgb(250 249 245 / 0.66) 0%,
-      rgb(250 249 245 / 0.34) 36%,
-      rgb(250 249 245 / 0.08) 100%
+      color-mix(in srgb, var(--bb-background-base) 66%, transparent) 0%,
+      color-mix(in srgb, var(--bb-background-base) 34%, transparent) 36%,
+      color-mix(in srgb, var(--bb-background-base) 8%, transparent) 100%
     );
   }
 
@@ -219,18 +219,18 @@ const rows: DataRow[] = [
     width: 644px;
     min-width: 644px;
     height: 100%;
-    background: var(--color-grey-50);
-    border-top: 0.5px solid var(--color-grey-200);
-    border-left: 0.5px solid var(--color-grey-200);
-    box-shadow: 0 2px 8px rgb(25 25 25 / 0.04);
+    background: var(--bb-gray-50);
+    border-top: 0.5px solid var(--bb-gray-100);
+    border-left: 0.5px solid var(--bb-gray-100);
+    box-shadow: 0 2px 8px var(--bb-transparent-black-50);
     position: relative;
     z-index: 2;
   }
 
   .one-platform-data__tabbar {
     width: 100%;
-    border-bottom: 0.5px solid var(--color-grey-200);
-    background: rgb(255 255 255 / 0.94);
+    border-bottom: 0.5px solid var(--bb-gray-100);
+    background: var(--bb-transparent-white-1000);
     padding: 10px 12px 8px;
     overflow: hidden;
   }
@@ -243,7 +243,7 @@ const rows: DataRow[] = [
     font-size: 13px;
     line-height: 1.15;
     font-weight: 400;
-    color: var(--color-grey-900);
+    color: var(--bb-gray-900);
   }
 
   .one-platform-data__tab {
@@ -254,18 +254,18 @@ const rows: DataRow[] = [
     padding: 4px 8px;
     border-radius: 12px;
     white-space: nowrap;
-    color: var(--color-grey-900);
+    color: var(--bb-gray-900);
     background: transparent;
   }
 
   .one-platform-data__tab.is-active {
     border-radius: 6px;
-    background: var(--color-grey-200);
+    background: var(--bb-gray-100);
   }
 
   .one-platform-data__tab.is-muted,
   .one-platform-data__tab.is-icon {
-    color: var(--color-grey-500);
+    color: var(--bb-gray-600);
   }
 
   .one-platform-data__tab-logo {
@@ -307,7 +307,7 @@ const rows: DataRow[] = [
   }
 
   .one-platform-data__header {
-    background: var(--color-grey-100);
+    background: var(--bb-gray-75);
   }
 
   .one-platform-data__header > span {
@@ -315,8 +315,8 @@ const rows: DataRow[] = [
     display: flex;
     align-items: center;
     padding: 8px 12px;
-    border-right: 0.5px solid var(--color-grey-200);
-    color: var(--color-grey-900);
+    border-right: 0.5px solid var(--bb-gray-100);
+    color: var(--bb-gray-900);
     font-size: 14px;
     line-height: 17px;
     font-weight: 400;
@@ -328,12 +328,12 @@ const rows: DataRow[] = [
 
   .one-platform-data__row {
     min-height: 37px;
-    border-bottom: 0.5px solid var(--color-grey-200);
+    border-bottom: 0.5px solid var(--bb-gray-100);
     background: white;
   }
 
   .one-platform-data__row.is-highlighted {
-    background: var(--color-grey-50);
+    background: var(--bb-gray-50);
   }
 
   .one-platform-data__cell {
@@ -341,8 +341,8 @@ const rows: DataRow[] = [
     display: flex;
     align-items: center;
     padding: 8px 12px;
-    border-right: 0.5px solid var(--color-grey-200);
-    color: var(--color-grey-900);
+    border-right: 0.5px solid var(--bb-gray-100);
+    color: var(--bb-gray-900);
     font-size: 14px;
     line-height: 17px;
     font-weight: 400;
@@ -367,8 +367,8 @@ const rows: DataRow[] = [
   }
 
   .one-platform-data__chip--employee {
-    background: var(--color-grey-200);
-    color: var(--color-grey-900);
+    background: var(--bb-gray-100);
+    color: var(--bb-gray-900);
   }
 
   .one-platform-data__chip--category,
@@ -377,28 +377,28 @@ const rows: DataRow[] = [
   }
 
   .one-platform-data__chip--category.is-sales {
-    background: var(--color-purple-600);
-    color: var(--color-grey-50);
+    background: var(--bb-purple-1100);
+    color: var(--bb-gray-50);
   }
 
   .one-platform-data__chip--category.is-engineering {
-    background: var(--color-blue-600);
-    color: var(--color-grey-50);
+    background: var(--bb-blue-1000);
+    color: var(--bb-gray-50);
   }
 
   .one-platform-data__chip--category.is-documentation {
-    background: var(--color-orange-600);
-    color: var(--color-grey-50);
+    background: var(--bb-orange-800);
+    color: var(--bb-gray-50);
   }
 
   .one-platform-data__chip--status.is-pending {
-    background: var(--color-blue-200);
-    color: var(--color-grey-900);
+    background: var(--bb-blue-300);
+    color: var(--bb-gray-900);
   }
 
   .one-platform-data__chip--status.is-approved {
-    background: var(--color-green-200);
-    color: var(--color-grey-900);
+    background: var(--bb-green-200);
+    color: var(--bb-gray-900);
   }
 
   @media (max-width: 420px) {

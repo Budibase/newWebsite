@@ -62,8 +62,8 @@ Here are three defining characteristics that we need to be aware of.
     border-collapse: separate;
     border-spacing: 0;
     font-size: 0.9rem;
-    background: #fff;
-    border: 1px solid #ece8e1;
+    background: var(--bb-white);
+    border: 1px solid var(--bb-border-base);
     border-radius: 14px;
     overflow: hidden;
   }
@@ -71,17 +71,17 @@ Here are three defining characteristics that we need to be aware of.
   .comparison-table th,
   .comparison-table td {
     padding: 0.95rem 0.85rem;
-    border-bottom: 1px solid #ece8e1;
+    border-bottom: 1px solid var(--bb-border-base);
     text-align: left;
     vertical-align: top;
     line-height: 1.55;
   }
 
   .comparison-table th {
-    background: #faf9f6;
-    color: #2b2723;
+    background: var(--bb-background-surface);
+    color: var(--bb-text-base);
     font-weight: 700;
-    border-bottom: 1px solid #e3ddd5;
+    border-bottom: 1px solid var(--bb-gray-200);
   }
 
   .comparison-table th:first-child,
@@ -94,21 +94,21 @@ Here are three defining characteristics that we need to be aware of.
   }
 
   .comparison-table th:first-child {
-    background: #faf9f6;
+    background: var(--bb-background-surface);
     z-index: 2;
   }
 
   .comparison-table td:first-child {
-    background: #fff;
-    color: #181512;
+    background: var(--bb-white);
+    color: var(--bb-text-base);
   }
 
   .comparison-table tr:nth-child(even) td {
-    background: #fcfbf9;
+    background: var(--bb-background-base);
   }
 
   .comparison-table tr:nth-child(even) td:first-child {
-    background: #fcfbf9;
+    background: var(--bb-background-base);
   }
 
   .comparison-table tr:last-child td {
@@ -257,8 +257,8 @@ There are two key configurations that we might opt for here - either deploying p
     border-collapse: separate;
     border-spacing: 0;
     font-size: 0.9rem;
-    background: #fff;
-    border: 1px solid #ece8e1;
+    background: var(--bb-white);
+    border: 1px solid var(--bb-border-base);
     border-radius: 14px;
     overflow: hidden;
   }
@@ -266,17 +266,17 @@ There are two key configurations that we might opt for here - either deploying p
   .comparison-table th,
   .comparison-table td {
     padding: 0.95rem 0.85rem;
-    border-bottom: 1px solid #ece8e1;
+    border-bottom: 1px solid var(--bb-border-base);
     text-align: left;
     vertical-align: top;
     line-height: 1.55;
   }
 
   .comparison-table th {
-    background: #faf9f6;
-    color: #2b2723;
+    background: var(--bb-background-surface);
+    color: var(--bb-text-base);
     font-weight: 700;
-    border-bottom: 1px solid #e3ddd5;
+    border-bottom: 1px solid var(--bb-gray-200);
   }
 
   .comparison-table th:first-child,
@@ -289,21 +289,21 @@ There are two key configurations that we might opt for here - either deploying p
   }
 
   .comparison-table th:first-child {
-    background: #faf9f6;
+    background: var(--bb-background-surface);
     z-index: 2;
   }
 
   .comparison-table td:first-child {
-    background: #fff;
-    color: #181512;
+    background: var(--bb-white);
+    color: var(--bb-text-base);
   }
 
   .comparison-table tr:nth-child(even) td {
-    background: #fcfbf9;
+    background: var(--bb-background-base);
   }
 
   .comparison-table tr:nth-child(even) td:first-child {
-    background: #fcfbf9;
+    background: var(--bb-background-base);
   }
 
   .comparison-table tr:last-child td {
@@ -501,8 +501,8 @@ The easiest way to think about this is in terms of the wider system’s constitu
     border-collapse: separate;
     border-spacing: 0;
     font-size: 0.9rem;
-    background: #fff;
-    border: 1px solid #ece8e1;
+    background: var(--bb-white);
+    border: 1px solid var(--bb-border-base);
     border-radius: 14px;
     overflow: hidden;
   }
@@ -510,17 +510,17 @@ The easiest way to think about this is in terms of the wider system’s constitu
   .comparison-table th,
   .comparison-table td {
     padding: 0.95rem 0.85rem;
-    border-bottom: 1px solid #ece8e1;
+    border-bottom: 1px solid var(--bb-border-base);
     text-align: left;
     vertical-align: top;
     line-height: 1.55;
   }
 
   .comparison-table th {
-    background: #faf9f6;
-    color: #2b2723;
+    background: var(--bb-background-surface);
+    color: var(--bb-text-base);
     font-weight: 700;
-    border-bottom: 1px solid #e3ddd5;
+    border-bottom: 1px solid var(--bb-gray-200);
   }
 
   .comparison-table th:first-child,
@@ -533,21 +533,21 @@ The easiest way to think about this is in terms of the wider system’s constitu
   }
 
   .comparison-table th:first-child {
-    background: #faf9f6;
+    background: var(--bb-background-surface);
     z-index: 2;
   }
 
   .comparison-table td:first-child {
-    background: #fff;
-    color: #181512;
+    background: var(--bb-white);
+    color: var(--bb-text-base);
   }
 
   .comparison-table tr:nth-child(even) td {
-    background: #fcfbf9;
+    background: var(--bb-background-base);
   }
 
   .comparison-table tr:nth-child(even) td:first-child {
-    background: #fcfbf9;
+    background: var(--bb-background-base);
   }
 
   .comparison-table tr:last-child td {
@@ -651,8 +651,8 @@ Thankfully, we’ve already alluded to most of the components of this already.
     border-collapse: separate;
     border-spacing: 0;
     font-size: 0.9rem;
-    background: #fff;
-    border: 1px solid #ece8e1;
+    background: var(--bb-white);
+    border: 1px solid var(--bb-border-base);
     border-radius: 14px;
     overflow: hidden;
   }
@@ -660,17 +660,17 @@ Thankfully, we’ve already alluded to most of the components of this already.
   .comparison-table th,
   .comparison-table td {
     padding: 0.95rem 0.85rem;
-    border-bottom: 1px solid #ece8e1;
+    border-bottom: 1px solid var(--bb-border-base);
     text-align: left;
     vertical-align: top;
     line-height: 1.55;
   }
 
   .comparison-table th {
-    background: #faf9f6;
-    color: #2b2723;
+    background: var(--bb-background-surface);
+    color: var(--bb-text-base);
     font-weight: 700;
-    border-bottom: 1px solid #e3ddd5;
+    border-bottom: 1px solid var(--bb-gray-200);
   }
 
   .comparison-table th:first-child,
@@ -683,21 +683,21 @@ Thankfully, we’ve already alluded to most of the components of this already.
   }
 
   .comparison-table th:first-child {
-    background: #faf9f6;
+    background: var(--bb-background-surface);
     z-index: 2;
   }
 
   .comparison-table td:first-child {
-    background: #fff;
-    color: #181512;
+    background: var(--bb-white);
+    color: var(--bb-text-base);
   }
 
   .comparison-table tr:nth-child(even) td {
-    background: #fcfbf9;
+    background: var(--bb-background-base);
   }
 
   .comparison-table tr:nth-child(even) td:first-child {
-    background: #fcfbf9;
+    background: var(--bb-background-base);
   }
 
   .comparison-table tr:last-child td {

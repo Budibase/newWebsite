@@ -325,7 +325,7 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-    background: #f0eee6;
+    background: var(--bb-gray-75);
     padding: 40px;
   }
 
@@ -351,11 +351,11 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
   .ops-platform-demo-new__chat-card {
     overflow: hidden;
     border-radius: 8px;
-    background: #ffffff;
+    background: var(--bb-white);
   }
 
   .ops-platform-demo-new__chat-header {
-    border-bottom: 1px solid #ececec;
+    border-bottom: 1px solid var(--bb-gray-100);
     padding: 10px 18px;
   }
 
@@ -365,7 +365,7 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
-    color: #191919;
+    color: var(--bb-text-base);
   }
 
   .ops-platform-demo-new__chat-thread {
@@ -437,7 +437,7 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #467db4;
+    background: var(--bb-brand);
     padding: 4px;
   }
 
@@ -479,21 +479,21 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 13px;
     font-weight: 400;
     line-height: 1;
-    color: #202020;
+    color: var(--bb-gray-800);
   }
 
   .ops-platform-demo-new__message-time {
     font-size: 13px;
     font-weight: 400;
     line-height: 1;
-    color: #666663;
+    color: var(--bb-text-subtle);
   }
 
   .ops-platform-demo-new__message-copy {
     font-size: 13px;
     font-weight: 400;
     line-height: normal;
-    color: #3f3f3f;
+    color: var(--bb-gray-700);
   }
 
   .ops-platform-demo-new__assistant-body {
@@ -550,12 +550,12 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     flex-direction: column;
     gap: 0;
     border-radius: 2px;
-    background: #f0eee6;
+    background: var(--bb-gray-75);
     padding: 6px;
   }
 
   .ops-platform-demo-new__mention {
-    color: #386cf4;
+    color: var(--bb-brand);
   }
 
   .ops-platform-demo-new__composer {
@@ -568,9 +568,9 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     height: 80px;
     flex-direction: column;
     justify-content: flex-start;
-    border: 1px solid #e5e4df;
+    border: 1px solid var(--bb-gray-100);
     border-radius: 6px;
-    background: #fafaf7;
+    background: var(--bb-background-base);
     padding: 16px 12px;
   }
 
@@ -598,7 +598,7 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 13px;
     font-weight: 400;
     line-height: normal;
-    color: #3f3f3f;
+    color: var(--bb-gray-700);
   }
 
   .ops-platform-demo-new__composer-actions {
@@ -613,13 +613,13 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     gap: 6px;
     border: 0;
     border-radius: 5px;
-    background: #386cf4;
+    background: var(--bb-brand);
     padding: 5px 6px;
     font-family: var(--font-sans);
     font-size: 15px;
     font-weight: 500;
     line-height: normal;
-    color: #ffffff;
+    color: var(--bb-white);
     cursor: pointer;
     transition:
       transform 160ms ease,
@@ -632,7 +632,7 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
   }
 
   .ops-platform-demo-new__send-button:focus-visible {
-    outline: 2px solid #386cf4;
+    outline: 2px solid var(--bb-brand);
     outline-offset: 2px;
   }
 
@@ -642,7 +642,7 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
   }
 
   .ops-platform-demo-new__send-button--inactive {
-    background: #bfbfba;
+    background: var(--bb-border-bold);
     cursor: default;
     pointer-events: none;
   }
@@ -656,7 +656,7 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
 
   .ops-platform-demo-new__requests-panel {
     border-radius: 6px;
-    background: rgb(255 255 255 / 0.9);
+    background: var(--bb-transparent-white-900);
     padding: 20px;
     opacity: 0.8;
     transition: opacity 320ms ease;
@@ -674,7 +674,7 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
-    color: #191919;
+    color: var(--bb-text-base);
   }
 
   .ops-platform-demo-new__filters {
@@ -692,19 +692,19 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 13px;
     font-weight: 400;
     line-height: 20px;
-    color: #191919;
+    color: var(--bb-text-base);
   }
 
   .ops-platform-demo-new__filter--active {
-    background: #e5e4df;
+    background: var(--bb-gray-100);
     padding: 6px 12px;
   }
 
   .ops-platform-demo-new__table {
     overflow: hidden;
-    border: 1px solid #e5e4df;
+    border: 1px solid var(--bb-gray-100);
     border-radius: 6px;
-    background: #fafaf7;
+    background: var(--bb-background-base);
   }
 
   .ops-platform-demo-new__table-row {
@@ -712,7 +712,7 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     grid-template-columns: minmax(0, 320px) minmax(0, 1fr) 130px 130px;
     align-items: center;
     min-height: 37px;
-    border-top: 0.5px solid #e5e4df;
+    border-top: 0.5px solid var(--bb-gray-100);
   }
 
   .ops-platform-demo-new__table-row--header {
@@ -724,7 +724,7 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     min-height: 0;
     max-height: 0;
     border-top: 0;
-    background: #f0eee6;
+    background: var(--bb-gray-75);
     opacity: 0;
     visibility: hidden;
     overflow: hidden;
@@ -742,7 +742,7 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
   .ops-platform-demo-new[data-state="hold"] .ops-platform-demo-new__table-row--new {
     min-height: 37px;
     max-height: 37px;
-    border-top: 0.5px solid #e5e4df;
+    border-top: 0.5px solid var(--bb-gray-100);
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -776,12 +776,12 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 14px;
     font-weight: 400;
     line-height: 17px;
-    color: #191919;
+    color: var(--bb-text-base);
   }
 
   .ops-platform-demo-new__table-row--header .ops-platform-demo-new__table-cell {
     font-size: 14px;
-    color: #666663;
+    color: var(--bb-text-subtle);
   }
 
   .ops-platform-demo-new__table-cell--request {
@@ -804,15 +804,15 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
   }
 
   .ops-platform-demo-new__priority-dot--high {
-    background: #f07167;
+    background: var(--bb-red-600);
   }
 
   .ops-platform-demo-new__priority-dot--medium {
-    background: #dc8c64;
+    background: var(--bb-orange-600);
   }
 
   .ops-platform-demo-new__priority-dot--low {
-    background: #5d93d1;
+    background: var(--bb-blue-700);
   }
 
   .ops-platform-demo-new__status {
@@ -824,27 +824,27 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 13px;
     font-weight: 400;
     line-height: 17px;
-    color: #191919;
+    color: var(--bb-text-base);
   }
 
   .ops-platform-demo-new__status--pending {
-    background: #c3daea;
+    background: var(--bb-blue-300);
   }
 
   .ops-platform-demo-new__status--approved {
-    background: #d2ddc3;
+    background: var(--bb-green-200);
   }
 
   .ops-platform-demo-new__status--progress {
-    background: #d2ccef;
+    background: var(--bb-purple-300);
   }
 
   .ops-platform-demo-new__status--completed {
-    background: #e5e4df;
+    background: var(--bb-gray-100);
   }
 
   .ops-platform-demo-new__status--rejected {
-    background: #e6c2c2;
+    background: var(--bb-red-300);
   }
 
   .ops-platform-demo-new__new-badge {
@@ -852,12 +852,12 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     align-items: center;
     justify-content: center;
     border-radius: 13px;
-    background: #467db4;
+    background: var(--bb-brand);
     padding: 6px 7px;
     font-size: 11px;
     font-weight: 500;
     line-height: normal;
-    color: #ffffff !important;
+    color: var(--bb-white) !important;
     opacity: 0;
     transform: scale(0.92);
     transition:

@@ -49,14 +49,14 @@ Here are some of the key decision points you’ll need to consider.
   .faq-section {
     margin: 2rem 0;
     padding: 1.5rem;
-    background: #faf9f6;
-    border: 1px solid #ece8e1;
+    background: var(--bb-background-surface);
+    border: 1px solid var(--bb-border-base);
     border-radius: 14px;
   }
 
   .faq-section details {
-    background: #fff;
-    border: 1px solid #ece8e1;
+    background: var(--bb-white);
+    border: 1px solid var(--bb-border-base);
     border-radius: 12px;
     margin: 0.75rem 0;
     overflow: hidden;
@@ -65,25 +65,25 @@ Here are some of the key decision points you’ll need to consider.
   .faq-section summary {
     cursor: pointer;
     padding: 1rem 1.15rem;
-    color: #2b2723;
+    color: var(--bb-text-base);
     font-size: 1rem;
     font-weight: 700;
     line-height: 1.35;
-    background: #fcfbf9;
+    background: var(--bb-background-base);
   }
 
   .faq-section summary:hover {
-    background: #faf9f6;
+    background: var(--bb-background-surface);
   }
 
   .faq-section details[open] summary {
-    border-bottom: 1px solid #ece8e1;
+    border-bottom: 1px solid var(--bb-border-base);
   }
 
   .faq-section p {
     margin: 0;
     padding: 0.85rem 1.15rem 0;
-    color: #4f4942;
+    color: var(--bb-gray-700);
     line-height: 1.65;
   }
 
@@ -145,8 +145,8 @@ Here’s a brief summary of how they compare.
     border-collapse: separate;
     border-spacing: 0;
     font-size: 0.9rem;
-    background: #fff;
-    border: 1px solid #ece8e1;
+    background: var(--bb-white);
+    border: 1px solid var(--bb-border-base);
     border-radius: 14px;
     overflow: hidden;
   }
@@ -154,17 +154,17 @@ Here’s a brief summary of how they compare.
   .comparison-table th,
   .comparison-table td {
     padding: 0.85rem 0.75rem;
-    border-bottom: 1px solid #ece8e1;
+    border-bottom: 1px solid var(--bb-border-base);
     text-align: center;
     vertical-align: middle;
   }
 
   .comparison-table th {
-    background: #faf9f6;
-    color: #2b2723;
+    background: var(--bb-background-surface);
+    color: var(--bb-text-base);
     font-weight: 700;
     line-height: 1.25;
-    border-bottom: 1px solid #e3ddd5;
+    border-bottom: 1px solid var(--bb-gray-200);
   }
 
   .comparison-table th:first-child,
@@ -177,21 +177,21 @@ Here’s a brief summary of how they compare.
   }
 
   .comparison-table th:first-child {
-    background: #faf9f6;
+    background: var(--bb-background-surface);
     z-index: 2;
   }
 
   .comparison-table td:first-child {
-    background: #fff;
-    color: #181512;
+    background: var(--bb-white);
+    color: var(--bb-text-base);
   }
 
   .comparison-table tr:nth-child(even) td {
-    background: #fcfbf9;
+    background: var(--bb-background-base);
   }
 
   .comparison-table tr:nth-child(even) td:first-child {
-    background: #fcfbf9;
+    background: var(--bb-background-base);
   }
 
   .comparison-table tr:last-child td {
@@ -215,19 +215,19 @@ Here’s a brief summary of how they compare.
   }
 
   .comparison-table .yes {
-    background: #e4f6ec;
-    color: #187645;
+    background: var(--bb-green-100);
+    color: var(--bb-green-900);
   }
 
   .comparison-table .no {
-    background: #ede9e3;
-    color: #4f4942;
+    background: var(--bb-gray-75);
+    color: var(--bb-gray-700);
   }
 
   .comparison-table .tag {
     margin: 0.1rem;
-    background: #f2eef8;
-    color: #5b3f8c;
+    background: var(--bb-purple-100);
+    color: var(--bb-purple-1100);
   }
 </style>
 

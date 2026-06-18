@@ -37,15 +37,15 @@
     background-image:
       repeating-linear-gradient(
         -45deg,
-        rgba(120, 130, 140, 0.08),
-        rgba(120, 130, 140, 0.08) 2px,
+        color-mix(in srgb, var(--bb-gray-500) 8%, transparent),
+        color-mix(in srgb, var(--bb-gray-500) 8%, transparent) 2px,
         transparent 2px,
         transparent 10px
       ),
-      radial-gradient(rgba(120, 130, 140, 0.08) 1px, transparent 1px),
-      radial-gradient(rgba(206, 142, 98, 0.42) 2.2px, transparent 2.2px),
-      radial-gradient(rgba(196, 112, 92, 0.38) 2px, transparent 2px),
-      radial-gradient(rgba(216, 174, 120, 0.4) 2px, transparent 2px);
+      radial-gradient(color-mix(in srgb, var(--bb-gray-500) 8%, transparent) 1px, transparent 1px),
+      radial-gradient(color-mix(in srgb, var(--bb-orange-600) 42%, transparent) 2.2px, transparent 2.2px),
+      radial-gradient(color-mix(in srgb, var(--bb-red-600) 38%, transparent) 2px, transparent 2px),
+      radial-gradient(color-mix(in srgb, var(--bb-orange-400) 40%, transparent) 2px, transparent 2px);
     background-size: 100% 100%, 22px 22px, 20px 20px, 18px 18px, 26px 26px;
     background-position: 0 0, 8px 8px, 6px 2px, 2px 14px, 14px 18px;
     background-blend-mode: normal;

@@ -247,14 +247,14 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
     --text: 47 47 45;
     --text-muted: 102 102 99;
     --brand: 56 108 244;
-    --bg-1: rgb(250 249 245);
-    --bg-2: rgb(240 238 230);
-    --bg-3: rgb(229 228 223);
-    --text-primary: rgb(47 47 45);
-    --text-secondary: rgb(102 102 99);
-    --text-body: rgb(82 79 72);
-    --border-color: rgb(191 191 186 / 0.9);
-    --hero-demo-user-bubble: rgb(195 218 234);
+    --bg-1: var(--bb-background-base);
+    --bg-2: var(--bb-gray-75);
+    --bg-3: var(--bb-gray-100);
+    --text-primary: var(--bb-text-base);
+    --text-secondary: var(--bb-text-subtle);
+    --text-body: var(--bb-gray-700);
+    --border-color: color-mix(in srgb, var(--bb-border-bold) 90%, transparent);
+    --hero-demo-user-bubble: var(--bb-blue-300);
   }
 
   .hero-demo-backdrop {

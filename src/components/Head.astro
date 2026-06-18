@@ -208,7 +208,7 @@ function smartypants(text: string, _mode?: number): string {
 <title set:html={smartypants(title, 1)} />
 <meta name="generator" content={Astro.generator} />
 <meta name="color-scheme" content="light" />
-<meta name="theme-color" content="#faf9f5" />
+<meta name="theme-color" content="var(--bb-background-base)" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <meta name="mobile-web-app-capable" content="yes" />
@@ -271,7 +271,7 @@ function smartypants(text: string, _mode?: number): string {
 
 <!-- Low Priority Global Metadata -->
 <Favicon />
-<link rel="mask-icon" href="/favicon.svg" color="#8D46E7" />
+<link rel="mask-icon" href="/favicon.svg" />
 <link rel="sitemap" href="/sitemap.xml" />
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
 

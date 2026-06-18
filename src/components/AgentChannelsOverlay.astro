@@ -73,9 +73,9 @@ const { class: className = "" } = Astro.props as Props;
     flex-direction: column;
     overflow: hidden;
     border-radius: 6px;
-    background: #171717;
-    border: 1px solid #2c2c2c;
-    box-shadow: 0 10px 24px rgb(0 0 0 / 0.18);
+    background: var(--bb-gray-900);
+    border: 1px solid var(--bb-gray-800);
+    box-shadow: 0 10px 24px var(--bb-transparent-black-300);
   }
 
   .agent-channels-overlay-row {
@@ -83,8 +83,8 @@ const { class: className = "" } = Astro.props as Props;
     align-items: center;
     justify-content: space-between;
     min-height: 39px;
-    border-top: 1px solid #2c2c2c;
-    background: #1a1a1a;
+    border-top: 1px solid var(--bb-gray-800);
+    background: var(--bb-gray-900);
   }
 
   .agent-channels-overlay-row:first-child {
@@ -111,7 +111,7 @@ const { class: className = "" } = Astro.props as Props;
   }
 
   .agent-channels-overlay-label {
-    color: #efefef !important;
+    color: var(--bb-silver-200) !important;
     font-size: 13px;
     font-weight: 400;
     line-height: 17px;
@@ -153,14 +153,14 @@ const { class: className = "" } = Astro.props as Props;
   .agent-channels-overlay-gear {
     width: 16px;
     height: 16px;
-    color: #c8c8c8;
+    color: var(--bb-gray-400);
   }
 
   .agent-channels-overlay-toggle {
     width: 27px;
     height: 14px;
     border-radius: 999px;
-    background: #35b45d;
+    background: var(--bb-green-600);
     padding: 2px;
     justify-content: flex-end;
   }
@@ -170,14 +170,14 @@ const { class: className = "" } = Astro.props as Props;
     height: 10px;
     display: block;
     border-radius: 999px;
-    background: #ffffff;
+    background: var(--bb-white);
   }
 
   .agent-channels-overlay-chip {
-    border: 1px solid #2c2c2c;
+    border: 1px solid var(--bb-gray-800);
     border-radius: 6px;
     padding: 4px 8px;
-    color: #c8c8c8 !important;
+    color: var(--bb-gray-400) !important;
     font-size: 12px;
     font-weight: 400;
     line-height: 1;

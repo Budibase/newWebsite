@@ -214,7 +214,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-    background: #f0eee6;
+    background: var(--bb-gray-75);
     padding: 24px 20px 52px;
   }
 
@@ -252,7 +252,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     margin-top: -60px;
     padding-left: 308px;
     padding-right: 350px;
-    color: rgb(25 25 25 / 0.55);
+    color: var(--bb-transparent-black-600);
     opacity: 0;
     transform: translateY(8px);
     pointer-events: none;
@@ -298,14 +298,14 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
-    color: #191919;
+    color: var(--bb-text-base);
     white-space: nowrap;
   }
 
   .ops-platform-demo__response-flow.is-visible {
     opacity: 1;
     transform: translateY(0);
-    color: #191919;
+    color: var(--bb-text-base);
   }
 
   .ops-platform-demo__column {
@@ -333,7 +333,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
-    color: #191919;
+    color: var(--bb-text-base);
     text-align: center;
   }
 
@@ -342,12 +342,12 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     width: 50px;
     height: 20px;
     margin-top: 2px;
-    color: rgb(25 25 25 / 0.45);
+    color: var(--bb-transparent-black-500);
     transition: color 220ms ease, transform 220ms ease;
   }
 
   .ops-platform-demo__connector.is-active {
-    color: #191919;
+    color: var(--bb-text-base);
     transform: translateX(2px);
   }
 
@@ -356,8 +356,8 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     min-height: 320px;
     flex-direction: column;
     border-radius: 10px;
-    background: #ffffff;
-    color: #202020;
+    background: var(--bb-white);
+    color: var(--bb-gray-800);
     overflow: hidden;
   }
 
@@ -365,7 +365,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     display: flex;
     align-items: center;
     gap: 8px;
-    border-bottom: 1px solid #ececec;
+    border-bottom: 1px solid var(--bb-gray-100);
     padding: 10px 14px;
   }
 
@@ -374,7 +374,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     width: 18px;
     height: 18px;
     border-radius: 999px;
-    background: #8d73da;
+    background: var(--bb-purple-800);
     flex-shrink: 0;
   }
 
@@ -385,7 +385,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     left: 3px;
     width: 7px;
     height: 7px;
-    background: #8d73da;
+    background: var(--bb-purple-800);
     clip-path: polygon(0 0, 100% 0, 0 100%);
   }
 
@@ -394,7 +394,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
-    color: #191919;
+    color: var(--bb-text-base);
   }
 
   .ops-platform-demo__chat-body {
@@ -431,14 +431,14 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     font-family: var(--font-sans);
     font-size: 18px;
     font-weight: 500;
-    color: #202020;
+    color: var(--bb-gray-800);
   }
 
   .ops-platform-demo__message-time {
     font-family: var(--font-sans);
     font-size: 12px;
     font-weight: 400;
-    color: #7e7e7e;
+    color: var(--bb-gray-600);
   }
 
   .ops-platform-demo__message-text {
@@ -447,11 +447,11 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.28;
-    color: #40403e;
+    color: var(--bb-gray-700);
   }
 
   .ops-platform-demo__mention {
-    color: #386cf4;
+    color: var(--bb-brand);
   }
 
   .ops-platform-demo__avatar {
@@ -470,7 +470,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
   }
 
   .ops-platform-demo__avatar--assistant {
-    background: #386cf4;
+    background: var(--bb-brand);
     padding: 6px;
   }
 
@@ -491,7 +491,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
 
   .ops-platform-demo__reply-panel {
     border-radius: 2px;
-    background: #f0eee6;
+    background: var(--bb-gray-75);
     padding: 6px;
   }
 
@@ -501,11 +501,11 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     font-family: var(--font-sans);
     font-size: 16px;
     line-height: 1.28;
-    color: #40403e;
+    color: var(--bb-gray-700);
   }
 
   .ops-platform-demo__reply-list li::marker {
-    color: #40403e;
+    color: var(--bb-gray-700);
   }
 
   .ops-platform-demo__assistant-message {
@@ -526,13 +526,13 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     align-items: center;
     gap: 12px;
     margin: 0 12px 12px;
-    border: 1px solid #ececec;
+    border: 1px solid var(--bb-gray-100);
     border-radius: 16px;
     padding: 10px 12px;
     font-family: var(--font-sans);
     font-size: 16px;
     line-height: 1;
-    color: #7e7e7e;
+    color: var(--bb-gray-600);
   }
 
   .ops-platform-demo__input-icon {
@@ -543,8 +543,8 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     align-items: center;
     justify-content: center;
     border-radius: 999px;
-    background: #ececec;
-    color: #7e7e7e;
+    background: var(--bb-gray-100);
+    color: var(--bb-gray-600);
   }
 
   .ops-platform-demo__input-icon :global(svg) {
@@ -566,9 +566,9 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     min-height: 221px;
     flex-direction: column;
     gap: 12px;
-    border: 1px solid rgb(25 25 25 / 0.06);
+    border: 1px solid var(--bb-transparent-black-75);
     border-radius: 8px;
-    background: #ffffff;
+    background: var(--bb-white);
     padding: 16px;
     opacity: 0.76;
   }
@@ -584,7 +584,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
-    color: #191919;
+    color: var(--bb-text-base);
   }
 
   .ops-platform-demo__analysis-block {
@@ -599,7 +599,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 14px;
     font-weight: 500;
     line-height: 1.45;
-    color: #262625;
+    color: var(--bb-gray-800);
   }
 
   .ops-platform-demo__action {
@@ -613,13 +613,13 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     align-items: center;
     gap: 6px;
     border-radius: 16px;
-    background: #f0eee6;
+    background: var(--bb-gray-75);
     padding: 6px 12px;
     font-family: var(--font-sans);
     font-size: 15px;
     font-weight: 500;
     line-height: 1.2;
-    color: #191919;
+    color: var(--bb-text-base);
   }
 
   .ops-platform-demo__action-icon {
@@ -632,9 +632,9 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border: 1px solid rgb(25 25 25 / 0.05);
+    border: 1px solid var(--bb-transparent-black-75);
     border-radius: 6px;
-    background: #e5e4df;
+    background: var(--bb-gray-100);
     padding: 20px;
     opacity: 0.76;
   }
@@ -658,15 +658,15 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 12px;
     font-weight: 500;
     line-height: 1.25;
-    color: #191919;
+    color: var(--bb-text-base);
   }
 
   .ops-platform-demo__badge--trigger {
-    background: #ecd3c2;
+    background: var(--bb-orange-300);
   }
 
   .ops-platform-demo__badge--outcome {
-    background: #d2ddc3;
+    background: var(--bb-green-200);
   }
 
   .ops-platform-demo__automation-item {
@@ -674,7 +674,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     align-items: center;
     gap: 10px;
     border-radius: 6px;
-    background: #ffffff;
+    background: var(--bb-white);
     padding: 16px;
   }
 
@@ -686,8 +686,8 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     align-items: center;
     justify-content: center;
     border-radius: 3px;
-    background: #215f9e;
-    color: #ffffff;
+    background: var(--bb-blue-1000);
+    color: var(--bb-white);
   }
 
   .ops-platform-demo__automation-copy {
@@ -695,20 +695,20 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
-    color: #191919;
+    color: var(--bb-text-base);
   }
 
   .ops-platform-demo__down-arrow {
     width: 24px;
     height: 24px;
     align-self: center;
-    color: #191919;
+    color: var(--bb-text-base);
   }
 
   .ops-platform-demo__table-wrap {
     overflow: hidden;
     border-radius: 6px;
-    background: #ffffff;
+    background: var(--bb-white);
     padding: 1px;
   }
 
@@ -720,7 +720,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
 
   .ops-platform-demo__table th,
   .ops-platform-demo__table td {
-    border-bottom: 1px solid #e2e1dc;
+    border-bottom: 1px solid var(--bb-gray-100);
     padding: 11px 14px;
     text-align: left;
     vertical-align: middle;
@@ -735,7 +735,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 14px;
     font-weight: 500;
     line-height: 1.2;
-    color: #666663;
+    color: var(--bb-text-subtle);
   }
 
   .ops-platform-demo__table td {
@@ -743,7 +743,7 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.25;
-    color: #40403e;
+    color: var(--bb-gray-700);
   }
 
   .ops-platform-demo__table th:nth-child(1),
@@ -762,19 +762,19 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     justify-content: center;
     border-radius: 13px;
     padding: 2px 10px;
-    color: #191919;
+    color: var(--bb-text-base);
   }
 
   .ops-platform-demo__status--pending {
-    background: #c3daea;
+    background: var(--bb-blue-300);
   }
 
   .ops-platform-demo__status--rejected {
-    background: #ffa9a9;
+    background: var(--bb-red-400);
   }
 
   .ops-platform-demo__status--approved {
-    background: #d2ddc3;
+    background: var(--bb-green-200);
   }
   @media (max-width: 1159px) {
     .ops-platform-demo {

@@ -221,29 +221,29 @@ const builderSections = [
 <style>
   ..app-demo {
   color-scheme: light;
-  --app-demo-bg-strong: var(--grey-900);
-  --app-demo-bg-deep: var(--grey-950);
-  --app-demo-border: var(--grey-700);
-  --app-demo-border-soft: var(--grey-600);
-  --app-demo-workspace-bg: var(--grey-200);
-  --app-demo-surface: var(--grey-50);
-  --app-demo-surface-strong: var(--grey-50);
-  --app-demo-slate-strong: var(--grey-900);
-  --app-demo-slate-light: var(--grey-600);
-  --app-demo-grey-900: var(--grey-100);
-  --app-demo-grey-700: var(--grey-400);
-  --app-demo-grey-600: var(--grey-500);
-  --app-demo-grey-400: var(--grey-600);
-  --app-demo-cloud-light: var(--grey-300);
-  --app-demo-nav-bg: var(--color-blue-900);
-  --app-demo-nav-active: var(--color-blue-800);
-  --app-demo-pill-high: var(--red-500);
-  --app-demo-pill-medium: var(--orange-500);
-  --app-demo-pill-low: var(--blue-400);
-  --app-demo-clay-strong: var(--color-orange-700);
-  --app-demo-submit: var(--blue-600);
+  --app-demo-bg-strong: var(--bb-gray-900);
+  --app-demo-bg-deep: var(--bb-gray-1000);
+  --app-demo-border: var(--bb-gray-800);
+  --app-demo-border-soft: var(--bb-gray-700);
+  --app-demo-workspace-bg: var(--bb-gray-100);
+  --app-demo-surface: var(--bb-gray-50);
+  --app-demo-surface-strong: var(--bb-gray-50);
+  --app-demo-slate-strong: var(--bb-gray-900);
+  --app-demo-slate-light: var(--bb-gray-700);
+  --app-demo-grey-900: var(--bb-gray-75);
+  --app-demo-grey-700: var(--bb-gray-500);
+  --app-demo-grey-600: var(--bb-gray-600);
+  --app-demo-grey-400: var(--bb-gray-700);
+  --app-demo-cloud-light: var(--bb-gray-300);
+  --app-demo-nav-bg: var(--bb-blue-1500);
+  --app-demo-nav-active: var(--bb-blue-1300);
+  --app-demo-pill-high: var(--bb-red-700);
+  --app-demo-pill-medium: var(--bb-orange-700);
+  --app-demo-pill-low: var(--bb-blue-700);
+  --app-demo-clay-strong: var(--bb-orange-1000);
+  --app-demo-submit: var(--bb-blue-1000);
   --app-demo-backdrop-image: none;
-  --bg-1: var(--grey-200);
+  --bg-1: var(--bb-gray-100);
   font-family: var(--font-sans);
 }
 
@@ -261,7 +261,7 @@ const builderSections = [
   border: 0.5px solid var(--app-demo-border);
   border-radius: 6px;
   background: var(--app-demo-bg-strong);
-  box-shadow: 0 10px 30px color-mix(in srgb, var(--grey-900) 25%, transparent);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--bb-gray-900) 25%, transparent);
 }
 
 .app-demo-screen {
@@ -315,7 +315,7 @@ const builderSections = [
 .app-demo-top-tab.is-active {
   border-radius: 6px;
   background: var(--app-demo-border);
-  color: var(--grey-50);
+  color: var(--bb-gray-50);
 }
 
 .app-demo-publish {
@@ -324,7 +324,7 @@ const builderSections = [
   border: 0;
   border-radius: 100px;
   background: var(--app-demo-grey-900);
-  color: var(--grey-950);
+  color: var(--bb-gray-1000);
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 600;
@@ -383,7 +383,7 @@ const builderSections = [
 }
 
 .app-demo-workspace-brand-name {
-  color: var(--grey-50);
+  color: var(--bb-gray-50);
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 500;
@@ -396,7 +396,7 @@ const builderSections = [
   border: 0;
   border-radius: 4px;
   background: transparent;
-  color: var(--grey-50);
+  color: var(--bb-gray-50);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.3;
@@ -407,7 +407,7 @@ const builderSections = [
 
 .app-demo-workspace-link.is-active {
   background: var(--app-demo-nav-active);
-  color: var(--grey-50);
+  color: var(--bb-gray-50);
 }
 
 .app-demo-workspace-content {
@@ -453,7 +453,7 @@ const builderSections = [
 .app-demo-priority-tab.is-active {
   border-radius: 4px;
   background: var(--app-demo-nav-bg);
-  color: var(--grey-50);
+  color: var(--bb-gray-50);
 }
 
 .app-demo-table-wrap {
@@ -593,7 +593,7 @@ const builderSections = [
 }
 
 .app-demo-builder-item-label {
-  color: var(--grey-50);
+  color: var(--bb-gray-50);
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
@@ -690,7 +690,7 @@ const builderSections = [
   border: 0;
   border-radius: 18px;
   background: var(--app-demo-submit);
-  color: var(--grey-50);
+  color: var(--bb-gray-50);
   font-size: 16px;
   font-weight: 600;
   line-height: 17px;
@@ -703,7 +703,7 @@ const builderSections = [
 .app-demo-workspace-link:focus-visible,
 .app-demo-support-submit:focus-visible {
   outline: 0;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--blue-500) 45%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--bb-blue-800) 45%, transparent);
 }
 
 @media (max-width: 1280px) {

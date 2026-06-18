@@ -110,32 +110,32 @@ const stepGroups: StepGroup[] = [
     </div>
 
     <aside
-      class="rounded-[12px] border border-[var(--grey-800)] bg-[var(--grey-950)] p-4 text-[var(--grey-100)] shadow-[0px_12px_30px_rgb(var(--text)/0.18)] sm:p-5"
+      class="rounded-[12px] border border-[var(--bb-gray-800)] bg-[var(--bb-gray-1000)] p-4 text-[var(--bb-gray-75)] shadow-[0px_12px_30px_rgb(var(--text)/0.18)] sm:p-5"
       aria-label="Automation step picker"
     >
-      <div class="mb-4 flex items-center justify-between rounded-[8px] border border-[var(--grey-800)] bg-[var(--grey-900)] px-3 py-2">
+      <div class="mb-4 flex items-center justify-between rounded-[8px] border border-[var(--bb-gray-800)] bg-[var(--bb-gray-900)] px-3 py-2">
         <div class="flex items-center gap-1.5" aria-hidden="true">
-          <span class="inline-block h-2 w-2 rounded-full bg-[var(--grey-600)]"></span>
-          <span class="inline-block h-2 w-2 rounded-full bg-[var(--grey-600)]"></span>
-          <span class="inline-block h-2 w-2 rounded-full bg-[var(--grey-600)]"></span>
+          <span class="inline-block h-2 w-2 rounded-full bg-[var(--bb-gray-700)]"></span>
+          <span class="inline-block h-2 w-2 rounded-full bg-[var(--bb-gray-700)]"></span>
+          <span class="inline-block h-2 w-2 rounded-full bg-[var(--bb-gray-700)]"></span>
         </div>
-        <span class="rounded-[6px] border border-[var(--grey-800)] bg-[var(--grey-950)] px-2 py-1 text-[12px] text-[var(--grey-300)]">
+        <span class="rounded-[6px] border border-[var(--bb-gray-800)] bg-[var(--bb-gray-1000)] px-2 py-1 text-[12px] text-[var(--bb-gray-300)]">
           Step picker
         </span>
       </div>
 
       <div class="space-y-3">
         {stepGroups.map((group) => (
-          <section class="rounded-[8px] border border-[var(--grey-800)] bg-[var(--grey-900)] p-3">
-            <h3 class="m-0 text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--grey-400)]">{group.title}</h3>
+          <section class="rounded-[8px] border border-[var(--bb-gray-800)] bg-[var(--bb-gray-900)] p-3">
+            <h3 class="m-0 text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--bb-gray-500)]">{group.title}</h3>
             <ul class="mt-2 space-y-1.5">
               {group.items.map((item) => (
                 <li
                   class:list={[
                     "rounded-[6px] border px-2.5 py-2 text-[13px] leading-5",
                     item.highlight
-                      ? "border-[rgb(var(--brand)/0.55)] bg-[rgb(var(--brand)/0.17)] text-[var(--grey-50)]"
-                      : "border-[var(--grey-800)] bg-[var(--grey-950)] text-[var(--grey-200)]",
+                      ? "border-[rgb(var(--brand)/0.55)] bg-[rgb(var(--brand)/0.17)] text-[var(--bb-gray-50)]"
+                      : "border-[var(--bb-gray-800)] bg-[var(--bb-gray-1000)] text-[var(--bb-gray-100)]",
                   ]}
                 >
                   {item.label}

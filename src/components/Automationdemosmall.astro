@@ -86,7 +86,7 @@ const flowSteps = [
   .automation-demo-small {
     width: 100%;
     font-size: 12px;
-    color: rgb(250 250 247);
+    color: var(--bb-background-base);
   }
 
   .automation-demo-small-backdrop {
@@ -101,9 +101,9 @@ const flowSteps = [
   .automation-demo-small-shell {
     overflow: hidden;
     border-radius: 8px;
-    border: 0.5px solid rgb(57 57 57);
-    box-shadow: 0 10px 30px rgb(0 0 0 / 0.32);
-    background: rgb(26 26 26);
+    border: 0.5px solid var(--bb-gray-800);
+    box-shadow: 0 10px 30px var(--bb-transparent-black-500);
+    background: var(--bb-gray-900);
   }
 
   .automation-demo-small-header {
@@ -112,8 +112,8 @@ const flowSteps = [
     height: 28px;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 0.5px solid rgb(57 57 57);
-    background: rgb(30 30 30 / 0.9);
+    border-bottom: 0.5px solid var(--bb-gray-800);
+    background: color-mix(in srgb, var(--bb-gray-900) 90%, transparent);
     padding: 0 8px;
   }
 
@@ -127,7 +127,7 @@ const flowSteps = [
     width: 10px;
     height: 10px;
     border-radius: 999px;
-    background: rgb(145 145 141 / 0.65);
+    background: color-mix(in srgb, var(--bb-gray-500) 65%, transparent);
   }
 
   .automation-demo-small-address {
@@ -137,10 +137,10 @@ const flowSteps = [
     width: min(220px, calc(100% - 150px));
     transform: translate(-50%, -50%);
     border-radius: 4px;
-    border: 0.5px solid rgb(57 57 57);
-    background: rgb(26 26 26);
+    border: 0.5px solid var(--bb-gray-800);
+    background: var(--bb-gray-900);
     padding: 1px 8px;
-    color: rgb(145 145 141);
+    color: var(--bb-gray-500);
     font-size: 12px;
     line-height: 1.2;
     text-align: center;
@@ -153,7 +153,7 @@ const flowSteps = [
     border: 0;
     border-radius: 4px;
     background: transparent;
-    color: rgb(145 145 141);
+    color: var(--bb-gray-500);
     font-size: 12px;
     line-height: 1;
     padding: 4px 8px;
@@ -162,15 +162,15 @@ const flowSteps = [
   }
 
   .automation-demo-small-header-cta:hover {
-    background: rgb(240 238 230 / 0.08);
-    color: rgb(240 238 230);
+    background: color-mix(in srgb, var(--bb-gray-75) 8%, transparent);
+    color: var(--bb-gray-75);
   }
 
   .automation-demo-small-body {
     background:
-      radial-gradient(circle at center, rgb(57 57 57 / 0.32) 1px, transparent 1px)
+      radial-gradient(circle at center, color-mix(in srgb, var(--bb-gray-800) 32%, transparent) 1px, transparent 1px)
       0 0 / 20px 20px,
-      rgb(26 26 26);
+      var(--bb-gray-900);
     min-height: 360px;
     padding: 24px 20px 24px;
   }
@@ -186,8 +186,8 @@ const flowSteps = [
     align-items: center;
     justify-content: center;
     border-radius: 4px;
-    background: #585392;
-    color: #fafaf7;
+    background: var(--bb-purple-1100);
+    color: var(--bb-background-base);
     font-size: 10px;
     line-height: 1;
     padding: 4px 7px;
@@ -209,9 +209,9 @@ const flowSteps = [
     min-height: 48px;
     align-items: center;
     gap: 10px;
-    border: 1px solid #393939;
+    border: 1px solid var(--bb-gray-800);
     border-radius: 6px;
-    background: #2c2c2c;
+    background: var(--bb-gray-800);
     padding: 8px 12px;
   }
 
@@ -223,7 +223,7 @@ const flowSteps = [
     width: 1px;
     height: 12px;
     transform: translateX(-50%);
-    background-image: linear-gradient(to bottom, #2f5f94 50%, transparent 0%);
+    background-image: linear-gradient(to bottom, var(--bb-blue-1000) 50%, transparent 0%);
     background-size: 1px 4px;
     background-repeat: repeat-y;
   }
@@ -236,23 +236,23 @@ const flowSteps = [
     align-items: center;
     justify-content: center;
     border-radius: 4px;
-    color: #fafaf7;
+    color: var(--bb-background-base);
   }
 
   .automation-demo-small-step[data-tone="email"] .automation-demo-small-step-icon {
-    background: #4c622f;
+    background: var(--bb-green-1100);
   }
 
   .automation-demo-small-step[data-tone="agent"] .automation-demo-small-step-icon {
-    background: #585392;
+    background: var(--bb-purple-1100);
   }
 
   .automation-demo-small-step[data-tone="alert"] .automation-demo-small-step-icon {
-    background: #215f9e;
+    background: var(--bb-blue-1000);
   }
 
   .automation-demo-small-step-label {
-    color: #fafaf7;
+    color: var(--bb-background-base);
     font-family: var(--font-sans);
     font-size: 14px;
     line-height: 1.2;
