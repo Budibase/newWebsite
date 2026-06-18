@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import Button from "@components/Button.astro";
 import InstructionsEditor from "@components/InstructionsEditor.astro";
 import AgentInstructionsContent from "@components/AgentInstructionsContent.astro";
@@ -12,15 +11,15 @@ import CaretDown from "phosphor-astro/CaretDown.astro";
 import PaperPlaneTilt from "phosphor-astro/PaperPlaneTilt.astro";
 import FileText from "phosphor-astro/FileText.astro";
 import Sparkle from "phosphor-astro/Sparkle.astro";
-import BBSymbol from "@assets/logos/bbSymbol.svg";
-import MistralLogo from "@assets/logos/Mistral.svg";
-import BudibaseLogo from "@assets/logos/bbSymbol.svg";
-import AnthropicLogo from "@assets/logos/anthropic.svg";
-import GoogleLogo from "@assets/logos/Google.svg";
-import OpenAILogo from "@assets/logos/OpenAI.svg";
-import Slack from "@assets/logos/Slack.svg";
-import Jira from "@assets/logos/Jira.svg";
-import AgentDemoBackground from "@assets/images/backgrounds/AgentDemo/background.png";
+import BBSymbol from "@assets/logos/bbSymbol.svg?url";
+import MistralLogo from "@assets/logos/Mistral.svg?url";
+import BudibaseLogo from "@assets/logos/bbSymbol.svg?url";
+import AnthropicLogo from "@assets/logos/anthropic.svg?url";
+import GoogleLogo from "@assets/logos/Google.svg?url";
+import OpenAILogo from "@assets/logos/OpenAI.svg?url";
+import Slack from "@assets/logos/Slack.svg?url";
+import Jira from "@assets/logos/Jira.svg?url";
+import AgentDemoBackground from "@assets/images/backgrounds/AgentDemo/background.png?url";
 
 const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
 ---
@@ -29,210 +28,299 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
   <div
     class="hero-demo-backdrop w-full overflow-hidden px-6 py-6 sm:px-10 sm:py-10 lg:px-32 lg:py-12"
   >
-    <Image
+    <img
       src={AgentDemoBackground}
       alt=""
       aria-hidden="true"
       class="hero-demo-backdrop-image"
-      format="webp"
-      quality={68}
-      widths={[768, 1280, 1600]}
-      sizes="(min-width: 1280px) 1280px, calc(100vw - 1rem)"
       loading="eager"
       fetchpriority="high"
       decoding="async"
     />
-    <div class="hero-demo-shell w-full max-w-full overflow-hidden rounded-[6px] border-[0.5px] border-[var(--border-color)] bg-[var(--bg-1)] shadow-[0px_10px_30px_rgb(var(--text)/0.25)]">
-    <div class="flex">
-      <div class="flex min-w-0 flex-1 flex-col">
-        <div class="group relative flex h-7 items-center justify-between border-b-[0.5px] border-[var(--border-color)] px-2 bg-[var(--bg-2)]">
-          <div class="flex items-center gap-1.5">
-            <span class="inline-block h-2.5 w-2.5 rounded-full" style="background-color: rgb(var(--text-muted) / 0.6);"></span>
-            <span class="inline-block h-2.5 w-2.5 rounded-full" style="background-color: rgb(var(--text-muted) / 0.6);"></span>
-            <span class="inline-block h-2.5 w-2.5 rounded-full" style="background-color: rgb(var(--text-muted) / 0.6);"></span>
-          </div>
-          <div class="absolute left-1/2 top-1/2 w-[min(540px,calc(100%-12.5rem))] -translate-x-1/2 -translate-y-1/2">
-            <input
-              type="text"
-              placeholder="budibase/agents"
-              aria-label="Search"
-              class="h-5 w-full rounded-[4px] bg-[var(--bg-1)] px-2.5 text-[12px] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] outline-none border-0"
-            />
-          </div>
-          <div class="-mr-1 flex items-center">
-            <button
-              type="button"
-              class="rounded px-2 py-1 text-[12px] text-[var(--text-secondary)] transition-opacity duration-200 hover:bg-[rgb(var(--text)/0.06)] cursor-pointer"
-            >
-              Get Budibase
-            </button>
-          </div>
-        </div>
-
-        <div class="hero-demo-tabbar hidden border-b-[0.5px] border-[var(--border-color)] px-3 py-[2px] bg-[var(--bg-2)] md:flex">
-          <button class="hero-demo-tab is-active" type="button">Instructions</button>
-          <button class="hero-demo-tab" type="button">Knowledge</button>
-          <button class="hero-demo-tab" type="button">Deployment</button>
-        </div>
-
-        <div class="hero-demo-content flex flex-row">
-          <div class="hero-demo-left min-w-0 w-[55%] px-5 py-4 bg-[var(--bg-2)]">
-            <div class="flex flex-col gap-5">
-              <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-                <div>
-                  <div class="text-[12px] font-medium text-text">AI Model</div>
-                  <div class="text-[12px] text-text-muted">
-                    Select which provider and model to use for the agent.
-                  </div>
-                </div>
-                <div class="hero-demo-select-wrap">
-                  <button
-                    class="hero-demo-select"
-                    type="button"
-                    aria-label="AI model"
-                    aria-expanded="false"
-                    data-hero-demo-select
-                  >
-                    <span class="flex items-center gap-1.5" data-hero-demo-select-value>
-                      <span class="flex h-6 w-6 items-center justify-center rounded-md p-1">
-                        <Image src={BudibaseLogo} alt="Budibase" class="h-full w-full hero-demo-select-logo is-monochrome" />
-                      </span>
-                      <span class="text-[12px] leading-none">Budibase AI</span>
-                    </span>
-                    <CaretDown class="h-3.5 w-3.5" />
-                  </button>
-                  <div class="hero-demo-select-menu" data-hero-demo-select-menu>
-                    <button class="hero-demo-select-option" type="button">
-                      <span class="hero-demo-select-option-label">
-                        <Image src={MistralLogo} alt="Mistral" class="hero-demo-select-logo" />
-                        Mistral 3
-                      </span>
-                    </button>
-                    <button class="hero-demo-select-option is-selected" type="button">
-                      <span class="hero-demo-select-option-label">
-                        <Image src={BudibaseLogo} alt="Budibase" class="hero-demo-select-logo is-monochrome" />
-                        Budibase AI
-                      </span>
-                      <span class="hero-demo-select-meta">Selected</span>
-                    </button>
-                    <button class="hero-demo-select-option" type="button">
-                      <span class="hero-demo-select-option-label">
-                        <Image src={AnthropicLogo} alt="Anthropic" class="hero-demo-select-logo is-monochrome" />
-                        Anthropic
-                      </span>
-                    </button>
-                    <button class="hero-demo-select-option" type="button">
-                      <span class="hero-demo-select-option-label">
-                        <Image src={GoogleLogo} alt="Google" class="hero-demo-select-logo" />
-                        Google
-                      </span>
-                    </button>
-                    <button class="hero-demo-select-option" type="button">
-                      <span class="hero-demo-select-option-label">
-                        <Image src={OpenAILogo} alt="OpenAI" class="hero-demo-select-logo is-monochrome is-openai" />
-                        OpenAI
-                      </span>
-                    </button>
-                    <a class="hero-demo-select-option" href="/product/connections/">
-                      <span class="hero-demo-select-option-label">
-                        <Sparkle class="hero-demo-select-logo" />
-                        View all models
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-                  <div>
-                    <div class="text-[12px] font-medium text-text">Tools</div>
-                    <div class="text-[12px] text-text-muted">Select which tools the agent can use.</div>
-                  </div>
-                  <Button
-                    label="Add tools"
-                    url="/product/connections/"
-                    variant="secondary"
-                    size="small"
-                    class="text-[12px] text-[var(--text-primary)]! bg-[var(--bg-1)]! border-[0.5px] border-[var(--border-color)] hover:bg-[var(--bg-3)]!"
-                  />
-                </div>
-
-                <div class="mt-2 flex flex-wrap gap-2">
-                  <div class="hero-demo-chip">
-                    <Image src={Slack} alt="Slack" class="h-3.5 w-3.5" />
-                    <span class="font-mono">api.slack.send_message</span>
-                  </div>
-                  <div class="hero-demo-chip">
-                    <FileText class="h-3.5 w-3.5" />
-                    <span class="font-mono">docs.it_guides</span>
-                  </div>
-                  <div class="hero-demo-chip">
-                    <Image src={Jira} alt="Jira" class="h-3.5 w-3.5" />
-                    <span class="font-mono">api.jira.create_issue</span>
-                  </div>
-                  <div class="hero-demo-chip">
-                    <Image src={Jira} alt="Jira" class="h-3.5 w-3.5" />
-                    <span class="font-mono">api.jira.search_issue</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flex flex-col gap-2">
-                <div>
-                  <div class="text-[12px] font-medium text-text">Instructions</div>
-                  <div class="text-[12px] text-text-muted">
-                    Set the rules for how the AI agent responds, uses tools, and structures output.
-                  </div>
-                </div>
-                <InstructionsEditor variant="agent-demo">
-                  <AgentInstructionsContent />
-                </InstructionsEditor>
-              </div>
+    <div
+      class="hero-demo-shell w-full max-w-full overflow-hidden rounded-[6px] border-[0.5px] border-[var(--border-color)] bg-[var(--bg-1)] shadow-[0px_10px_30px_rgb(var(--text)/0.25)]"
+    >
+      <div class="flex">
+        <div class="flex min-w-0 flex-1 flex-col">
+          <div
+            class="group relative flex h-7 items-center justify-between border-b-[0.5px] border-[var(--border-color)] px-2 bg-[var(--bg-2)]"
+          >
+            <div class="flex items-center gap-1.5">
+              <span
+                class="inline-block h-2.5 w-2.5 rounded-full"
+                style="background-color: rgb(var(--text-muted) / 0.6);"></span>
+              <span
+                class="inline-block h-2.5 w-2.5 rounded-full"
+                style="background-color: rgb(var(--text-muted) / 0.6);"></span>
+              <span
+                class="inline-block h-2.5 w-2.5 rounded-full"
+                style="background-color: rgb(var(--text-muted) / 0.6);"></span>
             </div>
-          </div>
-
-          <div class="hero-demo-right min-w-0 w-[45%] px-5 py-4 flex flex-col min-h-0 justify-between md:justify-start">
-            <div class="flex items-center justify-between">
-              <div class="text-[12px] font-medium text-text">Chat preview</div>
-              <button class="text-[12px] text-[var(--text-secondary)]" type="button" data-hero-demo-refresh>
-                Refresh chat
+            <div
+              class="absolute left-1/2 top-1/2 w-[min(540px,calc(100%-12.5rem))] -translate-x-1/2 -translate-y-1/2"
+            >
+              <input
+                type="text"
+                placeholder="budibase/agents"
+                aria-label="Search"
+                class="h-5 w-full rounded-[4px] bg-[var(--bg-1)] px-2.5 text-[12px] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] outline-none border-0"
+              />
+            </div>
+            <div class="-mr-1 flex items-center">
+              <button
+                type="button"
+                class="rounded px-2 py-1 text-[12px] text-[var(--text-secondary)] transition-opacity duration-200 hover:bg-[rgb(var(--text)/0.06)] cursor-pointer"
+              >
+                Get Budibase
               </button>
             </div>
+          </div>
 
-            <div class="mt-4 flex flex-1 min-h-0 h-full flex-col justify-between md:h-auto md:justify-start">
-              <div class="flex-1 min-h-0 overflow-auto py-8" data-hero-demo-messages>
-                <div class="flex flex-col items-end justify-center mb-6">
-                  <div class="hero-demo-user-bubble">
-                    I’m unable to connect to the office wifi
+          <div
+            class="hero-demo-tabbar hidden border-b-[0.5px] border-[var(--border-color)] px-3 py-[2px] bg-[var(--bg-2)] md:flex"
+          >
+            <button class="hero-demo-tab is-active" type="button"
+              >Instructions</button
+            >
+            <button class="hero-demo-tab" type="button">Knowledge</button>
+            <button class="hero-demo-tab" type="button">Deployment</button>
+          </div>
+
+          <div class="hero-demo-content flex flex-row">
+            <div
+              class="hero-demo-left min-w-0 w-[55%] px-5 py-4 bg-[var(--bg-2)]"
+            >
+              <div class="flex flex-col gap-5">
+                <div
+                  class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between"
+                >
+                  <div>
+                    <div class="text-[12px] font-medium text-text">
+                      AI Model
+                    </div>
+                    <div class="text-[12px] text-text-muted">
+                      Select which provider and model to use for the agent.
+                    </div>
+                  </div>
+                  <div class="hero-demo-select-wrap">
+                    <button
+                      class="hero-demo-select"
+                      type="button"
+                      aria-label="AI model"
+                      aria-expanded="false"
+                      data-hero-demo-select
+                    >
+                      <span
+                        class="flex items-center gap-1.5"
+                        data-hero-demo-select-value
+                      >
+                        <span
+                          class="flex h-6 w-6 items-center justify-center rounded-md p-1"
+                        >
+                          <img
+                            src={BudibaseLogo}
+                            alt="Budibase"
+                            class="h-full w-full hero-demo-select-logo is-monochrome"
+                          />
+                        </span>
+                        <span class="text-[12px] leading-none">Budibase AI</span
+                        >
+                      </span>
+                      <CaretDown class="h-3.5 w-3.5" />
+                    </button>
+                    <div
+                      class="hero-demo-select-menu"
+                      data-hero-demo-select-menu
+                    >
+                      <button class="hero-demo-select-option" type="button">
+                        <span class="hero-demo-select-option-label">
+                          <img
+                            src={MistralLogo}
+                            alt="Mistral"
+                            class="hero-demo-select-logo"
+                          />
+                          Mistral 3
+                        </span>
+                      </button>
+                      <button
+                        class="hero-demo-select-option is-selected"
+                        type="button"
+                      >
+                        <span class="hero-demo-select-option-label">
+                          <img
+                            src={BudibaseLogo}
+                            alt="Budibase"
+                            class="hero-demo-select-logo is-monochrome"
+                          />
+                          Budibase AI
+                        </span>
+                        <span class="hero-demo-select-meta">Selected</span>
+                      </button>
+                      <button class="hero-demo-select-option" type="button">
+                        <span class="hero-demo-select-option-label">
+                          <img
+                            src={AnthropicLogo}
+                            alt="Anthropic"
+                            class="hero-demo-select-logo is-monochrome"
+                          />
+                          Anthropic
+                        </span>
+                      </button>
+                      <button class="hero-demo-select-option" type="button">
+                        <span class="hero-demo-select-option-label">
+                          <img
+                            src={GoogleLogo}
+                            alt="Google"
+                            class="hero-demo-select-logo"
+                          />
+                          Google
+                        </span>
+                      </button>
+                      <button class="hero-demo-select-option" type="button">
+                        <span class="hero-demo-select-option-label">
+                          <img
+                            src={OpenAILogo}
+                            alt="OpenAI"
+                            class="hero-demo-select-logo is-monochrome is-openai"
+                          />
+                          OpenAI
+                        </span>
+                      </button>
+                      <a
+                        class="hero-demo-select-option"
+                        href="/product/connections/"
+                      >
+                        <span class="hero-demo-select-option-label">
+                          <Sparkle class="hero-demo-select-logo" />
+                          View all models
+                        </span>
+                      </a>
+                    </div>
                   </div>
                 </div>
-                <div class="flex flex-col gap-3" data-hero-demo-assistant>
-                  <div class="token-chip token-chip-compact">
-                    <FileText class="token-chip-icon" />
-                    docs.it_guides
+
+                <div>
+                  <div
+                    class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between"
+                  >
+                    <div>
+                      <div class="text-[12px] font-medium text-text">Tools</div>
+                      <div class="text-[12px] text-text-muted">
+                        Select which tools the agent can use.
+                      </div>
+                    </div>
+                    <Button
+                      label="Add tools"
+                      url="/product/connections/"
+                      variant="secondary"
+                      size="small"
+                      class="text-[12px] text-[var(--text-primary)]! bg-[var(--bg-1)]! border-[0.5px] border-[var(--border-color)] hover:bg-[var(--bg-3)]!"
+                    />
                   </div>
-                  <div class="hero-demo-assistant-block">
-                    <p class="mb-2 text-[12px]">Let’s try a few basic troubleshooting steps:</p>
-                    <p class="mb-2 text-[12px]">1. Please turn Wi-Fi off and back on on your laptop.</p>
-                    <p class="mb-2 text-[12px]">2. Then, try forgetting the network (go to Wi-Fi settings → select the office network → “Forget”) and reconnect using your credentials.</p>
-                    <p class="mb-2 text-[12px]">Let me know what happens after that.</p>
+
+                  <div class="mt-2 flex flex-wrap gap-2">
+                    <div class="hero-demo-chip">
+                      <img src={Slack} alt="Slack" class="h-3.5 w-3.5" />
+                      <span class="font-mono">api.slack.send_message</span>
+                    </div>
+                    <div class="hero-demo-chip">
+                      <FileText class="h-3.5 w-3.5" />
+                      <span class="font-mono">docs.it_guides</span>
+                    </div>
+                    <div class="hero-demo-chip">
+                      <img src={Jira} alt="Jira" class="h-3.5 w-3.5" />
+                      <span class="font-mono">api.jira.create_issue</span>
+                    </div>
+                    <div class="hero-demo-chip">
+                      <img src={Jira} alt="Jira" class="h-3.5 w-3.5" />
+                      <span class="font-mono">api.jira.search_issue</span>
+                    </div>
                   </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                  <div>
+                    <div class="text-[12px] font-medium text-text">
+                      Instructions
+                    </div>
+                    <div class="text-[12px] text-text-muted">
+                      Set the rules for how the AI agent responds, uses tools,
+                      and structures output.
+                    </div>
+                  </div>
+                  <InstructionsEditor variant="agent-demo">
+                    <AgentInstructionsContent />
+                  </InstructionsEditor>
                 </div>
               </div>
-              <form class="hero-demo-input-bar rounded-[8px] w-full" data-hero-demo-form>
-                <textarea
-                  class="hero-demo-input rounded-[8px]"
-                  data-hero-demo-input
-                  placeholder="Ask anything"
-                  aria-label="Chat input"
-                ></textarea>
-              </form>
+            </div>
+
+            <div
+              class="hero-demo-right min-w-0 w-[45%] px-5 py-4 flex flex-col min-h-0 justify-between md:justify-start"
+            >
+              <div class="flex items-center justify-between">
+                <div class="text-[12px] font-medium text-text">
+                  Chat preview
+                </div>
+                <button
+                  class="text-[12px] text-[var(--text-secondary)]"
+                  type="button"
+                  data-hero-demo-refresh
+                >
+                  Refresh chat
+                </button>
+              </div>
+
+              <div
+                class="mt-4 flex flex-1 min-h-0 h-full flex-col justify-between md:h-auto md:justify-start"
+              >
+                <div
+                  class="flex-1 min-h-0 overflow-auto py-8"
+                  data-hero-demo-messages
+                >
+                  <div class="flex flex-col items-end justify-center mb-6">
+                    <div class="hero-demo-user-bubble">
+                      I’m unable to connect to the office wifi
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-3" data-hero-demo-assistant>
+                    <div class="token-chip token-chip-compact">
+                      <FileText class="token-chip-icon" />
+                      docs.it_guides
+                    </div>
+                    <div class="hero-demo-assistant-block">
+                      <p class="mb-2 text-[12px]">
+                        Let’s try a few basic troubleshooting steps:
+                      </p>
+                      <p class="mb-2 text-[12px]">
+                        1. Please turn Wi-Fi off and back on on your laptop.
+                      </p>
+                      <p class="mb-2 text-[12px]">
+                        2. Then, try forgetting the network (go to Wi-Fi
+                        settings → select the office network → “Forget”) and
+                        reconnect using your credentials.
+                      </p>
+                      <p class="mb-2 text-[12px]">
+                        Let me know what happens after that.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <form
+                  class="hero-demo-input-bar rounded-[8px] w-full"
+                  data-hero-demo-form
+                >
+                  <textarea
+                    class="hero-demo-input rounded-[8px]"
+                    data-hero-demo-input
+                    placeholder="Ask anything"
+                    aria-label="Chat input"></textarea>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </div>
@@ -423,7 +511,7 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
     font-size: 11px;
     min-width: 0;
     max-width: 100%;
-    }
+  }
 
   .hero-demo-chip > span {
     min-width: 0;
@@ -569,8 +657,6 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
       transform: none;
     }
   }
-
-  
 
   .hero-demo-cta {
     font-size: 12px;
@@ -778,7 +864,9 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
     function applyScopeDeep(element) {
       if (!scopeAttr || !element) return;
       element.setAttribute(scopeAttr, "");
-      element.querySelectorAll("*").forEach((node) => node.setAttribute(scopeAttr, ""));
+      element
+        .querySelectorAll("*")
+        .forEach((node) => node.setAttribute(scopeAttr, ""));
     }
 
     function appendUserMessage(text) {
@@ -819,9 +907,11 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
       messages.scrollTop = messages.scrollHeight;
     }
 
-    const tokenChipTemplate = assistant.querySelector(".token-chip")?.cloneNode(true);
+    const tokenChipTemplate = assistant
+      .querySelector(".token-chip")
+      ?.cloneNode(true);
     const paragraphTexts = Array.from(
-      assistant.querySelectorAll(".hero-demo-assistant-block p")
+      assistant.querySelectorAll(".hero-demo-assistant-block p"),
     )
       .map((paragraph) => paragraph.textContent?.trim() || "")
       .filter(Boolean);
@@ -904,7 +994,9 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
     }
 
     async function runAgentSequence() {
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
       if (prefersReducedMotion.matches) {
         renderStaticResponse();
         return;
@@ -949,7 +1041,9 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
 
       function updateSelectValue(option) {
         if (!selectValue) return;
-        const optionLabel = option.querySelector(".hero-demo-select-option-label");
+        const optionLabel = option.querySelector(
+          ".hero-demo-select-option-label",
+        );
         if (!optionLabel) return;
         const content = Array.from(optionLabel.childNodes).map((node) =>
           node.cloneNode(true),
@@ -981,8 +1075,9 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
       }
 
       const initialSelectedOption =
-        selectOptions.find((option) => option.classList.contains("is-selected")) ||
-        selectOptions[0];
+        selectOptions.find((option) =>
+          option.classList.contains("is-selected"),
+        ) || selectOptions[0];
       if (initialSelectedOption) {
         setSelectedOption(initialSelectedOption);
       }
@@ -1004,7 +1099,8 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
       document.addEventListener("click", (event) => {
         if (!root.contains(event.target)) return;
         if (!selectMenu.classList.contains("is-open")) return;
-        if (selectMenu.contains(event.target) || select.contains(event.target)) return;
+        if (selectMenu.contains(event.target) || select.contains(event.target))
+          return;
         closeSelectMenu();
       });
 
@@ -1018,7 +1114,9 @@ const id = `hero-demo-${Math.random().toString(36).slice(2, 8)}`;
         if (form.requestSubmit) {
           form.requestSubmit();
         } else {
-          form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+          form.dispatchEvent(
+            new Event("submit", { cancelable: true, bubbles: true }),
+          );
         }
       }
     });

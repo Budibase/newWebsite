@@ -1,7 +1,6 @@
 ---
-import { Image } from "astro:assets";
-import OnePlatformDataBg from "@assets/images/homepage/onePlatform/OnePlatformData.png";
-import BBSymbol from "@assets/logos/bbSymbol.svg";
+import OnePlatformDataBg from "@assets/images/homepage/onePlatform/OnePlatformData.png?url";
+import BBSymbol from "@assets/logos/bbSymbol.svg?url";
 import Icon from "@components/Icon.astro";
 
 interface DataTab {
@@ -79,15 +78,11 @@ const rows: DataRow[] = [
   role="img"
   aria-label="Data preview showing access request records in a cropped table over a scenic background"
 >
-  <Image
+  <img
     src={OnePlatformDataBg}
     alt=""
     class="one-platform-data__bg"
     aria-hidden="true"
-    format="webp"
-    quality={60}
-    widths={[320, 480, 640]}
-    sizes="(min-width: 768px) 320px, calc(100vw - 1rem)"
     loading="lazy"
     decoding="async"
   />
@@ -106,7 +101,7 @@ const rows: DataRow[] = [
             >
               {tab.icon === "budibase" && (
                 <span class="one-platform-data__tab-logo">
-                  <Image
+                  <img
                     src={BBSymbol}
                     alt=""
                     class="one-platform-data__logo-image"

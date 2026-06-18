@@ -1,7 +1,6 @@
 ---
-import { Image } from "astro:assets";
-import OnePlatformAppBg from "@assets/images/homepage/onePlatform/OnePlatformApp.png";
-import CaretDownIcon from "@assets/images/demos/app-demo/481b5637386cfa51221252c07d627de130d801d4.svg";
+import OnePlatformAppBg from "@assets/images/homepage/onePlatform/OnePlatformApp.png?url";
+import CaretDownIcon from "@assets/images/demos/app-demo/481b5637386cfa51221252c07d627de130d801d4.svg?url";
 ---
 
 <div
@@ -9,15 +8,11 @@ import CaretDownIcon from "@assets/images/demos/app-demo/481b5637386cfa51221252c
   role="img"
   aria-label="App preview showing a request access form with system, request, and manager fields"
 >
-  <Image
+  <img
     src={OnePlatformAppBg}
     alt=""
     class="one-platform-app__bg"
     aria-hidden="true"
-    format="webp"
-    quality={60}
-    widths={[320, 480, 640]}
-    sizes="(min-width: 768px) 320px, calc(100vw - 1rem)"
     loading="lazy"
     decoding="async"
   />
@@ -30,7 +25,7 @@ import CaretDownIcon from "@assets/images/demos/app-demo/481b5637386cfa51221252c
           <span class="one-platform-app__label">System</span>
           <span class="one-platform-app__input one-platform-app__input--select">
             <span>Salesforce</span>
-            <Image src={CaretDownIcon} alt="" class="one-platform-app__caret" />
+            <img src={CaretDownIcon} alt="" class="one-platform-app__caret" />
           </span>
         </label>
 
@@ -47,7 +42,7 @@ import CaretDownIcon from "@assets/images/demos/app-demo/481b5637386cfa51221252c
           <span class="one-platform-app__label">Manager</span>
           <span class="one-platform-app__input one-platform-app__input--select">
             <span>Peter Gibbons</span>
-            <Image src={CaretDownIcon} alt="" class="one-platform-app__caret" />
+            <img src={CaretDownIcon} alt="" class="one-platform-app__caret" />
           </span>
         </label>
 

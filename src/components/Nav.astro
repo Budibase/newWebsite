@@ -1,6 +1,4 @@
 ---
-import budibaseLogoBlack from "@assets/BudibaseLogoBlack.svg";
-import budibaseLogoWhite from "@assets/BudibaseLogoWhite.svg";
 import Button from "@components/Button.astro";
 import HeaderDropDown from "@components/HeaderDropDown.astro";
 import {
@@ -9,14 +7,7 @@ import {
   solutionsDropdownItems,
 } from "@components/navDropdownData";
 
-const blackLogoSrc =
-  typeof budibaseLogoBlack === "string"
-    ? budibaseLogoBlack
-    : budibaseLogoBlack.src;
-const whiteLogoSrc =
-  typeof budibaseLogoWhite === "string"
-    ? budibaseLogoWhite
-    : budibaseLogoWhite.src;
+const blackLogoSrc = "/budibase-logo-black.svg";
 ---
 
 <nav
@@ -40,14 +31,7 @@ const whiteLogoSrc =
           alt="Budibase logo"
           width="120"
           height="22"
-          class="block hover:cursor-pointer dark:hidden"
-        />
-        <img
-          src={whiteLogoSrc}
-          alt="Budibase logo"
-          width="120"
-          height="22"
-          class="block hover:cursor-pointer hidden dark:block"
+          class="block hover:cursor-pointer"
         />
       </div>
     </a>
@@ -190,14 +174,7 @@ const whiteLogoSrc =
             alt="Budibase logo"
             width="120"
             height="22"
-            class="block dark:hidden"
-          />
-          <img
-            src={whiteLogoSrc}
-            alt="Budibase logo"
-            width="120"
-            height="22"
-            class="hidden dark:block"
+            class="block"
           />
         </div>
       </a>

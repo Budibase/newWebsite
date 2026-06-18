@@ -105,6 +105,8 @@ export default defineConfig({
     contentIntellisense: true,
   },
 
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    imageService: "passthrough",
+  }),
   integrations: [sitemap(), expressiveCode(), mdx()],
 });

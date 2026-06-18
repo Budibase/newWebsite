@@ -2,129 +2,127 @@
 import Layout from "../../../layouts/MainLayout.astro";
 import PlatformLayout from "@components/PlatformLayout.astro";
 import { getProductPageMeta } from "../_pageMeta";
-import { Image } from "astro:assets";
-
 import Sparkle from "phosphor-astro/Sparkle.astro";
 
 // Logos
-import DiscordLogoSvg from "@assets/logos/discord.svg";
+import DiscordLogoSvg from "@assets/logos/discord.svg?url";
 
 // Logos
-import MistralLogo from "@assets/logos/Mistral.svg";
-import OpenAILogo from "@assets/logos/openai.avif";
-import OpenRouterLogo from "@assets/logos/openrouter.svg";
-import GoogleLogo from "@assets/logos/Google.svg";
-import OktaLogo from "@assets/logos/okta.jpeg";
-import SlackLogo from "@assets/logos/Slack.svg";
-import TeamsLogo from "@assets/logos/microsoft-teams.svg";
-import JiraLogo from "@assets/logos/Jira.svg";
-import PostgresLogo from "@assets/logos/Postgres.svg";
-import MySQLLogo from "@assets/logos/MYSQL.svg";
-import MSSQLLogo from "@assets/logos/MSSQL.svg";
-import SnowflakeLogo from "@assets/logos/Snowflake.svg";
-import OracleLogo from "@assets/logos/Oracle.svg";
-import AzureOpenAILogo from "@assets/logos/azure-openai.svg";
-import GroqLogo from "@assets/logos/groq.png";
-import AttioLogo from "@assets/logos/attio.png";
-import AnthropicLogo from "@assets/logos/anthropic.avif";
-import GithubLogoSvg from "@assets/logos/github.svg";
-import GithubLogoWhite from "@assets/logos/githubWhite.png";
-import TwilioLogo from "@assets/logos/twilio.svg";
-import RestApiLogo from "@assets/logos/rest-api.svg";
-import OpenApiLogo from "@assets/logos/openapi.svg";
-import ExaLogo from "@assets/logos/exa.png";
-import ServiceNowLogo from "@assets/logos/servicenow.svg";
-import TavilyLogo from "@assets/logos/tavily.png";
-import PagerDutyLogo from "@assets/logos/pagerduty.jpeg";
-import StripeSvgLogo from "@assets/logos/stripe.svg";
-import SmtpLogo from "@assets/logos/smtp.svg";
-import DatadogLogo from "@assets/logos/datadog.svg";
-import GoogleSheetsLogo from "@assets/logos/google-sheets.svg";
-import CouchDBLogo from "@assets/logos/couchdb.svg";
-import ElasticsearchLogo from "@assets/logos/elastic.svg";
-import MongoDBLogo from "@assets/logos/mongodb.svg";
-import DynamoDBLogo from "@assets/logos/amazon-dynamodb.svg";
-import RedisLogo from "@assets/logos/redis.svg";
-import FirestoreLogo from "@assets/logos/firestore.svg";
-import AmazonS3Logo from "@assets/logos/amazon-s3.svg";
-import SupabaseLogo from "@assets/logos/supbase.png";
-import CleverLogo from "@assets/logos/clever.svg";
-import ConfluenceLogo from "@assets/logos/confluence.svg";
-import FigmaLogo from "@assets/logos/figma.svg";
-import HubSpotLogo from "@assets/logos/hubspot.svg";
-import MicrosoftSharePointLogo from "@assets/logos/microsoft-sharepoint.svg";
-import MicrosoftTeamsLogo from "@assets/logos/microsoft-teams.png";
-import SplunkLogo from "@assets/logos/splunk.svg";
-import VirusTotalLogo from "@assets/logos/virustotal.svg";
-import ZendeskLogo from "@assets/logos/zendesk.svg";
-import AnsibleLogo from "@assets/logos/ansible.svg";
-import AshbyLogo from "@assets/logos/ashby.svg";
-import BambooHrLogo from "@assets/logos/bamboohr.svg";
-import BanksApiLogo from "@assets/logos/banksapi.svg";
-import BaremetricsLogo from "@assets/logos/baremetrics.svg";
-import BillsbyLogo from "@assets/logos/billsby.svg";
-import BreezyHrLogo from "@assets/logos/breezy-hr.svg";
-import BrevoLogo from "@assets/logos/brevo.svg";
-import BulkSmsLogo from "@assets/logos/bulksms-com.svg";
-import ButtondownLogo from "@assets/logos/buttondown.svg";
-import ClickUpLogo from "@assets/logos/clickup.svg";
-import DeelLogo from "@assets/logos/deel.svg";
-import DixaLogo from "@assets/logos/dixa.svg";
-import DotsLogo from "@assets/logos/dots.svg";
-import FactorialLogo from "@assets/logos/factorial.svg";
-import FastSpringLogo from "@assets/logos/fastspring.svg";
-import FountainLogo from "@assets/logos/fountain.svg";
-import GitLabLogo from "@assets/logos/gitlab.svg";
-import GoodyLogo from "@assets/logos/goody.svg";
-import HelcimLogo from "@assets/logos/helcim.svg";
-import HiBobLogo from "@assets/logos/hibob.svg";
-import HomerunLogo from "@assets/logos/homerun.svg";
-import HypatosLogo from "@assets/logos/hypatos.svg";
-import IntercomLogo from "@assets/logos/intercom.svg";
-import IroncladLogo from "@assets/logos/ironclad.svg";
-import JinaAiLogo from "@assets/logos/jina-ai.svg";
-import JobsoidLogo from "@assets/logos/jobsoid.svg";
-import KeatextAiLogo from "@assets/logos/keatext-ai.svg";
-import KenjoLogo from "@assets/logos/kenjo.svg";
-import LambdaLogo from "@assets/logos/lambda.svg";
-import LobLogo from "@assets/logos/lob.svg";
-import LocalizelyLogo from "@assets/logos/localizely.svg";
-import LogisticsOsLogo from "@assets/logos/logisticsos.svg";
-import MastercardLogo from "@assets/logos/mastercard.svg";
-import MeasureOneLogo from "@assets/logos/measureone.svg";
-import NanonetsLogo from "@assets/logos/nanonets.svg";
-import NotionLogo from "@assets/logos/notion.svg";
-import OysterLogo from "@assets/logos/oyster.svg";
-import PeachPaymentsLogo from "@assets/logos/peach-payments.svg";
-import PinpointLogo from "@assets/logos/pinpoint.svg";
-import PodiumLogo from "@assets/logos/podium.svg";
-import RemoteLogo from "@assets/logos/remote.svg";
-import ResendLogo from "@assets/logos/resend.svg";
-import RiveryLogo from "@assets/logos/rivery.svg";
-import SageLogo from "@assets/logos/sage.svg";
-import SecodaLogo from "@assets/logos/secoda.svg";
-import ShipEngineLogo from "@assets/logos/shipengine.svg";
-import ShippoLogo from "@assets/logos/shippo.svg";
-import ShortcutLogo from "@assets/logos/shortcut.svg";
-import SmartRecruitersLogo from "@assets/logos/smartrecruiters.svg";
-import SoftLedgerLogo from "@assets/logos/softledger.svg";
-import SpotDraftLogo from "@assets/logos/spotdraft.svg";
-import SumsubLogo from "@assets/logos/sumsub.svg";
-import SuprSendLogo from "@assets/logos/suprsend.svg";
-import TerminalLogo from "@assets/logos/terminal.svg";
-import TheirstackLogo from "@assets/logos/theirstack.svg";
-import TilledLogo from "@assets/logos/tilled.svg";
-import TrelloLogo from "@assets/logos/trello.svg";
-import TremendousLogo from "@assets/logos/tremendous.svg";
-import VerifiableLogo from "@assets/logos/verifiable.svg";
-import VoltIoLogo from "@assets/logos/volt-io.svg";
-import WorkableLogo from "@assets/logos/workable.svg";
-import XLogo from "@assets/logos/x.svg";
-import DockerLogo from "@assets/logos/Docker.svg";
-import KubernetesLogo from "@assets/logos/kubernetes.svg";
-import NextcloudLogo from "@assets/logos/nextcloud.svg";
-import LinodeLogo from "@assets/logos/linode.svg";
-import DigitalOceanLogo from "@assets/logos/digital-ocean.svg";
+import MistralLogo from "@assets/logos/Mistral.svg?url";
+import OpenAILogo from "@assets/logos/openai.avif?url";
+import OpenRouterLogo from "@assets/logos/openrouter.svg?url";
+import GoogleLogo from "@assets/logos/Google.svg?url";
+import OktaLogo from "@assets/logos/okta.jpeg?url";
+import SlackLogo from "@assets/logos/Slack.svg?url";
+import TeamsLogo from "@assets/logos/microsoft-teams.svg?url";
+import JiraLogo from "@assets/logos/Jira.svg?url";
+import PostgresLogo from "@assets/logos/Postgres.svg?url";
+import MySQLLogo from "@assets/logos/MYSQL.svg?url";
+import MSSQLLogo from "@assets/logos/MSSQL.svg?url";
+import SnowflakeLogo from "@assets/logos/Snowflake.svg?url";
+import OracleLogo from "@assets/logos/Oracle.svg?url";
+import AzureOpenAILogo from "@assets/logos/azure-openai.svg?url";
+import GroqLogo from "@assets/logos/groq.png?url";
+import AttioLogo from "@assets/logos/attio.png?url";
+import AnthropicLogo from "@assets/logos/anthropic.avif?url";
+import GithubLogoSvg from "@assets/logos/github.svg?url";
+import GithubLogoWhite from "@assets/logos/githubWhite.png?url";
+import TwilioLogo from "@assets/logos/twilio.svg?url";
+import RestApiLogo from "@assets/logos/rest-api.svg?url";
+import OpenApiLogo from "@assets/logos/openapi.svg?url";
+import ExaLogo from "@assets/logos/exa.png?url";
+import ServiceNowLogo from "@assets/logos/servicenow.svg?url";
+import TavilyLogo from "@assets/logos/tavily.png?url";
+import PagerDutyLogo from "@assets/logos/pagerduty.jpeg?url";
+import StripeSvgLogo from "@assets/logos/stripe.svg?url";
+import SmtpLogo from "@assets/logos/smtp.svg?url";
+import DatadogLogo from "@assets/logos/datadog.svg?url";
+import GoogleSheetsLogo from "@assets/logos/google-sheets.svg?url";
+import CouchDBLogo from "@assets/logos/couchdb.svg?url";
+import ElasticsearchLogo from "@assets/logos/elastic.svg?url";
+import MongoDBLogo from "@assets/logos/mongodb.svg?url";
+import DynamoDBLogo from "@assets/logos/amazon-dynamodb.svg?url";
+import RedisLogo from "@assets/logos/redis.svg?url";
+import FirestoreLogo from "@assets/logos/firestore.svg?url";
+import AmazonS3Logo from "@assets/logos/amazon-s3.svg?url";
+import SupabaseLogo from "@assets/logos/supbase.png?url";
+import CleverLogo from "@assets/logos/clever.svg?url";
+import ConfluenceLogo from "@assets/logos/confluence.svg?url";
+import FigmaLogo from "@assets/logos/figma.svg?url";
+import HubSpotLogo from "@assets/logos/hubspot.svg?url";
+import MicrosoftSharePointLogo from "@assets/logos/microsoft-sharepoint.svg?url";
+import MicrosoftTeamsLogo from "@assets/logos/microsoft-teams.png?url";
+import SplunkLogo from "@assets/logos/splunk.svg?url";
+import VirusTotalLogo from "@assets/logos/virustotal.svg?url";
+import ZendeskLogo from "@assets/logos/zendesk.svg?url";
+import AnsibleLogo from "@assets/logos/ansible.svg?url";
+import AshbyLogo from "@assets/logos/ashby.svg?url";
+import BambooHrLogo from "@assets/logos/bamboohr.svg?url";
+import BanksApiLogo from "@assets/logos/banksapi.svg?url";
+import BaremetricsLogo from "@assets/logos/baremetrics.svg?url";
+import BillsbyLogo from "@assets/logos/billsby.svg?url";
+import BreezyHrLogo from "@assets/logos/breezy-hr.svg?url";
+import BrevoLogo from "@assets/logos/brevo.svg?url";
+import BulkSmsLogo from "@assets/logos/bulksms-com.svg?url";
+import ButtondownLogo from "@assets/logos/buttondown.svg?url";
+import ClickUpLogo from "@assets/logos/clickup.svg?url";
+import DeelLogo from "@assets/logos/deel.svg?url";
+import DixaLogo from "@assets/logos/dixa.svg?url";
+import DotsLogo from "@assets/logos/dots.svg?url";
+import FactorialLogo from "@assets/logos/factorial.svg?url";
+import FastSpringLogo from "@assets/logos/fastspring.svg?url";
+import FountainLogo from "@assets/logos/fountain.svg?url";
+import GitLabLogo from "@assets/logos/gitlab.svg?url";
+import GoodyLogo from "@assets/logos/goody.svg?url";
+import HelcimLogo from "@assets/logos/helcim.svg?url";
+import HiBobLogo from "@assets/logos/hibob.svg?url";
+import HomerunLogo from "@assets/logos/homerun.svg?url";
+import HypatosLogo from "@assets/logos/hypatos.svg?url";
+import IntercomLogo from "@assets/logos/intercom.svg?url";
+import IroncladLogo from "@assets/logos/ironclad.svg?url";
+import JinaAiLogo from "@assets/logos/jina-ai.svg?url";
+import JobsoidLogo from "@assets/logos/jobsoid.svg?url";
+import KeatextAiLogo from "@assets/logos/keatext-ai.svg?url";
+import KenjoLogo from "@assets/logos/kenjo.svg?url";
+import LambdaLogo from "@assets/logos/lambda.svg?url";
+import LobLogo from "@assets/logos/lob.svg?url";
+import LocalizelyLogo from "@assets/logos/localizely.svg?url";
+import LogisticsOsLogo from "@assets/logos/logisticsos.svg?url";
+import MastercardLogo from "@assets/logos/mastercard.svg?url";
+import MeasureOneLogo from "@assets/logos/measureone.svg?url";
+import NanonetsLogo from "@assets/logos/nanonets.svg?url";
+import NotionLogo from "@assets/logos/notion.svg?url";
+import OysterLogo from "@assets/logos/oyster.svg?url";
+import PeachPaymentsLogo from "@assets/logos/peach-payments.svg?url";
+import PinpointLogo from "@assets/logos/pinpoint.svg?url";
+import PodiumLogo from "@assets/logos/podium.svg?url";
+import RemoteLogo from "@assets/logos/remote.svg?url";
+import ResendLogo from "@assets/logos/resend.svg?url";
+import RiveryLogo from "@assets/logos/rivery.svg?url";
+import SageLogo from "@assets/logos/sage.svg?url";
+import SecodaLogo from "@assets/logos/secoda.svg?url";
+import ShipEngineLogo from "@assets/logos/shipengine.svg?url";
+import ShippoLogo from "@assets/logos/shippo.svg?url";
+import ShortcutLogo from "@assets/logos/shortcut.svg?url";
+import SmartRecruitersLogo from "@assets/logos/smartrecruiters.svg?url";
+import SoftLedgerLogo from "@assets/logos/softledger.svg?url";
+import SpotDraftLogo from "@assets/logos/spotdraft.svg?url";
+import SumsubLogo from "@assets/logos/sumsub.svg?url";
+import SuprSendLogo from "@assets/logos/suprsend.svg?url";
+import TerminalLogo from "@assets/logos/terminal.svg?url";
+import TheirstackLogo from "@assets/logos/theirstack.svg?url";
+import TilledLogo from "@assets/logos/tilled.svg?url";
+import TrelloLogo from "@assets/logos/trello.svg?url";
+import TremendousLogo from "@assets/logos/tremendous.svg?url";
+import VerifiableLogo from "@assets/logos/verifiable.svg?url";
+import VoltIoLogo from "@assets/logos/volt-io.svg?url";
+import WorkableLogo from "@assets/logos/workable.svg?url";
+import XLogo from "@assets/logos/x.svg?url";
+import DockerLogo from "@assets/logos/Docker.svg?url";
+import KubernetesLogo from "@assets/logos/kubernetes.svg?url";
+import NextcloudLogo from "@assets/logos/nextcloud.svg?url";
+import LinodeLogo from "@assets/logos/linode.svg?url";
+import DigitalOceanLogo from "@assets/logos/digital-ocean.svg?url";
 const { title: pageTitle, description: pageDescription } = getProductPageMeta(
   Astro.url.pathname,
 );
@@ -176,8 +174,8 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
                   stroke-linejoin="round"
                   stroke-width="1.5"
                 >
-                  <path d="M4 4l8 8" />
-                  <path d="M12 4 4 12" />
+                  <path d="M4 4l8 8"></path>
+                  <path d="M12 4 4 12"></path>
                 </svg>
               </button>
             </div>
@@ -189,38 +187,36 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
     <div class="mb-8 space-y-8" data-connections-results>
       <!-- AI model providers -->
       <section data-connector-section>
-        <h2 class="text-lg! text-stone-700!  mb-4">
-          AI model providers
-        </h2>
+        <h2 class="text-lg! text-stone-700! mb-4">AI model providers</h2>
         <div
           class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-2"
         >
           <div class="integration-card">
-            <Image src={AnthropicLogo} alt="Anthropic" class="w-5 h-5" />
+            <img src={AnthropicLogo} alt="Anthropic" class="w-5 h-5" />
             <h3 class="text-base!">Anthropic</h3>
           </div>
           <div class="integration-card">
-            <Image src={AzureOpenAILogo} alt="Azure OpenAI" class="w-5 h-5" />
+            <img src={AzureOpenAILogo} alt="Azure OpenAI" class="w-5 h-5" />
             <h3 class="text-base!">Azure OpenAI</h3>
           </div>
           <div class="integration-card">
-            <Image src={GoogleLogo} alt="Google" class="w-5 h-5" />
+            <img src={GoogleLogo} alt="Google" class="w-5 h-5" />
             <h3 class="text-base!">Google</h3>
           </div>
           <div class="integration-card">
-            <Image src={GroqLogo} alt="Groq" class="w-5 h-5" />
+            <img src={GroqLogo} alt="Groq" class="w-5 h-5" />
             <h3 class="text-base!">Groq</h3>
           </div>
           <div class="integration-card">
-            <Image src={MistralLogo} alt="Mistral" class="w-5 h-5" />
+            <img src={MistralLogo} alt="Mistral" class="w-5 h-5" />
             <h3 class="text-base!">Mistral</h3>
           </div>
           <div class="integration-card">
-            <Image src={OpenAILogo} alt="OpenAI" class="w-5 h-5" />
+            <img src={OpenAILogo} alt="OpenAI" class="w-5 h-5" />
             <h3 class="text-base!">OpenAI</h3>
           </div>
           <div class="integration-card">
-            <Image src={OpenRouterLogo} alt="OpenRouter" class="w-5 h-5" />
+            <img src={OpenRouterLogo} alt="OpenRouter" class="w-5 h-5" />
             <h3 class="text-base!">OpenRouter</h3>
           </div>
           <div class="integration-card">
@@ -232,291 +228,281 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
 
       <!-- Tools and APIs -->
       <section data-connector-section>
-        <h2 class="text-lg! text-stone-700!  mb-4">
-          Tools and APIs
-        </h2>
+        <h2 class="text-lg! text-stone-700! mb-4">Tools and APIs</h2>
         <div
           class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-2"
         >
           <div class="integration-card">
-            <Image src={AnsibleLogo} alt="Ansible" class="w-5 h-5" />
+            <img src={AnsibleLogo} alt="Ansible" class="w-5 h-5" />
             <h3 class="text-base!">Ansible</h3>
           </div>
           <div class="integration-card">
-            <Image src={AshbyLogo} alt="Ashby" class="w-5 h-5" />
+            <img src={AshbyLogo} alt="Ashby" class="w-5 h-5" />
             <h3 class="text-base!">Ashby</h3>
           </div>
           <div class="integration-card">
-            <Image src={AttioLogo} alt="Attio" class="w-5 h-5" />
+            <img src={AttioLogo} alt="Attio" class="w-5 h-5" />
             <h3 class="text-base!">Attio</h3>
           </div>
           <div class="integration-card">
-            <Image src={BambooHrLogo} alt="BambooHR" class="w-5 h-5" />
+            <img src={BambooHrLogo} alt="BambooHR" class="w-5 h-5" />
             <h3 class="text-base!">BambooHR</h3>
           </div>
           <div class="integration-card">
-            <Image src={BanksApiLogo} alt="BanksAPI" class="w-5 h-5" />
+            <img src={BanksApiLogo} alt="BanksAPI" class="w-5 h-5" />
             <h3 class="text-base!">BanksAPI</h3>
           </div>
           <div class="integration-card">
-            <Image src={BaremetricsLogo} alt="Baremetrics" class="w-5 h-5" />
+            <img src={BaremetricsLogo} alt="Baremetrics" class="w-5 h-5" />
             <h3 class="text-base!">Baremetrics</h3>
           </div>
           <div class="integration-card">
-            <Image src={BillsbyLogo} alt="Billsby" class="w-5 h-5" />
+            <img src={BillsbyLogo} alt="Billsby" class="w-5 h-5" />
             <h3 class="text-base!">Billsby</h3>
           </div>
           <div class="integration-card">
-            <Image src={BreezyHrLogo} alt="Breezy HR" class="w-5 h-5" />
+            <img src={BreezyHrLogo} alt="Breezy HR" class="w-5 h-5" />
             <h3 class="text-base!">Breezy HR</h3>
           </div>
           <div class="integration-card">
-            <Image src={BrevoLogo} alt="Brevo" class="w-5 h-5" />
+            <img src={BrevoLogo} alt="Brevo" class="w-5 h-5" />
             <h3 class="text-base!">Brevo</h3>
           </div>
           <div class="integration-card">
-            <Image src={BulkSmsLogo} alt="BulkSMS" class="w-5 h-5" />
+            <img src={BulkSmsLogo} alt="BulkSMS" class="w-5 h-5" />
             <h3 class="text-base!">BulkSMS</h3>
           </div>
           <div class="integration-card">
-            <Image src={ButtondownLogo} alt="Buttondown" class="w-5 h-5" />
+            <img src={ButtondownLogo} alt="Buttondown" class="w-5 h-5" />
             <h3 class="text-base!">Buttondown</h3>
           </div>
           <div class="integration-card">
-            <Image src={CleverLogo} alt="Clever" class="w-5 h-5" />
+            <img src={CleverLogo} alt="Clever" class="w-5 h-5" />
             <h3 class="text-base!">Clever</h3>
           </div>
           <div class="integration-card">
-            <Image src={ClickUpLogo} alt="ClickUp" class="w-5 h-5" />
+            <img src={ClickUpLogo} alt="ClickUp" class="w-5 h-5" />
             <h3 class="text-base!">ClickUp</h3>
           </div>
           <div class="integration-card">
-            <Image src={ConfluenceLogo} alt="Confluence" class="w-5 h-5" />
+            <img src={ConfluenceLogo} alt="Confluence" class="w-5 h-5" />
             <h3 class="text-base!">Confluence</h3>
           </div>
           <div class="integration-card">
-            <Image src={RestApiLogo} alt="Custom REST API" class="w-5 h-5" />
+            <img src={RestApiLogo} alt="Custom REST API" class="w-5 h-5" />
             <h3 class="text-base!">Custom REST API</h3>
           </div>
           <div class="integration-card">
-            <Image src={DatadogLogo} alt="Datadog" class="w-5 h-5" />
+            <img src={DatadogLogo} alt="Datadog" class="w-5 h-5" />
             <h3 class="text-base!">Datadog</h3>
           </div>
           <div class="integration-card">
-            <Image src={DeelLogo} alt="Deel" class="w-5 h-5" />
+            <img src={DeelLogo} alt="Deel" class="w-5 h-5" />
             <h3 class="text-base!">Deel</h3>
           </div>
           <div class="integration-card">
-            <Image src={DixaLogo} alt="Dixa" class="w-5 h-5" />
+            <img src={DixaLogo} alt="Dixa" class="w-5 h-5" />
             <h3 class="text-base!">Dixa</h3>
           </div>
           <div class="integration-card">
-            <Image src={DiscordLogoSvg} alt="Discord" class="w-5 h-5" />
+            <img src={DiscordLogoSvg} alt="Discord" class="w-5 h-5" />
             <h3 class="text-base!">Discord</h3>
           </div>
           <div class="integration-card">
-            <Image src={DotsLogo} alt="Dots" class="w-5 h-5" />
+            <img src={DotsLogo} alt="Dots" class="w-5 h-5" />
             <h3 class="text-base!">Dots</h3>
           </div>
           <div class="integration-card">
-            <Image src={ExaLogo} alt="Exa" class="w-5 h-5" />
+            <img src={ExaLogo} alt="Exa" class="w-5 h-5" />
             <h3 class="text-base!">Exa</h3>
           </div>
           <div class="integration-card">
-            <Image src={FactorialLogo} alt="Factorial" class="w-5 h-5" />
+            <img src={FactorialLogo} alt="Factorial" class="w-5 h-5" />
             <h3 class="text-base!">Factorial</h3>
           </div>
           <div class="integration-card">
-            <Image src={FigmaLogo} alt="Figma" class="w-5 h-5" />
+            <img src={FigmaLogo} alt="Figma" class="w-5 h-5" />
             <h3 class="text-base!">Figma</h3>
           </div>
           <div class="integration-card">
-            <Image src={FountainLogo} alt="Fountain" class="w-5 h-5" />
+            <img src={FountainLogo} alt="Fountain" class="w-5 h-5" />
             <h3 class="text-base!">Fountain</h3>
           </div>
           <div class="integration-card">
-            <Image
-              src={GithubLogoSvg}
-              alt="GitHub"
-              class="w-5 h-5 "
-            />
-            <Image
-              src={GithubLogoWhite}
-              alt="GitHub"
-              class="w-5 h-5 hidden "
-            />
+            <img src={GithubLogoSvg} alt="GitHub" class="w-5 h-5" />
+            <img src={GithubLogoWhite} alt="GitHub" class="w-5 h-5 hidden" />
             <h3 class="text-base!">GitHub</h3>
           </div>
           <div class="integration-card">
-            <Image src={GitLabLogo} alt="GitLab" class="w-5 h-5" />
+            <img src={GitLabLogo} alt="GitLab" class="w-5 h-5" />
             <h3 class="text-base!">GitLab</h3>
           </div>
           <div class="integration-card">
-            <Image src={GoodyLogo} alt="Goody" class="w-5 h-5" />
+            <img src={GoodyLogo} alt="Goody" class="w-5 h-5" />
             <h3 class="text-base!">Goody</h3>
           </div>
           <div class="integration-card">
-            <Image src={HelcimLogo} alt="Helcim" class="w-5 h-5" />
+            <img src={HelcimLogo} alt="Helcim" class="w-5 h-5" />
             <h3 class="text-base!">Helcim</h3>
           </div>
           <div class="integration-card">
-            <Image src={HiBobLogo} alt="HiBob" class="w-5 h-5" />
+            <img src={HiBobLogo} alt="HiBob" class="w-5 h-5" />
             <h3 class="text-base!">HiBob</h3>
           </div>
           <div class="integration-card">
-            <Image src={HomerunLogo} alt="Homerun" class="w-5 h-5" />
+            <img src={HomerunLogo} alt="Homerun" class="w-5 h-5" />
             <h3 class="text-base!">Homerun</h3>
           </div>
           <div class="integration-card">
-            <Image src={HubSpotLogo} alt="HubSpot" class="w-5 h-5" />
+            <img src={HubSpotLogo} alt="HubSpot" class="w-5 h-5" />
             <h3 class="text-base!">HubSpot</h3>
           </div>
           <div class="integration-card">
-            <Image src={HypatosLogo} alt="Hypatos" class="w-5 h-5" />
+            <img src={HypatosLogo} alt="Hypatos" class="w-5 h-5" />
             <h3 class="text-base!">Hypatos</h3>
           </div>
           <div class="integration-card">
-            <Image src={IntercomLogo} alt="Intercom" class="w-5 h-5" />
+            <img src={IntercomLogo} alt="Intercom" class="w-5 h-5" />
             <h3 class="text-base!">Intercom</h3>
           </div>
           <div class="integration-card">
-            <Image src={IroncladLogo} alt="Ironclad" class="w-5 h-5" />
+            <img src={IroncladLogo} alt="Ironclad" class="w-5 h-5" />
             <h3 class="text-base!">Ironclad</h3>
           </div>
           <div class="integration-card">
-            <Image src={JinaAiLogo} alt="Jina AI" class="w-5 h-5" />
+            <img src={JinaAiLogo} alt="Jina AI" class="w-5 h-5" />
             <h3 class="text-base!">Jina AI</h3>
           </div>
           <div class="integration-card">
-            <Image src={JiraLogo} alt="Jira" class="w-5 h-5" />
+            <img src={JiraLogo} alt="Jira" class="w-5 h-5" />
             <h3 class="text-base!">Jira</h3>
           </div>
           <div class="integration-card">
-            <Image src={JobsoidLogo} alt="Jobsoid" class="w-5 h-5" />
+            <img src={JobsoidLogo} alt="Jobsoid" class="w-5 h-5" />
             <h3 class="text-base!">Jobsoid</h3>
           </div>
           <div class="integration-card">
-            <Image src={KeatextAiLogo} alt="Keatext AI" class="w-5 h-5" />
+            <img src={KeatextAiLogo} alt="Keatext AI" class="w-5 h-5" />
             <h3 class="text-base!">Keatext AI</h3>
           </div>
           <div class="integration-card">
-            <Image src={KenjoLogo} alt="Kenjo" class="w-5 h-5" />
+            <img src={KenjoLogo} alt="Kenjo" class="w-5 h-5" />
             <h3 class="text-base!">Kenjo</h3>
           </div>
           <div class="integration-card">
-            <Image src={LambdaLogo} alt="Lambda" class="w-5 h-5" />
+            <img src={LambdaLogo} alt="Lambda" class="w-5 h-5" />
             <h3 class="text-base!">Lambda</h3>
           </div>
           <div class="integration-card">
-            <Image src={LobLogo} alt="Lob" class="w-5 h-5" />
+            <img src={LobLogo} alt="Lob" class="w-5 h-5" />
             <h3 class="text-base!">Lob</h3>
           </div>
           <div class="integration-card">
-            <Image src={LocalizelyLogo} alt="Localizely" class="w-5 h-5" />
+            <img src={LocalizelyLogo} alt="Localizely" class="w-5 h-5" />
             <h3 class="text-base!">Localizely</h3>
           </div>
           <div class="integration-card">
-            <Image src={LogisticsOsLogo} alt="LogisticsOS" class="w-5 h-5" />
+            <img src={LogisticsOsLogo} alt="LogisticsOS" class="w-5 h-5" />
             <h3 class="text-base!">LogisticsOS</h3>
           </div>
           <div class="integration-card">
-            <Image src={MastercardLogo} alt="Mastercard" class="w-5 h-5" />
+            <img src={MastercardLogo} alt="Mastercard" class="w-5 h-5" />
             <h3 class="text-base!">Mastercard</h3>
           </div>
           <div class="integration-card">
-            <Image src={MeasureOneLogo} alt="MeasureOne" class="w-5 h-5" />
+            <img src={MeasureOneLogo} alt="MeasureOne" class="w-5 h-5" />
             <h3 class="text-base!">MeasureOne</h3>
           </div>
           <div class="integration-card">
-            <Image src={NanonetsLogo} alt="Nanonets" class="w-5 h-5" />
+            <img src={NanonetsLogo} alt="Nanonets" class="w-5 h-5" />
             <h3 class="text-base!">Nanonets</h3>
           </div>
           <div class="integration-card">
-            <Image src={NotionLogo} alt="Notion" class="w-5 h-5" />
+            <img src={NotionLogo} alt="Notion" class="w-5 h-5" />
             <h3 class="text-base!">Notion</h3>
           </div>
           <div class="integration-card">
-            <Image src={NextcloudLogo} alt="Nextcloud" class="w-5 h-5" />
+            <img src={NextcloudLogo} alt="Nextcloud" class="w-5 h-5" />
             <h3 class="text-base!">Nextcloud</h3>
           </div>
           <div class="integration-card">
-            <Image src={OysterLogo} alt="Oyster" class="w-5 h-5" />
+            <img src={OysterLogo} alt="Oyster" class="w-5 h-5" />
             <h3 class="text-base!">Oyster</h3>
           </div>
           <div class="integration-card">
-            <Image src={OktaLogo} alt="Okta" class="w-5 h-5" />
+            <img src={OktaLogo} alt="Okta" class="w-5 h-5" />
             <h3 class="text-base!">Okta</h3>
           </div>
           <div class="integration-card">
-            <Image src={OpenApiLogo} alt="OpenAPI" class="w-5 h-5" />
+            <img src={OpenApiLogo} alt="OpenAPI" class="w-5 h-5" />
             <h3 class="text-base!">OpenAPI</h3>
           </div>
           <div class="integration-card">
-            <Image src={PagerDutyLogo} alt="PagerDuty" class="w-5 h-5" />
+            <img src={PagerDutyLogo} alt="PagerDuty" class="w-5 h-5" />
             <h3 class="text-base!">PagerDuty</h3>
           </div>
           <div class="integration-card">
-            <Image
-              src={PeachPaymentsLogo}
-              alt="Peach Payments"
-              class="w-5 h-5"
-            />
+            <img src={PeachPaymentsLogo} alt="Peach Payments" class="w-5 h-5" />
             <h3 class="text-base!">Peach Payments</h3>
           </div>
           <div class="integration-card">
-            <Image src={PinpointLogo} alt="Pinpoint" class="w-5 h-5" />
+            <img src={PinpointLogo} alt="Pinpoint" class="w-5 h-5" />
             <h3 class="text-base!">Pinpoint</h3>
           </div>
           <div class="integration-card">
-            <Image src={PodiumLogo} alt="Podium" class="w-5 h-5" />
+            <img src={PodiumLogo} alt="Podium" class="w-5 h-5" />
             <h3 class="text-base!">Podium</h3>
           </div>
           <div class="integration-card">
-            <Image src={RemoteLogo} alt="Remote" class="w-5 h-5" />
+            <img src={RemoteLogo} alt="Remote" class="w-5 h-5" />
             <h3 class="text-base!">Remote</h3>
           </div>
           <div class="integration-card">
-            <Image src={ResendLogo} alt="Resend" class="w-5 h-5" />
+            <img src={ResendLogo} alt="Resend" class="w-5 h-5" />
             <h3 class="text-base!">Resend</h3>
           </div>
           <div class="integration-card">
-            <Image src={RiveryLogo} alt="Rivery" class="w-5 h-5" />
+            <img src={RiveryLogo} alt="Rivery" class="w-5 h-5" />
             <h3 class="text-base!">Rivery</h3>
           </div>
           <div class="integration-card">
-            <Image src={SageLogo} alt="Sage" class="w-5 h-5" />
+            <img src={SageLogo} alt="Sage" class="w-5 h-5" />
             <h3 class="text-base!">Sage</h3>
           </div>
           <div class="integration-card">
-            <Image src={SecodaLogo} alt="Secoda" class="w-5 h-5" />
+            <img src={SecodaLogo} alt="Secoda" class="w-5 h-5" />
             <h3 class="text-base!">Secoda</h3>
           </div>
           <div class="integration-card">
-            <Image src={ServiceNowLogo} alt="ServiceNow" class="w-5 h-5" />
+            <img src={ServiceNowLogo} alt="ServiceNow" class="w-5 h-5" />
             <h3 class="text-base!">ServiceNow</h3>
           </div>
-           <div class="integration-card">
-            <Image src={MicrosoftSharePointLogo} alt="Microsoft SharePoint" class="w-5 h-5" />
+          <div class="integration-card">
+            <img
+              src={MicrosoftSharePointLogo}
+              alt="Microsoft SharePoint"
+              class="w-5 h-5"
+            />
             <h3 class="text-base!">Microsoft SharePoint</h3>
           </div>
           <div class="integration-card">
-            <Image src={ShipEngineLogo} alt="ShipEngine" class="w-5 h-5" />
+            <img src={ShipEngineLogo} alt="ShipEngine" class="w-5 h-5" />
             <h3 class="text-base!">ShipEngine</h3>
           </div>
           <div class="integration-card">
-            <Image src={ShippoLogo} alt="Shippo" class="w-5 h-5" />
+            <img src={ShippoLogo} alt="Shippo" class="w-5 h-5" />
             <h3 class="text-base!">Shippo</h3>
           </div>
           <div class="integration-card">
-            <Image src={ShortcutLogo} alt="Shortcut" class="w-5 h-5" />
+            <img src={ShortcutLogo} alt="Shortcut" class="w-5 h-5" />
             <h3 class="text-base!">Shortcut</h3>
           </div>
           <div class="integration-card">
-            <Image src={SlackLogo} alt="Slack" class="w-5 h-5" />
+            <img src={SlackLogo} alt="Slack" class="w-5 h-5" />
             <h3 class="text-base!">Slack</h3>
           </div>
           <div class="integration-card">
-            <Image
+            <img
               src={SmartRecruitersLogo}
               alt="SmartRecruiters"
               class="w-5 h-5"
@@ -524,87 +510,91 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
             <h3 class="text-base!">SmartRecruiters</h3>
           </div>
           <div class="integration-card">
-            <Image src={SmtpLogo} alt="SMTP" class="w-5 h-5" />
+            <img src={SmtpLogo} alt="SMTP" class="w-5 h-5" />
             <h3 class="text-base!">SMTP</h3>
           </div>
           <div class="integration-card">
-            <Image src={SoftLedgerLogo} alt="SoftLedger" class="w-5 h-5" />
+            <img src={SoftLedgerLogo} alt="SoftLedger" class="w-5 h-5" />
             <h3 class="text-base!">SoftLedger</h3>
           </div>
           <div class="integration-card">
-            <Image src={SplunkLogo} alt="Splunk" class="w-5 h-5" />
+            <img src={SplunkLogo} alt="Splunk" class="w-5 h-5" />
             <h3 class="text-base!">Splunk</h3>
           </div>
           <div class="integration-card">
-            <Image src={SpotDraftLogo} alt="SpotDraft" class="w-5 h-5" />
+            <img src={SpotDraftLogo} alt="SpotDraft" class="w-5 h-5" />
             <h3 class="text-base!">SpotDraft</h3>
           </div>
           <div class="integration-card">
-            <Image src={StripeSvgLogo} alt="Stripe" class="w-5 h-5" />
+            <img src={StripeSvgLogo} alt="Stripe" class="w-5 h-5" />
             <h3 class="text-base!">Stripe</h3>
           </div>
           <div class="integration-card">
-            <Image src={SuprSendLogo} alt="SuprSend" class="w-5 h-5" />
+            <img src={SuprSendLogo} alt="SuprSend" class="w-5 h-5" />
             <h3 class="text-base!">SuprSend</h3>
           </div>
           <div class="integration-card">
-            <Image src={SumsubLogo} alt="Sumsub" class="w-5 h-5" />
+            <img src={SumsubLogo} alt="Sumsub" class="w-5 h-5" />
             <h3 class="text-base!">Sumsub</h3>
           </div>
           <div class="integration-card">
-            <Image src={TavilyLogo} alt="Tavily" class="w-5 h-5" />
+            <img src={TavilyLogo} alt="Tavily" class="w-5 h-5" />
             <h3 class="text-base!">Tavily</h3>
           </div>
           <div class="integration-card">
-            <Image src={MicrosoftTeamsLogo} alt="Microsoft Teams" class="w-5 h-5" />
+            <img
+              src={MicrosoftTeamsLogo}
+              alt="Microsoft Teams"
+              class="w-5 h-5"
+            />
             <h3 class="text-base!">Microsoft Teams</h3>
           </div>
           <div class="integration-card">
-            <Image src={TerminalLogo} alt="Terminal" class="w-5 h-5" />
+            <img src={TerminalLogo} alt="Terminal" class="w-5 h-5" />
             <h3 class="text-base!">Terminal</h3>
           </div>
           <div class="integration-card">
-            <Image src={TheirstackLogo} alt="Theirstack" class="w-5 h-5" />
+            <img src={TheirstackLogo} alt="Theirstack" class="w-5 h-5" />
             <h3 class="text-base!">Theirstack</h3>
           </div>
           <div class="integration-card">
-            <Image src={TilledLogo} alt="Tilled" class="w-5 h-5" />
+            <img src={TilledLogo} alt="Tilled" class="w-5 h-5" />
             <h3 class="text-base!">Tilled</h3>
           </div>
           <div class="integration-card">
-            <Image src={TrelloLogo} alt="Trello" class="w-5 h-5" />
+            <img src={TrelloLogo} alt="Trello" class="w-5 h-5" />
             <h3 class="text-base!">Trello</h3>
           </div>
           <div class="integration-card">
-            <Image src={TremendousLogo} alt="Tremendous" class="w-5 h-5" />
+            <img src={TremendousLogo} alt="Tremendous" class="w-5 h-5" />
             <h3 class="text-base!">Tremendous</h3>
           </div>
           <div class="integration-card">
-            <Image src={TwilioLogo} alt="Twilio" class="w-5 h-5" />
+            <img src={TwilioLogo} alt="Twilio" class="w-5 h-5" />
             <h3 class="text-base!">Twilio</h3>
           </div>
           <div class="integration-card">
-            <Image src={VerifiableLogo} alt="Verifiable" class="w-5 h-5" />
+            <img src={VerifiableLogo} alt="Verifiable" class="w-5 h-5" />
             <h3 class="text-base!">Verifiable</h3>
           </div>
           <div class="integration-card">
-            <Image src={VirusTotalLogo} alt="VirusTotal" class="w-5 h-5" />
+            <img src={VirusTotalLogo} alt="VirusTotal" class="w-5 h-5" />
             <h3 class="text-base!">VirusTotal</h3>
           </div>
           <div class="integration-card">
-            <Image src={VoltIoLogo} alt="Volt IO" class="w-5 h-5" />
+            <img src={VoltIoLogo} alt="Volt IO" class="w-5 h-5" />
             <h3 class="text-base!">Volt IO</h3>
           </div>
           <div class="integration-card">
-            <Image src={WorkableLogo} alt="Workable" class="w-5 h-5" />
+            <img src={WorkableLogo} alt="Workable" class="w-5 h-5" />
             <h3 class="text-base!">Workable</h3>
           </div>
           <div class="integration-card">
-            <Image src={XLogo} alt="X" class="w-5 h-5" />
+            <img src={XLogo} alt="X" class="w-5 h-5" />
             <h3 class="text-base!">X</h3>
           </div>
           <div class="integration-card">
-            <Image src={ZendeskLogo} alt="Zendesk" class="w-5 h-5" />
+            <img src={ZendeskLogo} alt="Zendesk" class="w-5 h-5" />
             <h3 class="text-base!">Zendesk</h3>
           </div>
         </div>
@@ -612,72 +602,68 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
 
       <!-- Data -->
       <section data-connector-section>
-        <h2 class="text-lg! text-stone-700!  mb-4">Data</h2>
+        <h2 class="text-lg! text-stone-700! mb-4">Data</h2>
         <div
           class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-2"
         >
           <div class="integration-card">
-            <Image src={AmazonS3Logo} alt="Amazon S3" class="w-5 h-5" />
+            <img src={AmazonS3Logo} alt="Amazon S3" class="w-5 h-5" />
             <h3 class="text-base!">Amazon S3</h3>
           </div>
           <div class="integration-card">
-            <Image src={CouchDBLogo} alt="CouchDB" class="w-5 h-5" />
+            <img src={CouchDBLogo} alt="CouchDB" class="w-5 h-5" />
             <h3 class="text-base!">CouchDB</h3>
           </div>
           <div class="integration-card">
-            <Image src={DynamoDBLogo} alt="DynamoDB" class="w-5 h-5" />
+            <img src={DynamoDBLogo} alt="DynamoDB" class="w-5 h-5" />
             <h3 class="text-base!">DynamoDB</h3>
           </div>
           <div class="integration-card">
-            <Image
-              src={ElasticsearchLogo}
-              alt="Elasticsearch"
-              class="w-5 h-5"
-            />
+            <img src={ElasticsearchLogo} alt="Elasticsearch" class="w-5 h-5" />
             <h3 class="text-base!">Elasticsearch</h3>
           </div>
           <div class="integration-card">
-            <Image src={FirestoreLogo} alt="Firestore" class="w-5 h-5" />
+            <img src={FirestoreLogo} alt="Firestore" class="w-5 h-5" />
             <h3 class="text-base!">Firestore</h3>
           </div>
           <div class="integration-card">
-            <Image src={GoogleSheetsLogo} alt="Google Sheets" class="w-5 h-5" />
+            <img src={GoogleSheetsLogo} alt="Google Sheets" class="w-5 h-5" />
             <h3 class="text-base!">Google Sheets</h3>
           </div>
           <div class="integration-card">
-            <Image src={MongoDBLogo} alt="MongoDB" class="w-5 h-5" />
+            <img src={MongoDBLogo} alt="MongoDB" class="w-5 h-5" />
             <h3 class="text-base!">MongoDB</h3>
           </div>
           <div class="integration-card">
-            <Image src={MSSQLLogo} alt="MSSQL" class="w-5 h-5" />
+            <img src={MSSQLLogo} alt="MSSQL" class="w-5 h-5" />
             <h3 class="text-base!">MSSQL</h3>
           </div>
           <div class="integration-card">
-            <Image src={MySQLLogo} alt="MySQL" class="w-5 h-5" />
+            <img src={MySQLLogo} alt="MySQL" class="w-5 h-5" />
             <h3 class="text-base!">MySQL</h3>
           </div>
           <div class="integration-card">
-            <Image src={OracleLogo} alt="Oracle" class="w-5 h-5" />
+            <img src={OracleLogo} alt="Oracle" class="w-5 h-5" />
             <h3 class="text-base!">Oracle</h3>
           </div>
           <div class="integration-card">
-            <Image src={PostgresLogo} alt="PostgreSQL" class="w-5 h-5" />
+            <img src={PostgresLogo} alt="PostgreSQL" class="w-5 h-5" />
             <h3 class="text-base!">PostgreSQL</h3>
           </div>
           <div class="integration-card">
-            <Image src={RedisLogo} alt="Redis" class="w-5 h-5" />
+            <img src={RedisLogo} alt="Redis" class="w-5 h-5" />
             <h3 class="text-base!">Redis</h3>
           </div>
           <div class="integration-card">
-            <Image src={SnowflakeLogo} alt="Snowflake" class="w-5 h-5" />
+            <img src={SnowflakeLogo} alt="Snowflake" class="w-5 h-5" />
             <h3 class="text-base!">Snowflake</h3>
           </div>
           <div class="integration-card">
-            <Image src={SupabaseLogo} alt="Supabase" class="w-5 h-5" />
+            <img src={SupabaseLogo} alt="Supabase" class="w-5 h-5" />
             <h3 class="text-base!">Supabase</h3>
           </div>
           <div class="integration-card">
-            <Image src={PostgresLogo} alt="PGVector" class="w-5 h-5" />
+            <img src={PostgresLogo} alt="PGVector" class="w-5 h-5" />
             <h3 class="text-base!">PGVector</h3>
           </div>
         </div>
@@ -685,26 +671,24 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
 
       <!-- Deployment options -->
       <section data-connector-section>
-        <h2 class="text-lg! text-stone-700!  mb-4">
-          Deployment options
-        </h2>
+        <h2 class="text-lg! text-stone-700! mb-4">Deployment options</h2>
         <div
           class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-2"
         >
           <div class="integration-card">
-            <Image src={DockerLogo} alt="Docker" class="w-5 h-5" />
+            <img src={DockerLogo} alt="Docker" class="w-5 h-5" />
             <h3 class="text-base!">Docker</h3>
           </div>
           <div class="integration-card">
-            <Image src={KubernetesLogo} alt="Kubernetes" class="w-5 h-5" />
+            <img src={KubernetesLogo} alt="Kubernetes" class="w-5 h-5" />
             <h3 class="text-base!">Kubernetes</h3>
           </div>
           <div class="integration-card">
-            <Image src={LinodeLogo} alt="Linode" class="w-5 h-5" />
+            <img src={LinodeLogo} alt="Linode" class="w-5 h-5" />
             <h3 class="text-base!">Linode</h3>
           </div>
           <div class="integration-card">
-            <Image src={DigitalOceanLogo} alt="Digital Ocean" class="w-5 h-5" />
+            <img src={DigitalOceanLogo} alt="Digital Ocean" class="w-5 h-5" />
             <h3 class="text-base!">Digital Ocean</h3>
           </div>
         </div>
@@ -728,7 +712,9 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
   (() => {
     const initConnectionsSearch = () => {
       const searchInput = document.querySelector("[data-connector-search]");
-      const clearButton = document.querySelector("[data-connector-search-clear]");
+      const clearButton = document.querySelector(
+        "[data-connector-search-clear]",
+      );
       const emptyState = document.querySelector("[data-connector-empty]");
       const sections = Array.from(
         document.querySelectorAll("[data-connector-section]"),
@@ -771,7 +757,9 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
           if (!(section instanceof HTMLElement)) return;
           let sectionVisibleCount = 0;
 
-          const cards = Array.from(section.querySelectorAll("[data-connector-card]"));
+          const cards = Array.from(
+            section.querySelectorAll("[data-connector-card]"),
+          );
           cards.forEach((card) => {
             if (!(card instanceof HTMLElement)) return;
             const name = card.dataset.connectorName ?? "";

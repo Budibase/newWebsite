@@ -1,12 +1,11 @@
 ---
-import { Image } from "astro:assets";
 import CaretDown from "phosphor-astro/CaretDown.astro";
 import Sparkle from "phosphor-astro/Sparkle.astro";
-import MistralLogo from "@assets/logos/Mistral.svg";
-import BudibaseLogo from "@assets/logos/bbSymbol.svg";
-import AnthropicLogo from "@assets/logos/anthropic.svg";
-import GoogleLogo from "@assets/logos/Google.svg";
-import OpenAILogo from "@assets/logos/OpenAI.svg";
+import MistralLogo from "@assets/logos/Mistral.svg?url";
+import BudibaseLogo from "@assets/logos/bbSymbol.svg?url";
+import AnthropicLogo from "@assets/logos/anthropic.svg?url";
+import GoogleLogo from "@assets/logos/Google.svg?url";
+import OpenAILogo from "@assets/logos/OpenAI.svg?url";
 
 interface Props {
   class?: string;
@@ -29,7 +28,11 @@ const overlayId = `agent-model-overlay-${Math.random().toString(36).slice(2, 8)}
     data-agent-model-toggle
   >
     <span class="agent-model-overlay-select-option-label">
-      <Image src={MistralLogo} alt="Mistral" class="agent-model-overlay-select-logo" />
+      <img
+        src={MistralLogo}
+        alt="Mistral"
+        class="agent-model-overlay-select-logo"
+      />
       Mistral 3
     </span>
     <CaretDown class="h-3.5 w-3.5" />
@@ -41,14 +44,18 @@ const overlayId = `agent-model-overlay-${Math.random().toString(36).slice(2, 8)}
   >
     <button class="agent-model-overlay-select-option is-selected" type="button">
       <span class="agent-model-overlay-select-option-label">
-        <Image src={MistralLogo} alt="Mistral" class="agent-model-overlay-select-logo" />
+        <img
+          src={MistralLogo}
+          alt="Mistral"
+          class="agent-model-overlay-select-logo"
+        />
         Mistral 3
       </span>
       <span class="agent-model-overlay-select-meta">Selected</span>
     </button>
     <button class="agent-model-overlay-select-option" type="button">
       <span class="agent-model-overlay-select-option-label">
-        <Image
+        <img
           src={BudibaseLogo}
           alt="Budibase"
           class="agent-model-overlay-select-logo is-monochrome"
@@ -58,7 +65,7 @@ const overlayId = `agent-model-overlay-${Math.random().toString(36).slice(2, 8)}
     </button>
     <button class="agent-model-overlay-select-option" type="button">
       <span class="agent-model-overlay-select-option-label">
-        <Image
+        <img
           src={AnthropicLogo}
           alt="Anthropic"
           class="agent-model-overlay-select-logo is-monochrome"
@@ -68,13 +75,17 @@ const overlayId = `agent-model-overlay-${Math.random().toString(36).slice(2, 8)}
     </button>
     <button class="agent-model-overlay-select-option" type="button">
       <span class="agent-model-overlay-select-option-label">
-        <Image src={GoogleLogo} alt="Google" class="agent-model-overlay-select-logo" />
+        <img
+          src={GoogleLogo}
+          alt="Google"
+          class="agent-model-overlay-select-logo"
+        />
         Google
       </span>
     </button>
     <button class="agent-model-overlay-select-option" type="button">
       <span class="agent-model-overlay-select-option-label">
-        <Image
+        <img
           src={OpenAILogo}
           alt="OpenAI"
           class="agent-model-overlay-select-logo is-monochrome is-openai"
@@ -169,7 +180,7 @@ const overlayId = `agent-model-overlay-${Math.random().toString(36).slice(2, 8)}
   .agent-model-overlay-select-logo.is-openai {
     transform: scale(1.15);
   }
-.agent-model-overlay-select-option.is-selected {
+  .agent-model-overlay-select-option.is-selected {
     color: var(--text-primary);
     font-weight: 500;
   }

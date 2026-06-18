@@ -1,19 +1,18 @@
 ---
-import { Image } from "astro:assets";
 import Plus from "phosphor-astro/Plus.astro";
 import SparkleFill from "phosphor-astro/SparkleFill.astro";
 import RowsPlusBottomFill from "phosphor-astro/RowsPlusBottomFill.astro";
-import SarahAvatar from "@assets/images/avatars/Avatar.png";
-import PlatformBg from "@assets/images/homepage/platform/bg3.png";
-import BBSymbol from "@assets/logos/bbSymbol.svg";
-import BBSymbolWhite from "@assets/logos/BBSymbolWhite.svg";
+import SarahAvatar from "@assets/images/avatars/Avatar.png?url";
+import PlatformBg from "@assets/images/homepage/platform/bg3.png?url";
+import BBSymbol from "@assets/logos/bbSymbol.svg?url";
+import BBSymbolWhite from "@assets/logos/BBSymbolWhite.svg?url";
 
 const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
 <div id={id} class="ops-platform-demo" data-ops-platform-demo>
   <div class="ops-platform-demo__bg" aria-hidden="true">
-    <Image src={PlatformBg} alt="" class="ops-platform-demo__bg-image" />
+    <img src={PlatformBg} alt="" class="ops-platform-demo__bg-image" />
   </div>
 
   <div class="ops-platform-demo__grid">
@@ -28,33 +27,58 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
 
         <div class="ops-platform-demo__chat-body">
           <div class="ops-platform-demo__message">
-            <div class="ops-platform-demo__avatar ops-platform-demo__avatar--employee">
-              <Image src={SarahAvatar} alt="Sarah Harvey" class="ops-platform-demo__avatar-image" />
+            <div
+              class="ops-platform-demo__avatar ops-platform-demo__avatar--employee"
+            >
+              <img
+                src={SarahAvatar}
+                alt="Sarah Harvey"
+                class="ops-platform-demo__avatar-image"
+              />
             </div>
 
             <div class="ops-platform-demo__message-content">
               <div class="ops-platform-demo__message-meta">
-                <span class="ops-platform-demo__message-author">Sarah Harvey</span>
+                <span class="ops-platform-demo__message-author"
+                  >Sarah Harvey</span
+                >
                 <span class="ops-platform-demo__message-time">12 mins</span>
               </div>
               <p class="ops-platform-demo__message-text">
                 <span class="ops-platform-demo__mention">@Ops Assistant</span>
-                <span>{` I need approval for a new laptop for a marketing hire?`}</span>
+                <span
+                  >{
+                    ` I need approval for a new laptop for a marketing hire?`
+                  }</span
+                >
               </p>
             </div>
           </div>
 
-          <div class="ops-platform-demo__message ops-platform-demo__assistant-message" data-ops-assistant>
-            <div class="ops-platform-demo__avatar ops-platform-demo__avatar--assistant">
-              <Image src={BBSymbolWhite} alt="Ops Assistant" class="ops-platform-demo__assistant-logo" />
+          <div
+            class="ops-platform-demo__message ops-platform-demo__assistant-message"
+            data-ops-assistant
+          >
+            <div
+              class="ops-platform-demo__avatar ops-platform-demo__avatar--assistant"
+            >
+              <img
+                src={BBSymbolWhite}
+                alt="Ops Assistant"
+                class="ops-platform-demo__assistant-logo"
+              />
             </div>
 
             <div class="ops-platform-demo__message-content">
               <div class="ops-platform-demo__message-meta">
-                <span class="ops-platform-demo__message-author">Ops Assistant</span>
+                <span class="ops-platform-demo__message-author"
+                  >Ops Assistant</span
+                >
                 <span class="ops-platform-demo__message-time">12 mins</span>
               </div>
-              <p class="ops-platform-demo__message-text">Laptop purchase request created:</p>
+              <p class="ops-platform-demo__message-text">
+                Laptop purchase request created:
+              </p>
               <div class="ops-platform-demo__reply-panel">
                 <ul class="ops-platform-demo__reply-list">
                   <li>Team: Marketing</li>
@@ -62,7 +86,9 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
                   <li>Budget: £700–£900</li>
                 </ul>
               </div>
-              <p class="ops-platform-demo__message-text">Submitted for Ops review.</p>
+              <p class="ops-platform-demo__message-text">
+                Submitted for Ops review.
+              </p>
             </div>
           </div>
         </div>
@@ -76,33 +102,35 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
       </article>
     </section>
 
-    <div class="ops-platform-demo__connector ops-platform-demo__staged" aria-hidden="true" data-ops-connector="analysis">
+    <div
+      class="ops-platform-demo__connector ops-platform-demo__staged"
+      aria-hidden="true"
+      data-ops-connector="analysis"
+    >
       <svg viewBox="0 0 50 20" preserveAspectRatio="none">
         <line x1="4" y1="10" x2="40" y2="10"></line>
         <polyline points="32,3 40,10 32,17"></polyline>
       </svg>
     </div>
 
-    <section class="ops-platform-demo__column ops-platform-demo__column--analysis ops-platform-demo__staged" data-ops-column="analysis">
+    <section
+      class="ops-platform-demo__column ops-platform-demo__column--analysis ops-platform-demo__staged"
+      data-ops-column="analysis"
+    >
       <p class="ops-platform-demo__column-title">Agent analyzes request</p>
 
-      <article class="ops-platform-demo__analysis-card" data-ops-panel="analysis">
+      <article
+        class="ops-platform-demo__analysis-card"
+        data-ops-panel="analysis"
+      >
         <p class="ops-platform-demo__analysis-heading">Ops Agent</p>
 
         <div class="ops-platform-demo__analysis-block">
-          <p class="ops-platform-demo__mono">
-            Analyzing request...
-          </p>
+          <p class="ops-platform-demo__mono">Analyzing request...</p>
           <div class="ops-platform-demo__analysis-steps">
-            <p class="ops-platform-demo__mono">
-              ✓ Extracting details
-            </p>
-            <p class="ops-platform-demo__mono">
-              ✓ Checking policy
-            </p>
-            <p class="ops-platform-demo__mono">
-              ✓ Selecting workflow
-            </p>
+            <p class="ops-platform-demo__mono">✓ Extracting details</p>
+            <p class="ops-platform-demo__mono">✓ Checking policy</p>
+            <p class="ops-platform-demo__mono">✓ Selecting workflow</p>
           </div>
         </div>
 
@@ -117,31 +145,48 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
         <div class="ops-platform-demo__action">
           <span class="ops-platform-demo__mono">Action:</span>
           <span class="ops-platform-demo__action-pill">
-            <Image src={BBSymbol} alt="" class="ops-platform-demo__action-icon" />
+            <img src={BBSymbol} alt="" class="ops-platform-demo__action-icon" />
             <span>Request Automation</span>
           </span>
         </div>
       </article>
     </section>
 
-    <div class="ops-platform-demo__connector ops-platform-demo__staged" aria-hidden="true" data-ops-connector="automation">
+    <div
+      class="ops-platform-demo__connector ops-platform-demo__staged"
+      aria-hidden="true"
+      data-ops-connector="automation"
+    >
       <svg viewBox="0 0 50 20" preserveAspectRatio="none">
         <line x1="4" y1="10" x2="40" y2="10"></line>
         <polyline points="32,3 40,10 32,17"></polyline>
       </svg>
     </div>
 
-    <section class="ops-platform-demo__column ops-platform-demo__column--automation ops-platform-demo__staged" data-ops-column="automation">
-      <p class="ops-platform-demo__column-title">Automation records the request</p>
+    <section
+      class="ops-platform-demo__column ops-platform-demo__column--automation ops-platform-demo__staged"
+      data-ops-column="automation"
+    >
+      <p class="ops-platform-demo__column-title">
+        Automation records the request
+      </p>
 
-      <article class="ops-platform-demo__automation-card" data-ops-panel="automation">
+      <article
+        class="ops-platform-demo__automation-card"
+        data-ops-panel="automation"
+      >
         <div class="ops-platform-demo__automation-group">
-          <span class="ops-platform-demo__badge ops-platform-demo__badge--trigger">Trigger</span>
+          <span
+            class="ops-platform-demo__badge ops-platform-demo__badge--trigger"
+            >Trigger</span
+          >
           <div class="ops-platform-demo__automation-item">
             <span class="ops-platform-demo__automation-icon">
               <SparkleFill class="h-[18px] w-[18px]" />
             </span>
-            <span class="ops-platform-demo__automation-copy">Workflow triggered</span>
+            <span class="ops-platform-demo__automation-copy"
+              >Workflow triggered</span
+            >
           </div>
         </div>
 
@@ -153,12 +198,19 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
         </div>
 
         <div class="ops-platform-demo__automation-group">
-          <span class="ops-platform-demo__badge ops-platform-demo__badge--outcome">Outcome</span>
-          <div class="ops-platform-demo__automation-item ops-platform-demo__automation-item--table">
+          <span
+            class="ops-platform-demo__badge ops-platform-demo__badge--outcome"
+            >Outcome</span
+          >
+          <div
+            class="ops-platform-demo__automation-item ops-platform-demo__automation-item--table"
+          >
             <span class="ops-platform-demo__automation-icon">
               <RowsPlusBottomFill class="h-[18px] w-[18px]" />
             </span>
-            <span class="ops-platform-demo__automation-copy">Update Requests table</span>
+            <span class="ops-platform-demo__automation-copy"
+              >Update Requests table</span
+            >
           </div>
 
           <div class="ops-platform-demo__table-wrap">
@@ -173,19 +225,28 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
                 <tr>
                   <td>Laptop for new hire</td>
                   <td>
-                    <span class="ops-platform-demo__status ops-platform-demo__status--pending">Pending</span>
+                    <span
+                      class="ops-platform-demo__status ops-platform-demo__status--pending"
+                      >Pending</span
+                    >
                   </td>
                 </tr>
                 <tr>
                   <td>Company car</td>
                   <td>
-                    <span class="ops-platform-demo__status ops-platform-demo__status--rejected">Rejected</span>
+                    <span
+                      class="ops-platform-demo__status ops-platform-demo__status--rejected"
+                      >Rejected</span
+                    >
                   </td>
                 </tr>
                 <tr>
                   <td>Additional figma seat</td>
                   <td>
-                    <span class="ops-platform-demo__status ops-platform-demo__status--approved">Approved</span>
+                    <span
+                      class="ops-platform-demo__status ops-platform-demo__status--approved"
+                      >Approved</span
+                    >
                   </td>
                 </tr>
               </tbody>
@@ -194,19 +255,30 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
         </div>
       </article>
     </section>
-    <div class="ops-platform-demo__response-flow" aria-hidden="true" data-ops-return-flow>
-      <svg class="ops-platform-demo__response-arrow ops-platform-demo__response-arrow--left" viewBox="0 0 220 20" preserveAspectRatio="none">
+    <div
+      class="ops-platform-demo__response-flow"
+      aria-hidden="true"
+      data-ops-return-flow
+    >
+      <svg
+        class="ops-platform-demo__response-arrow ops-platform-demo__response-arrow--left"
+        viewBox="0 0 220 20"
+        preserveAspectRatio="none"
+      >
         <line x1="216" y1="10" x2="14" y2="10"></line>
         <polyline points="22,3 14,10 22,17"></polyline>
       </svg>
       <span class="ops-platform-demo__response-label">Agent responds</span>
-      <svg class="ops-platform-demo__response-arrow ops-platform-demo__response-arrow--right" viewBox="0 0 220 20" preserveAspectRatio="none">
+      <svg
+        class="ops-platform-demo__response-arrow ops-platform-demo__response-arrow--right"
+        viewBox="0 0 220 20"
+        preserveAspectRatio="none"
+      >
         <line x1="216" y1="10" x2="14" y2="10"></line>
         <polyline points="22,3 14,10 22,17"></polyline>
       </svg>
     </div>
   </div>
-
 </div>
 
 <style>
@@ -236,7 +308,10 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: minmax(0, 320px) 50px minmax(0, 370px) 50px minmax(0, 370px);
+    grid-template-columns: minmax(0, 320px) 50px minmax(0, 370px) 50px minmax(
+        0,
+        370px
+      );
     row-gap: 18px;
     align-items: start;
     justify-content: center;
@@ -256,7 +331,10 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     opacity: 0;
     transform: translateY(8px);
     pointer-events: none;
-    transition: opacity 260ms ease, transform 260ms ease, color 260ms ease;
+    transition:
+      opacity 260ms ease,
+      transform 260ms ease,
+      color 260ms ease;
   }
 
   .ops-platform-demo__response-arrow {
@@ -318,7 +396,9 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     opacity: 0;
     transform: translateY(18px);
     pointer-events: none;
-    transition: opacity 320ms ease, transform 320ms ease;
+    transition:
+      opacity 320ms ease,
+      transform 320ms ease;
   }
 
   .ops-platform-demo__staged.is-visible {
@@ -343,7 +423,9 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     height: 20px;
     margin-top: 2px;
     color: var(--bb-transparent-black-500);
-    transition: color 220ms ease, transform 220ms ease;
+    transition:
+      color 220ms ease,
+      transform 220ms ease;
   }
 
   .ops-platform-demo__connector.is-active {
@@ -512,7 +594,10 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     visibility: hidden;
     opacity: 0;
     transform: translateY(10px);
-    transition: opacity 260ms ease, transform 260ms ease, visibility 260ms ease;
+    transition:
+      opacity 260ms ease,
+      transform 260ms ease,
+      visibility 260ms ease;
   }
 
   .ops-platform-demo__assistant-message.is-visible {
@@ -810,7 +895,6 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     .ops-platform-demo__connector.is-active {
       transform: rotate(90deg) translateX(0);
     }
-
   }
 
   @media (max-width: 767px) {
@@ -863,10 +947,14 @@ const id = `ops-platform-demo-${Math.random().toString(36).slice(2, 8)}`;
     const root = document.getElementById(id);
     if (!root) return;
 
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
     const assistant = root.querySelector("[data-ops-assistant]");
     const analysisColumn = root.querySelector('[data-ops-column="analysis"]');
-    const automationColumn = root.querySelector('[data-ops-column="automation"]');
+    const automationColumn = root.querySelector(
+      '[data-ops-column="automation"]',
+    );
     const analysisPanel = root.querySelector('[data-ops-panel="analysis"]');
     const automationPanel = root.querySelector('[data-ops-panel="automation"]');
     const returnFlow = root.querySelector("[data-ops-return-flow]");

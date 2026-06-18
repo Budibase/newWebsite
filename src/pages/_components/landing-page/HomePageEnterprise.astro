@@ -2,7 +2,7 @@
 import SectionBlock from "@components/SectionBlock.astro";
 import Card from "@components/cards/Card.astro";
 
-import BackgroundImage from "@assets/images/homepage/use cases/1.png";
+import BackgroundImage from "@assets/images/homepage/use cases/1.png?url";
 
 const cards = [
   {
@@ -44,7 +44,7 @@ const cards = [
         cards.map((card) => (
           <div
             class="home-enterprise__card"
-            style={`--enterprise-bg: url("${BackgroundImage.src}")`}
+            style={`--enterprise-bg: url("${BackgroundImage}")`}
           >
             <Card
               label={card.label}
@@ -52,7 +52,11 @@ const cards = [
               imageSrc={BackgroundImage}
               imageAlt={card.imageAlt}
             >
-              <div slot="image-overlay" class="home-enterprise__overlay" aria-hidden="true">
+              <div
+                slot="image-overlay"
+                class="home-enterprise__overlay"
+                aria-hidden="true"
+              >
                 <img
                   class="home-enterprise__overlay-image"
                   src={card.imageUrl}

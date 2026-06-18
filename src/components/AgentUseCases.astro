@@ -1,11 +1,10 @@
 ---
-import { Image } from "astro:assets";
-import AvatarImage from "@assets/images/avatars/Avatar.png";
-import SupportAvatarImage from "@assets/images/avatars/Ellipse-1.png";
-import BudibaseSymbol from "@assets/BBSymbolWhite.svg";
-import GmailLogo from "@assets/logos/Gmail.svg";
-import TeamsLogo from "@assets/logos/microsoft-teams.svg";
-import BambooHrLogo from "@assets/logos/bamboohr.svg";
+import AvatarImage from "@assets/images/avatars/Avatar.png?url";
+import SupportAvatarImage from "@assets/images/avatars/Ellipse-1.png?url";
+import BudibaseSymbol from "@assets/BBSymbolWhite.svg?url";
+import GmailLogo from "@assets/logos/Gmail.svg?url";
+import TeamsLogo from "@assets/logos/microsoft-teams.svg?url";
+import BambooHrLogo from "@assets/logos/bamboohr.svg?url";
 import RowsPlusBottomFill from "phosphor-astro/RowsPlusBottomFill.astro";
 import PaperPlaneTiltFill from "phosphor-astro/PaperPlaneTiltFill.astro";
 import SparkleFill from "phosphor-astro/SparkleFill.astro";
@@ -17,7 +16,13 @@ import Tabs from "@components/Tabs.astro";
 interface FrameNode {
   title: string;
   description?: string;
-  iconKind: "sparkle" | "clock" | "rowsPlusBottom" | "paperPlaneTilt" | "teams" | "bamboohr";
+  iconKind:
+    | "sparkle"
+    | "clock"
+    | "rowsPlusBottom"
+    | "paperPlaneTilt"
+    | "teams"
+    | "bamboohr";
   iconTone: "trigger" | "agent" | "integration" | "alert";
   badgeLabel?: "Trigger" | "Operation";
   badgeTone?: "trigger" | "operation";
@@ -135,7 +140,9 @@ const tabs = [
 ---
 
 <section id={id}>
-  <div class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:gap-20">
+  <div
+    class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:gap-20"
+  >
     <div>
       <Tabs
         tabs={tabs}
@@ -146,230 +153,339 @@ const tabs = [
         {
           frames.map((frame) => (
             <div data-tab-panel={frame.id}>
-              {
-                frame.id === "employee-self-service" ? (
-                  <div class="agent-use-cases-thread-stage">
-                    <div class="agent-use-cases-thread-card">
-                      <div class="agent-use-cases-thread-header">
-                        <button
-                          type="button"
-                          class="agent-use-cases-thread-back"
-                          aria-label="Back"
-                        >
-                          <Icon name="CaretLeft" size="20" class="agent-use-cases-thread-back-icon" />
-                        </button>
-                        <h3 class="agent-use-cases-thread-title">Threads</h3>
-                      </div>
-
-                        <div class="agent-use-cases-thread-body">
-                          <div class="agent-use-cases-thread-message">
-                          <Image src={AvatarImage} alt="John Smyth" class="agent-use-cases-thread-avatar" />
-                          <div class="agent-use-cases-thread-copy">
-                            <div class="agent-use-cases-thread-meta">
-                              <p class="agent-use-cases-thread-name">John Smyth</p>
-                              <p class="agent-use-cases-thread-time">13 mins</p>
-                            </div>
-                            <p class="agent-use-cases-thread-text">
-                              <span class="agent-use-cases-thread-link">@Ops Assistant</span>
-                              <span> Who’s out of office tomorrow?</span>
-                            </p>
-                          </div>
-                        </div>
-
-                        <div class="agent-use-cases-thread-message">
-                          <div class="agent-use-cases-thread-badge" aria-hidden="true">
-                            <Image src={BudibaseSymbol} alt="" class="agent-use-cases-thread-badge-symbol" />
-                          </div>
-                          <div class="agent-use-cases-thread-copy">
-                            <div class="agent-use-cases-thread-meta">
-                              <p class="agent-use-cases-thread-name">Ops Assistant</p>
-                              <p class="agent-use-cases-thread-time">12 mins</p>
-                            </div>
-                            <div class="agent-use-cases-thread-response">
-                              <p>Here’s who’s out tomorrow</p>
-                              <ul>
-                                <li>Sarah (Marketing)</li>
-                                <li>David (Sales)</li>
-                                <li>Priya (Engineering)</li>
-                              </ul>
-                              <p>
-                                Want me to post this in
-                                <span class="agent-use-cases-thread-link"> #team-updates</span>?
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="agent-use-cases-thread-input">
-                        <div class="agent-use-cases-thread-input-row">
-                          <div class="agent-use-cases-thread-input-icon-wrap" aria-hidden="true">
-                            <Icon name="Plus" size="16" class="agent-use-cases-thread-input-icon" />
-                          </div>
-                          <p class="agent-use-cases-thread-input-text">Add a reply</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ) : frame.id === "approval-requests" ? (
-                  <div class="agent-use-cases-approval-stage">
-                    <div class="agent-use-cases-approval-form-card">
-                      <RowsPlusBottomFill class="agent-use-cases-approval-form-icon" aria-hidden="true" />
-                      <h3 class="agent-use-cases-approval-form-title">Access request form</h3>
-                      <p class="agent-use-cases-approval-form-label">What would you like access to?</p>
-                      <div class="agent-use-cases-approval-select" aria-hidden="true">
-                        <span class="agent-use-cases-approval-select-value">Product data</span>
+              {frame.id === "employee-self-service" ? (
+                <div class="agent-use-cases-thread-stage">
+                  <div class="agent-use-cases-thread-card">
+                    <div class="agent-use-cases-thread-header">
+                      <button
+                        type="button"
+                        class="agent-use-cases-thread-back"
+                        aria-label="Back"
+                      >
                         <Icon
-                          name="CaretRight"
-                          size="18"
-                          class="agent-use-cases-approval-select-caret rotate-90"
+                          name="CaretLeft"
+                          size="20"
+                          class="agent-use-cases-thread-back-icon"
                         />
-                      </div>
-                      <div class="agent-use-cases-approval-submit">Submit</div>
+                      </button>
+                      <h3 class="agent-use-cases-thread-title">Threads</h3>
                     </div>
 
-                    <div class="agent-use-cases-approval-connector" aria-hidden="true"></div>
-
-                    <div class="agent-use-cases-approval-info-card">
-                      <div class="agent-use-cases-approval-info-icon is-agent" aria-hidden="true">
-                        <SparkleFill class="agent-use-cases-approval-info-icon-image" />
-                      </div>
-                      <div class="agent-use-cases-approval-info-copy">
-                        <p class="agent-use-cases-approval-info-title">Access Agent</p>
-                        <p class="agent-use-cases-approval-info-text">
-                          Handle employee access requests and approvals automatically.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div class="agent-use-cases-approval-connector" aria-hidden="true"></div>
-
-                    <div class="agent-use-cases-approval-info-card">
-                      <div class="agent-use-cases-approval-info-icon is-gmail" aria-hidden="true">
-                        <Image src={GmailLogo} alt="" class="agent-use-cases-approval-gmail-icon" />
-                      </div>
-                      <div class="agent-use-cases-approval-info-copy">
-                        <p class="agent-use-cases-approval-info-title">Gmail notification</p>
-                        <p class="agent-use-cases-approval-info-text">
-                          The Access Agent has granted you access to Product data.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ) : frame.id === "internal-support" ? (
-                  <div class="agent-use-cases-thread-stage">
-                    <div class="agent-use-cases-thread-card agent-use-cases-support-card">
-                      <div class="agent-use-cases-support-header">
-                        <Image src={TeamsLogo} alt="" class="agent-use-cases-support-header-logo" />
-                        <h3 class="agent-use-cases-support-header-title">Microsoft Teams</h3>
+                    <div class="agent-use-cases-thread-body">
+                      <div class="agent-use-cases-thread-message">
+                        <img
+                          src={AvatarImage}
+                          alt="John Smyth"
+                          class="agent-use-cases-thread-avatar"
+                        />
+                        <div class="agent-use-cases-thread-copy">
+                          <div class="agent-use-cases-thread-meta">
+                            <p class="agent-use-cases-thread-name">
+                              John Smyth
+                            </p>
+                            <p class="agent-use-cases-thread-time">13 mins</p>
+                          </div>
+                          <p class="agent-use-cases-thread-text">
+                            <span class="agent-use-cases-thread-link">
+                              @Ops Assistant
+                            </span>
+                            <span> Who’s out of office tomorrow?</span>
+                          </p>
+                        </div>
                       </div>
 
-                      <div class="agent-use-cases-thread-body agent-use-cases-support-body">
-                        <div class="agent-use-cases-thread-message">
-                          <Image
-                            src={SupportAvatarImage}
-                            alt="Jess Mitchell"
-                            class="agent-use-cases-thread-avatar agent-use-cases-support-avatar"
+                      <div class="agent-use-cases-thread-message">
+                        <div
+                          class="agent-use-cases-thread-badge"
+                          aria-hidden="true"
+                        >
+                          <img
+                            src={BudibaseSymbol}
+                            alt=""
+                            class="agent-use-cases-thread-badge-symbol"
                           />
-                          <div class="agent-use-cases-thread-copy">
-                            <div class="agent-use-cases-thread-meta">
-                              <p class="agent-use-cases-thread-name">Jess Mitchell</p>
-                              <p class="agent-use-cases-thread-time">2 mins</p>
-                            </div>
-                            <p class="agent-use-cases-thread-text">
-                              <span class="agent-use-cases-thread-link">@Ops Assistant</span>
-                              <span> my VPN isn’t working</span>
+                        </div>
+                        <div class="agent-use-cases-thread-copy">
+                          <div class="agent-use-cases-thread-meta">
+                            <p class="agent-use-cases-thread-name">
+                              Ops Assistant
+                            </p>
+                            <p class="agent-use-cases-thread-time">12 mins</p>
+                          </div>
+                          <div class="agent-use-cases-thread-response">
+                            <p>Here’s who’s out tomorrow</p>
+                            <ul>
+                              <li>Sarah (Marketing)</li>
+                              <li>David (Sales)</li>
+                              <li>Priya (Engineering)</li>
+                            </ul>
+                            <p>
+                              Want me to post this in
+                              <span class="agent-use-cases-thread-link">
+                                {" "}
+                                #team-updates
+                              </span>
+                              ?
                             </p>
                           </div>
                         </div>
-
-                        <div class="agent-use-cases-thread-message">
-                          <div class="agent-use-cases-thread-badge agent-use-cases-support-badge" aria-hidden="true">
-                            <Image src={BudibaseSymbol} alt="" class="agent-use-cases-thread-badge-symbol" />
-                          </div>
-                          <div class="agent-use-cases-thread-copy">
-                            <div class="agent-use-cases-thread-meta">
-                              <p class="agent-use-cases-thread-name">Ops Assistant</p>
-                              <p class="agent-use-cases-thread-time">2 mins</p>
-                            </div>
-                            <div class="agent-use-cases-support-response">
-                              <p>Sounds like a VPN access issue.</p>
-                              <p>Support ticket created</p>
-                              <ul>
-                                <li>Category: Network &amp; Connectivity</li>
-                                <li>Issue: VPN access</li>
-                                <li>Priority: Medium</li>
-                              </ul>
-                              <p>Assigned to IT. They'll follow up shortly.</p>
-                            </div>
-                          </div>
-                        </div>
                       </div>
+                    </div>
 
-                      <div class="agent-use-cases-thread-input">
-                        <div class="agent-use-cases-thread-input-row">
-                          <div class="agent-use-cases-thread-input-icon-wrap" aria-hidden="true">
-                            <Icon name="Plus" size="24" class="agent-use-cases-support-input-icon" />
-                          </div>
-                          <p class="agent-use-cases-thread-input-text">Add a reply</p>
+                    <div class="agent-use-cases-thread-input">
+                      <div class="agent-use-cases-thread-input-row">
+                        <div
+                          class="agent-use-cases-thread-input-icon-wrap"
+                          aria-hidden="true"
+                        >
+                          <Icon
+                            name="Plus"
+                            size="16"
+                            class="agent-use-cases-thread-input-icon"
+                          />
                         </div>
+                        <p class="agent-use-cases-thread-input-text">
+                          Add a reply
+                        </p>
                       </div>
                     </div>
                   </div>
-                ) : (
-                  <div class="agent-use-cases-canvas rounded-xl px-4 py-5 sm:px-5 sm:py-6">
-                    <div class="agent-use-cases-flow-content">
-                      <ul class="agent-use-cases-node-list">
-                        {
-                          frame.nodes.map((node) => (
-                            <li class="agent-use-cases-node-wrap">
-                              {node.badgeLabel && (
-                                <span
-                                  class:list={[
-                                    "agent-use-cases-node-badge",
-                                    node.badgeTone === "operation" ? "is-operation" : "is-trigger",
-                                  ]}
-                                >
-                                  {node.badgeLabel}
-                                </span>
+                </div>
+              ) : frame.id === "approval-requests" ? (
+                <div class="agent-use-cases-approval-stage">
+                  <div class="agent-use-cases-approval-form-card">
+                    <RowsPlusBottomFill
+                      class="agent-use-cases-approval-form-icon"
+                      aria-hidden="true"
+                    />
+                    <h3 class="agent-use-cases-approval-form-title">
+                      Access request form
+                    </h3>
+                    <p class="agent-use-cases-approval-form-label">
+                      What would you like access to?
+                    </p>
+                    <div
+                      class="agent-use-cases-approval-select"
+                      aria-hidden="true"
+                    >
+                      <span class="agent-use-cases-approval-select-value">
+                        Product data
+                      </span>
+                      <Icon
+                        name="CaretRight"
+                        size="18"
+                        class="agent-use-cases-approval-select-caret rotate-90"
+                      />
+                    </div>
+                    <div class="agent-use-cases-approval-submit">Submit</div>
+                  </div>
+
+                  <div
+                    class="agent-use-cases-approval-connector"
+                    aria-hidden="true"
+                  />
+
+                  <div class="agent-use-cases-approval-info-card">
+                    <div
+                      class="agent-use-cases-approval-info-icon is-agent"
+                      aria-hidden="true"
+                    >
+                      <SparkleFill class="agent-use-cases-approval-info-icon-image" />
+                    </div>
+                    <div class="agent-use-cases-approval-info-copy">
+                      <p class="agent-use-cases-approval-info-title">
+                        Access Agent
+                      </p>
+                      <p class="agent-use-cases-approval-info-text">
+                        Handle employee access requests and approvals
+                        automatically.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    class="agent-use-cases-approval-connector"
+                    aria-hidden="true"
+                  />
+
+                  <div class="agent-use-cases-approval-info-card">
+                    <div
+                      class="agent-use-cases-approval-info-icon is-gmail"
+                      aria-hidden="true"
+                    >
+                      <img
+                        src={GmailLogo}
+                        alt=""
+                        class="agent-use-cases-approval-gmail-icon"
+                      />
+                    </div>
+                    <div class="agent-use-cases-approval-info-copy">
+                      <p class="agent-use-cases-approval-info-title">
+                        Gmail notification
+                      </p>
+                      <p class="agent-use-cases-approval-info-text">
+                        The Access Agent has granted you access to Product data.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ) : frame.id === "internal-support" ? (
+                <div class="agent-use-cases-thread-stage">
+                  <div class="agent-use-cases-thread-card agent-use-cases-support-card">
+                    <div class="agent-use-cases-support-header">
+                      <img
+                        src={TeamsLogo}
+                        alt=""
+                        class="agent-use-cases-support-header-logo"
+                      />
+                      <h3 class="agent-use-cases-support-header-title">
+                        Microsoft Teams
+                      </h3>
+                    </div>
+
+                    <div class="agent-use-cases-thread-body agent-use-cases-support-body">
+                      <div class="agent-use-cases-thread-message">
+                        <img
+                          src={SupportAvatarImage}
+                          alt="Jess Mitchell"
+                          class="agent-use-cases-thread-avatar agent-use-cases-support-avatar"
+                        />
+                        <div class="agent-use-cases-thread-copy">
+                          <div class="agent-use-cases-thread-meta">
+                            <p class="agent-use-cases-thread-name">
+                              Jess Mitchell
+                            </p>
+                            <p class="agent-use-cases-thread-time">2 mins</p>
+                          </div>
+                          <p class="agent-use-cases-thread-text">
+                            <span class="agent-use-cases-thread-link">
+                              @Ops Assistant
+                            </span>
+                            <span> my VPN isn’t working</span>
+                          </p>
+                        </div>
+                      </div>
+
+                      <div class="agent-use-cases-thread-message">
+                        <div
+                          class="agent-use-cases-thread-badge agent-use-cases-support-badge"
+                          aria-hidden="true"
+                        >
+                          <img
+                            src={BudibaseSymbol}
+                            alt=""
+                            class="agent-use-cases-thread-badge-symbol"
+                          />
+                        </div>
+                        <div class="agent-use-cases-thread-copy">
+                          <div class="agent-use-cases-thread-meta">
+                            <p class="agent-use-cases-thread-name">
+                              Ops Assistant
+                            </p>
+                            <p class="agent-use-cases-thread-time">2 mins</p>
+                          </div>
+                          <div class="agent-use-cases-support-response">
+                            <p>Sounds like a VPN access issue.</p>
+                            <p>Support ticket created</p>
+                            <ul>
+                              <li>Category: Network &amp; Connectivity</li>
+                              <li>Issue: VPN access</li>
+                              <li>Priority: Medium</li>
+                            </ul>
+                            <p>Assigned to IT. They'll follow up shortly.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="agent-use-cases-thread-input">
+                      <div class="agent-use-cases-thread-input-row">
+                        <div
+                          class="agent-use-cases-thread-input-icon-wrap"
+                          aria-hidden="true"
+                        >
+                          <Icon
+                            name="Plus"
+                            size="24"
+                            class="agent-use-cases-support-input-icon"
+                          />
+                        </div>
+                        <p class="agent-use-cases-thread-input-text">
+                          Add a reply
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div class="agent-use-cases-canvas rounded-xl px-4 py-5 sm:px-5 sm:py-6">
+                  <div class="agent-use-cases-flow-content">
+                    <ul class="agent-use-cases-node-list">
+                      {frame.nodes.map((node) => (
+                        <li class="agent-use-cases-node-wrap">
+                          {node.badgeLabel && (
+                            <span
+                              class:list={[
+                                "agent-use-cases-node-badge",
+                                node.badgeTone === "operation"
+                                  ? "is-operation"
+                                  : "is-trigger",
+                              ]}
+                            >
+                              {node.badgeLabel}
+                            </span>
+                          )}
+
+                          <div class="agent-use-cases-node">
+                            <span
+                              class:list={[
+                                "agent-use-cases-node-icon",
+                                `is-${node.iconTone}`,
+                              ]}
+                              aria-hidden="true"
+                            >
+                              {node.iconKind === "sparkle" && (
+                                <SparkleFill class="h-[18px] w-[18px]" />
                               )}
+                              {node.iconKind === "rowsPlusBottom" && (
+                                <RowsPlusBottomFill class="h-[18px] w-[18px]" />
+                              )}
+                              {node.iconKind === "paperPlaneTilt" && (
+                                <PaperPlaneTiltFill class="h-[18px] w-[18px]" />
+                              )}
+                              {node.iconKind === "teams" && (
+                                <img
+                                  src={TeamsLogo}
+                                  alt="Microsoft Teams"
+                                  class="h-[18px] w-[18px]"
+                                />
+                              )}
+                              {node.iconKind === "bamboohr" && (
+                                <img
+                                  src={BambooHrLogo}
+                                  alt="BambooHR"
+                                  class="h-[18px] w-[18px]"
+                                />
+                              )}
+                            </span>
 
-                              <div class="agent-use-cases-node">
-                                <span
-                                  class:list={[
-                                    "agent-use-cases-node-icon",
-                                    `is-${node.iconTone}`,
-                                  ]}
-                                  aria-hidden="true"
-                                >
-                                  {node.iconKind === "sparkle" && <SparkleFill class="h-[18px] w-[18px]" />}
-                                  {node.iconKind === "rowsPlusBottom" && (
-                                    <RowsPlusBottomFill class="h-[18px] w-[18px]" />
-                                  )}
-                                  {node.iconKind === "paperPlaneTilt" && (
-                                    <PaperPlaneTiltFill class="h-[18px] w-[18px]" />
-                                  )}
-                                  {node.iconKind === "teams" && (
-                                    <Image src={TeamsLogo} alt="Microsoft Teams" class="h-[18px] w-[18px]" />
-                                  )}
-                                  {node.iconKind === "bamboohr" && (
-                                    <Image src={BambooHrLogo} alt="BambooHR" class="h-[18px] w-[18px]" />
-                                  )}
-                                </span>
-
-                                <div class="agent-use-cases-node-copy">
-                                  <div class="agent-use-cases-node-title">{node.title}</div>
-                                  {node.description && <p class="agent-use-cases-node-description">{node.description}</p>}
-                                </div>
+                            <div class="agent-use-cases-node-copy">
+                              <div class="agent-use-cases-node-title">
+                                {node.title}
                               </div>
-                            </li>
-                          ))
-                        }
-                      </ul>
-                    </div>
+                              {node.description && (
+                                <p class="agent-use-cases-node-description">
+                                  {node.description}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                )
-              }
+                </div>
+              )}
             </div>
           ))
         }
@@ -389,9 +505,14 @@ const tabs = [
     >
       <ul class="flex flex-col gap-4">
         <li class="flex items-start gap-3">
-          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <CheckCircleFill
+            class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]"
+            aria-hidden="true"
+          />
           <div class="space-y-1.5">
-            <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            <div
+              class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]"
+            >
               Employee self-service
             </div>
             <p class="m-0 text-[14px] leading-6 text-[var(--text-secondary)]">
@@ -400,9 +521,14 @@ const tabs = [
           </div>
         </li>
         <li class="flex items-start gap-3">
-          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <CheckCircleFill
+            class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]"
+            aria-hidden="true"
+          />
           <div class="space-y-1.5">
-            <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            <div
+              class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]"
+            >
               Approval requests
             </div>
             <p class="m-0 text-[14px] leading-6 text-[var(--text-secondary)]">
@@ -411,13 +537,19 @@ const tabs = [
           </div>
         </li>
         <li class="flex items-start gap-3">
-          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <CheckCircleFill
+            class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]"
+            aria-hidden="true"
+          />
           <div class="space-y-1.5">
-            <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            <div
+              class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]"
+            >
               Support triage
             </div>
             <p class="m-0 text-[14px] leading-6 text-[var(--text-secondary)]">
-              Agents can manage incoming requests and route them to the right team.
+              Agents can manage incoming requests and route them to the right
+              team.
             </p>
           </div>
         </li>
@@ -442,7 +574,12 @@ const tabs = [
     --agent-use-cases-node-description: var(--text-secondary);
     --agent-use-cases-node-icon-fg: var(--bb-white);
     background:
-      radial-gradient(circle at center, var(--agent-use-cases-grid-dot) 1px, transparent 1px) 0 0 / 20px 20px,
+      radial-gradient(
+          circle at center,
+          var(--agent-use-cases-grid-dot) 1px,
+          transparent 1px
+        )
+        0 0 / 20px 20px,
       var(--bg-2);
   }
 
@@ -485,7 +622,11 @@ const tabs = [
     width: 1px;
     height: calc(var(--node-row-gap) - 16px);
     transform: translateX(-50%);
-    background-image: linear-gradient(to bottom, var(--agent-use-cases-connector) 45%, transparent 45%);
+    background-image: linear-gradient(
+      to bottom,
+      var(--agent-use-cases-connector) 45%,
+      transparent 45%
+    );
     background-size: 1px 8px;
     background-repeat: repeat-y;
     animation: agent-use-cases-march 700ms linear infinite;
@@ -977,7 +1118,11 @@ const tabs = [
     height: 40px;
     display: block;
     flex-shrink: 0;
-    background-image: linear-gradient(to bottom, var(--bb-blue-700) 50%, transparent 50%);
+    background-image: linear-gradient(
+      to bottom,
+      var(--bb-blue-700) 50%,
+      transparent 50%
+    );
     background-size: 2px 8px;
     background-repeat: repeat-y;
   }
@@ -1108,7 +1253,8 @@ const tabs = [
     }
 
     .agent-use-cases-node-wrap,
-    .agent-use-cases-node-list.is-frame-employee-self-service .agent-use-cases-node-wrap {
+    .agent-use-cases-node-list.is-frame-employee-self-service
+      .agent-use-cases-node-wrap {
       width: min(100%, var(--node-width));
     }
 

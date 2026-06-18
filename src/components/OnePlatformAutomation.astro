@@ -1,7 +1,6 @@
 ---
-import { Image } from "astro:assets";
-import OnePlatformAutomationBg from "@assets/images/homepage/onePlatform/OnePlatformAutomation.png";
-import JiraLogo from "@assets/logos/Jira.svg";
+import OnePlatformAutomationBg from "@assets/images/homepage/onePlatform/OnePlatformAutomation.png?url";
+import JiraLogo from "@assets/logos/Jira.svg?url";
 import EnvelopeOpenFill from "phosphor-astro/EnvelopeOpenFill.astro";
 import SparkleFill from "phosphor-astro/SparkleFill.astro";
 
@@ -34,15 +33,11 @@ const steps = [
   role="img"
   aria-label="Automation preview showing four workflow steps from a new email trigger to Jira assignment"
 >
-  <Image
+  <img
     src={OnePlatformAutomationBg}
     alt=""
     class="one-platform-automation__bg"
     aria-hidden="true"
-    format="webp"
-    quality={60}
-    widths={[320, 480, 640]}
-    sizes="(min-width: 768px) 320px, calc(100vw - 1rem)"
     loading="lazy"
     decoding="async"
   />
@@ -67,7 +62,7 @@ const steps = [
                   <SparkleFill class="one-platform-automation__icon" />
                 )}
                 {step.icon === "jira" && (
-                  <Image
+                  <img
                     src={JiraLogo}
                     alt=""
                     class="one-platform-automation__jira-logo"

@@ -1,0 +1,133 @@
+---
+import Button from "./Button.astro";
+import { cx } from "../../lib/ui-classes";
+
+interface Item {
+  label: string;
+  href?: string;
+  description?: string;
+  disabled?: boolean;
+  target?: string;
+  rel?: string;
+}
+
+interface Props {
+  label: string;
+  items: Item[];
+  align?: "start" | "end";
+  class?: string;
+}
+
+const {
+  label,
+  items,
+  align = "start",
+  class: className,
+} = Astro.props as Props;
+const panelAlignment = align === "end" ? "right-0" : "left-0";
+---
+
+<bb-dropdown class={cx("relative inline-flex", className)} data-slot="dropdown">
+  <Button
+    variant="outline"
+    size="md"
+    ariaLabel={label}
+    class="pr-2.5"
+    data-dropdown-trigger
+  >
+    <span>{label}</span>
+    <svg
+      class="size-4 opacity-70 transition-transform group-aria-expanded:rotate-180"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.17l3.71-3.94a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z"
+        clip-rule="evenodd"></path>
+    </svg>
+  </Button>
+  <div
+    class={cx(
+      "invisible absolute top-full z-50 mt-2 min-w-56 origin-top rounded-xs border border-border bg-bg p-1.5 opacity-0 shadow-xl transition duration-150 data-open:visible data-open:scale-100 data-open:opacity-100",
+      panelAlignment,
+    )}
+    data-dropdown-content
+    role="menu"
+  >
+    {
+      items.map((item) =>
+        item.disabled ? (
+          <span
+            class="block rounded-xs px-3 py-2 text-sm text-text-muted opacity-60"
+            role="menuitem"
+            aria-disabled="true"
+          >
+            {item.label}
+          </span>
+        ) : (
+          <a
+            href={item.href}
+            target={item.target}
+            rel={
+              item.rel ??
+              (item.target === "_blank" ? "noopener noreferrer" : undefined)
+            }
+            class="block rounded-xs px-3 py-2 text-sm text-text no-underline outline-none transition-colors hover:bg-surface focus-visible:bg-surface"
+            role="menuitem"
+          >
+            <span class="block font-medium">{item.label}</span>
+            {item.description && (
+              <span class="mt-0.5 block text-xs leading-5 text-text-muted">
+                {item.description}
+              </span>
+            )}
+          </a>
+        ),
+      )
+    }
+  </div>
+</bb-dropdown>
+
+<script>
+  if (!customElements.get("bb-dropdown")) {
+    customElements.define(
+      "bb-dropdown",
+      class BBDropdown extends HTMLElement {
+        connectedCallback() {
+          const trigger = this.querySelector("[data-dropdown-trigger]");
+          const content = this.querySelector("[data-dropdown-content]");
+          if (
+            !(trigger instanceof HTMLElement) ||
+            !(content instanceof HTMLElement)
+          )
+            return;
+
+          const setOpen = (open: boolean) => {
+            trigger.setAttribute("aria-expanded", String(open));
+            content.toggleAttribute("data-open", open);
+          };
+
+          trigger.setAttribute("aria-haspopup", "menu");
+          trigger.setAttribute("aria-expanded", "false");
+          trigger.addEventListener("click", (event) => {
+            event.stopPropagation();
+            setOpen(!content.hasAttribute("data-open"));
+          });
+
+          this.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+              setOpen(false);
+              trigger.focus();
+            }
+          });
+
+          document.addEventListener("click", (event) => {
+            if (!this.contains(event.target as Node)) setOpen(false);
+          });
+        }
+      },
+    );
+  }
+</script>

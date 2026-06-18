@@ -1,0 +1,119 @@
+---
+import { cx } from "../../lib/ui-classes";
+
+interface Props {
+  id: string;
+  title: string;
+  description?: string;
+  triggerLabel: string;
+  class?: string;
+}
+
+const {
+  id,
+  title,
+  description,
+  triggerLabel,
+  class: className,
+} = Astro.props as Props;
+---
+
+<bb-dialog data-slot="dialog" class={className}>
+  <button
+    type="button"
+    class="inline-flex h-9 items-center justify-center rounded-xs border border-border bg-bg px-3.5 text-sm font-medium text-text outline-none transition-colors hover:bg-surface focus-visible:ring-3 focus-visible:ring-ring/25"
+    data-dialog-trigger
+    aria-haspopup="dialog"
+  >
+    {triggerLabel}
+  </button>
+  <div
+    class="fixed inset-0 z-50 hidden bg-black/20 backdrop-blur-[1px] data-open:block"
+    data-dialog-overlay
+  >
+  </div>
+  <section
+    id={id}
+    class={cx(
+      "fixed left-1/2 top-1/2 z-50 hidden w-[min(100%-2rem,34rem)] -translate-x-1/2 -translate-y-1/2 rounded-xs border border-border bg-bg p-6 text-text shadow-xl outline-none data-open:grid data-open:gap-5",
+    )}
+    data-dialog-content
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby={`${id}-title`}
+    aria-describedby={description ? `${id}-description` : undefined}
+    tabindex="-1"
+  >
+    <div class="grid gap-2">
+      <h2 id={`${id}-title`} class="text-lg font-semibold leading-6 text-text">
+        {title}
+      </h2>
+      {
+        description && (
+          <p id={`${id}-description`} class="text-sm leading-6 text-text-muted">
+            {description}
+          </p>
+        )
+      }
+    </div>
+    <slot />
+    <button
+      type="button"
+      class="absolute right-3 top-3 inline-flex size-8 items-center justify-center rounded-xs text-text-muted outline-none transition-colors hover:bg-surface hover:text-text focus-visible:ring-3 focus-visible:ring-ring/25"
+      data-dialog-close
+      aria-label="Close"
+    >
+      <svg
+        class="size-4"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
+        ></path>
+      </svg>
+    </button>
+  </section>
+</bb-dialog>
+
+<script>
+  if (!customElements.get("bb-dialog")) {
+    customElements.define(
+      "bb-dialog",
+      class BBDialog extends HTMLElement {
+        connectedCallback() {
+          const trigger = this.querySelector("[data-dialog-trigger]");
+          const overlay = this.querySelector("[data-dialog-overlay]");
+          const content = this.querySelector("[data-dialog-content]");
+          const close = this.querySelector("[data-dialog-close]");
+          if (
+            !(trigger instanceof HTMLElement) ||
+            !(overlay instanceof HTMLElement) ||
+            !(content instanceof HTMLElement) ||
+            !(close instanceof HTMLElement)
+          ) {
+            return;
+          }
+
+          const setOpen = (open: boolean) => {
+            overlay.toggleAttribute("data-open", open);
+            content.toggleAttribute("data-open", open);
+            document.body.style.overflow = open ? "hidden" : "";
+            if (open) content.focus();
+          };
+
+          trigger.addEventListener("click", () => setOpen(true));
+          close.addEventListener("click", () => setOpen(false));
+          overlay.addEventListener("click", () => setOpen(false));
+          this.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+              setOpen(false);
+              trigger.focus();
+            }
+          });
+        }
+      },
+    );
+  }
+</script>

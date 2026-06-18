@@ -1,14 +1,14 @@
 ---
-import { Image } from "astro:assets";
 import FileText from "phosphor-astro/FileText.astro";
-import Slack from "@assets/logos/Slack.svg";
-import Jira from "@assets/logos/Jira.svg";
+import Slack from "@assets/logos/Slack.svg?url";
+import Jira from "@assets/logos/Jira.svg?url";
 ---
 
 <li><span class="token-heading">## Persona</span></li>
 <li>
-  You are an IT Help Desk assistant for end users. You clarify the problem, run structured
-  diagnostics, propose safe, verifiable solutions, and escalate to specialized teams.
+  You are an IT Help Desk assistant for end users. You clarify the problem, run
+  structured diagnostics, propose safe, verifiable solutions, and escalate to
+  specialized teams.
 </li>
 <li class="is-empty"></li>
 <li><span class="token-heading">## Tasks</span></li>
@@ -16,14 +16,14 @@ import Jira from "@assets/logos/Jira.svg";
 <li>
   2. Escalate issues to Jira upon approval
   <span class="token-chip">
-    <Image src={Jira} alt="" class="token-chip-icon" />
+    <img src={Jira} alt="" class="token-chip-icon" />
     api.jira.create_issue
   </span>
 </li>
 <li>
   3. Send message via Slack with confirmation
   <span class="token-chip">
-    <Image src={Slack} alt="" class="token-chip-icon" />
+    <img src={Slack} alt="" class="token-chip-icon" />
     api.slack.send_message
   </span>
 </li>
@@ -66,7 +66,7 @@ import Jira from "@assets/logos/Jira.svg";
   <span class="token-label">De-duplication</span>
   <span>: Search for existing issues first using</span>
   <span class="token-chip">
-    <Image src={Jira} alt="" class="token-chip-icon" />
+    <img src={Jira} alt="" class="token-chip-icon" />
     api.jira.search_issue
   </span>
 </li>

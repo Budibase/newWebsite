@@ -2,15 +2,15 @@
 import SectionBlock from "@components/SectionBlock.astro";
 import Card from "@components/cards/Card.astro";
 import WorkplaceRequestDemo from "./WorkplaceRequestDemo.astro";
-import UseCase1 from "@assets/images/homepage/use cases/1.png";
-import UseCase2 from "@assets/images/homepage/use cases/2.png";
-import UseCase3 from "@assets/images/homepage/use cases/3.png";
-import AvatarImage from "@assets/images/avatars/Avatar.png";
-import EllipseImage from "@assets/images/avatars/Ellipse.png";
-import EllipseImageAlt from "@assets/images/avatars/Ellipse-1.png";
-import SlackLogo from "@assets/logos/Slack.svg";
-import DiscordLogo from "@assets/logos/discord.svg";
-import TeamsLogo from "@assets/logos/microsoft-teams.svg";
+import UseCase1 from "@assets/images/homepage/use cases/1.png?url";
+import UseCase2 from "@assets/images/homepage/use cases/2.png?url";
+import UseCase3 from "@assets/images/homepage/use cases/3.png?url";
+import AvatarImage from "@assets/images/avatars/Avatar.png?url";
+import EllipseImage from "@assets/images/avatars/Ellipse.png?url";
+import EllipseImageAlt from "@assets/images/avatars/Ellipse-1.png?url";
+import SlackLogo from "@assets/logos/Slack.svg?url";
+import DiscordLogo from "@assets/logos/discord.svg?url";
+import TeamsLogo from "@assets/logos/microsoft-teams.svg?url";
 
 const cards = [
   {
@@ -27,7 +27,11 @@ const cards = [
       timeLabel: "13 mins",
       promptText: "Who’s out of office tomorrow?",
       assistantIntro: "Here’s who’s out tomorrow",
-      bulletItems: ["Sarah (Marketing)", "David (Sales)", "Priya (Engineering)"],
+      bulletItems: [
+        "Sarah (Marketing)",
+        "David (Sales)",
+        "Priya (Engineering)",
+      ],
       footerSegments: [
         { text: "Want me to post this in " },
         { text: "#team-updates", highlight: true },
@@ -49,7 +53,11 @@ const cards = [
       timeLabel: "12 mins",
       promptText: "I need approval for a new laptop for a marketing hire?",
       assistantIntro: "Laptop purchase request created:",
-      bulletItems: ["Team: Marketing", "Item: Laptop for new hire", "Budget: £700–£900"],
+      bulletItems: [
+        "Team: Marketing",
+        "Item: Laptop for new hire",
+        "Budget: £700–£900",
+      ],
       footerSegments: [{ text: "Sent to IT for review." }],
     },
   },
@@ -95,7 +103,11 @@ const cards = [
               imageSrc={card.imageSrc}
               imageAlt={card.imageAlt}
             >
-              <div slot="image-overlay" class="workplace-requests__overlay" aria-hidden="true">
+              <div
+                slot="image-overlay"
+                class="workplace-requests__overlay"
+                aria-hidden="true"
+              >
                 <WorkplaceRequestDemo {...card.demo} />
               </div>
             </Card>

@@ -1,0 +1,48 @@
+---
+import { cx } from "../../lib/ui-classes";
+
+interface Props {
+  id?: string;
+  name?: string;
+  placeholder?: string;
+  rows?: number;
+  required?: boolean;
+  disabled?: boolean;
+  invalid?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  id,
+  name,
+  placeholder,
+  rows = 4,
+  required = false,
+  disabled = false,
+  invalid = false,
+  class: className,
+  ...rest
+} = Astro.props as Props;
+
+const classes = cx(
+  "min-h-24 w-full min-w-0 rounded-xs border bg-bg px-3 py-2 text-sm text-text shadow-xs outline-none transition-[border-color,box-shadow] placeholder:text-text-muted disabled:cursor-not-allowed disabled:opacity-50",
+  "border-border focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/25",
+  invalid &&
+    "border-danger focus-visible:border-danger focus-visible:ring-danger/20",
+  className,
+);
+---
+
+<textarea
+  id={id}
+  name={name}
+  placeholder={placeholder}
+  rows={rows}
+  required={required}
+  disabled={disabled}
+  aria-invalid={invalid ? "true" : undefined}
+  class={classes}
+  data-slot="textarea"
+  {...rest}><slot /></textarea
+>

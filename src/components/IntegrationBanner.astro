@@ -1,102 +1,100 @@
 ---
-import { Image } from "astro:assets";
-
 // Logo imports
-import DiscordLogoSvg from "@assets/logos/discord.svg";
-import MistralLogo from "@assets/logos/Mistral.svg";
-import OpenAILogo from "@assets/logos/openai.avif";
-import OpenRouterLogo from "@assets/logos/openrouter.svg";
-import GoogleLogo from "@assets/logos/Google.svg";
-import BambooLogo from "@assets/logos/Bamboo.svg";
-import OktaLogo from "@assets/logos/okta.jpeg";
-import SlackLogo from "@assets/logos/Slack.svg";
-import TeamsLogo from "@assets/logos/microsoft-teams.svg";
-import JiraLogo from "@assets/logos/Jira.svg";
-import PostgresLogo from "@assets/logos/Postgres.svg";
-import MySQLLogo from "@assets/logos/MYSQL.svg";
-import MSSQLLogo from "@assets/logos/MSSQL.svg";
-import SnowflakeLogo from "@assets/logos/Snowflake.svg";
-import OracleLogo from "@assets/logos/Oracle.svg";
-import AzureOpenAILogo from "@assets/logos/azure-openai.svg";
-import GroqLogo from "@assets/logos/groq.png";
-import AttioLogo from "@assets/logos/attio.png";
-import AnthropicLogo from "@assets/logos/anthropic.avif";
-import GithubLogoSvg from "@assets/logos/github.svg";
-import TwilioLogo from "@assets/logos/twilio.svg";
-import RestApiLogo from "@assets/logos/rest-api.svg";
-import OpenApiLogo from "@assets/logos/openapi.svg";
-import ExaLogo from "@assets/logos/exa.png";
-import ServiceNowLogo from "@assets/logos/servicenow.svg";
-import TavilyLogo from "@assets/logos/tavily.png";
-import PagerDutyLogo from "@assets/logos/pagerduty.jpeg";
-import StripeSvgLogo from "@assets/logos/stripe.svg";
-import SmtpLogo from "@assets/logos/smtp.svg";
-import DatadogLogo from "@assets/logos/datadog.svg";
-import GoogleSheetsLogo from "@assets/logos/google-sheets.svg";
-import CouchDBLogo from "@assets/logos/couchdb.svg";
-import ElasticsearchLogo from "@assets/logos/elastic.svg";
-import MongoDBLogo from "@assets/logos/mongodb.svg";
-import DynamoDBLogo from "@assets/logos/amazon-dynamodb.svg";
-import RedisLogo from "@assets/logos/redis.svg";
-import FirestoreLogo from "@assets/logos/firestore.svg";
-import AmazonS3Logo from "@assets/logos/amazon-s3.svg";
-import SupabaseLogo from "@assets/logos/supbase.png";
-import CleverLogo from "@assets/logos/clever.svg";
-import ConfluenceLogo from "@assets/logos/confluence.svg";
-import FigmaLogo from "@assets/logos/figma.svg";
-import HubSpotLogo from "@assets/logos/hubspot.svg";
-import MicrosoftSharePointLogo from "@assets/logos/microsoft-sharepoint.svg";
-import SplunkLogo from "@assets/logos/splunk.svg";
-import VirusTotalLogo from "@assets/logos/virustotal.svg";
-import ZendeskLogo from "@assets/logos/zendesk.svg";
-import AnsibleLogo from "@assets/logos/ansible.svg";
-import AshbyLogo from "@assets/logos/ashby.svg";
-import BambooHrLogo from "@assets/logos/bamboohr.svg";
-import BanksApiLogo from "@assets/logos/banksapi.svg";
-import BaremetricsLogo from "@assets/logos/baremetrics.svg";
-import BillsbyLogo from "@assets/logos/billsby.svg";
-import BreezyHrLogo from "@assets/logos/breezy-hr.svg";
-import BrevoLogo from "@assets/logos/brevo.svg";
-import BulkSmsLogo from "@assets/logos/bulksms-com.svg";
-import ButtondownLogo from "@assets/logos/buttondown.svg";
-import ClickUpLogo from "@assets/logos/clickup.svg";
-import DeelLogo from "@assets/logos/deel.svg";
-import DixaLogo from "@assets/logos/dixa.svg";
-import DotsLogo from "@assets/logos/dots.svg";
-import FactorialLogo from "@assets/logos/factorial.svg";
-import FastSpringLogo from "@assets/logos/fastspring.svg";
-import FountainLogo from "@assets/logos/fountain.svg";
-import GitLabLogo from "@assets/logos/gitlab.svg";
-import GoodyLogo from "@assets/logos/goody.svg";
-import HelcimLogo from "@assets/logos/helcim.svg";
-import HiBobLogo from "@assets/logos/hibob.svg";
-import HomerunLogo from "@assets/logos/homerun.svg";
-import HypatosLogo from "@assets/logos/hypatos.svg";
-import IntercomLogo from "@assets/logos/intercom.svg";
-import IroncladLogo from "@assets/logos/ironclad.svg";
-import JinaAiLogo from "@assets/logos/jina-ai.svg";
-import JobsoidLogo from "@assets/logos/jobsoid.svg";
-import KeatextAiLogo from "@assets/logos/keatext-ai.svg";
-import KenjoLogo from "@assets/logos/kenjo.svg";
-import LambdaLogo from "@assets/logos/lambda.svg";
-import LobLogo from "@assets/logos/lob.svg";
-import LocalizelyLogo from "@assets/logos/localizely.svg";
-import LogisticsOsLogo from "@assets/logos/logisticsos.svg";
-import MastercardLogo from "@assets/logos/mastercard.svg";
-import MeasureOneLogo from "@assets/logos/measureone.svg";
-import NanonetsLogo from "@assets/logos/nanonets.svg";
-import NotionLogo from "@assets/logos/notion.svg";
-import OysterLogo from "@assets/logos/oyster.svg";
-import PeachPaymentsLogo from "@assets/logos/peach-payments.svg";
-import PinpointLogo from "@assets/logos/pinpoint.svg";
-import PodiumLogo from "@assets/logos/podium.svg";
-import RemoteLogo from "@assets/logos/remote.svg";
-import ResendLogo from "@assets/logos/resend.svg";
-import DockerLogo from "@assets/logos/Docker.svg";
-import KubernetesLogo from "@assets/logos/kubernetes.svg";
-import NextcloudLogo from "@assets/logos/nextcloud.svg";
-import LinodeLogo from "@assets/logos/linode.svg";
-import DigitalOceanLogo from "@assets/logos/digital-ocean.svg";
+import DiscordLogoSvg from "@assets/logos/discord.svg?url";
+import MistralLogo from "@assets/logos/Mistral.svg?url";
+import OpenAILogo from "@assets/logos/openai.avif?url";
+import OpenRouterLogo from "@assets/logos/openrouter.svg?url";
+import GoogleLogo from "@assets/logos/Google.svg?url";
+import BambooLogo from "@assets/logos/Bamboo.svg?url";
+import OktaLogo from "@assets/logos/okta.jpeg?url";
+import SlackLogo from "@assets/logos/Slack.svg?url";
+import TeamsLogo from "@assets/logos/microsoft-teams.svg?url";
+import JiraLogo from "@assets/logos/Jira.svg?url";
+import PostgresLogo from "@assets/logos/Postgres.svg?url";
+import MySQLLogo from "@assets/logos/MYSQL.svg?url";
+import MSSQLLogo from "@assets/logos/MSSQL.svg?url";
+import SnowflakeLogo from "@assets/logos/Snowflake.svg?url";
+import OracleLogo from "@assets/logos/Oracle.svg?url";
+import AzureOpenAILogo from "@assets/logos/azure-openai.svg?url";
+import GroqLogo from "@assets/logos/groq.png?url";
+import AttioLogo from "@assets/logos/attio.png?url";
+import AnthropicLogo from "@assets/logos/anthropic.avif?url";
+import GithubLogoSvg from "@assets/logos/github.svg?url";
+import TwilioLogo from "@assets/logos/twilio.svg?url";
+import RestApiLogo from "@assets/logos/rest-api.svg?url";
+import OpenApiLogo from "@assets/logos/openapi.svg?url";
+import ExaLogo from "@assets/logos/exa.png?url";
+import ServiceNowLogo from "@assets/logos/servicenow.svg?url";
+import TavilyLogo from "@assets/logos/tavily.png?url";
+import PagerDutyLogo from "@assets/logos/pagerduty.jpeg?url";
+import StripeSvgLogo from "@assets/logos/stripe.svg?url";
+import SmtpLogo from "@assets/logos/smtp.svg?url";
+import DatadogLogo from "@assets/logos/datadog.svg?url";
+import GoogleSheetsLogo from "@assets/logos/google-sheets.svg?url";
+import CouchDBLogo from "@assets/logos/couchdb.svg?url";
+import ElasticsearchLogo from "@assets/logos/elastic.svg?url";
+import MongoDBLogo from "@assets/logos/mongodb.svg?url";
+import DynamoDBLogo from "@assets/logos/amazon-dynamodb.svg?url";
+import RedisLogo from "@assets/logos/redis.svg?url";
+import FirestoreLogo from "@assets/logos/firestore.svg?url";
+import AmazonS3Logo from "@assets/logos/amazon-s3.svg?url";
+import SupabaseLogo from "@assets/logos/supbase.png?url";
+import CleverLogo from "@assets/logos/clever.svg?url";
+import ConfluenceLogo from "@assets/logos/confluence.svg?url";
+import FigmaLogo from "@assets/logos/figma.svg?url";
+import HubSpotLogo from "@assets/logos/hubspot.svg?url";
+import MicrosoftSharePointLogo from "@assets/logos/microsoft-sharepoint.svg?url";
+import SplunkLogo from "@assets/logos/splunk.svg?url";
+import VirusTotalLogo from "@assets/logos/virustotal.svg?url";
+import ZendeskLogo from "@assets/logos/zendesk.svg?url";
+import AnsibleLogo from "@assets/logos/ansible.svg?url";
+import AshbyLogo from "@assets/logos/ashby.svg?url";
+import BambooHrLogo from "@assets/logos/bamboohr.svg?url";
+import BanksApiLogo from "@assets/logos/banksapi.svg?url";
+import BaremetricsLogo from "@assets/logos/baremetrics.svg?url";
+import BillsbyLogo from "@assets/logos/billsby.svg?url";
+import BreezyHrLogo from "@assets/logos/breezy-hr.svg?url";
+import BrevoLogo from "@assets/logos/brevo.svg?url";
+import BulkSmsLogo from "@assets/logos/bulksms-com.svg?url";
+import ButtondownLogo from "@assets/logos/buttondown.svg?url";
+import ClickUpLogo from "@assets/logos/clickup.svg?url";
+import DeelLogo from "@assets/logos/deel.svg?url";
+import DixaLogo from "@assets/logos/dixa.svg?url";
+import DotsLogo from "@assets/logos/dots.svg?url";
+import FactorialLogo from "@assets/logos/factorial.svg?url";
+import FastSpringLogo from "@assets/logos/fastspring.svg?url";
+import FountainLogo from "@assets/logos/fountain.svg?url";
+import GitLabLogo from "@assets/logos/gitlab.svg?url";
+import GoodyLogo from "@assets/logos/goody.svg?url";
+import HelcimLogo from "@assets/logos/helcim.svg?url";
+import HiBobLogo from "@assets/logos/hibob.svg?url";
+import HomerunLogo from "@assets/logos/homerun.svg?url";
+import HypatosLogo from "@assets/logos/hypatos.svg?url";
+import IntercomLogo from "@assets/logos/intercom.svg?url";
+import IroncladLogo from "@assets/logos/ironclad.svg?url";
+import JinaAiLogo from "@assets/logos/jina-ai.svg?url";
+import JobsoidLogo from "@assets/logos/jobsoid.svg?url";
+import KeatextAiLogo from "@assets/logos/keatext-ai.svg?url";
+import KenjoLogo from "@assets/logos/kenjo.svg?url";
+import LambdaLogo from "@assets/logos/lambda.svg?url";
+import LobLogo from "@assets/logos/lob.svg?url";
+import LocalizelyLogo from "@assets/logos/localizely.svg?url";
+import LogisticsOsLogo from "@assets/logos/logisticsos.svg?url";
+import MastercardLogo from "@assets/logos/mastercard.svg?url";
+import MeasureOneLogo from "@assets/logos/measureone.svg?url";
+import NanonetsLogo from "@assets/logos/nanonets.svg?url";
+import NotionLogo from "@assets/logos/notion.svg?url";
+import OysterLogo from "@assets/logos/oyster.svg?url";
+import PeachPaymentsLogo from "@assets/logos/peach-payments.svg?url";
+import PinpointLogo from "@assets/logos/pinpoint.svg?url";
+import PodiumLogo from "@assets/logos/podium.svg?url";
+import RemoteLogo from "@assets/logos/remote.svg?url";
+import ResendLogo from "@assets/logos/resend.svg?url";
+import DockerLogo from "@assets/logos/Docker.svg?url";
+import KubernetesLogo from "@assets/logos/kubernetes.svg?url";
+import NextcloudLogo from "@assets/logos/nextcloud.svg?url";
+import LinodeLogo from "@assets/logos/linode.svg?url";
+import DigitalOceanLogo from "@assets/logos/digital-ocean.svg?url";
 
 const logos = [
   { src: DiscordLogoSvg, alt: "Discord" },
@@ -213,7 +211,7 @@ const desktopVisibleLogos = logos.slice(0, 60);
             class="integration-banner-logo shadow-2 flex h-[48px] w-[48px] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-3 p-2.5"
             style="opacity: 1; transition: opacity 300ms;"
           >
-            <Image
+            <img
               src={logo.src}
               alt={logo.alt}
               class="h-full w-full object-contain"
@@ -236,7 +234,7 @@ const desktopVisibleLogos = logos.slice(0, 60);
             class="integration-banner-logo shadow-2 flex h-[34px] w-[34px] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-3 p-2 md:h-[50px] md:w-[50px] md:p-4 lg:h-[60px] lg:w-[60px]"
             style="opacity: 1; transition: opacity 300ms;"
           >
-            <Image
+            <img
               src={logo.src}
               alt={logo.alt}
               class="h-full w-full object-contain"

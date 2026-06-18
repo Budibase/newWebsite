@@ -1,14 +1,13 @@
 ---
-import { Image } from "astro:assets";
-import BudibaseSymbol from "@assets/BBSymbolWhite.svg";
-import JessAvatarImage from "@assets/images/avatars/Avatar.png";
-import SarahAvatarImage from "@assets/images/avatars/Ellipse-1.png";
-import PlatformBgImage from "@assets/images/homepage/platform/bg4.png";
+import BudibaseSymbol from "@assets/BBSymbolWhite.svg?url";
+import JessAvatarImage from "@assets/images/avatars/Avatar.png?url";
+import SarahAvatarImage from "@assets/images/avatars/Ellipse-1.png?url";
+import PlatformBgImage from "@assets/images/homepage/platform/bg4.png?url";
 import PaperPlaneTiltFill from "phosphor-astro/PaperPlaneTiltFill.astro";
 
-const bgImage = PlatformBgImage.src;
-const jessAvatar = JessAvatarImage.src;
-const sarahAvatar = SarahAvatarImage.src;
+const bgImage = PlatformBgImage;
+const jessAvatar = JessAvatarImage;
+const sarahAvatar = SarahAvatarImage;
 
 const requestRows = [
   {
@@ -96,13 +95,11 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
   data-panel-active="false"
   data-ops-platform-demo-new
 >
-  <Image
-    src={PlatformBgImage}
+  <img
+    src={bgImage}
     alt=""
     class="ops-platform-demo-new__bg"
     aria-hidden="true"
-    format="webp"
-    quality={72}
     loading="lazy"
     decoding="async"
   />
@@ -127,7 +124,8 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
               <p class="ops-platform-demo-new__message-time">12 mins</p>
             </div>
             <p class="ops-platform-demo-new__message-copy">
-              Sarah, James has accepted his offer and will start on Monday 1st of June.
+              Sarah, James has accepted his offer and will start on Monday 1st
+              of June.
             </p>
           </div>
         </div>
@@ -150,7 +148,9 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
           </div>
         </div>
 
-        <div class="ops-platform-demo-new__message ops-platform-demo-new__message--request">
+        <div
+          class="ops-platform-demo-new__message ops-platform-demo-new__message--request"
+        >
           <img
             src={sarahAvatar}
             alt="Sarah Harvey"
@@ -164,42 +164,73 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
             </div>
             <p class="ops-platform-demo-new__message-copy">
               <span class="ops-platform-demo-new__mention">@Ops Assistant</span>
-              <span>{` I need approval for a new laptop for a marketing hire?`}</span>
+              <span
+                >{
+                  ` I need approval for a new laptop for a marketing hire?`
+                }</span
+              >
             </p>
           </div>
         </div>
 
-        <div class="ops-platform-demo-new__message ops-platform-demo-new__message--assistant">
+        <div
+          class="ops-platform-demo-new__message ops-platform-demo-new__message--assistant"
+        >
           <div class="ops-platform-demo-new__assistant-avatar">
-            <Image src={BudibaseSymbol} alt="" class="ops-platform-demo-new__assistant-avatar-icon" />
+            <img
+              src={BudibaseSymbol}
+              alt=""
+              class="ops-platform-demo-new__assistant-avatar-icon"
+            />
           </div>
           <div class="ops-platform-demo-new__message-body">
             <div class="ops-platform-demo-new__message-meta">
               <p class="ops-platform-demo-new__message-author">Ops Assistant</p>
               <p class="ops-platform-demo-new__message-time">12 mins</p>
             </div>
-            <div class="ops-platform-demo-new__assistant-body ops-platform-demo-new__assistant-body--analysis">
-              <p class="ops-platform-demo-new__message-copy ops-platform-demo-new__analysis-line">
+            <div
+              class="ops-platform-demo-new__assistant-body ops-platform-demo-new__assistant-body--analysis"
+            >
+              <p
+                class="ops-platform-demo-new__message-copy ops-platform-demo-new__analysis-line"
+              >
                 Analyzing request...
               </p>
-              <p class="ops-platform-demo-new__message-copy ops-platform-demo-new__analysis-line ops-platform-demo-new__analysis-line--step" data-analysis-line="1">
+              <p
+                class="ops-platform-demo-new__message-copy ops-platform-demo-new__analysis-line ops-platform-demo-new__analysis-line--step"
+                data-analysis-line="1"
+              >
                 ✓ Extracting details
               </p>
-              <p class="ops-platform-demo-new__message-copy ops-platform-demo-new__analysis-line ops-platform-demo-new__analysis-line--step" data-analysis-line="2">
+              <p
+                class="ops-platform-demo-new__message-copy ops-platform-demo-new__analysis-line ops-platform-demo-new__analysis-line--step"
+                data-analysis-line="2"
+              >
                 ✓ Checking policy
               </p>
-              <p class="ops-platform-demo-new__message-copy ops-platform-demo-new__analysis-line ops-platform-demo-new__analysis-line--step" data-analysis-line="3">
+              <p
+                class="ops-platform-demo-new__message-copy ops-platform-demo-new__analysis-line ops-platform-demo-new__analysis-line--step"
+                data-analysis-line="3"
+              >
                 ✓ Selecting workflow
               </p>
             </div>
-            <div class="ops-platform-demo-new__assistant-body ops-platform-demo-new__assistant-body--final">
+            <div
+              class="ops-platform-demo-new__assistant-body ops-platform-demo-new__assistant-body--final"
+            >
               <p class="ops-platform-demo-new__message-copy">
                 Got it - creating a laptop purchase request.
               </p>
               <div class="ops-platform-demo-new__assistant-panel">
-                <p class="ops-platform-demo-new__message-copy">• Team: Marketing</p>
-                <p class="ops-platform-demo-new__message-copy">• Item: Laptop for new hire</p>
-                <p class="ops-platform-demo-new__message-copy">• Budget: £700–£900</p>
+                <p class="ops-platform-demo-new__message-copy">
+                  • Team: Marketing
+                </p>
+                <p class="ops-platform-demo-new__message-copy">
+                  • Item: Laptop for new hire
+                </p>
+                <p class="ops-platform-demo-new__message-copy">
+                  • Budget: £700–£900
+                </p>
               </div>
               <p class="ops-platform-demo-new__message-copy">
                 Submitted to Ops for review.
@@ -213,7 +244,9 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
         <div class="ops-platform-demo-new__composer-active">
           <p class="ops-platform-demo-new__composer-copy">
             <span class="ops-platform-demo-new__mention">@Ops Assistant</span>
-            <span>{` I need approval for a new laptop for a marketing hire?`}</span>
+            <span
+              >{` I need approval for a new laptop for a marketing hire?`}</span
+            >
           </p>
           <div class="ops-platform-demo-new__composer-actions">
             <button
@@ -222,20 +255,29 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
               data-ops-send
               aria-label="Send request"
             >
-              <PaperPlaneTiltFill class="ops-platform-demo-new__send-icon" aria-hidden="true" />
+              <PaperPlaneTiltFill
+                class="ops-platform-demo-new__send-icon"
+                aria-hidden="true"
+              />
               <span>Send</span>
             </button>
           </div>
         </div>
 
-        <div class="ops-platform-demo-new__composer-inactive" aria-hidden="true">
+        <div
+          class="ops-platform-demo-new__composer-inactive"
+          aria-hidden="true"
+        >
           <div class="ops-platform-demo-new__composer-actions">
             <button
               type="button"
               class="ops-platform-demo-new__send-button ops-platform-demo-new__send-button--inactive"
               tabindex="-1"
             >
-              <PaperPlaneTiltFill class="ops-platform-demo-new__send-icon" aria-hidden="true" />
+              <PaperPlaneTiltFill
+                class="ops-platform-demo-new__send-icon"
+                aria-hidden="true"
+              />
               <span>Send</span>
             </button>
           </div>
@@ -243,34 +285,58 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
       </div>
     </article>
 
-    <section class="ops-platform-demo-new__requests-panel" aria-label="Requests">
+    <section
+      class="ops-platform-demo-new__requests-panel"
+      aria-label="Requests"
+    >
       <div class="ops-platform-demo-new__requests-heading">
         <p class="ops-platform-demo-new__requests-title">Requests</p>
       </div>
 
       <div class="ops-platform-demo-new__filters" aria-hidden="true">
-        <span class="ops-platform-demo-new__filter ops-platform-demo-new__filter--active">
+        <span
+          class="ops-platform-demo-new__filter ops-platform-demo-new__filter--active"
+        >
           All requests
         </span>
         <span class="ops-platform-demo-new__filter">By status</span>
         <span class="ops-platform-demo-new__filter">By priority</span>
       </div>
 
-      <div class="ops-platform-demo-new__table" role="table" aria-label="Requests table">
-        <div class="ops-platform-demo-new__table-row ops-platform-demo-new__table-row--header" role="row">
-          <div class="ops-platform-demo-new__table-cell" role="columnheader">Request</div>
+      <div
+        class="ops-platform-demo-new__table"
+        role="table"
+        aria-label="Requests table"
+      >
+        <div
+          class="ops-platform-demo-new__table-row ops-platform-demo-new__table-row--header"
+          role="row"
+        >
+          <div class="ops-platform-demo-new__table-cell" role="columnheader">
+            Request
+          </div>
           <div
             class="ops-platform-demo-new__table-cell ops-platform-demo-new__table-cell--category"
             role="columnheader"
           >
             Category
           </div>
-          <div class="ops-platform-demo-new__table-cell" role="columnheader">Priority</div>
-          <div class="ops-platform-demo-new__table-cell" role="columnheader">Status</div>
+          <div class="ops-platform-demo-new__table-cell" role="columnheader">
+            Priority
+          </div>
+          <div class="ops-platform-demo-new__table-cell" role="columnheader">
+            Status
+          </div>
         </div>
 
-        <div class="ops-platform-demo-new__table-row ops-platform-demo-new__table-row--new" role="row">
-          <div class="ops-platform-demo-new__table-cell ops-platform-demo-new__table-cell--request" role="cell">
+        <div
+          class="ops-platform-demo-new__table-row ops-platform-demo-new__table-row--new"
+          role="row"
+        >
+          <div
+            class="ops-platform-demo-new__table-cell ops-platform-demo-new__table-cell--request"
+            role="cell"
+          >
             <span>Laptop for new marketing hire</span>
             <span class="ops-platform-demo-new__new-badge">New</span>
           </div>
@@ -282,39 +348,51 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
           </div>
           <div class="ops-platform-demo-new__table-cell" role="cell">
             <span class="ops-platform-demo-new__priority">
-              <span class="ops-platform-demo-new__priority-dot ops-platform-demo-new__priority-dot--high"></span>
+              <span
+                class="ops-platform-demo-new__priority-dot ops-platform-demo-new__priority-dot--high"
+              ></span>
               <span>High</span>
             </span>
           </div>
           <div class="ops-platform-demo-new__table-cell" role="cell">
-            <span class="ops-platform-demo-new__status ops-platform-demo-new__status--pending">
+            <span
+              class="ops-platform-demo-new__status ops-platform-demo-new__status--pending"
+            >
               Pending
             </span>
           </div>
         </div>
 
-        {requestRows.map((row) => (
-          <div class="ops-platform-demo-new__table-row" role="row">
-            <div class="ops-platform-demo-new__table-cell" role="cell">{row.request}</div>
-            <div
-              class="ops-platform-demo-new__table-cell ops-platform-demo-new__table-cell--category"
-              role="cell"
-            >
-              {row.category}
+        {
+          requestRows.map((row) => (
+            <div class="ops-platform-demo-new__table-row" role="row">
+              <div class="ops-platform-demo-new__table-cell" role="cell">
+                {row.request}
+              </div>
+              <div
+                class="ops-platform-demo-new__table-cell ops-platform-demo-new__table-cell--category"
+                role="cell"
+              >
+                {row.category}
+              </div>
+              <div class="ops-platform-demo-new__table-cell" role="cell">
+                <span class="ops-platform-demo-new__priority">
+                  <span
+                    class={`ops-platform-demo-new__priority-dot ops-platform-demo-new__priority-dot--${row.priorityTone}`}
+                  />
+                  <span>{row.priority}</span>
+                </span>
+              </div>
+              <div class="ops-platform-demo-new__table-cell" role="cell">
+                <span
+                  class={`ops-platform-demo-new__status ops-platform-demo-new__status--${row.statusTone}`}
+                >
+                  {row.status}
+                </span>
+              </div>
             </div>
-            <div class="ops-platform-demo-new__table-cell" role="cell">
-              <span class="ops-platform-demo-new__priority">
-                <span class={`ops-platform-demo-new__priority-dot ops-platform-demo-new__priority-dot--${row.priorityTone}`}></span>
-                <span>{row.priority}</span>
-              </span>
-            </div>
-            <div class="ops-platform-demo-new__table-cell" role="cell">
-              <span class={`ops-platform-demo-new__status ops-platform-demo-new__status--${row.statusTone}`}>
-                {row.status}
-              </span>
-            </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </section>
   </div>
@@ -400,21 +478,30 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
       margin-top 280ms ease;
   }
 
-  .ops-platform-demo-new[data-state="request-visible"] .ops-platform-demo-new__message--request,
-  .ops-platform-demo-new[data-state="typing"] .ops-platform-demo-new__message--request,
-  .ops-platform-demo-new[data-state="row-inserted"] .ops-platform-demo-new__message--request,
-  .ops-platform-demo-new[data-state="response-visible"] .ops-platform-demo-new__message--request,
-  .ops-platform-demo-new[data-state="hold"] .ops-platform-demo-new__message--request {
+  .ops-platform-demo-new[data-state="request-visible"]
+    .ops-platform-demo-new__message--request,
+  .ops-platform-demo-new[data-state="typing"]
+    .ops-platform-demo-new__message--request,
+  .ops-platform-demo-new[data-state="row-inserted"]
+    .ops-platform-demo-new__message--request,
+  .ops-platform-demo-new[data-state="response-visible"]
+    .ops-platform-demo-new__message--request,
+  .ops-platform-demo-new[data-state="hold"]
+    .ops-platform-demo-new__message--request {
     max-height: 120px;
     margin-top: 30px;
     opacity: 1;
     transform: translateY(0);
   }
 
-  .ops-platform-demo-new[data-state="typing"] .ops-platform-demo-new__message--assistant,
-  .ops-platform-demo-new[data-state="row-inserted"] .ops-platform-demo-new__message--assistant,
-  .ops-platform-demo-new[data-state="response-visible"] .ops-platform-demo-new__message--assistant,
-  .ops-platform-demo-new[data-state="hold"] .ops-platform-demo-new__message--assistant {
+  .ops-platform-demo-new[data-state="typing"]
+    .ops-platform-demo-new__message--assistant,
+  .ops-platform-demo-new[data-state="row-inserted"]
+    .ops-platform-demo-new__message--assistant,
+  .ops-platform-demo-new[data-state="response-visible"]
+    .ops-platform-demo-new__message--assistant,
+  .ops-platform-demo-new[data-state="hold"]
+    .ops-platform-demo-new__message--assistant {
     max-height: 240px;
     margin-top: 30px;
     opacity: 1;
@@ -510,25 +597,33 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     display: none;
   }
 
-  .ops-platform-demo-new[data-state="typing"] .ops-platform-demo-new__assistant-body--analysis,
-  .ops-platform-demo-new[data-state="row-inserted"] .ops-platform-demo-new__assistant-body--analysis {
+  .ops-platform-demo-new[data-state="typing"]
+    .ops-platform-demo-new__assistant-body--analysis,
+  .ops-platform-demo-new[data-state="row-inserted"]
+    .ops-platform-demo-new__assistant-body--analysis {
     display: flex;
   }
 
-  .ops-platform-demo-new[data-state="response-visible"] .ops-platform-demo-new__assistant-body--analysis,
-  .ops-platform-demo-new[data-state="hold"] .ops-platform-demo-new__assistant-body--analysis {
+  .ops-platform-demo-new[data-state="response-visible"]
+    .ops-platform-demo-new__assistant-body--analysis,
+  .ops-platform-demo-new[data-state="hold"]
+    .ops-platform-demo-new__assistant-body--analysis {
     display: none;
   }
 
-  .ops-platform-demo-new[data-state="response-visible"] .ops-platform-demo-new__assistant-body--final,
-  .ops-platform-demo-new[data-state="hold"] .ops-platform-demo-new__assistant-body--final {
+  .ops-platform-demo-new[data-state="response-visible"]
+    .ops-platform-demo-new__assistant-body--final,
+  .ops-platform-demo-new[data-state="hold"]
+    .ops-platform-demo-new__assistant-body--final {
     display: flex;
   }
 
   .ops-platform-demo-new__analysis-line--step {
     opacity: 0;
     transform: translateY(4px);
-    transition: opacity 220ms ease, transform 220ms ease;
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease;
   }
 
   .ops-platform-demo-new[data-analysis-step="1"] [data-analysis-line="1"],
@@ -537,9 +632,12 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
   .ops-platform-demo-new[data-analysis-step="2"] [data-analysis-line="2"],
   .ops-platform-demo-new[data-analysis-step="3"] [data-analysis-line="2"],
   .ops-platform-demo-new[data-analysis-step="3"] [data-analysis-line="3"],
-  .ops-platform-demo-new[data-state="row-inserted"] .ops-platform-demo-new__analysis-line--step,
-  .ops-platform-demo-new[data-state="response-visible"] .ops-platform-demo-new__analysis-line--step,
-  .ops-platform-demo-new[data-state="hold"] .ops-platform-demo-new__analysis-line--step {
+  .ops-platform-demo-new[data-state="row-inserted"]
+    .ops-platform-demo-new__analysis-line--step,
+  .ops-platform-demo-new[data-state="response-visible"]
+    .ops-platform-demo-new__analysis-line--step,
+  .ops-platform-demo-new[data-state="hold"]
+    .ops-platform-demo-new__analysis-line--step {
     opacity: 1;
     transform: translateY(0);
   }
@@ -578,19 +676,29 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     display: none;
   }
 
-  .ops-platform-demo-new[data-state="request-visible"] .ops-platform-demo-new__composer-active,
-  .ops-platform-demo-new[data-state="typing"] .ops-platform-demo-new__composer-active,
-  .ops-platform-demo-new[data-state="row-inserted"] .ops-platform-demo-new__composer-active,
-  .ops-platform-demo-new[data-state="response-visible"] .ops-platform-demo-new__composer-active,
-  .ops-platform-demo-new[data-state="hold"] .ops-platform-demo-new__composer-active {
+  .ops-platform-demo-new[data-state="request-visible"]
+    .ops-platform-demo-new__composer-active,
+  .ops-platform-demo-new[data-state="typing"]
+    .ops-platform-demo-new__composer-active,
+  .ops-platform-demo-new[data-state="row-inserted"]
+    .ops-platform-demo-new__composer-active,
+  .ops-platform-demo-new[data-state="response-visible"]
+    .ops-platform-demo-new__composer-active,
+  .ops-platform-demo-new[data-state="hold"]
+    .ops-platform-demo-new__composer-active {
     display: none;
   }
 
-  .ops-platform-demo-new[data-state="request-visible"] .ops-platform-demo-new__composer-inactive,
-  .ops-platform-demo-new[data-state="typing"] .ops-platform-demo-new__composer-inactive,
-  .ops-platform-demo-new[data-state="row-inserted"] .ops-platform-demo-new__composer-inactive,
-  .ops-platform-demo-new[data-state="response-visible"] .ops-platform-demo-new__composer-inactive,
-  .ops-platform-demo-new[data-state="hold"] .ops-platform-demo-new__composer-inactive {
+  .ops-platform-demo-new[data-state="request-visible"]
+    .ops-platform-demo-new__composer-inactive,
+  .ops-platform-demo-new[data-state="typing"]
+    .ops-platform-demo-new__composer-inactive,
+  .ops-platform-demo-new[data-state="row-inserted"]
+    .ops-platform-demo-new__composer-inactive,
+  .ops-platform-demo-new[data-state="response-visible"]
+    .ops-platform-demo-new__composer-inactive,
+  .ops-platform-demo-new[data-state="hold"]
+    .ops-platform-demo-new__composer-inactive {
     display: flex;
   }
 
@@ -636,7 +744,8 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     outline-offset: 2px;
   }
 
-  .ops-platform-demo-new[data-state="send-pressed"] .ops-platform-demo-new__send-button {
+  .ops-platform-demo-new[data-state="send-pressed"]
+    .ops-platform-demo-new__send-button {
     transform: scale(0.96);
     filter: brightness(0.92);
   }
@@ -662,7 +771,8 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     transition: opacity 320ms ease;
   }
 
-  .ops-platform-demo-new[data-panel-active="true"] .ops-platform-demo-new__requests-panel {
+  .ops-platform-demo-new[data-panel-active="true"]
+    .ops-platform-demo-new__requests-panel {
     opacity: 1;
   }
 
@@ -737,9 +847,12 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
       border-color 320ms ease;
   }
 
-  .ops-platform-demo-new[data-state="row-inserted"] .ops-platform-demo-new__table-row--new,
-  .ops-platform-demo-new[data-state="response-visible"] .ops-platform-demo-new__table-row--new,
-  .ops-platform-demo-new[data-state="hold"] .ops-platform-demo-new__table-row--new {
+  .ops-platform-demo-new[data-state="row-inserted"]
+    .ops-platform-demo-new__table-row--new,
+  .ops-platform-demo-new[data-state="response-visible"]
+    .ops-platform-demo-new__table-row--new,
+  .ops-platform-demo-new[data-state="hold"]
+    .ops-platform-demo-new__table-row--new {
     min-height: 37px;
     max-height: 37px;
     border-top: 0.5px solid var(--bb-gray-100);
@@ -759,9 +872,15 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
       min-height 320ms ease;
   }
 
-  .ops-platform-demo-new[data-state="row-inserted"] .ops-platform-demo-new__table-row--new .ops-platform-demo-new__table-cell,
-  .ops-platform-demo-new[data-state="response-visible"] .ops-platform-demo-new__table-row--new .ops-platform-demo-new__table-cell,
-  .ops-platform-demo-new[data-state="hold"] .ops-platform-demo-new__table-row--new .ops-platform-demo-new__table-cell {
+  .ops-platform-demo-new[data-state="row-inserted"]
+    .ops-platform-demo-new__table-row--new
+    .ops-platform-demo-new__table-cell,
+  .ops-platform-demo-new[data-state="response-visible"]
+    .ops-platform-demo-new__table-row--new
+    .ops-platform-demo-new__table-cell,
+  .ops-platform-demo-new[data-state="hold"]
+    .ops-platform-demo-new__table-row--new
+    .ops-platform-demo-new__table-cell {
     min-height: 37px;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -870,12 +989,20 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     transition: opacity 180ms ease 180ms;
   }
 
-  .ops-platform-demo-new[data-state="row-inserted"] .ops-platform-demo-new__new-badge,
-  .ops-platform-demo-new[data-state="response-visible"] .ops-platform-demo-new__new-badge,
+  .ops-platform-demo-new[data-state="row-inserted"]
+    .ops-platform-demo-new__new-badge,
+  .ops-platform-demo-new[data-state="response-visible"]
+    .ops-platform-demo-new__new-badge,
   .ops-platform-demo-new[data-state="hold"] .ops-platform-demo-new__new-badge,
-  .ops-platform-demo-new[data-state="row-inserted"] .ops-platform-demo-new__table-row--new .ops-platform-demo-new__status,
-  .ops-platform-demo-new[data-state="response-visible"] .ops-platform-demo-new__table-row--new .ops-platform-demo-new__status,
-  .ops-platform-demo-new[data-state="hold"] .ops-platform-demo-new__table-row--new .ops-platform-demo-new__status {
+  .ops-platform-demo-new[data-state="row-inserted"]
+    .ops-platform-demo-new__table-row--new
+    .ops-platform-demo-new__status,
+  .ops-platform-demo-new[data-state="response-visible"]
+    .ops-platform-demo-new__table-row--new
+    .ops-platform-demo-new__status,
+  .ops-platform-demo-new[data-state="hold"]
+    .ops-platform-demo-new__table-row--new
+    .ops-platform-demo-new__status {
     opacity: 1;
     transform: scale(1);
   }
@@ -968,7 +1095,9 @@ const id = `ops-platform-demo-new-${Math.random().toString(36).slice(2, 8)}`;
     if (!root) return;
 
     const sendButton = root.querySelector("[data-ops-send]");
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
     let timers = [];
     let isRunning = false;
     let hasAutoPlayed = false;

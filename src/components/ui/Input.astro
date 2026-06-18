@@ -1,0 +1,69 @@
+---
+import { cx } from "../../lib/ui-classes";
+
+type Size = "sm" | "md" | "lg";
+
+interface Props {
+  id?: string;
+  name?: string;
+  type?: string;
+  value?: string;
+  placeholder?: string;
+  autocomplete?: string;
+  required?: boolean;
+  disabled?: boolean;
+  readonly?: boolean;
+  invalid?: boolean;
+  size?: Size;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  id,
+  name,
+  type = "text",
+  value,
+  placeholder,
+  autocomplete,
+  required = false,
+  disabled = false,
+  readonly = false,
+  invalid = false,
+  size = "md",
+  class: className,
+  ...rest
+} = Astro.props as Props;
+
+const sizes: Record<Size, string> = {
+  sm: "h-8 px-2.5 text-sm",
+  md: "h-9 px-3 text-sm",
+  lg: "h-10 px-3.5 text-base",
+};
+
+const classes = cx(
+  "w-full min-w-0 rounded-xs border bg-bg text-text shadow-xs outline-none transition-[border-color,box-shadow] placeholder:text-text-muted disabled:cursor-not-allowed disabled:opacity-50",
+  "border-border focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/25",
+  invalid &&
+    "border-danger focus-visible:border-danger focus-visible:ring-danger/20",
+  sizes[size],
+  className,
+);
+---
+
+<input
+  id={id}
+  name={name}
+  type={type}
+  value={value}
+  placeholder={placeholder}
+  autocomplete={autocomplete}
+  required={required}
+  disabled={disabled}
+  readonly={readonly}
+  aria-invalid={invalid ? "true" : undefined}
+  class={classes}
+  data-slot="input"
+  data-size={size}
+  {...rest}
+/>

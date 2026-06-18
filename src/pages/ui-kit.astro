@@ -1,0 +1,207 @@
+---
+import Button from "@components/ui/Button.astro";
+import Field from "@components/ui/Field.astro";
+import Input from "@components/ui/Input.astro";
+import Textarea from "@components/ui/Textarea.astro";
+import Dropdown from "@components/ui/Dropdown.astro";
+import NavigationMenu from "@components/ui/NavigationMenu.astro";
+import Card from "@components/ui/Card.astro";
+import Badge from "@components/ui/Badge.astro";
+import Dialog from "@components/ui/Dialog.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+
+const navItems = [
+  {
+    label: "Platform",
+    items: [
+      {
+        label: "Agents",
+        href: "/product/agents/",
+        description: "Automate internal service work with governed AI agents.",
+      },
+      {
+        label: "Automations",
+        href: "/product/automations/",
+        description: "Build workflow logic around your tools and data.",
+      },
+      {
+        label: "Apps",
+        href: "/product/apps/",
+        description: "Create internal tools for repeated operational work.",
+      },
+      {
+        label: "Connections",
+        href: "/product/connections/",
+        description: "Connect APIs, databases, SaaS tools, and models.",
+      },
+    ],
+  },
+  { label: "Pricing", href: "/pricing/" },
+  { label: "Customers", href: "/customers/" },
+  {
+    label: "Resources",
+    items: [
+      { label: "Blog", href: "/blog/", description: "Guides and comparisons." },
+      {
+        label: "Security",
+        href: "/security/",
+        description: "Governance and compliance.",
+      },
+      {
+        label: "Docs",
+        href: "https://docs.budibase.com",
+        description: "Product documentation.",
+      },
+      {
+        label: "Support",
+        href: "/support/",
+        description: "Support policies and terms.",
+      },
+    ],
+  },
+];
+
+const dropdownItems = [
+  {
+    label: "Invite teammate",
+    href: "#",
+    description: "Add a user to this workspace.",
+  },
+  {
+    label: "Export audit log",
+    href: "#",
+    description: "Download a CSV for review.",
+  },
+  {
+    label: "Billing settings",
+    href: "#",
+    description: "Manage subscription details.",
+  },
+];
+---
+
+<MainLayout
+  title="Budibase UI Kit Trial"
+  description="Prototype Astro and Tailwind UI components using Budibase tokens."
+>
+  <main class="mx-auto grid max-w-5xl gap-10 px-4 py-16 md:px-6">
+    <section class="grid gap-3">
+      <Badge variant="brand">Bejamas-style Astro trial</Badge>
+      <h1
+        class="max-w-3xl text-4xl font-semibold leading-tight text-text md:text-5xl"
+      >
+        Local UI components using Budibase tokens
+      </h1>
+      <p class="max-w-2xl text-lg leading-7 text-text-muted">
+        This page tests a small copy-owned component layer before replacing
+        production components.
+      </p>
+    </section>
+
+    <Card class="grid gap-5">
+      <div class="flex flex-wrap items-center gap-3">
+        <Button>Primary action</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="outline">Outline</Button>
+        <Button variant="ghost">Ghost</Button>
+        <Button variant="danger">Danger</Button>
+        <Button size="icon" ariaLabel="Open command menu">
+          <svg
+            class="size-4"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M2 5.75A.75.75 0 0 1 2.75 5h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 5.75ZM2 10a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Zm0 4.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z"
+            ></path>
+          </svg>
+        </Button>
+      </div>
+    </Card>
+
+    <Card class="grid gap-5">
+      <div
+        class="flex min-h-14 items-center justify-between gap-6 rounded-xs border border-border bg-bg px-3"
+      >
+        <a href="/" aria-label="Budibase home" class="shrink-0">
+          <img
+            src="/budibase-logo-black.svg"
+            alt="Budibase logo"
+            width="120"
+            height="22"
+            class="block"
+          />
+        </a>
+        <NavigationMenu items={navItems} class="flex-1 justify-center" />
+        <div class="hidden items-center gap-2 lg:flex">
+          <Button variant="ghost" href="https://account.budibase.app/auth/login"
+            >Log in</Button
+          >
+          <Button href="/contact/">Book a demo</Button>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center gap-3">
+        <Dropdown label="Workspace actions" items={dropdownItems} />
+        <Dialog
+          id="ui-kit-dialog"
+          triggerLabel="Open dialog"
+          title="Confirm workflow change"
+          description="This component uses a native Astro custom element and BB tokens."
+        >
+          <p class="text-sm leading-6 text-text-muted">
+            Dialog is included because enterprise pages usually need gated
+            forms, confirmation flows, and lead capture modals.
+          </p>
+          <div class="flex justify-end gap-2">
+            <Button variant="outline">Cancel</Button>
+            <Button>Confirm</Button>
+          </div>
+        </Dialog>
+      </div>
+    </Card>
+
+    <Card>
+      <form class="grid max-w-xl gap-5">
+        <Field
+          id="ui-kit-email"
+          label="Work email"
+          description="Used for routing demo requests to the right account team."
+          required
+        >
+          <Input
+            id="ui-kit-email"
+            name="email"
+            type="email"
+            placeholder="name@company.com"
+            autocomplete="email"
+            required
+          />
+        </Field>
+        <Field id="ui-kit-company" label="Company size">
+          <Input
+            id="ui-kit-company"
+            name="companySize"
+            placeholder="1,000-5,000 employees"
+          />
+        </Field>
+        <Field
+          id="ui-kit-notes"
+          label="Use case"
+          error="Add a little more context before submitting."
+        >
+          <Textarea
+            id="ui-kit-notes"
+            name="notes"
+            placeholder="Tell us what internal workflow you want to automate."
+            invalid
+          />
+        </Field>
+        <div class="flex gap-3">
+          <Button type="submit">Submit request</Button>
+          <Button variant="outline" type="reset">Reset</Button>
+        </div>
+      </form>
+    </Card>
+  </main>
+</MainLayout>

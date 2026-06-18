@@ -1,0 +1,32 @@
+---
+import { cx } from "../../lib/ui-classes";
+
+type Variant = "neutral" | "brand" | "success" | "warning" | "danger";
+
+interface Props {
+  variant?: Variant;
+  class?: string;
+}
+
+const { variant = "neutral", class: className } = Astro.props as Props;
+
+const variants: Record<Variant, string> = {
+  neutral: "bg-surface text-text",
+  brand: "bg-blue-100 text-blue-700",
+  success: "bg-green-100 text-green-700",
+  warning: "bg-orange-100 text-orange-700",
+  danger: "bg-red-100 text-red-700",
+};
+---
+
+<span
+  class={cx(
+    "inline-flex items-center rounded-xs px-2 py-0.5 text-xs font-medium leading-5",
+    variants[variant],
+    className,
+  )}
+  data-slot="badge"
+  data-variant={variant}
+>
+  <slot />
+</span>

@@ -1,0 +1,142 @@
+---
+import { cx } from "../../lib/ui-classes";
+
+interface NavItem {
+  label: string;
+  href?: string;
+  description?: string;
+  items?: Array<{
+    label: string;
+    href: string;
+    description?: string;
+  }>;
+}
+
+interface Props {
+  items: NavItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props as Props;
+---
+
+<bb-navigation-menu
+  class={cx("relative hidden items-center gap-1 lg:flex", className)}
+  data-slot="navigation-menu"
+>
+  {
+    items.map((item) => (
+      <div class="relative" data-nav-item>
+        {item.items ? (
+          <>
+            <button
+              type="button"
+              class="inline-flex h-9 items-center gap-1 rounded-xs px-3 text-sm font-medium text-text outline-none transition-colors hover:bg-surface focus-visible:ring-3 focus-visible:ring-ring/25"
+              data-nav-trigger
+              aria-expanded="false"
+              aria-haspopup="menu"
+            >
+              {item.label}
+              <svg
+                class="size-4 opacity-70"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.17l3.71-3.94a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+            <div
+              class="invisible absolute left-0 top-full z-50 mt-2 grid w-[30rem] grid-cols-2 gap-1 rounded-xs border border-border bg-bg p-2 opacity-0 shadow-xl transition duration-150 data-open:visible data-open:opacity-100"
+              data-nav-content
+              role="menu"
+            >
+              {item.items.map((subItem) => (
+                <a
+                  href={subItem.href}
+                  class="rounded-xs p-3 text-sm text-text no-underline outline-none transition-colors hover:bg-surface focus-visible:bg-surface"
+                  role="menuitem"
+                >
+                  <span class="block font-medium">{subItem.label}</span>
+                  {subItem.description && (
+                    <span class="mt-1 block text-xs leading-5 text-text-muted">
+                      {subItem.description}
+                    </span>
+                  )}
+                </a>
+              ))}
+            </div>
+          </>
+        ) : (
+          <a
+            href={item.href}
+            class="inline-flex h-9 items-center rounded-xs px-3 text-sm font-medium text-text no-underline outline-none transition-colors hover:bg-surface focus-visible:ring-3 focus-visible:ring-ring/25"
+          >
+            {item.label}
+          </a>
+        )}
+      </div>
+    ))
+  }
+</bb-navigation-menu>
+
+<script>
+  if (!customElements.get("bb-navigation-menu")) {
+    customElements.define(
+      "bb-navigation-menu",
+      class BBNavigationMenu extends HTMLElement {
+        connectedCallback() {
+          const closeAll = () => {
+            this.querySelectorAll("[data-nav-content]").forEach((content) => {
+              content.removeAttribute("data-open");
+            });
+            this.querySelectorAll("[data-nav-trigger]").forEach((trigger) => {
+              trigger.setAttribute("aria-expanded", "false");
+            });
+          };
+
+          this.querySelectorAll("[data-nav-item]").forEach((item) => {
+            const trigger = item.querySelector("[data-nav-trigger]");
+            const content = item.querySelector("[data-nav-content]");
+            if (
+              !(trigger instanceof HTMLElement) ||
+              !(content instanceof HTMLElement)
+            )
+              return;
+
+            trigger.addEventListener("click", (event) => {
+              event.stopPropagation();
+              const nextOpen = !content.hasAttribute("data-open");
+              closeAll();
+              content.toggleAttribute("data-open", nextOpen);
+              trigger.setAttribute("aria-expanded", String(nextOpen));
+            });
+
+            item.addEventListener("mouseenter", () => {
+              closeAll();
+              content.setAttribute("data-open", "");
+              trigger.setAttribute("aria-expanded", "true");
+            });
+
+            item.addEventListener("mouseleave", () => {
+              content.removeAttribute("data-open");
+              trigger.setAttribute("aria-expanded", "false");
+            });
+          });
+
+          this.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") closeAll();
+          });
+
+          document.addEventListener("click", (event) => {
+            if (!this.contains(event.target as Node)) closeAll();
+          });
+        }
+      },
+    );
+  }
+</script>

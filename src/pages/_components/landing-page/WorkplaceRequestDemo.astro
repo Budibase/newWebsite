@@ -1,8 +1,6 @@
 ---
-import { Image } from "astro:assets";
-import type { ImageMetadata } from "astro";
 import Plus from "phosphor-astro/Plus.astro";
-import BBSymbolWhite from "@assets/logos/BBSymbolWhite.svg";
+import BBSymbolWhite from "@assets/logos/BBSymbolWhite.svg?url";
 
 interface FooterSegment {
   text: string;
@@ -11,9 +9,9 @@ interface FooterSegment {
 
 interface Props {
   channel: string;
-  channelLogo: ImageMetadata;
+  channelLogo: string;
   employeeName: string;
-  employeeAvatarImage: ImageMetadata;
+  employeeAvatarImage: string;
   employeeAvatarShape?: "square" | "circle";
   timeLabel: string;
   promptText: string;
@@ -39,7 +37,11 @@ const {
 <div class="workplace-request-demo">
   <div class="workplace-request-demo__header">
     <span class="workplace-request-demo__channel-logo">
-      <Image src={channelLogo} alt={channel} class="workplace-request-demo__channel-logo-image" />
+      <img
+        src={channelLogo}
+        alt={channel}
+        class="workplace-request-demo__channel-logo-image"
+      />
     </span>
     <span class="workplace-request-demo__channel-name">{channel}</span>
   </div>
@@ -52,7 +54,7 @@ const {
           employeeAvatarShape === "square" ? "is-square" : "is-circle",
         ]}
       >
-        <Image
+        <img
           src={employeeAvatarImage}
           alt={employeeName}
           class="workplace-request-demo__avatar-image"
@@ -73,7 +75,11 @@ const {
 
     <div class="workplace-request-demo__message">
       <div class="workplace-request-demo__assistant-avatar">
-        <Image src={BBSymbolWhite} alt="Budibase" class="workplace-request-demo__assistant-avatar-image" />
+        <img
+          src={BBSymbolWhite}
+          alt="Budibase"
+          class="workplace-request-demo__assistant-avatar-image"
+        />
       </div>
 
       <div class="workplace-request-demo__message-content">
@@ -90,7 +96,11 @@ const {
         <p class="workplace-request-demo__text">
           {
             footerSegments.map((segment) => (
-              <span class:list={[segment.highlight && "workplace-request-demo__highlight"]}>
+              <span
+                class:list={[
+                  segment.highlight && "workplace-request-demo__highlight",
+                ]}
+              >
                 {segment.text}
               </span>
             ))
@@ -268,7 +278,7 @@ const {
   .workplace-request-demo__details li::marker {
     color: var(--bb-gray-800);
   }
-.workplace-request-demo__input {
+  .workplace-request-demo__input {
     display: flex;
     align-items: center;
     gap: 10px;

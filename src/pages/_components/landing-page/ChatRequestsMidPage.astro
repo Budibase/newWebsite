@@ -1,8 +1,7 @@
 ---
-import { Image } from "astro:assets";
-import SupportAvatarImage from "@assets/images/avatars/Ellipse-1.png";
-import BudibaseSymbol from "@assets/BBSymbolWhite.svg";
-import TeamsLogo from "@assets/logos/microsoft-teams.svg";
+import SupportAvatarImage from "@assets/images/avatars/Ellipse-1.png?url";
+import BudibaseSymbol from "@assets/BBSymbolWhite.svg?url";
+import TeamsLogo from "@assets/logos/microsoft-teams.svg?url";
 import CheckCircleFill from "phosphor-astro/CheckCircleFill.astro";
 import Icon from "@components/Icon.astro";
 import SectionBlock from "@components/SectionBlock.astro";
@@ -10,7 +9,13 @@ import SectionBlock from "@components/SectionBlock.astro";
 interface FrameNode {
   title: string;
   description?: string;
-  iconKind: "sparkle" | "clock" | "rowsPlusBottom" | "paperPlaneTilt" | "teams" | "bamboohr";
+  iconKind:
+    | "sparkle"
+    | "clock"
+    | "rowsPlusBottom"
+    | "paperPlaneTilt"
+    | "teams"
+    | "bamboohr";
   iconTone: "trigger" | "agent" | "integration" | "alert";
   badgeLabel?: "Trigger" | "Operation";
   badgeTone?: "trigger" | "operation";
@@ -64,8 +69,11 @@ const tabs = [
   },
 ];
 ---
+
 <section>
-  <div class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:gap-20">
+  <div
+    class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:gap-20"
+  >
     <SectionBlock
       titleColorMode="split-secondary-primary"
       titleLines={[
@@ -79,9 +87,14 @@ const tabs = [
     >
       <ul class="flex flex-col gap-4">
         <li class="flex items-start gap-3">
-          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <CheckCircleFill
+            class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]"
+            aria-hidden="true"
+          />
           <div class="space-y-1.5">
-            <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            <div
+              class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]"
+            >
               Employee self-service
             </div>
             <p class="m-0 text-[14px] leading-6 text-[var(--text-secondary)]">
@@ -91,9 +104,14 @@ const tabs = [
         </li>
 
         <li class="flex items-start gap-3">
-          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <CheckCircleFill
+            class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]"
+            aria-hidden="true"
+          />
           <div class="space-y-1.5">
-            <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            <div
+              class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]"
+            >
               Approval requests
             </div>
             <p class="m-0 text-[14px] leading-6 text-[var(--text-secondary)]">
@@ -103,13 +121,19 @@ const tabs = [
         </li>
 
         <li class="flex items-start gap-3">
-          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <CheckCircleFill
+            class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]"
+            aria-hidden="true"
+          />
           <div class="space-y-1.5">
-            <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            <div
+              class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]"
+            >
               Support triage
             </div>
             <p class="m-0 text-[14px] leading-6 text-[var(--text-secondary)]">
-              Agents can manage incoming requests and route them to the right team.
+              Agents can manage incoming requests and route them to the right
+              team.
             </p>
           </div>
         </li>
@@ -120,13 +144,19 @@ const tabs = [
       <div class="agent-use-cases-thread-stage">
         <div class="agent-use-cases-thread-card agent-use-cases-support-card">
           <div class="agent-use-cases-support-header">
-            <Image src={TeamsLogo} alt="" class="agent-use-cases-support-header-logo" />
-            <h3 class="agent-use-cases-support-header-title">Microsoft Teams</h3>
+            <img
+              src={TeamsLogo}
+              alt=""
+              class="agent-use-cases-support-header-logo"
+            />
+            <h3 class="agent-use-cases-support-header-title">
+              Microsoft Teams
+            </h3>
           </div>
 
           <div class="agent-use-cases-thread-body agent-use-cases-support-body">
             <div class="agent-use-cases-thread-message">
-              <Image
+              <img
                 src={SupportAvatarImage}
                 alt="Jess Mitchell"
                 class="agent-use-cases-thread-avatar agent-use-cases-support-avatar"
@@ -137,15 +167,23 @@ const tabs = [
                   <p class="agent-use-cases-thread-time">2 mins</p>
                 </div>
                 <p class="agent-use-cases-thread-text">
-                  <span class="agent-use-cases-thread-link">@Ops Assistant</span>
+                  <span class="agent-use-cases-thread-link">@Ops Assistant</span
+                  >
                   <span> my VPN isn’t working</span>
                 </p>
               </div>
             </div>
 
             <div class="agent-use-cases-thread-message">
-              <div class="agent-use-cases-thread-badge agent-use-cases-support-badge" aria-hidden="true">
-                <Image src={BudibaseSymbol} alt="" class="agent-use-cases-thread-badge-symbol" />
+              <div
+                class="agent-use-cases-thread-badge agent-use-cases-support-badge"
+                aria-hidden="true"
+              >
+                <img
+                  src={BudibaseSymbol}
+                  alt=""
+                  class="agent-use-cases-thread-badge-symbol"
+                />
               </div>
               <div class="agent-use-cases-thread-copy">
                 <div class="agent-use-cases-thread-meta">
@@ -168,8 +206,15 @@ const tabs = [
 
           <div class="agent-use-cases-thread-input">
             <div class="agent-use-cases-thread-input-row">
-              <div class="agent-use-cases-thread-input-icon-wrap" aria-hidden="true">
-                <Icon name="Plus" size="24" class="agent-use-cases-support-input-icon" />
+              <div
+                class="agent-use-cases-thread-input-icon-wrap"
+                aria-hidden="true"
+              >
+                <Icon
+                  name="Plus"
+                  size="24"
+                  class="agent-use-cases-support-input-icon"
+                />
               </div>
               <p class="agent-use-cases-thread-input-text">Add a reply</p>
             </div>
@@ -195,7 +240,12 @@ const tabs = [
     border: 1px solid rgb(var(--border) / 0.45);
     border-radius: 12px;
     background:
-      radial-gradient(circle at center, var(--form-demo-grid-dot) 1.3px, transparent 1.3px) 0 0 / 20px 20px,
+      radial-gradient(
+          circle at center,
+          var(--form-demo-grid-dot) 1.3px,
+          transparent 1.3px
+        )
+        0 0 / 20px 20px,
       var(--bg-2);
     animation: form-demo-dot-drift 14s linear infinite;
   }
@@ -423,11 +473,15 @@ const tabs = [
 
   @keyframes form-demo-dot-drift {
     from {
-      background-position: 0 0, 0 0;
+      background-position:
+        0 0,
+        0 0;
     }
 
     to {
-      background-position: 20px 20px, 0 0;
+      background-position:
+        20px 20px,
+        0 0;
     }
   }
 

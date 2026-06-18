@@ -1,0 +1,16 @@
+---
+import { cx } from "../../lib/ui-classes";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props as Props;
+---
+
+<div
+  class={cx("rounded-xs border border-border bg-bg p-5 shadow-xs", className)}
+  data-slot="card"
+>
+  <slot />
+</div>

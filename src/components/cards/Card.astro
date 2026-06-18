@@ -2,7 +2,6 @@
 import Link from "@components/Link.astro";
 import Tag from "@components/Tag.astro";
 import ArrowUpRight from "phosphor-astro/ArrowUpRight.astro";
-import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 
 interface Props {
@@ -18,7 +17,7 @@ interface Props {
   tagPosition?: "top" | "bottom";
   tagNoPadding?: boolean;
   tag?: string;
-  imageSrc?: ImageMetadata;
+  imageSrc?: ImageMetadata | string;
   imageAlt?: string;
   imagePlaceholderColor?: string;
 }
@@ -48,17 +47,79 @@ const tagClass = tagNoPadding ? "w-fit !px-0 !py-0" : "w-fit";
 const descriptionStyle = truncateDescription
   ? "white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
   : undefined;
+const resolvedImageSrc =
+  typeof imageSrc === "string" ? imageSrc : imageSrc?.src;
 ---
 
-{linkUrl ? (
-  <Link
-    url={linkUrl}
-    label=""
-    ariaLabel={label}
-    class="card-link"
-    target={openInNewTab ? "_blank" : "_self"}
-  >
-    <div class={`card w-full max-w-full min-w-0 bg-secondary ease-in-out duration-50 hover:bg-stone-200!  p-4 rounded-md ${className}`}>
+{
+  linkUrl ? (
+    <Link
+      url={linkUrl}
+      label=""
+      ariaLabel={label}
+      class="card-link"
+      target={openInNewTab ? "_blank" : "_self"}
+    >
+      <div
+        class={`card w-full max-w-full min-w-0 bg-secondary ease-in-out duration-50 hover:bg-stone-200!  p-4 rounded-md ${className}`}
+      >
+        <div class={`card-content ${cardContentClass}`}>
+          {showTagAtTop && (
+            <Tag
+              label={tag!}
+              variant="secondary"
+              size="small"
+              class={`${tagClass} mb-2`}
+            />
+          )}
+          <h3 class={`text-lg! card-title ${cardTitleClass}`}>
+            {label}
+            {linkUrl && showLinkIcon && (
+              <ArrowUpRight class="card-icon text-stone-600 " />
+            )}
+          </h3>
+          {description && (
+            <p class="w-full min-w-0 text-stone-500! " style={descriptionStyle}>
+              {description}
+            </p>
+          )}
+          <slot />
+          {showTagAtBottom && (
+            <Tag
+              label={tag!}
+              variant="secondary"
+              size="small"
+              class={tagClass}
+            />
+          )}
+          {(imageSrc || imagePlaceholderColor || hasImageOverlay) && (
+            <div class="card-image-wrap">
+              {resolvedImageSrc && (
+                <img
+                  src={resolvedImageSrc}
+                  alt={imageAlt}
+                  class="card-image rounded-sm"
+                  loading="lazy"
+                />
+              )}
+              {!resolvedImageSrc && imagePlaceholderColor && (
+                <div
+                  class="card-image rounded-sm"
+                  role="img"
+                  aria-label={imageAlt}
+                  style={`background-color: ${imagePlaceholderColor};`}
+                />
+              )}
+              <slot name="image-overlay" />
+            </div>
+          )}
+        </div>
+      </div>
+    </Link>
+  ) : (
+    <div
+      class={`card w-full max-w-full min-w-0 bg-secondary ease-in-out duration-50 p-4 rounded-md ${className}`}
+    >
       <div class={`card-content ${cardContentClass}`}>
         {showTagAtTop && (
           <Tag
@@ -68,15 +129,10 @@ const descriptionStyle = truncateDescription
             class={`${tagClass} mb-2`}
           />
         )}
-        <h3 class={`text-lg! card-title ${cardTitleClass}`}>
-          {label}
-          {linkUrl && showLinkIcon && (
-            <ArrowUpRight class="card-icon text-stone-600 " />
-          )}
-        </h3>
+        <h3 class={`text-lg! card-title ${cardTitleClass}`}>{label}</h3>
         {description && (
           <p
-            class="w-full min-w-0 text-stone-500! "
+            class="w-full min-w-0 text-stone-500!  text-sm!"
             style={descriptionStyle}
           >
             {description}
@@ -84,90 +140,33 @@ const descriptionStyle = truncateDescription
         )}
         <slot />
         {showTagAtBottom && (
-          <Tag
-            label={tag!}
-            variant="secondary"
-            size="small"
-            class={tagClass}
-          />
+          <Tag label={tag!} variant="secondary" size="small" class={tagClass} />
         )}
         {(imageSrc || imagePlaceholderColor || hasImageOverlay) && (
           <div class="card-image-wrap">
-            {imageSrc && (
-              <Image
-                src={imageSrc}
+            {resolvedImageSrc && (
+              <img
+                src={resolvedImageSrc}
                 alt={imageAlt}
                 class="card-image rounded-sm"
                 loading="lazy"
               />
             )}
-            {!imageSrc && imagePlaceholderColor && (
+            {!resolvedImageSrc && imagePlaceholderColor && (
               <div
                 class="card-image rounded-sm"
                 role="img"
                 aria-label={imageAlt}
                 style={`background-color: ${imagePlaceholderColor};`}
-              ></div>
+              />
             )}
             <slot name="image-overlay" />
           </div>
         )}
       </div>
     </div>
-  </Link>
-) : (
-  <div class={`card w-full max-w-full min-w-0 bg-secondary ease-in-out duration-50 p-4 rounded-md ${className}`}>
-    <div class={`card-content ${cardContentClass}`}>
-      {showTagAtTop && (
-        <Tag
-          label={tag!}
-          variant="secondary"
-          size="small"
-          class={`${tagClass} mb-2`}
-        />
-      )}
-      <h3 class={`text-lg! card-title ${cardTitleClass}`}>{label}</h3>
-      {description && (
-        <p
-          class="w-full min-w-0 text-stone-500!  text-sm!"
-          style={descriptionStyle}
-        >
-          {description}
-        </p>
-      )}
-      <slot />
-      {showTagAtBottom && (
-        <Tag
-          label={tag!}
-          variant="secondary"
-          size="small"
-          class={tagClass}
-        />
-      )}
-      {(imageSrc || imagePlaceholderColor || hasImageOverlay) && (
-        <div class="card-image-wrap">
-          {imageSrc && (
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              class="card-image rounded-sm"
-              loading="lazy"
-            />
-          )}
-          {!imageSrc && imagePlaceholderColor && (
-            <div
-              class="card-image rounded-sm"
-              role="img"
-              aria-label={imageAlt}
-              style={`background-color: ${imagePlaceholderColor};`}
-            ></div>
-          )}
-          <slot name="image-overlay" />
-        </div>
-      )}
-    </div>
-  </div>
-)}
+  )
+}
 
 <style>
   .card {
@@ -194,7 +193,6 @@ const descriptionStyle = truncateDescription
     width: 100%;
     min-width: 0;
   }
-
 
   .card-content {
     display: flex;
@@ -246,5 +244,4 @@ const descriptionStyle = truncateDescription
     overflow: hidden;
     position: relative;
   }
-
 </style>

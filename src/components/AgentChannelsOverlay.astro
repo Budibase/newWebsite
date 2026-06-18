@@ -1,24 +1,29 @@
 ---
-import { Image } from "astro:assets";
 import Icon from "@components/Icon.astro";
-import BudibaseSymbol from "@assets/BBSymbolWhite.svg";
-import DiscordLogo from "@assets/logos/discord.svg";
-import SlackLogo from "@assets/logos/Slack.svg";
-import TeamsLogo from "@assets/logos/microsoft-teams.svg";
+import BudibaseSymbol from "@assets/BBSymbolWhite.svg?url";
+import DiscordLogo from "@assets/logos/discord.svg?url";
+import SlackLogo from "@assets/logos/Slack.svg?url";
+import TeamsLogo from "@assets/logos/microsoft-teams.svg?url";
 
 interface Props {
   class?: string;
 }
 
 const { class: className = "" } = Astro.props as Props;
-
 ---
 
-<div class={`agent-channels-overlay${className ? ` ${className}` : ""}`} data-node-id="2943:15268">
+<div
+  class={`agent-channels-overlay${className ? ` ${className}` : ""}`}
+  data-node-id="2943:15268"
+>
   <div class="agent-channels-overlay-panel">
     <div class="agent-channels-overlay-row">
       <div class="agent-channels-overlay-row-main">
-        <Image src={BudibaseSymbol} alt="" class="agent-channels-overlay-icon agent-channels-overlay-icon-chat" />
+        <img
+          src={BudibaseSymbol}
+          alt=""
+          class="agent-channels-overlay-icon agent-channels-overlay-icon-chat"
+        />
         <span class="agent-channels-overlay-label">Budibase Chat</span>
       </div>
       <div class="agent-channels-overlay-row-actions">
@@ -29,7 +34,11 @@ const { class: className = "" } = Astro.props as Props;
 
     <div class="agent-channels-overlay-row">
       <div class="agent-channels-overlay-row-main">
-        <Image src={SlackLogo} alt="" class="agent-channels-overlay-icon agent-channels-overlay-icon-slack" />
+        <img
+          src={SlackLogo}
+          alt=""
+          class="agent-channels-overlay-icon agent-channels-overlay-icon-slack"
+        />
         <span class="agent-channels-overlay-label">Slack</span>
       </div>
       <div class="agent-channels-overlay-row-actions">
@@ -39,7 +48,11 @@ const { class: className = "" } = Astro.props as Props;
 
     <div class="agent-channels-overlay-row">
       <div class="agent-channels-overlay-row-main">
-        <Image src={TeamsLogo} alt="" class="agent-channels-overlay-icon agent-channels-overlay-icon-teams" />
+        <img
+          src={TeamsLogo}
+          alt=""
+          class="agent-channels-overlay-icon agent-channels-overlay-icon-teams"
+        />
         <span class="agent-channels-overlay-label">Microsoft Teams</span>
       </div>
       <div class="agent-channels-overlay-row-actions">
@@ -49,7 +62,11 @@ const { class: className = "" } = Astro.props as Props;
 
     <div class="agent-channels-overlay-row">
       <div class="agent-channels-overlay-row-main">
-        <Image src={DiscordLogo} alt="" class="agent-channels-overlay-icon agent-channels-overlay-icon-discord" />
+        <img
+          src={DiscordLogo}
+          alt=""
+          class="agent-channels-overlay-icon agent-channels-overlay-icon-discord"
+        />
         <span class="agent-channels-overlay-label">Discord</span>
       </div>
       <div class="agent-channels-overlay-row-actions">

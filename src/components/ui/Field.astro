@@ -1,0 +1,63 @@
+---
+import { cx } from "../../lib/ui-classes";
+
+interface Props {
+  id?: string;
+  label: string;
+  description?: string;
+  error?: string;
+  required?: boolean;
+  class?: string;
+}
+
+const {
+  id,
+  label,
+  description,
+  error,
+  required = false,
+  class: className,
+} = Astro.props as Props;
+const descriptionId = description && id ? `${id}-description` : undefined;
+const errorId = error && id ? `${id}-error` : undefined;
+---
+
+<div class={cx("grid gap-2", className)} data-slot="field">
+  <label
+    for={id}
+    class="flex items-center gap-1 text-sm font-medium leading-none text-text"
+    data-slot="label"
+  >
+    {label}
+    {
+      required && (
+        <span class="text-danger" aria-hidden="true">
+          *
+        </span>
+      )
+    }
+  </label>
+  {
+    description && (
+      <p
+        id={descriptionId}
+        class="text-sm leading-5 text-text-muted"
+        data-slot="field-description"
+      >
+        {description}
+      </p>
+    )
+  }
+  <slot />
+  {
+    error && (
+      <p
+        id={errorId}
+        class="text-sm leading-5 text-danger"
+        data-slot="field-error"
+      >
+        {error}
+      </p>
+    )
+  }
+</div>
