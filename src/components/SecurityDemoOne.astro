@@ -67,7 +67,7 @@ const id = `form-demo-${Math.random().toString(36).slice(2, 8)}`;
     --form-demo-agent-text: var(--text-primary);
     --form-demo-notification-bg: var(--bg-1);
     --form-demo-notification-border: rgb(var(--border) / 0.72);
-    --form-demo-agent-icon-bg: var(--blue-600);
+    --form-demo-agent-icon-bg: var(--bb-blue-1000);
     --form-demo-agent-icon-fg: var(--bg-1);
     --form-demo-notification-icon-bg: var(--bg-2);
     width: 100%;
@@ -95,7 +95,7 @@ const id = `form-demo-${Math.random().toString(36).slice(2, 8)}`;
     border-radius: 8px;
     background: var(--form-demo-form-bg);
     padding: 32px;
-    box-shadow: 0 12px 32px rgb(0 0 0 / 0.08);
+    box-shadow: 0 12px 32px var(--bb-transparent-black-100);
   }
 
   .form-demo-title {
@@ -154,7 +154,7 @@ const id = `form-demo-${Math.random().toString(36).slice(2, 8)}`;
     justify-content: center;
     border: 0;
     border-radius: 999px;
-    background: var(--orange-600);
+    background: var(--bb-orange-800);
     color: rgb(var(--on-primary));
     padding: 8px 20px;
     font-size: 16px;
@@ -168,7 +168,7 @@ const id = `form-demo-${Math.random().toString(36).slice(2, 8)}`;
 
   .form-demo-submit:hover,
   .form-demo-submit:focus-visible {
-    background: var(--orange-700);
+    background: var(--bb-orange-1000);
   }
 
   .form-demo-submit:focus-visible {
@@ -227,7 +227,7 @@ const id = `form-demo-${Math.random().toString(36).slice(2, 8)}`;
     gap: 10px;
     border-radius: 6px;
     padding: 12px;
-    box-shadow: 0 12px 28px rgb(0 0 0 / 0.12);
+    box-shadow: 0 12px 28px var(--bb-transparent-black-200);
   }
 
   .form-demo-agent-card {
@@ -239,7 +239,7 @@ const id = `form-demo-${Math.random().toString(36).slice(2, 8)}`;
     width: min(100%, 320px);
     background: var(--form-demo-notification-bg);
     border: 1px solid var(--form-demo-notification-border);
-    box-shadow: 0 12px 24px rgb(0 0 0 / 0.08);
+    box-shadow: 0 12px 24px var(--bb-transparent-black-100);
   }
 
   .form-demo-agent-icon,

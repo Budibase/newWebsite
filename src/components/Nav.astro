@@ -53,30 +53,47 @@ const whiteLogoSrc =
     </a>
 
     <div
+      class="z-10 hidden items-center gap-5 justify-self-start whitespace-nowrap lg:flex xl:gap-7"
+    >
+      <HeaderDropDown label="Platform" items={productDropdownItems} />
+      <HeaderDropDown label="Solutions" items={solutionsDropdownItems} />
+      <a
+        target="_self"
+        href="/pricing/"
+        class="text-sm font-medium nav-link transition-colors"
+        data-astro-prefetch
+      >
+        Pricing
+      </a>
+      <a
+        target="_self"
+        href="/customers/"
+        class="text-sm font-medium nav-link transition-colors"
+        data-astro-prefetch
+      >
+        Customers
+      </a>
+      <HeaderDropDown label="Resources" items={resourcesDropdownItems} />
+      <a
+        target="_self"
+        href="/partners/"
+        class="text-sm font-medium nav-link transition-colors"
+        data-astro-prefetch
+      >
+        Company
+      </a>
+    </div>
+
+    <div
       class="z-10 flex items-center gap-2 justify-self-end lg:col-start-3 lg:gap-3"
     >
-      <div class="hidden items-center gap-5 whitespace-nowrap lg:flex xl:gap-7">
-        <HeaderDropDown label="Product" items={productDropdownItems} />
-        <HeaderDropDown label="Solutions" items={solutionsDropdownItems} />
-        <HeaderDropDown label="Resources" items={resourcesDropdownItems} />
-
-        <a
-          target="_self"
-          href="/pricing/"
-          class="text-sm nav-link transition-colors"
-          data-astro-prefetch
-        >
-          Pricing
-        </a>
-      </div>
-
       <a
         href="https://github.com/budibase/budibase"
         target="_blank"
-        class="relative justify-center items-center px-1.5 text-center ease-out duration-150 rounded-sm transition-all hover:bg-stone-200 dark:hover:bg-stone-800 border-transparent text-xs hidden xl:flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-stone-900"
+        class="relative justify-center items-center px-1.5 text-center ease-out duration-150 rounded-sm transition-all hover:bg-stone-200 border-transparent text-xs hidden xl:flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         ><span class="truncate"
           ><span
-            class="flex text-sm items-center gap-0.5 nav-link transition-colors"
+            class="flex text-sm font-medium items-center gap-0.5 nav-link transition-colors"
             ><svg
               class="w-5 h-5"
               viewBox="0 0 17 16"
@@ -93,31 +110,31 @@ const whiteLogoSrc =
       >
 
       <div class="hidden lg:flex items-center gap-2 lg:gap-3">
+        <a
+          href="https://account.budibase.app/auth/login"
+          target="_blank"
+          class="text-sm font-medium nav-link transition-colors"
+        >
+          Log in
+        </a>
         <Button
-          label="Log in"
-          url="https://account.budibase.app/auth/login"
+          label="Get started"
+          url="https://account.budibase.app/register"
           variant="secondary"
           size="small"
           target="_blank"
         />
         <Button
-          label="Contact sales"
+          label="Book a demo"
           url="/contact/"
-          variant="secondary"
-          size="small"
-        />
-        <Button
-          label="Try it free"
-          url="https://account.budibase.app/register"
           variant="primary"
           size="small"
-          target="_blank"
         />
       </div>
 
       <button
         id="mobile-menu-button"
-        class="lg:hidden p-2 text-stone-800 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-stone-800 rounded transition-colors"
+        class="lg:hidden p-2 text-stone-800 hover:bg-stone-200 rounded transition-colors"
         aria-label="Toggle mobile menu"
         aria-expanded="false"
       >
@@ -210,8 +227,9 @@ const whiteLogoSrc =
         <li class="mobile-nav-item">
           <details class="mobile-nav-accordion" data-mobile-nav-accordion>
             <summary class="mobile-nav-row mobile-nav-accordion-summary">
-              <span class="mobile-nav-row-label nav-link transition-colors"
-                >Product</span
+              <span
+                class="mobile-nav-row-label font-medium nav-link transition-colors"
+                >Platform</span
               >
               <svg
                 class="mobile-nav-plus-icon"
@@ -255,7 +273,7 @@ const whiteLogoSrc =
                               : undefined)
                           }
                           data-astro-prefetch={prefetch ? "" : undefined}
-                          class="mobile-nav-sub-link nav-link transition-colors"
+                          class="mobile-nav-sub-link font-medium nav-link transition-colors"
                         >
                           <span>{label}</span>
                           {badge && (
@@ -274,36 +292,94 @@ const whiteLogoSrc =
         </li>
 
         <li class="mobile-nav-item">
-          <a
-            href="/ops/"
-            class="mobile-nav-row nav-link transition-colors"
-            data-astro-prefetch
-          >
-            Ops
-          </a>
-        </li>
-        <li class="mobile-nav-item">
-          <a
-            href="https://discord.com/invite/budibase-733030666647765003"
-            target="_blank"
-            class="mobile-nav-row nav-link transition-colors"
-          >
-            Community
-          </a>
+          <details class="mobile-nav-accordion" data-mobile-nav-accordion>
+            <summary class="mobile-nav-row mobile-nav-accordion-summary">
+              <span
+                class="mobile-nav-row-label font-medium nav-link transition-colors"
+                >Solutions</span
+              >
+              <svg
+                class="mobile-nav-plus-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 5v14M5 12h14"></path>
+              </svg>
+            </summary>
+            <ul class="mobile-nav-sub-list">
+              {
+                solutionsDropdownItems.map(
+                  ({ href, label, prefetch, badge, target, rel, disabled }) => (
+                    <li class="mobile-nav-sub-item">
+                      {disabled ? (
+                        <span
+                          aria-disabled="true"
+                          class="mobile-nav-sub-link mobile-nav-sub-link-disabled"
+                        >
+                          <span>{label}</span>
+                          {badge && (
+                            <span class="text-sm leading-none font-mono text-[var(--text-secondary)]">
+                              {badge}
+                            </span>
+                          )}
+                        </span>
+                      ) : (
+                        <a
+                          href={href}
+                          target={target}
+                          rel={
+                            rel ??
+                            (target === "_blank"
+                              ? "noopener noreferrer"
+                              : undefined)
+                          }
+                          data-astro-prefetch={prefetch ? "" : undefined}
+                          class="mobile-nav-sub-link font-medium nav-link transition-colors"
+                        >
+                          <span>{label}</span>
+                          {badge && (
+                            <span class="text-sm leading-none font-mono text-[var(--text-secondary)]">
+                              {badge}
+                            </span>
+                          )}
+                        </a>
+                      )}
+                    </li>
+                  ),
+                )
+              }
+            </ul>
+          </details>
         </li>
         <li class="mobile-nav-item">
           <a
             href="/pricing/"
-            class="mobile-nav-row nav-link transition-colors"
+            class="mobile-nav-row font-medium nav-link transition-colors"
             data-astro-prefetch
           >
             Pricing
           </a>
         </li>
         <li class="mobile-nav-item">
+          <a
+            href="/customers/"
+            class="mobile-nav-row font-medium nav-link transition-colors"
+            data-astro-prefetch
+          >
+            Customers
+          </a>
+        </li>
+        <li class="mobile-nav-item">
           <details class="mobile-nav-accordion" data-mobile-nav-accordion>
             <summary class="mobile-nav-row mobile-nav-accordion-summary">
-              <span class="mobile-nav-row-label nav-link transition-colors"
+              <span
+                class="mobile-nav-row-label font-medium nav-link transition-colors"
                 >Resources</span
               >
               <svg
@@ -348,7 +424,7 @@ const whiteLogoSrc =
                               : undefined)
                           }
                           data-astro-prefetch={prefetch ? "" : undefined}
-                          class="mobile-nav-sub-link nav-link transition-colors"
+                          class="mobile-nav-sub-link font-medium nav-link transition-colors"
                         >
                           <span>{label}</span>
                           {badge && (
@@ -365,24 +441,31 @@ const whiteLogoSrc =
             </ul>
           </details>
         </li>
+        <li class="mobile-nav-item">
+          <a
+            href="/partners/"
+            class="mobile-nav-row font-medium nav-link transition-colors"
+            data-astro-prefetch
+          >
+            Company
+          </a>
+        </li>
       </ul>
     </nav>
 
     <div class="mobile-nav-actions">
-      <Button
-        label="Log in"
-        url="https://account.budibase.app/auth/login"
-        variant="secondary"
-        size="large"
+      <a
+        href="https://account.budibase.app/auth/login"
         target="_blank"
-        class="mobile-nav-action-button"
-      />
+        class="mobile-nav-row font-medium nav-link transition-colors"
+      >
+        Log in
+      </a>
       <Button
-        label="Sign up"
-        url="https://account.budibase.app/register"
+        label="Book a demo"
+        url="/contact/"
         variant="primary"
         size="large"
-        target="_blank"
         class="mobile-nav-action-button"
       />
     </div>

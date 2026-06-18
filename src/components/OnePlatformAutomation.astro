@@ -102,7 +102,7 @@ const steps = [
     display: flex;
     justify-content: flex-end;
     align-items: stretch;
-    background: var(--color-grey-50);
+    background: var(--bb-gray-50);
   }
 
   .one-platform-automation::after {
@@ -113,9 +113,9 @@ const steps = [
     pointer-events: none;
     background: linear-gradient(
       180deg,
-      rgb(250 249 245 / 0.64) 0%,
-      rgb(250 249 245 / 0.34) 38%,
-      rgb(250 249 245 / 0.1) 100%
+      color-mix(in srgb, var(--bb-background-base) 64%, transparent) 0%,
+      color-mix(in srgb, var(--bb-background-base) 34%, transparent) 38%,
+      color-mix(in srgb, var(--bb-background-base) 10%, transparent) 100%
     );
   }
 
@@ -157,7 +157,7 @@ const steps = [
     min-height: 40px;
     padding: 8px 12px;
     border-radius: 6px;
-    background: var(--color-grey-100);
+    background: var(--bb-gray-75);
   }
 
   .one-platform-automation__icon-wrap {
@@ -168,19 +168,19 @@ const steps = [
     align-items: center;
     justify-content: center;
     border-radius: 3px;
-    color: var(--color-grey-50);
+    color: var(--bb-gray-50);
   }
 
   .one-platform-automation__icon-wrap.is-email {
-    background: var(--color-orange-600);
+    background: var(--bb-orange-800);
   }
 
   .one-platform-automation__icon-wrap.is-agent {
-    background: var(--color-purple-600);
+    background: var(--bb-purple-1100);
   }
 
   .one-platform-automation__icon-wrap.is-integration {
-    background: var(--color-grey-200);
+    background: var(--bb-gray-100);
   }
 
   .one-platform-automation__icon {
@@ -202,7 +202,7 @@ const steps = [
   .one-platform-automation__copy {
     flex: 1 1 auto;
     min-width: 0;
-    color: var(--color-grey-900);
+    color: var(--bb-gray-900);
   }
 
   .one-platform-automation__title {
@@ -227,7 +227,7 @@ const steps = [
     display: block;
     width: 1px;
     height: 18px;
-    background: var(--color-grey-300);
+    background: var(--bb-gray-300);
   }
 
   .one-platform-automation__connector-line::after {
@@ -237,8 +237,8 @@ const steps = [
     bottom: 1px;
     width: 6px;
     height: 6px;
-    border-right: 1px solid var(--color-grey-300);
-    border-bottom: 1px solid var(--color-grey-300);
+    border-right: 1px solid var(--bb-gray-300);
+    border-bottom: 1px solid var(--bb-gray-300);
     transform: translateX(-50%) rotate(45deg);
   }
 

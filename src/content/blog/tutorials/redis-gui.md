@@ -176,7 +176,7 @@ Now you can add an embed component with this code:
 
 <style type='text/css'>
 div[data-name="{{ State.tab }} Commands"] > 
-button { background: #000 ! important 
+button { background: var(--bb-black) ! important 
 </style>
 
 {{< /highlight >}}
@@ -197,7 +197,7 @@ Both these containers are inside another container. This component is there just
 
 {{< highlight css "linenos=inline" >}}
 
-border: 5px solid #000;
+border: 5px solid var(--bb-black);
 margin-top: -34px
 
 {{< /highlight >}}

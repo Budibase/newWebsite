@@ -4,8 +4,6 @@ import Check from "phosphor-astro/CheckCircle.astro";
 import GlobeSimple from "phosphor-astro/GlobeSimple.astro";
 import Certificate from "phosphor-astro/Certificate.astro";
 
-import ThemeToggle from "@components/ThemeToggle.astro";
-
 interface FooterLink {
   label: string;
   url: string;
@@ -121,9 +119,6 @@ const footerColumns: FooterColumn[] = [
           <GlobeSimple class="footer-check-icon" />
           <span>Made in Europe</span>
         </span>
-      </div>
-      <div class="footer-controls">
-        <ThemeToggle />
       </div>
     </div>
   </div>

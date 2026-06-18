@@ -90,8 +90,8 @@ These include:
     border-collapse: separate;
     border-spacing: 0;
     font-size: 0.9rem;
-    background: #fff;
-    border: 1px solid #ece8e1;
+    background: var(--bb-white);
+    border: 1px solid var(--bb-border-base);
     border-radius: 14px;
     overflow: hidden;
   }
@@ -99,17 +99,17 @@ These include:
   .comparison-table th,
   .comparison-table td {
     padding: 0.95rem 0.85rem;
-    border-bottom: 1px solid #ece8e1;
+    border-bottom: 1px solid var(--bb-border-base);
     text-align: left;
     vertical-align: top;
     line-height: 1.55;
   }
 
   .comparison-table th {
-    background: #faf9f6;
-    color: #2b2723;
+    background: var(--bb-background-surface);
+    color: var(--bb-text-base);
     font-weight: 700;
-    border-bottom: 1px solid #e3ddd5;
+    border-bottom: 1px solid var(--bb-gray-200);
   }
 
   .comparison-table th:first-child,
@@ -122,21 +122,21 @@ These include:
   }
 
   .comparison-table th:first-child {
-    background: #faf9f6;
+    background: var(--bb-background-surface);
     z-index: 2;
   }
 
   .comparison-table td:first-child {
-    background: #fff;
-    color: #181512;
+    background: var(--bb-white);
+    color: var(--bb-text-base);
   }
 
   .comparison-table tr:nth-child(even) td {
-    background: #fcfbf9;
+    background: var(--bb-background-base);
   }
 
   .comparison-table tr:nth-child(even) td:first-child {
-    background: #fcfbf9;
+    background: var(--bb-background-base);
   }
 
   .comparison-table tr:last-child td {

@@ -88,12 +88,12 @@ const operationsLogos = [
     >
       <div class="lg:col-start-1 lg:row-start-1">
         <div
-          class="relative flex min-h-[220px] items-center justify-center rounded-2xl border border-stone-200/60 bg-white/70 p-4 dark:border-stone-700/40 dark:bg-stone-900/40 lg:min-h-[260px]"
+          class="relative flex min-h-[220px] items-center justify-center rounded-2xl border border-stone-200/60 bg-white/70 p-4   lg:min-h-[260px]"
         >
           <div class="grid w-full grid-cols-3 gap-2 justify-items-center sm:grid-cols-4">
             {modelLogos.map(logo => (
               <div
-                class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px] dark:border-stone-600/60 dark:bg-stone-900"
+                class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px]  "
               >
                 <Image
                   src={logo.src}
@@ -106,19 +106,19 @@ const operationsLogos = [
             ))}
           </div>
           <div
-            class="mt-4 flex w-full max-w-[220px] flex-col items-center rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-center shadow-lg dark:bg-stone-900 lg:absolute lg:left-1/2 lg:top-1/2 lg:mt-0 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2"
+            class="mt-4 flex w-full max-w-[220px] flex-col items-center rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-center shadow-lg  lg:absolute lg:left-1/2 lg:top-1/2 lg:mt-0 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2"
           >
-            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">
+            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 ">
               AI models
             </p>
-            <p class="text-2xl font-semibold text-stone-800 dark:text-stone-100">182</p>
+            <p class="text-2xl font-semibold text-stone-800 ">182</p>
           </div>
         </div>
       </div>
 
       <div class="flex items-center justify-center lg:col-start-2 lg:row-start-1 lg:row-span-2">
         <div
-          class="connections-card-title max-w-lg rounded-2xl border border-[var(--border)] bg-white px-6 py-8 text-center shadow-xl dark:bg-stone-900"
+          class="connections-card-title max-w-lg rounded-2xl border border-[var(--border)] bg-white px-6 py-8 text-center shadow-xl "
         >
           <h2 class="section-title m-0 w-full text-center">
             <span class="block text-[var(--text-primary)]">Your models, your tools,</span>
@@ -129,26 +129,26 @@ const operationsLogos = [
 
       <div class="lg:col-start-3 lg:row-start-1">
         <div
-          class="relative flex min-h-[220px] items-center justify-center rounded-2xl border border-stone-200/60 bg-white/70 p-4 dark:border-stone-700/40 dark:bg-stone-900/40 lg:min-h-[260px]"
+          class="relative flex min-h-[220px] items-center justify-center rounded-2xl border border-stone-200/60 bg-white/70 p-4   lg:min-h-[260px]"
         >
           <div class="grid w-full grid-cols-3 gap-2 justify-items-center sm:grid-cols-4">
             {apiLogos.map(logo => (
               <div
-                class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px] dark:border-stone-600/60 dark:bg-stone-900"
+                class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px]  "
               >
                 {logo.alt === "GitHub" ? (
                   <>
                     <Image
                       src={GithubLogoSvg}
                       alt="GitHub"
-                      class="h-full w-full object-contain dark:hidden"
+                      class="h-full w-full object-contain "
                       width={26}
                       height={26}
                     />
                     <Image
                       src={GithubLogoWhite}
                       alt="GitHub"
-                      class="hidden h-full w-full object-contain dark:block"
+                      class="hidden h-full w-full object-contain "
                       width={26}
                       height={26}
                     />
@@ -166,24 +166,24 @@ const operationsLogos = [
             ))}
           </div>
           <div
-            class="mt-4 flex w-full max-w-[220px] flex-col items-center rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-center shadow-lg dark:bg-stone-900 lg:absolute lg:left-1/2 lg:top-1/2 lg:mt-0 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2"
+            class="mt-4 flex w-full max-w-[220px] flex-col items-center rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-center shadow-lg  lg:absolute lg:left-1/2 lg:top-1/2 lg:mt-0 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2"
           >
-            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">
+            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 ">
               APIs
             </p>
-            <p class="text-2xl font-semibold text-stone-800 dark:text-stone-100">92</p>
+            <p class="text-2xl font-semibold text-stone-800 ">92</p>
           </div>
         </div>
       </div>
 
       <div class="lg:col-start-1 lg:row-start-2">
         <div
-          class="relative flex min-h-[220px] items-center justify-center rounded-2xl border border-stone-200/60 bg-white/70 p-4 dark:border-stone-700/40 dark:bg-stone-900/40 lg:min-h-[260px]"
+          class="relative flex min-h-[220px] items-center justify-center rounded-2xl border border-stone-200/60 bg-white/70 p-4   lg:min-h-[260px]"
         >
           <div class="grid w-full grid-cols-3 gap-2 justify-items-center sm:grid-cols-4">
             {dataLogos.map(logo => (
               <div
-                class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px] dark:border-stone-600/60 dark:bg-stone-900"
+                class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px]  "
               >
                 <Image
                   src={logo.src}
@@ -196,24 +196,24 @@ const operationsLogos = [
             ))}
           </div>
           <div
-            class="mt-4 flex w-full max-w-[220px] flex-col items-center rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-center shadow-lg dark:bg-stone-900 lg:absolute lg:left-1/2 lg:top-1/2 lg:mt-0 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2"
+            class="mt-4 flex w-full max-w-[220px] flex-col items-center rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-center shadow-lg  lg:absolute lg:left-1/2 lg:top-1/2 lg:mt-0 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2"
           >
-            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">
+            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 ">
               Data sources
             </p>
-            <p class="text-2xl font-semibold text-stone-800 dark:text-stone-100">17</p>
+            <p class="text-2xl font-semibold text-stone-800 ">17</p>
           </div>
         </div>
       </div>
 
       <div class="lg:col-start-3 lg:row-start-2">
         <div
-          class="relative flex min-h-[220px] items-center justify-center rounded-2xl border border-stone-200/60 bg-white/70 p-4 dark:border-stone-700/40 dark:bg-stone-900/40 lg:min-h-[260px]"
+          class="relative flex min-h-[220px] items-center justify-center rounded-2xl border border-stone-200/60 bg-white/70 p-4   lg:min-h-[260px]"
         >
           <div class="grid w-full grid-cols-3 gap-2 justify-items-center sm:grid-cols-4">
             {operationsLogos.map(logo => (
               <div
-                class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px] dark:border-stone-600/60 dark:bg-stone-900"
+                class="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-stone-300/70 bg-white p-[6px]  "
               >
                 <Image
                   src={logo.src}
@@ -226,12 +226,12 @@ const operationsLogos = [
             ))}
           </div>
           <div
-            class="mt-4 flex w-full max-w-[220px] flex-col items-center rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-center shadow-lg dark:bg-stone-900 lg:absolute lg:left-1/2 lg:top-1/2 lg:mt-0 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2"
+            class="mt-4 flex w-full max-w-[220px] flex-col items-center rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-center shadow-lg  lg:absolute lg:left-1/2 lg:top-1/2 lg:mt-0 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2"
           >
-            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">
+            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-stone-500 ">
               Operations
             </p>
-            <p class="text-2xl font-semibold text-stone-800 dark:text-stone-100">15,642</p>
+            <p class="text-2xl font-semibold text-stone-800 ">15,642</p>
           </div>
         </div>
       </div>
@@ -241,13 +241,8 @@ const operationsLogos = [
 
 <style>
   .connections-shell {
-    background: linear-gradient(90deg, rgba(39, 39, 42, 0.05) 1px, transparent 1px),
-      linear-gradient(rgba(39, 39, 42, 0.05) 1px, transparent 1px);
+    background: linear-gradient(90deg, color-mix(in srgb, var(--bb-gray-800) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(color-mix(in srgb, var(--bb-gray-800) 5%, transparent) 1px, transparent 1px);
     background-size: 28px 28px;
-  }
-
-  :global(.dark) .connections-shell {
-    background: linear-gradient(90deg, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
-      linear-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px);
   }
 </style>

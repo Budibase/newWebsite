@@ -86,20 +86,6 @@ export default defineConfig({
     },
     {
       provider: fontProviders.local(),
-      name: "Fraunces",
-      cssVariable: "--font-fraunces",
-      options: {
-        variants: [
-          {
-            src: ["./src/assets/fonts/Fraunces-Variable.woff2"],
-            weight: "400 600",
-            style: "normal",
-          },
-        ],
-      },
-    },
-    {
-      provider: fontProviders.local(),
       name: "iA Writer Mono",
       cssVariable: "--font-ia-writer-mono",
       options: {

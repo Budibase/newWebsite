@@ -435,12 +435,12 @@ const tabs = [
     --agent-use-cases-grid-dot: rgb(var(--border) / 0.45);
     --agent-use-cases-connector: rgb(var(--ring) / 0.72);
     --agent-use-cases-node-bg: var(--bg-3);
-    --agent-use-cases-node-integration-bg: var(--grey-700);
-    --agent-use-cases-trigger-bg: var(--orange-500);
-    --agent-use-cases-operation-bg: var(--purple-500);
-    --agent-use-cases-agent-bg: var(--blue-500);
+    --agent-use-cases-node-integration-bg: var(--bb-gray-800);
+    --agent-use-cases-trigger-bg: var(--bb-orange-700);
+    --agent-use-cases-operation-bg: var(--bb-purple-800);
+    --agent-use-cases-agent-bg: var(--bb-blue-800);
     --agent-use-cases-node-description: var(--text-secondary);
-    --agent-use-cases-node-icon-fg: #fff;
+    --agent-use-cases-node-icon-fg: var(--bb-white);
     background:
       radial-gradient(circle at center, var(--agent-use-cases-grid-dot) 1px, transparent 1px) 0 0 / 20px 20px,
       var(--bg-2);
@@ -499,7 +499,7 @@ const tabs = [
     align-items: center;
     justify-content: center;
     border-radius: 4px;
-    color: #fff;
+    color: var(--bb-white);
     padding: 2px 4px;
     font-size: 14px;
     font-weight: 500;
@@ -593,7 +593,7 @@ const tabs = [
     max-width: 440px;
     overflow: hidden;
     border-radius: 12px;
-    background: #fff;
+    background: var(--bb-white);
     padding-bottom: 20px;
     font-family: var(--font-display);
   }
@@ -603,7 +603,7 @@ const tabs = [
     align-items: center;
     gap: 20px;
     padding: 10px 18px;
-    border-bottom: 1px solid #ececec;
+    border-bottom: 1px solid var(--bb-gray-100);
   }
 
   .agent-use-cases-thread-back {
@@ -615,7 +615,7 @@ const tabs = [
     padding: 0;
     border: 0;
     background: transparent;
-    color: #979797;
+    color: var(--bb-gray-500);
     cursor: default;
   }
 
@@ -625,7 +625,7 @@ const tabs = [
 
   .agent-use-cases-thread-title {
     margin: 0;
-    color: #181a20;
+    color: var(--bb-text-base);
     font-size: 18px;
     font-weight: 500;
     line-height: 1;
@@ -661,7 +661,7 @@ const tabs = [
     height: 40px;
     flex-shrink: 0;
     border-radius: 8px;
-    background: #386cf4;
+    background: var(--bb-brand);
     padding: 8px;
   }
 
@@ -694,14 +694,14 @@ const tabs = [
   }
 
   .agent-use-cases-thread-name {
-    color: #191919 !important;
+    color: var(--bb-text-base) !important;
     font-size: 18px;
     font-weight: 500;
     line-height: 1;
   }
 
   .agent-use-cases-thread-time {
-    color: #7e7e7e !important;
+    color: var(--bb-gray-600) !important;
     font-size: 12px;
     font-weight: 400;
     line-height: 1;
@@ -709,30 +709,30 @@ const tabs = [
 
   .agent-use-cases-thread-text,
   .agent-use-cases-thread-response {
-    color: #40403e !important;
+    color: var(--bb-gray-700) !important;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
   }
 
   .agent-use-cases-thread-link {
-    color: #386cf4 !important;
+    color: var(--bb-brand) !important;
   }
 
   .agent-use-cases-thread-response ul {
     margin: 16px 0;
     padding-left: 0;
-    color: #40403e !important;
+    color: var(--bb-gray-700) !important;
   }
 
   .agent-use-cases-thread-response p {
-    color: #40403e !important;
+    color: var(--bb-gray-700) !important;
   }
 
   .agent-use-cases-thread-response li {
     position: relative;
     padding-left: 18px;
-    color: #40403e !important;
+    color: var(--bb-gray-700) !important;
     line-height: 1.5;
     letter-spacing: 0 !important;
   }
@@ -742,7 +742,7 @@ const tabs = [
     position: absolute;
     left: 0;
     top: 0;
-    color: #40403e;
+    color: var(--bb-gray-700);
   }
 
   .agent-use-cases-thread-response li + li {
@@ -754,7 +754,7 @@ const tabs = [
     max-width: calc(100% - 36px);
     height: 57px;
     margin: 30px auto 0;
-    border: 1px solid #ececec;
+    border: 1px solid var(--bb-gray-100);
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -774,8 +774,8 @@ const tabs = [
     width: 37px;
     height: 37px;
     border-radius: 999px;
-    background: #ececec;
-    color: #7e7e7e;
+    background: var(--bb-gray-100);
+    color: var(--bb-gray-600);
     flex-shrink: 0;
   }
 
@@ -784,7 +784,7 @@ const tabs = [
   }
 
   .agent-use-cases-thread-input-text {
-    color: #7e7e7e;
+    color: var(--bb-gray-600);
     font-size: 16px;
     font-weight: 400;
     line-height: 1;
@@ -799,7 +799,7 @@ const tabs = [
     align-items: center;
     gap: 8px;
     padding: 10px 18px;
-    border-bottom: 1px solid #ececec;
+    border-bottom: 1px solid var(--bb-gray-100);
   }
 
   .agent-use-cases-support-header-logo {
@@ -812,7 +812,7 @@ const tabs = [
 
   .agent-use-cases-support-header-title {
     margin: 0;
-    color: #181a20 !important;
+    color: var(--bb-text-base) !important;
     font-size: 18px;
     font-weight: 500;
     line-height: 1;
@@ -828,7 +828,7 @@ const tabs = [
   }
 
   .agent-use-cases-support-response {
-    color: #40403e !important;
+    color: var(--bb-gray-700) !important;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
@@ -841,7 +841,7 @@ const tabs = [
   }
 
   .agent-use-cases-support-response p {
-    color: #40403e !important;
+    color: var(--bb-gray-700) !important;
   }
 
   .agent-use-cases-support-response p + p {
@@ -856,7 +856,7 @@ const tabs = [
   .agent-use-cases-support-response li {
     position: relative;
     padding-left: 18px;
-    color: #40403e !important;
+    color: var(--bb-gray-700) !important;
   }
 
   .agent-use-cases-support-response li::before {
@@ -864,7 +864,7 @@ const tabs = [
     position: absolute;
     left: 0;
     top: 0;
-    color: #40403e;
+    color: var(--bb-gray-700);
   }
 
   .agent-use-cases-support-input-icon {
@@ -896,7 +896,7 @@ const tabs = [
     align-items: flex-start;
     gap: 12px;
     border-radius: 6px;
-    background: #fafaf7;
+    background: var(--bb-background-base);
     padding: 16px 32px;
   }
 
@@ -904,7 +904,7 @@ const tabs = [
     width: 30px;
     height: 22px;
     display: block;
-    color: #386cf4;
+    color: var(--bb-brand);
   }
 
   .agent-use-cases-approval-form-title,
@@ -918,14 +918,14 @@ const tabs = [
   }
 
   .agent-use-cases-approval-form-title {
-    color: #191919 !important;
+    color: var(--bb-text-base) !important;
     font-size: 24px;
     font-weight: 600;
     line-height: 1.2;
   }
 
   .agent-use-cases-approval-form-label {
-    color: #191919 !important;
+    color: var(--bb-text-base) !important;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.25;
@@ -937,14 +937,14 @@ const tabs = [
     height: 42px;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid #bfbfba;
+    border: 1px solid var(--bb-border-bold);
     border-radius: 4px;
-    background: #f0eee6;
+    background: var(--bb-gray-75);
     padding: 12px;
   }
 
   .agent-use-cases-approval-select-value {
-    color: #191919 !important;
+    color: var(--bb-text-base) !important;
     font-size: 16px;
     font-weight: 500;
     line-height: 1;
@@ -955,7 +955,7 @@ const tabs = [
     height: 18px;
     display: block;
     flex-shrink: 0;
-    color: #666663;
+    color: var(--bb-text-subtle);
   }
 
   .agent-use-cases-approval-submit {
@@ -964,9 +964,9 @@ const tabs = [
     align-items: center;
     justify-content: center;
     border-radius: 18px;
-    background: #c86240;
+    background: var(--bb-orange-800);
     padding: 8px 20px;
-    color: #fff !important;
+    color: var(--bb-white) !important;
     font-size: 16px;
     font-weight: 500;
     line-height: 17px;
@@ -977,7 +977,7 @@ const tabs = [
     height: 40px;
     display: block;
     flex-shrink: 0;
-    background-image: linear-gradient(to bottom, #6a9bcc 50%, transparent 50%);
+    background-image: linear-gradient(to bottom, var(--bb-blue-700) 50%, transparent 50%);
     background-size: 2px 8px;
     background-repeat: repeat-y;
   }
@@ -989,7 +989,7 @@ const tabs = [
     align-items: flex-start;
     gap: 10px;
     border-radius: 6px;
-    background: #fafaf7;
+    background: var(--bb-background-base);
     padding: 12px;
   }
 
@@ -1004,18 +1004,18 @@ const tabs = [
   }
 
   .agent-use-cases-approval-info-icon.is-agent {
-    background: #215f9e;
+    background: var(--bb-blue-1000);
   }
 
   .agent-use-cases-approval-info-icon.is-gmail {
-    background: #f0eee6;
+    background: var(--bb-gray-75);
   }
 
   .agent-use-cases-approval-info-icon-image {
     width: 20px;
     height: 20px;
     display: block;
-    color: #fff;
+    color: var(--bb-white);
   }
 
   .agent-use-cases-approval-gmail-icon {
@@ -1030,14 +1030,14 @@ const tabs = [
   }
 
   .agent-use-cases-approval-info-title {
-    color: #191919 !important;
+    color: var(--bb-text-base) !important;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
   }
 
   .agent-use-cases-approval-info-text {
-    color: #666663 !important;
+    color: var(--bb-text-subtle) !important;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;

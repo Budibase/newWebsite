@@ -7,18 +7,8 @@ import PlaceholderIcon from "@assets/logos/bbSymbol.svg";
   .decorative-border {
     background-image: repeating-radial-gradient(
       circle,
-      rgba(0, 0, 0, 0.2) 0px,
-      rgba(0, 0, 0, 0.2) 1px,
-      transparent 1px,
-      transparent 6px
-    );
-  }
-  
-  .dark .decorative-border {
-    background-image: repeating-radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.15) 0px,
-      rgba(255, 255, 255, 0.15) 1px,
+      var(--bb-transparent-black-400) 0px,
+      var(--bb-transparent-black-400) 1px,
       transparent 1px,
       transparent 6px
     );
@@ -33,10 +23,10 @@ import PlaceholderIcon from "@assets/logos/bbSymbol.svg";
           <div class="flex flex-col items-center justify-center">
             <!-- Header Section -->
             <div class="mb-10 flex w-full max-w-3xl flex-col items-center text-center lg:mb-16">
-              <h3 class="h3 mb-4 max-w-2xl text-stone-900 dark:text-stone-100">
+              <h3 class="h3 mb-4 max-w-2xl text-stone-900 ">
                 Integrate seamlessly with your tech stack and the tools you already use
               </h3>
-              <div class="text-base max-w-xl text-pretty text-stone-500 dark:text-stone-400">
+              <div class="text-base max-w-xl text-pretty text-stone-500 ">
                 Connect agents to your CRM, support desk, calendar, payment system, or telephony provider. Whether it's Salesforce, Stripe, Zendesk, or Twilio, integrations work out of the box with minimal setup
               </div>
             </div>
@@ -56,7 +46,7 @@ import PlaceholderIcon from "@assets/logos/bbSymbol.svg";
             </div>
 
             <!-- Logo Grid -->
-            <div class="grid w-full max-w-xl grid-cols-3 grid-rows-3 border border-stone-300 dark:border-stone-700">
+            <div class="grid w-full max-w-xl grid-cols-3 grid-rows-3 border border-stone-300 ">
               <!-- Row 1 -->
               <div class="relative flex items-center justify-center p-5 lg:px-[60px] lg:py-8">
                 <div
@@ -253,7 +243,7 @@ import PlaceholderIcon from "@assets/logos/bbSymbol.svg";
             </div>
 
             <!-- Footer Section -->
-            <div class="mb-12 mt-3 text-center text-base text-stone-500 dark:text-stone-400 lg:mb-16 lg:mt-8">
+            <div class="mb-12 mt-3 text-center text-base text-stone-500  lg:mb-16 lg:mt-8">
               And hundreds more via APIs or MCPs.
             </div>
 
@@ -261,7 +251,7 @@ import PlaceholderIcon from "@assets/logos/bbSymbol.svg";
               label="View all Integrations"
               url="/product/connections"
               variant="secondary"
-              class="border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-100 hover:text-stone-700 dark:hover:text-stone-50 hover:border-stone-400 dark:hover:border-stone-600 bg-transparent"
+              class="border-stone-300  text-stone-900  hover:text-stone-700  hover:border-stone-400  bg-transparent"
             />
           </div>
         </div>

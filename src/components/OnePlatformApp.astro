@@ -69,7 +69,7 @@ import CaretDownIcon from "@assets/images/demos/app-demo/481b5637386cfa51221252c
     display: flex;
     justify-content: flex-end;
     align-items: stretch;
-    background: var(--color-grey-50);
+    background: var(--bb-gray-50);
   }
 
   .one-platform-app::after {
@@ -80,9 +80,9 @@ import CaretDownIcon from "@assets/images/demos/app-demo/481b5637386cfa51221252c
     pointer-events: none;
     background: linear-gradient(
       180deg,
-      rgb(250 249 245 / 0.64) 0%,
-      rgb(250 249 245 / 0.34) 38%,
-      rgb(250 249 245 / 0.1) 100%
+      color-mix(in srgb, var(--bb-background-base) 64%, transparent) 0%,
+      color-mix(in srgb, var(--bb-background-base) 34%, transparent) 38%,
+      color-mix(in srgb, var(--bb-background-base) 10%, transparent) 100%
     );
   }
 
@@ -113,7 +113,7 @@ import CaretDownIcon from "@assets/images/demos/app-demo/481b5637386cfa51221252c
 
   .one-platform-app__title {
     margin: 0;
-    color: rgb(32 32 32) !important;
+    color: var(--bb-gray-800) !important;
     font-size: 14px;
     line-height: 20px;
     font-weight: 500;
@@ -136,7 +136,7 @@ import CaretDownIcon from "@assets/images/demos/app-demo/481b5637386cfa51221252c
   }
 
   .one-platform-app__label {
-    color: var(--color-grey-600);
+    color: var(--bb-gray-700);
     font-size: 13px;
     line-height: 1;
     font-weight: 400;
@@ -144,10 +144,10 @@ import CaretDownIcon from "@assets/images/demos/app-demo/481b5637386cfa51221252c
 
   .one-platform-app__input {
     width: 100%;
-    border: 1px solid var(--color-grey-200);
+    border: 1px solid var(--bb-gray-100);
     border-radius: 4px;
-    background: var(--color-grey-100);
-    color: var(--color-grey-900);
+    background: var(--bb-gray-75);
+    color: var(--bb-gray-900);
     font-size: 13px;
     font-weight: 400;
     box-sizing: border-box;
@@ -190,8 +190,8 @@ import CaretDownIcon from "@assets/images/demos/app-demo/481b5637386cfa51221252c
     min-height: 34px;
     padding: 8px 10px;
     border-radius: 999px;
-    background: var(--color-blue-500);
-    color: var(--color-grey-50);
+    background: var(--bb-blue-800);
+    color: var(--bb-gray-50);
     font-size: 13px;
     line-height: 1;
     font-weight: 500;

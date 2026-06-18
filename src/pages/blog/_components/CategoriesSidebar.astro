@@ -49,7 +49,7 @@ function isLearnActive(link: string): boolean {
 	{showHeader && (
 		<>
 			<h1 class:list={[isLearnLinks ? "mb-2 text-xl!" : "mb-4 h2"]}>{title}</h1>
-			{description && <p class="text-stone-500! dark:text-stone-400! mb-4!">{description}</p>}
+			{description && <p class="text-stone-500!  mb-4!">{description}</p>}
 		</>
 	)}
 	<nav>
@@ -68,14 +68,14 @@ function isLearnActive(link: string): boolean {
 								data-astro-prefetch={item.prefetch ? '' : undefined}
 								aria-current={isLearnActive(item.href) ? "page" : undefined}
 								class:list={[
-									"nav-link flex flex-row gap-3 items-center h-8 px-3 rounded-md text-primary dark:text-primary hover:text-primary dark:hover:text-primary hover:bg-stone-100 dark:hover:bg-stone-800 [&.active]:text-sky-700 dark:[&.active]:text-sky-200 [&.active:hover]:text-sky-600 dark:[&.active:hover]:text-sky-100 [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800 text-sm",
+									"nav-link flex flex-row gap-3 items-center h-8 px-3 rounded-md text-primary  hover:text-primary  hover:bg-stone-100  [&.active]:text-sky-700  [&.active:hover]:text-sky-600  [&.active]:bg-stone-100  text-sm",
 									isLearnActive(item.href) && "active"
 								]}
 							>
 								<span class="inline-flex items-center gap-1.5">
 									{item.label}
 									{showDocsExternalIcon && (
-										<span class="inline-flex text-gray-600 dark:text-gray-600">
+										<span class="inline-flex text-gray-600 ">
 											<Icon name="ArrowUpRight" class="w-3.5 h-3.5 text-current" />
 										</span>
 									)}
@@ -89,7 +89,7 @@ function isLearnActive(link: string): boolean {
 							<a
 								href={category.id === 'all' ? '/blog' : `/blog/category/${category.id}`}
 								class:list={[
-									"nav-link flex flex-row items-center h-8 px-2 rounded text-primary dark:text-primary hover:text-primary dark:hover:text-primary [&.active]:text-sky-700 dark:[&.active]:text-sky-200 [&.active:hover]:text-sky-600 dark:[&.active:hover]:text-sky-100 [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800 text-sm",
+									"nav-link flex flex-row items-center h-8 px-2 rounded text-primary  hover:text-primary  [&.active]:text-sky-700  [&.active:hover]:text-sky-600  [&.active]:bg-stone-100  text-sm",
 									currentCategory === category.id && "active",
 								]}
 								data-astro-prefetch

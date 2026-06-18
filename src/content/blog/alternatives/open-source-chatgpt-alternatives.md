@@ -127,7 +127,7 @@ Let’s check each one out in turn.
   .comparison-table {
     margin: 2rem 0;
     padding: 1rem;
-    background: #faf9f6;
+    background: var(--bb-background-surface);
     border-radius: 14px;
     overflow-x: auto;
   }
@@ -137,8 +137,8 @@ Let’s check each one out in turn.
     border-collapse: separate;
     border-spacing: 0;
     min-width: 860px;
-    background: #fff;
-    border: 1px solid #ece8e1;
+    background: var(--bb-white);
+    border: 1px solid var(--bb-border-base);
     border-radius: 12px;
     overflow: hidden;
   }
@@ -148,23 +148,23 @@ Let’s check each one out in turn.
     padding: 0.7rem 0.75rem;
     text-align: left;
     vertical-align: top;
-    border-bottom: 1px solid #ece8e1;
-    color: #4f4942;
+    border-bottom: 1px solid var(--bb-border-base);
+    color: var(--bb-gray-700);
     line-height: 1.4;
     font-size: 0.88rem;
   }
 
   .comparison-table thead th {
-    background: #fcfbf9;
-    color: #2b2723;
+    background: var(--bb-background-base);
+    color: var(--bb-text-base);
     font-weight: 700;
     line-height: 1.25;
     font-size: 0.86rem;
   }
 
   .comparison-table tbody th {
-    background: #fcfbf9;
-    color: #2b2723;
+    background: var(--bb-background-base);
+    color: var(--bb-text-base);
     font-weight: 700;
     width: 130px;
     min-width: 130px;

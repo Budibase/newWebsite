@@ -81,7 +81,7 @@ const planGroupEntries = Object.entries(planGroups) as Array<
   <div class="plan-comparison" data-plan-comparison data-expanded="false">
     <h2
       id="plan-comparison-heading"
-      class="text-3xl font-semibold text-stone-900 dark:text-stone-100"
+      class="text-3xl font-semibold text-stone-900 "
     >
       <button
         type="button"
@@ -106,7 +106,7 @@ const planGroupEntries = Object.entries(planGroups) as Array<
         <div
           data-hosting-panel={hostingOption}
           class:list={[
-            "plan-comparison-panel rounded-md overflow-hidden border border-stone-300/70 dark:border-stone-700/70",
+            "plan-comparison-panel rounded-md overflow-hidden border border-stone-300/70 ",
             hostingOption === "self-host" && "hidden",
           ]}
           aria-hidden={hostingOption === "self-host" ? "true" : "false"}
@@ -126,15 +126,15 @@ const planGroupEntries = Object.entries(planGroups) as Array<
                 ))}
               </colgroup>
               <thead>
-                <tr class="border-stone-300/70 dark:border-stone-700/70">
+                <tr class="border-stone-300/70 ">
                   <th
                     scope="col"
-                    class="text-left px-4 py-3 font-semibold text-stone-900 dark:text-stone-100"
+                    class="text-left px-4 py-3 font-semibold text-stone-900 "
                   />
                   {columns.map((column) => (
                     <th
                       scope="col"
-                      class="text-center px-4 py-3 font-semibold text-stone-900 dark:text-stone-100"
+                      class="text-center px-4 py-3 font-semibold text-stone-900 "
                     >
                       {column.label}
                     </th>
@@ -143,20 +143,20 @@ const planGroupEntries = Object.entries(planGroups) as Array<
               </thead>
               {categoryGroups.map(([category, features]) => (
                 <tbody>
-                  <tr class="border-b border-t border-stone-300/70 dark:border-stone-700/70">
+                  <tr class="border-b border-t border-stone-300/70 ">
                     <th
                       scope="rowgroup"
                       colspan={columns.length + 1}
-                      class="bg-stone-50 dark:bg-stone-800/70 px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.08em] text-stone-700 dark:text-stone-300"
+                      class="bg-stone-50  px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.08em] text-stone-700 "
                     >
                       {category}
                     </th>
                   </tr>
                   {features.map((feature) => (
-                    <tr class="border-b border-stone-300/70 dark:border-stone-700/70 last:border-b-0">
+                    <tr class="border-b border-stone-300/70  last:border-b-0">
                       <th
                         scope="row"
-                        class="px-4 py-3 text-left font-medium text-stone-900 dark:text-stone-100"
+                        class="px-4 py-3 text-left font-medium text-stone-900 "
                       >
                         {feature.values.description ? (
                           <span class="feature-tooltip-wrap">
@@ -165,7 +165,7 @@ const planGroupEntries = Object.entries(planGroups) as Array<
                             </span>
                             <span
                               role="tooltip"
-                              class="feature-tooltip text-sm text-stone-700 dark:text-stone-200"
+                              class="feature-tooltip text-sm text-stone-700 "
                             >
                               <span>{feature.values.description}</span>
                               {feature.values.url ? (
@@ -185,11 +185,11 @@ const planGroupEntries = Object.entries(planGroups) as Array<
                         )}
                       </th>
                       {columns.map((column) => (
-                        <td class="px-4 py-3 text-center text-stone-600 dark:text-stone-300">
+                        <td class="px-4 py-3 text-center text-stone-600 ">
                           {getAvailabilityValue(feature.values[column.key]) ===
                           "yes" ? (
                             <span
-                              class="inline-flex h-5 w-5 items-center justify-center text-stone-900 dark:text-stone-100"
+                              class="inline-flex h-5 w-5 items-center justify-center text-stone-900 "
                               aria-label="Yes"
                             >
                               <Check class="h-4 w-4" aria-hidden="true" />
@@ -198,7 +198,7 @@ const planGroupEntries = Object.entries(planGroups) as Array<
                               feature.values[column.key],
                             ) === "no" ? (
                             <span
-                              class="inline-flex h-5 w-5 items-center justify-center text-stone-500 dark:text-stone-400"
+                              class="inline-flex h-5 w-5 items-center justify-center text-stone-500 "
                               aria-label="No"
                             >
                               <X class="h-4 w-4" aria-hidden="true" />
@@ -235,7 +235,7 @@ const planGroupEntries = Object.entries(planGroups) as Array<
 
   .feature-tooltip-trigger {
     display: inline;
-    border-bottom: 1px dotted rgb(168 162 158 / 0.8);
+    border-bottom: 1px dotted color-mix(in srgb, var(--bb-border-bold) 80%, transparent);
     cursor: help;
     line-height: 1.35;
   }
@@ -258,7 +258,7 @@ const planGroupEntries = Object.entries(planGroups) as Array<
     padding: 12px;
     background: var(--bg-1);
     border: 1px solid var(--border-color);
-    box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+    box-shadow: 0 8px 24px var(--bb-transparent-black-200);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;

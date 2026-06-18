@@ -189,7 +189,7 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
     <div class="mb-8 space-y-8" data-connections-results>
       <!-- AI model providers -->
       <section data-connector-section>
-        <h2 class="text-lg! text-stone-700! dark:text-stone-400! mb-4">
+        <h2 class="text-lg! text-stone-700!  mb-4">
           AI model providers
         </h2>
         <div
@@ -232,7 +232,7 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
 
       <!-- Tools and APIs -->
       <section data-connector-section>
-        <h2 class="text-lg! text-stone-700! dark:text-stone-400! mb-4">
+        <h2 class="text-lg! text-stone-700!  mb-4">
           Tools and APIs
         </h2>
         <div
@@ -338,12 +338,12 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
             <Image
               src={GithubLogoSvg}
               alt="GitHub"
-              class="w-5 h-5 dark:hidden"
+              class="w-5 h-5 "
             />
             <Image
               src={GithubLogoWhite}
               alt="GitHub"
-              class="w-5 h-5 hidden dark:block"
+              class="w-5 h-5 hidden "
             />
             <h3 class="text-base!">GitHub</h3>
           </div>
@@ -612,7 +612,7 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
 
       <!-- Data -->
       <section data-connector-section>
-        <h2 class="text-lg! text-stone-700! dark:text-stone-400! mb-4">Data</h2>
+        <h2 class="text-lg! text-stone-700!  mb-4">Data</h2>
         <div
           class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-2"
         >
@@ -685,7 +685,7 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
 
       <!-- Deployment options -->
       <section data-connector-section>
-        <h2 class="text-lg! text-stone-700! dark:text-stone-400! mb-4">
+        <h2 class="text-lg! text-stone-700!  mb-4">
           Deployment options
         </h2>
         <div
@@ -815,7 +815,7 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
   }
 
   .integration-card {
-    background-color: var(--color-stone-100);
+    background-color: var(--bb-gray-75);
     padding: 8px 12px;
     border-radius: 0.375rem;
     border: 1px solid var(--border);
@@ -823,9 +823,5 @@ const { title: pageTitle, description: pageDescription } = getProductPageMeta(
     flex-direction: row;
     align-items: center;
     gap: 0.75rem;
-  }
-
-  :global(.dark) .integration-card {
-    background-color: var(--color-stone-900);
   }
 </style>

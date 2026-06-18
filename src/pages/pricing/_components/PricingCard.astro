@@ -222,7 +222,7 @@ const showHostingSection = hostingItems.length > 0;
 >
   <header class="header">
     <div class="header-main">
-      <h3 class="!text-lg text-stone-900 dark:text-stone-100">{title}</h3>
+      <h3 class="!text-lg text-stone-900 ">{title}</h3>
       {tagLabel && <Tag label={tagLabel} size="small" variant="orange" class="ml-auto" />}
       {
         recommended && (
@@ -251,9 +251,9 @@ const showHostingSection = hostingItems.length > 0;
           >
           <span class="inline-flex gap-0.5">
             {creatorLabel && (
-              <span class="text-[14px] text-stone-600 dark:text-stone-400">{creatorLabel}</span>
+              <span class="text-[14px] text-stone-600 ">{creatorLabel}</span>
             )}
-            <span class="unit-text text-[14px] text-stone-600 dark:text-stone-400">
+            <span class="unit-text text-[14px] text-stone-600 ">
               {creatorUnit}
             </span>
           </span>
@@ -267,8 +267,8 @@ const showHostingSection = hostingItems.length > 0;
               {typeof userPrice === "number" ? `$${userPrice}` : userPrice}
             </span>
             <span class="inline-flex gap-0.5">
-              <span class="text-[14px] text-stone-600 dark:text-stone-400">{userLabel}</span>
-              <span class="unit-text text-[14px] text-stone-600 dark:text-stone-400">
+              <span class="text-[14px] text-stone-600 ">{userLabel}</span>
+              <span class="unit-text text-[14px] text-stone-600 ">
                 {userUnit}
               </span>
             </span>
@@ -276,7 +276,7 @@ const showHostingSection = hostingItems.length > 0;
         )}
       </div>
       {operationsDropdownOptions.length > 1 && (
-        <div class="operations-row operations-select-row text-[14px] text-stone-900 dark:text-stone-100 mt-3">
+        <div class="operations-row operations-select-row text-[14px] text-stone-900  mt-3">
           <select class="operations-select" aria-label="Actions limit" data-operations-select>
             {
               operationsDropdownOptions.map((option, index) => (
@@ -309,7 +309,7 @@ const showHostingSection = hostingItems.length > 0;
             class={`operations-static ${
               additionalPriceTone === "primary"
                 ? "operations-static-primary"
-                : "text-stone-600 dark:text-stone-400"
+                : "text-stone-600 "
             }`}
           >
             {additionalPriceText}
@@ -328,7 +328,7 @@ const showHostingSection = hostingItems.length > 0;
     </div>
     <div class="description-features">
       <div>
-        {description && <p class="!text-[14px] text-stone-600! dark:text-stone-400!">{description}</p>}
+        {description && <p class="!text-[14px] text-stone-600! ">{description}</p>}
       </div>
       {
         (initialAICredits || visibleFeatures.length) ? (
@@ -336,9 +336,9 @@ const showHostingSection = hostingItems.length > 0;
             {initialAICredits && (
               <li class="text-[14px]" data-tier-ai={initialAICredits}>
                 <span class="check">
-                  <Check class="fill-stone-700 dark:fill-stone-300 w-3" aria-hidden="true" />
+                  <Check class="fill-stone-700  w-3" aria-hidden="true" />
                 </span>
-                <span class="feature-text text-stone-900 dark:text-stone-100">
+                <span class="feature-text text-stone-900 ">
                   <span data-tier-ai-value>{initialAICredits}</span> Budibase AI credits
                 </span>
               </li>
@@ -376,7 +376,7 @@ const showHostingSection = hostingItems.length > 0;
                           "w-3",
                           featureTone === "orange-accent"
                             ? "fill-[var(--accent-orange)]"
-                            : "fill-stone-700 dark:fill-stone-300",
+                            : "fill-stone-700 ",
                         ]}
                         aria-hidden="true"
                       />
@@ -386,7 +386,7 @@ const showHostingSection = hostingItems.length > 0;
                           "w-3",
                           featureTone === "orange-accent"
                             ? "fill-[var(--accent-orange)]"
-                            : "fill-stone-700 dark:fill-stone-300",
+                            : "fill-stone-700 ",
                         ]}
                         aria-hidden="true"
                       />
@@ -397,7 +397,7 @@ const showHostingSection = hostingItems.length > 0;
                       "feature-text",
                       featureTone === "orange-accent"
                         ? "text-[var(--accent-orange)]"
-                        : "text-stone-900 dark:text-stone-100",
+                        : "text-stone-900 ",
                     ]}
                   >
                     {showEndUsersPopover ? (
@@ -410,7 +410,7 @@ const showHostingSection = hostingItems.length > 0;
                             aria-label="Add end users pricing info"
                           >
                             <Info
-                              class="w-4 h-4 fill-stone-700 dark:fill-stone-300"
+                              class="w-4 h-4 fill-stone-700 "
                               aria-hidden="true"
                             />
                           </button>
@@ -435,7 +435,7 @@ const showHostingSection = hostingItems.length > 0;
                             aria-label="Add creators pricing info"
                           >
                             <Info
-                              class="w-4 h-4 fill-stone-700 dark:fill-stone-300"
+                              class="w-4 h-4 fill-stone-700 "
                               aria-hidden="true"
                             />
                           </button>
@@ -463,26 +463,26 @@ const showHostingSection = hostingItems.length > 0;
     </div>
     {showHostingSection && (
       <div class="addons-section">
-        <p class="addons-label !text-[14px] text-stone-900 dark:text-stone-100">Hosting:</p>
+        <p class="addons-label !text-[14px] text-stone-900 ">Hosting:</p>
         {hostingItems.map((hostingItem) => (
           <p class="addon-line text-[14px]">
             <span class="check">
               {hostingItem === "Budibase Cloud" ? (
-                <Cloud class="w-3 h-3 fill-stone-700 dark:fill-stone-300" aria-hidden="true" />
+                <Cloud class="w-3 h-3 fill-stone-700 " aria-hidden="true" />
               ) : hostingItem === "Self-host / on-premise" || hostingItem === "Self-hosted" ? (
-                <HardDrives class="w-3 h-3 fill-stone-700 dark:fill-stone-300" aria-hidden="true" />
+                <HardDrives class="w-3 h-3 fill-stone-700 " aria-hidden="true" />
               ) : (
-                <Check class="w-3 h-3 fill-stone-700 dark:fill-stone-300" aria-hidden="true" />
+                <Check class="w-3 h-3 fill-stone-700 " aria-hidden="true" />
               )}
             </span>
-            <span class="feature-text text-stone-900 dark:text-stone-100">{hostingItem}</span>
+            <span class="feature-text text-stone-900 ">{hostingItem}</span>
           </p>
         ))}
       </div>
     )}
     {showAddonsSection && (
       <div class="addons-section">
-        <p class="addons-label !text-[14px] text-stone-900 dark:text-stone-100">Available add-ons:</p>
+        <p class="addons-label !text-[14px] text-stone-900 ">Available add-ons:</p>
         {normalizedAddonItems.map((addon) => (
           <p
             class="addon-line text-[14px]"
@@ -492,9 +492,9 @@ const showHostingSection = hostingItems.length > 0;
             data-addon-suffix={addon.suffix}
           >
             <span class="check">
-              <Plus class="w-3 h-3 fill-stone-700 dark:fill-stone-300" aria-hidden="true" />
+              <Plus class="w-3 h-3 fill-stone-700 " aria-hidden="true" />
             </span>
-            <span class="feature-text text-stone-900 dark:text-stone-100" data-addon-text>{addon.text}</span>
+            <span class="feature-text text-stone-900 " data-addon-text>{addon.text}</span>
           </p>
         ))}
       </div>
@@ -555,12 +555,9 @@ const showHostingSection = hostingItems.length > 0;
   }
   .price-line {
     margin-bottom: 4px;
-    color: var(--color-stone-900);
+    color: var(--bb-gray-900);
   }
-  :global(.dark) .price-line {
-    color: var(--color-stone-100);
-  }
-  .amount {
+.amount {
     color: var(--text-primary);
   }
 
@@ -580,8 +577,8 @@ const showHostingSection = hostingItems.length > 0;
     top: 50%;
     width: 8px;
     height: 8px;
-    border-right: 1.5px solid var(--color-stone-900);
-    border-bottom: 1.5px solid var(--color-stone-900);
+    border-right: 1.5px solid var(--bb-gray-900);
+    border-bottom: 1.5px solid var(--bb-gray-900);
     transform: translateY(-60%) rotate(45deg);
     pointer-events: none;
   }
@@ -620,13 +617,7 @@ const showHostingSection = hostingItems.length > 0;
   .operations-static-primary {
     color: var(--text-primary) !important;
   }
-
-  :global(.dark) .operations-select-row::after {
-    border-right-color: var(--color-stone-100);
-    border-bottom-color: var(--color-stone-100);
-  }
-
-  .cta {
+.cta {
     flex-shrink: 0;
     margin-bottom: 16px;
     width: 100%;
@@ -718,7 +709,7 @@ const showHostingSection = hostingItems.length > 0;
     max-width: 260px;
     background: var(--bg-1);
     border: 1px solid var(--border-color);
-    box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+    box-shadow: 0 8px 24px var(--bb-transparent-black-200);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;

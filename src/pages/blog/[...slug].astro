@@ -59,7 +59,7 @@ const frontmatter =
   <article class="article my-8 max-w-2xl mx-auto">
     {
       kind === "caseStudy" && (
-        <div class="mb-4 text-sm text-stone-500 dark:text-stone-400">Customers</div>
+        <div class="mb-4 text-sm text-stone-500 ">Customers</div>
       )
     }
     {hasHugoShortcodes ? <Fragment set:html={shortcodeHtml} /> : Content && <Content />}

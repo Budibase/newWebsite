@@ -60,14 +60,14 @@ Here are some of the key issues that might lead you to consider one of ServiceNo
   .faq-section {
     margin: 2rem 0;
     padding: 1.5rem;
-    background: #faf9f6;
-    border: 1px solid #ece8e1;
+    background: var(--bb-background-surface);
+    border: 1px solid var(--bb-border-base);
     border-radius: 14px;
   }
 
   .faq-section details {
-    background: #fff;
-    border: 1px solid #ece8e1;
+    background: var(--bb-white);
+    border: 1px solid var(--bb-border-base);
     border-radius: 12px;
     margin: 0.75rem 0;
     overflow: hidden;
@@ -76,26 +76,26 @@ Here are some of the key issues that might lead you to consider one of ServiceNo
   .faq-section summary {
     cursor: pointer;
     padding: 1rem 1.15rem;
-    color: #2b2723;
+    color: var(--bb-text-base);
     font-size: 1rem;
     font-weight: 700;
     line-height: 1.35;
-    background: #fcfbf9;
+    background: var(--bb-background-base);
   }
 
   .faq-section summary:hover {
-    background: #faf9f6;
+    background: var(--bb-background-surface);
   }
 
   .faq-section details[open] summary {
-    border-bottom: 1px solid #ece8e1;
+    border-bottom: 1px solid var(--bb-border-base);
   }
 
   .faq-section p,
   .faq-section ul {
     margin: 0;
     padding: 0.85rem 1.15rem 0;
-    color: #4f4942;
+    color: var(--bb-gray-700);
     line-height: 1.65;
   }
 

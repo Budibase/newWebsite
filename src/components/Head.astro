@@ -1,31 +1,32 @@
 ---
 import { Font } from "astro:assets";
 import Favicon from "./Favicon.astro";
-import SEO from './SEO.astro';
+import SEO from "./SEO.astro";
 import { resolveImageReference } from "../lib/imageReference";
 
 export type Props = {
-	title?: string;
-	rawTitle?: string;
-	description?: string;
-	image?: { src: string; alt: string };
-	canonicalURL?: URL | null;
-	robots?: string;
-	pageType?: 'website' | 'article';
-	schema?: Record<string, unknown> | Array<Record<string, unknown>>;
+  title?: string;
+  rawTitle?: string;
+  description?: string;
+  image?: { src: string; alt: string };
+  canonicalURL?: URL | null;
+  robots?: string;
+  pageType?: "website" | "article";
+  schema?: Record<string, unknown> | Array<Record<string, unknown>>;
 };
 
-const twitterHandle = 'budibase';
+const twitterHandle = "budibase";
 const genericProductDescription =
   "Enterprise-grade security and governance built for deploying AI into real business operations.";
 
 const siteInfo = {
-	name: 'Budibase',
-	description: 'Build AI agents, chat and automate internal workflows instantly. The fastest way to automate internal business processes.',
-	image: {
-		src: '/og.png',
-		alt: 'Budibase - Make work flow',
-	},
+  name: "Budibase",
+  description:
+    "Build AI agents, chat and automate internal workflows instantly. The fastest way to automate internal business processes.",
+  image: {
+    src: "/og.png",
+    alt: "Budibase - Make work flow",
+  },
 };
 
 const routeSeoFallbacks = {
@@ -82,9 +83,9 @@ function getRouteSeoFallback(pathname: string) {
     } satisfies RouteSeoFallback;
   }
 
-  return routeSeoFallbacks[
-    pathname as keyof typeof routeSeoFallbacks
-  ] as RouteSeoFallback | undefined;
+  return routeSeoFallbacks[pathname as keyof typeof routeSeoFallbacks] as
+    | RouteSeoFallback
+    | undefined;
 }
 
 function resolvePageTitle(
@@ -94,7 +95,10 @@ function resolvePageTitle(
   const trimmedTitle = title?.trim();
   const routeFallback = getRouteSeoFallback(pathname);
 
-  if (routeFallback?.title && (!trimmedTitle || genericTitleCandidates.has(trimmedTitle))) {
+  if (
+    routeFallback?.title &&
+    (!trimmedTitle || genericTitleCandidates.has(trimmedTitle))
+  ) {
     return routeFallback.title;
   }
 
@@ -143,58 +147,59 @@ function resolvePageDescription(
 }
 
 const {
-	title: providedTitle,
-	rawTitle,
-	description: providedDescription,
-	image = siteInfo.image,
-	canonicalURL = new URL(Astro.request.url, Astro.site),
-	robots,
-	pageType = 'website',
-	schema,
+  title: providedTitle,
+  rawTitle,
+  description: providedDescription,
+  image = siteInfo.image,
+  canonicalURL = new URL(Astro.request.url, Astro.site),
+  robots,
+  pageType = "website",
+  schema,
 } = Astro.props;
 
 const normalizedPath = normalizePath(Astro.url.pathname);
 const pageTitle = resolvePageTitle(normalizedPath, providedTitle);
 const title = buildTitle(pageTitle, rawTitle);
 const description = resolvePageDescription(normalizedPath, providedDescription);
-const resolvedImageReference = resolveImageReference(image.src) ?? siteInfo.image.src;
+const resolvedImageReference =
+  resolveImageReference(image.src) ?? siteInfo.image.src;
 const resolvedImage = {
-	src: new URL(resolvedImageReference, Astro.site).toString(),
-	alt: image.alt || siteInfo.image.alt,
+  src: new URL(resolvedImageReference, Astro.site).toString(),
+  alt: image.alt || siteInfo.image.alt,
 };
 const defaultSchema =
-	normalizedPath === "/"
-		? {
-				"@context": "https://schema.org",
-				"@type": "WebSite",
-				url: "https://budibase.com/",
-				description,
-				license: "This work is licensed and owned by Budibase",
-				name: title,
-				publisher: {
-					"@type": "Organization",
-					name: "Budibase",
-					url: "https://budibase.com/",
-					sameAs: [
-						"https://www.wikidata.org/wiki/Q131328403",
-						"https://x.com/budibase",
-						"https://www.linkedin.com/company/budibase/",
-						"https://github.com/budibase/budibase",
-					],
-				},
-			}
-		: undefined;
+  normalizedPath === "/"
+    ? {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        url: "https://budibase.com/",
+        description,
+        license: "This work is licensed and owned by Budibase",
+        name: title,
+        publisher: {
+          "@type": "Organization",
+          name: "Budibase",
+          url: "https://budibase.com/",
+          sameAs: [
+            "https://www.wikidata.org/wiki/Q131328403",
+            "https://x.com/budibase",
+            "https://www.linkedin.com/company/budibase/",
+            "https://github.com/budibase/budibase",
+          ],
+        },
+      }
+    : undefined;
 const resolvedSchema = schema ?? defaultSchema;
 
 // Simple smartypants-like function for typographic quotes and dashes
 function smartypants(text: string, _mode?: number): string {
-	return text
-		.replace(/'/g, '&#8217;') // apostrophe
-		.replace(/'/g, '&#8216;') // opening single quote
-		.replace(/"/g, '&#8221;') // closing double quote
-		.replace(/"/g, '&#8220;') // opening double quote
-		.replace(/--/g, '&#8212;') // em dash
-		.replace(/-/g, '&#8211;'); // en dash
+  return text
+    .replace(/'/g, "&#8217;") // apostrophe
+    .replace(/'/g, "&#8216;") // opening single quote
+    .replace(/"/g, "&#8221;") // closing double quote
+    .replace(/"/g, "&#8220;") // opening double quote
+    .replace(/--/g, "&#8212;") // em dash
+    .replace(/-/g, "&#8211;"); // en dash
 }
 ---
 
@@ -202,50 +207,12 @@ function smartypants(text: string, _mode?: number): string {
 <meta name="viewport" content="width=device-width" />
 <title set:html={smartypants(title, 1)} />
 <meta name="generator" content={Astro.generator} />
-<meta name="color-scheme" content="light dark" />
-<meta name="theme-color" content="#faf9f5" media="(prefers-color-scheme: light)" />
-<meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)" />
+<meta name="color-scheme" content="light" />
+<meta name="theme-color" content="var(--bb-background-base)" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <meta name="mobile-web-app-capable" content="yes" />
 <link rel="manifest" href="/manifest.webmanifest" />
-<script is:inline>
-  // Prevent flash of unstyled content by applying theme immediately
-  // Solution based on: https://medium.com/@maiowebdesign/astro-dark-mode-flickering-62da94d08ce6
-  (function() {
-    function getCodeTheme(theme) {
-      return theme === 'dark' ? 'github-dark' : 'github-light';
-    }
-
-    function getEffectiveTheme() {
-      try {
-        const stored = localStorage.getItem('theme');
-        if (stored === 'dark' || stored === 'light') {
-          return stored;
-        }
-      } catch (e) {
-        // localStorage might not be available
-      }
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-
-    function applyTheme() {
-      const effectiveTheme = getEffectiveTheme();
-      document.documentElement.classList.toggle('dark', effectiveTheme === 'dark');
-      document.documentElement.dataset.theme = getCodeTheme(effectiveTheme);
-    }
-
-    // Apply theme immediately before any rendering
-    applyTheme();
-
-    // Only react to explicit theme changes (avoids flicker on navigation)
-    window.addEventListener('storage', (e) => {
-      if (e.key === 'theme') {
-        applyTheme();
-      }
-    });
-  })();
-</script>
 <script is:inline>
   if ("serviceWorker" in navigator) {
     window.addEventListener(
@@ -299,29 +266,26 @@ function smartypants(text: string, _mode?: number): string {
   /* Intentionally left blank */
 </style>
 
-
 <Font cssVariable="--font-inter" preload={[{ weight: 400 }]} />
-<Font cssVariable="--font-fraunces" />
 <Font cssVariable="--font-ia-writer-mono" />
-
 
 <!-- Low Priority Global Metadata -->
 <Favicon />
-<link rel="mask-icon" href="/favicon.svg" color="#8D46E7" />
+<link rel="mask-icon" href="/favicon.svg" />
 <link rel="sitemap" href="/sitemap.xml" />
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
 
 <!-- SEO construct -->
 <SEO
-	name={siteInfo.name}
-	title={title}
-	description={description}
-	image={resolvedImage}
-	twitter={{ handle: twitterHandle }}
-	og={{ type: pageType }}
-	canonicalURL={canonicalURL}
-	robots={robots}
-	schema={resolvedSchema}
+  name={siteInfo.name}
+  title={title}
+  description={description}
+  image={resolvedImage}
+  twitter={{ handle: twitterHandle }}
+  og={{ type: pageType }}
+  canonicalURL={canonicalURL}
+  robots={robots}
+  schema={resolvedSchema}
 />
 <style>
   body {

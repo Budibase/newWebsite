@@ -23,7 +23,7 @@ const { currentCategory = "all", title = "Blog" } = Astro.props as Props;
                   : `/blog/category/${category.id}`
               }
               class:list={[
-                "nav-link flex h-8 items-center rounded px-2 text-sm text-primary hover:text-primary dark:text-primary dark:hover:text-primary",
+                "nav-link flex h-8 items-center rounded px-2 text-sm text-primary hover:text-primary  ",
                 currentCategory === category.id && "active",
               ]}
               aria-current={
@@ -55,16 +55,10 @@ const { currentCategory = "all", title = "Blog" } = Astro.props as Props;
   }
 
   .nav-link.active {
-    background-color: var(--color-stone-100);
-    color: var(--color-blue-700);
+    background-color: var(--bb-gray-75);
+    color: var(--bb-blue-1100);
   }
-
-  .dark .nav-link.active {
-    background-color: var(--color-stone-800);
-    color: var(--color-blue-200);
-  }
-
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .nav-list {
       flex-direction: row;
       overflow-x: auto;

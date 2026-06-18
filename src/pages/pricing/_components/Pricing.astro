@@ -347,7 +347,7 @@ const faqItems: FaqItem[] = [
 <section class="container max-w-7xl mx-auto flex flex-col mt-8 px-2 lg:px-0">
   <div class="flex flex-col items-center text-center">
     <h1
-      class="hero-title max-w-2xl !text-5xl sm:!text-[70px] mb-4 mt-6 text-center md:mt-10 lg:mt-16 text-stone-950 dark:text-stone-100"
+      class="hero-title max-w-2xl !text-5xl sm:!text-[70px] mb-4 mt-6 text-center md:mt-10 lg:mt-16 text-stone-950 "
     >
       Pricing
     </h1>
@@ -368,7 +368,7 @@ const faqItems: FaqItem[] = [
               id="cloud-hosting-button"
               data-hosting-option="cloud"
               aria-pressed="true"
-              class="bg-white dark:bg-stone-800 rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-900 dark:text-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 dark:focus-visible:ring-stone-400 focus-visible:ring-offset-2 min-h-[44px]"
+              class="bg-white  rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-900  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500  focus-visible:ring-offset-2 min-h-[44px]"
             >
               Budibase cloud
             </button>
@@ -378,7 +378,7 @@ const faqItems: FaqItem[] = [
               id="self-hosting-button"
               data-hosting-option="self-host"
               aria-pressed="false"
-              class="bg-transparent rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-600 dark:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 dark:focus-visible:ring-offset-2 min-h-[44px]"
+              class="bg-transparent rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-600  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500  min-h-[44px]"
             >
               Self-host
             </button>
@@ -401,7 +401,7 @@ const faqItems: FaqItem[] = [
               id="annual-button"
               data-billing="annual"
               aria-pressed="true"
-              class="bg-white dark:bg-stone-800 rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-900 dark:text-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 dark:focus-visible:ring-stone-400 focus-visible:ring-offset-2 min-h-[44px]"
+              class="bg-white  rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-900  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500  focus-visible:ring-offset-2 min-h-[44px]"
             >
               Yearly
             </button>
@@ -411,7 +411,7 @@ const faqItems: FaqItem[] = [
               id="monthly-button"
               data-billing="monthly"
               aria-pressed="false"
-              class="bg-transparent rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-600 dark:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 dark:focus-visible:ring-stone-400 focus-visible:ring-offset-2 min-h-[44px]"
+              class="bg-transparent rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-600  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500  focus-visible:ring-offset-2 min-h-[44px]"
             >
               Monthly
             </button>
@@ -443,32 +443,32 @@ const faqItems: FaqItem[] = [
     <section class="mb-12 md:mb-20" aria-labelledby="pricing-faqs-heading">
       <h2
         id="pricing-faqs-heading"
-        class="text-3xl font-semibold text-stone-900 dark:text-stone-100 mb-6 md:mb-8"
+        class="text-3xl font-semibold text-stone-900  mb-6 md:mb-8"
       >
         FAQs
       </h2>
       <div
         data-faq-accordion
-        class="border-t border-dotted border-stone-300/80 dark:border-stone-700/80"
+        class="border-t border-dotted border-stone-300/80 "
       >
         {
           faqItems.map((item) => (
             <details
               data-faq-item
-              class="group border-b border-dotted border-stone-300/80 dark:border-stone-700/80"
+              class="group border-b border-dotted border-stone-300/80 "
             >
-              <summary class="list-none [&::-webkit-details-marker]:hidden min-h-[64px] py-4 md:py-5 cursor-pointer flex items-center justify-between gap-4 text-left text-stone-900 dark:text-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 dark:focus-visible:ring-stone-400 focus-visible:ring-offset-2">
-                <h3 class="m-0 text-lg md:text-xl text-stone-900 dark:text-stone-100">
+              <summary class="list-none [&::-webkit-details-marker]:hidden min-h-[64px] py-4 md:py-5 cursor-pointer flex items-center justify-between gap-4 text-left text-stone-900  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500  focus-visible:ring-offset-2">
+                <h3 class="m-0 text-lg md:text-xl text-stone-900 ">
                   {item.question}
                 </h3>
                 <span class="shrink-0">
                   <Plus
-                    class="w-5 h-5 md:w-6 md:h-6 text-stone-900 dark:text-stone-100 transition-transform duration-200 ease-out group-open:rotate-45"
+                    class="w-5 h-5 md:w-6 md:h-6 text-stone-900  transition-transform duration-200 ease-out group-open:rotate-45"
                     aria-hidden="true"
                   />
                 </span>
               </summary>
-              <div class="faq-answer text-base md:text-lg text-stone-600 dark:text-stone-300 pb-5 md:pb-6 pr-1 md:pr-12">
+              <div class="faq-answer text-base md:text-lg text-stone-600  pb-5 md:pb-6 pr-1 md:pr-12">
                 {item.paragraphs.map((paragraph) => (
                   <p class="mb-3">{paragraph}</p>
                 ))}
@@ -524,14 +524,14 @@ const faqItems: FaqItem[] = [
 <script>
   const activeClasses = [
     "bg-white",
-    "dark:bg-stone-800",
+    "",
     "text-stone-900",
-    "dark:text-stone-100",
+    "",
   ];
   const inactiveClasses = [
     "bg-transparent",
     "text-stone-600",
-    "dark:text-stone-400",
+    "",
   ];
 
   const setToggleButtonState = (

@@ -49,7 +49,7 @@ function isActive(link: string): boolean {
 								<span class:list={[
 									group.headerStyle === "label"
 										? "px-3 text-sm text-secondary"
-										: "text-xs text-stone-600 dark:text-stone-500 uppercase tracking-wider px-3 py-2",
+										: "text-xs text-stone-600  uppercase tracking-wider px-3 py-2",
 								]}>
 									{group.header}
 								</span>
@@ -72,16 +72,16 @@ function isActive(link: string): boolean {
 											variant="cta"
 											dataSection={item.sectionId}
 											class={[
-												"nav-link flex flex-row items-center h-8 px-3 rounded-md text-sm w-full !text-primary dark:!text-primary hover:!text-primary dark:hover:!text-primary [&.active]:!text-sky-700 dark:[&.active]:!text-sky-200 [&.active:hover]:!text-sky-600 dark:[&.active:hover]:!text-sky-100",
-												"hover:bg-stone-100 dark:hover:bg-stone-800",
-												isActive(item.link) && "active [&.active]:bg-stone-200 dark:[&.active]:bg-stone-800",
+												"nav-link flex flex-row items-center h-8 px-3 rounded-md text-sm w-full !text-primary  hover:!text-primary  [&.active]:!text-sky-700  [&.active:hover]:!text-sky-600 ",
+												"hover:bg-stone-100 ",
+												isActive(item.link) && "active [&.active]:bg-stone-200 ",
 											]
 												.filter(Boolean)
 												.join(" ")}
 										/>
 									) : (
 										<a href={item.link} class:list={[
-											"nav-link flex flex-row items-center h-8 px-3 rounded-md text-primary dark:text-primary hover:text-primary dark:hover:text-primary [&.active]:text-sky-700 dark:[&.active]:text-sky-200 [&.active:hover]:text-sky-600 dark:[&.active:hover]:text-sky-100 [&.active]:bg-stone-200 dark:[&.active]:bg-stone-800 text-sm",
+											"nav-link flex flex-row items-center h-8 px-3 rounded-md text-primary  hover:text-primary  [&.active]:text-sky-700  [&.active:hover]:text-sky-600  [&.active]:bg-stone-200  text-sm",
 											isActive(item.link) && "active"
 										]} data-section={item.sectionId}>
 											<span>{item.text}</span>
@@ -128,16 +128,16 @@ function isActive(link: string): boolean {
 									variant="cta"
 									dataSection={item.sectionId}
 									class={[
-										"nav-link flex flex-row items-center h-8 px-3 rounded-md text-sm w-full !text-primary dark:!text-primary hover:!text-primary dark:hover:!text-primary [&.active]:!text-sky-700 dark:[&.active]:!text-sky-200 [&.active:hover]:!text-sky-600 dark:[&.active:hover]:!text-sky-100",
-										"hover:bg-stone-100 dark:hover:bg-stone-800",
-										isActive(item.link) && "active [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800",
+										"nav-link flex flex-row items-center h-8 px-3 rounded-md text-sm w-full !text-primary  hover:!text-primary  [&.active]:!text-sky-700  [&.active:hover]:!text-sky-600 ",
+										"hover:bg-stone-100 ",
+										isActive(item.link) && "active [&.active]:bg-stone-100 ",
 									]
 										.filter(Boolean)
 										.join(" ")}
 								/>
 							) : (
 								<a href={item.link} class:list={[
-									"nav-link flex flex-row items-center h-8 px-3 rounded-md text-primary dark:text-primary hover:text-primary dark:hover:text-primary [&.active]:text-sky-700 dark:[&.active]:text-sky-200 [&.active:hover]:text-sky-600 dark:[&.active:hover]:text-sky-100 [&.active]:bg-stone-100 dark:[&.active]:bg-stone-800 text-sm",
+									"nav-link flex flex-row items-center h-8 px-3 rounded-md text-primary  hover:text-primary  [&.active]:text-sky-700  [&.active:hover]:text-sky-600  [&.active]:bg-stone-100  text-sm",
 									isActive(item.link) && "active"
 								]} data-section={item.sectionId}>
 										<span>{item.text}</span>

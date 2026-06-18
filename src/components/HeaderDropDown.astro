@@ -19,7 +19,7 @@ const useTwoColumns = Astro.props.items.length > 3;
 
 <header-drop-down>
   <details class="group relative">
-    <summary class="accordion cursor-pointer link flex items-center gap-2 text-sm px-1 text-primary hover:text-primary group-open:text-primary transition-colors">
+    <summary class="accordion cursor-pointer link flex items-center gap-2 text-sm font-medium px-1 text-primary hover:text-primary group-open:text-primary transition-colors">
       {Astro.props.labelHref ? (
         <a
           href={Astro.props.labelHref}
@@ -39,7 +39,7 @@ const useTwoColumns = Astro.props.items.length > 3;
           ? "grid grid-cols-[repeat(2,auto)] gap-y-[6px] gap-x-[6px]"
           : "flex flex-col gap-[6px]",
         "absolute left-0 top-full translate-y-2",
-        "w-fit max-w-[calc(100vw-2rem)] bg-secondary pt-2 px-[15px] pb-3 text-base shadow-xl ring-1 ring-stone-200/60 dark:ring-stone-800/60",
+        "w-fit max-w-[calc(100vw-2rem)] bg-secondary pt-2 px-[15px] pb-3 text-base shadow-xl ring-1 ring-stone-200/60 ",
         "invisible group-open:visible group-hover:visible",
         "origin-top scale-95 group-open:scale-100 group-hover:scale-100",
         "opacity-0 group-open:opacity-100 group-hover:opacity-100",

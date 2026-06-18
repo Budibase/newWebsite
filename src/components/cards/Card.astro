@@ -58,7 +58,7 @@ const descriptionStyle = truncateDescription
     class="card-link"
     target={openInNewTab ? "_blank" : "_self"}
   >
-    <div class={`card w-full max-w-full min-w-0 bg-secondary ease-in-out duration-50 hover:bg-stone-200! dark:hover:bg-stone-800! p-4 rounded-md ${className}`}>
+    <div class={`card w-full max-w-full min-w-0 bg-secondary ease-in-out duration-50 hover:bg-stone-200!  p-4 rounded-md ${className}`}>
       <div class={`card-content ${cardContentClass}`}>
         {showTagAtTop && (
           <Tag
@@ -71,12 +71,12 @@ const descriptionStyle = truncateDescription
         <h3 class={`text-lg! card-title ${cardTitleClass}`}>
           {label}
           {linkUrl && showLinkIcon && (
-            <ArrowUpRight class="card-icon text-stone-600 dark:text-stone-400" />
+            <ArrowUpRight class="card-icon text-stone-600 " />
           )}
         </h3>
         {description && (
           <p
-            class="w-full min-w-0 text-stone-500! dark:text-stone-400!"
+            class="w-full min-w-0 text-stone-500! "
             style={descriptionStyle}
           >
             {description}
@@ -129,7 +129,7 @@ const descriptionStyle = truncateDescription
       <h3 class={`text-lg! card-title ${cardTitleClass}`}>{label}</h3>
       {description && (
         <p
-          class="w-full min-w-0 text-stone-500! dark:text-stone-400! text-sm!"
+          class="w-full min-w-0 text-stone-500!  text-sm!"
           style={descriptionStyle}
         >
           {description}

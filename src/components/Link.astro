@@ -48,16 +48,16 @@ const sizeClass = size !== "medium" ? size : "";
 const variantClass = variant;
 const underlineClass = underline ? "underline" : "";
 
-// Build Tailwind classes for variants with dark mode support
+// Build Tailwind classes for variants
 const variantColorClasses = {
-  primary: "text-stone-900 dark:text-stone-50",
-  secondary: "text-stone-500 dark:text-stone-400",
+  primary: "text-stone-900 ",
+  secondary: "text-stone-500 ",
   cta: "text-brand",
 };
 
 const hoverColorClasses = {
-  primary: "hover:text-stone-700 dark:hover:text-stone-100",
-  secondary: "hover:text-stone-700 dark:hover:text-stone-300",
+  primary: "hover:text-stone-700 ",
+  secondary: "hover:text-stone-700 ",
   cta: "hover:text-brand-hover",
 };
 
@@ -113,7 +113,7 @@ const computedRel =
     font-size: 18px;
   }
 
-  /* Hover opacity - colors are handled via Tailwind dark mode classes */
+  /* Hover opacity - colors are handled by Tailwind classes */
   .alink:hover {
     opacity: 0.9;
   }

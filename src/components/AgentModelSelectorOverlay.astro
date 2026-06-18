@@ -169,12 +169,7 @@ const overlayId = `agent-model-overlay-${Math.random().toString(36).slice(2, 8)}
   .agent-model-overlay-select-logo.is-openai {
     transform: scale(1.15);
   }
-
-  :global(.dark) .agent-model-overlay-select-logo.is-monochrome {
-    filter: invert(1) brightness(1.1);
-  }
-
-  .agent-model-overlay-select-option.is-selected {
+.agent-model-overlay-select-option.is-selected {
     color: var(--text-primary);
     font-weight: 500;
   }

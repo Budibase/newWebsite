@@ -3,32 +3,37 @@ import Button from "@components/Button.astro";
 import AgentDemo from "@components/AgentDemo.astro";
 ---
 
-<section class="container max-w-7xl mx-auto px-2 lg:px-0 flex flex-col mt-8 md:mt-8">
-
-  <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-    <div class="flex-1 flex flex-col items-center text-center">
-      <h1 class="hero-title mt-12 mb-5 md:mb-8 w-full max-w-2xl text-[44px]! leading-[0.9]! tracking-[-0.02em]! text-[var(--text-primary)] sm:!text-[70px] sm:leading-[0.9]!">
-        <span class="block">AI agents that</span>
-        <span class="block">run your operations.</span>
+<section
+  class="container max-w-7xl mx-auto px-2 lg:px-0 flex flex-col mt-8 md:mt-8"
+>
+  <div class="flex flex-col md:flex-row gap-8 md:gap-12 max-w-4xl mx-auto">
+    <div class="flex-1 flex flex-col">
+      <h1 class="hero-title mx-auto mt-12 mb-5 block w-full text-pretty">
+        The open source platform for running AI operations.
+        <span class="text-text-muted"
+          >Apps, automations, and AI agents for modern Enterprise Ops teams -
+          from everyday requests to mission critical operations.</span
+        >
       </h1>
-      <div class="mx-auto max-w-xl !mb-5 !text-xl text-primary">
-        Answer questions, handle requests, and run workflows across your business — all with AI agents.
-      </div>
-      <div class="flex flex-row">
+      <div class="flex flex-row gap-4">
         <Button
-          label="Try it free"
+          label="Book a demo"
           url="https://account.budibase.app/register"
-          variant="primary"
+          variant="cta"
           size="large"
-          class="px-6 py-3 text-xl md:px-7 md:py-3.5 md:text-xl"
+          target="_blank"
+        />
+        <Button
+          label="Get started"
+          url="https://account.budibase.app/register"
+          variant="secondary"
+          size="large"
           target="_blank"
         />
       </div>
     </div>
   </div>
-
   <div class="mt-6 md:mt-10">
     <AgentDemo />
   </div>
-
 </section>
