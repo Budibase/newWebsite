@@ -21,9 +21,14 @@ const { enableTransitions = false } = Astro.props;
       <main>
         <div id="hero" class="opacity: 1; transform: none;">
           <div class="text-base">
-            <div class="relative flex flex-col min-h-screen">
+            <div class="site-grid-shell relative flex flex-col min-h-screen">
+              <div class="site-grid-rails" aria-hidden="true">
+                <div class="site-grid-rails__inner"></div>
+              </div>
               <Nav />
-              <slot />
+              <div class="site-grid-main">
+                <slot />
+              </div>
               <Footer />
             </div>
           </div>

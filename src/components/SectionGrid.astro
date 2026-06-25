@@ -1,0 +1,26 @@
+---
+type Variant = "default" | "hero" | "compact";
+
+interface Props {
+  variant?: Variant;
+  borderBottom?: boolean;
+  class?: string;
+}
+
+const {
+  variant = "default",
+  borderBottom = false,
+  class: className = "",
+} = Astro.props as Props;
+const variantClass =
+  variant === "default" ? "" : ` site-grid-section--${variant}`;
+const borderBottomClass = borderBottom
+  ? " site-grid-section--border-bottom"
+  : "";
+---
+
+<section
+  class={`site-grid-section${variantClass}${borderBottomClass} ${className}`.trim()}
+>
+  <slot />
+</section>

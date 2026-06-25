@@ -66,16 +66,18 @@ Access internal data tables and external APIs to execute operational tasks.
     {
       headers: {
         "Content-Type": "text/markdown; charset=utf-8",
-        "Vary": "Accept",
+        Vary: "Accept",
       },
-    }
+    },
   );
 }
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
   <section class="agents-hero">
-    <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0">
+    <div
+      class="mx-auto w-full max-w-[var(--site-container-max)] px-2 md:px-3 lg:px-0"
+    >
       <div class="agents-hero-grid">
         <div class="agents-hero-copy max-w-xl">
           <TitleBlock
@@ -103,19 +105,21 @@ Access internal data tables and external APIs to execute operational tasks.
             target="_blank"
           />
           <Button
-           label="Contact sales"
-           url="/contact/"
-           variant="secondary"
-           size="large"
-           class="px-6 py-3 text-xl md:px-7 md:py-3.5 md:text-xl ml-5"
-           target="_blank"
+            label="Contact sales"
+            url="/contact/"
+            variant="secondary"
+            size="large"
+            class="px-6 py-3 text-xl md:px-7 md:py-3.5 md:text-xl ml-5"
+            target="_blank"
           />
         </div>
       </div>
     </div>
   </section>
 
-  <section class="mx-auto w-full max-w-7xl px-2 pb-12 pt-6 md:px-3 lg:px-0">
+  <section
+    class="mx-auto w-full max-w-[var(--site-container-max)] px-2 pb-12 pt-6 md:px-3 lg:px-0"
+  >
     <div class="flex flex-col gap-[var(--section-spacing-y)]">
       <div class="flex flex-col gap-[var(--section-gap-lg)]">
         <AgentDemo />

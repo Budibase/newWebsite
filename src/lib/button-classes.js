@@ -1,7 +1,10 @@
 const variantClasses = {
   primary: "bg-grey-900 text-grey-50 hover:bg-grey-800   ",
-  secondary: "bg-secondary text hover:bg-surface-2",
-  cta: "bg-brand text-on-brand hover:bg-brand-hover active:bg-brand-hover ",
+  secondary:
+    "border bg-white !text-[var(--bb-text-base)] hover:bg-[var(--bb-gray-100)]",
+  cta: "bg-[var(--bb-green-1000)] !text-on-brand hover:bg-[var(--bb-green-1100)] active:bg-[var(--bb-green-1100)] ",
+  "cta-on-base":
+    "border-transparent bg-[var(--bb-chartreuse-300)] !text-[var(--bb-text-base)] hover:bg-[var(--bb-chartreuse-200)]",
   large: "bg-brand text-on-brand hover:bg-brand-hover active:bg-brand-hover ",
 };
 
@@ -18,7 +21,7 @@ const gapClasses = {
 };
 
 const baseClasses =
-  "inline-flex items-center justify-center rounded-xs !font-medium transition-colors duration-150 active:scale-[0.98] no-underline cursor-pointer font-sans focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
+  "inline-flex items-center justify-center rounded-[50px] !font-medium transition-colors duration-150 active:scale-[0.98] no-underline cursor-pointer font-sans focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
 function normalizeSize(size = "medium") {
   return size === "sm" ? "small" : size;

@@ -10,6 +10,7 @@ import CaretRight from "phosphor-astro/CaretRight.astro";
 import ArrowUpRight from "phosphor-astro/ArrowUpRight.astro";
 import PlayCircle from "phosphor-astro/PlayCircle.astro";
 import PlayFill from "phosphor-astro/PlayFill.astro";
+import Check from "phosphor-astro/Check.astro";
 import CheckCircle from "phosphor-astro/CheckCircle.astro";
 import CheckCircleFill from "phosphor-astro/CheckCircleFill.astro";
 import ChatsCircle from "phosphor-astro/ChatsCircle.astro";
@@ -54,78 +55,86 @@ import NumberCircleNineFill from "phosphor-astro/NumberCircleNineFill.astro";
 // Add more icon imports as needed
 
 const iconMap: Record<string, any> = {
-	Wrench: Wrench,
-	Monitor: Monitor,
-	Sun: Sun,
-	Moon: Moon,
-	ArrowRight: ArrowRight,
-	CaretLeft: CaretLeft,
-	CaretDown: CaretDown,
-	CaretRight: CaretRight,
-	ArrowUpRight: ArrowUpRight,
-	PlayCircle: PlayCircle,
-	PlayFill: PlayFill,
-	CheckCircle: CheckCircle,
-	ChatsCircle: ChatsCircle,
-	Cube: Cube,
-	Copy: Copy,
-	Headset: Headset,
-	Plus: Plus,
-	X: X,
-	Browser: Browser,
-	Path: Path,
-	Sparkle: Sparkle,
-	ChatCircle: ChatCircle,
-	UserSwitch: UserSwitch,
-	EnvelopeOpen: EnvelopeOpen,
-	NumberCircleOne: NumberCircleOne,
-	NumberCircleTwo: NumberCircleTwo,
-	NumberCircleThree: NumberCircleThree,
-	NumberCircleFour: NumberCircleFour,
-	NumberCircleFive: NumberCircleFive,
-	NumberCircleSix: NumberCircleSix,
-	NumberCircleSeven: NumberCircleSeven,
-	NumberCircleEight: NumberCircleEight,
-	NumberCircleNine: NumberCircleNine,
-	// Add more icon mappings here as needed
+  Wrench: Wrench,
+  Monitor: Monitor,
+  Sun: Sun,
+  Moon: Moon,
+  ArrowRight: ArrowRight,
+  CaretLeft: CaretLeft,
+  CaretDown: CaretDown,
+  CaretRight: CaretRight,
+  ArrowUpRight: ArrowUpRight,
+  PlayCircle: PlayCircle,
+  PlayFill: PlayFill,
+  Check: Check,
+  CheckCircle: CheckCircle,
+  ChatsCircle: ChatsCircle,
+  Cube: Cube,
+  Copy: Copy,
+  Headset: Headset,
+  Plus: Plus,
+  X: X,
+  Browser: Browser,
+  Path: Path,
+  Sparkle: Sparkle,
+  ChatCircle: ChatCircle,
+  UserSwitch: UserSwitch,
+  EnvelopeOpen: EnvelopeOpen,
+  NumberCircleOne: NumberCircleOne,
+  NumberCircleTwo: NumberCircleTwo,
+  NumberCircleThree: NumberCircleThree,
+  NumberCircleFour: NumberCircleFour,
+  NumberCircleFive: NumberCircleFive,
+  NumberCircleSix: NumberCircleSix,
+  NumberCircleSeven: NumberCircleSeven,
+  NumberCircleEight: NumberCircleEight,
+  NumberCircleNine: NumberCircleNine,
+  // Add more icon mappings here as needed
 };
 
 const iconFillMap: Record<string, any> = {
-	CheckCircle: CheckCircleFill,
-	ChatsCircle: ChatsCircleFill,
-	Browser: BrowserFill,
-	Headset: HeadsetFill,
-	Path: PathFill,
-	Sparkle: SparkleFill,
-	ChatCircle: ChatCircleFill,
-	UserSwitch: UserSwitchFill,
-	EnvelopeOpen: EnvelopeOpenFill,
-	NumberCircleOne: NumberCircleOneFill,
-	NumberCircleTwo: NumberCircleTwoFill,
-	NumberCircleThree: NumberCircleThreeFill,
-	NumberCircleFour: NumberCircleFourFill,
-	NumberCircleFive: NumberCircleFiveFill,
-	NumberCircleSix: NumberCircleSixFill,
-	NumberCircleSeven: NumberCircleSevenFill,
-	NumberCircleEight: NumberCircleEightFill,
-	NumberCircleNine: NumberCircleNineFill,
+  CheckCircle: CheckCircleFill,
+  ChatsCircle: ChatsCircleFill,
+  Browser: BrowserFill,
+  Headset: HeadsetFill,
+  Path: PathFill,
+  Sparkle: SparkleFill,
+  ChatCircle: ChatCircleFill,
+  UserSwitch: UserSwitchFill,
+  EnvelopeOpen: EnvelopeOpenFill,
+  NumberCircleOne: NumberCircleOneFill,
+  NumberCircleTwo: NumberCircleTwoFill,
+  NumberCircleThree: NumberCircleThreeFill,
+  NumberCircleFour: NumberCircleFourFill,
+  NumberCircleFive: NumberCircleFiveFill,
+  NumberCircleSix: NumberCircleSixFill,
+  NumberCircleSeven: NumberCircleSevenFill,
+  NumberCircleEight: NumberCircleEightFill,
+  NumberCircleNine: NumberCircleNineFill,
 };
 
 interface Props {
-	name: string;
-	size?: string;
-	class?: string;
-	weight?: string;
+  name: string;
+  size?: string;
+  class?: string;
+  weight?: string;
 }
 
 const isFill = Astro.props.weight === "fill";
-const IconComponent = (isFill && iconFillMap[Astro.props.name]) || iconMap[Astro.props.name];
+const IconComponent =
+  (isFill && iconFillMap[Astro.props.name]) || iconMap[Astro.props.name];
 ---
 
-{IconComponent && (
-	<IconComponent
-		class={Astro.props.class}
-		weight={!isFill ? Astro.props.weight : undefined}
-		style={Astro.props.size ? `width: ${Astro.props.size}px; height: ${Astro.props.size}px;` : undefined}
-	/>
-)}
+{
+  IconComponent && (
+    <IconComponent
+      class={Astro.props.class}
+      weight={!isFill ? Astro.props.weight : undefined}
+      style={
+        Astro.props.size
+          ? `width: ${Astro.props.size}px; height: ${Astro.props.size}px;`
+          : undefined
+      }
+    />
+  )
+}

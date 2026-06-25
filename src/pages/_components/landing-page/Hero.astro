@@ -1,39 +1,82 @@
 ---
 import Button from "@components/Button.astro";
-import AgentDemo from "@components/AgentDemo.astro";
+import HeroActivityScreen from "@assets/images/homepage/Website_Hero_Activity_Screen.png?url";
+import SectionGrid from "@components/SectionGrid.astro";
+import EnterpriseLogoGrid from "./EnterpriseLogoGrid.astro";
 ---
 
-<section
-  class="container max-w-7xl mx-auto px-2 lg:px-0 flex flex-col mt-8 md:mt-8"
->
-  <div class="flex flex-col md:flex-row gap-8 md:gap-12 max-w-4xl mx-auto">
-    <div class="flex-1 flex flex-col">
-      <h1 class="hero-title mx-auto mt-12 mb-5 block w-full text-pretty">
-        The open source platform for running AI operations.
-        <span class="text-text-muted"
-          >Apps, automations, and AI agents for modern Enterprise Ops teams -
-          from everyday requests to mission critical operations.</span
-        >
-      </h1>
-      <div class="flex flex-row gap-4">
-        <Button
-          label="Book a demo"
-          url="https://account.budibase.app/register"
-          variant="cta"
-          size="large"
-          target="_blank"
-        />
-        <Button
-          label="Get started"
-          url="https://account.budibase.app/register"
-          variant="secondary"
-          size="large"
-          target="_blank"
-        />
+<section class="flex w-full flex-col mt-8 md:mt-8">
+  <div
+    class="container max-w-[var(--site-container-max)] mx-auto px-2 lg:px-0 flex w-full flex-col"
+  >
+    <div
+      class="mx-auto flex w-full max-w-4xl flex-col gap-8 md:flex-row md:gap-12"
+    >
+      <div class="flex min-w-0 flex-1 flex-col">
+        <p class="hero-metric hero-gradient-text mt-12 font-medium">
+          117,926,557 actions completed
+        </p>
+        <h1 class="hero-title mx-auto mb-5 block w-full text-pretty">
+          The open source platform for running <span class="hero-gradient-text"
+            >AI operations</span
+          >.
+          <span class="text-text-muted"
+            >Apps, automations, and AI agents for modern Enterprise Ops teams -
+            from everyday requests to mission critical operations.</span
+          >
+        </h1>
+        <div class="flex flex-row gap-4">
+          <Button
+            label="Book a demo"
+            url="https://account.budibase.app/register"
+            variant="cta"
+            size="large"
+            target="_blank"
+          />
+          <Button
+            label="Get started"
+            url="https://account.budibase.app/register"
+            variant="secondary"
+            size="large"
+            target="_blank"
+          />
+        </div>
       </div>
     </div>
   </div>
-  <div class="mt-6 md:mt-10">
-    <AgentDemo />
+  <SectionGrid borderBottom class="site-grid-section--logos mt-8 md:mt-10">
+    <div
+      class="container mx-auto max-w-[var(--site-container-max)] px-2 lg:px-0"
+    >
+      <EnterpriseLogoGrid placement="hero-compact" />
+    </div>
+  </SectionGrid>
+  <div
+    class="container mx-auto max-w-[var(--site-container-max)] px-2 lg:px-0 mt-6 md:mt-10"
+  >
+    <img
+      src={HeroActivityScreen}
+      alt="Budibase live operations activity dashboard"
+      class="block h-auto w-full"
+      loading="eager"
+      decoding="async"
+    />
   </div>
 </section>
+
+<style>
+  .hero-gradient-text {
+    background-image: var(--bb-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+  .hero-metric {
+    width: fit-content;
+    font-family: var(--font-geist-mono), var(--font-mono) !important;
+    font-size: 0.6875rem;
+    font-weight: 500 !important;
+  }
+</style>

@@ -4,8 +4,14 @@
 @layer base {
   :root {
     /* bb design tokens */
-    --bb-brand: #4b75ff;
-    --bb-brand-state: #1d3ecf;
+    --site-container-max: 88rem;
+    --bb-gradient: linear-gradient(
+      to bottom right,
+      var(--bb-green-1000) 15%,
+      var(--bb-cinnamon-900) 100%
+    );
+    --bb-brand: var(--bb-green-900);
+    --bb-brand-state: var(--bb-green-1000);
     --bb-white: #ffffff;
     --bb-black: #000000;
     --bb-text-base: #131313;
@@ -357,11 +363,12 @@
     --bb-color__text__subtle: var(--bb-text-subtle);
 
     --font-sans:
-      "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-      "Noto Color Emoji", sans-serif;
+      var(--font-geist), var(--font-inter), "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
     --font-mono:
-      "iA Writer Mono", ui-monospace, SFMono-Regular, SF Mono, Menlo, Monaco,
-      Consolas, "Liberation Mono", "Courier New", monospace;
+      var(--font-geist-mono), "iA Writer Mono", ui-monospace, SFMono-Regular,
+      SF Mono, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+      monospace;
 
     /* Core semantic RGB tokens (Tailwind-friendly) */
     --bg: 255 255 255;
@@ -384,22 +391,22 @@
     /* bb border/bold */
 
     /* Brand */
-    --brand: 75 117 255; /* bb brand */
-    --brand-hover: 29 62 207; /* bb brand-state */
+    --brand: 5 131 78; /* bb green-900 */
+    --brand-hover: 3 110 69; /* bb green-1000 */
     --on-brand: 255 255 255;
     /* bb white */
-    --primary: 75 117 255;
-    /* bb brand */
-    --primary-hover: 29 62 207;
-    /* bb brand-state */
+    --primary: 5 131 78;
+    /* bb green-900 */
+    --primary-hover: 3 110 69;
+    /* bb green-1000 */
     --on-primary: 255 255 255;
     /* bb white */
 
     /* Status (danger added properly) */
     --danger: 255 81 61;
     /* bb red-700 */
-    --ring: 75 117 255;
-    /* bb brand */
+    --ring: 5 131 78;
+    /* bb green-900 */
     --manila: var(--bb-orange-200);
 
     /* Backwards-compatible aliases (keep your current API) */
@@ -554,6 +561,7 @@ h1,
   font-family: var(--font-sans);
   color: var(--text-primary);
   font-size: 38px;
+  letter-spacing: -1px;
   font-weight: 500;
   line-height: 1.2;
 }
@@ -931,6 +939,147 @@ main ul article > a {
 .chrome-border {
   border-color: var(--bb-gray-100);
 }
+
+.site-grid-shell {
+  --site-grid-max: var(--site-container-max);
+  --site-grid-line: color-mix(in srgb, var(--border-color) 58%, transparent);
+  --site-grid-dot-line: color-mix(
+    in srgb,
+    var(--border-color) 84%,
+    transparent
+  );
+  isolation: isolate;
+}
+
+.site-grid-rails {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.site-grid-rails__inner {
+  position: sticky;
+  top: 0;
+  width: min(100%, var(--site-grid-max));
+  height: 100vh;
+  margin-inline: auto;
+}
+
+.site-grid-rails__inner::before,
+.site-grid-rails__inner::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  content: "";
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--site-grid-dot-line) 0 2px,
+    transparent 2px 7px
+  );
+}
+
+.site-grid-rails__inner::before {
+  left: 0;
+}
+
+.site-grid-rails__inner::after {
+  right: 0;
+}
+
+.site-grid-main,
+.site-grid-shell > .nav-shell,
+.site-grid-shell > .footer {
+  position: relative;
+  z-index: 1;
+}
+
+.nav-shell {
+  border-bottom: 0.5px solid var(--site-grid-line);
+}
+
+.nav-shell > div {
+  position: relative;
+}
+
+.nav-shell > div::before,
+.nav-shell > div::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  content: "";
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--site-grid-dot-line) 0 2px,
+    transparent 2px 7px
+  );
+}
+
+.nav-shell > div::before {
+  left: 0;
+}
+
+.nav-shell > div::after {
+  right: 0;
+}
+
+.site-grid-section {
+  position: relative;
+  border-top: 0.5px solid var(--site-grid-line);
+  padding-block: clamp(3rem, 7vw, 6rem);
+}
+
+.site-grid-section--hero {
+  border-top: 0;
+  padding-top: 0;
+  padding-bottom: clamp(2.25rem, 5vw, 4.5rem);
+}
+
+.site-grid-section--compact {
+  padding-block: 1rem;
+}
+
+.site-grid-section--logos {
+  padding-block: clamp(1rem, 2.5vw, 2rem);
+}
+
+.site-grid-section--border-bottom {
+  border-bottom: 0.5px solid var(--site-grid-line);
+}
+
+.site-grid-section > .container,
+.site-grid-section > section.container,
+.site-grid-section > div.container {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-inline: clamp(1rem, 2.5vw, 2rem) !important;
+}
+
+.nav-shell > div,
+.footer-container {
+  padding-inline: clamp(1rem, 2.5vw, 2rem) !important;
+}
+
+@media (max-width: 767px) {
+  .site-grid-rails__inner {
+    border-inline: 0;
+  }
+
+  .nav-shell > div {
+    border-inline: 0;
+  }
+
+  .site-grid-section {
+    padding-block: 2.75rem;
+  }
+
+  .site-grid-section--hero {
+    padding-top: 0;
+  }
+}
+
 .side-rail-shell {
   width: 100%;
 }

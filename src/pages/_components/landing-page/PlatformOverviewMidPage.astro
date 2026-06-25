@@ -30,19 +30,20 @@ const cards = [
 ---
 
 <section>
-        <SectionBlock
-          align="center"
-          maxWidth="lg"
-          titleColorMode="split-secondary-primary"
-          titleLines={[
-            { text: "One platform for" },
-            { text: "Agents, Apps & Automations" },
-          ]}
-          description="Build AI-powered or human-centered workflows that connect to your data, LLMs, or REST APIs - and deploy anywhere."
-          contentClass="grid grid-cols-1 gap-4 text-left sm:grid-cols-2 md:gap-2 lg:grid-cols-3"
-        >
-        </SectionBlock>
-  <div class="container max-w-7xl mx-auto px-2 lg:px-0 mt-8">
+  <SectionBlock
+    align="center"
+    maxWidth="lg"
+    titleColorMode="split-secondary-primary"
+    titleLines={[
+      { text: "One platform for" },
+      { text: "Agents, Apps & Automations" },
+    ]}
+    description="Build AI-powered or human-centered workflows that connect to your data, LLMs, or REST APIs - and deploy anywhere."
+    contentClass="grid grid-cols-1 gap-4 text-left sm:grid-cols-2 md:gap-2 lg:grid-cols-3"
+  />
+  <div
+    class="container max-w-[var(--site-container-max)] mx-auto px-2 lg:px-0 mt-8"
+  >
     <div class="platform-section__grid">
       <div class="platform-section__card">
         <Card label={cards[0].label} description={cards[0].description}>

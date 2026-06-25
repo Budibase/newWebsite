@@ -10,14 +10,14 @@ import {
 // Props:
 // - label: string (required)
 // - url?: string (if provided, renders an anchor)
-// - variant?: 'primary' | 'secondary' | 'cta' | 'large' (defaults to 'primary')
+// - variant?: 'primary' | 'secondary' | 'cta' | 'cta-on-base' | 'large' (defaults to 'primary')
 // - type?: 'button' | 'submit' | 'reset' (button only)
 // - class?: string (additional classes)
 // - size?: 'small' | 'medium' | 'large' (defaults to 'medium')
 // - icon?: string (optional icon name to display before the label)
 // - iconSize?: string (optional icon size in pixels, overrides default size-based calculation)
 
-type Variant = "primary" | "secondary" | "cta" | "large";
+type Variant = "primary" | "secondary" | "cta" | "cta-on-base" | "large";
 type Size = "small" | "medium" | "large" | "sm";
 
 interface Props {
@@ -47,7 +47,9 @@ const {
   target,
   rel,
 } = Astro.props as Props;
-const iconSize = icon ? (providedIconSize ?? getButtonIconSize(size)) : undefined;
+const iconSize = icon
+  ? (providedIconSize ?? getButtonIconSize(size))
+  : undefined;
 const classes = getButtonClasses({ variant, size, className });
 const computedRel = getButtonRel({ target, rel });
 ---

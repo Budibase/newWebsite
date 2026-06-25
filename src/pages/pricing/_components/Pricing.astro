@@ -1,6 +1,9 @@
 ---
+import Button from "@components/Button.astro";
+import Card from "@components/cards/Card.astro";
+import Icon from "@components/Icon.astro";
+import EnterpriseLogoGrid from "../../_components/landing-page/EnterpriseLogoGrid.astro";
 import PricingCard from "./PricingCard.astro";
-import PlanComparison from "./PlanComparison.astro";
 import pricingData from "./pricing.json";
 import Plus from "phosphor-astro/Plus.astro";
 
@@ -57,8 +60,11 @@ const toActionsText = (value: PlanValue): string => {
 const toHostingLabel = (value: string): string =>
   value === "Self-hosted" ? "Self-host / on-premise" : value;
 
-const getHostingItems = (...entries: PlanEntry[]): string[] =>
-  [...new Set(entries.map((entry) => toHostingLabel(entry.hosting)).filter(Boolean))];
+const getHostingItems = (...entries: PlanEntry[]): string[] => [
+  ...new Set(
+    entries.map((entry) => toHostingLabel(entry.hosting)).filter(Boolean),
+  ),
+];
 
 const getTierOperationTiers = (plan: TieredPlan) =>
   plan.annual.map((annualEntry, index) => ({
@@ -71,18 +77,28 @@ const getTierOperationTiers = (plan: TieredPlan) =>
 const getAddonPricing = (plan: TieredPlan) => {
   const annualEntry = plan.annual[0];
   const monthlyEntry = plan.monthly[0];
-  const endUsersAnnual = toNumericValue(annualEntry?.additional_end_users_per_month);
-  const endUsersMonthly = toNumericValue(monthlyEntry?.additional_end_users_per_month);
-  const creatorsAnnual = toNumericValue(annualEntry?.additional_creators_users_per_month);
-  const creatorsMonthly = toNumericValue(monthlyEntry?.additional_creators_users_per_month);
+  const endUsersAnnual = toNumericValue(
+    annualEntry?.additional_end_users_per_month,
+  );
+  const endUsersMonthly = toNumericValue(
+    monthlyEntry?.additional_end_users_per_month,
+  );
+  const creatorsAnnual = toNumericValue(
+    annualEntry?.additional_creators_users_per_month,
+  );
+  const creatorsMonthly = toNumericValue(
+    monthlyEntry?.additional_creators_users_per_month,
+  );
 
   return {
-    endUsers: endUsersAnnual !== undefined
-      ? { annual: endUsersAnnual, monthly: endUsersMonthly }
-      : undefined,
-    creators: creatorsAnnual !== undefined
-      ? { annual: creatorsAnnual, monthly: creatorsMonthly }
-      : undefined,
+    endUsers:
+      endUsersAnnual !== undefined
+        ? { annual: endUsersAnnual, monthly: endUsersMonthly }
+        : undefined,
+    creators:
+      creatorsAnnual !== undefined
+        ? { annual: creatorsAnnual, monthly: creatorsMonthly }
+        : undefined,
   };
 };
 
@@ -98,32 +114,27 @@ const getCreatorsFeature = (entry: PlanEntry): string => {
 const proAnnualEntry = pricing.pro.annual[0];
 const premiumAnnualEntry = pricing.premium.annual[0];
 const businessAnnualEntry = pricing.business.annual[0];
-const cloudEnterpriseEntry = pricing.enterprise.find((entry) => entry.hosting === "Budibase Cloud") ??
+const cloudEnterpriseEntry =
+  pricing.enterprise.find((entry) => entry.hosting === "Budibase Cloud") ??
   pricing.enterprise[0];
-const selfHostedEnterpriseEntry = pricing.enterprise.find((entry) => entry.hosting !== "Budibase Cloud") ??
+const selfHostedEnterpriseEntry =
+  pricing.enterprise.find((entry) => entry.hosting !== "Budibase Cloud") ??
   pricing.enterprise[1];
 
 const openSourcePlanFeatures = [
-  "1 Workspace",
   "Unlimited apps",
   "Unlimited automations",
   "Unlimited agents",
+  "Standard SSO",
   "Unlimited users",
-  "Community support",
-  "SSO",
 ];
 
 const selfHostedEnterprisePlanFeatures = [
-  "Everything in open source",
-  "Custom branding",
-  "Backups and restore",
-  "Environment variables",
-  "Enforced SSO",
-  "User groups",
-  "Active directory/SCIM",
-  "365 days logs",
-  "Audit logs",
-  "Priorty support/SLAs",
+  "Enhanced capabilities",
+  "Operational controls",
+  "Security & compliance",
+  "Deployment flexibility",
+  "Dedicated support",
 ];
 
 const cloudCards = [
@@ -231,38 +242,48 @@ const cloudCards = [
 const selfHostedCards = [
   {
     title: "Open source",
-    description: "Includes:",
-    creatorPrice: toDisplayText(pricing.open_source.base_price_per_month),
-    billingPlan: "open-source",
-    creatorUnit: "",
-    creatorLabel: "",
-    additionalPriceText: toActionsText(pricing.open_source.included_actions),
-    additionalPriceTone: "primary" as const,
-    recommended: false,
-    buttonLabel: "Visit the docs",
-    buttonVariant: "primary" as const,
-    buttonUrl: "https://docs.budibase.com",
+    description:
+      "Access a complete operations platform that you can run on your own infrastructure.",
+    buttonLabel: "Get started free",
+    buttonHref: "https://docs.budibase.com",
     buttonTarget: "_blank",
-    addonItems: [],
+    buttonVariant: "cta" as const,
     features: openSourcePlanFeatures,
-    hostingItems: getHostingItems(pricing.open_source),
+    tone: "community",
   },
   {
     title: "Enterprise",
-    description: "Includes:",
-    creatorPrice: toDisplayText(selfHostedEnterpriseEntry.base_price_per_month),
-    billingPlan: "self-host-enterprise",
-    creatorUnit: "",
-    creatorLabel: "",
-    additionalPriceText: toActionsText(selfHostedEnterpriseEntry.included_actions),
-    additionalPriceTone: "primary" as const,
-    recommended: false,
-    buttonLabel: "Contact sales",
-    buttonVariant: "cta" as const,
-    buttonUrl: "/contact",
-    addonItems: ["Air-gapped deployment", "Onboarding and training"],
+    description:
+      "Design a custom package with enhanced governance, security, and support requirements.",
+    buttonLabel: "Get pricing",
+    buttonHref: "/contact",
+    buttonVariant: "cta-on-base" as const,
     features: selfHostedEnterprisePlanFeatures,
-    hostingItems: getHostingItems(selfHostedEnterpriseEntry),
+    tone: "custom",
+  },
+];
+
+const pricingPageNavItems = [
+  { label: "Special packages", href: "#special-packages" },
+  { label: "Cloud pricing", href: "#cloud-pricing" },
+  { label: "FAQs", href: "#pricing-faqs-heading" },
+];
+
+const specialPackageCards = [
+  {
+    title: "Service partnerships",
+    description:
+      "Partner with Budibase to deliver internal tools, automation, and AI operations solutions for your customers.",
+  },
+  {
+    title: "Charities",
+    description:
+      "Access flexible pricing for nonprofit teams building services, workflows, and operational tools with Budibase.",
+  },
+  {
+    title: "Public sector",
+    description:
+      "Access a specialized package with custom limits, payment arrangements, and open source licensing for public sector teams.",
   },
 ];
 
@@ -344,112 +365,148 @@ const faqItems: FaqItem[] = [
 ];
 ---
 
-<section class="container max-w-7xl mx-auto flex flex-col mt-8 px-2 lg:px-0">
-  <div class="flex flex-col items-center text-center">
-    <h1
-      class="hero-title max-w-2xl !text-5xl sm:!text-[70px] mb-4 mt-6 text-center md:mt-10 lg:mt-16 text-stone-950 "
-    >
-      Pricing
-    </h1>
-  </div>
+<section
+  class="pricing-page container max-w-[var(--site-container-max)] mx-auto flex flex-col mt-8 px-2 lg:px-0"
+>
   <div class="w-full flex flex-col gap-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5 mb-2 items-center">
-      <div class="hidden md:block" aria-hidden="true"></div>
-
-      <div class="flex flex-row gap-2 justify-center md:col-start-2">
-        <ul
-          role="group"
-          aria-label="Hosting option"
-          class="inline-flex flex-row bg-secondary rounded-[20px] p-1"
-          id="hosting-toggle"
+    <section class="pricing-hero" aria-labelledby="pricing-heading">
+      <div class="pricing-hero__copy">
+        <p class="hero-metric hero-gradient-text font-medium">Pricing</p>
+        <h1
+          id="pricing-heading"
+          class="hero-title mx-auto mb-5 block w-full text-pretty"
         >
-          <li>
-            <button
-              id="cloud-hosting-button"
-              data-hosting-option="cloud"
-              aria-pressed="true"
-              class="bg-white  rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-900  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500  focus-visible:ring-offset-2 min-h-[44px]"
-            >
-              Budibase cloud
-            </button>
-          </li>
-          <li>
-            <button
-              id="self-hosting-button"
-              data-hosting-option="self-host"
-              aria-pressed="false"
-              class="bg-transparent rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-600  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500  min-h-[44px]"
-            >
-              Self-host
-            </button>
-          </li>
-        </ul>
+          <span>Open source flexibility. Enterprise control.</span>
+          <span>
+            Start for free. Scale with the controls and support your
+            organization needs.
+          </span>
+        </h1>
       </div>
 
-      <div
-        class="flex flex-row gap-2 justify-center md:justify-end md:col-start-3"
-        data-billing-toggle-wrap
+      <div id="self-host-pricing" class="pricing-self-host-grid">
+        {
+          selfHostedCards.map((card) => (
+            <article class={`pricing-self-host-card is-${card.tone}`}>
+              <div class="pricing-self-host-card__content">
+                <div class="pricing-self-host-card__copy">
+                  <h2>{card.title}</h2>
+                  <p>{card.description}</p>
+                </div>
+                <Button
+                  label={card.buttonLabel}
+                  url={card.buttonHref}
+                  target={card.buttonTarget}
+                  variant={card.buttonVariant}
+                  size="medium"
+                />
+              </div>
+              <ul class="pricing-self-host-card__features">
+                {card.features.map((feature, index) => (
+                  <li class={index === 0 ? "is-first" : ""}>
+                    <span
+                      class="pricing-self-host-card__feature-icon"
+                      aria-hidden="true"
+                    >
+                      <Icon name="Check" size="14" />
+                    </span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+
+      <div id="pricing-logos" class="pricing-logo-grid">
+        <EnterpriseLogoGrid placement="hero-compact" />
+      </div>
+
+      <nav class="pricing-section-nav" aria-label="Pricing page sections">
+        {
+          pricingPageNavItems.map((item) => (
+            <a href={item.href} class="pricing-section-nav__link">
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <section
+        id="special-packages"
+        class="pricing-special-package-section"
+        aria-labelledby="special-packages-heading"
       >
-        <ul
-          role="group"
-          aria-label="Billing period"
-          class="inline-flex flex-row bg-secondary rounded-[20px] p-1"
-          id="billing-toggle"
+        <h2
+          id="special-packages-heading"
+          class="pricing-special-package-section__heading"
         >
-          <li>
-            <button
-              id="annual-button"
-              data-billing="annual"
-              aria-pressed="true"
-              class="bg-white  rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-900  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500  focus-visible:ring-offset-2 min-h-[44px]"
-            >
-              Yearly
-            </button>
-          </li>
-          <li>
-            <button
-              id="monthly-button"
-              data-billing="monthly"
-              aria-pressed="false"
-              class="bg-transparent rounded-[19px] py-3 px-3 md:px-4 flex flex-row text-xs md:text-sm text-stone-600  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500  focus-visible:ring-offset-2 min-h-[44px]"
-            >
-              Monthly
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
+          Special Packages
+        </h2>
+        <p class="pricing-special-package-section__subtitle">
+          Flexible options for partners, nonprofits, and public sector teams.
+        </p>
+        <div class="pricing-special-package-grid">
+          {
+            specialPackageCards.map((card) => (
+              <Card
+                label={card.title}
+                description={card.description}
+                class="pricing-special-package-card"
+                cardContentClass="pricing-special-package-card__content"
+                cardTitleClass="pricing-special-package-card__title"
+              >
+                <div class="pricing-special-package-card__action">
+                  <Button
+                    label="Contact us"
+                    url="/contact"
+                    variant="cta"
+                    size="medium"
+                  />
+                </div>
+              </Card>
+            ))
+          }
+        </div>
+      </section>
 
-    <section class="mb-5 md:mb-5">
-      <div class="pricing-cards-stage">
-        <div
-          data-hosting-panel="cloud"
-          class="pricing-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 justify-center items-stretch"
-        >
-          {cloudCards.map((card) => <PricingCard {...card} />)}
+      <section
+        id="cloud-pricing"
+        class="pricing-cloud-section"
+        aria-labelledby="cloud-pricing-heading"
+      >
+        <div class="pricing-cloud-section__inner">
+          <h2 id="cloud-pricing-heading" class="pricing-cloud-section__heading">
+            Explore pricing for hosting with Budibase Cloud
+          </h2>
+          <p class="pricing-cloud-section__subtitle">
+            We take care of the hosting, updates, and maintenance for you.
+          </p>
+          <div class="pricing-cloud-grid">
+            {
+              cloudCards.map(({ hostingItems, ...card }) => (
+                <PricingCard {...card} />
+              ))
+            }
+          </div>
         </div>
-        <div
-          data-hosting-panel="self-host"
-          class="pricing-cards-grid hidden grid grid-cols-1 md:grid-cols-2 gap-3 justify-center items-stretch max-w-3xl mx-auto"
-          aria-hidden="true"
-        >
-          {selfHostedCards.map((card) => <PricingCard {...card} />)}
-        </div>
-      </div>
+      </section>
     </section>
 
-    <PlanComparison />
-
-    <section class="mb-12 md:mb-20" aria-labelledby="pricing-faqs-heading">
+    <section
+      class="pricing-faq-section mb-12 md:mb-20"
+      aria-labelledby="pricing-faqs-heading"
+    >
       <h2
         id="pricing-faqs-heading"
-        class="text-3xl font-semibold text-stone-900  mb-6 md:mb-8"
+        class="text-3xl font-semibold text-stone-900 mb-6 md:mb-8"
       >
         FAQs
       </h2>
       <div
         data-faq-accordion
-        class="border-t border-dotted border-stone-300/80 "
+        class="border-t border-dotted border-stone-300/80"
       >
         {
           faqItems.map((item) => (
@@ -489,8 +546,337 @@ const faqItems: FaqItem[] = [
 </section>
 
 <style>
-  .pricing-cards-grid {
-    position: relative;
+  .pricing-page {
+    --pricing-card-radius: 6px;
+    --pricing-card-gap: 0.75rem;
+    --pricing-feature-radius: 4px;
+    --pricing-community-bg: var(--bb-gray-50);
+    --pricing-community-feature-bg: var(--bb-gray-100);
+    --pricing-custom-bg: var(--bb-chartreuse-1500);
+    --pricing-custom-feature-bg: var(--bb-chartreuse-1300);
+  }
+
+  .pricing-hero {
+    display: flex;
+    width: 100%;
+    max-width: 72rem;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 1.875rem);
+    margin-block: clamp(3rem, 7vw, 5rem);
+    margin-inline: auto;
+    padding-inline: clamp(0rem, 1.5vw, 1.25rem);
+  }
+
+  .pricing-hero__copy {
+    width: 100%;
+    max-width: 56rem;
+    margin-inline: auto;
+    overflow: hidden;
+  }
+
+  .pricing-hero h1 {
+    color: var(--bb-text-base);
+  }
+
+  .hero-gradient-text {
+    background-image: var(--bb-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+  .hero-metric {
+    width: fit-content;
+    margin: 0 0 0.25rem;
+    font-family: var(--font-geist-mono), var(--font-mono) !important;
+    font-size: 0.6875rem;
+    font-weight: 500 !important;
+  }
+
+  .pricing-hero h1 span {
+    display: block;
+  }
+
+  .pricing-hero h1 span + span {
+    color: var(--bb-text-subtle);
+  }
+
+  .pricing-self-host-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  .pricing-self-host-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--pricing-card-gap);
+    min-height: 260px;
+    padding: 0.5rem;
+    border: 1px solid var(--bb-border-subtle);
+    border-radius: var(--pricing-card-radius);
+  }
+
+  .pricing-self-host-card.is-community {
+    background: var(--pricing-community-bg);
+    border-color: transparent;
+  }
+
+  .pricing-self-host-card.is-custom {
+    background: var(--pricing-custom-bg);
+    border-color: var(--bb-transparent-white-200);
+  }
+
+  .pricing-self-host-card__content {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 0.75rem;
+  }
+
+  .pricing-self-host-card__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .pricing-self-host-card h2 {
+    margin: 0;
+    color: var(--bb-text-base);
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 0;
+  }
+
+  .pricing-self-host-card p {
+    margin: 0;
+    color: var(--bb-text-subtle);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.43;
+  }
+
+  .pricing-self-host-card.is-custom h2 {
+    color: var(--bb-text-on-base) !important;
+  }
+
+  .pricing-self-host-card.is-custom p {
+    color: var(--bb-text-on-base-subtle) !important;
+  }
+
+  .pricing-self-host-card__features {
+    display: flex;
+    min-width: 0;
+    height: 100%;
+    flex-direction: column;
+    gap: 0.125rem;
+    margin: 0 !important;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pricing-self-host-card__features li {
+    display: flex;
+    flex: 1 1 0;
+    min-height: 2.25rem;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.375rem;
+    margin: 0 !important;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0;
+    background: var(--pricing-community-feature-bg);
+    color: var(--bb-text-base) !important;
+    -webkit-text-fill-color: var(--bb-text-base);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25;
+    text-align: left;
+  }
+
+  .pricing-self-host-card__feature-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    color: currentColor;
+  }
+
+  .pricing-self-host-card__features li:first-child {
+    border-top-left-radius: var(--pricing-feature-radius);
+    border-top-right-radius: var(--pricing-feature-radius);
+  }
+
+  .pricing-self-host-card__features li:last-child {
+    border-bottom-right-radius: var(--pricing-feature-radius);
+    border-bottom-left-radius: var(--pricing-feature-radius);
+  }
+
+  .pricing-self-host-card.is-custom .pricing-self-host-card__features li {
+    background: var(--pricing-custom-feature-bg);
+    color: var(--bb-text-on-base) !important;
+    -webkit-text-fill-color: var(--bb-text-on-base);
+  }
+
+  .pricing-section-nav {
+    display: flex;
+    width: fit-content;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin: 1rem auto 0;
+    padding: 0.625rem 1.25rem;
+    border-radius: 50px;
+    background: var(--bb-transparent-black-50);
+  }
+
+  .pricing-section-nav__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bb-text-base) !important;
+    -webkit-text-fill-color: var(--bb-text-base);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.214;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .pricing-section-nav__link:hover {
+    color: var(--bb-green-1000) !important;
+    -webkit-text-fill-color: var(--bb-green-1000);
+  }
+
+  .pricing-logo-grid {
+    width: 100%;
+    margin: 0.5rem auto 0;
+  }
+
+  .pricing-cloud-section {
+    width: 100vw;
+    margin-block: clamp(1.5rem, 4vw, 3rem);
+    margin-inline: calc(50% - 50vw);
+    padding-block: clamp(2.5rem, 6vw, 5rem);
+    padding-inline: clamp(1.25rem, 3vw, 2rem);
+    scroll-margin-top: 6rem;
+  }
+
+  .pricing-cloud-section__inner {
+    width: min(100%, 72rem);
+    margin-inline: auto;
+    padding-inline: clamp(0rem, 1.5vw, 1.25rem);
+  }
+
+  .pricing-cloud-section__heading {
+    margin: 0 0 0.5rem;
+    color: var(--bb-text-base);
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 0;
+  }
+
+  .pricing-cloud-section__subtitle {
+    margin: 0 0 1.5rem;
+    color: var(--bb-text-subtle);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .pricing-cloud-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .pricing-special-package-section {
+    width: 100vw;
+    margin: clamp(1.5rem, 4vw, 3rem) calc(50% - 50vw) 0;
+    padding-block: clamp(2.5rem, 6vw, 5rem);
+    padding-inline: clamp(1.25rem, 3vw, 2rem);
+    background: var(--bb-background-subtle);
+    scroll-margin-top: 6rem;
+  }
+
+  .pricing-special-package-section > * {
+    width: min(100%, 72rem);
+    margin-inline: auto;
+  }
+
+  .pricing-special-package-section__heading {
+    margin: 0 auto 0.5rem;
+    color: var(--bb-text-base);
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 0;
+  }
+
+  .pricing-special-package-section__subtitle {
+    margin: 0 auto 1.5rem;
+    color: var(--bb-text-subtle);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .pricing-special-package-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    width: 100%;
+    margin-inline: auto;
+    align-items: stretch;
+  }
+
+  .pricing-faq-section {
+    width: min(100%, 72rem);
+    margin-inline: auto;
+    padding-inline: clamp(0rem, 1.5vw, 1.25rem);
+  }
+
+  :global(.pricing-special-package-card) {
+    height: 100%;
+    background: var(--bb-background-base);
+  }
+
+  :global(.pricing-special-package-card__content) {
+    min-height: 220px;
+    height: 100%;
+    gap: 0.75rem;
+  }
+
+  :global(.pricing-special-package-card__title) {
+    color: var(--bb-text-base);
+    font-family: var(--font-sans);
+    font-size: 1.25rem !important;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  :global(.pricing-special-package-card__action) {
+    margin-top: auto;
+    padding-top: 1rem;
   }
 
   .faq-answer {
@@ -519,234 +905,70 @@ const faqItems: FaqItem[] = [
   .faq-answer li::marker {
     color: inherit !important;
   }
+
+  @media (max-width: 1024px) {
+    .pricing-self-host-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .pricing-cloud-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pricing-special-package-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .pricing-cloud-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .pricing-special-package-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pricing-hero {
+      margin-block: 2.5rem;
+      padding-inline: 0;
+    }
+
+    .pricing-hero h1 {
+      font-size: 1.75rem;
+    }
+
+    .pricing-self-host-card {
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-self-host-card__content {
+      padding: 1rem;
+    }
+
+    .pricing-self-host-card__features {
+      height: auto;
+    }
+
+    .pricing-self-host-card__features li {
+      flex-basis: auto;
+      min-height: 2.75rem;
+    }
+
+    .pricing-section-nav {
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      border-radius: 24px;
+    }
+  }
 </style>
 
 <script>
-  const activeClasses = [
-    "bg-white",
-    "",
-    "text-stone-900",
-    "",
-  ];
-  const inactiveClasses = [
-    "bg-transparent",
-    "text-stone-600",
-    "",
-  ];
-
-  const setToggleButtonState = (
-    buttons: NodeListOf<Element>,
-    dataKey: string,
-    value: string,
-  ) => {
-    buttons.forEach((button) => {
-      const htmlButton = button as HTMLButtonElement;
-      const isActive = htmlButton.dataset[dataKey] === value;
-      htmlButton.setAttribute("aria-pressed", isActive ? "true" : "false");
-      activeClasses.forEach((className) =>
-        htmlButton.classList.toggle(className, isActive),
-      );
-      inactiveClasses.forEach((className) =>
-        htmlButton.classList.toggle(className, !isActive),
-      );
-    });
-  };
-
-  // Hosting toggle (cloud/self-host)
-  const hostingButtons = document.querySelectorAll("[data-hosting-option]");
-  const hostingPanels = document.querySelectorAll("[data-hosting-panel]");
-  const billingToggleWrap = document.querySelector(
-    "[data-billing-toggle-wrap]",
-  );
-
-  const applyHosting = (hostingOption: string) => {
-    setToggleButtonState(hostingButtons, "hostingOption", hostingOption);
-
-    hostingPanels.forEach((panel) => {
-      const htmlPanel = panel as HTMLElement;
-      const isActive = htmlPanel.dataset.hostingPanel === hostingOption;
-      htmlPanel.classList.toggle("hidden", !isActive);
-      htmlPanel.setAttribute("aria-hidden", isActive ? "false" : "true");
-    });
-
-    if (billingToggleWrap) {
-      const hideBillingToggle = hostingOption === "self-host";
-      billingToggleWrap.classList.toggle("invisible", hideBillingToggle);
-      billingToggleWrap.classList.toggle(
-        "pointer-events-none",
-        hideBillingToggle,
-      );
-      billingToggleWrap.setAttribute(
-        "aria-hidden",
-        hideBillingToggle ? "true" : "false",
-      );
-    }
-  };
-
-  // Billing toggle (yearly/monthly)
-  const toggleButtons = document.querySelectorAll("[data-billing]");
-  const cards = document.querySelectorAll("[data-billing-plan]");
-
-  const formatPrice = (value: number) => Math.round(value).toString();
-  let currentBilling = "annual";
-
-  const syncCardTierSelection = (card: Element) => {
-    const operationsSelect = card.querySelector(
-      "[data-operations-select]",
-    ) as HTMLSelectElement | null;
-    if (!operationsSelect || !operationsSelect.selectedOptions.length) {
-      return;
-    }
-
-    const selectedOption = operationsSelect
-      .selectedOptions[0] as HTMLOptionElement;
-    const tierIndex = selectedOption.dataset.tierIndex;
-    const tierAnnualPrice = selectedOption.dataset.tierAnnualPrice;
-    const tierMonthlyPrice = selectedOption.dataset.tierMonthlyPrice;
-    const tierAi = selectedOption.dataset.tierAi;
-
-    if (tierIndex !== undefined) {
-      (card as HTMLElement).dataset.tierIndex = tierIndex;
-    }
-
-    if (tierAnnualPrice !== undefined && tierAnnualPrice !== "") {
-      const annualPrice = Number(tierAnnualPrice);
-      if (!Number.isNaN(annualPrice)) {
-        card
-          .querySelectorAll(".amount[data-annual-price]")
-          .forEach((amountEl) => {
-            (amountEl as HTMLElement).dataset.annualPrice = String(annualPrice);
-            if (tierMonthlyPrice !== undefined) {
-              (amountEl as HTMLElement).dataset.monthlyPrice = tierMonthlyPrice;
-            } else {
-              delete (amountEl as HTMLElement).dataset.monthlyPrice;
-            }
-          });
-      }
-    }
-
-    if (tierAi) {
-      const aiValueEl = card.querySelector("[data-tier-ai-value]");
-      if (aiValueEl) {
-        (aiValueEl as HTMLElement).textContent = tierAi;
-      }
-      const aiRow = card.querySelector("[data-tier-ai]");
-      if (aiRow) {
-        (aiRow as HTMLElement).dataset.tierAi = tierAi;
-      }
-    }
-  };
-
-  const applyBilling = (billing: string) => {
-    currentBilling = billing;
-    setToggleButtonState(toggleButtons, "billing", billing);
-
-    cards.forEach((card) => {
-      syncCardTierSelection(card);
-
-      card.querySelectorAll(".amount[data-annual-price]").forEach((amountEl) => {
-        const htmlEl = amountEl as HTMLElement;
-        const annualPrice = Number(htmlEl.dataset.annualPrice);
-        const monthlyPrice = Number(htmlEl.dataset.monthlyPrice);
-        if (Number.isNaN(annualPrice)) {
-          return;
-        }
-
-        const updatedPrice = billing === "monthly" && !Number.isNaN(monthlyPrice)
-          ? monthlyPrice
-          : billing === "monthly"
-            ? annualPrice * 1.2
-            : annualPrice;
-        htmlEl.textContent = `$${formatPrice(updatedPrice)}`;
-      });
-
-      card
-        .querySelectorAll("[data-overage-kind][data-overage-annual]")
-        .forEach((popoverEl) => {
-          const htmlEl = popoverEl as HTMLElement;
-          const annualOverage = Number(htmlEl.dataset.overageAnnual);
-          const monthlyOverage = Number(htmlEl.dataset.overageMonthly);
-          const kind = htmlEl.dataset.overageKind;
-          if (Number.isNaN(annualOverage)) {
-            return;
-          }
-
-          const updatedOverage = billing === "monthly" && !Number.isNaN(monthlyOverage)
-            ? monthlyOverage
-            : billing === "monthly"
-              ? Math.round(annualOverage * 1.2)
-              : annualOverage;
-
-          if (kind === "creators") {
-            htmlEl.textContent = `Add more creators for $${updatedOverage} per creator per month`;
-            return;
-          }
-
-          if (kind === "end-users") {
-            htmlEl.textContent = `Add more end users for $${updatedOverage} per end user per month`;
-          }
-        });
-
-      card
-        .querySelectorAll(
-          "[data-addon-annual][data-addon-prefix][data-addon-suffix]",
-        )
-        .forEach((addonEl) => {
-          const htmlEl = addonEl as HTMLElement;
-          const annualAddon = Number(htmlEl.dataset.addonAnnual);
-          const monthlyAddon = Number(htmlEl.dataset.addonMonthly);
-          if (Number.isNaN(annualAddon)) {
-            return;
-          }
-
-          const prefix = htmlEl.dataset.addonPrefix || "";
-          const suffix = htmlEl.dataset.addonSuffix || "";
-          const updatedAddonValue = billing === "monthly" && !Number.isNaN(monthlyAddon)
-            ? formatPrice(monthlyAddon)
-            : billing === "monthly"
-              ? formatPrice(annualAddon * 1.2)
-              : formatPrice(annualAddon);
-          const updatedAddonText = `${prefix}$${updatedAddonValue}${suffix}`;
-          const addonTextEl = htmlEl.querySelector("[data-addon-text]");
-
-          if (addonTextEl) {
-            (addonTextEl as HTMLElement).textContent = updatedAddonText;
-          }
-        });
-    });
-  };
-
-  cards.forEach((card) => {
-    const operationsSelect = card.querySelector(
-      "[data-operations-select]",
-    ) as HTMLSelectElement | null;
-    if (!operationsSelect || operationsSelect.dataset.tierBound === "true") {
-      return;
-    }
-
-    operationsSelect.dataset.tierBound = "true";
-    operationsSelect.addEventListener("change", () => {
-      applyBilling(currentBilling);
-    });
-  });
-
-  toggleButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const htmlButton = button as HTMLButtonElement;
-      applyBilling(htmlButton.dataset.billing || "annual");
-    });
-  });
-
-  hostingButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const htmlButton = button as HTMLButtonElement;
-      applyHosting(htmlButton.dataset.hostingOption || "cloud");
-    });
-  });
-
-  applyHosting("cloud");
-  applyBilling("annual");
-
   const faqDetails = Array.from(
     document.querySelectorAll("[data-faq-item]"),
   ) as HTMLDetailsElement[];

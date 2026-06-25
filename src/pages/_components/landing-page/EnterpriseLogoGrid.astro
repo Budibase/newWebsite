@@ -1,0 +1,447 @@
+---
+import StadtLuzernLogo from "@assets/logos/enterprise-grid/stadt-luzern.png?url";
+import SpaceForceLogo from "@assets/logos/enterprise-grid/space-force.png?url";
+import NorthernTerritoryLogo from "@assets/logos/enterprise-grid/northern-territory.png?url";
+import AustrianPatentLogo from "@assets/logos/enterprise-grid/austrian-patent.png?url";
+import LpaLogo from "@assets/logos/enterprise-grid/lpa.png?url";
+import ArmLogo from "@assets/logos/enterprise-grid/arm.png?url";
+import AmexLogo from "@assets/logos/enterprise-grid/amex.svg?url";
+import BulgariaLogo from "@assets/logos/enterprise-grid/bulgaria.png?url";
+import SwissGovLogo from "@assets/logos/enterprise-grid/swiss-gov.png?url";
+import NokiaLogo from "@assets/logos/enterprise-grid/nokia.png?url";
+import SaabLogo from "@assets/logos/enterprise-grid/saab.svg?url";
+import LockheedMartinLogo from "@assets/logos/enterprise-grid/lockheed-martin.png?url";
+import ThalesLogo from "@assets/logos/enterprise-grid/thales.png?url";
+import PierreFabreLogo from "@assets/logos/enterprise-grid/pierre-fabre.png?url";
+import EricssonLogo from "@assets/logos/ERI_horizontal_RGB.svg?url";
+
+type Placement = "hero" | "hero-compact" | "section";
+
+type ImageLogo = {
+  type: "image";
+  src: string;
+  alt: string;
+  className?: string;
+};
+
+type TextLogo = {
+  type: "text";
+  alt: string;
+  className: string;
+};
+
+type Logo = ImageLogo | TextLogo;
+
+const { placement = "section" } = Astro.props as { placement?: Placement };
+
+const columns: Logo[][] = [
+  [
+    {
+      type: "image",
+      src: StadtLuzernLogo,
+      alt: "Stadt Luzern",
+      className: "is-stadt-luzern",
+    },
+    { type: "image", src: ArmLogo, alt: "Arm", className: "is-square" },
+    { type: "image", src: SaabLogo, alt: "Saab", className: "is-saab" },
+  ],
+  [
+    {
+      type: "image",
+      src: SpaceForceLogo,
+      alt: "Space Force",
+      className: "is-square is-space-force",
+    },
+    {
+      type: "image",
+      src: AmexLogo,
+      alt: "American Express",
+      className: "is-square",
+    },
+    {
+      type: "image",
+      src: LockheedMartinLogo,
+      alt: "Lockheed Martin",
+      className: "is-lockheed",
+    },
+  ],
+  [
+    {
+      type: "image",
+      src: NorthernTerritoryLogo,
+      alt: "Northern Territory Government",
+      className: "is-northern-territory",
+    },
+    {
+      type: "image",
+      src: BulgariaLogo,
+      alt: "Republic of Bulgaria",
+      className: "is-flag",
+    },
+    {
+      type: "text",
+      alt: "Northrop Grumman",
+      className: "enterprise-logo-grid__northrop",
+    },
+  ],
+  [
+    {
+      type: "image",
+      src: AustrianPatentLogo,
+      alt: "Austrian Patent Office",
+      className: "is-austrian-patent",
+    },
+    {
+      type: "image",
+      src: SwissGovLogo,
+      alt: "Swiss Government",
+      className: "is-square",
+    },
+    {
+      type: "image",
+      src: EricssonLogo,
+      alt: "Ericsson",
+      className: "is-ericsson",
+    },
+  ],
+  [
+    { type: "image", src: LpaLogo, alt: "LPA", className: "is-lpa" },
+    { type: "image", src: NokiaLogo, alt: "Nokia", className: "is-square" },
+    { type: "image", src: ThalesLogo, alt: "Thales", className: "is-thales" },
+  ],
+];
+
+const compactLogos: (Logo | null)[] = [
+  columns[0][0],
+  columns[1][0],
+  columns[2][0],
+  columns[3][0],
+  columns[4][0],
+  columns[0][1],
+  columns[1][1],
+  {
+    type: "image",
+    src: PierreFabreLogo,
+    alt: "Laboratoires Pierre Fabre",
+    className: "is-pierre-fabre",
+  },
+  columns[3][1],
+  columns[4][1],
+  columns[0][2],
+  columns[1][2],
+  columns[2][2],
+  columns[3][2],
+  columns[4][2],
+  columns[2][1],
+];
+
+const isCompact = placement === "hero-compact";
+---
+
+<div
+  class={`enterprise-logo-grid enterprise-logo-grid--${placement}`}
+  aria-label="Trusted by enterprise and government teams"
+>
+  <div class="enterprise-logo-grid__inner">
+    {
+      isCompact
+        ? compactLogos.map((logo) => (
+            <div
+              class={`enterprise-logo-grid__cell${logo ? "" : " enterprise-logo-grid__cell--empty"}`}
+              aria-hidden={logo ? undefined : "true"}
+            >
+              {logo?.type === "image" ? (
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  loading="lazy"
+                  decoding="async"
+                  class={`enterprise-logo-grid__image ${logo.className ?? ""}`}
+                />
+              ) : logo?.type === "text" ? (
+                <span class={logo.className} aria-label={logo.alt} role="img" />
+              ) : null}
+            </div>
+          ))
+        : columns.map((column) => (
+            <div class="enterprise-logo-grid__column">
+              {column.map((logo) => (
+                <div class="enterprise-logo-grid__cell">
+                  {logo.type === "image" ? (
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      loading="lazy"
+                      decoding="async"
+                      class={`enterprise-logo-grid__image ${logo.className ?? ""}`}
+                    />
+                  ) : (
+                    <span
+                      class={logo.className}
+                      aria-label={logo.alt}
+                      role="img"
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+          ))
+    }
+  </div>
+</div>
+
+<style>
+  .enterprise-logo-grid {
+    --logo-grid-cell-width: 8.75rem;
+    --logo-grid-cell-height: 6.25rem;
+    --logo-grid-row-gap: 0.625rem;
+    --logo-grid-column-gap: clamp(2rem, 6.2vw, 4.625rem);
+    --logo-grid-opacity: 1;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .enterprise-logo-grid--hero {
+    --logo-grid-cell-width: clamp(5.8rem, 13vw, 7.5rem);
+    --logo-grid-cell-height: clamp(4.25rem, 8vw, 5.5rem);
+    --logo-grid-column-gap: clamp(1.25rem, 4vw, 3rem);
+    --logo-grid-opacity: 1;
+  }
+
+  .enterprise-logo-grid--hero-compact {
+    --logo-grid-cell-width: 100%;
+    --logo-grid-cell-height: clamp(3.25rem, 5vw, 4.25rem);
+    --logo-grid-row-gap: clamp(0.25rem, 1vw, 0.625rem);
+    --logo-grid-column-gap: clamp(0.75rem, 2vw, 1.75rem);
+  }
+
+  .enterprise-logo-grid__inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--logo-grid-column-gap);
+    width: min(100%, 62.125rem);
+    margin-inline: auto;
+  }
+
+  .enterprise-logo-grid--hero-compact .enterprise-logo-grid__inner {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    align-items: center;
+    gap: var(--logo-grid-row-gap) var(--logo-grid-column-gap);
+    width: min(100%, 72rem);
+  }
+
+  .enterprise-logo-grid__column {
+    display: flex;
+    flex: 0 0 var(--logo-grid-cell-width);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--logo-grid-row-gap);
+  }
+
+  .enterprise-logo-grid__cell {
+    display: flex;
+    width: var(--logo-grid-cell-width);
+    height: var(--logo-grid-cell-height);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .enterprise-logo-grid__cell--empty {
+    visibility: hidden;
+  }
+
+  .enterprise-logo-grid__image {
+    display: block;
+    max-width: 100%;
+    max-height: 5rem;
+    object-fit: contain;
+    opacity: var(--logo-grid-opacity);
+  }
+
+  .enterprise-logo-grid__image.is-square {
+    width: min(5rem, 72%);
+    height: min(5rem, 72%);
+  }
+
+  .enterprise-logo-grid--hero-compact .enterprise-logo-grid__image.is-square {
+    width: min(3.5rem, 72%);
+    height: min(3.5rem, 72%);
+  }
+
+  .enterprise-logo-grid--hero-compact
+    .enterprise-logo-grid__image.is-space-force {
+    width: min(4.75rem, 92%);
+    height: min(4.75rem, 92%);
+  }
+
+  .enterprise-logo-grid__image.is-stadt-luzern,
+  .enterprise-logo-grid__image.is-austrian-patent,
+  .enterprise-logo-grid__image.is-lpa {
+    width: min(7.5rem, 88%);
+  }
+
+  .enterprise-logo-grid--hero-compact
+    .enterprise-logo-grid__image.is-stadt-luzern,
+  .enterprise-logo-grid--hero-compact
+    .enterprise-logo-grid__image.is-austrian-patent,
+  .enterprise-logo-grid--hero-compact .enterprise-logo-grid__image.is-lpa,
+  .enterprise-logo-grid--hero-compact
+    .enterprise-logo-grid__image.is-northern-territory {
+    width: min(5.5rem, 86%);
+  }
+
+  .enterprise-logo-grid__image.is-northern-territory {
+    width: min(7.5rem, 88%);
+  }
+
+  .enterprise-logo-grid__image.is-saab {
+    width: min(7.5rem, 92%);
+    height: auto;
+    max-height: 2.5rem;
+  }
+
+  .enterprise-logo-grid--hero-compact .enterprise-logo-grid__image.is-saab {
+    width: min(5.5rem, 90%);
+    max-height: 1.875rem;
+  }
+
+  .enterprise-logo-grid__image.is-flag {
+    width: min(6.875rem, 80%);
+    max-height: 4.125rem;
+    border: 0.5px solid var(--bb-border-subtle);
+  }
+
+  .enterprise-logo-grid--hero-compact .enterprise-logo-grid__image.is-flag {
+    width: min(4.75rem, 78%);
+    max-height: 3rem;
+  }
+
+  .enterprise-logo-grid__image.is-lockheed {
+    width: min(7.5rem, 88%);
+    max-height: 1.75rem;
+  }
+
+  .enterprise-logo-grid--hero-compact .enterprise-logo-grid__image.is-lockheed {
+    width: min(5.5rem, 86%);
+    max-height: 1.25rem;
+  }
+
+  .enterprise-logo-grid__image.is-thales {
+    width: min(8.75rem, 100%);
+    max-height: 1.25rem;
+  }
+
+  .enterprise-logo-grid--hero-compact .enterprise-logo-grid__image.is-thales {
+    width: min(6rem, 90%);
+    max-height: 1rem;
+  }
+
+  .enterprise-logo-grid__image.is-ericsson {
+    width: min(7.5rem, 88%);
+    max-height: 1.55rem;
+    filter: brightness(0);
+  }
+
+  .enterprise-logo-grid--hero-compact .enterprise-logo-grid__image.is-ericsson {
+    width: min(5.25rem, 86%);
+    max-height: 1.1rem;
+  }
+
+  .enterprise-logo-grid--hero-compact
+    .enterprise-logo-grid__image.is-pierre-fabre {
+    width: min(6.25rem, 92%);
+    max-height: 3rem;
+  }
+
+  .enterprise-logo-grid__northrop {
+    color: #002f87;
+    opacity: var(--logo-grid-opacity);
+  }
+
+  .enterprise-logo-grid__northrop {
+    position: relative;
+    display: inline-block;
+    padding-right: 1.9rem;
+    font-size: 0.875rem;
+    font-weight: 800;
+    line-height: 0.82;
+    text-transform: uppercase;
+  }
+
+  .enterprise-logo-grid--hero-compact .enterprise-logo-grid__northrop {
+    padding-right: 1.55rem;
+    font-size: 0.7rem;
+  }
+
+  .enterprise-logo-grid--hero-compact .enterprise-logo-grid__northrop::after {
+    width: 1.25rem;
+    height: 0.95rem;
+    border-top-width: 0.13rem;
+    border-right-width: 0.13rem;
+  }
+
+  .enterprise-logo-grid__northrop::before {
+    content: "Northrop\A Grumman";
+    white-space: pre;
+  }
+
+  .enterprise-logo-grid__northrop::after {
+    position: absolute;
+    top: -0.08rem;
+    right: 0;
+    width: 1.55rem;
+    height: 1.18rem;
+    border-top: 0.16rem solid currentColor;
+    border-right: 0.16rem solid currentColor;
+    content: "";
+  }
+
+  @media (max-width: 767px) {
+    .enterprise-logo-grid {
+      --logo-grid-cell-width: 6.5rem;
+      --logo-grid-cell-height: 4.8rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+      scrollbar-width: none;
+    }
+
+    .enterprise-logo-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .enterprise-logo-grid__inner {
+      width: max-content;
+      min-width: 100%;
+      justify-content: flex-start;
+      padding-inline: 1rem;
+    }
+
+    .enterprise-logo-grid--hero-compact {
+      --logo-grid-cell-width: 5.5rem;
+      --logo-grid-cell-height: 4rem;
+      --logo-grid-column-gap: 0.75rem;
+    }
+
+    .enterprise-logo-grid--hero-compact .enterprise-logo-grid__inner {
+      grid-template-columns: repeat(8, var(--logo-grid-cell-width));
+    }
+
+    .enterprise-logo-grid__northrop {
+      font-size: 0.76rem;
+    }
+
+    .enterprise-logo-grid__image.is-space-force {
+      width: min(5.5rem, 84%);
+      height: min(5.5rem, 84%);
+    }
+
+    .enterprise-logo-grid--hero-compact
+      .enterprise-logo-grid__image.is-space-force {
+      width: min(4.75rem, 92%);
+      height: min(4.75rem, 92%);
+    }
+  }
+</style>

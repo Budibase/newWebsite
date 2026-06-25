@@ -94,16 +94,18 @@ Budibase gives you everything you need to create secure workflows without excess
     {
       headers: {
         "Content-Type": "text/markdown; charset=utf-8",
-        "Vary": "Accept",
+        Vary: "Accept",
       },
-    }
+    },
   );
 }
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
   <section class="security-hero">
-    <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0">
+    <div
+      class="mx-auto w-full max-w-[var(--site-container-max)] px-2 md:px-3 lg:px-0"
+    >
       <div class="security-hero-grid">
         <div class="security-hero-copy">
           <TitleBlock
@@ -115,83 +117,98 @@ Budibase gives you everything you need to create secure workflows without excess
             ]}
             titleClass="mb-4 w-full leading-[0.9]! tracking-[-0.02em]!"
           />
-          <p class="hero-description-small mx-auto max-w-xl text-base md:!text-xl !mb-4">
+          <p
+            class="hero-description-small mx-auto max-w-xl text-base md:!text-xl !mb-4"
+          >
             {pageDescription}
           </p>
           <div class="platform-hero__cta">
-        <Button
-          label="Get started"
-          url="https://account.budibase.app/register"
-          variant="primary"
-          size="large"
-          class="px-6 py-3 text-xl md:px-7 md:py-3.5 md:text-xl"
-          target="_blank"
-        />
-        <Button
-          label="Contact sales"
-          url="/contact/"
-          variant="secondary"
-          size="large"
-          class="px-6 py-3 text-xl md:px-7 md:py-3.5 md:text-xl ml-5"
-          target="_blank"
-        />
-      </div>
+            <Button
+              label="Get started"
+              url="https://account.budibase.app/register"
+              variant="primary"
+              size="large"
+              class="px-6 py-3 text-xl md:px-7 md:py-3.5 md:text-xl"
+              target="_blank"
+            />
+            <Button
+              label="Contact sales"
+              url="/contact/"
+              variant="secondary"
+              size="large"
+              class="px-6 py-3 text-xl md:px-7 md:py-3.5 md:text-xl ml-5"
+              target="_blank"
+            />
+          </div>
         </div>
-          
       </div>
     </div>
   </section>
 
-    <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0">
-      <div class="security-hero-grid">
-        <ITPlatform />
-      </div>
+  <div
+    class="mx-auto w-full max-w-[var(--site-container-max)] px-2 md:px-3 lg:px-0"
+  >
+    <div class="security-hero-grid">
+      <ITPlatform />
     </div>
+  </div>
 
-    <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0">
-      <div class="security-hero-grid">
-        <Customers />
-      </div>
+  <div
+    class="mx-auto w-full max-w-[var(--site-container-max)] px-2 md:px-3 lg:px-0"
+  >
+    <div class="security-hero-grid">
+      <Customers />
     </div>
+  </div>
 
-        <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0">
-      <div class="security-hero-grid">
-        <PlatformOverviewMidPage />
-      </div>
+  <div
+    class="mx-auto w-full max-w-[var(--site-container-max)] px-2 md:px-3 lg:px-0"
+  >
+    <div class="security-hero-grid">
+      <PlatformOverviewMidPage />
     </div>
- 
-    <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0 mt-16">
-      <div class="security-hero-grid">
-        <ITUseCases />
-      </div>
+  </div>
+
+  <div
+    class="mx-auto w-full max-w-[var(--site-container-max)] px-2 md:px-3 lg:px-0 mt-16"
+  >
+    <div class="security-hero-grid">
+      <ITUseCases />
     </div>
+  </div>
 
-     <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0 mt-16">
-      <div class="security-hero-grid">
-        <ChatRequestsMidPage />
-      </div>
+  <div
+    class="mx-auto w-full max-w-[var(--site-container-max)] px-2 md:px-3 lg:px-0 mt-16"
+  >
+    <div class="security-hero-grid">
+      <ChatRequestsMidPage />
     </div>
+  </div>
 
-    <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0 mt-8">
-      <ContactSalesCTA />
+  <div
+    class="mx-auto w-full max-w-[var(--site-container-max)] px-2 md:px-3 lg:px-0 mt-8"
+  >
+    <ContactSalesCTA />
+  </div>
+
+  <div
+    class="mx-auto w-full max-w-[var(--site-container-max)] px-2 md:px-3 lg:px-0 mt-8"
+  >
+    <div class="security-hero-grid">
+      <HostingOptionsMidPage />
     </div>
+  </div>
 
-         <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0 mt-8">
-      <div class="security-hero-grid">
-        <HostingOptionsMidPage />
-      </div>
+  <div
+    class="mx-auto w-full max-w-[var(--site-container-max)] px-2 md:px-3 lg:px-0 mt-20"
+  >
+    <div class="security-hero-grid">
+      <ITSecurity />
     </div>
+  </div>
 
-    <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0 mt-20">
-      <div class="security-hero-grid">
-        <ITSecurity />
-      </div>
-    </div>
-
-
-    <CTA />
-
-</section>
+  <CTA />
+</Layout>
 <style>
   .security-hero {
     background: var(--bg-1);
@@ -199,7 +216,7 @@ Budibase gives you everything you need to create secure workflows without excess
     padding-bottom: 1.5rem;
   }
 
-    :global(#site-nav.nav-shell) {
+  :global(#site-nav.nav-shell) {
     background-color: var(--bg-1) !important;
   }
 
@@ -228,8 +245,8 @@ Budibase gives you everything you need to create secure workflows without excess
       padding-bottom: 2rem;
     }
   }
-    .platform-hero__cta {
+  .platform-hero__cta {
     display: flex;
     justify-content: center;
   }
-  </style>
+</style>

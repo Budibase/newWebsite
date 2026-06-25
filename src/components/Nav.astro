@@ -7,7 +7,7 @@ import {
   solutionsDropdownItems,
 } from "@components/navDropdownData";
 
-const blackLogoSrc = "/budibase-logo-black.svg";
+const navLogoSrc = "/greenbudibaselogo.svg";
 ---
 
 <nav
@@ -17,7 +17,7 @@ const blackLogoSrc = "/budibase-logo-black.svg";
   transition:name="site-chrome"
 >
   <div
-    class="relative z-10 mx-auto grid h-[var(--site-nav-bar-height)] w-full max-w-7xl grid-cols-[1fr_auto_auto] items-center px-2 md:px-3 lg:grid-cols-[auto_1fr_auto] lg:gap-6 lg:px-0"
+    class="relative z-10 mx-auto grid h-[var(--site-nav-bar-height)] w-full max-w-[var(--site-container-max)] grid-cols-[1fr_auto_auto] items-center px-2 md:px-3 lg:grid-cols-[auto_1fr_auto] lg:gap-6 lg:px-0"
   >
     <a
       href="/"
@@ -27,10 +27,10 @@ const blackLogoSrc = "/budibase-logo-black.svg";
     >
       <div class="relative w-[120px] flex items-center">
         <img
-          src={blackLogoSrc}
+          src={navLogoSrc}
           alt="Budibase logo"
           width="120"
-          height="22"
+          height="32"
           class="block hover:cursor-pointer"
         />
       </div>
@@ -111,7 +111,7 @@ const blackLogoSrc = "/budibase-logo-black.svg";
         <Button
           label="Book a demo"
           url="/contact/"
-          variant="primary"
+          variant="cta"
           size="small"
         />
       </div>
@@ -170,10 +170,10 @@ const blackLogoSrc = "/budibase-logo-black.svg";
       >
         <div class="relative w-[120px] flex items-center">
           <img
-            src={blackLogoSrc}
+            src={navLogoSrc}
             alt="Budibase logo"
             width="120"
-            height="22"
+            height="32"
             class="block"
           />
         </div>

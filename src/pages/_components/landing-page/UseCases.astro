@@ -4,9 +4,12 @@ import { getOpsLibraryCards } from "../../../data/opsLibraryCardData";
 
 const cards = (await getOpsLibraryCards()).slice(0, 6);
 ---
-<div class="container max-w-7xl mx-auto mt-12 md:mt-24 px-2 lg:px-0">
+
+<div
+  class="container max-w-[var(--site-container-max)] mx-auto mt-12 md:mt-24 px-2 lg:px-0"
+>
   <h2 class="mb-6 text-center! text-balance! max-w-4xl! mx-auto!">
-    Real AI workflows, real solutions,  
+    Real AI workflows, real solutions,
     <span class="text-primary">real results.</span>
   </h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-2">

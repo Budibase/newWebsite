@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/MainLayout.astro";
 import Resources from "./_components/landing-page/Resources.astro";
-import Customers from "./_components/landing-page/Customers.astro";
 import Hero from "./_components/landing-page/Hero.astro";
 import Platform from "./_components/landing-page/Platform.astro";
 import WorkplaceRequests from "./_components/landing-page/WorkplaceRequests.astro";
@@ -13,14 +12,33 @@ import ContactSalesCTA from "@components/ContactSalesCTA.astro";
 ---
 
 <Layout rawTitle="Budibase | Agents, Workflows & Internal Tools Made Easy">
-  <Hero />
-  <Platform />
-  <Customers />
-  <WorkplaceRequests />
-  <OpsPlatform />
-  <HomePageEnterprise />
-  <ContactSalesCTA />
-  <Resources />
-  <HomePageProof />
-  <CTA />
+  <div class="homepage-grid">
+    <div class="site-grid-section site-grid-section--hero">
+      <Hero />
+    </div>
+    <div class="site-grid-section">
+      <Platform />
+    </div>
+    <div class="site-grid-section">
+      <WorkplaceRequests />
+    </div>
+    <div class="site-grid-section">
+      <OpsPlatform />
+    </div>
+    <div class="site-grid-section">
+      <HomePageEnterprise />
+    </div>
+    <div class="site-grid-section">
+      <ContactSalesCTA />
+    </div>
+    <div class="site-grid-section">
+      <Resources />
+    </div>
+    <div class="site-grid-section">
+      <HomePageProof />
+    </div>
+    <div class="site-grid-section">
+      <CTA />
+    </div>
+  </div>
 </Layout>

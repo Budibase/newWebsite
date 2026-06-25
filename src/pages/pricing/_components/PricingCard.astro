@@ -1,5 +1,4 @@
 ---
-
 import Button from "@components/Button.astro";
 import Tag from "@components/Tag.astro";
 import Check from "phosphor-astro/Check.astro";
@@ -33,8 +32,11 @@ type AddonPricing = {
   creators?: AddonPriceValue;
 };
 type FeatureTone = "default" | "orange-accent";
+type CardTone = "default" | "self-host-open-source" | "self-host-enterprise";
 // features can be an array of strings or objects with text and icon
-type FeatureItem = string | { text: string; icon?: "check" | "plus"; tone?: FeatureTone };
+type FeatureItem =
+  | string
+  | { text: string; icon?: "check" | "plus"; tone?: FeatureTone };
 
 interface Props {
   title: string;
@@ -56,6 +58,8 @@ interface Props {
   features?: FeatureItem[];
   recommended?: boolean;
   tagLabel?: string;
+  badgeLabel?: string;
+  cardTone?: CardTone;
   buttonLabel: string;
   buttonVariant?: ButtonVariant;
   buttonUrl?: string;
@@ -83,6 +87,8 @@ const {
   features = [],
   recommended = false,
   tagLabel,
+  badgeLabel,
+  cardTone = "default",
   buttonLabel,
   buttonVariant = "primary",
   buttonUrl = "#",
@@ -90,27 +96,37 @@ const {
   buttonTarget,
 } = Astro.props as Props;
 
-const cardClasses = ["pricing-card", recommended ? "recommended" : ""]
+const cardClasses = [
+  "pricing-card",
+  cardTone !== "default" ? `pricing-card--${cardTone}` : "",
+  recommended ? "recommended" : "",
+]
   .filter(Boolean)
   .join(" ");
+const isSelfHostCard = cardTone !== "default";
+const buttonClass = isSelfHostCard ? "pricing-card__button" : "";
 
 const isOperationsFeature = (feature: FeatureItem): feature is string =>
   typeof feature === "string" &&
-  (
-    /^Actions:\s*/i.test(feature) ||
+  (/^Actions:\s*/i.test(feature) ||
     /^(.+?)\s+actions$/i.test(feature) ||
     /^Operations:\s*/i.test(feature) ||
-    /^(.+?)\s+operations$/i.test(feature)
-  );
+    /^(.+?)\s+operations$/i.test(feature));
 
 const isEndUsersFeature = (feature: FeatureItem): boolean => {
   const featureText = typeof feature === "string" ? feature : feature.text;
-  return /^End users:\s*/i.test(featureText) || /^(.+?)\s+end users?\b/i.test(featureText);
+  return (
+    /^End users:\s*/i.test(featureText) ||
+    /^(.+?)\s+end users?\b/i.test(featureText)
+  );
 };
 
 const isAICreditsFeature = (feature: FeatureItem): boolean => {
   const featureText = typeof feature === "string" ? feature : feature.text;
-  return /^Budibase AI credits:\s*/i.test(featureText) || /^(.+?)\s+Budibase AI credits$/i.test(featureText);
+  return (
+    /^Budibase AI credits:\s*/i.test(featureText) ||
+    /^(.+?)\s+Budibase AI credits$/i.test(featureText)
+  );
 };
 
 const toOperationsLabel = (value: string): string => {
@@ -126,89 +142,113 @@ const safeDefaultTierIndex = Number.isFinite(defaultTierIndex)
   ? Math.floor(defaultTierIndex)
   : 0;
 const selectedTierIndex = normalizedOperationTiers.length
-  ? Math.min(Math.max(safeDefaultTierIndex, 0), normalizedOperationTiers.length - 1)
+  ? Math.min(
+      Math.max(safeDefaultTierIndex, 0),
+      normalizedOperationTiers.length - 1,
+    )
   : 0;
 const selectedOperationTier = normalizedOperationTiers[selectedTierIndex];
 
 const operationsFeature = features.find(isOperationsFeature);
-const nonOperationsFeatures = features.filter((feature) => !isOperationsFeature(feature));
-const aiCreditsFeature = features.find(isAICreditsFeature);
-const visibleFeatures = nonOperationsFeatures.filter((feature) =>
-  !isEndUsersFeature(feature) && !isAICreditsFeature(feature)
+const nonOperationsFeatures = features.filter(
+  (feature) => !isOperationsFeature(feature),
 );
-const operationsValue = operationsFeature?.match(/^Operations:\s*(.+)$/i)?.[1] ||
+const aiCreditsFeature = features.find(isAICreditsFeature);
+const visibleFeatures = nonOperationsFeatures.filter(
+  (feature) => !isEndUsersFeature(feature) && !isAICreditsFeature(feature),
+);
+const operationsValue =
+  operationsFeature?.match(/^Operations:\s*(.+)$/i)?.[1] ||
   operationsFeature?.match(/^(.+?)\s+operations$/i)?.[1] ||
   operationsFeature?.match(/^Actions:\s*(.+)$/i)?.[1] ||
   operationsFeature?.match(/^(.+?)\s+actions$/i)?.[1];
-const operationsLabel = operationsValue ? `${operationsValue} actions` : operationsFeature || undefined;
-const fallbackAICreditsValue = typeof aiCreditsFeature === "string"
-  ? (
-    aiCreditsFeature.match(/^Budibase AI credits:\s*(.+)$/i)?.[1] ||
-    aiCreditsFeature.match(/^(.+?)\s+Budibase AI credits$/i)?.[1]
-  )
-  : undefined;
+const operationsLabel = operationsValue
+  ? `${operationsValue} actions`
+  : operationsFeature || undefined;
+const fallbackAICreditsValue =
+  typeof aiCreditsFeature === "string"
+    ? aiCreditsFeature.match(/^Budibase AI credits:\s*(.+)$/i)?.[1] ||
+      aiCreditsFeature.match(/^(.+?)\s+Budibase AI credits$/i)?.[1]
+    : undefined;
 const operationsDropdownOptions = normalizedOperationTiers.length
   ? normalizedOperationTiers
-  : (operationsLabel ? [{ operationsLabel, annualPrice: undefined, monthlyPrice: undefined, aiCredits: undefined }] : []);
-const initialAICredits = selectedOperationTier?.aiCredits || fallbackAICreditsValue;
+  : operationsLabel
+    ? [
+        {
+          operationsLabel,
+          annualPrice: undefined,
+          monthlyPrice: undefined,
+          aiCredits: undefined,
+        },
+      ]
+    : [];
+const initialAICredits =
+  selectedOperationTier?.aiCredits || fallbackAICreditsValue;
 const selectedAnnualCreatorPrice = selectedOperationTier?.annualPrice;
 const selectedMonthlyCreatorPrice = selectedOperationTier?.monthlyPrice;
-const initialAnnualPrice = typeof selectedAnnualCreatorPrice === "number"
-  ? selectedAnnualCreatorPrice
-  : (typeof creatorPrice === "number" ? creatorPrice : undefined);
-const initialDisplayPrice = typeof initialAnnualPrice === "number"
-  ? `$${initialAnnualPrice}`
-  : (typeof creatorPrice === "number" ? `$${creatorPrice}` : creatorPrice);
-const defaultAddonItems = billingPlan === "premium" || billingPlan === "business"
-  ? ["End users for $5/user/mo", "Creators for $50/creator/mo"]
-  : billingPlan === "enterprise"
-    ? []
-    : ["End users for $5/user/mo"];
+const initialAnnualPrice =
+  typeof selectedAnnualCreatorPrice === "number"
+    ? selectedAnnualCreatorPrice
+    : typeof creatorPrice === "number"
+      ? creatorPrice
+      : undefined;
+const initialDisplayPrice =
+  typeof initialAnnualPrice === "number"
+    ? `$${initialAnnualPrice}`
+    : typeof creatorPrice === "number"
+      ? `$${creatorPrice}`
+      : creatorPrice;
+const defaultAddonItems =
+  billingPlan === "premium" || billingPlan === "business"
+    ? ["End users for $5/user/mo", "Creators for $50/creator/mo"]
+    : billingPlan === "enterprise"
+      ? []
+      : ["End users for $5/user/mo"];
 const addonItemsFromPricing = addonPricing
-  ? [
-    addonPricing.endUsers
-      ? {
-        text: `End users for $${addonPricing.endUsers.annual}/user/mo`,
-        annualAmount: addonPricing.endUsers.annual,
-        monthlyAmount: addonPricing.endUsers.monthly,
-        prefix: "End users for ",
-        suffix: "/user/mo",
-      }
-      : null,
-    addonPricing.creators
-      ? {
-        text: `Creators for $${addonPricing.creators.annual}/creator/mo`,
-        annualAmount: addonPricing.creators.annual,
-        monthlyAmount: addonPricing.creators.monthly,
-        prefix: "Creators for ",
-        suffix: "/creator/mo",
-      }
-      : null,
-  ].filter(Boolean) as AddonDisplayItem[]
+  ? ([
+      addonPricing.endUsers
+        ? {
+            text: `End users for $${addonPricing.endUsers.annual}/user/mo`,
+            annualAmount: addonPricing.endUsers.annual,
+            monthlyAmount: addonPricing.endUsers.monthly,
+            prefix: "End users for ",
+            suffix: "/user/mo",
+          }
+        : null,
+      addonPricing.creators
+        ? {
+            text: `Creators for $${addonPricing.creators.annual}/creator/mo`,
+            annualAmount: addonPricing.creators.annual,
+            monthlyAmount: addonPricing.creators.monthly,
+            prefix: "Creators for ",
+            suffix: "/creator/mo",
+          }
+        : null,
+    ].filter(Boolean) as AddonDisplayItem[])
   : null;
 const addonsToShow = addonItemsFromPricing ?? addonItems ?? defaultAddonItems;
 const addonPricePattern = /^(.*)\$(\d+)(.*)$/;
-const normalizedAddonItems: AddonDisplayItem[] = Array.isArray(addonsToShow) &&
-    typeof addonsToShow[0] === "object"
-  ? addonsToShow as AddonDisplayItem[]
-  : (addonsToShow as string[]).map((addon) => {
-    const priceMatch = addon.match(addonPricePattern);
-    if (!priceMatch) {
-      return { text: addon };
-    }
+const normalizedAddonItems: AddonDisplayItem[] =
+  Array.isArray(addonsToShow) && typeof addonsToShow[0] === "object"
+    ? (addonsToShow as AddonDisplayItem[])
+    : (addonsToShow as string[]).map((addon) => {
+        const priceMatch = addon.match(addonPricePattern);
+        if (!priceMatch) {
+          return { text: addon };
+        }
 
-    const annualAmount = Number(priceMatch[2]);
-    if (Number.isNaN(annualAmount)) {
-      return { text: addon };
-    }
+        const annualAmount = Number(priceMatch[2]);
+        if (Number.isNaN(annualAmount)) {
+          return { text: addon };
+        }
 
-    return {
-      text: addon,
-      annualAmount,
-      prefix: priceMatch[1],
-      suffix: priceMatch[3],
-    };
-  });
+        return {
+          text: addon,
+          annualAmount,
+          prefix: priceMatch[1],
+          suffix: priceMatch[3],
+        };
+      });
 const endUsersAddonPricing = addonPricing?.endUsers;
 const creatorsAddonPricing = addonPricing?.creators;
 const showAddonsSection = normalizedAddonItems.length > 0;
@@ -222,8 +262,13 @@ const showHostingSection = hostingItems.length > 0;
 >
   <header class="header">
     <div class="header-main">
-      <h3 class="!text-lg text-stone-900 ">{title}</h3>
-      {tagLabel && <Tag label={tagLabel} size="small" variant="orange" class="ml-auto" />}
+      {badgeLabel && <span class="pricing-card__badge">{badgeLabel}</span>}
+      <h3 class="!text-lg text-stone-900">{title}</h3>
+      {
+        tagLabel && (
+          <Tag label={tagLabel} size="small" variant="orange" class="ml-auto" />
+        )
+      }
       {
         recommended && (
           <span
@@ -235,6 +280,11 @@ const showHostingSection = hostingItems.length > 0;
         )
       }
     </div>
+    {
+      isSelfHostCard && description && (
+        <p class="pricing-card__intro">{description}</p>
+      )
+    }
   </header>
 
   <div class="body">
@@ -243,79 +293,102 @@ const showHostingSection = hostingItems.length > 0;
         <p class="price-line">
           <span
             class="amount !text-2xl text-primary"
-            data-annual-price={typeof initialAnnualPrice === "number" ? initialAnnualPrice : undefined}
+            data-annual-price={typeof initialAnnualPrice === "number"
+              ? initialAnnualPrice
+              : undefined}
             data-monthly-price={typeof selectedMonthlyCreatorPrice === "number"
               ? selectedMonthlyCreatorPrice
-              : undefined}
-            >{initialDisplayPrice}</span
+              : undefined}>{initialDisplayPrice}</span
           >
           <span class="inline-flex gap-0.5">
-            {creatorLabel && (
-              <span class="text-[14px] text-stone-600 ">{creatorLabel}</span>
-            )}
-            <span class="unit-text text-[14px] text-stone-600 ">
+            {
+              creatorLabel && (
+                <span class="text-[14px] text-stone-600 ">{creatorLabel}</span>
+              )
+            }
+            <span class="unit-text text-[14px] text-stone-600">
               {creatorUnit}
             </span>
           </span>
         </p>
-        {userPrice !== undefined && (
-          <p class="price-line">
-            <span
-              class="amount !text-2xl text-primary"
-              data-base-price={typeof userPrice === "number" ? userPrice : undefined}
-            >
-              {typeof userPrice === "number" ? `$${userPrice}` : userPrice}
-            </span>
-            <span class="inline-flex gap-0.5">
-              <span class="text-[14px] text-stone-600 ">{userLabel}</span>
-              <span class="unit-text text-[14px] text-stone-600 ">
-                {userUnit}
+        {
+          userPrice !== undefined && (
+            <p class="price-line">
+              <span
+                class="amount !text-2xl text-primary"
+                data-base-price={
+                  typeof userPrice === "number" ? userPrice : undefined
+                }
+              >
+                {typeof userPrice === "number" ? `$${userPrice}` : userPrice}
               </span>
-            </span>
-          </p>
-        )}
+              <span class="inline-flex gap-0.5">
+                <span class="text-[14px] text-stone-600 ">{userLabel}</span>
+                <span class="unit-text text-[14px] text-stone-600 ">
+                  {userUnit}
+                </span>
+              </span>
+            </p>
+          )
+        }
       </div>
-      {operationsDropdownOptions.length > 1 && (
-        <div class="operations-row operations-select-row text-[14px] text-stone-900  mt-3">
-          <select class="operations-select" aria-label="Actions limit" data-operations-select>
-            {
-              operationsDropdownOptions.map((option, index) => (
+      {
+        operationsDropdownOptions.length > 1 && (
+          <div class="operations-row operations-select-row text-[14px] text-stone-900  mt-3">
+            <select
+              class="operations-select"
+              aria-label="Actions limit"
+              data-operations-select
+            >
+              {operationsDropdownOptions.map((option, index) => (
                 <option
                   value={option.operationsLabel}
                   selected={index === selectedTierIndex}
                   data-tier-index={String(index)}
-                  data-tier-annual-price={option.annualPrice !== undefined ? String(option.annualPrice) : undefined}
-                  data-tier-monthly-price={option.monthlyPrice !== undefined ? String(option.monthlyPrice) : undefined}
+                  data-tier-annual-price={
+                    option.annualPrice !== undefined
+                      ? String(option.annualPrice)
+                      : undefined
+                  }
+                  data-tier-monthly-price={
+                    option.monthlyPrice !== undefined
+                      ? String(option.monthlyPrice)
+                      : undefined
+                  }
                   data-tier-ai={option.aiCredits}
                   data-tier-operations={option.operationsLabel}
                 >
                   {option.operationsLabel}
                 </option>
-              ))
-            }
-          </select>
-        </div>
-      )}
-      {operationsDropdownOptions.length === 1 && (
-        <div class="operations-row mt-3">
-          <p class="operations-static operations-static-primary">
-            {operationsDropdownOptions[0].operationsLabel}
-          </p>
-        </div>
-      )}
-      {operationsDropdownOptions.length === 0 && additionalPriceText && (
-        <div class="operations-row mt-3">
-          <p
-            class={`operations-static ${
-              additionalPriceTone === "primary"
-                ? "operations-static-primary"
-                : "text-stone-600 "
-            }`}
-          >
-            {additionalPriceText}
-          </p>
-        </div>
-      )}
+              ))}
+            </select>
+          </div>
+        )
+      }
+      {
+        operationsDropdownOptions.length === 1 && (
+          <div class="operations-row mt-3">
+            <p class="operations-static operations-static-primary">
+              {operationsDropdownOptions[0].operationsLabel}
+            </p>
+          </div>
+        )
+      }
+      {
+        operationsDropdownOptions.length === 0 && additionalPriceText && (
+          <div class="operations-row mt-3">
+            <p
+              class={`operations-static ${
+                additionalPriceTone === "primary"
+                  ? "operations-static-primary"
+                  : "text-stone-600 "
+              }`}
+            >
+              {additionalPriceText}
+            </p>
+          </div>
+        )
+      }
     </div>
     <div class="cta">
       <Button
@@ -324,14 +397,19 @@ const showHostingSection = hostingItems.length > 0;
         variant={buttonVariant}
         size={buttonSize}
         target={buttonTarget}
+        class={buttonClass}
       />
     </div>
     <div class="description-features">
       <div>
-        {description && <p class="!text-[14px] text-stone-600! ">{description}</p>}
+        {
+          description && (
+            <p class="!text-[14px] text-stone-600! ">{description}</p>
+          )
+        }
       </div>
       {
-        (initialAICredits || visibleFeatures.length) ? (
+        initialAICredits || visibleFeatures.length ? (
           <ul class=" gap-1 flex flex-col mb-5" aria-label="Plan features">
             {initialAICredits && (
               <li class="text-[14px]" data-tier-ai={initialAICredits}>
@@ -339,33 +417,36 @@ const showHostingSection = hostingItems.length > 0;
                   <Check class="fill-stone-700  w-3" aria-hidden="true" />
                 </span>
                 <span class="feature-text text-stone-900 ">
-                  <span data-tier-ai-value>{initialAICredits}</span> Budibase AI credits
+                  <span data-tier-ai-value>{initialAICredits}</span> Budibase AI
+                  credits
                 </span>
               </li>
             )}
             {visibleFeatures.map((feat, index) => {
               const featureText = typeof feat === "string" ? feat : feat.text;
-              const iconType = typeof feat === "string" ? "check" : (feat.icon || "check");
-              const featureTone = typeof feat === "string" ? "default" : (feat.tone || "default");
-              const endUsersMatch = typeof feat === "string"
-                ? (
-                  feat.match(/^End users:\s*(.+)$/i) ||
-                  feat.match(/^(.+?)\s+end users?$/i)
-                )
-                : null;
+              const iconType =
+                typeof feat === "string" ? "check" : feat.icon || "check";
+              const featureTone =
+                typeof feat === "string" ? "default" : feat.tone || "default";
+              const endUsersMatch =
+                typeof feat === "string"
+                  ? feat.match(/^End users:\s*(.+)$/i) ||
+                    feat.match(/^(.+?)\s+end users?$/i)
+                  : null;
               const endUsersValue = endUsersMatch?.[1] || "";
-              const showEndUsersPopover = Boolean(endUsersMatch && /\d/.test(endUsersValue));
-              const creatorsMatch = typeof feat === "string"
-                ? (
-                  feat.match(/^Creators:\s*(.+)$/i) ||
-                  feat.match(/^(.+?)\s+creators?\b/i)
-                )
-                : null;
+              const showEndUsersPopover = Boolean(
+                endUsersMatch && /\d/.test(endUsersValue),
+              );
+              const creatorsMatch =
+                typeof feat === "string"
+                  ? feat.match(/^Creators:\s*(.+)$/i) ||
+                    feat.match(/^(.+?)\s+creators?\b/i)
+                  : null;
               const creatorsValue = creatorsMatch?.[1] || "";
               const showCreatorsPopover = Boolean(
                 creatorsMatch &&
-                /\d/.test(creatorsValue) &&
-                creatorsAddonPricing
+                  /\d/.test(creatorsValue) &&
+                  creatorsAddonPricing,
               );
               return (
                 <li class="text-[14px]">
@@ -421,7 +502,11 @@ const showHostingSection = hostingItems.length > 0;
                             data-overage-annual={endUsersAddonPricing?.annual}
                             data-overage-monthly={endUsersAddonPricing?.monthly}
                           >
-                            Add more end users for ${endUsersAddonPricing ? `$${endUsersAddonPricing.annual}` : "$5"} per end user per month
+                            Add more end users for $
+                            {endUsersAddonPricing
+                              ? `$${endUsersAddonPricing.annual}`
+                              : "$5"}{" "}
+                            per end user per month
                           </span>
                         </span>
                       </span>
@@ -446,7 +531,11 @@ const showHostingSection = hostingItems.length > 0;
                             data-overage-annual={creatorsAddonPricing?.annual}
                             data-overage-monthly={creatorsAddonPricing?.monthly}
                           >
-                            Add more creators for ${creatorsAddonPricing ? `$${creatorsAddonPricing.annual}` : "$50"} per creator per month
+                            Add more creators for $
+                            {creatorsAddonPricing
+                              ? `$${creatorsAddonPricing.annual}`
+                              : "$50"}{" "}
+                            per creator per month
                           </span>
                         </span>
                       </span>
@@ -461,59 +550,103 @@ const showHostingSection = hostingItems.length > 0;
         ) : null
       }
     </div>
-    {showHostingSection && (
-      <div class="addons-section">
-        <p class="addons-label !text-[14px] text-stone-900 ">Hosting:</p>
-        {hostingItems.map((hostingItem) => (
-          <p class="addon-line text-[14px]">
-            <span class="check">
-              {hostingItem === "Budibase Cloud" ? (
-                <Cloud class="w-3 h-3 fill-stone-700 " aria-hidden="true" />
-              ) : hostingItem === "Self-host / on-premise" || hostingItem === "Self-hosted" ? (
-                <HardDrives class="w-3 h-3 fill-stone-700 " aria-hidden="true" />
-              ) : (
-                <Check class="w-3 h-3 fill-stone-700 " aria-hidden="true" />
-              )}
-            </span>
-            <span class="feature-text text-stone-900 ">{hostingItem}</span>
+    {
+      showHostingSection && (
+        <div class="addons-section">
+          <p class="addons-label !text-[14px] text-stone-900 ">Hosting:</p>
+          {hostingItems.map((hostingItem) => (
+            <p class="addon-line text-[14px]">
+              <span class="check">
+                {hostingItem === "Budibase Cloud" ? (
+                  <Cloud class="w-3 h-3 fill-stone-700 " aria-hidden="true" />
+                ) : hostingItem === "Self-host / on-premise" ||
+                  hostingItem === "Self-hosted" ? (
+                  <HardDrives
+                    class="w-3 h-3 fill-stone-700 "
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <Check class="w-3 h-3 fill-stone-700 " aria-hidden="true" />
+                )}
+              </span>
+              <span class="feature-text text-stone-900 ">{hostingItem}</span>
+            </p>
+          ))}
+        </div>
+      )
+    }
+    {
+      showAddonsSection && (
+        <div class="addons-section">
+          <p class="addons-label !text-[14px] text-stone-900 ">
+            Available add-ons:
           </p>
-        ))}
-      </div>
-    )}
-    {showAddonsSection && (
-      <div class="addons-section">
-        <p class="addons-label !text-[14px] text-stone-900 ">Available add-ons:</p>
-        {normalizedAddonItems.map((addon) => (
-          <p
-            class="addon-line text-[14px]"
-            data-addon-annual={addon.annualAmount !== undefined ? String(addon.annualAmount) : undefined}
-            data-addon-monthly={addon.monthlyAmount !== undefined ? String(addon.monthlyAmount) : undefined}
-            data-addon-prefix={addon.prefix}
-            data-addon-suffix={addon.suffix}
-          >
-            <span class="check">
-              <Plus class="w-3 h-3 fill-stone-700 " aria-hidden="true" />
-            </span>
-            <span class="feature-text text-stone-900 " data-addon-text>{addon.text}</span>
-          </p>
-        ))}
-      </div>
-    )}
+          {normalizedAddonItems.map((addon) => (
+            <p
+              class="addon-line text-[14px]"
+              data-addon-annual={
+                addon.annualAmount !== undefined
+                  ? String(addon.annualAmount)
+                  : undefined
+              }
+              data-addon-monthly={
+                addon.monthlyAmount !== undefined
+                  ? String(addon.monthlyAmount)
+                  : undefined
+              }
+              data-addon-prefix={addon.prefix}
+              data-addon-suffix={addon.suffix}
+            >
+              <span class="check">
+                <Plus class="w-3 h-3 fill-stone-700 " aria-hidden="true" />
+              </span>
+              <span class="feature-text text-stone-900 " data-addon-text>
+                {addon.text}
+              </span>
+            </p>
+          ))}
+        </div>
+      )
+    }
   </div>
 </div>
 
 <style>
   .pricing-card {
-    background: var(--bg-2);
+    background: var(--bb-background-base);
     border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 24px 16px;
     min-height: 100%;
   }
 
+  .pricing-card--self-host-open-source,
+  .pricing-card--self-host-enterprise {
+    overflow: hidden;
+    border-radius: 18px;
+    padding: 0;
+  }
+
+  .pricing-card--self-host-open-source {
+    background: var(--bb-green-100);
+    border-color: var(--bb-green-300);
+    color: var(--bb-green-1000);
+  }
+
+  .pricing-card--self-host-enterprise {
+    background: var(--bb-cyan-1400);
+    border-color: var(--bb-cyan-1000);
+    color: var(--bb-cyan-100);
+  }
+
   @media (min-width: 640px) {
     .pricing-card {
       padding: 24px 16px;
+    }
+
+    .pricing-card--self-host-open-source,
+    .pricing-card--self-host-enterprise {
+      padding: 0;
     }
   }
 
@@ -521,11 +654,81 @@ const showHostingSection = hostingItems.length > 0;
     display: block;
   }
 
+  .pricing-card--self-host-open-source .header,
+  .pricing-card--self-host-enterprise .header {
+    min-height: 260px;
+    padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem) 2rem;
+    text-align: center;
+  }
+
   .header-main {
     display: flex;
     align-items: center;
     gap: 10px;
     min-width: 0;
+  }
+
+  .pricing-card--self-host-open-source .header-main,
+  .pricing-card--self-host-enterprise .header-main {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .pricing-card--self-host-open-source h3,
+  .pricing-card--self-host-enterprise h3 {
+    font-size: clamp(2.25rem, 4vw, 3.5rem) !important;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .pricing-card--self-host-open-source h3 {
+    color: var(--bb-green-1000) !important;
+  }
+
+  .pricing-card--self-host-enterprise h3 {
+    color: var(--bb-cyan-100) !important;
+  }
+
+  .pricing-card__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 6.75rem;
+    border-radius: 999px;
+    padding: 0.35rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.08em;
+  }
+
+  .pricing-card--self-host-open-source .pricing-card__badge {
+    background: var(--bb-green-300);
+    color: var(--bb-green-1000);
+  }
+
+  .pricing-card--self-host-enterprise .pricing-card__badge {
+    background: var(--bb-cyan-1600);
+    color: var(--bb-cyan-100);
+  }
+
+  .pricing-card__intro {
+    max-width: 34rem;
+    margin: 1.5rem auto 0;
+    font-size: clamp(1.125rem, 2vw, 1.5rem) !important;
+    font-weight: 600 !important;
+    line-height: 1.25;
+  }
+
+  .pricing-card--self-host-open-source .pricing-card__intro {
+    color: var(--bb-green-1000) !important;
+  }
+
+  .pricing-card--self-host-enterprise .pricing-card__intro {
+    color: var(--bb-cyan-100) !important;
   }
 
   .body {
@@ -537,17 +740,51 @@ const showHostingSection = hostingItems.length > 0;
     height: 100%;
     gap: 20px;
   }
-  
+
+  .pricing-card--self-host-open-source .body,
+  .pricing-card--self-host-enterprise .body {
+    margin-top: 0;
+    gap: 0;
+  }
+
   .header-prices {
     flex-shrink: 0;
     height: fit-content;
   }
-  
+
+  .pricing-card--self-host-open-source .header-prices,
+  .pricing-card--self-host-enterprise .header-prices {
+    display: none;
+  }
+
   .description-features {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     height: fit-content;
+  }
+
+  .pricing-card--self-host-open-source .description-features,
+  .pricing-card--self-host-enterprise .description-features {
+    padding: 3rem clamp(1.5rem, 4vw, 4rem) 3.5rem;
+  }
+
+  .pricing-card--self-host-open-source .description-features > div:first-child,
+  .pricing-card--self-host-enterprise .description-features > div:first-child {
+    display: none;
+  }
+
+  .pricing-card--self-host-open-source .description-features ul,
+  .pricing-card--self-host-enterprise .description-features ul {
+    margin-bottom: 0 !important;
+    gap: 0.6rem;
+  }
+
+  .pricing-card--self-host-open-source .description-features li,
+  .pricing-card--self-host-enterprise .description-features li {
+    align-items: center;
+    font-size: 1rem !important;
+    line-height: 1.35;
   }
 
   .prices {
@@ -557,7 +794,7 @@ const showHostingSection = hostingItems.length > 0;
     margin-bottom: 4px;
     color: var(--bb-gray-900);
   }
-.amount {
+  .amount {
     color: var(--text-primary);
   }
 
@@ -617,15 +854,52 @@ const showHostingSection = hostingItems.length > 0;
   .operations-static-primary {
     color: var(--text-primary) !important;
   }
-.cta {
+  .cta {
     flex-shrink: 0;
     margin-bottom: 16px;
     width: 100%;
   }
 
+  .pricing-card--self-host-open-source .cta,
+  .pricing-card--self-host-enterprise .cta {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    padding: 0 clamp(1.5rem, 4vw, 3rem) 2.25rem;
+    border-bottom: 1px solid;
+  }
+
+  .pricing-card--self-host-open-source .cta {
+    border-color: var(--bb-green-300);
+  }
+
+  .pricing-card--self-host-enterprise .cta {
+    border-color: var(--bb-cyan-900);
+  }
+
   .cta :global(a),
   .cta :global(button) {
     width: 100%;
+  }
+
+  .cta :global(.pricing-card__button) {
+    min-width: min(100%, 20rem);
+    width: auto;
+    min-height: 4.5rem;
+    padding-inline: 3rem;
+    font-size: 1.125rem;
+  }
+
+  .pricing-card--self-host-enterprise .cta :global(.pricing-card__button) {
+    border-color: transparent;
+    background: var(--bb-gray-50);
+    color: var(--bb-cyan-1200);
+  }
+
+  .pricing-card--self-host-enterprise
+    .cta
+    :global(.pricing-card__button:hover) {
+    background: var(--bb-cyan-100);
   }
 
   .addons-section {
@@ -635,6 +909,12 @@ const showHostingSection = hostingItems.length > 0;
     flex-direction: column;
     justify-content: flex-start;
     min-height: 68px;
+  }
+
+  .pricing-card--self-host-open-source .addons-section,
+  .pricing-card--self-host-enterprise .addons-section {
+    padding-inline: clamp(1.5rem, 4vw, 4rem);
+    margin-bottom: 1.75rem;
   }
 
   .addons-label {
@@ -663,6 +943,22 @@ const showHostingSection = hostingItems.length > 0;
   }
   .check {
     display: inline-flex;
+  }
+
+  .pricing-card--self-host-open-source .check :global(svg),
+  .pricing-card--self-host-open-source .feature-text,
+  .pricing-card--self-host-open-source .addons-label,
+  .pricing-card--self-host-open-source .addon-line {
+    color: var(--bb-green-1000) !important;
+    fill: var(--bb-green-1000) !important;
+  }
+
+  .pricing-card--self-host-enterprise .check :global(svg),
+  .pricing-card--self-host-enterprise .feature-text,
+  .pricing-card--self-host-enterprise .addons-label,
+  .pricing-card--self-host-enterprise .addon-line {
+    color: var(--bb-cyan-100) !important;
+    fill: var(--bb-cyan-100) !important;
   }
 
   .unit-text {
@@ -713,7 +1009,10 @@ const showHostingSection = hostingItems.length > 0;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 150ms ease, transform 150ms ease, visibility 150ms ease;
+    transition:
+      opacity 150ms ease,
+      transform 150ms ease,
+      visibility 150ms ease;
     z-index: 20;
   }
 
@@ -723,5 +1022,4 @@ const showHostingSection = hostingItems.length > 0;
     visibility: visible;
     transform: translate(-50%, 0);
   }
-
 </style>

@@ -1,25 +1,7 @@
 ---
-import CustomerFirstRowLogos from "./CustomerFirstRowLogos.astro";
+import EnterpriseLogoGrid from "./EnterpriseLogoGrid.astro";
 ---
 
-<div class="max-w-7xl container mx-auto px-2 lg:px-0 relative mt-3 mb-12 md:mb-16">
-  <div
-    data-customer-dock-destination
-    class="customer-dock-destination h-[60px] bg-[var(--bg-1)] flex items-center justify-center"
-  >
-    <CustomerFirstRowLogos />
-  </div>
+<div class="container mx-auto max-w-[var(--site-container-max)] px-2 lg:px-0">
+  <EnterpriseLogoGrid placement="section" />
 </div>
-
-<style>
-  .customer-dock-destination {
-    min-height: 60px;
-  }
-
-  @media (max-width: 767px) {
-    .customer-dock-destination {
-      height: auto;
-      padding-block: 0.5rem;
-    }
-  }
-</style>
