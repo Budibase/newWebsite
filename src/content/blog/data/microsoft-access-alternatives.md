@@ -1,525 +1,871 @@
 ---
-title: "11 Microsoft Access Alternatives for 2026"
-description: "Check out our round-up of 11 Microsoft Access alternatives."
-publishDate: "2025-03-20"
+title: "15 Microsoft Access Alternatives for 2026"
+description: "Check out our round-up of 15 Microsoft Access alternatives."
+publishDate: "2026-04-20"
 author: "Ronan McQuillan"
 profilePic: "https://res.cloudinary.com/daog6scxm/image/upload/v1639756662/cms/IMG_3081_ubvpag.jpg"
 category: "alternatives"
-socialImage: "https://res.cloudinary.com/daog6scxm/image/upload/v1695986297/cms/microsoft-access-alternatives/Microsoft_Access_Alternatives_yp90gy.png"
 ---
 
-Microsoft Access is one of the most popular database solutions for businesses of all kinds.
+For decades, Microsoft Access has been a hugely popular option for managing small data sets, forms, reports, and departmental workflows. For many teams, Access bridges the gap between spreadsheets and full-on custom internal tools, especially for tasks like collecting data, handling requests, or managing day-to-day processes.
 
-Historically, it offered quite a unique take on the data management space, combining a database engine, GUIs, and tools for developing end-user solutions.
+However, the world is a very different place from when Access launched back in 1992. In particular, most internal workflows are no longer powered by desktop solutions. Teams need secure cloud access, connected APIs, approval workflows, AI agents, chat-based operations, and better ways to automate internal work.
 
-However, many businesses are seeking out more modern alternatives, with the rise of new technologies including NoSQL tools, big data, AI, low-code development, and more.
+The right Microsoft Access alternative largely depends on what you’re replacing. For instance, this could be a desktop database, a spreadsheet-like tracker, a backend for forms, or another internal workflow system.
 
-Despite this, countless businesses still use Access. Indeed - and to its credit - it’s been at the center of all kinds of solutions for decades.
+In this guide, we’ll be outlining exactly how to choose the best Microsoft Access alternative for your specific use cases and requirements.
 
-But, today we’re exploring some more modern alternatives. Specifically, we’ll check out the following.
+## Best Microsoft Access alternatives at a glance
 
-- [What is Microsoft Access?](#what-is-microsoft-access)
-- [Who uses Access?](#who-uses-access)
-- [Why would you want a Microsoft Access Alternative?](#why-would-you-want-a-microsoft-access-alternative)
-- [11 Microsoft Access alternatives for 2026](#11-microsoft-access-alternatives)
+Access is a highly versatile platform. That’s one of the key reasons for its lasting popularity. This can make things difficult when we’re looking for a replacement, though. Put simply, the best option here will depend greatly on what your intended usage actually is.
 
-
-Let’s kick off with a little bit of background.
-
-## **What is Microsoft Access?**
-
-Launched way, way back in 1992, Access is basically a database management system, with its own graphical user interface and built-in functionality for developing front-ends, such as tables, forms, and reports with your data.
-
-More specifically, Access is an RDBMS that stores data in its own proprietary file format based on the *Access Database Engine*. Like the rest of Microsoft Office, objects stored in Access are supported by the *Visual Basic Application Language (VBA)*.
-
-This can be used to call built-in operations from the Windows operating system.
-
-Historically, it’s been shipped as part of the Microsoft Office suite of tools.
-
-Microsoft Access is variously used as both an application front-end and back-end.
-
-Since Access is a database, one option is obviously to use it to store data in tables, and then build interfaces and database applications for interacting with this.
-
-But, Access also provides basic functionality for building UIs - especially things like forms, data tables, and other basic app screens - either based on internal data - or other databases, like Microsoft SQL Server.
-
-Access can also be used as a multi-user database, although we can’t achieve as sleek an experience as with some newer alternatives - or tools that support MySQL, Postgresql, or other SQL databases.
-
-Historically, a big selling point for Access was the relative ease of automating data operations using *macros* - using either VBA or point-and-click actions.
-
-Access also gained popularity for enabling users to leverage *database templates*, helping them get up and running for specific use cases quickly. It’s also well regarded in terms of scalability - both for end users and datasets.
-
-### **Who uses Access?**
-
-This is actually quite an interesting question. A decent proportion of Access users in 2025 are enterprise IT teams in legacy industries, including banking, big corporations, and manufacturing companies, for a few examples.
-
-Why?
-
-One reason is simply Access’s ubiquity. In large organizations, getting new tools through IT’s vetting process can be a big challenge. If the Microsoft Access Database is already an approved tool, continuing to use it will likely be the quickest way to output whatever solution you want to build.
-
-In other cases, Access is popular among organizations that are already heavily embedded in the Microsoft ecosystem - especially Sharepoint, Dynamics, or other related tools.
-
-However, this isn’t the whole picture. 
-
-Another key use case is scenarios where we might ordinarily use Excel, but we need more advanced functionality.
-
-For instance, around more granular security and access control.
-
-Since it’s a full-on database, Access also scales a lot better than a spreadsheet, making it preferable for large data sets - while still retaining some similarities to Excel in terms of user experience.
-
-Some people also use Access because it’s what they know. In fact, there are plenty of power users out there who are effectively Microsoft Access specialists.
-
-## **Why would you want a Microsoft Access alternative?**
-
-So, Access obviously suits plenty of teams. What are the motivations for change?
-
-For one thing, there’s the pace of change elsewhere in the technology landscape. This actually harms Access’s user base from two angles.
-
-First, there’s been the emergence of new solutions that directly compete with Microsoft’s offering.
-
-Of course, we’ll see some of these in a second.
-
-Second, wider changes in your typical business’s tech stack are also leading IT teams to seek out alternatives. Fundamental changes in day-to-day IT operations related to the rise of NoSQL, AI, cloud computing, big data, and other seismic shifts lie at the heart of this.
-
-For many businesses, Microsoft Access simply no longer fits neatly into the bigger picture of internal IT.
-
-{{< cta >}}
-
-## **11 Microsoft Access Alternatives**
-
-Now, we already know that different companies can use Microsoft Access in slightly different ways - and they’ll all have their own reasons for seeking out alternatives.
-
-Therefore, we can reasonably conclude that the best replacement for Access will vary from one company to the next.
-
-Therefore, there are actually a couple of different approaches we could take to picking an alternative. On the one hand, we could aim for a straight, like-for-like swap - by choosing a tool from another vendor that *basically* does the same thing as Access.
-
-Or, we might opt for a solution that addresses the same underlying pain points, but differs in terms of the approach to solving these problems - and therefore the specific functionality on offer.
-
-With that in mind, here are eight of our favorite Microsoft Access alternatives for 2025 and beyond.
-
-1. [Budibase](#budibase)
-2. [OpenOffice Base](#openoffice-base)
-3. [LibreOffice Base](#libreoffice-base)
-4. [SQLite](#sqlite)
-5. [NeonDB](#neondb)
-6. [MongoDB](#mongodb)
-7. [Google Sheets](#google-sheets)
-8. [Airtable](#airtable)
-9. [DBeaver](#dbeaver)
-10. [NocoDB](#nocodb)
-11. [Smartsheet](#smartsheet)
-
-Here's a summary of what each one offers.
+Here’s a quick summary of the market for Microsoft Access alternatives.
 
 <style>
-  .comparison-table-wrap {
-    width: 100%;
-    overflow-x: auto;
+  .comparison-table {
     margin: 2rem 0;
+    padding: 1rem;
+    background: #faf9f6;
+    border-radius: 14px;
+    overflow-x: auto;
   }
 
-  .comparison-table {
+  .comparison-table table {
     width: 100%;
-    min-width: 980px;
     border-collapse: separate;
     border-spacing: 0;
-    font-size: 0.9rem;
     background: #fff;
     border: 1px solid #ece8e1;
-    border-radius: 14px;
+    border-radius: 12px;
     overflow: hidden;
   }
 
   .comparison-table th,
   .comparison-table td {
-    padding: 0.85rem 0.75rem;
+    padding: 0.75rem 0.85rem;
+    text-align: left;
+    vertical-align: top;
     border-bottom: 1px solid #ece8e1;
-    text-align: center;
-    vertical-align: middle;
+    color: #4f4942;
+    line-height: 1.45;
+    font-size: 0.9rem;
   }
 
-  .comparison-table th {
-    background: #faf9f6;
+  .comparison-table thead th {
+    background: #fcfbf9;
     color: #2b2723;
     font-weight: 700;
-    line-height: 1.25;
-    border-bottom: 1px solid #e3ddd5;
+    font-size: 0.88rem;
   }
 
-  .comparison-table th:first-child,
-  .comparison-table td:first-child {
-    text-align: left;
+  .comparison-table tbody th {
+    color: #2b2723;
     font-weight: 700;
-    position: sticky;
-    left: 0;
-    z-index: 1;
-  }
-
-  .comparison-table th:first-child {
-    background: #faf9f6;
-    z-index: 2;
-  }
-
-  .comparison-table td:first-child {
     background: #fff;
-    color: #181512;
+    white-space: nowrap;
   }
 
-  .comparison-table tr:nth-child(even) td {
-    background: #fcfbf9;
-  }
-
-  .comparison-table tr:nth-child(even) td:first-child {
-    background: #fcfbf9;
-  }
-
+  .comparison-table tr:last-child th,
   .comparison-table tr:last-child td {
     border-bottom: 0;
   }
-
-  .comparison-table .yes,
-  .comparison-table .no {
-    display: inline-block;
-    min-width: 3rem;
-    padding: 0.2rem 0.55rem;
-    border-radius: 999px;
-    font-size: 0.8rem;
-    font-weight: 700;
-  }
-
-  .comparison-table .yes {
-    background: #e4f6ec;
-    color: #187645;
-  }
-
-  .comparison-table .no {
-    background: #ede9e3;
-    color: #4f4942;
-  }
 </style>
 
-<div class="comparison-table-wrap">
-  <table class="comparison-table">
+<div class="comparison-table">
+  <table>
     <thead>
       <tr>
         <th>Tool</th>
-        <th>Internal Database</th>
-        <th>SQL Connectors</th>
-        <th>NoSQL Connectors</th>
-        <th>REST Data Sources</th>
-        <th>App Builder</th>
-        <th>Workflow Automations</th>
-        <th>Cloud Platform</th>
-        <th>Self-Hosting</th>
-        <th>Open-Source</th>
+        <th>Best for</th>
+        <th>Replacement type</th>
+        <th>Cloud</th>
+        <th>Self-host</th>
+        <th>Internal tool builder</th>
+        <th>Forms</th>
+        <th>Automations</th>
+        <th>Open source</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Access</td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
+        <th>Budibase</th>
+        <td>Replacing Access-powered internal tools with apps, automations, connected data, and AI-assisted workflows</td>
+        <td>App, Agent, and Automation Builder</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
       </tr>
       <tr>
-        <td>Budibase</td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
+        <th>Power Apps</th>
+        <td>Replacing Access apps inside a Microsoft-centric environment</td>
+        <td>Low-code app platform</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
       </tr>
       <tr>
-        <td>OpenOffice</td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
+        <th>Caspio</th>
+        <td>Hosted apps where many external users need access without per-user pricing</td>
+        <td>Low-code database and app platform</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
       </tr>
       <tr>
-        <td>LibreOffice</td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
+        <th>Knack</th>
+        <td>No-code replacements for simple Access databases and portals</td>
+        <td>No-code database app platform</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
       </tr>
       <tr>
-        <td>SQLite</td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
+        <th>Zoho Creator</th>
+        <td>SMBs replacing spreadsheets and manual processes with low-code apps</td>
+        <td>Low-code app platform</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
       </tr>
       <tr>
-        <td>NeonDB</td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
+        <th>Quickbase</th>
+        <td>Enterprise teams managing complex projects and operational workflows</td>
+        <td>Low-code work management platform</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
       </tr>
       <tr>
-        <td>MongoDB</td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
+        <th>LibreOffice Base</th>
+        <td>Access-style database work inside a full open-source office suite</td>
+        <td>Desktop database</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
       </tr>
       <tr>
-        <td>Sheets</td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
+        <th>OpenOffice Base</th>
+        <td>Basic Access-style database work in Apache OpenOffice</td>
+        <td>Desktop database</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
       </tr>
       <tr>
-        <td>Airtable</td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
+        <th>KEXI</th>
+        <td>Open-source visual database apps on Linux</td>
+        <td>Desktop database app builder</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Yes</td>
       </tr>
       <tr>
-        <td>DBeaver</td>
-        <td><span class="no">No</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
+        <th>Airtable</th>
+        <td>Teams that want a polished spreadsheet-style platform with templates, integrations, and AI-assisted app building</td>
+        <td>Spreadsheet-style database platform</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
       </tr>
       <tr>
-        <td>NocoDB</td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
+        <th>NocoDB</th>
+        <td>Open-source spreadsheet interfaces on existing databases</td>
+        <td>Spreadsheet-style database platform</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
       </tr>
       <tr>
-        <td>Smartsheet</td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="yes">Yes</span></td>
-        <td><span class="no">No</span></td>
-        <td><span class="no">No</span></td>
+        <th>Grist</th>
+        <td>Spreadsheet-heavy teams that need relational data and granular permissions</td>
+        <td>Spreadsheet-database platform</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Open Core</td>
+      </tr>
+      <tr>
+        <th>Smartsheet</th>
+        <td>Spreadsheet-style project and work management</td>
+        <td>Work management platform</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <th>NeonDB</th>
+        <td>Development teams that want serverless Postgres with branching</td>
+        <td>Developer database</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>No</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <th>SQLite</th>
+        <td>Embedded SQL databases inside applications</td>
+        <td>Embedded database</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>No</td>
+        <td>No</td>
+        <td>Public domain</td>
+      </tr>
+      <tr>
+        <th>MongoDB</th>
+        <td>Developer teams building applications with flexible document data</td>
+        <td>Developer database</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>No</td>
+        <td>No</td>
+        <td>Source-available</td>
+      </tr>
+      <tr>
+        <th>DBeaver</th>
+        <td>Developers and analysts managing existing databases</td>
+        <td>Database client</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>No</td>
+        <td>No</td>
+        <td>Yes</td>
       </tr>
     </tbody>
   </table>
 </div>
 
+## What is Microsoft Access used for?
 
+Before we start drilling into individual platforms in more detail, it’s obviously useful to have a clear understanding of how Microsoft Access is used in the real world.
 
-Let's check them out in more detail.
+Access is a database management platform. Teams use it to create tables, define relationships, build forms, generate reports, and automate tasks with VBA or macros. However, this isn’t quite the whole story.
+
+In practice, many users choose Access primarily as a quick way to build internal tools around business data, without requiring extensive development skills.
+
+For instance, teams use Access to create departmental apps for tracking inventory, managing contacts, recording requests, producing reports, or handling approval processes. It’s also commonly used as a front end for SQL Server and other databases, giving non-developers a familiar way to interact with structured data.
+
+So, when we talk about Microsoft Access alternatives, we’re not always talking about a like-for-like database replacement. In many cases, teams are looking for a more modern way to build forms, manage data, automate workflows, and create internal tools that support everyday operations.
+
+## Why teams look for Access alternatives
+
+Microsoft Access still works well for small-scale data management use cases. But for larger-scale or more complex tasks, it has some pretty important limitations - especially compared to more modern platforms.
+
+Here are a few of the most common reasons that teams decide that an alternative option might suit their needs better. 
+
+### They need web-based access
+
+Perhaps the most obvious limitation of Access is that it’s primarily a desktop application. This makes it difficult for distributed teams to use the same tools across devices, locations, and environments.
+
+While Access can be used in remote multi-user setups, this can be difficult and might require additional tooling, like VPNs, external databases, or remote desktops. For teams that want users to access internal tools through a browser without installing Access locally, a web-based alternative is often a better fit.
+
+### They need better multi-user collaboration
+
+Access can also be less than ideal for use cases with large numbers of users. Some teams might find that it’s not the best choice as applications grow in complexity or usage expands across teams.
+
+For instance, Access files are often shared as files across local networks. This creates extra challenges around performance, reliability, version control, and concurrent updates that we’re unlikely to see in more modern SaaS platforms.
+
+### They need API and database integrations
+
+Modern workflows rarely rely on a single live system. Instead, teams generally need to interact with a range of databases, APIs, spreadsheets, SaaS platforms, and internal tools within processes.
+
+This requires tools to sync data, trigger actions in external platforms, or build workflows across multiple systems. So, many teams may wish to opt for a platform with stronger native integration options than Access.
+
+### They need workflow automation
+
+Access applications often rely on VBA, macros, or manual updates to move processes forward. This is a perfectly fine solution in some cases, but it may not be suitable for all kinds of processes.
+
+Modern alternatives can provide more scalable ways to automate approvals, notifications, data updates, escalations, and integrations. This helps teams reduce manual work while making internal processes easier to monitor and improve over time.
+
+### They want a path beyond traditional internal tools
+
+Of course, the way we carry out work is rapidly changing. More and more teams are exploring how AI can transform internal workflows.
+
+This isn’t exactly Access’s focus, so we’ll want to look at other platforms if AI adoption is a priority.
+
+## How to choose the right Microsoft Access alternative
+
+As we said earlier, the right Microsoft Access alternative will vary from one team to the next. So, the next thing that’s worth thinking about is how we can decide which type of platform is the best fit for our own needs.
+
+Very broadly, here are some of the key categories we can break the market into:
+
+<div class="comparison-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Choose this type</th>
+        <th>If you need</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Internal tool platform</th>
+        <td>Web apps, forms, dashboards, automations, connected data</td>
+      </tr>
+      <tr>
+        <th>Desktop database</th>
+        <td>A free/local Access-like tool</td>
+      </tr>
+      <tr>
+        <th>Spreadsheet-style database</th>
+        <td>Familiar grid UI and collaboration</td>
+      </tr>
+      <tr>
+        <th>Developer database</th>
+        <td>A production backend</td>
+      </tr>
+      <tr>
+        <th>Database client</th>
+        <td>Querying and managing existing databases</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+As we’ll see over the following sections, there’s still plenty of variation within this. So, even within a single category, different teams might decide that different platforms are the closest to their specific requirements.
+
+From here on out, we’ll be checking out some of the most prominent options from different corners of the market for Microsoft Access alternatives.
+
+## Best Microsoft Access alternatives for internal tools
+
+First up, we’ll check out the platforms that are popular for internal tools development. This includes tools for building forms, admin panels, dashboards, approval apps, portals, and other interfaces for interacting with business data, along with automations related to these kinds of tools and workflows.
 
 ### Budibase
 
-First off, Budibase is the leading [open-source, low-code platform](https://budibase.com/blog/open-source-low-code-platforms/) . IT teams in all industries choose Budibase to turn data into action.
+Budibase is the all-in-one workflow toolkit that empowers teams to build Apps, Automations, and Agents, with any database, API, or LLM. As such, it’s a strong fit for teams that need to build operational processes and internal tools - not just store data. It enables teams to build secure web apps, connect to databases and APIs, automate processes, and introduce AI agents for authenticated internal workflows in chat.
 
-{{< vimeo id="930591556" title="Budibase Mini Demo" >}}
+![Budibase Microsoft Access Alternatives](https://res.cloudinary.com/daog6scxm/image/upload/v1770908693/cms/agents/AI_Agent_Screengrab_for_CTA_plkcsm.webp "Budibase Microsoft Access Alternatives")
 
-With a market-beating range of external data connectors, our own built-in database, autogenerated UIs, flexible RBAC, optional self-hosting, intuitive automations, free SSO, and more, there’s never been an easier way to output performant apps at pace. In Budibase 3.0, we’ve also introduced visual RBAC, custom AI configs, automation branching, and raft of other market-beating features.
+**Best for:** Teams replacing Access-powered internal tools with external data, workflow automation, deployment flexibility, and AI-assisted operations.
 
-Connect your data, build UIs, automate workflows, and launch professional solutions in a fraction of the time.
+**Pros:**
 
-To learn more, check out our [features overview](https://budibase.com/product/) .
+- Replace desktop apps with browser or chat-based workflows.
+- Connect to SQL databases, APIs, spreadsheets, and other data sources - alongside a built-in database.
+- Auto-generated forms and CRUD UIs.
+- Automate approvals, notifications, data updates, escalations, and repetitive operational workflows.
+- Deploy AI agents into internal channels to help users retrieve data, submit requests, trigger workflows, and escalate work with human-in-the-loop approvals.
+- Choose from multiple AI model providers, including Budibase AI, OpenAI, Anthropic, Google, Mistral, and custom providers.
+- Use Budibase Cloud for instant deployment or self-host Budibase where teams need more control over infrastructure and data.
+
+**Cons:**
+
+- Not a like-for-like replacement for desktop databases.
+- Access may still be enough for simple local databases or small legacy apps.
+- Migration means rebuilding key workflows and interfaces rather than automatically converting an Access application.
 
 {{< cta >}}
 
-### OpenOffice Base
+### Power Apps
 
-Apache’s OpenOffice Base is an open-source, free Microsoft Access alternative. Therefore, it offers broadly similar functionality to its COTS equivalent. Base is built around a dedicated wizard for creating database designs, tables, views, forms, reports, and more.
+For teams that want to remain within the Microsoft ecosystem, Power Apps is one of the most obvious options. Part of the Power Platform suite, Power Apps is Microsoft’s low-code tool for building web-based and mobile business apps. This makes it a particularly good fit for teams that want to modernize Access-style apps while staying within the Microsoft ecosystem, including SharePoint, SQL Server, Dataverse, Power Automate, Power BI, and Teams.
 
-![OpenOffice Base](https://res.cloudinary.com/daog6scxm/image/upload/v1695986294/cms/microsoft-access-alternatives/OpenOffice_Base_tl7glm.webp "OpenOffice Base")
+**Best for:** Replace Access in a Microsoft-centered environment.
 
-(OpenOffice Base)
+**Pros:**
 
-It’s built around the HSQL database engine - but also offers native support for flat files, as well as major DBMSs like Postgres and MySQL.
+- Build browser and mobile apps within the Microsoft ecosystem.
+- Close integration with native Microsoft tools, including SharePoint, SQL Server, Excel, Dataverse, and other Microsoft data sources.
+- Use Dataverse as a managed cloud data layer for structured business applications.
+- Pair with Power Automate for workflow automation and Power BI for reporting.
+- Good fit for organizations with existing Microsoft licensing, admin expertise, and governance processes.
 
-Obviously, Base is *explicitly* aimed at being an Access alternative, but we can’t reasonably expect the same levels of integration with other Microsoft tools - including support for native OS functions.
+**Cons:**
 
-However, the biggest downside to Apache’s offering is probably its UI. It’s perfectly functional, but it won’t win any design prizes. In fact, these days, it looks pretty dated. 
+- We may need other tools like Power Automate and Dataverse to achieve the same functionality as other Access alternatives.
+- Best suited to teams who are already deeply embedded in the Microsoft ecosystem.
+- Less attractive for teams that need to prioritize open-source or self-hosting.
+
+### Caspio
+
+Next, we have Caspio. Caspio is a low-code platform for building secure, scalable business apps in the cloud. In particular, it’s a good fit for teams that need an Access replacement that combines data management, visual app building, workflow automation, AI capabilities, and compliance features.
+
+**Best for:** Cloud-based Microsoft Access replacement with unlimited users.
+
+**Pros**:
+
+- Build custom applications with minimal custom code.
+- Integrated cloud database and visual application builder.
+- Unlimited users across all pricing plans, making it a strong option for use cases with large user volumes.
+- Offers workflow automation, REST APIs, webhooks, native integrations, and AI-enhanced workflows.
+- Supports compliance-sensitive use cases, including HIPAA and FERPA.
+
+**Cons:**
+
+- Less suitable for teams that want to prioritize open-source or self-hosting.
+- May be too enterprise-focused for smaller teams.
+- May be overkill for teams that need a more direct database replacement.
+
+### Knack
+
+Knack is a cloud-based no-code platform for creating web apps and databases. It’s a good fit for teams that want to create simple applications, such as data management tools, forms, and portals, without requiring extensive development skills.
+
+**Best for:** No-code option for building web apps.
+
+**Pros**:
+
+- Build custom web apps and online databases without custom code.
+- Build simple CRMs, portals, forms, reports, and tracking tools.
+- Unlimited users and roles across pricing tiers.
+- Offers Knack Flows and API access for connecting apps to other tools and automating common processes.
+- Includes an AI App Builder for generating a starting point from a written prompt
+- Supports roles and permissions, so teams can define different user types and control how they access the live app.
+
+**Cons:**
+
+- Lacks the additional customization that we might see in low-code Microsoft Access alternatives.
+- Closed-source, with no option to self-host.
+- Record limits and other feature restrictions across pricing tiers.
+- Some integration and automation use cases may require additional platforms, such as Zapier.
+
+### Zoho Creator
+
+Creator is Zoho’s offering in the low-code market. As such, it’s a highly user-friendly platform that offers close integration with its stablemates, including Zoho CRM, Books, Desk, Analytics, and the wider suite. It’s also a good fit for teams that need to get up and running with common use cases, offering a large library of customizable templates.
+
+**Best for:** SMBs building departmental workflows with low-code.
+
+**Pros:**
+
+- Generate apps from prompts, uploaded files, or process flows via CoCreator.
+- Build web and mobile apps, including offline access for field teams.
+- Add custom validation, workflow, and calculation logic using Deluge scripts.
+- Use Blueprint to model multi-step processes with defined stages, transitions, conditions, and approvals.
+- Connect apps to Zoho products, third-party services, APIs, and external data sources.
+
+**Cons:**
+
+- More advanced customization may require Deluge, a proprietary scripting language.
+- Creator might be most appealing to teams that already use other Zoho products.
+- Closed-source, although both cloud-based and self-hosted solutions are available.
+
+### Quickbase
+
+Quickbase is a low-code platform, with a specific focus on managing complex projects, processes, and operational work. It will be particularly appealing to teams that have outgrown Access for use cases with more advanced project-tracking requirements.
+
+**Best for:** Enterprise teams with complex project management requirements.
+
+**Pros:**
+
+- Strong fit for complex project, program, and operations management use cases.
+- Connectivity for bringing external data into Quickbase apps and creating more centralized operational visibility.
+- Automation capabilities for reducing manual admin tasks.
+- Extensive dashboard and reporting capabilities.
+- AI-assisted app-building, via Quickbase AI and Smart Builder.
+- Enterprise user and identity management tools, including SCIM and SAML.
+
+**Cons:**
+
+- May be too expansive for smaller-scale use cases.
+- Generally best-suited to operational processes and work management.
+- Pricing is user-based, whereas some other tools offer unlimited users.
+
+## Best free desktop Microsoft Access alternatives
+
+Having seen some of the most prominent Microsoft Access alternatives in the internal tools-builder category, we can move on to platforms that offer a direct replacement as desktop database management solutions.
 
 ### LibreOffice Base
 
-LibreOffice Base is another open-source Microsoft Access alternative. It could be a good fit for large enterprises that currently use Access and want to replace it. So, it’s built around a very simple interface and core functionality.
+Base is the database management tool included with the LibreOffice suite. As a free and open-source platform, it offers a desktop-based tool for creating databases, tables, queries, forms, and reports.
 
-It offers native support for a huge range of database engines, including MySQL, MariaDB, Postgres, Adabas D, and MS Access itself. Therefore, making the switch can be incredibly easy.
+**Best for:** Access-style solution inside a wider open-source office suite.
 
-LibreOffice Base also makes it relatively simple to get up and running, with a range of pre-configured database designs for common use cases, like inventory tracking and relationship management.
+**Pros:**
 
-It’s also got its own SQL query editor, making it a good choice for users with more database management experience.
+- Free and open-source, as part of the LibreOffice suite.
+- Desktop experience for creating and managing databases.
+- Supports core database objects, including tables, queries, forms, and reports. 
+- Includes query design tools for creating and editing database queries. 
+- Can connect to external databases through options such as ODBC and JDBC.
 
-### SQLite
+**Cons:**
 
-SQLite is the first of our Microsoft Access alternatives that isn’t a straightforward lift-and-shift replacement. It’s actually a full-blown software library and database engine in its own right, offering a huge range of functionality.
+- Not suitable for teams that need browser-based solutions.
+- Lacking in additional workflow management capabilities.
+- May require additional expertise to set up connections to external data sources.
 
-![SQL lite](https://res.cloudinary.com/daog6scxm/image/upload/v1695986295/cms/microsoft-access-alternatives/SQLlite_ezxd9n.webp "SQL Lite")
+### OpenOffice Base
 
-(SQLite)
+Apache’s OpenOffice Base is another popular open-source desktop database management solution. Like LibreOffice Base, it offers a desktop environment for creating tables, queries, forms, and reports, making it a closer Access-style replacement than most cloud app builders.
 
-It’s largely built around the C language family, offering a self-contained, serverless SQL instance with minimal configuration.
+**Best for:** Access-style desktop database within the Apache ecosystem.
 
-SQLite also makes it easy to package smaller relational databases within applications.
+**Pros:**
 
-However, many users find that it’s unsuitable for larger-scale solutions, due to a lack of network access or remote access.
+- Free and open source as part of Apache OpenOffice.
+- Close direct replacement for Access.
+- Predefined table definitions for common records such as assets, customers, sales orders, and invoices.
+- External database connectivity via JDBC and ODBC.
 
-### NeonDB
+**Cons:**
 
-NeonDB is a slightly different prospect again. It’s an open-source, scalable, serverless implementation of PostgreSQL that you can run on-premises or on Neon’s own infrastructure.
+- OpenOffice Base will be of less relevance to teams that need to broaden workflow management capabilities.
+- Desktop-based.
+- May be more complex to try and use in multi-user scenarios.
 
-![NeonDB](https://res.cloudinary.com/daog6scxm/image/upload/v1695986295/cms/microsoft-access-alternatives/NeonDB_byvrms.webp "NeonDB")
+### KEXI
 
-(NeonDB)
+KEXI may not be as well-known as OpenOffice or LibreOffice, but it’s still an important option for teams that want a direct replacement for Microsoft Access’s core functionality. It offers tools for creating database applications, entering and editing data, running queries, and building forms and reports, making it one of the more direct open-source alternatives to Microsoft Access or FileMaker.
 
-However, one thing sets NeonDB apart from other database tools - *branching*. Neon branches are writable, enabling us to experiment without impacting the main branch, create instant backups, manage integrations, and much, much more.
+**Best for:** Open-source visual database apps on Linux.
 
-NeonDB also offers huge integrability via its API, enabling us to connect to all sorts of external tools for retrieving data, managing business processes, and building front-end interfaces.
+**Pros:**
 
-It also features built-in secrets management, jobs pipelines, and helper scripting, making it a highly flexible platform that’s suitable for a vast array of solutions.
+- Free and open-source, under the GNU LGPL license.
+- Designed specifically as a visual database application creator, rather than a general-purpose spreadsheet or cloud app platform.
+- Includes visual designers for creating forms, reports, and queries.
+- Offers specific tools for importing Microsoft Access projects.
+- Supports SQLite, MySQL, and PostgreSQL databases.
 
-### MongoDB
+**Cons:**
 
-MongoDB has been one of the major players in the rise of NoSQL databases over the past decade or so. The idea is to combine the power and stability of traditional database engines with the scale, performance, and flexibility required for traditional app development.
+- Generally best-suited to desktop use cases, rather than wider workflow management capabilities.
+- Primarily aimed at Linux users.
+- Potentially less polished and commercially mature than many SaaS alternatives, especially for teams that need hosted deployment, support, or modern collaboration features.
 
-![MongoDB](https://res.cloudinary.com/daog6scxm/image/upload/v1695986295/cms/microsoft-access-alternatives/Mongo_doz1h3.webp "MongoDB")
+## Best spreadsheet-style Microsoft Access alternatives
 
-(MongoDB)
+In the past decade or so, a lot of teams have moved away from traditional database-style platforms like Microsoft Access, in favor of more user-friendly, intuitive options. These are largely based around spreadsheet-like core UIs, alongside additional functionality that we might associate with traditional DBMSs.
 
-But, there’s also a steeper learning curve than SQL-based databases.
-
-At its core, Mongo is a document store database. This means that data entities are created as JSON objects. It also offers direct support for JDBC, alongside Python, JavaScript, C#, Ruby, and many more coding languages.
-
-Nowadays, countless businesses use Mongo for both their application’s front and back ends.
-
-However, it’s arguably not totally suitable for simpler use cases. We don’t get all of the same functionality as we would in an RDBMS for things like relationships. Less technical users might also struggle with relatively simple tasks like data entry or CRUD operations.
-
-### Google Sheets
-
-Sheets is Google’s alternative to Microsoft Excel. But, it also offers a whole range of capabilities that can make it a viable alternative for certain kinds of Microsoft Access users.
-
-![Google Sheets](https://res.cloudinary.com/daog6scxm/image/upload/v1695986295/cms/microsoft-access-alternatives/Google_Sheets_wgdouo.webp "Google Sheets")
-
-(Google Sheets)
-
-See, as a facet of where it sits in the wider Google Workspace ecosystem, Sheets is functionally quite a lot more than a spreadsheet tool.
-
-For instance, integrations with other packages like BigQuery and App Engine, as well as a huge range of customization options through a dedicated plug-ins marketplace.
-
-However, we still have some of the limitations that we’d see with any other spreadsheet tool compared to a formal database. This includes the likes of less advanced security measures, high potential for human error, and comparatively poor scalability.
+Let’s check out some of the most prominent names in this corner of the market.
 
 ### Airtable
 
-Airtable is one of the newer players in the data management space. As a Microsoft Access alternative, it empowers non-technical colleagues to build effective solutions with an intuitive, spreadsheet-like interface.
+Airtable is probably the best-known spreadsheet-style solution for managing data and processes. Airtable was one of the platforms that popularized this style of spreadsheet-based data management, although today it also offers a much wider range of capabilities, including for building forms, portals, agents, and workflow apps.
 
-So, we can achieve some of the power and flexibility we would with a traditional database tool, with similar user interactions to the likes of Excel or Google Sheets.
+**Best for:** Teams that want to combine spreadsheet-style interfaces with wider app building and workflow capabilities.
 
-Additionally, it offers dedicated functionality for creating end-user solutions, including app UIs and workflow tools - alongside a library of templates that make it easy to get up and running when creating custom solutions.
+**Pros:**
 
-However, Airtable is also highly focused on wholesale migration to its own platform. So, it might be a strong option for moving away from spreadsheets for handling business data - but it lacks extensive support for other kinds of data sources, including directly querying SQL tools.
+- Renowned for being approachable and intuitive for non-technical users.
+- Airtable also offers the ability to create custom interfaces alongside the core spreadsheet-style interface.
+- Extensive integrations and automation capabilities, along with tools for creating AI agents.
+- Tools for creating tables, apps, and automations from natural language.
+- Extensive range of templates.
 
-You might also like our round-up of the top [Airtable alternatives](https://budibase.com/blog/alternatives/airtable/).
+**Cons:**
 
-### DBeaver
-
-DBeaver is a free, community-driven, cross-platform database tool, suitable for developers, database admins, analysts, and other personas.
-
-![DBeaver](https://res.cloudinary.com/daog6scxm/image/upload/v1755530491/cms/microsoft-access-alternatives/DBeaver_l2tu3e.webp "DBeaver") (DBeaver)
-
-One huge selling point of DBeaver is its extensive list of supported databases, including a huge range of SQL and NoSQL platforms.
-
-It’s well-regarded for usability, offering a powerful SQL editor, as well as intuitive UIs for managing and manipulating data in a spreadsheet-like experience.
-
-It’s worth noting that DBeaver is primarily intended for manipulating external databases, rather than providing its own internal DB, as is the case with some other Microsoft Access alternatives. We may also need a paid license for certain data sources.
+- Airtable is closed-source and can’t be self-hosted.
+- Traditional low-code platforms and internal tool builders may be more suitable for certain more advanced use cases.
+- Seat-based pricing can become less attractive as more collaborators need edit access.
 
 ### NocoDB
 
-NocoDB is another interesting proposition in the market for Microsoft Access alternatives. It empowers us to build spreadsheet-like experiences for interacting with data, either starting from scratch or connecting to an existing database.
+NocoDB is quite a novel proposition. On the one hand, it can be used to create databases with a spreadsheet-like UX, in the same vein as Airtable. On the other hand, it can be used to provide similar experiences on top of external databases, such as Postgres or MySQL, making them easier for non-developers to work with.
 
-![NocoDB](https://res.cloudinary.com/daog6scxm/image/upload/v1755530491/cms/microsoft-access-alternatives/NocoDB_k0llkz.webp "NocoDB")
+**Best for:** Open-source spreadsheet-style experiences on top of existing databases.
 
-(NocoDB)
+**Pros:**
 
-It’s an open-source, no-code platform, offering a great combination of power, flexibility, and ease-of-use.
+- Open-source and self-hostable, alongside options for cloud hosting.
+- Connects to existing Postgres and MySQL databases, giving teams a spreadsheet-style UI on top of existing data.
+- Supports multiple view types, including grid, form, gallery, Kanban, calendar, timeline, Gantt, list, and map views.
+- Provides API access and webhooks, so teams can integrate NocoDB with external systems and trigger workflows when records change
 
-NocoDB is a strong offering in terms of support for databases, as well as providing tools for creating end-user UIs, such as grid, table, Kanban, and form screens.
+**Cons:**
 
-Notably, it’s highly scalable, as well as being available as either a cloud or self-hosted platform, making it a strong choice for a wide range of use cases and user personas.
+- More focused on database/spreadsheet interfaces than full internal applications with complex custom UX.
+- Some webhook trigger options are only available on paid plans, including view and field-based trigger sources.
+- Less suited to complex approval workflows or other internal tasks built around automation logic, without additional external tools.
 
-### SmartSheet
+### Grist
 
-Lastly, we have SmartSheet. This is another platform that seeks to empower users with database-like functionality in a spreadsheet-based UI. Just like Airtable, it also provides additional tools for designing interfaces, automating workflows, and centralizing data.
+Grist is another open-source spreadsheet-based data management platform. Again, it’s a slightly different variation on this class of tools. It offers more advanced tools for editing data structures, adding Python formulas, enforcing granular access rules, and more.
 
-![Smartsheet website](https://res.cloudinary.com/daog6scxm/image/upload/v1701964769/cms/alternatives/SmartSheet_od0l6i.png)
+**Best for:** Spreadsheet-heavy teams that need relational data and granular permissions.
 
-(SmartSheet)
+**Pros:**
 
-However, one thing to note is that SmartSheet is heavily skewed towards managing tasks, workloads, and projects. So, it may not be a viable Microsoft Access alternative outside of these areas.
+- Good option for combining spreadsheet-like UIs with relational data structures.
+- Internal AI assistant for chatting with data.
+- Self-hostable and geared towards digital sovereignty.
+- Built-in form and survey builder.
 
-SmartSheet is particularly strong on building certain kinds of user interfaces for interacting with your data. For instance, we can easily create custom views for project data, including calendars, Gantt charts, Kanban boards, and more.
+**Cons:**
 
-Again, SmartSheet is a strong option for non-technical teams who want to move away from reliance on spreadsheets, but may fall short when it comes to more complex data management needs.
+- Grist describes itself as open-core, rather than fully open-source.
+- May offer less polished UI building capabilities than other similar platforms, including Airtable.
+- Automation capabilities may also be more limited than some other platforms, requiring Zapier or n8n for more advanced use cases.
 
-## Turn data into action with Budibase
+### Smartsheet
 
-![Budibase design platform interface](https://res.cloudinary.com/daog6scxm/image/upload/v1680181644/ui/homepage-design-ui_sizp7b.webp)
+Smartsheet is another platform that utilizes spreadsheet-like experiences. However, whereas the other tools we’ve seen in this category are aimed at data management use cases more generally, Smartsheet generally focuses more on work management use cases.
 
-Budibase is the fast, easy way to build custom solutions on top of just about any data source. We offer our own low-code, built-in databases, alongside dedicated connectors for RDBMSs, NoSQL tools, REST APIs, Google Sheets, and more.
+**Best for:** Managing projects and work with a spreadsheet-style interface.
 
-Countless teams in all kinds of industries choose Budibase to build forms, admin panels, dashboards, portals, approval apps, and all sorts of other solutions for managing workflows.
+**Pros:**
 
-Sign up for free today to start build as many apps as you need.
+- Specific functionality for core project management use cases, including work insights, workload tracking, and portfolios.
+- Impressive tools for using AI to extract insights from data.
+- Effective no-code automation and app-building tools.
+- Suitable for large teams, with a range of security and collaboration capabilities.
+
+**Cons:**
+
+- Less of a general spreadsheet-style data management platform.
+- May not offer sufficient flexibility for use cases outside of its core verticals.
+- Other platforms may be more effective for utilizing spreadsheet-style UIs on top of existing SQL databases.
+
+## Best developer database alternatives
+
+Last, we have platforms that are good options for development teams that need a replacement for Microsoft Access as a database layer. For instance, if we need a scalable, flexible, or developer-friendly way to store and query data without necessarily offering front-end capabilities, like form-building.
+
+### NeonDB
+
+NeonDB is a serverless Postgres database platform. This makes it a strong choice for teams that want to replace Access with a modern, developer-friendly relational database. Neon offers standard Postgres compatibility, alongside cloud-native features, such as autoscaling and database branching.
+
+**Best for:** Development teams that want serverless Postgres with database branching.
+
+**Pros:**
+
+- Managed, serverless Postgres, which is useful for teams that want a relational database without managing database infrastructure directly. 
+- Database branches enable teams to isolate versions for development, testing, previews, and schema changes.
+- Largely Postgres-based, offering a familiar development experience as well as wide-ranging compatibility for common tooling.
+- Highly focused on scalability and modern development use cases, including specific capabilities for AI and agentic projects.
+
+**Cons:**
+
+- May require more development and database management skills than some other Access alternatives.
+- Other platforms may be a closer like-for-like Access replacement.
+- Usage-based pricing may require monitoring as projects grow and scale in production.
+
+### SQLite
+
+SQLite is a very different prospect. This is a lightweight SQL database engine that runs inside an application, rather than as a separate database server. As such, it’s quite a different offering to Access, but will be of interest to teams who need a simple, reliable way to store data locally or inside an app.
+
+**Best for:** Embedded SQL databases inside applications.
+
+**Pros:**
+
+- Lightweight and self-contained, with no separate database server to install or manage.
+- Strong option for local data storage, embedded databases, mobile apps, desktop apps, and other situations where the database lives close to the application.
+- Free to use for personal and commercial purposes, with code in the public domain.
+- Useful for situations where we need a relational database, without the overhead of a full client/server database.
+
+**Cons:**
+
+- Not a direct Access replacement, as SQLite will require additional development skills and lacks built-in forms, reports, dashboards, or end-user app interfaces.
+- Not ideal for situations where multiple client programs need to send SQL to the same database over a network.
+- As SQLite is primarily an embedded engine, it’s not ideal for browser-based use cases.
+
+### MongoDB
+
+MongoDB is a popular NoSQL database tool. This is a document database, meaning that it stores data as flexible JSON documents, rather than rigid tables and rows. So, as a Microsoft Access alternative, it’s useful for modern application projects that require more flexible data structures, although it may not be as generally applicable to situations where we’d usually use a relational database.
+
+**Best for:** Development teams building applications with flexible document data.
+
+**Pros:**
+
+- Flexible data model, enabling us to store varied or evolving data structures, rather than being related to a traditional tabular schema.
+- MongoDB Atlas provides a managed cloud solution, reducing the need to manage database infrastructure.
+- Native capabilities for advanced use cases, including full-text search, vector search, and stream processing, which can support more modern application and AI use cases.
+- Broad developer ecosystem, including compatibility with modern developer stacks and workflows.
+
+**Cons:**
+
+- Perhaps not a natural fit for teams that need traditional relational data structures.
+- Mongo is not SQL-based, so even development teams will need knowledge of a different query model.
+- Lacks some of Access’ key capabilities, especially around native reports and end-user interfaces.
+
+### DBeaver
+
+DBeaver is another platform that may be used to solve some of the same core problems as Microsoft Access, although it is not necessarily a direct replacement. DBeaver is a database client, meaning that it gives technical users a graphical interface for connecting to, querying, editing, and managing external databases.
+
+**Best for:** Client for managing existing databases.
+
+**Pros:** 
+
+- Free and open-source community edition, alongside paid versions with extra capabilities for additional database and cloud data source support.
+- SQL tooling, including a SQL editor and visual query builder for creating and understanding SQL queries.
+- Useful database administration features, including data editing, schema tools, import/export, database dashboards, and migration tools. 
+- Support for a huge range of databases, including JDBC and ODBC drivers.
+
+**Cons:** 
+
+- Primarily a tool for managing existing databases, rather than a database tool in and of itself.
+- Generally geared towards more technical users, which may make it a weaker fit for teams that need an Access alternative for more general workflow management needs.
+- Will require additional tooling if we want to create tools for end-users to interact with data.
+
+## Which Microsoft Access alternative should you choose?
+
+As we’ve seen, it’s quite difficult to find a Microsoft Access alternative that directly covers all aspects of Access’s functionality. Different teams use Access in very distinct ways. As such, the best replacement will depend highly on what our actual current Access usage looks like.
+
+Here’s a broad summary of the most common scenarios here, as well as a selection of the platforms that are best suited to each.
+
+<div class="comparison-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Scenario</th>
+        <th>Best fit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Replacing Access forms and departmental apps</th>
+        <td>Budibase</td>
+      </tr>
+      <tr>
+        <th>Replacing Access in a Microsoft-centered org</th>
+        <td>Power Apps</td>
+      </tr>
+      <tr>
+        <th>Replacing Access with a free desktop database</th>
+        <td>LibreOffice Base</td>
+      </tr>
+      <tr>
+        <th>Replacing a spreadsheet-like Access app</th>
+        <td>Airtable, NocoDB, Grist</td>
+      </tr>
+      <tr>
+        <th>Replacing Access as a backend database</th>
+        <td>PostgreSQL, Neon, SQLite</td>
+      </tr>
+      <tr>
+        <th>Managing existing databases</th>
+        <td>DBeaver</td>
+      </tr>
+      <tr>
+        <th>Building approval workflows and operational tools</th>
+        <td>Budibase, Quickbase, Zoho Creator</td>
+      </tr>
+      <tr>
+        <th>Moving toward AI-assisted internal operations</th>
+        <td>Budibase</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+Of course, it may also be the case that we need multiple platforms to handle different types of tasks that we currently use Access for. We’ll think about some of the practical implications of this in the following section.
+
+## How to migrate from Microsoft Access
+
+To wrap up, we’ll think about what moving from Access to one of the alternative platforms above might look like in practical terms. Obviously, this will vary from one use case to the next. So, what’s important to understand is the steps we need to take at a slightly higher level to migrate from Access to a replacement platform - or several alternatives.
+
+This is also helpful for understanding our more specific requirements, and which capabilities we might want to prioritize.
+
+### Audit your Access database
+
+We need to start with examining what’s actually in our Access database. This includes tables, relationships, forms, queries, reports, macros, VBA scripts, linked tables, permissions, and any external systems we relate to.
+
+The goal is to establish a clear picture of what needs to be moved to a new solution, what needs to be rebuilt, and anything that we don’t necessarily need going forward.
+
+### Separate the data layer from the workflow layer
+
+As we’ve seen, we can broadly think about Access use cases as being more heavily skewed towards pure database management, or more focused on the wider workflows around our data. Because of this, it’s useful to think about our data and workflow requirements separately, although it may well be the case that one platform meets both.
+
+So, we may need a specific kind of database for storing and querying data, but a different tool for forms, approvals, reports, or user-facing workflows. The point is to establish what these requirements are, so that we can determine whether a single platform will meet them - or if a more sophisticated solution is needed.
+
+Here’s a summary of how different components of Microsoft Access map to different kinds of replacements.
+
+<div class="comparison-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Access component</th>
+        <th>Modern replacement</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Tables</th>
+        <td>SQL database, BudibaseDB, Dataverse, internal DBs in other platforms, Airtable, other spreadsheet-style tools</td>
+      </tr>
+      <tr>
+        <th>Forms</th>
+        <td>Budibase apps, Power Apps, Caspio forms</td>
+      </tr>
+      <tr>
+        <th>Reports</th>
+        <td>Dashboards, exports, BI tools</td>
+      </tr>
+      <tr>
+        <th>Macros</th>
+        <td>Automations</td>
+      </tr>
+      <tr>
+        <th>VBA</th>
+        <td>Automations, JavaScript, APIs</td>
+      </tr>
+      <tr>
+        <th>Manual requests</th>
+        <td>Forms, workflow apps, agents</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Prioritize workflows
+
+When carrying out any kind of migration, it’s often more effective to work iteratively. Obviously, this is particularly relevant in scenarios where we’re using Access to handle multiple distinct workflows.
+
+There are a few distinct ways we might opt to go about this. For instance, rather than simply rebuilding the most-used workflow first, it’s better to think about value, risk, and complexity together. 
+
+A good early candidate might be a workflow that matters enough to prove the new platform, but is still contained enough to migrate without disrupting a core business process.
+
+This helps teams avoid two common mistakes. First, spending too much time recreating low-value legacy features. Second, choosing a first project that is so complex that it slows down the entire migration. 
+
+### Add automation where Access required manual effort
+
+Replacing Microsoft Access is also an opportunity to improve processes. Many Access-powered workflows still rely heavily on manual admin tasks, such as updating records, communicating with stakeholders, or progressing requests.
+
+These are some of the core tasks that can be automated with more modern workflow platforms. As we’ve seen throughout, several different options are available here, including utilizing both deterministic and agentic automations. We’ll consider the latter in the next section.
+
+So, as we’re considering our roadmap towards adopting a Microsoft Access alternative, it’s useful to consider what this means in terms of our current workflow design.
+
+### Implementing agentic workflows
+
+Lastly, the way we work is changing. Specifically, the rise of AI agents has greatly expanded the scope of what can be automated, as well as facilitating new ways of interacting with workflows and data.
+
+This isn’t to say that every team needs to prioritize agent-building when assessing Microsoft Access alternatives. Although, this will be a priority for many teams in the market for new workflow management solutions.
+
+But, even if we’re not planning to replace our Access workflows with agents, we’ll still want to consider what our choices mean for future improvements to our internal processes, including facilitating new ways of working, such as chat-based interactions.
+
+## The all-in-one open-source workflow toolkit
+
+Budibase is the complete open-source AI workflow toolkit that enables teams to build Apps, Agents, and Automations, using any data, REST API, or LLM.
+
+To learn more about using Budibase for building internal tools, check out our [Apps overview](https://budibase.com/product/apps/).
