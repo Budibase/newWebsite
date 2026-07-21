@@ -1,5 +1,5 @@
 ---
-title: "Digital Sovereignty in the Public Sector Means no Black Box AI"
+title: "Human-in-the-Loop is too Vague"
 description: "Instead of treating human-in-the-loop as a check-box exercise, it's important to consider our wider workflow design."
 publishDate: "2026-06-16"
 author: "Michael Shanks"
