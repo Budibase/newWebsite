@@ -136,7 +136,7 @@ const requestedOp = Astro.url.searchParams.get("op") ?? "";
 
             <label class="contact-field">
               <span>Email Address</span>
-              <input type="email" name="email" autocomplete="email" />
+              <input type="email" name="email" autocomplete="email" required />
             </label>
 
             <label class="contact-field">
@@ -150,7 +150,7 @@ const requestedOp = Astro.url.searchParams.get("op") ?? "";
 
             <label class="contact-field">
               <span>Message</span>
-              <textarea name="message"></textarea>
+              <textarea name="message" required></textarea>
             </label>
 
             <button type="submit" class="contact-submit">Submit</button>
