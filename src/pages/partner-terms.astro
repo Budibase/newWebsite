@@ -1,0 +1,53 @@
+---
+import { getEntry, render } from "astro:content";
+import Layout from "../layouts/MainLayout.astro";
+
+const entry = await getEntry("legal", "partner-terms");
+if (!entry) {
+  throw new Error("Legal entry 'partner-terms' not found.");
+}
+
+const { Content } = await render(entry);
+const pageTitle = `${entry.data.title} | Budibase`;
+const pageDescription = entry.data.description;
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <div class="mx-auto max-w-3xl px-4 py-12 md:py-16">
+    <header class="mb-10">
+      <h1 class="text-3xl font-semibold text-stone-900 dark:text-stone-100 md:text-4xl">
+        {entry.data.title}
+      </h1>
+      <p class="mt-2 text-stone-600 dark:text-stone-400">
+        {entry.data.description}
+      </p>
+    </header>
+    <article class="legal-content prose prose-stone dark:prose-invert max-w-none">
+      <Content />
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .legal-content :global(h2) {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  .legal-content :global(h3) {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .legal-content :global(p),
+  .legal-content :global(li) {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+  .legal-content :global(ul) {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+</style>

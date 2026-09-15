@@ -1,9 +1,7 @@
 ---
-title: "Introducer partner terms"
-description: "Budibase introducer agreement - General Terms"
+title: "Budibase introducer agreement - General Terms"
+description: ""
 ---
-
-# Budibase introducer agreement - General Terms
 
 ## 1. INTRODUCTION
 
@@ -61,7 +59,7 @@ description: "Budibase introducer agreement - General Terms"
 
 2.5. A reference to any clause is to a clause of these Conditions. 
 
-3. APPOINTMENT
+## 3. APPOINTMENT
 
 3.1. Budibase appoints Introducer on a non-exclusive basis to promote the sale of the Platform by Budibase to customers in the Territory on the terms of the Contract and Introducer accepts the appointment on those terms. Nothing in the Contract or otherwise shall make Introducer or any of Introducer's employees (if applicable) an employee or an agent of Budibase, and Introducer shall have no authority to negotiate or agree terms for the licensing of the Platform with customers.
 
