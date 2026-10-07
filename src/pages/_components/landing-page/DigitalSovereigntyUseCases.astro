@@ -1,0 +1,256 @@
+---
+import SectionBlock from "@components/SectionBlock.astro";
+import Tag from "@components/Tag.astro";
+import Icon from "@components/Icon.astro";
+
+const useCases = [
+  {
+    category: "IT OPERATIONS",
+    title: "Access requests",
+    description:
+      "Evaluate access requests against policy, recommend approval or denial, and keep human decisions auditable.",
+    href: "/ops/access-request/",
+  },
+  {
+    category: "IT OPERATIONS",
+    title: "Software requests",
+    description:
+      "Check software requests against approved policy, deploy approved software, and escalate exceptions for review.",
+    href: "/ops/software-installation-request/",
+  },
+  {
+    category: "PROCUREMENT",
+    title: "Vendor onboarding",
+    description:
+      "Verify vendor documents and risk checks, create low-risk vendors, and escalate compliance exceptions.",
+    href: "/ops/vendor-onboarding-review/",
+  },
+  {
+    category: "PROCUREMENT",
+    title: "Purchase orders",
+    description:
+      "Validate budget and vendor details, create standard purchase orders, and escalate exceptions for approval.",
+    href: "/ops/purchase-order-request/",
+  },
+  {
+    category: "FINANCE",
+    title: "Invoice approvals",
+    description:
+      "Match invoices to purchase orders, approve those within policy, and escalate exceptions for review.",
+    href: "/ops/invoice-approval-workflow/",
+  },
+  {
+    category: "REVENUE OPERATIONS",
+    title: "Deal desk approvals",
+    description:
+      "Check deals against commercial policy, approve standard terms, and escalate non-standard requests.",
+    href: "/ops/deal-desk-approval/",
+  },
+];
+---
+
+<section>
+  <SectionBlock
+    align="center"
+    titleLines={[
+      { text: "Modernize internal operations" },
+    ]}
+    description="Manage critical processes across IT, procurement, finance, and other business functions."
+    maxWidth="xl"
+    spacing="default"
+    contentClass="pt-1"
+  >
+    <div class="use-cases__grid">
+      {
+        useCases.map((useCase) => (
+          <a href={useCase.href} class="use-case">
+            <div class="use-case__top">
+              <Tag
+                label={useCase.category}
+                variant="secondary"
+                size="small"
+                class="w-fit -ml-2"
+              />
+
+              <Icon
+                name="ArrowUpRight"
+                size="14"
+                class="use-case__arrow text-stone-600 dark:text-stone-400"
+                aria-hidden="true"
+              />
+            </div>
+
+            <div class="use-case__content">
+              <h3 class="text-lg! use-case__title">
+                {useCase.title}
+              </h3>
+
+              <p class="w-full min-w-0 text-stone-500! dark:text-stone-400! text-sm!">
+                {useCase.description}
+              </p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="use-cases__footer">
+      <a
+        href="/ops/"
+        class="use-cases__all text-sm! font-medium text-[var(--text-primary)]"
+      >
+        <span>View all use cases</span>
+
+        <Icon
+          name="ArrowUpRight"
+          size="14"
+          class="use-cases__all-icon"
+          aria-hidden="true"
+        />
+      </a>
+    </div>
+  </SectionBlock>
+</section>
+
+<style>
+  .use-cases__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .use-case {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    overflow: hidden;
+
+    padding: 1rem;
+
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+
+    background: var(--bg-2);
+    color: var(--text-primary);
+
+    text-align: left;
+    text-decoration: none;
+
+    transition: background-color 150ms ease;
+  }
+
+  .use-case:hover {
+    background:
+      color-mix(
+        in srgb,
+        var(--bg-2) 78%,
+        var(--bg-1)
+      );
+  }
+
+  .use-case:focus-visible {
+    outline: 2px solid var(--text-secondary);
+    outline-offset: 3px;
+  }
+
+  .use-case__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 1rem;
+  }
+
+  .use-case__arrow {
+    width: 14px !important;
+    height: 14px !important;
+
+    min-width: 14px;
+    min-height: 14px;
+
+    flex: 0 0 14px;
+
+    transition: color 150ms ease;
+  }
+
+  .use-case:hover .use-case__arrow {
+    color: var(--text-primary);
+  }
+
+  .use-case__content {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    min-width: 0;
+    margin-top: 0.625rem;
+  }
+
+  .use-case__title {
+    min-width: 0;
+    max-width: 100%;
+
+    margin: 0;
+
+    line-height: 1.2;
+  }
+
+  .use-case__content p {
+    min-width: 0;
+    max-width: 100%;
+
+    margin: 0;
+  }
+
+  .use-cases__footer {
+    display: flex;
+    justify-content: flex-end;
+
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .use-cases__all {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 0.5rem;
+
+    text-decoration: none;
+
+    transition: opacity 150ms ease;
+  }
+
+  .use-cases__all-icon {
+    width: 14px !important;
+    height: 14px !important;
+
+    min-width: 14px;
+    min-height: 14px;
+
+    flex: 0 0 14px;
+  }
+
+  .use-cases__all:hover {
+    opacity: 0.7;
+  }
+
+  @media (max-width: 900px) {
+    .use-cases__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 600px) {
+    .use-cases__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .use-cases__footer {
+      justify-content: flex-start;
+    }
+  }
+</style>

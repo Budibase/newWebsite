@@ -1,0 +1,46 @@
+---
+import CheckCircleFill from "phosphor-astro/CheckCircleFill.astro";
+import SecurityDemoOne from "@components/SecurityDemoOne.astro";
+import SectionBlock from "@components/SectionBlock.astro";
+---
+
+<section>
+  <div class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:gap-20">
+    <div>
+      <SecurityDemoOne />
+    </div>
+
+    <SectionBlock
+      titleColorMode="split-secondary-primary"
+      titleLines={[
+        { text: "The complete open-source" },
+        { text: "AI workflow platform" },
+      ]}
+      description="AI adoption doesn't mean giving up control. Budibase is designed from the ground-up to combine the flexibility of Agents with rules-based logic and HITL controls."
+      maxWidth="xl"
+      spacing="default"
+      contentClass="pt-1"
+    >
+      <ul class="m-0 flex flex-col gap-4">
+        <li class="flex items-start gap-3">
+          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            Open-source, with optional self-hosting and a cloud-based platform.
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            Connect securely to data sources, LLMs, and REST APIs.
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            Out-of-the-box audit logging, auth, user management & more.
+          </div>
+        </li>
+      </ul>
+    </SectionBlock>
+  </div>
+</section>

@@ -1,0 +1,146 @@
+---
+import SectionBlock from "@components/SectionBlock.astro";
+---
+
+<section>
+  <div class="security-panel">
+    <div class="security-panel__intro">
+      <SectionBlock
+        maxWidth="lg"
+        titleColorMode="split-secondary-primary"
+        titleLines={[
+          { text: "Security and governance" },
+          { text: "Out of the box" },
+        ]}
+        description="Budibase offers built-in controls for access, identity, and auditability."
+        spacing="default"
+      />
+    </div>
+
+    <div class="security-panel__capabilities">
+      <div class="security-capability">
+        <h3 class="m-0 text-lg! leading-[1.2]">
+          RBAC
+        </h3>
+
+        <p class="mt-2 w-full min-w-0 text-sm! text-stone-500! dark:text-stone-400!">
+          Tightly control the data and resources users can access.
+        </p>
+      </div>
+
+      <div class="security-capability">
+        <h3 class="m-0 text-lg! leading-[1.2]">
+          SSO
+        </h3>
+
+        <p class="mt-2 w-full min-w-0 text-sm! text-stone-500! dark:text-stone-400!">
+          Integrate with auth tools including OpenID Connect.
+        </p>
+      </div>
+
+      <div class="security-capability">
+        <h3 class="m-0 text-lg! leading-[1.2]">
+          Audit Logs
+        </h3>
+
+        <p class="mt-2 w-full min-w-0 text-sm! text-stone-500! dark:text-stone-400!">
+          Comprehensive audit trails for all user actions and system events.
+        </p>
+      </div>
+
+      <div class="security-capability">
+        <h3 class="m-0 text-lg! leading-[1.2]">
+          SCIM & AD
+        </h3>
+
+        <p class="mt-2 w-full min-w-0 text-sm! text-stone-500! dark:text-stone-400!">
+          Integrate with existing user management tools.
+        </p>
+      </div>
+
+      <div class="security-capability">
+        <h3 class="m-0 text-lg! leading-[1.2]">
+          Environment Variables
+        </h3>
+
+        <p class="mt-2 w-full min-w-0 text-sm! text-stone-500! dark:text-stone-400!">
+          Securely handle database credentials and API keys across the platform.
+        </p>
+      </div>
+
+      <div class="security-capability">
+        <h3 class="m-0 text-lg! leading-[1.2]">
+          User Groups
+        </h3>
+
+        <p class="mt-2 w-full min-w-0 text-sm! text-stone-500! dark:text-stone-400!">
+          Simplify the process of managing users' access to apps.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .security-panel {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+    gap: 4rem;
+    width: 100%;
+
+    padding: 2.25rem 0;
+
+    border-top: 1px solid
+      var(--border-color, rgba(128, 128, 128, 0.25));
+
+    border-bottom: 1px solid
+      var(--border-color, rgba(128, 128, 128, 0.25));
+  }
+
+  .security-panel__intro {
+    min-width: 0;
+  }
+
+  .security-panel__capabilities {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    column-gap: 3rem;
+    row-gap: 1.75rem;
+
+    min-width: 0;
+    align-content: center;
+  }
+
+  .security-capability {
+    min-width: 0;
+  }
+
+  .security-capability h3,
+  .security-capability p {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  @media (max-width: 960px) {
+    .security-panel {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+
+      padding: 2.25rem 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .security-panel {
+      gap: 2rem;
+
+      padding: 2rem 0;
+    }
+
+    .security-panel__capabilities {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

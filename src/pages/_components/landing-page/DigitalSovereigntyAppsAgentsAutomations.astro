@@ -1,0 +1,559 @@
+---
+import { Image } from "astro:assets";
+import SectionBlock from "@components/SectionBlock.astro";
+import Tabs from "@components/Tabs.astro";
+import InstructionsEditor from "@components/InstructionsEditor.astro";
+
+import CheckCircleFill from "phosphor-astro/CheckCircleFill.astro";
+import FileText from "phosphor-astro/FileText.astro";
+import ClockFill from "phosphor-astro/ClockFill.astro";
+import SparkleFill from "phosphor-astro/SparkleFill.astro";
+import PaperPlaneTiltFill from "phosphor-astro/PaperPlaneTiltFill.astro";
+
+import Slack from "@assets/logos/Slack.svg";
+import Jira from "@assets/logos/Jira.svg";
+import CaretDownIcon from "@assets/images/demos/app-demo/481b5637386cfa51221252c07d627de130d801d4.svg";
+
+const id = `platform-model-${Math.random().toString(36).slice(2, 8)}`;
+
+const tabs = [
+  {
+    key: "agents",
+    label: "Agents",
+  },
+  {
+    key: "automations",
+    label: "Automations",
+  },
+  {
+    key: "apps",
+    label: "Apps",
+  },
+];
+---
+
+<section id={id}>
+  <div
+    class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:gap-20"
+  >
+    <div>
+      <Tabs
+        tabs={tabs}
+        defaultKey="agents"
+        label="Budibase platform capabilities"
+        class="platform-model-tabs"
+      >
+        <div data-tab-panel="agents">
+          <div class="platform-visual">
+            <InstructionsEditor
+              variant="agent-demo"
+              class="w-full max-w-[500px]"
+            >
+              <li>
+                <span class="token-heading">## Persona</span>
+              </li>
+
+              <li>
+                You are an IT Help Desk assistant for end users.
+              </li>
+
+              <li class="is-empty"></li>
+
+              <li>
+                <span class="token-heading">## Tasks</span>
+              </li>
+
+              <li>
+                1. Answer IT questions, guide users through diagnosis and resolution
+              </li>
+
+              <li>
+                2. Escalate issues to Jira upon approval
+                <span class="token-chip">
+                  <Image src={Jira} alt="" class="token-chip-icon" />
+                  api.jira.create_issue
+                </span>
+              </li>
+
+              <li>
+                3. Send message via Slack with confirmation
+                <span class="token-chip">
+                  <Image src={Slack} alt="" class="token-chip-icon" />
+                  api.slack.send_message
+                </span>
+              </li>
+
+              <li class="is-empty"></li>
+
+              <li>
+                <span class="token-heading">## Context</span>
+              </li>
+
+              <li>
+                Use attached docs for runbooks and troubleshooting steps.
+                <span class="token-chip">
+                  <FileText class="token-chip-icon" />
+                  docs.it_guides
+                </span>
+              </li>
+
+              <li class="is-empty"></li>
+
+              <li>
+                <span class="token-heading">## Rules</span>
+              </li>
+
+              <li>
+                <span class="token-bullet token-bullet-purple">-</span>
+                Search for existing issues first using
+                <span class="token-chip">
+                  <Image src={Jira} alt="" class="token-chip-icon" />
+                  api.jira.search_issue
+                </span>
+              </li>
+
+              <li>
+                <span class="token-bullet token-bullet-purple">-</span>
+                Do not ask for or store sensitive credentials.
+              </li>
+            </InstructionsEditor>
+          </div>
+        </div>
+
+        <div data-tab-panel="automations">
+          <div class="platform-visual automation-trigger-outcome-canvas">
+            <div class="automation-trigger-outcome-flow-content">
+              <ul class="automation-trigger-outcome-node-list is-active">
+                <li class="automation-trigger-outcome-node-wrap">
+                  <span class="automation-trigger-outcome-node-badge is-trigger">
+                    Trigger
+                  </span>
+
+                  <div class="automation-trigger-outcome-node">
+                    <span
+                      class="automation-trigger-outcome-node-icon is-trigger"
+                      aria-hidden="true"
+                    >
+                      <ClockFill class="h-[18px] w-[18px]" />
+                    </span>
+
+                    <div class="automation-trigger-outcome-node-copy">
+                      <div class="automation-trigger-outcome-node-title">
+                        Schedule
+                      </div>
+
+                      <p class="automation-trigger-outcome-node-description">
+                        Everyday at 8am
+                      </p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="automation-trigger-outcome-node-wrap">
+                  <span class="automation-trigger-outcome-node-badge is-operation">
+                    Operation
+                  </span>
+
+                  <div class="automation-trigger-outcome-node">
+                    <span
+                      class="automation-trigger-outcome-node-icon is-integration"
+                      aria-hidden="true"
+                    >
+                      <SparkleFill class="h-[18px] w-[18px]" />
+                    </span>
+
+                    <div class="automation-trigger-outcome-node-copy">
+                      <div class="automation-trigger-outcome-node-title">
+                        Query tickets database
+                      </div>
+
+                      <p class="automation-trigger-outcome-node-description">
+                        Identify open tickets
+                      </p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="automation-trigger-outcome-node-wrap">
+                  <span class="automation-trigger-outcome-node-badge is-operation">
+                    Operation
+                  </span>
+
+                  <div class="automation-trigger-outcome-node">
+                    <span
+                      class="automation-trigger-outcome-node-icon is-alert"
+                      aria-hidden="true"
+                    >
+                      <PaperPlaneTiltFill class="h-[18px] w-[18px]" />
+                    </span>
+
+                    <div class="automation-trigger-outcome-node-copy">
+                      <div class="automation-trigger-outcome-node-title">
+                        Send reminder to team
+                      </div>
+
+                      <p class="automation-trigger-outcome-node-description">
+                        Send unresolved issues to support team
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div data-tab-panel="apps">
+          <div class="platform-visual">
+            <section
+              aria-label="Change request form"
+              class="w-full max-w-[500px] rounded-lg border border-[var(--border)] bg-[var(--bg-1)] p-8 shadow-[0_12px_32px_rgb(0_0_0_/_0.08)]"
+            >
+              <h3
+                class="m-0 text-2xl! font-semibold leading-[1.2] text-[var(--text-primary)]"
+              >
+                Change request
+              </h3>
+
+              <div class="mt-5">
+                <p
+                  class="mb-3 mt-0 text-base! font-normal leading-[1.35] text-[var(--text-body)]"
+                >
+                  Change Type
+                </p>
+
+                <div
+                  class="flex min-h-[38px] w-full items-center justify-between gap-4 rounded border border-[var(--border)] bg-[var(--bg-1)] px-3 py-2"
+                >
+                  <span
+                    class="text-base! font-medium leading-[1.35] text-[var(--text-primary)]"
+                  >
+                    Configuration change
+                  </span>
+
+                  <Image
+                    src={CaretDownIcon}
+                    alt=""
+                    class="block h-[18px]! w-[18px]! shrink-0 opacity-75"
+                    aria-hidden="true"
+                  />
+                </div>
+              </div>
+
+              <div class="mt-5">
+                <p
+                  class="mb-3 mt-0 text-base! font-normal leading-[1.35] text-[var(--text-body)]"
+                >
+                  Requestor
+                </p>
+
+                <div
+                  class="flex min-h-[38px] w-full items-center justify-between gap-4 rounded border border-[var(--border)] bg-[var(--bg-1)] px-3 py-2"
+                >
+                  <span
+                    class="text-base! font-medium leading-[1.35] text-[var(--text-primary)]"
+                  >
+                    John Smith
+                  </span>
+
+                  <Image
+                    src={CaretDownIcon}
+                    alt=""
+                    class="block h-[18px]! w-[18px]! shrink-0 opacity-75"
+                    aria-hidden="true"
+                  />
+                </div>
+              </div>
+
+              <div class="mt-5">
+                <p
+                  class="mb-3 mt-0 text-base! font-normal leading-[1.35] text-[var(--text-body)]"
+                >
+                  Justification
+                </p>
+
+                <div
+                  class="min-h-[82px] w-full rounded border border-[var(--border)] bg-[var(--bg-1)] px-3 py-2.5 text-base! font-normal leading-[1.35] text-[var(--text-primary)]"
+                >
+                  Required to support the upcoming production release.
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="mt-5 inline-flex min-h-[34px] items-center justify-center rounded-full border-0 bg-[var(--orange-600)] px-5 py-2 text-base! font-medium leading-[17px] text-[rgb(var(--on-primary))]"
+              >
+                Submit
+              </button>
+            </section>
+          </div>
+        </div>
+      </Tabs>
+    </div>
+
+    <SectionBlock
+      titleColorMode="split-secondary-primary"
+      titleLines={[
+        { text: "One platform for" },
+        { text: "Agents, Apps, and Automations" },
+      ]}
+      maxWidth="xl"
+      spacing="default"
+      contentClass="pt-1"
+    >
+      <ul class="m-0 flex flex-col gap-4">
+        <li class="flex items-start gap-3">
+          <CheckCircleFill
+            class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]"
+            aria-hidden="true"
+          />
+
+          <div class="space-y-1.5">
+            <div
+              class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]"
+            >
+              Agents handle context-dependent work, grounded in your data and rules.
+            </div>
+
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <CheckCircleFill
+            class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]"
+            aria-hidden="true"
+          />
+
+          <div class="space-y-1.5">
+            <div
+              class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]"
+            >
+              Apps give teams secure interfaces for operational work.
+            </div>
+
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <CheckCircleFill
+            class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]"
+            aria-hidden="true"
+          />
+
+          <div class="space-y-1.5">
+            <div
+              class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]"
+            >
+              Automations run predictable, event-driven workflows across your stack.
+            </div>
+
+          </div>
+        </li>
+
+
+      </ul>
+    </SectionBlock>
+  </div>
+</section>
+
+<style>
+  .platform-model-tabs :global(.tabs-list) {
+    width: 100%;
+  }
+
+  .platform-visual {
+    --platform-grid-dot: rgb(var(--border) / 0.45);
+
+    display: flex;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    padding: 2rem;
+
+    background:
+      radial-gradient(
+        circle at center,
+        var(--platform-grid-dot) 1px,
+        transparent 1px
+      ) 0 0 / 20px 20px,
+      var(--bg-2);
+  }
+
+  @media (max-width: 767px) {
+    .platform-visual {
+      aspect-ratio: auto;
+      min-height: auto;
+      padding: 1rem;
+    }
+
+    .platform-model-tabs :global(.tabs-list) {
+      display: flex;
+      width: 100%;
+      overflow: visible;
+    }
+
+    .platform-model-tabs :global(.tabs-trigger) {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+  }
+</style>
+
+<style is:global>
+  .automation-trigger-outcome-canvas {
+    --automation-trigger-outcome-connector: rgb(var(--ring) / 0.72);
+    --automation-trigger-outcome-node-bg: var(--bg-3);
+    --automation-trigger-outcome-node-integration-bg: var(--grey-700);
+    --automation-trigger-outcome-trigger-bg: var(--orange-500);
+    --automation-trigger-outcome-operation-bg: var(--purple-500);
+    --automation-trigger-outcome-node-description: var(--text-secondary);
+    --automation-trigger-outcome-node-icon-fg: #fff;
+  }
+
+  .automation-trigger-outcome-flow-content {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    height: 420px;
+    margin: 0 auto;
+  }
+
+  .automation-trigger-outcome-node-list {
+    --node-width: 380px;
+    --node-row-gap: 60px;
+
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--node-row-gap);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .automation-trigger-outcome-node-list.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .automation-trigger-outcome-node-wrap {
+    position: relative;
+    width: var(--node-width);
+  }
+
+  .automation-trigger-outcome-node-wrap:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 8px);
+    width: 1px;
+    height: calc(var(--node-row-gap) - 16px);
+    transform: translateX(-50%);
+    background-image: linear-gradient(
+      to bottom,
+      var(--automation-trigger-outcome-connector) 45%,
+      transparent 45%
+    );
+    background-size: 1px 8px;
+    background-repeat: repeat-y;
+  }
+
+  .automation-trigger-outcome-node-badge {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 8px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 2px 4px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+  }
+
+  .automation-trigger-outcome-node-badge.is-trigger {
+    background: var(--automation-trigger-outcome-trigger-bg);
+  }
+
+  .automation-trigger-outcome-node-badge.is-operation {
+    background: var(--automation-trigger-outcome-operation-bg);
+  }
+
+  .automation-trigger-outcome-node {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 48px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 6px;
+    border: none;
+    background: var(--automation-trigger-outcome-node-bg);
+    padding: 8px 12px;
+  }
+
+  .automation-trigger-outcome-node-icon {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    color: var(--automation-trigger-outcome-node-icon-fg);
+  }
+
+  .automation-trigger-outcome-node-icon.is-trigger {
+    background: var(--automation-trigger-outcome-trigger-bg);
+  }
+
+  .automation-trigger-outcome-node-icon.is-integration {
+    background: var(--automation-trigger-outcome-node-integration-bg);
+  }
+
+  .automation-trigger-outcome-node-icon.is-alert {
+    background: var(--automation-trigger-outcome-operation-bg);
+  }
+
+  .automation-trigger-outcome-node-copy {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .automation-trigger-outcome-node-title {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+  }
+
+  .automation-trigger-outcome-node-description {
+    margin: 0;
+    color: var(--automation-trigger-outcome-node-description);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+  }
+
+  @media (max-width: 767px) {
+    .automation-trigger-outcome-flow-content {
+      height: 420px;
+    }
+
+    .automation-trigger-outcome-node-wrap {
+      width: min(100%, var(--node-width));
+    }
+  }
+</style>

@@ -1,0 +1,57 @@
+---
+import CheckCircleFill from "phosphor-astro/CheckCircleFill.astro";
+import BuilderDemo from "@components/BuilderDemo.astro";
+import SectionBlock from "@components/SectionBlock.astro";
+---
+
+<section>
+  <div class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:gap-20">
+    <div>
+      <BuilderDemo />
+    </div>
+
+    <SectionBlock
+      titleColorMode="split-secondary-primary"
+      titleLines={[
+        { text: "Built for" },
+        { text: "Controlled environments" },
+      ]}
+      description="Budibase is open-source and self-hostable, enabling teams to transform operations entirely within their own secure environments."
+      maxWidth="xl"
+      spacing="default"
+      contentClass="pt-1"
+    >
+      <ul class="m-0 flex flex-col gap-4">
+        <li class="flex items-start gap-3">
+          <CheckCircleFill
+            class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]"
+            aria-hidden="true"
+          />
+          <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            Deploy via Kubernetes, Docker, DigitalOcean, and more. Air-gapped deployments are also available.
+          </div>
+        </li>
+
+        <li class="flex items-start gap-3">
+          <CheckCircleFill
+            class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]"
+            aria-hidden="true"
+          />
+          <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            Connect to any LLM with an OpenAI-compatible API, including local models.
+          </div>
+        </li>
+
+        <li class="flex items-start gap-3">
+          <CheckCircleFill
+            class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]"
+            aria-hidden="true"
+          />
+          <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            Choose Budibase Cloud, with servers hosted within the EU (Ireland) in data centers certified by SOC 1/2 and ISO 27001.
+          </div>
+        </li>
+      </ul>
+    </SectionBlock>
+  </div>
+</section>

@@ -1,0 +1,94 @@
+---
+import SectionBlock from "@components/SectionBlock.astro";
+
+const proofPoints = [
+  {
+    label: "Open-Source",
+    description:
+      "Deploy on your own infrastructure.",
+  },
+  {
+    label: "ISO 27001",
+    description:
+      "Enterprise-grade security certification.",
+  },
+  {
+    label: "Made in Europe",
+    description:
+      "Budibase is made in Europe.",
+  },
+  {
+    label: "Pen Tests and Audits",
+    description:
+      "Annual penetration tests and AWS security configuration audits from 3rd party vendors.",
+  },
+];
+---
+
+<section>
+      <div class="proof-points">
+        {
+          proofPoints.map((item) => (
+            <div class="proof-point">
+              <h3 class="m-0 text-lg! leading-[1.2]">
+                {item.label}
+              </h3>
+
+              <p class="mt-2 w-full min-w-0 text-sm! text-stone-500! dark:text-stone-400!">
+                {item.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+</section>
+
+<style>
+  .proof-points {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+    width: 100%;
+    margin-top: 2rem;
+
+    border-top: 1px solid
+      var(--border-color, rgba(128, 128, 128, 0.25));
+    border-bottom: 1px solid
+      var(--border-color, rgba(128, 128, 128, 0.25));
+  }
+
+  .proof-point {
+    min-width: 0;
+    padding: 2rem 0;
+    text-align: left;
+  }
+
+  .proof-point h3,
+  .proof-point p {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  @media (max-width: 900px) {
+    .proof-points {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 767px) {
+    .proof-points {
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-top: 1.5rem;
+    }
+
+    .proof-point {
+      padding: 1.5rem 0;
+    }
+
+    .proof-point + .proof-point {
+      border-top: 1px solid
+        var(--border-color, rgba(128, 128, 128, 0.25));
+    }
+  }
+</style>

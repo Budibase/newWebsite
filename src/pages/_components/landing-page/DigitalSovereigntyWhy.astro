@@ -1,0 +1,45 @@
+---
+import CheckCircleFill from "phosphor-astro/CheckCircleFill.astro";
+import BuilderDemo from "@components/SecurityDemoTwo.astro";
+import SectionBlock from "@components/SectionBlock.astro";
+---
+
+<section>
+  <div class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:gap-20">
+    <SectionBlock
+      titleColorMode="split-secondary-primary"
+      titleLines={[
+        { text: "Don't compromise" },
+        { text: "Control and governance" },
+      ]}
+      description="Security-focused organizations choose Budibase to build governed workflows, without sending data out of their controlled environment."
+      maxWidth="xl"
+      spacing="default"
+      contentClass="pt-1"
+    >
+      <ul class="m-0 flex flex-col gap-4">
+        <li class="flex items-start gap-3">
+          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            Self-host and connect to local models.
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            Connect your existing databases and tool stacks.
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <CheckCircleFill class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-blue)]" aria-hidden="true" />
+          <div class="m-0 text-[15px] font-medium leading-6 text-[var(--text-primary)]">
+            Tightly control data exposure and permissions for end-users and Agents.
+          </div>
+        </li>
+      </ul>
+    </SectionBlock>
+        <div>
+      <BuilderDemo />
+    </div>
+  </div>
+</section>

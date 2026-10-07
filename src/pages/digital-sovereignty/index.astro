@@ -1,0 +1,349 @@
+---
+export const prerender = false;
+
+import Layout from "../../layouts/MainLayout.astro";
+import TitleBlock from "@components/TitleBlock.astro";
+import Button from "@components/Button.astro";
+import SectionBlock from "@components/SectionBlock.astro";
+import Card from "@components/cards/Card.astro";
+
+import DigitalSovereigntyWhy from "../_components/landing-page/DigitalSovereigntyWhy.astro";
+import DigitalSovereigntyOperationalWork from "../_components/landing-page/DigitalSovereigntyOperationalWork.astro";
+import DigitalSovereigntyUseCases from "../_components/landing-page/DigitalSovereigntyUseCases.astro";
+import DigitalSovereigntyDataResidency from "../_components/landing-page/DigitalSovereigntyDataResidency.astro";
+import DigitalSovereigntySecurity from "../_components/landing-page/DigitalSovereigntySecurity.astro";
+import BookADemoCTA from "../_components/landing-page/BookADemoCTA.astro";
+import Customers from "../_components/landing-page/CustomersBig.astro";
+import OpsPlatformDemoNew from "@components/OpsPlatformDemoNew.astro";
+import DigitalSovereigntyProductQuestions from "../_components/landing-page/DigitalSovereigntyProductQuestions.astro";
+import DigitalSovereigntyCaseStudies from "../_components/landing-page/DigitalSovereigntyCaseStudies.astro";
+import DigitalSovereigntyResources from "../_components/landing-page/DigitalSovereigntyResources.astro";
+import InfrastructureBox from "../_components/landing-page/InfrastructureBox.astro";
+import DigitalSovereigntyBudibaseOrg from "../_components/landing-page/DigitalSovereigntyBudibaseOrg.astro";
+import DigitalSovereigntyAppsAgentsAutomations from "../_components/landing-page/DigitalSovereigntyAppsAgentsAutomations.astro";
+
+const pageTitle = "Budibase & Digital Sovereignty";
+
+const pageDescription =
+  "Build Agents, Apps, and Automations on infrastructure you control - with any LLM. Budibase helps regulated organizations transform operations across their people, data, and systems.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <section class="sovereignty-hero">
+    <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0 mt-16">
+      <div class="sovereignty-hero__layout">
+        <div class="sovereignty-hero__content">
+          <TitleBlock
+            variant="hero"
+            titleColorMode="split-primary-secondary"
+            titleLines={[
+              { text: "Critical operations don't" },
+              { text: "Belong to the vendor" },
+            ]}
+            titleClass="sovereignty-hero__title"
+          />
+
+          <div
+            class="sovereignty-hero__proof mt-16"
+            aria-label="Key sovereignty capabilities"
+          >
+            <span class="sovereignty-hero__pill">
+              Open-source
+            </span>
+
+            <span class="sovereignty-hero__pill">
+              Self-hosted
+            </span>
+
+            <span class="sovereignty-hero__pill">
+              Model-agnostic
+            </span>
+
+            <span class="sovereignty-hero__pill">
+              Enterprise-ready
+            </span>
+          </div>
+
+          <p class="hero-description-small sovereignty-hero__lede">
+            {pageDescription}
+          </p>
+
+          <div class="sovereignty-hero__actions">
+            <Button
+              label="Book a demo"
+              url="/contact/"
+              variant="primary"
+              size="large"
+              class="px-6 py-3 text-xl md:px-7 md:py-3.5 md:text-xl"
+            />
+          </div>
+        </div>
+
+        <div class="sovereignty-hero__visual">
+          <InfrastructureBox />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-8 mx-auto">
+    <Customers />
+  </section>
+
+  <div
+    id="product"
+    class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0"
+  >
+    <section class="mt-24">
+      <SectionBlock
+        maxWidth="xl"
+        titleColorMode="split-secondary-primary"
+        titleLines={[
+          { text: "The open-source platform" },
+          { text: "For enterprise operations" },
+        ]}
+        description="Bring AI into critical operations without giving up control. Combine AI with rules-based logic, while keeping humans in the loop where judgment matters."
+        contentClass="flex flex-col gap-4"
+      >
+        <div class="product-image-placeholder">
+          <span>
+            <div class="ops-platform__demo">
+              <OpsPlatformDemoNew />
+            </div>
+          </span>
+        </div>
+      </SectionBlock>
+    </section>
+
+    <section class="mt-24">
+      <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0 mt-16">
+        <div class="security-hero-grid">
+          <DigitalSovereigntyAppsAgentsAutomations />
+        </div>
+      </div>
+    </section>
+
+        <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0 mt-16">
+      <div class="security-hero-grid">
+        <DigitalSovereigntyBudibaseOrg />
+      </div>
+    </div>
+
+    <section class="mt-24">
+      <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0 mt-20">
+        <div class="security-hero-grid">
+          <DigitalSovereigntyResources />
+        </div>
+      </div>
+    </section>
+
+        <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0 mt-24">
+      <div class="security-hero-grid">
+        <DigitalSovereigntyOperationalWork />
+      </div>
+    </div>
+
+    <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0 mt-16">
+      <div class="security-hero-grid">
+        <DigitalSovereigntyUseCases />
+      </div>
+    </div>
+
+
+    <section class="mt-24">
+      <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0 mt-20">
+        <div class="security-hero-grid">
+          <DigitalSovereigntyDataResidency />
+        </div>
+      </div>
+    </section>
+
+    <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0 mt-16">
+      <div class="security-hero-grid">
+        <DigitalSovereigntySecurity />
+      </div>
+    </div>
+
+     <section class="mt-24">
+      <DigitalSovereigntyCaseStudies />
+    </section>
+
+    <section class="mt-24">
+      <DigitalSovereigntyProductQuestions />
+    </section>
+
+
+
+    <BookADemoCTA />
+  </div>
+</Layout>
+
+<style>
+  .sovereignty-hero {
+    background: var(--bg-1);
+    padding-top: max(calc(var(--site-nav-height) + 5.375rem), 8rem);
+    padding-bottom: 3rem;
+    min-height: 900px;
+    display: flex;
+    align-items: center;
+  }
+
+  :global(#site-nav.nav-shell) {
+    background-color: var(--bg-1) !important;
+  }
+
+  .sovereignty-hero__layout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    width: 100%;
+  }
+
+  .sovereignty-hero__content {
+    width: auto;
+    min-width: 0;
+    flex: 1 1 58%;
+  }
+
+  .sovereignty-hero__visual {
+    width: auto;
+    min-width: 0;
+    flex: 0 1 42%;
+    max-width: 540px;
+  }
+
+  .sovereignty-hero :global(.sovereignty-hero__title) {
+    width: 100%;
+    max-width: 980px;
+    margin: 0;
+    font-size: clamp(48px, 5vw, 68px);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    text-align: left;
+  }
+
+  .sovereignty-hero__lede {
+    max-width: 800px;
+    margin: 26px 0 0 !important;
+    color: var(--text-secondary);
+    font-size: clamp(20px, 2.3vw, 26px) !important;
+    line-height: 1.45;
+    text-align: left;
+  }
+
+  .sovereignty-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .sovereignty-hero__proof {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 34px;
+  }
+
+  .sovereignty-hero__pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--bg-2);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .product-image-placeholder {
+    display: flex;
+    width: 100%;
+    min-height: 560px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.1rem;
+  }
+
+  .product-image-placeholder span {
+    color: var(--text-secondary);
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .platform-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3rem;
+    width: 100%;
+    padding: 0.75rem 1rem 0;
+  }
+
+  .platform-pillar {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .platform-pillar__title {
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .platform-pillar p {
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  @media (max-width: 767px) {
+    .sovereignty-hero {
+      min-height: auto;
+      padding-top: max(calc(var(--site-nav-height) + 3rem), 6rem);
+      padding-bottom: 2.5rem;
+    }
+
+    .sovereignty-hero__layout {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4rem;
+    }
+
+    .sovereignty-hero__content {
+      width: 100%;
+      flex: none;
+    }
+
+    .sovereignty-hero__visual {
+      width: 100%;
+      max-width: 680px;
+      flex: none;
+    }
+
+    .sovereignty-hero :global(.sovereignty-hero__title) {
+      font-size: 48px;
+    }
+
+    .sovereignty-hero__lede {
+      font-size: 20px !important;
+    }
+
+    .product-image-placeholder {
+      min-height: 360px;
+    }
+
+    .platform-pillars {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 0.75rem 0 0;
+    }
+  }
+</style>
