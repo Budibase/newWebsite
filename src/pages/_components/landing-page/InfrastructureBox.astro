@@ -1,0 +1,483 @@
+---
+import Icon from "@components/Icon.astro";
+---
+
+<div class="infra">
+  <div class="infra__boundary">
+    <header class="infra__header">
+      <div class="infra__heading">
+        <span class="infra__lock" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <rect x="5" y="10" width="14" height="10" rx="2" />
+            <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+          </svg>
+        </span>
+
+        <span>Your infrastructure</span>
+      </div>
+    </header>
+
+    <div class="infra__grid">
+      <article class="infra-card infra-card--primary">
+        <span class="infra-card__eyebrow">Platform</span>
+        <strong>Budibase</strong>
+        <small>Build · connect · control</small>
+      </article>
+
+      <article class="infra-card">
+        <span class="infra-card__icon" aria-hidden="true">
+          <Icon name="Sparkle" size="16" />
+        </span>
+        <strong>Agents</strong>
+        <small>Reasoning & action</small>
+      </article>
+
+      <article class="infra-card">
+        <span class="infra-card__icon" aria-hidden="true">
+          <Icon name="Browser" size="16" />
+        </span>
+        <strong>Apps</strong>
+        <small>Internal tools & UIs</small>
+      </article>
+
+      <article class="infra-card">
+        <span class="infra-card__icon" aria-hidden="true">
+          <Icon name="Path" size="16" />
+        </span>
+        <strong>Automations</strong>
+        <small>Deterministic logic</small>
+      </article>
+
+      <article class="infra-card">
+        <span class="infra-card__icon" aria-hidden="true">
+          <Icon name="Cube" size="16" />
+        </span>
+        <strong>Databases</strong>
+        <small>External & built-in</small>
+      </article>
+
+      <article class="infra-card">
+        <span class="infra-card__icon" aria-hidden="true">
+          <Icon name="ArrowUpRight" size="16" />
+        </span>
+        <strong>APIs</strong>
+        <small>External systems & tools</small>
+      </article>
+    </div>
+
+    <div class="infra__connector" aria-hidden="true">
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="infra__llm">
+      <span class="infra__llm-icon" aria-hidden="true">
+        <Icon name="Sparkle" size="16" />
+      </span>
+
+      <div>
+        <strong>LLMs</strong>
+        <small>Model-agnostic</small>
+      </div>
+    </div>
+
+    <footer class="infra__footer">
+      <span>Open-source</span>
+      <i></i>
+      <span>Self-hosted</span>
+      <i></i>
+      <span>Made in Europe</span>
+    </footer>
+  </div>
+</div>
+
+<style>
+  .infra {
+    --infra-background: var(--bb-background-base, #fafaf8);
+    --infra-surface: var(--bb-background-surface, #ffffff);
+    --infra-text: var(--bb-text-base, #171717);
+    --infra-muted: var(--bb-text-body, #686864);
+
+    --infra-gray-100: var(--bb-gray-100, #f2f2ef);
+    --infra-gray-200: var(--bb-gray-200, #e5e5e1);
+    --infra-gray-300: var(--bb-gray-300, #d0d0cb);
+    --infra-gray-500: var(--bb-gray-500, #777773);
+    --infra-gray-900: var(--bb-gray-900, #1b1b1a);
+
+    --infra-celery-light: var(--bb-celery-100, #efffd7);
+    --infra-celery: var(--bb-brand-bright-green, #b8f44a);
+    --infra-celery-dark: var(--bb-celery-1200, #315c18);
+
+    position: relative;
+
+    width: 100%;
+    min-width: 0;
+
+    padding: 2rem 0;
+  }
+
+  .infra__boundary {
+    position: relative;
+    overflow: hidden;
+
+    width: 100%;
+
+    padding: 1rem;
+
+    border: 1px solid var(--infra-gray-300);
+    border-radius: 0.75rem;
+
+    background-color: var(--infra-background);
+
+    background-image:
+      linear-gradient(
+        to right,
+        rgba(25, 25, 25, 0.045) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(25, 25, 25, 0.045) 1px,
+        transparent 1px
+      );
+
+    background-size: 24px 24px;
+  }
+
+  .infra__header {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    margin: -1rem -1rem 1rem;
+    padding: 0.9rem 1rem;
+
+    border-bottom: 1px solid var(--infra-gray-300);
+
+    background: var(--infra-surface);
+  }
+
+  .infra__heading {
+    display: flex;
+    align-items: center;
+
+    gap: 0.65rem;
+
+    color: var(--infra-text);
+
+    font-family: var(--font-inter);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .infra__lock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2rem;
+    height: 2rem;
+
+    flex-shrink: 0;
+
+    border: 1px solid var(--infra-gray-300);
+    border-radius: 0.4rem;
+
+    background: var(--infra-gray-100);
+    color: var(--infra-gray-900);
+  }
+
+  .infra__lock svg {
+    width: 1rem;
+    height: 1rem;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+  }
+
+  .infra__controlled {
+    padding: 0.4rem 0.65rem;
+
+    border-radius: 0.4rem;
+
+    background: var(--infra-celery);
+    color: var(--infra-gray-900);
+
+    font-family: var(--font-ia-writer-mono);
+    font-size: 0.61rem;
+    font-weight: 600;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+    letter-spacing: 0.065em;
+
+    white-space: nowrap;
+  }
+
+  .infra__grid {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 0.55rem;
+  }
+
+  .infra-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 0;
+    min-height: 112px;
+
+    padding: 0.85rem;
+
+    border: 1px solid var(--infra-gray-300);
+    border-radius: 0.5rem;
+
+    background: var(--infra-surface);
+    color: var(--infra-text);
+  }
+
+  .infra-card--primary {
+    border-color: var(--infra-celery-dark);
+
+    background: var(--infra-celery-dark);
+    color: #ffffff;
+  }
+
+  .infra-card__eyebrow,
+  .infra-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 1.25rem;
+
+    margin-bottom: auto;
+
+    color: var(--infra-gray-500);
+
+    font-family: var(--font-ia-writer-mono);
+    font-size: 0.67rem;
+    font-weight: 500;
+  }
+
+  .infra-card__icon {
+    color: var(--infra-gray-900);
+  }
+
+  .infra-card strong {
+    display: block;
+
+    color: var(--infra-text);
+
+    font-family: var(--font-inter);
+    font-size: 0.88rem;
+    font-weight: 600;
+
+    line-height: 1.2;
+  }
+
+  .infra-card small {
+    display: block;
+
+    margin-top: 0.2rem;
+
+    color: var(--infra-muted);
+
+    font-family: var(--font-inter);
+    font-size: 0.68rem;
+
+    line-height: 1.35;
+  }
+
+  .infra-card--primary .infra-card__eyebrow,
+  .infra-card--primary strong,
+  .infra-card--primary small {
+    color: #ffffff !important;
+  }
+
+  .infra__connector {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    height: 28px;
+  }
+
+  .infra__connector span {
+    position: relative;
+
+    display: block;
+
+    width: 1px;
+    height: 18px;
+
+    background: var(--infra-gray-500);
+  }
+
+  .infra__connector span:first-child::before {
+    content: "";
+
+    position: absolute;
+    top: -1px;
+    left: 50%;
+
+    width: 5px;
+    height: 5px;
+
+    border-top: 1px solid var(--infra-gray-500);
+    border-left: 1px solid var(--infra-gray-500);
+
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .infra__connector span:last-child::after {
+    content: "";
+
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+
+    width: 5px;
+    height: 5px;
+
+    border-right: 1px solid var(--infra-gray-500);
+    border-bottom: 1px solid var(--infra-gray-500);
+
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .infra__llm {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+
+    gap: 0.75rem;
+
+    padding: 0.85rem 1rem;
+
+    border: 1px solid var(--infra-celery-dark);
+    border-radius: 0.5rem;
+
+    background: var(--infra-celery-light);
+    color: var(--infra-text);
+  }
+
+  .infra__llm-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2rem;
+    height: 2rem;
+
+    flex-shrink: 0;
+
+    border-radius: 0.4rem;
+
+    background: var(--infra-celery);
+    color: var(--infra-gray-900);
+  }
+
+  .infra__llm strong,
+  .infra__llm small {
+    display: block;
+
+    font-family: var(--font-inter);
+  }
+
+  .infra__llm strong {
+    color: var(--infra-text);
+
+    font-size: 0.84rem;
+    font-weight: 600;
+  }
+
+  .infra__llm small {
+    margin-top: 0.1rem;
+
+    color: var(--infra-muted);
+
+    font-size: 0.68rem;
+  }
+
+  .infra__footer {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 0.75rem;
+
+    margin: 1rem -1rem -1rem;
+    padding: 0.8rem 1rem;
+
+    border-top: 1px solid var(--infra-gray-300);
+
+    background: var(--infra-gray-900);
+    color: var(--infra-celery);
+
+    font-family: var(--font-ia-writer-mono);
+    font-size: 0.6rem;
+    font-weight: 500;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .infra__footer i {
+    display: block;
+
+    width: 100%;
+    height: 1px;
+
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .infra__footer span {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 560px) {
+    .infra {
+      padding: 1rem 0;
+    }
+
+    .infra__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .infra-card {
+      min-height: 105px;
+    }
+
+    .infra__controlled {
+      display: none;
+    }
+
+    .infra__footer {
+      gap: 0.5rem;
+      font-size: 0.52rem;
+    }
+  }
+</style>

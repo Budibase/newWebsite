@@ -1,0 +1,222 @@
+---
+import SectionBlock from "@components/SectionBlock.astro";
+import Button from "@components/Button.astro";
+import Card from "@components/cards/Card.astro";
+
+const customerCards = [
+  {
+    label: "Pays Basque",
+    description: "Basque Country water network digitized critical operations.",
+    linkUrl: "/blog/pays-basque/",
+  },
+  {
+    label: "Knights Brown",
+    description: "Accelerating internal tool development with low-code.",
+    linkUrl: "/blog/knights-brown/",
+  },
+  {
+    label: "Ströer-x",
+    description: "Operational workflows transformed with custom applications.",
+    linkUrl: "/blog/stroer-x/",
+  },
+  {
+    label: "Reworld",
+    description: "Projected savings through streamlined enterprise workflows.",
+    linkUrl: "/blog/reworld/",
+  },
+  {
+    label: "Schnellecke",
+    description: "Delivery time cut from days to under an hour.",
+    linkUrl: "/blog/schnellecke/",
+  },
+  {
+    label: "Bulgarian Government",
+    description: "Mission-critical refugee response delivered at national scale.",
+    linkUrl: "/blog/bulgarian-government/",
+  },
+];
+---
+
+<section class="container max-w-7xl mx-auto mt-12 md:mt-24 px-2 lg:px-0">
+  <SectionBlock>
+    <div class="benefits-grid">
+      <div class="benefits-grid-featured bg-base-18">
+        <div class="featured-wrapper">
+          <div class="featured-content">
+            <p class="detail text-center text-white featured-eyebrow">
+              Trusted in the
+            </p>
+
+            <h2 class="featured-title">
+              Private and public sectors
+            </h2>
+
+            <p class="featured-description text-center text-white">
+              IT teams in government organizations, regulated enterprises, and SMEs rely on Budibase to handle mission-critical work.
+            </p>
+          </div>
+
+          <div class="platform-hero__cta">
+            <Button
+              label="Book a demo"
+              url="https://budibase.com/contact/"
+              variant="primary"
+              size="large"
+              class="px-6 py-3 text-xl md:px-7 md:py-3.5 md:text-xl"
+              target="_blank"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="customer-cards-area">
+        <div class="customer-cards-grid">
+          {
+            customerCards.map((card) => (
+              <div class="customer-card-item">
+                <Card
+                  tag="/Customers"
+                  label={card.label}
+                  description={card.description}
+                  linkUrl={card.linkUrl}
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </SectionBlock>
+</section>
+
+<style>
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) minmax(0, 2fr);
+    min-height: 544px;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .benefits-grid-featured {
+    background: #000;
+    color: #fff;
+    border-radius: 12px;
+    padding: 32px;
+    overflow: hidden;
+  }
+
+  .featured-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .featured-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 320px;
+  }
+
+  .benefits-grid-featured .featured-eyebrow {
+    margin: 0 0 0.75rem;
+    color: #fff;
+    opacity: 0.75;
+  }
+
+  .featured-title {
+    margin: 0;
+    color: #fff;
+    font-family: var(--font-fraunces);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  .featured-description {
+    max-width: 300px;
+    margin: 1.25rem 0 0;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.55;
+    opacity: 0.78;
+  }
+
+  .platform-hero__cta {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .customer-cards-area {
+    min-width: 0;
+    height: 100%;
+  }
+
+  .customer-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    height: 100%;
+    min-height: 544px;
+  }
+
+  .customer-card-item {
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+  }
+
+  .customer-card-item :global(a) {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .customer-card-item :global(article),
+  .customer-card-item :global(.card),
+  .customer-card-item :global(.card-inner) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+      min-height: unset;
+    }
+
+    .benefits-grid-featured {
+      min-height: 360px;
+    }
+
+    .featured-title {
+      font-size: 30px;
+    }
+
+    .featured-description {
+      margin-top: 1rem;
+    }
+
+    .platform-hero__cta {
+      margin-top: 1.75rem;
+    }
+
+    .customer-cards-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      min-height: unset;
+    }
+  }
+</style>

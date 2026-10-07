@@ -1,0 +1,128 @@
+---
+import SectionBlock from "@components/SectionBlock.astro";
+---
+
+<section>
+  <div class="mx-auto w-full max-w-7xl px-2 md:px-3 lg:px-0">
+
+    <SectionBlock
+      titleColorMode="split-secondary-primary"
+      titleLines={[
+        { text: "How does Budibase" },
+        { text: "Handle our data?" },
+      ]}
+      maxWidth="xl"
+      spacing="default"
+      contentClass="pt-1"
+    >
+      <div class="criteria">
+
+        <div class="criterion">
+          <div class="criterion__title">
+            Where is data stored?
+          </div>
+
+          <div class="criterion__description">
+            Connect to external SQL and NoSQL databases, or use BudibaseDB.
+          </div>
+        </div>
+
+        <div class="criterion">
+          <div class="criterion__title">
+            Where does Budibase run?
+          </div>
+
+          <div class="criterion__description">
+            Choose between self-hosting and Budibase Cloud based on your infrastructure requirements.
+          </div>
+        </div>
+
+                <div class="criterion">
+          <div class="criterion__title">
+            How do I connect to external systems?
+          </div>
+
+          <div class="criterion__description">
+            Budibase offers dedicated connectors for databases and REST APIs. This includes mandatory HTTPS connections,
+            and data-in-transit encryption using TLS 1.3. Data is also encrypted in REST with AES256.
+          </div>
+        </div>
+
+        <div class="criterion">
+          <div class="criterion__title">
+            Which AI models are used?
+          </div>
+
+          <div class="criterion__description">
+            Budibase supports any AI model with an OpenAI-compatible API, including local and self-hosted models.
+          </div>
+        </div>
+
+                <div class="criterion">
+          <div class="criterion__title">
+            What data can Budibase Agents access?
+          </div>
+
+          <div class="criterion__description">
+            Agents can only access connected tools and data they have been explicitly permitted to use.
+          </div>
+        </div>
+      </div>
+    </SectionBlock>
+
+  </div>
+</section>
+
+<style>
+  .criteria {
+    width: 100%;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color, rgba(128, 128, 128, 0.25));
+  }
+
+  .criterion {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 4rem;
+    align-items: start;
+
+    padding: 1.75rem 0;
+
+    border-bottom: 1px solid
+      var(--border-color, rgba(128, 128, 128, 0.25));
+  }
+
+  .criterion__title {
+    margin: 0;
+
+    color: var(--text-primary);
+
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .criterion__description {
+    max-width: 640px;
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 767px) {
+    .criteria {
+      margin-top: 1.5rem;
+    }
+
+    .criterion {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+
+      padding: 1.5rem 0;
+    }
+  }
+</style>

@@ -1,0 +1,220 @@
+---
+import SectionBlock from "@components/SectionBlock.astro";
+
+import BackgroundImage from "@assets/images/homepage/use cases/1.png";
+
+import AnthropicLogo from "@assets/logos/anthropic.avif";
+import AzureOpenAILogo from "@assets/logos/azure-openai.svg";
+import OpenAILogo from "@assets/logos/openai.avif";
+
+import MicrosoftSharePointLogo from "@assets/logos/microsoft-sharepoint.svg";
+import JiraLogo from "@assets/logos/Jira.svg";
+import ServiceNowLogo from "@assets/logos/servicenow.svg";
+import RestApiLogo from "@assets/logos/rest-api.svg";
+
+import PostgresLogo from "@assets/logos/Postgres.svg";
+import MySQLLogo from "@assets/logos/MYSQL.svg";
+import MSSQLLogo from "@assets/logos/MSSQL.svg";
+
+const cards = [
+  {
+    title: "AI models",
+    description:
+      "Choose BudibaseAI or connect to any LLM with an OpenAI-compatible API, including local models.",
+    items: [
+      { src: AnthropicLogo.src, label: "Anthropic" },
+      { src: AzureOpenAILogo.src, label: "Azure" },
+      { src: OpenAILogo.src, label: "OpenAI" },
+      { src: "/favicon.svg", label: "BudibaseAI" },
+    ],
+  },
+  {
+    title: "APIs",
+    description:
+      "Use Budibase's pre-built REST Templates or custom API requests to connect to external systems.",
+    items: [
+      { src: MicrosoftSharePointLogo.src, label: "SharePoint" },
+      { src: JiraLogo.src, label: "Jira" },
+      { src: ServiceNowLogo.src, label: "ServiceNow" },
+      { src: RestApiLogo.src, label: "Custom REST API" },
+    ],
+  },
+  {
+    title: "Data",
+    description:
+      "Connect to existing databases or use BudibaseDB to start from scratch.",
+    items: [
+      { src: "/favicon.svg", label: "BudibaseDB" },
+      { src: PostgresLogo.src, label: "PostgreSQL" },
+      { src: MySQLLogo.src, label: "MySQL" },
+      { src: MSSQLLogo.src, label: "MSSQL" },
+    ],
+  },
+];
+---
+
+<section
+  class="connections-section"
+  style={`--connections-bg: url("${BackgroundImage.src}")`}
+>
+  <SectionBlock
+    title="Connect the systems your business runs on"
+    description="Budibase connects to your existing data sources, LLMs, and APIs."
+    align="center"
+    maxWidth="3xl"
+    contentClass="pt-1"
+  >
+    <div class="connections-grid">
+      {
+        cards.map((card) => (
+          <div class="connection-card">
+            <div class="connection-card__media">
+              <ul
+                class="connection-card__badges"
+                aria-label={`${card.title} connection examples`}
+              >
+                {
+                  card.items.map((item) => (
+                    <li class="connection-badge">
+                      <img
+                        src={item.src}
+                        alt=""
+                        aria-hidden="true"
+                        class="connection-badge__icon"
+                      />
+                      <span>{item.label}</span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+
+            <div class="connection-card__content">
+              <h3 class="text-lg! connection-card__title">
+                {card.title}
+              </h3>
+
+              <p class="w-full min-w-0 text-stone-500! dark:text-stone-400! text-sm!">
+                {card.description}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </SectionBlock>
+</section>
+
+<style>
+  .connections-section {
+    width: 100%;
+  }
+
+  .connections-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .connection-card {
+    min-width: 0;
+    overflow: hidden;
+
+    border: 0;
+    border-radius: 0.375rem;
+
+    background: var(--bg-2);
+  }
+
+  .connection-card__media {
+    display: flex;
+    min-height: 315px;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1.75rem 2rem;
+
+    background-image: var(--connections-bg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .connection-card__badges {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .connection-badge {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 0.75rem;
+
+    padding: 0 1rem;
+
+    background: var(--bg-1);
+
+    color: var(--text-primary);
+
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .connection-badge__icon {
+    display: block;
+
+    width: 20px;
+    height: 20px;
+
+    flex-shrink: 0;
+
+    object-fit: contain;
+  }
+
+  .connection-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    padding: 1rem;
+
+    background: var(--bg-2);
+
+    color: var(--text-primary);
+    text-align: left;
+  }
+
+  .connection-card__title {
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .connection-card__content p {
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  @media (max-width: 960px) {
+    .connections-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .connection-card__media {
+      min-height: 250px;
+    }
+  }
+</style>
