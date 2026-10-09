@@ -113,6 +113,7 @@ const requestedOp = Astro.url.searchParams.get("op") ?? "";
             name="contact-sales"
             method="post"
             data-netlify="true"
+            data-newsletter-attribution
             netlify-honeypot="bot-field"
           >
             <p class="contact-form__honeypot">
@@ -152,6 +153,9 @@ const requestedOp = Astro.url.searchParams.get("op") ?? "";
               <span>Message</span>
               <textarea name="message" required></textarea>
             </label>
+
+            <input type="hidden" name="first_newsletter_placement">
+            <input type="hidden" name="latest_newsletter_placement">
 
             <button type="submit" class="contact-submit">Submit</button>
           </form>

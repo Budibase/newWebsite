@@ -299,6 +299,153 @@ function smartypants(text: string, _mode?: number): string {
     );
   })();
 </script>
+
+<script>
+
+interface WindowWithUTM extends Window {
+  newsletterAttribution?: {
+    read: () => { first: string; latest: string } | null;
+    fill: (form: HTMLFormElement) => void;
+  };
+}
+
+(() => {
+  if ((window as WindowWithUTM).newsletterAttribution) return;
+
+  const CATEGORY = 'analytics';
+  const KEY = 'budibase_newsletter_attribution';
+  const TTL = 90 * 24 * 60 * 60 * 1000;
+
+  let consentGranted = false;
+  let capturedThisPage = false;
+
+  function clear() {
+    try {
+      localStorage.removeItem(KEY);
+    } catch (_) {}
+  }
+
+  function read() {
+    if (!consentGranted) return null;
+
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (!raw) return null;
+
+      const data = JSON.parse(raw);
+
+      if (
+        !data ||
+        typeof data.first !== 'string' ||
+        !data.first ||
+        typeof data.latest !== 'string' ||
+        !data.latest ||
+        !Number.isFinite(data.expiresAt) ||
+        Date.now() >= data.expiresAt
+      ) {
+        clear();
+        return null;
+      }
+
+      return data;
+    } catch (_) {
+      clear();
+      return null;
+    }
+  }
+
+  function capture() {
+    const existing = read();
+
+    if (capturedThisPage) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const campaign = params.get('utm_campaign');
+
+    if (
+      params.get('utm_medium') !== 'email' ||
+      !campaign?.trim()
+    ) {
+      return;
+    }
+
+    const data = {
+      first: existing ? existing.first : campaign,
+      latest: campaign,
+      // Expire 90 days after First; later visits do not extend it.
+      expiresAt: existing ? existing.expiresAt : Date.now() + TTL
+    };
+
+    try {
+      localStorage.setItem(KEY, JSON.stringify(data));
+      capturedThisPage = true;
+    } catch (_) {}
+  }
+
+  function fill(form : any) {
+    const data = read();
+
+    const values = {
+      first_newsletter_placement: data ? data.first : '',
+      latest_newsletter_placement: data ? data.latest : ''
+    };
+
+    for (const [name, value] of Object.entries(values)) {
+      form.querySelectorAll(
+        `input[type="hidden"][name="${name}"]`
+      ).forEach((input:any) => {
+        input.value = value;
+      });
+    }
+  }
+
+  function fillAll() {
+    document.querySelectorAll(
+      'form[data-newsletter-attribution]'
+    ).forEach(fill);
+  }
+  interface KukieConsentEvent extends Event {
+    detail?: {
+      categories?: string[];
+    };
+  }
+
+  (window as WindowWithUTM).newsletterAttribution = { read, fill };
+
+  document.addEventListener('cc:consent-updated', (event: KukieConsentEvent) => {
+    const categories = event.detail?.categories;
+
+    consentGranted =
+      Array.isArray(categories) &&
+      categories.includes(CATEGORY);
+
+    if (consentGranted) {
+      capture();
+    } else {
+      clear();
+      capturedThisPage = false;
+    }
+
+    // Clear hidden fields too if consent is withdrawn.
+    fillAll();
+  });
+
+  document.addEventListener('DOMContentLoaded', fillAll);
+
+  document.addEventListener('submit', (event: KukieConsentEvent) => {
+    if (event.target && (event.target as HTMLElement).matches('form[data-newsletter-attribution]')) {
+      fill(event.target);
+    }
+  }, true);
+
+  window.addEventListener('storage', event => {
+    if (event.key === KEY || event.key === null) {
+      fillAll();
+    }
+  });
+})();
+</script>
+
 <style is:inline>
   /* Intentionally left blank */
 </style>
