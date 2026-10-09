@@ -209,10 +209,6 @@ function smartypants(text: string, _mode?: number): string {
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <meta name="mobile-web-app-capable" content="yes" />
 <link rel="manifest" href="/manifest.webmanifest" />
-<script
-  src="https://cdn.kukie.io/s/35056df5-a65d-4cb3-be6d-e29000e4b2da/c.js"
-  async
-></script>
 <script is:inline>
   // Prevent flash of unstyled content by applying theme immediately
   // Solution based on: https://medium.com/@maiowebdesign/astro-dark-mode-flickering-62da94d08ce6
@@ -305,7 +301,7 @@ function smartypants(text: string, _mode?: number): string {
 
 
 (() => {
-  if (newsletterAttribution) return;
+  if (window.newsletterAttribution) return;
 
   const CATEGORY = 'analytics';
   const KEY = 'budibase_newsletter_attribution';
@@ -334,10 +330,19 @@ function smartypants(text: string, _mode?: number): string {
         typeof data.first !== 'string' ||
         !data.first ||
         typeof data.latest !== 'string' ||
-        !data.latest ||
-        !Number.isFinite(data.expiresAt) ||
-        Date.now() >= data.expiresAt
+        !data.latest
       ) {
+        clear();
+        return null;
+      }
+
+      // Older records only stored first/latest. Give them a one-time expiry.
+      if (data.expiresAt === undefined) {
+        data.expiresAt = Date.now() + TTL;
+        localStorage.setItem(KEY, JSON.stringify(data));
+      }
+
+      if (!Number.isFinite(data.expiresAt) || Date.now() >= data.expiresAt) {
         clear();
         return null;
       }
@@ -436,6 +441,12 @@ function smartypants(text: string, _mode?: number): string {
   });
 })();
 </script>
+
+<!-- Register attribution listeners before Kukie can restore consent. -->
+<script
+  src="https://cdn.kukie.io/s/35056df5-a65d-4cb3-be6d-e29000e4b2da/c.js"
+  async
+></script>
 
 <style is:inline>
   /* Intentionally left blank */
