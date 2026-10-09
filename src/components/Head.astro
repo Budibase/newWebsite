@@ -300,17 +300,12 @@ function smartypants(text: string, _mode?: number): string {
   })();
 </script>
 
-<script>
+<script is:inline>
 
-interface WindowWithUTM extends Window {
-  newsletterAttribution?: {
-    read: () => { first: string; latest: string } | null;
-    fill: (form: HTMLFormElement) => void;
-  };
-}
+
 
 (() => {
-  if ((window as WindowWithUTM).newsletterAttribution) return;
+  if (newsletterAttribution) return;
 
   const CATEGORY = 'analytics';
   const KEY = 'budibase_newsletter_attribution';
@@ -382,7 +377,7 @@ interface WindowWithUTM extends Window {
     } catch (_) {}
   }
 
-  function fill(form : any) {
+  function fill(form) {
     const data = read();
 
     const values = {
@@ -393,7 +388,7 @@ interface WindowWithUTM extends Window {
     for (const [name, value] of Object.entries(values)) {
       form.querySelectorAll(
         `input[type="hidden"][name="${name}"]`
-      ).forEach((input:any) => {
+      ).forEach((input) => {
         input.value = value;
       });
     }
@@ -404,15 +399,11 @@ interface WindowWithUTM extends Window {
       'form[data-newsletter-attribution]'
     ).forEach(fill);
   }
-  interface KukieConsentEvent extends Event {
-    detail?: {
-      categories?: string[];
-    };
-  }
 
-  (window as WindowWithUTM).newsletterAttribution = { read, fill };
 
-  document.addEventListener('cc:consent-updated', (event: KukieConsentEvent) => {
+  window.newsletterAttribution = { read, fill };
+
+  document.addEventListener('cc:consent-updated', (event) => {
     const categories = event.detail?.categories;
 
     consentGranted =
@@ -432,8 +423,8 @@ interface WindowWithUTM extends Window {
 
   document.addEventListener('DOMContentLoaded', fillAll);
 
-  document.addEventListener('submit', (event: KukieConsentEvent) => {
-    if (event.target && (event.target as HTMLElement).matches('form[data-newsletter-attribution]')) {
+  document.addEventListener('submit', (event) => {
+    if (event.target && event.target.matches('form[data-newsletter-attribution]')) {
       fill(event.target);
     }
   }, true);
